@@ -20,7 +20,7 @@ import com.delmar.core.dao.CodemapinfoDao;
  * @author 刘大磊 2014年12月18日 下午6:55:57
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext.xml")
+@ContextConfiguration(locations = "classpath*:applicationContext.xml")
 public class CodemapinfoTest {
 	@Autowired
 	private CodemapinfoDao codemapinfoDao;

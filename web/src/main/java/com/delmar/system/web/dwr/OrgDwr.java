@@ -56,7 +56,7 @@ public class OrgDwr {
 		{
 			
 			menus[i]=orgList.get(i);
-			Client client=clientService.selectByPrimaryKey(menus[i].getSysClientId());
+			Client client=clientService.selectByPrimaryKey(menus[i].getClientId());
 			menus[i].setClient(client);
 			if(menus[i].getParentOrgId()!=null&&menus[i].getParentOrgId()!=0)
 			{

@@ -35,14 +35,14 @@ public class OrgDaoTest {
 		org.setName("青岛德玛国际物流有限公司");
 		org.setRemark("德玛集团青岛分公司");
 		org.setValue("delarqd");
-		org.setSysClientId(client.getId());
+		org.setClientId(client.getId());
 		//orgDao.save(org);
 		System.out.println("orgid="+org.getId());
 		org=new Org();
 		org.setName("上海德玛国际物流有限公司");
 		org.setRemark("德玛集团上海分公司");
 		org.setValue("delarqd");
-		org.setSysClientId(client.getId());
+		org.setClientId(client.getId());
 		//orgDao.save(org);
 		
 		System.out.println("orgid="+org.getId());

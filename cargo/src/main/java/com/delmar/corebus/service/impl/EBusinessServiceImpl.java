@@ -202,7 +202,7 @@ public class EBusinessServiceImpl extends CoreServiceImpl<EBusiness> implements
 		
 		Org org=orgService.selectByPrimaryKey(user.getOrgId());
 		eb.setOrgId(user.getOrgId());
-		eb.setClientId(org.getSysClientId());
+		eb.setClientId(org.getClientId());
 		
 		
 		
