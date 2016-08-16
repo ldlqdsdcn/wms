@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.base.mybatis.sql.CompanysMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.Companys" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mobileNo" property="mobileno" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdby" jdbcType="INTEGER" />
+    <result column="createdbyname" property="createdbyname" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedby" jdbcType="INTEGER" />
+    <result column="updatedbyname" property="updatedbyname" jdbcType="VARCHAR" />
+    
+    <result column="relateclient_id" property="relateclientId" jdbcType="INTEGER" />
+    <result column="relateorg_id" property="relateorgId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+                  <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code, name, mobileNo, telephone, fax, email, contact, address, client_id, org_id, 
+    user_id, user_name, created, createdby, createdbyname, updated, updatedby, updatedbyname,
+    relateclient_id,relateorg_id 
+    
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_companys
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_companys
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_companys
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from base_companys
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.base.model.Companys" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_companys (code, name, mobileNo, 
+      telephone, fax, email, 
+      contact, address, client_id, 
+      org_id, user_id, user_name, 
+      created, createdby, createdbyname, 
+      updated, updatedby, updatedbyname,relateclient_id,relateorg_id 
+      )
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{mobileno,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{createdby,jdbcType=INTEGER}, #{createdbyname,jdbcType=VARCHAR}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedby,jdbcType=INTEGER}, #{updatedbyname,jdbcType=VARCHAR},
+      #{relateclientId,jdbcType=VARCHAR},#{relateorgId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.base.model.Companys" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_companys
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="mobileno != null" >
+        mobileNo,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdby != null" >
+        createdby,
+      </if>
+      <if test="createdbyname != null" >
+        createdbyname,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedby != null" >
+        updatedby,
+      </if>
+      <if test="updatedbyname != null" >
+        updatedbyname,
+      </if>
+      <if test="relateclientId!=null">
+      	relateclient_id,
+      </if>
+      <if test="relateorgId!=null">
+      	relateorg_id,
+      </if>      
+       
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileno != null" >
+        #{mobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=INTEGER},
+      </if>
+      <if test="createdbyname != null" >
+        #{createdbyname,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        #{updatedby,jdbcType=INTEGER},
+      </if>
+      <if test="updatedbyname != null" >
+        #{updatedbyname,jdbcType=VARCHAR},
+      </if>
+      <if test="relateclientId!=null">
+      	 #{relateclientId,jdbcType=INTEGER},
+      </if>
+      <if test="relateorgId!=null">
+      	#{relateorgId,jdbcType=INTEGER},
+      </if>  
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from base_companys
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updatedbyPrimaryKeySelective" parameterType="com.delmar.base.model.Companys" >
+    update base_companys
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileno != null" >
+        mobileNo = #{mobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        createdby = #{createdby,jdbcType=INTEGER},
+      </if>
+      <if test="createdbyname != null" >
+        createdbyname = #{createdbyname,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        updatedby = #{updatedby,jdbcType=INTEGER},
+      </if>
+      <if test="updatedbyname != null" >
+        updatedbyname = #{updatedbyname,jdbcType=VARCHAR},
+      </if>
+     	<if test="relateclientId!=null">
+      	relateclient_id= #{relateclientId,jdbcType=INTEGER},
+      </if>
+      <if test="relateorgId!=null">
+      	relateorg_id= #{relateorgId,jdbcType=INTEGER},
+      </if> 
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updatedbyPrimaryKey" parameterType="com.delmar.base.model.Companys" >
+    update base_companys
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      mobileNo = #{mobileno,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      org_id = #{orgId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      createdby = #{createdby,jdbcType=INTEGER},
+      createdbyname = #{createdbyname,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedby = #{updatedby,jdbcType=INTEGER},
+      updatedbyname = #{updatedbyname,jdbcType=VARCHAR},
+      relateclient_id= #{relateclientId,jdbcType=INTEGER},
+      relateorg_id= #{relateorgId,jdbcType=INTEGER} 
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

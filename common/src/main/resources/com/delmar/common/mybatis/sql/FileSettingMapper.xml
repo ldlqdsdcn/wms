@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.common.mybatis.sql.FileSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.common.model.FileSetting" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="root_directory" property="rootDirectory" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="INTEGER" />
+    <result column="file_types" property="fileTypes" jdbcType="VARCHAR" />
+    <result column="storage_mode" property="storageMode" jdbcType="INTEGER" />
+    <result column="ftpcommection_id" property="ftpcommectionId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="module_id" property="moduleId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+    				<if test="moduleId!=null"> module_id=#{moduleId,jdbcType=INTEGER} </if>
+                	<if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, root_directory, file_size, file_types, storage_mode, ftpcommection_id, 
+    created, module_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from common_file_setting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from common_file_setting
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from common_file_setting
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from common_file_setting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.common.model.FileSetting" useGeneratedKeys="true" keyProperty="id" >
+    insert into common_file_setting (name, root_directory, file_size, 
+      file_types, storage_mode, ftpcommection_id, 
+      created, module_id)
+    values (#{name,jdbcType=VARCHAR}, #{rootDirectory,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, 
+      #{fileTypes,jdbcType=VARCHAR}, #{storageMode,jdbcType=INTEGER}, #{ftpcommectionId,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{moduleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.common.model.FileSetting" useGeneratedKeys="true" keyProperty="id" >
+    insert into common_file_setting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="rootDirectory != null" >
+        root_directory,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="fileTypes != null" >
+        file_types,
+      </if>
+      <if test="storageMode != null" >
+        storage_mode,
+      </if>
+      <if test="ftpcommectionId != null" >
+        ftpcommection_id,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="rootDirectory != null" >
+        #{rootDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileTypes != null" >
+        #{fileTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="storageMode != null" >
+        #{storageMode,jdbcType=INTEGER},
+      </if>
+      <if test="ftpcommectionId != null" >
+        #{ftpcommectionId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from common_file_setting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.common.model.FileSetting" >
+    update common_file_setting
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="rootDirectory != null" >
+        root_directory = #{rootDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileTypes != null" >
+        file_types = #{fileTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="storageMode != null" >
+        storage_mode = #{storageMode,jdbcType=INTEGER},
+      </if>
+      <if test="ftpcommectionId != null" >
+        ftpcommection_id = #{ftpcommectionId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.common.model.FileSetting" >
+    update common_file_setting
+    set name = #{name,jdbcType=VARCHAR},
+      root_directory = #{rootDirectory,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=INTEGER},
+      file_types = #{fileTypes,jdbcType=VARCHAR},
+      storage_mode = #{storageMode,jdbcType=INTEGER},
+      ftpcommection_id = #{ftpcommectionId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      module_id = #{moduleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.ClientExtraMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sys.model.ClientExtra" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="prop_id" property="propId" jdbcType="INTEGER" />
+    <association  property="propName" column="prop_id" select="com.delmar.base.mybatis.sql.DatadictMapper.selectNameByPrimaryKey" ></association>    
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      	<if test="accessString!=null"> 	 <![CDATA[ ${accessString} ]]>  </if>
+      	<if test="clientId!=null"> client_id=#{clientId,jdbcType=INTEGER}  </if>      	
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, value, remark, client_id, prop_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.delmar.sys.model.ClientExtra" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_client_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_client_extra
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPropId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_client_extra
+    where id = #{id,jdbcType=INTEGER}
+  </select>  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_client_extra
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.delmar.sys.model.ClientExtra" >
+    delete from sys_client_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sys.model.ClientExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_client_extra (value, remark, client_id, 
+      prop_id)
+    values (#{value,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{propId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.sys.model.ClientExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_client_extra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="propId != null" >
+        prop_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="propId != null" >
+        #{propId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.delmar.sys.model.ClientExtra" resultType="java.lang.Integer" >
+    select count(*) from sys_client_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.ClientExtra" >
+    update sys_client_extra
+    <set >
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="propId != null" >
+        prop_id = #{propId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.ClientExtra" >
+    update sys_client_extra
+    set value = #{value,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      prop_id = #{propId,jdbcType=INTEGER}
+      where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

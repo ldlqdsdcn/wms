@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.crm.mybatis.sql.SaleSheetMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.crm.model.SaleSheet"   extends="com.delmar.common.mybatis.sql.CommonMapper.BusCoreResultMap" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+	<result column="shipper_id" property="shipperId" jdbcType="INTEGER" />
+	<result column="shipper_name" property="shippeName" jdbcType="VARCHAR" />
+	<result column="shipper_attn" property="shipperAttn" jdbcType="VARCHAR" />
+	<result column="shipper_tel" property="shipperTel" jdbcType="VARCHAR" />
+	<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+	<result column="outIn" property="outIn" jdbcType="INTEGER" />
+	<result column="goodsDesc" property="goodsDesc" jdbcType="VARCHAR" />
+	<result column="hsCode" property="hsCode" jdbcType="VARCHAR" />
+	<result column="goodsWeight" property="goodsWeight" jdbcType="DECIMAL" />
+	<result column="goodsSize" property="goodsSize" jdbcType="DECIMAL" />
+	<result column="containerDesc" property="containerDesc" jdbcType="VARCHAR" />
+	<result column="etd" property="etd" jdbcType="TIMESTAMP" />
+	<result column="beBrokage" property="beBrokage" jdbcType="INTEGER" />
+	<result column="brokageDesc" property="brokageDesc" jdbcType="VARCHAR" />
+	<result column="beTruck" property="beTruck" jdbcType="INTEGER" />
+	<result column="truckDesc" property="truckDesc" jdbcType="VARCHAR" />
+	<result column="remark" property="remark" jdbcType="VARCHAR" />
+	<result column="incoterm_id" property="incotermId" jdbcType="INTEGER" />
+	<result column="carrier_id" property="carrierId" jdbcType="INTEGER" />
+	<result column="polId" property="polId" jdbcType="INTEGER" />
+	<result column="poaId" property="poaId" jdbcType="INTEGER" />
+	<result column="status" property="status" jdbcType="INTEGER" />
+	
+	<!--  
+    <association property="pol" column="polId" select="com.delmar.base.mybatis.sql.PortMapper.selectByPrimaryKey" ></association>
+    <association property="poa" column="poaId" select="com.delmar.base.mybatis.sql.PortMapper.selectByPrimaryKey" ></association>    
+	
+	-->
+	
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+     	<if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id,shipper_id,shipper_name,shipper_attn,shipper_tel,consignee,
+    outIn,goodsDesc,hsCode,goodsWeight,goodsSize,containerDesc,etd,
+    beBrokage,brokageDesc,beTruck,truckDesc,remark,incoterm_id,carrier_id,
+    polId,poaId,status,flag,client_id,org_id,user_id,user_Name,created,
+    createdBy,createdByName,updated,updatedBy,updatedByName
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b_crm_salesheet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_crm_salesheet
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectFieldsByPrimaryKey" resultMap="BaseResultMap"  parameterType="java.util.Map">
+    select  
+    <if test="columns == null" >
+      <include refid="Base_Column_List" />
+    </if>
+    <if test="columns != null" >
+       ${columns}
+    </if>    
+    from b_crm_salesheet
+    where id = #{id,jdbcType=INTEGER}
+  </select>  
+    
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_crm_salesheet
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from b_crm_salesheet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.crm.model.SaleSheet" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_salesheet (shipper_id,shipper_name,shipper_attn,shipper_tel,consignee,
+    outIn,goodsDesc,hsCode,goodsWeight,goodsSize,containerDesc,etd,
+    beBrokage,brokageDesc,beTruck,truckDesc,remark,incoterm_id,carrier_id,
+    polId,poaId,status,flag,client_id,org_id,user_id,user_Name,created,
+    createdBy,createdByName,updated,updatedBy,updatedByName)
+    values (#{shipperId,jdbcType=INTEGER},#{shippeName,jdbcType=VARCHAR},#{shipperAttn,jdbcType=VARCHAR},
+    #{shipperTel,jdbcType=VARCHAR},#{consignee,jdbcType=VARCHAR},#{outIn,jdbcType=INTEGER},
+    #{goodsDesc,jdbcType=VARCHAR},#{hsCode,jdbcType=VARCHAR},#{goodsWeight,jdbcType=DECIMAL},
+    #{goodsSize,jdbcType=DECIMAL},#{containerDesc,jdbcType=VARCHAR},#{etd,jdbcType=TIMESTAMP},
+    #{beBrokage,jdbcType=INTEGER},#{brokageDesc,jdbcType=VARCHAR},#{beTruck,jdbcType=INTEGER},
+    #{truckDesc,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{incotermId,jdbcType=INTEGER},
+    #{carrierId,jdbcType=INTEGER},#{polId,jdbcType=INTEGER},#{poaId,jdbcType=INTEGER},
+    #{status,jdbcType=INTEGER},#{flag,jdbcType=INTEGER},#{clientId,jdbcType=INTEGER},
+    #{orgId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},
+    #{created,jdbcType=TIMESTAMP},#{createdBy,jdbcType=INTEGER},
+    #{createdByName,jdbcType=VARCHAR},#{updated,jdbcType=TIMESTAMP},
+    #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.crm.model.SaleSheet" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_salesheet
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="shipperId != null">
+		shipper_id,
+		</if>
+		<if test="shippeName != null">
+		shipper_name,
+		</if>
+		<if test="shipperAttn != null">
+		shipper_attn,
+		</if>
+		<if test="shipperTel != null">
+		shipper_tel,
+		</if>
+		<if test="consignee != null">
+		consignee,
+		</if>
+		<if test="outIn != null">
+		outIn,
+		</if>
+		<if test="goodsDesc != null">
+		goodsDesc,
+		</if>
+		<if test="hsCode != null">
+		hsCode,
+		</if>
+		<if test="goodsWeight != null">
+		goodsWeight,
+		</if>
+		<if test="goodsSize != null">
+		goodsSize,
+		</if>
+		<if test="containerDesc != null">
+		containerDesc,
+		</if>
+		<if test="etd != null">
+		etd,
+		</if>
+		<if test="beBrokage != null">
+		beBrokage,
+		</if>
+		<if test="brokageDesc != null">
+		brokageDesc,
+		</if>
+		<if test="beTruck != null">
+		beTruck,
+		</if>
+		<if test="truckDesc != null">
+		truckDesc,
+		</if>
+		<if test="remark != null">
+		remark,
+		</if>
+		<if test="incotermId != null">
+		incoterm_id,
+		</if>
+		<if test="carrierId != null">
+		carrier_id,
+		</if>
+		<if test="polId != null">
+		polId,
+		</if>
+		<if test="poaId != null">
+		poaId,
+		</if>
+		<if test="status != null">
+		status,
+		</if>
+		<if test="flag != null">
+		flag,
+		</if>
+		<if test="clientId != null">
+		client_id,
+		</if>
+		<if test="orgId != null">
+		org_id,
+		</if>
+		<if test="userId != null">
+		user_id,
+		</if>
+		<if test="userName != null">
+		user_Name,
+		</if>
+		<if test="created != null">
+		created,
+		</if>
+		<if test="createdBy != null">
+		createdBy,
+		</if>
+		<if test="createdByName != null">
+		createdByName,
+		</if>
+		<if test="updated != null">
+		updated,
+		</if>
+		<if test="updatedBy != null">
+		updatedBy,
+		</if>
+		<if test="updatedByName != null">
+		updatedByName,
+		</if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		 <if test="shipperId != null">
+		shipper_id,
+		</if>
+		<if test="shippeName != null">
+		shipper_name,
+		</if>
+		<if test="shipperAttn != null">
+		shipper_attn,
+		</if>
+		<if test="shipperTel != null">
+		shipper_tel,
+		</if>
+		<if test="consignee != null">
+		consignee,
+		</if>
+		<if test="outIn != null">
+		outIn,
+		</if>
+		<if test="goodsDesc != null">
+		goodsDesc,
+		</if>
+		<if test="hsCode != null">
+		hsCode,
+		</if>
+		<if test="goodsWeight != null">
+		goodsWeight,
+		</if>
+		<if test="goodsSize != null">
+		goodsSize,
+		</if>
+		<if test="containerDesc != null">
+		containerDesc,
+		</if>
+		<if test="etd != null">
+		etd,
+		</if>
+		<if test="beBrokage != null">
+		beBrokage,
+		</if>
+		<if test="brokageDesc != null">
+		brokageDesc,
+		</if>
+		<if test="beTruck != null">
+		beTruck,
+		</if>
+		<if test="truckDesc != null">
+		truckDesc,
+		</if>
+		<if test="remark != null">
+		remark,
+		</if>
+		<if test="incotermId != null">
+		incoterm_id,
+		</if>
+		<if test="carrierId != null">
+		carrier_id,
+		</if>
+		<if test="polId != null">
+		polId,
+		</if>
+		<if test="poaId != null">
+		poaId,
+		</if>
+		<if test="status != null">
+		status,
+		</if>
+		<if test="flag != null">
+		flag,
+		</if>
+		<if test="clientId != null">
+		client_id,
+		</if>
+		<if test="orgId != null">
+		org_id,
+		</if>
+		<if test="userId != null">
+		user_id,
+		</if>
+		<if test="userName != null">
+		user_Name,
+		</if>
+		<if test="created != null">
+		created,
+		</if>
+		<if test="createdBy != null">
+		createdBy,
+		</if>
+		<if test="createdByName != null">
+		createdByName,
+		</if>
+		<if test="updated != null">
+		updated,
+		</if>
+		<if test="updatedBy != null">
+		updatedBy,
+		</if>
+		<if test="updatedByName != null">
+		updatedByName,
+		</if>
+
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from b_crm_salesheet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.crm.model.SaleSheet" >
+    update b_crm_salesheet
+    <set >
+		 <if test="shipperId != null">
+		#{shipperId,jdbcType=INTEGER},
+		</if>
+		<if test="shippeName != null">
+		#{shippeName,jdbcType=VARCHAR},
+		</if>
+		<if test="shipperAttn != null">
+		#{shipperAttn,jdbcType=VARCHAR},
+		</if>
+		<if test="shipperTel != null">
+		#{shipperTel,jdbcType=VARCHAR},
+		</if>
+		<if test="consignee != null">
+		#{consignee,jdbcType=VARCHAR},
+		</if>
+		<if test="outIn != null">
+		#{outIn,jdbcType=INTEGER},
+		</if>
+		<if test="goodsDesc != null">
+		#{goodsDesc,jdbcType=VARCHAR},
+		</if>
+		<if test="hsCode != null">
+		#{hsCode,jdbcType=VARCHAR},
+		</if>
+		<if test="goodsWeight != null">
+		#{goodsWeight,jdbcType=DECIMAL},
+		</if>
+		<if test="goodsSize != null">
+		#{goodsSize,jdbcType=DECIMAL},
+		</if>
+		<if test="containerDesc != null">
+		#{containerDesc,jdbcType=VARCHAR},
+		</if>
+		<if test="etd != null">
+		#{etd,jdbcType=TIMESTAMP},
+		</if>
+		<if test="beBrokage != null">
+		#{beBrokage,jdbcType=INTEGER},
+		</if>
+		<if test="brokageDesc != null">
+		#{brokageDesc,jdbcType=VARCHAR},
+		</if>
+		<if test="beTruck != null">
+		#{beTruck,jdbcType=INTEGER},
+		</if>
+		<if test="truckDesc != null">
+		#{truckDesc,jdbcType=VARCHAR},
+		</if>
+		<if test="remark != null">
+		#{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="incotermId != null">
+		#{incotermId,jdbcType=INTEGER},
+		</if>
+		<if test="carrierId != null">
+		#{carrierId,jdbcType=INTEGER},
+		</if>
+		<if test="polId != null">
+		#{polId,jdbcType=INTEGER},
+		</if>
+		<if test="poaId != null">
+		#{poaId,jdbcType=INTEGER},
+		</if>
+		<if test="status != null">
+		#{status,jdbcType=INTEGER},
+		</if>
+		<if test="flag != null">
+		#{flag,jdbcType=INTEGER},
+		</if>
+		<if test="updated != null">
+		#{updated,jdbcType=TIMESTAMP},
+		</if>
+		<if test="updatedBy != null">
+		#{updatedBy,jdbcType=INTEGER},
+		</if>
+		<if test="updatedByName != null">
+		#{updatedByName,jdbcType=VARCHAR},
+		</if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.crm.model.SaleSheet" >
+    update b_crm_salesheet
+    set shipper_id = #{shipperId,jdbcType=INTEGER},
+		shipper_name = #{shippeName,jdbcType=VARCHAR},
+		shipper_attn = #{shipperAttn,jdbcType=VARCHAR},
+		shipper_tel = #{shipperTel,jdbcType=VARCHAR},
+		consignee = #{consignee,jdbcType=VARCHAR},
+		outIn = #{outIn,jdbcType=INTEGER},
+		goodsDesc = #{goodsDesc,jdbcType=VARCHAR},
+		hsCode = #{hsCode,jdbcType=VARCHAR},
+		goodsWeight = #{goodsWeight,jdbcType=DECIMAL},
+		goodsSize = #{goodsSize,jdbcType=DECIMAL},
+		containerDesc = #{containerDesc,jdbcType=VARCHAR},
+		etd = #{etd,jdbcType=TIMESTAMP},
+		beBrokage = #{beBrokage,jdbcType=INTEGER},
+		brokageDesc = #{brokageDesc,jdbcType=VARCHAR},
+		beTruck = #{beTruck,jdbcType=INTEGER},
+		truckDesc = #{truckDesc,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR},
+		incoterm_id = #{incotermId,jdbcType=INTEGER},
+		carrier_id = #{carrierId,jdbcType=INTEGER},
+		polId = #{polId,jdbcType=INTEGER},
+		poaId = #{poaId,jdbcType=INTEGER},
+		status = #{status,jdbcType=INTEGER},
+		flag = #{flag,jdbcType=INTEGER},
+		updated = #{updated,jdbcType=TIMESTAMP},
+		updatedBy = #{updatedBy,jdbcType=INTEGER},
+		updatedByName = #{updatedByName,jdbcType=VARCHAR} 
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

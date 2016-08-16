@@ -1,0 +1,240 @@
+div.exportlinks { width: 48%; text-align: left; height: 15px; float: left; margin-top: 0; margin-bottom: 0; padding: 2px 0; }
+
+
+ div.exportlinks a {
+    text-decoration: none;
+}
+
+div.exportlinks span { background-repeat: no-repeat; margin: 0; }
+
+span.csv {
+    background-image: url(../images/ico/ico_file_csv.png);
+}
+
+span.excel {
+    background-image: url(../images/ico/ico_file_excel.png);
+}
+
+span.pdf {
+    background-image: url(../images/ico/ico_file_pdf.png);
+}
+span.rtf {
+    background-image: url(../images/ico/ico_file_rtf.png);
+}
+span.xml {
+    background-image: url(../images/ico/ico_file_xml.png);
+}
+
+span.export {
+    cursor: pointer;
+    display: inline;
+    padding: 0 4px 1px 20px;
+}
+
+span.pagebanner {
+    display: block;
+    margin: 1px 0px 1px 0px;
+    padding: 2px 1px 2px 2px;
+    text-align: left;
+    font-size: 12px;
+}
+
+span.pagelinks {
+    display: block;
+    font-size: .95em;
+    margin-bottom: 5px;
+    margin-top: -18px;
+    padding: 2px 0px 2px 0px;
+    text-align: right;
+    width: 80%;
+}
+
+th.sorted a, th.sortable a { font-size: 14px; background-position: right 50%; display: block; }
+
+.table th.order1 a {
+    background-image: url(../images/ico/arrow_down.png) !important;
+}
+.table th.order2 a {
+    background-image: url(../images/ico/arrow_up.png) !important;
+}
+
+div#main .tableHeaderImage { /* Tapestry */
+    position: absolute;
+    margin: 2px 0px 0px -5px;
+    background: transparent;
+    border: 0px;
+}
+
+/*.table th.sortable a {
+    background-image: url(../images/arrow_off.png);
+}*/
+
+.table th.sorted {
+    background-color: #ffd;
+    color: #000000;
+}
+
+.table th.sorted a, .table th.sortable a 
+{ 
+	font-size: 12px; background-position: right 50%; background-repeat: no-repeat; display: block;
+	color:#000000; 
+}
+.table th {font-size: 12px; color: #fff; background-position: right 50%; background-repeat: no-repeat;}
+.table tr.even { background: #F7F7F7; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, 宋体;height: 22px; }
+.table tr.even:hover
+{
+ background: #E0ECFF !important;
+}
+.table tr.odd { 	text-align:left;
+	background-color: #e6e8eb;
+	padding-left: 10px;
+	height: 22px;}
+.table tr.odd:hover
+{
+ background: #E0ECFF !important;
+}
+.table td{ margin: 0; font-weight:normal;work-wrap:break-word;
+					word-break:break-all;padding: 2px; }
+.detail th {
+    text-align: right;
+}
+    /* TABLE */
+   .table    img {
+        border: 0;
+    }
+
+
+        /*********************************
+           Project: CSS Table Galery
+           Title: Like Adwords
+           Author: Cleiton Francisco
+           URL: http://www.cleiton.net/
+           Country: Brazil
+           Update: 2005-12-18
+         *******************************/
+   .table {
+                border-collapse: collapse;
+                border: 1px solid #8AB6ED;
+                /*
+                background-color:#F7F7F7;
+                border: 2px solid #CCCCCC; 
+                border: 2px solid #74B3DC;
+                background: #fff;
+                */
+                color: #000;
+                
+                width: 100% !important;
+            }
+              .table caption {
+                    padding: 0 0.6em 0.8em;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    text-align: left;
+                    color: #000;
+                    background: transparent;
+                }
+                /* For Tapestry's contribTable */
+                .table th table, .table th table td {
+                    width: 100%;
+                    border: 0px;
+                }
+
+                .table td, .table th {
+                    border: 1px solid #fff;
+                    padding: 2px;
+                }
+               .table thead th {
+                   	font-size: 12px;
+					text-align: left;
+					color: #045295;
+					height:22px;
+					font-weight: bold;
+					background-color: #C7D8F6;
+					padding-left: 10px;
+                }
+                .table tfoot th, tfoot td {
+                    border: 1px solid #fff;
+                    text-align: left;
+                    font-size: 1em;
+                    background: #e8e8cf;
+                }
+                .table tfoot th {
+                    font-weight: bold;
+                }
+                .table tbody td a {
+                    background: transparent;
+                    text-decoration: underline;
+                }
+                .table tbody td a:hover {
+                    background: transparent;
+                    text-decoration: underline;
+                }
+                .table tbody th a {
+                    background: transparent;
+                    text-decoration: underline;
+                    font-weight: bold;
+                }
+                .table tbody th, .table tbody td {
+                    text-align: left;
+                }
+                .table tfoot td {
+                    border: 1px solid #996;
+                }
+               .table tbody tr:hover, .table tr.over{
+                    background: #E0ECFF !important; /* important needed for Tapestry, as is .table tr:hover */
+                }
+			
+    /* END TABLE */
+
+/* END TYPOGRAPHY */
+
+
+#header, #nav, #sub, #sub h2, #footer, #local {
+    display: none;
+}
+
+#main, #content, .table {
+    width: 700px;
+}
+
+
+
+.table th.sorted a, .table th.sortable a { font-size: 12px; background-position: right 50%; background-repeat: no-repeat; }
+
+
+
+
+.tablehead{font-size: 12px; background-position: right 50%; background-repeat: no-repeat;
+	color: #585C51; background-color: #ffd; }
+
+/* highlight .table row onmouseover */
+.table tr.over {
+    /*border-bottom: 1px solid #C0C0C0;
+    border-top: 1px solid green;*/
+    border:1px solid #000000;
+    color: #000000;
+    cursor: pointer;
+}
+.first{
+	display: block;
+	background-image: url("../images/ico/arrow-first.gif");
+	}
+	.prev{
+	display: block;
+	background-image: url("../images/ico/arrow-previous.gif");
+	}
+	.next{
+	display: block;
+	background-image: url("../images/ico/arrow-next.gif");
+	}
+	.last{
+	display: block;
+	background-image: url("../images/ico/arrow-last.gif");
+	}
+.datatable_row1 { background: #DAE1EF; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }
+.datatable_row2 { background: #F7F7F7; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }
+
+.pagebanner
+{
+	width: 100%;float: left;
+}

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.OrgMapper">
+    <resultMap id="BaseResultMap" type="com.delmar.sys.model.Org">
+        <id column="org_id" property="id" jdbcType="INTEGER"/>
+        <result column="value" property="value" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="remark" property="remark" jdbcType="NVARCHAR"/>
+        <result column="client_id" property="clientId" jdbcType="INTEGER"/>
+        <result column="org_level" property="orgLevel" jdbcType="INTEGER"/>
+        <result column="parent_org_id" property="parentOrgId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <if test="parentOrgId!=null">and parent_org_id=#{parentOrgId,jdbcType=INTEGER}</if>
+            <if test="clientId!=null">and client_id=#{clientId,jdbcType=INTEGER}</if>
+            <if test="accessString!=null">and ${accessString}</if>
+            <if test="value!=null">and value=#{value,jdbcType=VARCHAR}</if>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    org_id, value, name, remark, client_id,org_level,parent_org_id
+  </sql>
+    <select id="selectOrgs" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from sys_org where  org_id in ( SELECT     org_id FROM         sys_userorg_access WHERE     user_id =  #{value,jdbcType=INTEGER} )
+  </select>
+
+    <select id="getOrgs" resultMap="BaseResultMap" parameterType="java.util.Map">
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from sys_client
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from sys_org
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_org
+        where org_id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_org
+    where org_id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map">
+        delete from sys_org
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.sys.model.Org" useGeneratedKeys="true" keyProperty="id">
+    insert into sys_org (value, name, remark, 
+      client_id,org_level,parent_org_id)
+    values (#{value,jdbcType=VARCHAR}, #{name,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}, 
+      #{clientId,jdbcType=INTEGER},#{orgLevel,jdbcType=INTEGER},#{parentOrgId,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.delmar.sys.model.Org" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_org
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="value != null">
+                value,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="clientId != null">
+                client_id,
+            </if>
+            <if test="orgLevel != null">
+                org_level,
+            </if>
+            <if test="parentOrgId != null">
+                parent_org_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="value != null">
+                #{value,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=NVARCHAR},
+            </if>
+            <if test="clientId != null">
+                #{clientId,jdbcType=INTEGER},
+            </if>
+            <if test="orgLevel != null">
+                #{orgLevel,jdbcType=INTEGER},
+            </if>
+            <if test="parentOrgId != null">
+                #{parentOrgId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from sys_org
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.Org">
+        update sys_org
+        <set>
+            <if test="value != null">
+                value = #{value,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=NVARCHAR},
+            </if>
+            <if test="clientId != null">
+                client_id = #{clientId,jdbcType=INTEGER},
+            </if>
+            <if test="orgLevel != null">
+                org_level = #{orgLevel,jdbcType=INTEGER},
+            </if>
+            <if test="parentOrgId != null">
+                parent_org_id = #{parentOrgId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where org_id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.Org">
+
+    update sys_org
+    set value = #{value,jdbcType=VARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      remark = #{remark,jdbcType=NVARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      org_level = #{orgLevel,jdbcType=INTEGER},
+      parent_org_id = #{parentOrgId,jdbcType=INTEGER} 
+    where org_id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,10 @@
+海运散箱
+重量 5000kg
+体积 5
+货类 无
+发货港 DKAAL
+目的港 DKAAR
+
+
+{"quotaList":[{"price":225.00,"currency":"USD","curr":{"code":"USD","cname":"USD","ename":"USD",
+"remark":"6.2255","rate":6.2255,"id":2}}],"remark":"无"}

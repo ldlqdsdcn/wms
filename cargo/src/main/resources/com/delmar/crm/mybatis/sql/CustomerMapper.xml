@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.crm.mybatis.sql.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.crm.model.Customer" extends="com.delmar.common.mybatis.sql.CommonMapper.BusCoreResultMap">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cusCode" property="cusCode" jdbcType="VARCHAR" />
+    <result column="opsCode" property="opsCode" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="country_id" property="countryId" jdbcType="INTEGER" />    
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />        
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="legalPerson" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />    
+    <result column="isactive" property="isactive" jdbcType="CHAR" />
+    <result column="status_id" property="statusId" jdbcType="INTEGER" />    
+    <association  property="statusName" column="status_id" select="com.delmar.base.mybatis.sql.DatadictMapper.selectNameByPrimaryKey" ></association>    
+    <association property="customerExtra" column="id" select="com.delmar.crm.mybatis.sql.CustomerExtraMapper.selectByPrimaryKey"></association>    
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      	<if test="accessString!=null"> 	 <![CDATA[ ${accessString} ]]>  </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, cuscode, OpsCode, name,status_id, country_id,province_id,city_id,address, legalPerson,telephone, email, 
+    remark,remark,isactive    
+    <include refid="com.delmar.common.mybatis.sql.CommonMapper.Bus_Core_List" />
+  </sql>
+  
+  <select id="selectNameById"  resultType="java.lang.String" parameterType="java.lang.Integer"  >
+	   select name from b_crm_customer where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectMaxId"  resultType="java.lang.Integer"   >
+	   select max(id) id from b_crm_customer 
+  </select>  
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <if test="topnumber!=null" >
+       ${topnumber}
+    </if>        
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <if test="columns != null" >
+        ${columns}
+    </if>
+    
+    <if test="columns == null" >
+       <include refid="Base_Column_List" />
+    </if>    
+    
+    from b_crm_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+    
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_crm_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectFieldsByPrimaryKey" resultMap="BaseResultMap"  parameterType="java.util.Map">
+    select  
+    <if test="columns == null" >
+      <include refid="Base_Column_List" />
+    </if>
+    <if test="columns != null" >
+       ${columns}
+    </if>    
+    from b_crm_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>  
+  
+  <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer" >
+    delete from b_crm_customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from b_crm_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.crm.model.Customer" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_customer (cuscode, opsCode,status_id,  
+      name, country_id,province_id,city_id,address, 
+      legalPerson,telephone, email, remark, 
+      user_id,user_name, org_id, client_id,
+      created, createdby,createdbyName, 
+      updated, updatedby,updatedbyname,flag,isactive)
+    values (#{cusCode,jdbcType=VARCHAR}, #{opsCode,jdbcType=VARCHAR}, 
+      #{statusId,jdbcType=INTEGER},#{name,jdbcType=VARCHAR}, #{countryId,jdbcType=INTEGER},#{provinceId,jdbcType=INTEGER},#{cityId,jdbcType=INTEGER},
+       #{address,jdbcType=VARCHAR}, 
+      #{legalPerson,jdbcType=VARCHAR},#{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER},
+      #{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER},#{createdByName,jdbcType=VARCHAR}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, 
+      #{isactive,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.crm.model.Customer" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cusCode != null" >
+        cuscode,
+      </if>
+      <if test="opsCode != null" >
+        opsCode,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="statusId != null" >
+        status_Id,
+      </if>      
+      <if test="countryId != null" >
+        country_Id,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>            
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="legalPerson != null" >
+        legalPerson,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>      
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="clientId!=null">
+      	 client_id,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdBy != null" >
+        createdby,
+      </if>
+      <if test="createdByName != null" >
+        createdbyName,
+      </if>      
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedBy != null" >
+        updatedby,
+      </if>
+      <if test="updatedByName != null" >
+        updatedbyName,
+      </if>
+      
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="isactive != null" >
+        isactive,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cusCode != null" >
+        #{cusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opsCode != null" >
+        #{opsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>   
+      
+       <if test="statusId != null" >
+        #{statusId,jdbcType=INTEGER},
+      </if>
+      <if test="countryId != null" >
+        #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>      
+
+      <if test="legalPerson != null" >
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>      
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId!=null">
+      	#{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        #{updatedByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from b_crm_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.crm.model.Customer" >
+    update b_crm_customer
+    <set >
+      <if test="cusCode != null" >
+        cuscode = #{cusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opsCode != null" >
+        opsCode = #{opsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>     
+      <if test="statusId != null" >
+        status_Id = #{statusId,jdbcType=VARCHAR},
+      </if>         
+       
+      <if test="countryId != null" >
+        country_id = #{countryId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>            
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        legalPerson = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>      
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+       <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+
+    
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updatedby = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName = #{updatedByName,jdbcType=VARCHAR},
+      </if>         
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.crm.model.Customer" >
+    update b_crm_customer
+    set cuscode = #{cusCode,jdbcType=VARCHAR},
+      opsCode = #{opsCode,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      status_id = #{statusId,jdbcType=INTEGER},
+      country_id = #{countryId,jdbcType=INTEGER},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      legalPerson = #{legalPerson,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      client_id=#{clientId,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedBy = #{updatedBy,jdbcType=INTEGER},
+      updatedByName = #{updatedByName,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      isactive = #{isactive,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

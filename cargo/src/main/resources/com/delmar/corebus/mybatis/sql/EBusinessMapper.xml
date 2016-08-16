@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.corebus.mybatis.sql.EBusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.corebus.model.EBusiness" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="businessno" property="businessno" jdbcType="VARCHAR" />
+    <result column="mode" property="mode" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+
+    <result column="b_transaction_id" property="bTransactionId" jdbcType="INTEGER" />
+    <result column="ShipperCode" property="shippercode" jdbcType="VARCHAR" />
+    <result column="ShipperName" property="shippername" jdbcType="VARCHAR" />
+    <result column="ShipperContact" property="shippercontact" jdbcType="VARCHAR" />
+    <result column="ShipperProvince" property="shipperprovince" jdbcType="VARCHAR" />
+    <result column="ShipperCity" property="shippercity" jdbcType="VARCHAR" />
+    <result column="ShipperAddress" property="shipperaddress" jdbcType="VARCHAR" />
+    <result column="ConsigneeCode" property="consigneecode" jdbcType="VARCHAR" />
+    <result column="ConsigneeName" property="consigneename" jdbcType="VARCHAR" />
+    <result column="ConsigneeMobile" property="consigneemobile" jdbcType="VARCHAR" />
+    <result column="ConsigneeContact" property="consigneecontact" jdbcType="VARCHAR" />
+    <result column="ConsigneeProvince" property="consigneeprovince" jdbcType="VARCHAR" />
+    <result column="ConsigneeDistrict" property="consigneedistrict" jdbcType="VARCHAR" />
+    <result column="ConsigneeAddress" property="consigneeaddress" jdbcType="VARCHAR" />
+    <result column="GoodsNumber" property="goodsnumber" jdbcType="INTEGER" />
+    <result column="GoodsWeight" property="goodsweight" jdbcType="NUMERIC" />
+    <result column="GoodsSize" property="goodssize" jdbcType="NUMERIC" />
+    <result column="GoodsDimension" property="goodsdimension" jdbcType="VARCHAR" />
+    <result column="ConsigneeCity" property="consigneecity" jdbcType="VARCHAR" />
+    <result column="ShipperDistrict" property="shipperdistrict" jdbcType="VARCHAR" />
+    <result column="ShipperMobile" property="shippermobile" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdByName" property="createdByName" jdbcType="VARCHAR" />    
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedBy" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedByName" property="updatedByName" jdbcType="VARCHAR" />    
+    <result column="totalAmount" property="totalAmount"  jdbcType="DECIMAL"/>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.delmar.corebus.model.EBusiness" extends="BaseResultMap" >
+    <result column="CargoDesc" property="cargodesc" jdbcType="CLOB" />
+  </resultMap>
+  
+  <resultMap id="resultModel"  type="com.delmar.corebus.model.EBusiness" extends="BaseResultMap" >
+  	<association property="transaction" column="b_transaction_id" select="com.delmar.corebus.mybatis.sql.TransactionMapper.selectByPrimaryKey" ></association>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+	<if test="businessno!=null"> and businessNo=#{businessno,jdbcType=VARCHAR} </if>
+	<if test="clientId!=null">  and client_id = #{clientId,jdbcType=INTEGER} </if>
+   	<if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, businessno, mode, remark, created, createdBy,createdByName, b_transaction_id, ShipperCode, 
+    ShipperName, ShipperContact, ShipperProvince, ShipperCity, ShipperAddress, ConsigneeCode, 
+    ConsigneeName, ConsigneeMobile, ConsigneeContact, ConsigneeProvince, ConsigneeDistrict, 
+    ConsigneeAddress, GoodsNumber, GoodsWeight, GoodsSize, GoodsDimension, ConsigneeCity, 
+    ShipperDistrict, ShipperMobile, status,updated,updatedBy,updatedByName,user_id,user_name,org_id,client_id,totalAmount 
+  </sql>
+  <sql id="Blob_Column_List" >
+    CargoDesc
+  </sql>
+  
+  <select id="selectMaxBusinessNo" resultType="java.lang.String">
+  		select max(businessno) from B_EBusiness
+  </select>
+  
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from B_EBusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="resultModel" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from B_EBusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from B_EBusiness
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from B_EBusiness
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from B_EBusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.corebus.model.EBusiness" useGeneratedKeys="true" keyProperty="id" >
+    insert into B_EBusiness (businessno, mode, remark,       created, createdBy,createdByName, b_transaction_id, 
+      ShipperCode, ShipperName, ShipperContact,       ShipperProvince, ShipperCity, ShipperAddress, 
+      ConsigneeCode, ConsigneeName, ConsigneeMobile, 
+      ConsigneeContact, ConsigneeProvince, ConsigneeDistrict, 
+      ConsigneeAddress, GoodsNumber, GoodsWeight, 
+      GoodsSize, GoodsDimension, ConsigneeCity, 
+      ShipperDistrict, ShipperMobile, status, updated,updatedby,updatedByName,user_id,user_name,org_id,client_id, 
+      CargoDesc,totalAmount)
+    values (#{businessno,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},#{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER}, #{createdByName,jdbcType=VARCHAR}, #{bTransactionId,jdbcType=INTEGER}, 
+      #{shippercode,jdbcType=VARCHAR}, #{shippername,jdbcType=VARCHAR}, #{shippercontact,jdbcType=VARCHAR},  #{shipperprovince,jdbcType=VARCHAR}, #{shippercity,jdbcType=VARCHAR}, #{shipperaddress,jdbcType=VARCHAR}, 
+      #{consigneecode,jdbcType=VARCHAR}, #{consigneename,jdbcType=VARCHAR}, #{consigneemobile,jdbcType=VARCHAR}, 
+      #{consigneecontact,jdbcType=VARCHAR}, #{consigneeprovince,jdbcType=VARCHAR}, #{consigneedistrict,jdbcType=VARCHAR}, 
+      #{consigneeaddress,jdbcType=VARCHAR}, #{goodsnumber,jdbcType=INTEGER}, #{goodsweight,jdbcType=NUMERIC}, 
+      #{goodssize,jdbcType=NUMERIC}, #{goodsdimension,jdbcType=VARCHAR}, #{consigneecity,jdbcType=VARCHAR}, 
+      #{shipperdistrict,jdbcType=VARCHAR}, #{shippermobile,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+        #{updated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER}, #{updatedByName,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},#{orgId,jdbcType=INTEGER},#{clientId,jdbcType=INTEGER}, 
+      #{cargodesc,jdbcType=CLOB},#{totalAmount,jdbcType=DECIMAL}
+        )
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.corebus.model.EBusiness" useGeneratedKeys="true" keyProperty="id" >
+    insert into B_EBusiness
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        businessno,
+      </if>
+      <if test="mode != null" >
+        mode,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="createdByName != null" >
+        createdByName,
+      </if>      
+      <if test="bTransactionId != null" >
+        b_transaction_id,
+      </if>
+      <if test="shippercode != null" >
+        ShipperCode,
+      </if>
+      <if test="shippername != null" >
+        ShipperName,
+      </if>
+      <if test="shippercontact != null" >
+        ShipperContact,
+      </if>
+      <if test="shipperprovince != null" >
+        ShipperProvince,
+      </if>
+      <if test="shippercity != null" >
+        ShipperCity,
+      </if>
+      <if test="shipperaddress != null" >
+        ShipperAddress,
+      </if>
+      <if test="consigneecode != null" >
+        ConsigneeCode,
+      </if>
+      <if test="consigneename != null" >
+        ConsigneeName,
+      </if>
+      <if test="consigneemobile != null" >
+        ConsigneeMobile,
+      </if>
+      <if test="consigneecontact != null" >
+        ConsigneeContact,
+      </if>
+      <if test="consigneeprovince != null" >
+        ConsigneeProvince,
+      </if>
+      <if test="consigneedistrict != null" >
+        ConsigneeDistrict,
+      </if>
+      <if test="consigneeaddress != null" >
+        ConsigneeAddress,
+      </if>
+      <if test="goodsnumber != null" >
+        GoodsNumber,
+      </if>
+      <if test="goodsweight != null" >
+        GoodsWeight,
+      </if>
+      <if test="goodssize != null" >
+        GoodsSize,
+      </if>
+      <if test="goodsdimension != null" >
+        GoodsDimension,
+      </if>
+      <if test="consigneecity != null" >
+        ConsigneeCity,
+      </if>
+      <if test="shipperdistrict != null" >
+        ShipperDistrict,
+      </if>
+      <if test="shippermobile != null" >
+        ShipperMobile,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cargodesc != null" >
+        CargoDesc,
+      </if>
+       <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedBy != null" >
+        updatedBy,
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName,
+      </if>      
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_Name,
+      </if>      
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+            <if test="totalAmount != null" >
+        totalAmount,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null" >
+        #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="bTransactionId != null" >
+        #{bTransactionId,jdbcType=INTEGER},
+      </if>
+      <if test="shippercode != null" >
+        #{shippercode,jdbcType=VARCHAR},
+      </if>
+      <if test="shippername != null" >
+        #{shippername,jdbcType=VARCHAR},
+      </if>
+      <if test="shippercontact != null" >
+        #{shippercontact,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperprovince != null" >
+        #{shipperprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="shippercity != null" >
+        #{shippercity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperaddress != null" >
+        #{shipperaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecode != null" >
+        #{consigneecode,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null" >
+        #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneemobile != null" >
+        #{consigneemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecontact != null" >
+        #{consigneecontact,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeprovince != null" >
+        #{consigneeprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneedistrict != null" >
+        #{consigneedistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddress != null" >
+        #{consigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsnumber != null" >
+        #{goodsnumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsweight != null" >
+        #{goodsweight,jdbcType=NUMERIC},
+      </if>
+      <if test="goodssize != null" >
+        #{goodssize,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsdimension != null" >
+        #{goodsdimension,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecity != null" >
+        #{consigneecity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperdistrict != null" >
+        #{shipperdistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="shippermobile != null" >
+        #{shippermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cargodesc != null" >
+        #{cargodesc,jdbcType=CLOB},
+      </if>
+     
+       <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+         #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+         #{updatedByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="userId != null" >
+           #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+           #{userName,jdbcType=VARCHAR},
+      </if>      
+      <if test="orgId != null" >
+          #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+     	#{clientId,jdbcType=INTEGER},
+      </if>
+        <if test="totalAmount != null" >
+     	#{totalAmount,jdbcType=INTEGER},
+      </if>    
+      
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from B_EBusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.corebus.model.EBusiness" >
+    update B_EBusiness
+    <set >
+      <if test="businessno != null" >
+        businessno = #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null" >
+        mode = #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bTransactionId != null" >
+        b_transaction_id = #{bTransactionId,jdbcType=INTEGER},
+      </if>
+      <if test="shippercode != null" >
+        ShipperCode = #{shippercode,jdbcType=VARCHAR},
+      </if>
+      <if test="shippername != null" >
+        ShipperName = #{shippername,jdbcType=VARCHAR},
+      </if>
+      <if test="shippercontact != null" >
+        ShipperContact = #{shippercontact,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperprovince != null" >
+        ShipperProvince = #{shipperprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="shippercity != null" >
+        ShipperCity = #{shippercity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperaddress != null" >
+        ShipperAddress = #{shipperaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecode != null" >
+        ConsigneeCode = #{consigneecode,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null" >
+        ConsigneeName = #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneemobile != null" >
+        ConsigneeMobile = #{consigneemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecontact != null" >
+        ConsigneeContact = #{consigneecontact,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeprovince != null" >
+        ConsigneeProvince = #{consigneeprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneedistrict != null" >
+        ConsigneeDistrict = #{consigneedistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddress != null" >
+        ConsigneeAddress = #{consigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsnumber != null" >
+        GoodsNumber = #{goodsnumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsweight != null" >
+        GoodsWeight = #{goodsweight,jdbcType=NUMERIC},
+      </if>
+      <if test="goodssize != null" >
+        GoodsSize = #{goodssize,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsdimension != null" >
+        GoodsDimension = #{goodsdimension,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneecity != null" >
+        ConsigneeCity = #{consigneecity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipperdistrict != null" >
+        ShipperDistrict = #{shipperdistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="shippermobile != null" >
+        ShipperMobile = #{shippermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cargodesc != null" >
+        CargoDesc = #{cargodesc,jdbcType=CLOB},
+      </if>
+       <if test="updated != null" >
+        updated=#{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+         updatedby=#{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+         updatedbyName=#{updatedByName,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="totalAmount != null" >
+     	 totalAmount = #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.delmar.corebus.model.EBusiness" >
+    update B_EBusiness
+    set businessno = #{businessno,jdbcType=VARCHAR},
+      mode = #{mode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      b_transaction_id = #{bTransactionId,jdbcType=INTEGER},
+      ShipperCode = #{shippercode,jdbcType=VARCHAR},
+      ShipperName = #{shippername,jdbcType=VARCHAR},
+      ShipperContact = #{shippercontact,jdbcType=VARCHAR},
+      ShipperProvince = #{shipperprovince,jdbcType=VARCHAR},
+      ShipperCity = #{shippercity,jdbcType=VARCHAR},
+      ShipperAddress = #{shipperaddress,jdbcType=VARCHAR},
+      ConsigneeCode = #{consigneecode,jdbcType=VARCHAR},
+      ConsigneeName = #{consigneename,jdbcType=VARCHAR},
+      ConsigneeMobile = #{consigneemobile,jdbcType=VARCHAR},
+      ConsigneeContact = #{consigneecontact,jdbcType=VARCHAR},
+      ConsigneeProvince = #{consigneeprovince,jdbcType=VARCHAR},
+      ConsigneeDistrict = #{consigneedistrict,jdbcType=VARCHAR},
+      ConsigneeAddress = #{consigneeaddress,jdbcType=VARCHAR},
+      GoodsNumber = #{goodsnumber,jdbcType=INTEGER},
+      GoodsWeight = #{goodsweight,jdbcType=NUMERIC},
+      GoodsSize = #{goodssize,jdbcType=NUMERIC},
+      GoodsDimension = #{goodsdimension,jdbcType=VARCHAR},
+      ConsigneeCity = #{consigneecity,jdbcType=VARCHAR},
+      ShipperDistrict = #{shipperdistrict,jdbcType=VARCHAR},
+      ShipperMobile = #{shippermobile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      CargoDesc = #{cargodesc,jdbcType=CLOB},
+      updated=#{updated,jdbcType=TIMESTAMP},
+       updatedBy=#{updatedBy,jdbcType=INTEGER},
+       updatedByName=#{updatedByName,jdbcType=VARCHAR},       
+       totalAmount = #{totalAmount,jdbcType=DECIMAL} 
+    
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.corebus.model.EBusiness" >
+    update B_EBusiness
+    set businessno = #{businessno,jdbcType=VARCHAR},
+      mode = #{mode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      b_transaction_id = #{bTransactionId,jdbcType=INTEGER},
+      ShipperCode = #{shippercode,jdbcType=VARCHAR},
+      ShipperName = #{shippername,jdbcType=VARCHAR},
+      ShipperContact = #{shippercontact,jdbcType=VARCHAR},
+      ShipperProvince = #{shipperprovince,jdbcType=VARCHAR},
+      ShipperCity = #{shippercity,jdbcType=VARCHAR},
+      ShipperAddress = #{shipperaddress,jdbcType=VARCHAR},
+      ConsigneeCode = #{consigneecode,jdbcType=VARCHAR},
+      ConsigneeName = #{consigneename,jdbcType=VARCHAR},
+      ConsigneeMobile = #{consigneemobile,jdbcType=VARCHAR},
+      ConsigneeContact = #{consigneecontact,jdbcType=VARCHAR},
+      ConsigneeProvince = #{consigneeprovince,jdbcType=VARCHAR},
+      ConsigneeDistrict = #{consigneedistrict,jdbcType=VARCHAR},
+      ConsigneeAddress = #{consigneeaddress,jdbcType=VARCHAR},
+      GoodsNumber = #{goodsnumber,jdbcType=INTEGER},
+      GoodsWeight = #{goodsweight,jdbcType=NUMERIC},
+      GoodsSize = #{goodssize,jdbcType=NUMERIC},
+      GoodsDimension = #{goodsdimension,jdbcType=VARCHAR},
+      ConsigneeCity = #{consigneecity,jdbcType=VARCHAR},
+      ShipperDistrict = #{shipperdistrict,jdbcType=VARCHAR},
+      ShipperMobile = #{shippermobile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      updated=#{updated,jdbcType=TIMESTAMP},
+      updatedBy=#{updatedBy,jdbcType=INTEGER},
+       updatedByName=#{updatedByName,jdbcType=VARCHAR},           
+       totalAmount = #{totalAmount,jdbcType=DECIMAL} 
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

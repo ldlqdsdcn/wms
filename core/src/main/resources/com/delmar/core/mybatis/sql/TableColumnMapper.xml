@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.delmar.core.mybatis.sql.TableColumnMapper">
+  <resultMap id="BaseResultMap" type="com.delmar.core.model.TableColumn">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="column_name" jdbcType="VARCHAR" property="columnName" />
+    <result column="data_type" jdbcType="INTEGER" property="dataType" />
+    <result column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="can_show" jdbcType="CHAR" property="canShow" />
+    <result column="column_name_tr" jdbcType="VARCHAR" property="columnNameTr" />
+    <result column="attribute_name" jdbcType="VARCHAR" property="attributeName" />
+    <result column="out_log" jdbcType="CHAR" property="outLog" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+              <if test="tableId != null">
+     and   table_id=#{tableId,jdbcType=INTEGER}
+      </if>
+  <if test="accessString!=null">and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, column_name, data_type, table_id, can_show, column_name_tr, attribute_name, out_log, 
+    descr
+  </sql>
+  
+    <cache flushInterval="7200000" size="1000"></cache>
+  <select id="selectByExample" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from core_table_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from core_table_column
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">
+    delete from core_table_column
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" flushCache="true">
+    delete from core_table_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.delmar.core.model.TableColumn" useGeneratedKeys="true" flushCache="true">
+    insert into core_table_column (column_name, data_type, table_id, 
+      can_show, column_name_tr, attribute_name, 
+      out_log, descr)
+    values (#{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, #{tableId,jdbcType=INTEGER}, 
+      #{canShow,jdbcType=CHAR}, #{columnNameTr,jdbcType=VARCHAR}, #{attributeName,jdbcType=VARCHAR}, 
+      #{outLog,jdbcType=CHAR}, #{descr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.delmar.core.model.TableColumn" useGeneratedKeys="true">
+    insert into core_table_column
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="columnName != null">
+        column_name,
+      </if>
+      <if test="dataType != null">
+        data_type,
+      </if>
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="canShow != null">
+        can_show,
+      </if>
+      <if test="columnNameTr != null">
+        column_name_tr,
+      </if>
+      <if test="attributeName != null">
+        attribute_name,
+      </if>
+      <if test="outLog != null">
+        out_log,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="columnName != null">
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="canShow != null">
+        #{canShow,jdbcType=CHAR},
+      </if>
+      <if test="columnNameTr != null">
+        #{columnNameTr,jdbcType=VARCHAR},
+      </if>
+      <if test="attributeName != null">
+        #{attributeName,jdbcType=VARCHAR},
+      </if>
+      <if test="outLog != null">
+        #{outLog,jdbcType=CHAR},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from core_table_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.TableColumn" flushCache="true">
+    update core_table_column
+    <set>
+      <if test="columnName != null">
+        column_name = #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        data_type = #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="tableId != null">
+        table_id = #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="canShow != null">
+        can_show = #{canShow,jdbcType=CHAR},
+      </if>
+      <if test="columnNameTr != null">
+        column_name_tr = #{columnNameTr,jdbcType=VARCHAR},
+      </if>
+      <if test="attributeName != null">
+        attribute_name = #{attributeName,jdbcType=VARCHAR},
+      </if>
+      <if test="outLog != null">
+        out_log = #{outLog,jdbcType=CHAR},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.TableColumn" flushCache="true">
+    update core_table_column
+    set column_name = #{columnName,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=INTEGER},
+      table_id = #{tableId,jdbcType=INTEGER},
+      can_show = #{canShow,jdbcType=CHAR},
+      column_name_tr = #{columnNameTr,jdbcType=VARCHAR},
+      attribute_name = #{attributeName,jdbcType=VARCHAR},
+      out_log = #{outLog,jdbcType=CHAR},
+      descr = #{descr,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

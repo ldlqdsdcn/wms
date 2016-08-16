@@ -1,0 +1,175 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:context="http://www.springframework.org/schema/context"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		 http://www.springframework.org/schema/context  
+               http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+               http://www.springframework.org/schema/task  
+               http://www.springframework.org/schema/task/spring-task-3.1.xsd ">
+	<import resource="classpath*:application-*.xml" />
+	<!-- <import resource="classpath:application-resources.xml" />
+	<import resource="classpath:application-dao.xml" />
+	<import resource="classpath:application-service.xml" />
+	<import resource="classpath:cxf-servlet.xml" />
+	<import resource="classpath:application-dwr.xml" /> -->
+	<!-- 
+	
+	<bean id="sqlMapClient"
+		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:SqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	 -->
+	 <!-- aop配置 日志 -->
+	 <aop:aspectj-autoproxy/>
+ <!-- 采用注释的方式配置bean -->    
+    <context:annotation-config />    
+    <task:annotation-driven/>
+    <!-- 配置要扫描的包 -->    
+    <context:component-scan base-package="com.delmar"></context:component-scan> 
+   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<!-- <property name="location" value="classpath:database.properties"></property> -->
+	<property name="locations">
+		<list>
+		<value>classpath:database.properties</value>
+		<value>classpath:mail.properties</value>
+		</list>
+	</property>
+	
+</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" >
+		 <property name="host" value="${mailserver.host}" />  
+        <property name="port" value="${mailserver.port}" />  
+        <property name="username" value="${mailserver.username}" />  
+        <property name="password" value="${mailserver.password}" />  
+        <property name="defaultEncoding" value="utf-8" />  
+        <property name="javaMailProperties">  
+            <props>  
+                <prop key="mail.smtp.auth">true</prop>  
+            </props>  
+        </property>  
+</bean>
+	
+	<bean id="dataSourceCore"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.core.connection.driver_class}" />
+		<property name="jdbcUrl" value="${jdbc.core.connection.url}" />
+		<property name="user" value="${jdbc.core.connection.username}" />
+		<property name="password" value="${jdbc.core.connection.password}" />
+		<property name="initialPoolSize" value="10" /> 
+		<property name="minPoolSize" value="10" /> 
+		<property name="maxPoolSize" value="30" /> 
+		<property name="maxIdleTime" value="60" />
+	</bean>
+	
+	<bean id="dataSourceCargo"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.cargo.connection.driver_class}" />
+		<property name="jdbcUrl" value="${jdbc.cargo.connection.url}" />
+		<property name="user" value="${jdbc.cargo.connection.username}" />
+		<property name="password" value="${jdbc.cargo.connection.password}" />
+		<property name="initialPoolSize" value="10" />
+		<property name="minPoolSize" value="10" />
+		<property name="maxPoolSize" value="30" />
+		<property name="maxIdleTime" value="60" />
+	</bean>
+
+	
+    <!-- Session工厂 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSourceCore" />  
+        <!-- mybatis配置文件 -->  
+        <property name="configLocation" value="classpath:mybatis-config.xml" />  
+        <property name="mapperLocations" value="classpath*:com/delmar/**/*Mapper.xml"></property>  
+    </bean>  
+      
+    <!-- 配置SqlSessionTemplate -->    
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">    
+        <constructor-arg index="0" ref="sqlSessionFactory" />    
+    </bean> 
+    
+    <!--  配置hibernate SessionFactory-->  
+    <bean id="sessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceCargo" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.cargo.connection.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hiberante.format_sql">false</prop>
+
+			     <!-- Disable the second-level cache -->
+			     <!--<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+			      -->
+			     <!-- 配置二级缓存
+                <prop key="hibernate.cache.use_second_level_cache">true</prop> -->
+                 <!-- 开启查询缓存
+                <prop key="hibernate.cache.use_query_cache">true</prop>   -->
+                <!--
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                 -->
+                 <!-- Enable Hibernate's automatic session context management
+                <prop key="current_session_context_class">thread</prop>       -->
+            </props>
+        </property>
+        <property name="mappingLocations">
+    <list>
+        <value>classpath*:com/delmar/**/*.hbm.xml</value>
+    </list>
+</property>
+    </bean>
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceCore" />
+	</bean>
+	<aop:config>
+		<aop:pointcut id="serviceMethod" expression="execution(* com.delmar..*Service*.*(..))"/>
+		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*"  propagation="REQUIRED"/>
+			<tx:method name="remove*"    propagation="REQUIRED"/>
+			<tx:method name="executeUpdate*"  propagation="REQUIRED"/>
+			<tx:method name="delete*"   propagation="REQUIRED"/>
+			<!-- <tx:method name="*" read-only="true"/>  -->
+		</tx:attributes>
+	</tx:advice>
+	
+
+	
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="ApplicationMessages"></property>
+	</bean>
+	
+
+
+<!-- 
+	<aop:config>
+		<aop:pointcut id="serviceSaveMethodLog" expression="execution(* com.powere2e.service.*Service*.save*(..))"/>
+		<aop:pointcut id="serviceUpdateMethodLog" expression="execution(* com.powere2e.service.*Service*.update*(..))"/>
+		<aop:pointcut id="serviceRemoveMethodLog" expression="execution(* com.powere2e.service.*Service*.remove*(..))"/>
+		<aop:advisor pointcut-ref="serviceSaveMethodLog" advice-ref="systemLog"/>
+		<aop:advisor pointcut-ref="serviceRemoveMethodLog" advice-ref="systemLog"/>
+		<aop:advisor pointcut-ref="serviceUpdateMethodLog" advice-ref="systemLog"/>
+	
+	<bean id="systemLog" class="com.powere2e.log.LogFactory"></bean>
+	</aop:config> -->
+	<!-- 系统日志 -->
+
+</beans>

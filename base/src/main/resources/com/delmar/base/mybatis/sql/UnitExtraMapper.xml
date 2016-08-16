@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.base.mybatis.sql.UnitExtraMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.UnitExtra" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="base_unit_id" property="baseUnitId" jdbcType="INTEGER" />
+    <result column="LimitWeight" property="limitweight" jdbcType="NUMERIC" />
+    <result column="LimitSize" property="limitsize" jdbcType="NUMERIC" />
+    <result column="LimitLength" property="limitlength" jdbcType="NUMERIC" />
+    <result column="LimitWidth" property="limitwidth" jdbcType="NUMERIC" />
+    <result column="LimitHeight" property="limitheight" jdbcType="NUMERIC" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+             <if test="accessString!=null"> ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, base_unit_id, LimitWeight, LimitSize, LimitLength, LimitWidth, LimitHeight, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_unit_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_unit_extra
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_unit_extra
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from base_unit_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.base.model.UnitExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_unit_extra (base_unit_id, LimitWeight, LimitSize, 
+      LimitLength, LimitWidth, LimitHeight, 
+      remark)
+    values (#{baseUnitId,jdbcType=INTEGER}, #{limitweight,jdbcType=NUMERIC}, #{limitsize,jdbcType=NUMERIC}, 
+      #{limitlength,jdbcType=NUMERIC}, #{limitwidth,jdbcType=NUMERIC}, #{limitheight,jdbcType=NUMERIC}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.base.model.UnitExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_unit_extra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="baseUnitId != null" >
+        base_unit_id,
+      </if>
+      <if test="limitweight != null" >
+        LimitWeight,
+      </if>
+      <if test="limitsize != null" >
+        LimitSize,
+      </if>
+      <if test="limitlength != null" >
+        LimitLength,
+      </if>
+      <if test="limitwidth != null" >
+        LimitWidth,
+      </if>
+      <if test="limitheight != null" >
+        LimitHeight,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="baseUnitId != null" >
+        #{baseUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="limitweight != null" >
+        #{limitweight,jdbcType=NUMERIC},
+      </if>
+      <if test="limitsize != null" >
+        #{limitsize,jdbcType=NUMERIC},
+      </if>
+      <if test="limitlength != null" >
+        #{limitlength,jdbcType=NUMERIC},
+      </if>
+      <if test="limitwidth != null" >
+        #{limitwidth,jdbcType=NUMERIC},
+      </if>
+      <if test="limitheight != null" >
+        #{limitheight,jdbcType=NUMERIC},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from base_unit_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.base.model.UnitExtra" >
+    update base_unit_extra
+    <set >
+      <if test="baseUnitId != null" >
+        base_unit_id = #{baseUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="limitweight != null" >
+        LimitWeight = #{limitweight,jdbcType=NUMERIC},
+      </if>
+      <if test="limitsize != null" >
+        LimitSize = #{limitsize,jdbcType=NUMERIC},
+      </if>
+      <if test="limitlength != null" >
+        LimitLength = #{limitlength,jdbcType=NUMERIC},
+      </if>
+      <if test="limitwidth != null" >
+        LimitWidth = #{limitwidth,jdbcType=NUMERIC},
+      </if>
+      <if test="limitheight != null" >
+        LimitHeight = #{limitheight,jdbcType=NUMERIC},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.base.model.UnitExtra" >
+    update base_unit_extra
+    set base_unit_id = #{baseUnitId,jdbcType=INTEGER},
+      LimitWeight = #{limitweight,jdbcType=NUMERIC},
+      LimitSize = #{limitsize,jdbcType=NUMERIC},
+      LimitLength = #{limitlength,jdbcType=NUMERIC},
+      LimitWidth = #{limitwidth,jdbcType=NUMERIC},
+      LimitHeight = #{limitheight,jdbcType=NUMERIC},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

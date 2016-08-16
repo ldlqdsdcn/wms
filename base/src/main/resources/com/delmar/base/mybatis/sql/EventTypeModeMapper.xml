@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.base.mybatis.sql.EventTypeModeMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.EventTypeMode" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="eventtype_id" property="eventtypeId" jdbcType="INTEGER" />
+    <result column="mode" property="mode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+             <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, eventtype_id, mode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_eventtype_mode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_eventtype_mode
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_eventtype_mode
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from base_eventtype_mode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.base.model.EventTypeMode" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_eventtype_mode (eventtype_id, mode)
+    values (#{eventtypeId,jdbcType=INTEGER}, #{mode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.base.model.EventTypeMode" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_eventtype_mode
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eventtypeId != null" >
+        eventtype_id,
+      </if>
+      <if test="mode != null" >
+        mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eventtypeId != null" >
+        #{eventtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null" >
+        #{mode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from base_eventtype_mode
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.base.model.EventTypeMode" >
+    update base_eventtype_mode
+    <set >
+      <if test="eventtypeId != null" >
+        eventtype_id = #{eventtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null" >
+        mode = #{mode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.base.model.EventTypeMode" >
+    update base_eventtype_mode
+    set eventtype_id = #{eventtypeId,jdbcType=INTEGER},
+      mode = #{mode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

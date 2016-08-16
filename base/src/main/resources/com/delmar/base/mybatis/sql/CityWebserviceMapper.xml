@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.base.mybatis.sql.CityWebserviceMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.CityWebservice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ServiceType" property="servicetype" jdbcType="VARCHAR" />
+    <result column="QueryName" property="queryname" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="base_city_id" property="baseCityId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdby" jdbcType="INTEGER" />
+    <result column="createdbyname" property="createdbyname" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedby" jdbcType="INTEGER" />
+    <result column="updatedbyname" property="updatedbyname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+    	<if test="queryname!=null"> and QueryName=#{queryname,jdbcType=VARCHAR} </if>
+        <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, ServiceType, QueryName, remark, base_city_id, client_id, org_id, user_id, user_name, 
+    created, createdby, createdbyname, updated, updatedby, updatedbyname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_city_webservice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_city_webservice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_city_webservice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from base_city_webservice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.base.model.CityWebservice" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_city_webservice (ServiceType, QueryName, remark, 
+      base_city_id, client_id, org_id, 
+      user_id, user_name, created, 
+      createdby, createdbyname, updated, 
+      updatedby, updatedbyname)
+    values (#{servicetype,jdbcType=VARCHAR}, #{queryname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{baseCityId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{createdby,jdbcType=INTEGER}, #{createdbyname,jdbcType=VARCHAR}, #{updated,jdbcType=TIMESTAMP}, 
+      #{updatedby,jdbcType=INTEGER}, #{updatedbyname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.base.model.CityWebservice" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_city_webservice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="servicetype != null" >
+        ServiceType,
+      </if>
+      <if test="queryname != null" >
+        QueryName,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="baseCityId != null" >
+        base_city_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdby != null" >
+        createdby,
+      </if>
+      <if test="createdbyname != null" >
+        createdbyname,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedby != null" >
+        updatedby,
+      </if>
+      <if test="updatedbyname != null" >
+        updatedbyname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="servicetype != null" >
+        #{servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="queryname != null" >
+        #{queryname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="baseCityId != null" >
+        #{baseCityId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=INTEGER},
+      </if>
+      <if test="createdbyname != null" >
+        #{createdbyname,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        #{updatedby,jdbcType=INTEGER},
+      </if>
+      <if test="updatedbyname != null" >
+        #{updatedbyname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from base_city_webservice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.base.model.CityWebservice" >
+    update base_city_webservice
+    <set >
+      <if test="servicetype != null" >
+        ServiceType = #{servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="queryname != null" >
+        QueryName = #{queryname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="baseCityId != null" >
+        base_city_id = #{baseCityId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        createdby = #{createdby,jdbcType=INTEGER},
+      </if>
+      <if test="createdbyname != null" >
+        createdbyname = #{createdbyname,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        updatedby = #{updatedby,jdbcType=INTEGER},
+      </if>
+      <if test="updatedbyname != null" >
+        updatedbyname = #{updatedbyname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.base.model.CityWebservice" >
+    update base_city_webservice
+    set ServiceType = #{servicetype,jdbcType=VARCHAR},
+      QueryName = #{queryname,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      base_city_id = #{baseCityId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      org_id = #{orgId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      createdby = #{createdby,jdbcType=INTEGER},
+      createdbyname = #{createdbyname,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedby = #{updatedby,jdbcType=INTEGER},
+      updatedbyname = #{updatedbyname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

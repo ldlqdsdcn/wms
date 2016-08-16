@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.officeTest.mybatis.sql.OfficeTestBankMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.officeTest.model.OfficeTestBank" extends="com.delmar.common.mybatis.sql.CommonMapper.BusCoreResultMap">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="NVARCHAR" />
+    <result column="name" property="name" jdbcType="NVARCHAR" />
+    
+    <result column="timeLimit" property="timeLimit" jdbcType="INTEGER" />
+    <result column="questionCount" property="questionCount" jdbcType="INTEGER" />
+    <result column="beCalcScore" property="beCalcScore" jdbcType="INTEGER" />
+    <result column="beOpen" property="beOpen" jdbcType="INTEGER" />
+    <result column="beState" property="beState" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="NVARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdByName" property="createdByName" jdbcType="NVARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedBy" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedByName" property="updatedByName" jdbcType="NVARCHAR" />
+    
+    <collection property="officeTestBankCategories" select="com.delmar.officeTest.mybatis.sql.OfficeTestBankCategoryMapper.selectByFatherKey" column="id">  </collection>  
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      	<if test="accessString!=null"> 	 <![CDATA[ ${accessString} ]]>  </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code, name, timeLimit,questionCount,beCalcScore,beOpen,beState,remark,client_id,org_id,user_id,user_name ,created ,createdBy 
+    ,createdByName ,updated ,updatedBy ,updatedByName 
+  </sql>
+  
+	<select id="selectNameById"  resultType="java.lang.String" parameterType="java.lang.Integer"  >
+	   select name from Office_TestBank where id = #{id,jdbcType=INTEGER}
+	</select>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <if test="topnumber!=null" >
+       ${topnumber}
+    </if>        
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <if test="columns != null" >
+        ${columns}
+    </if>
+    
+    <if test="columns == null" >
+       <include refid="Base_Column_List" />
+    </if>    
+    
+    from Office_TestBank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+    
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Office_TestBank
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer" >
+    delete from Office_TestBank
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from Office_TestBank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.officeTest.model.OfficeTestBank" useGeneratedKeys="true" keyProperty="id" >
+    insert into Office_TestBank (code, name,timeLimit,questionCount,beCalcScore,beOpen,beState,remark,client_id,org_id,user_id
+    ,user_name ,created ,createdBy 
+    ,createdByName ,updated ,updatedBy ,updatedByName)
+    
+    values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{timeLimit,jdbcType=INTEGER}, #{questionCount,jdbcType=INTEGER}
+    , #{beCalcScore,jdbcType=INTEGER}, #{beOpen,jdbcType=INTEGER}, #{beState,jdbcType=INTEGER}, #{remark,jdbcType=NVARCHAR}
+    , #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=NVARCHAR}
+    , #{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER}, #{createdByName,jdbcType=NVARCHAR}, #{updated,jdbcType=TIMESTAMP}
+    , #{updatedBy,jdbcType=INTEGER}, #{updatedByName,jdbcType=NVARCHAR}
+      )
+  </insert>
+  
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from Office_TestBank
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByPrimaryKey" parameterType="com.delmar.officeTest.model.OfficeTestBank" >
+    update Office_TestBank
+    set code = #{code,jdbcType=NVARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+     timeLimit = #{timeLimit,jdbcType=INTEGER}, 
+     questionCount = #{questionCount,jdbcType=INTEGER}, 
+     beCalcScore = #{beCalcScore,jdbcType=INTEGER}, 
+     beOpen = #{beOpen,jdbcType=INTEGER}, 
+     beState = #{beState,jdbcType=INTEGER},
+     remark = #{remark,jdbcType=NVARCHAR}, 
+     client_id = #{clientId,jdbcType=INTEGER}, 
+     org_id = #{orgId,jdbcType=INTEGER}, 
+     user_id = #{userId,jdbcType=INTEGER}, 
+     user_name = #{userName,jdbcType=NVARCHAR}, 
+     created = #{created,jdbcType=TIMESTAMP}, 
+     createdBy = #{createdBy,jdbcType=INTEGER}, 
+     createdByName = #{createdByName,jdbcType=NVARCHAR}, 
+     updated = #{updated,jdbcType=TIMESTAMP}, 
+     updatedBy = #{updatedBy,jdbcType=INTEGER}, 
+     updatedByName = #{updatedByName,jdbcType=NVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.officeTest.model.OfficeTestBank" >
+    update Office_TestBank
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="timeLimit != null" >
+        timeLimit = #{timeLimit,jdbcType=INTEGER},
+      </if>      
+      <if test="questionCount != null" >
+        questionCount = #{questionCount,jdbcType=INTEGER},
+      </if>
+      <if test="beCalcScore != null" >
+        beCalcScore = #{beCalcScore,jdbcType=INTEGER},
+      </if>
+      <if test="beOpen != null" >
+        beOpen = #{beOpen,jdbcType=INTEGER},
+      </if>            
+      <if test="beState != null" >
+        beState = #{beState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=NVARCHAR},
+      </if>      
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        createdByName = #{createdByName,jdbcType=NVARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updatedBy = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName = #{updatedByName,jdbcType=NVARCHAR},
+      </if>         
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

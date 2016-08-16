@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.crm.mybatis.sql.LinkrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.crm.model.Linkrecord"  extends="com.delmar.common.mybatis.sql.CommonMapper.BusCoreResultMap" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="linkRecord_Id" property="linkRecordId" jdbcType="VARCHAR" />
+	<result column="customer_Id" property="customerId" jdbcType="INTEGER" />
+	<result column="customer_Name" property="customerName" jdbcType="VARCHAR" />
+	<result column="linkman_Id" property="linkmanId" jdbcType="INTEGER" />
+	<result column="linkman_Name" property="linkmanName" jdbcType="VARCHAR" />
+	<result column="contact_Title" property="contactTitle" jdbcType="VARCHAR" />
+	<result column="contact_Date" property="contactDate" jdbcType="VARCHAR" />
+	<result column="contact_Record" property="contactRecord" jdbcType="VARCHAR" />
+	<result column="contactMode_Id" property="contactModeId" jdbcType="INTEGER" />
+	<result column="forceOn_Id" property="forceOnId" jdbcType="INTEGER" />
+	<result column="next_Time" property="nextTime" jdbcType="TIMESTAMP" />
+	<result column="next_Goal" property="nextGoal" jdbcType="VARCHAR" />
+	<result column="next_Comments" property="nextComments" jdbcType="VARCHAR" />	
+	<result column="result_id" property="resultId" jdbcType="INTEGER" />
+	<result column="remark" property="remark" jdbcType="VARCHAR" />
+	<result column="flag" property="flag" jdbcType="INTEGER" />
+	<result column="client_id" property="clientId" jdbcType="INTEGER" />
+	<result column="org_id" property="orgId" jdbcType="INTEGER" />
+	<result column="user_id" property="userId" jdbcType="INTEGER" />
+	<result column="user_Name" property="userName" jdbcType="VARCHAR" />
+	<result column="created" property="created" jdbcType="TIMESTAMP" />
+	<result column="createdBy" property="createdBy" jdbcType="INTEGER" />
+	<result column="createdByName" property="createdByName" jdbcType="VARCHAR" />
+	<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+	<result column="updatedBy" property="updatedBy" jdbcType="INTEGER" />
+	<result column="updatedByName" property="updatedByName" jdbcType="VARCHAR" />
+    <!--
+    <association property="customer" column="customer_Id" select="com.delmar.crm.mybatis.sql.CustomerMapper.selectByPrimaryKey" ></association>
+    <association property="linkman" column="linkman_Id" select="com.delmar.crm.mybatis.sql.LinkmanMapper.selectByPrimaryKey" ></association>     
+     -->
+  </resultMap>
+  
+  <resultMap type="com.delmar.crm.model.Linkrecord" id="ListResultMap" extends="BaseResultMap">
+  	 <association property="customer" column="customer_id" select="com.delmar.crm.mybatis.sql.CustomerMapper.selectByPrimaryKey" ></association>
+  	 <association property="linkman" column="linkman_id" select="com.delmar.crm.mybatis.sql.LinkmanMapper.selectByPrimaryKey" ></association>  	 
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+      <where>
+            <if test="customerId!=null"> and flag=0 and customer_id=#{customerId,jdbcType=INTEGER} </if>
+            <if test="linkmanId!=null"> and flag=0 and linkman_id=#{linkmanId,jdbcType=INTEGER} </if>      
+        	<if test="accessString!=null"> and flag=0 and  ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     id,linkRecord_id,customer_Id,customer_Name,linkman_Id,linkman_Name,contact_Title,
+     contact_Date,contact_Record,contactMode_Id,forceOn_Id,next_Time,next_Goal,next_Comments,result_id,
+     remark   
+     <include refid="com.delmar.common.mybatis.sql.CommonMapper.Bus_Core_List" />    
+  </sql>
+  <select id="selectByExample" resultMap="ListResultMap" parameterType="java.util.Map" >
+    select 
+    <if test="topnumber!=null" >
+       ${topnumber}
+    </if>    
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b_crm_linkrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_crm_linkrecord
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectFieldsByPrimaryKey" resultMap="BaseResultMap"  parameterType="java.util.Map">
+    select  
+    <if test="columns == null" >
+      <include refid="Base_Column_List" />
+    </if>
+    <if test="columns != null" >
+       ${columns}
+    </if>    
+    from b_crm_linkrecord
+    where id =  #{id,jdbcType=INTEGER}
+  </select>  
+    
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_crm_linkrecord
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from b_crm_linkrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.crm.model.Linkrecord" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_linkrecord (linkrecord_id,customer_Id,customer_Name,linkman_Id,linkman_Name,
+    contact_Title,contact_Date,contact_Record,contactMode_Id,forceOn_Id,
+    next_Time,next_Goal,next_comments,result_id,remark,flag,client_id,org_id,user_id,user_Name,created,
+    createdBy,createdByName,updated,updatedBy,updatedByName)
+    values (#{linkRecordId,jdbcType=VARCHAR},#{customerId,jdbcType=INTEGER},#{customerName,jdbcType=VARCHAR},
+    #{linkmanId,jdbcType=INTEGER},#{linkmanName,jdbcType=VARCHAR},
+    #{contactTitle,jdbcType=VARCHAR},#{contactDate,jdbcType=VARCHAR},
+    #{contactRecord,jdbcType=VARCHAR},#{contactModeId,jdbcType=INTEGER},
+    #{forceOnId,jdbcType=INTEGER},#{nextTime,jdbcType=TIMESTAMP},
+    #{nextGoal,jdbcType=VARCHAR},#{nextComments,jdbcType=VARCHAR},#{resultId,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR},
+    #{flag,jdbcType=INTEGER},#{clientId,jdbcType=INTEGER},#{orgId,jdbcType=INTEGER},
+    #{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},
+    #{created,jdbcType=TIMESTAMP},#{createdBy,jdbcType=INTEGER},
+    #{createdByName,jdbcType=VARCHAR},#{updated,jdbcType=TIMESTAMP},
+    #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.crm.model.Linkrecord" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_linkrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="linkRecordId != null">
+		linkRecord_Id,
+		</if>
+
+		<if test="customerId != null">
+		customer_Id,
+		</if>
+		<if test="customerName != null">
+		customer_Name,
+		</if>
+		<if test="linkmanId != null">
+		linkman_Id,
+		</if>
+		<if test="linkmanName != null">
+		linkman_Name,
+		</if>
+		<if test="contactTitle != null">
+		contact_Title,
+		</if>
+		<if test="contactDate != null">
+		contact_Date,
+		</if>
+		<if test="contactRecord != null">
+		contact_Record,
+		</if>
+		<if test="contactModeId != null">
+		contactMode_Id,
+		</if>
+		<if test="forceOnId != null">
+		forceOn_Id,
+		</if>
+		<if test="nextTime != null">
+		next_Time,
+		</if>
+		<if test="nextGoal != null">
+		next_Goal,
+		</if>
+		<if test="nextComments != null">
+		next_Comments,
+		</if>	
+		<if test="resultId != null">
+		result_Id,
+		</if>	
+		<if test="remark != null">
+		remark,
+		</if>
+		<if test="flag != null">
+		flag,
+		</if>
+		<if test="clientId != null">
+		client_id,
+		</if>
+		<if test="orgId != null">
+		org_id,
+		</if>
+		<if test="userId != null">
+		user_id,
+		</if>
+		<if test="userName != null">
+		user_Name,
+		</if>
+		<if test="created != null">
+		created,
+		</if>
+		<if test="createdBy != null">
+		createdBy,
+		</if>
+		<if test="createdByName != null">
+		createdByName,
+		</if>
+		<if test="updated != null">
+		updated,
+		</if>
+		<if test="updatedBy != null">
+		updatedBy,
+		</if>
+		<if test="updatedByName != null">
+		updatedByName,
+		</if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="customerId != null">
+		#{customerId,jdbcType=INTEGER},
+		</if>
+		<if test="customerName != null">
+		#{customerName,jdbcType=VARCHAR},
+		</if>
+		<if test="linkmanId != null">
+		#{linkmanId,jdbcType=INTEGER},
+		</if>
+		<if test="linkmanName != null">
+		#{linkmanName,jdbcType=VARCHAR},
+		</if>
+		<if test="contactTitle != null">
+		#{contactTitle,jdbcType=VARCHAR},
+		</if>
+		<if test="contactDate != null">
+		#{contactDate,jdbcType=VARCHAR},
+		</if>
+		<if test="contactRecord != null">
+		#{contactRecord,jdbcType=VARCHAR},
+		</if>
+		<if test="contactModeId != null">
+		#{contactModeId,jdbcType=INTEGER},
+		</if>
+		<if test="forceOnId != null">
+		#{forceOnId,jdbcType=INTEGER},
+		</if>
+		<if test="nextTime != null">
+		#{nextTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="nextGoal != null">
+		#{nextGoal,jdbcType=VARCHAR},
+		</if>
+		<if test="nextComments != null">
+		#{nextComments,jdbcType=VARCHAR},
+		</if>
+		<if test="resultId != null">
+		#{resultId,jdbcType=INTEGER},
+		</if>		
+		<if test="remark != null">
+		#{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="flag != null">
+		#{flag,jdbcType=INTEGER},
+		</if>
+		<if test="clientId != null">
+		#{clientId,jdbcType=INTEGER},
+		</if>
+		<if test="orgId != null">
+		#{orgId,jdbcType=INTEGER},
+		</if>
+		<if test="userId != null">
+		#{userId,jdbcType=INTEGER},
+		</if>
+		<if test="userName != null">
+		#{userName,jdbcType=VARCHAR},
+		</if>
+		<if test="created != null">
+		#{created,jdbcType=TIMESTAMP},
+		</if>
+		<if test="createdBy != null">
+		#{createdBy,jdbcType=INTEGER},
+		</if>
+		<if test="createdByName != null">
+		#{createdByName,jdbcType=VARCHAR},
+		</if>
+		<if test="updated != null">
+		#{updated,jdbcType=TIMESTAMP},
+		</if>
+		<if test="updatedBy != null">
+		#{updatedBy,jdbcType=INTEGER},
+		</if>
+		<if test="updatedByName != null">
+		#{updatedByName,jdbcType=VARCHAR},
+		</if>
+
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from b_crm_linkrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.crm.model.Linkrecord" >
+    update b_crm_linkrecord
+    <set >
+		<if test="linkRecordId != null">
+		linkRecord_Id = #{linkRecordId,jdbcType=VARCHAR},
+		</if>    
+		<if test="customerId != null">
+		customer_Id = #{customerId,jdbcType=INTEGER},
+		</if>
+		<if test="customerName != null">
+		customer_Name = #{customerName,jdbcType=VARCHAR},
+		</if>
+		<if test="linkmanId != null">
+		linkman_Id = #{linkmanId,jdbcType=INTEGER},
+		</if>
+		<if test="linkmanName != null">
+		linkman_Name = #{linkmanName,jdbcType=VARCHAR},
+		</if>
+		<if test="contactTitle != null">
+		contact_Title = #{contactTitle,jdbcType=VARCHAR},
+		</if>
+		<if test="contactDate != null">
+		contact_Date = #{contactDate,jdbcType=VARCHAR},
+		</if>
+		<if test="contactRecord != null">
+		contact_Record = #{contactRecord,jdbcType=VARCHAR},
+		</if>
+		<if test="contactModeId != null">
+		contactMode_Id = #{contactModeId,jdbcType=INTEGER},
+		</if>
+		<if test="forceOnId != null">
+		forceOn_Id = #{forceOnId,jdbcType=INTEGER},
+		</if>
+		<if test="nextTime != null">
+		next_Time = #{nextTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="nextGoal != null">
+		next_Goal = #{nextGoal,jdbcType=VARCHAR},
+		</if>
+		<if test="nextComments != null">
+		next_Comments = #{nextComments,jdbcType=VARCHAR},
+		</if>
+		
+		<if test="resultId != null">
+		result_Id = #{resultId,jdbcType=INTEGER},
+		</if>
+				
+		
+		<if test="remark != null">
+		remark = #{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="flag != null">
+		flag = #{flag,jdbcType=INTEGER},
+		</if>
+		<if test="updated != null">
+		updated = #{updated,jdbcType=TIMESTAMP},
+		</if>
+		<if test="updatedBy != null">
+		updatedBy = #{updatedBy,jdbcType=INTEGER},
+		</if>
+		<if test="updatedByName != null">
+		updatedByName = #{updatedByName,jdbcType=VARCHAR},
+		</if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.crm.model.Linkrecord" >
+    update b_crm_linkrecord
+    set linkRecordId = #{linkRecord_Id,jdbcType=VARCHAR},
+        customer_Id = #{customerId,jdbcType=INTEGER},
+		customer_Name = #{customerName,jdbcType=VARCHAR},
+		linkman_Id = #{linkmanId,jdbcType=INTEGER},
+		linkman_Name = #{linkmanName,jdbcType=VARCHAR},
+		contact_Title = #{contactTitle,jdbcType=VARCHAR},
+		contact_Date = #{contactDate,jdbcType=VARCHAR},
+		contact_Record = #{contactRecord,jdbcType=VARCHAR},
+		contactMode_Id = #{contactModeId,jdbcType=INTEGER},
+		forceOn_Id = #{forceOnId,jdbcType=INTEGER},
+		next_Time = #{nextTime,jdbcType=TIMESTAMP},
+		next_Goal = #{nextGoal,jdbcType=VARCHAR},
+		next_Comments = #{nextComments,jdbcType=VARCHAR},
+		result_Id = #{resultId,jdbcType=INTEGER},		
+		remark = #{remark,jdbcType=VARCHAR},
+		flag = #{flag,jdbcType=INTEGER},
+		client_id = #{clientId,jdbcType=INTEGER},
+		org_id = #{orgId,jdbcType=INTEGER},
+		user_id = #{userId,jdbcType=INTEGER},
+		user_Name = #{userName,jdbcType=VARCHAR},
+		created = #{created,jdbcType=TIMESTAMP},
+		createdBy = #{createdBy,jdbcType=INTEGER},
+		createdByName = #{createdByName,jdbcType=VARCHAR},
+		updated = #{updated,jdbcType=TIMESTAMP},
+		updatedBy = #{updatedBy,jdbcType=INTEGER},
+		updatedByName = #{updatedByName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+</mapper>

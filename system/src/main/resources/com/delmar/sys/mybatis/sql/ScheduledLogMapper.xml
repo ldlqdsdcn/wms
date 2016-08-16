@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.ScheduledLogMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sys.model.ScheduledLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="scheduled_id" property="scheduledId" jdbcType="INTEGER" />
+    <result column="run_time" property="runTime" jdbcType="TIMESTAMP" />
+    <result column="result" property="result" jdbcType="INTEGER" />
+    <result column="msg" property="msg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+    <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, scheduled_id, run_time, result, msg
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_scheduled_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_scheduled_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_scheduled_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from sys_scheduled_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sys.model.ScheduledLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_scheduled_log (scheduled_id, run_time, result, 
+      msg)
+    values (#{scheduledId,jdbcType=INTEGER}, #{runTime,jdbcType=TIMESTAMP}, #{result,jdbcType=INTEGER}, 
+      #{msg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.sys.model.ScheduledLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_scheduled_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scheduledId != null" >
+        scheduled_id,
+      </if>
+      <if test="runTime != null" >
+        run_time,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="msg != null" >
+        msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scheduledId != null" >
+        #{scheduledId,jdbcType=INTEGER},
+      </if>
+      <if test="runTime != null" >
+        #{runTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from sys_scheduled_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.ScheduledLog" >
+    update sys_scheduled_log
+    <set >
+      <if test="scheduledId != null" >
+        scheduled_id = #{scheduledId,jdbcType=INTEGER},
+      </if>
+      <if test="runTime != null" >
+        run_time = #{runTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null" >
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.ScheduledLog" >
+    update sys_scheduled_log
+    set scheduled_id = #{scheduledId,jdbcType=INTEGER},
+      run_time = #{runTime,jdbcType=TIMESTAMP},
+      result = #{result,jdbcType=INTEGER},
+      msg = #{msg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,7 @@
+1、数据过滤权限实现 （已完成）
+1.1 用户查询getUserByName 重新实现
+1.2查询出模块信息数据过滤
+1.3根据用户对该模块是 ALL org user_group user_id
+1.4PrivilegsDataFilter.java
+
+2、客户信息开发 (已完成)

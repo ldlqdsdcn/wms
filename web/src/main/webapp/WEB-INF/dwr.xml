@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	
+	<allow>
+		<convert match="com.delmar.sys.model.PageMenu" converter="bean"/>
+		<convert match="com.delmar.sys.model.Org" converter="bean"/>
+		<convert match="com.delmar.sys.model.User" converter="bean"/>
+		<convert match="com.delmar.sys.model.Client" converter="bean"/>
+		<convert match="com.delmar.sys.model.Usergroup" converter="bean"/>
+		<convert match="com.delmar.base.model.CityTrl" converter="bean"/>
+		<convert match="com.delmar.base.model.PortTrl" converter="bean"/>
+		<convert match="com.delmar.crm.model.Customer" converter="bean"></convert>
+		<convert match="com.delmar.crm.model.CustomerExtra" converter="bean"></convert>
+		<convert match="com.delmar.crm.model.Linkman" converter="bean"></convert>
+		<convert match="com.delmar.station.model.ObjWFDetail" converter="bean"></convert>
+		<convert match="com.delmar.crm.model.Linkrecord" converter="bean"></convert>
+		<convert match="com.delmar.cargo.model.ReportFareInvoice" converter="bean"></convert>		
+		<convert match="com.delmar.cargo.model.FareInfo" converter="bean"></convert>
+		<convert match="com.delmar.crm.service.CustomerExtraPropDefineService" converter="bean"></convert>
+		
+		<create javascript="fileDwr" creator="new">
+			<param name="class" value="com.delmar.common.dwr.FileDwr"></param>
+		</create>
+		<create javascript="pageMenuDwr" creator="spring">
+			<param name="beanName" value="pageMenuDwr"></param>
+		</create>
+		<create javascript="userLoginDwr" creator="spring">
+			<param name="beanName" value="userLoginDwr"></param>
+			<include method="getOrgSelectByClientId"/>
+			<include method="selectClientAndOrg"/>
+		</create>
+		<create  javascript="userDwr" creator="spring">
+			<param name="beanName" value="userDwr"></param>
+			<include method="getUserList"/>			
+		</create>
+		<create javascript="orgDwr" creator="spring">
+			<param name="beanName" value="orgDwr"></param>
+			<include method="getOrgs"/>
+			<include method="getOrg"/>
+			<include method="saveOrg"/>
+			<include method="removeOrg"/>
+			<include method="getOrgList"/>
+		</create>
+		<create javascript="cityDwr" creator="spring">
+			<param name="beanName" value="cityDwr"></param>
+			<include method="getCityList"/>
+			<include method="getCityProvinceList"/>
+			<include method="getCityCountryList"/>
+			<include method="getCityCityList"/>
+		</create>
+		
+		<create javascript="portDwr" creator="spring">
+			<param name="beanName" value="portDwr"></param>
+			<include method="getPortList"/>
+		</create>		
+		<create javascript="customerDwr" creator="spring">
+			<param name="beanName" value="customerDwr"></param>
+			<include method="getCustomerList"/>
+            <include method="getCustomer"/>			
+		</create>
+		<create javascript="linkmanDwr" creator="spring">
+			<param name="beanName" value="linkmanDwr"></param>
+			<include method="getLinkmanList"/>
+			<include method="getLinkmanGson"/>
+		</create>
+		<create javascript="linkStationRecordDwr" creator="spring">
+			<param name="beanName" value="linkStationRecordDwr"></param>
+			<include method="getLinkStationRecordList"/>
+			<include method="getLinkStationRecordGson"/>
+		</create>
+		<create javascript="linkBankCategoryDwr" creator="spring">
+			<param name="beanName" value="linkBankCategoryDwr"></param>
+			<include method="getLinkBankCategoryList"/>
+			<include method="getLinkBankCategoryGson"/>
+		</create>
+		<create javascript="linkrecordDwr" creator="spring">
+			<param name="beanName" value="linkrecordDwr"></param>
+			<include method="getLinkrecordList"/>
+			<include method="getLinkrecordGson"/>
+		</create>
+		
+		<create javascript="reportfareinvoiceDwr" creator="spring">
+			<param name="beanName" value="reportfareinvoiceDwr"></param>
+			<include method="getInvoiceList"/>
+			<include method="getInvoiceGson"/>
+		</create>
+			
+		<create javascript="fareinfoDwr" creator="spring">
+			<param name="beanName" value="fareinfoDwr"></param>
+             <include method="getFareInfoList"/>			
+			<include method="getFareInfoGson"/>
+		</create>	
+		
+			
+		<create javascript="customerExtraPropDwr" creator="spring">
+			<param name="beanName" value="customerExtraPropDwr"></param>
+             <include method="getCustomerExtraPropDefineList"/>			
+			<include method="getCustomerExtraPropDefine"/>
+			<include method="deleteCustomerExtraPropDefine"/>
+			
+		</create>	
+				
+		
+	</allow>
+	<!-- <signatures>
+		<![CDATA[ 　　import java.util.List;
+		           　　	   import com.ea.system.model.PageMenu; 　　
+		           import com.ea.system.web.dwr.PageMenuDwr; 　　
+		             PageMenuDwr.testMethod7(List<TestBean>); 　　]]> 
+				<convert match="java.util.ArrayList" converter="bean"></convert>
+		<convert match="com.ea.system.model.Department" converter="bean"/>
+		<convert match="com.ea.core.model.SearchColumnValue" converter="bean"/>
+		<convert match="com.ea.core.model.SearchColumn" converter="bean"/>
+		<convert match="com.ea.system.model.PageMenu" converter="bean"/>
+		<convert match="com.ea.system.model.Role" converter="bean"/>
+		<convert match="com.ea.system.model.DepartmentRole" converter="bean"/>
+		<convert match="com.ea.system.web.dwr.model.DepartmentForm" converter="bean"/>
+		<convert match="com.ea.bas.model.Vendor" converter="bean"/>
+		
+		<convert match="com.ea.ta.web.dwr.TicketPrModel" converter="bean"/>
+		<convert match="com.ea.udp.model.LocationResult" converter="bean"/>
+		
+		<convert match="com.ea.ta.model.Ticket" converter="bean"/>
+		<convert match="com.ea.ta.model.TicketPr" converter="bean"/>
+		<convert match="com.ea.ta.model.TicketPrLine" converter="bean"/>
+		<convert match="com.ea.ta.model.TicketAttachment" converter="bean"/>
+		
+	 	<create javascript="pageMenuDwr" creator="spring">
+			<param name="beanName" value="pageMenuDwr"></param>
+		</create>
+		<create javascript="departmentDwr" creator="spring">
+			<param name="beanName" value="departmentDwr"></param>
+		</create>
+		<create javascript='userDwr' creator='spring'>
+			<param name="beanName" value="userDwr"></param>
+		</create>
+		
+		<create javascript='commonSearchDwr' creator='spring'>
+			<param name="beanName" value="commonSearchDwr"></param>
+		</create>
+		<create javascript='ticketPrDwr' creator='spring'>
+			<param name="beanName" value="ticketPrDwr"></param>
+		</create>
+		<create javascript='userLocationDwr' creator='spring'>
+			<param name="beanName" value="userLocationDwr"></param>
+		</create>
+		<create javascript="RemoveSession" creator="new">
+	  		<param name="class" value="com.ea.core.web.dwr.RemoveSession"/>
+		</create>
+	</signatures> -->
+	
+</dwr>

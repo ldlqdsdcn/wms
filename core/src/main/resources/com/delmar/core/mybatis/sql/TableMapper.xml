@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.core.mybatis.sql.TableMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.core.model.Table" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="table_name_tr" property="tableNameTr" jdbcType="NVARCHAR" />
+    <result column="class_name" property="className" jdbcType="NVARCHAR" />
+    <result column="out_log" property="outLog" jdbcType="CHAR" />
+    <result column="bu_pk" property="buPk" jdbcType="VARCHAR" />
+    <result column="descr" property="descr" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+	    	<if test="className != null" >
+	      		 and class_name = #{className,jdbcType=CHAR}
+	      	</if>
+	      	  <if test="outLog != null" >
+        		and out_log=#{outLog,jdbcType=NVARCHAR}
+     		 </if>
+            <if test="accessString!=null" > and  ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, table_name_tr, class_name, out_log, bu_pk, descr
+  </sql>
+  
+  <cache flushInterval="7200000" size="1000"></cache>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from core_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from core_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer"  flushCache="true">
+    delete from core_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map"  flushCache="true">
+    delete from core_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.core.model.Table" useGeneratedKeys="true" keyProperty="id"  flushCache="true">
+    insert into core_table (name, table_name_tr, class_name, 
+      out_log, bu_pk, descr)
+    values (#{name,jdbcType=VARCHAR}, #{tableNameTr,jdbcType=NVARCHAR}, #{className,jdbcType=NVARCHAR}, 
+      #{outLog,jdbcType=CHAR}, #{buPk,jdbcType=VARCHAR}, #{descr,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.core.model.Table" useGeneratedKeys="true" keyProperty="id" flushCache="true" >
+    insert into core_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tableNameTr != null" >
+        table_name_tr,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="outLog != null" >
+        out_log,
+      </if>
+      <if test="buPk != null" >
+        bu_pk,
+      </if>
+      <if test="descr != null" >
+        descr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tableNameTr != null" >
+        #{tableNameTr,jdbcType=NVARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=NVARCHAR},
+      </if>
+      <if test="outLog != null" >
+        #{outLog,jdbcType=CHAR},
+      </if>
+      <if test="buPk != null" >
+        #{buPk,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null" >
+        #{descr,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from core_table
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Table"  flushCache="true">
+    update core_table
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tableNameTr != null" >
+        table_name_tr = #{tableNameTr,jdbcType=NVARCHAR},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=NVARCHAR},
+      </if>
+      <if test="outLog != null" >
+        out_log = #{outLog,jdbcType=CHAR},
+      </if>
+      <if test="buPk != null" >
+        bu_pk = #{buPk,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null" >
+        descr = #{descr,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Table"  flushCache="true">
+    update core_table
+    set name = #{name,jdbcType=VARCHAR},
+      table_name_tr = #{tableNameTr,jdbcType=NVARCHAR},
+      class_name = #{className,jdbcType=NVARCHAR},
+      out_log = #{outLog,jdbcType=CHAR},
+      bu_pk = #{buPk,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=NVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

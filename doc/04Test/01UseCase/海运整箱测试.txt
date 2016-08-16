@@ -1,0 +1,8 @@
+录入数据
+FCL
+箱型  40'
+箱量 30
+始发港 DKAAL
+目的港 DKAAR
+返回数据
+{"quotaList":[{"price":78600.00,"currency":"USD","curr":{"code":"USD","cname":"USD","ename":"USD","remark":"6.2255","rate":6.2255,"id":2}}],"remark":"无"}

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.delmar.base.mybatis.sql.DatadictMapper">
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.Datadict">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="name" jdbcType="NVARCHAR" property="name" />
+    <result column="remark" jdbcType="NVARCHAR" property="remark" />
+    <result column="datadict_type_id" jdbcType="INTEGER" property="datadictTypeId" />
+    <result column="isActive" jdbcType="INTEGER" property="isActive" />
+    <result column="indexOrder" jdbcType="INTEGER" property="indexOrder" />    
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdbyName" property="createdByName" jdbcType="VARCHAR" />    
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedbyName" property="updatedByName" jdbcType="VARCHAR" />    
+    <association property="datadictType" column="datadict_type_id" select="com.delmar.base.mybatis.sql.DatadictTypeMapper.selectByPrimaryKey" ></association>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+    			<if test="datadictTypeId!=null"> and datadict_type_id=#{datadictTypeId,jdbcType=INTEGER} </if>
+    			<if test="clientId"> and client_Id=#{clientId,jdbcType=INTEGER}   </if>
+    			<if test="value!=null"> and value=#{value,jdbcType=VARCHAR} </if>
+    			<if test="bePublic!=null"> and bePublic=#{bePublic,jdbcType=INTEGER} </if>    			
+                <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, value, name, remark, datadict_type_id,isActive,indexOrder,user_id, user_name, org_id,client_id,created, 
+    createdby, createdByName,updated, updatedby,updatedbyName
+  </sql>
+  <select id="selectByExample" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_datadict
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from base_datadict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectNameByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select 
+      Name
+    from base_datadict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+    
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from base_datadict
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map">
+    delete from base_datadict
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.delmar.base.model.Datadict" useGeneratedKeys="true">
+    insert into base_datadict (value, name, remark, 
+      datadict_type_id,isActive,indexOrder, 
+      user_id,user_name, org_id, client_id,
+      created, createdby,createdbyName, 
+      updated, updatedby,updatedbyname)
+    values (#{value,jdbcType=VARCHAR}, #{name,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}, 
+      #{datadictTypeId,jdbcType=INTEGER}, #{isActive,jdbcType=INTEGER},#{indexOrder,jdbcType=INTEGER},
+      #{userId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER},
+      #{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER},#{createdByName,jdbcType=VARCHAR}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.delmar.base.model.Datadict" useGeneratedKeys="true">
+    insert into base_datadict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="value != null">
+        value,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="datadictTypeId != null">
+        datadict_type_id,
+      </if>
+      <if test="isActive != null">
+        isActive,
+      </if>
+      <if test="indexOrder != null">
+        indexOrder,
+      </if>
+
+      
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="clientId!=null">
+      	 client_id,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdBy != null" >
+        createdby,
+      </if>
+      <if test="createdByName != null" >
+        createdbyName,
+      </if>      
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedBy != null" >
+        updatedby,
+      </if>
+      <if test="updatedByName != null" >
+        updatedbyName,
+      </if>      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="datadictTypeId != null">
+        #{datadictTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId!=null">
+      	#{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        #{updatedByName,jdbcType=VARCHAR},
+      </if>        
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from base_datadict
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.base.model.Datadict">
+    update base_datadict
+    <set>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="datadictTypeId != null">
+        datadict_type_id = #{datadictTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null">
+        isActive = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="indexOrder != null">
+        indexOrder = #{indexOrder,jdbcType=INTEGER},
+      </if>
+
+      
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+       <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+
+    
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updatedby = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName = #{updatedByName,jdbcType=VARCHAR},
+      </if>         
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.base.model.Datadict">
+    update base_datadict
+    set value = #{value,jdbcType=VARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      remark = #{remark,jdbcType=NVARCHAR},
+      datadict_type_id = #{datadictTypeId,jdbcType=INTEGER},
+      isActive = #{isActive,jdbcType=INTEGER},
+      indexOrder = #{indexOrder,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      client_id=#{clientId,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedBy = #{updatedBy,jdbcType=INTEGER},
+      updatedByName = #{updatedByName,jdbcType=VARCHAR}
+      
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateIndexOrder" parameterType="java.util.Map" >
+    update base_datadict
+    set  indexOrder = #{indexOrder,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>   
+</mapper>

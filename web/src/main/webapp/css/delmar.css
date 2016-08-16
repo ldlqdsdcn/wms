@@ -1,0 +1,404 @@
+@CHARSET "UTF-8";
+
+#filterpage
+{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+#filterForm 
+{
+	margin-top:5px;	
+}
+
+#filterpageheader {
+	
+}
+
+.d-filterheader {	
+	/*
+	border-top:1px solid #DEE3E7;
+	border-bottom:1px solid #BDCFE7;
+	background-color:#c6c6ff;*/
+	border: 1px solid #8AB6ED;
+	background-image: url(images/top2.png);
+    clear: both;
+    color:#000;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    height: 22px;
+    margin-top: 5px;
+    padding: 10px 5px 5px;
+    width: 100%;
+}
+
+img.toggle {
+    vertical-align: bottom;
+    margin-right: 6px;
+    border: 0;
+}
+
+.d-filterTable {
+	width:100%;
+}
+
+.d-formHeaderTable
+{
+	
+}
+
+.d-formExtendHeader
+{
+	
+}
+
+#tableinputtable
+{
+	margin-top:10px;
+}
+
+#tableinputtable tr
+{
+	height:32px;
+	valign:middle;
+}
+
+#tableinputtable .d-label
+{
+	
+}
+
+#tableinputtable .d-input
+{
+ 
+}
+.d-filterTable tr
+{
+	height:28px;
+	valign:middle;
+	
+}
+
+
+/*Panel类*/
+.d-panel {
+	 border:1px solid #BED5F3;	
+}
+
+.d-panel-header{
+	position:relative; 
+	top:-10px; 
+	left:20px;
+	background-color:#ffffff;
+	text-align:center;
+	min-width:50px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:5px;	
+}
+
+.d-panel-split{
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffEAF1F9,endColorStr=#ffD1DEF3,GradientType=0) !important;
+	text-align:left  !important;
+	border-bottom:1px solid #B2CCE5  !important;
+	background-color:#E1EBF8  !important;	
+	height:40px !important;
+	
+}
+
+
+
+.d-tiperror
+{
+   width:16px;
+   height:16px;
+   border:0px;
+   background:url(images/tipbutton.png) no-repeat center;
+   background-position:0px 0px;
+   display:inline-block;
+}
+
+.d-tipcontent
+{
+   font-family: "宋体", Arial, sans-serif;
+   font-size: 12px;	
+   margin-left:5px;
+   line-height:24px;  
+}
+
+.d-error
+{
+   color:#ff0000;  
+}
+
+
+.d-hidden
+{
+  display:none !important;	
+  visibility:hidden !important;
+}
+
+.d-visible
+{
+ display:inline;	
+ visibility:visible;
+}
+
+.d-tdlabel
+{
+    font-size: 11px;
+    color: #000000;
+    text-align: right;
+    padding-right: 20px;
+    line-height: 26px;
+    background-color: #F3F3EC;	
+}
+
+.d-tdinput
+{
+   background-color: #ffffff;	
+   text-align: left;
+   padding-left: 10px;   
+ 
+}
+
+ .d-highlight-red {
+   color:#ff0000 !important;  
+ }
+ 
+ .d-highlight-gray {
+   background-color:#BBBCB9 !important;  
+ }
+ 
+
+/*查询框*/
+.d-searchtext {
+  height:20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dfdfdf;
+  background-color: #ffffff; 
+  width:100px;	
+}
+
+.d-width-big {
+  width:200px !important;	
+}
+
+.d-width-small {
+  width:40px !important;	
+}
+
+
+.d-magin-top {
+  magin-top:50px !importan;	
+}
+
+/*录入框类*/
+
+.d-inputtext {
+  /*PADDING-TOP: 3px; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; -moz-border-radius: 11px; -khtml-border-radius: 11px; -webkit-border-radius: 11px; border-radius: 11px; -khtml-box-sizing: content-box;
+  */
+  height:24px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dfdfdf;  
+  background-color: #ffffff;  	
+}
+
+.d-inputnumber
+{
+	
+}
+
+.d-widthb
+{
+  width:200px;
+}
+
+.d-widthm
+{
+  width:200px;
+}
+
+
+.d-widths
+{
+  width:200px;
+}
+
+
+table.table-input tr {
+	height:28px
+}
+
+
+input.required,textarea.required 
+{ 
+  background:url(images/input_bg.png) no-repeat scroll;  
+  background-position:100% 0; 
+  background-color:#ffffff; 
+}
+
+input.optional,textarea.optional 
+{ 
+  background:url(images/input_bgblue.png) no-repeat scroll;  
+  background-position:100% 0;
+  background-color:#ffffff; 
+}
+
+
+.d-textarea-auto
+{
+  overflow-y:visible;
+  overflow-x:auto; 
+  width:100%;
+  height:100%'; 	
+}
+
+
+/**内部操作
+*/
+.d-rowactions {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VISIBILITY: hidden; PADDING-TOP: 2px
+}
+
+TR:hover .d-rowactions {
+	VISIBILITY: visible
+}
+
+TABLE SPAN.d-trash A {
+	COLOR: #bc0b0b
+}
+
+
+.d-table-row-over .d-table-row-cell,.d-table-row-over
+{
+    background:#E0ECFF ;
+}
+.d-selected td,.d-selected
+{
+    background:#DCF8A8 !important;
+}
+
+.d-searchbutton
+{
+	text-align:right; 
+	padding:5px;
+}
+
+
+.d-file-panel
+{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right:10px;
+  
+  border-style: dotted  ;
+  border-width: 1px;
+  border-color: #B596F5;  
+  
+}
+
+
+.d-banner-middle
+{
+  FONT-FAMILY:宋体;
+  FONT-SIZE:15; 
+
+}
+
+.d-banner-right{
+  FONT-FAMILY:宋体;
+  FONT-SIZE:14; 
+  color:#FFFFFF !important;	
+  font-style:normal;
+  text-decoration:none !important;	
+}
+
+.d-file-more
+{
+	align:left;
+}
+
+
+.d-checkitem 
+{
+position: relative;
+display: inline-block;
+height: 22px;
+line-height: 22px;
+border: 1px solid #DDD;
+font-size: 12px;
+vertical-align: top;
+margin: 0px 5px 5px 0px;
+padding: 0px 26px 0px 4px;
+cursor: pointer;
+}
+.d-checkitem:hover a {
+    background-color: #E4393C;
+    background-position: 7px -158px;
+}
+.d-checkitem a {
+	
+    display:  block;
+    position: absolute;
+    width: 25px;
+    height: 22px;
+    right: 0px;
+    top: 0px;
+    background: transparent url("images/search.ele.png") no-repeat scroll 7px -140px;
+}
+
+.d-a-btn {
+    display: inline-block;	
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #DDD;
+    padding: 2px 3px 0px 2px;
+    position: relative;
+    background: #FFF none repeat scroll 0% 0%;
+    color: #999;
+}
+
+.d-a-btn:hover {
+    border: 1px solid #EEE;
+}
+
+
+.d-btn-white {
+	BORDER-BOTTOM-COLOR: #bbb; 
+	BORDER-TOP-COLOR: #bbb; 
+	COLOR: #464646; 
+	BORDER-RIGHT-COLOR: #bbb; 
+	BORDER-LEFT-COLOR: #bbb;
+	BACKGROUND: url(images/white-grad.png) #f2f2f2 repeat-x left top; 
+	text-shadow: rgba(255,255,255,1) 0 1px 0	
+}
+
+
+.d-btn-white:hover {
+	BORDER-BOTTOM-COLOR: #666; 
+	BORDER-TOP-COLOR: #666; 
+	COLOR: #000; 
+	BORDER-RIGHT-COLOR: #666; 
+	BORDER-LEFT-COLOR: #666
+}
+
+.d-btn-white {
+ 	BOX-SIZING: content-box; 
+	BORDER-BOTTOM: 1px solid; 
+	BORDER-LEFT: 1px solid; 
+	PADDING-BOTTOM: 3px; 
+	LINE-HEIGHT: 13px; 
+	PADDING-LEFT: 8px; 
+	PADDING-RIGHT: 8px; 
+	FONT-SIZE: 12px !important; 
+	BORDER-TOP: 1px solid; 
+	CURSOR: pointer; 
+	BORDER-RIGHT: 1px solid; 
+	TEXT-DECORATION: none; 
+	PADDING-TOP: 3px; 
+	-moz-box-sizing: content-box; -webkit-box-sizing: content-box; -moz-border-radius: 11px; -khtml-border-radius: 11px; -webkit-border-radius: 11px; border-radius: 11px; -khtml-box-sizing: content-box	
+}

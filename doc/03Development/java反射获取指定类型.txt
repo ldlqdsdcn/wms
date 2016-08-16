@@ -1,0 +1,4 @@
+	public  static <T> T getBean(String name, Class<T> requiredType) 
+	{
+		return ApplicationContext.getBean(name, requiredType);
+	}

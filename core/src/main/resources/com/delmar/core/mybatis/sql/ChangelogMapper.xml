@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.delmar.core.mybatis.sql.ChangelogMapper">
+  <resultMap id="BaseResultMap" type="com.delmar.core.model.Changelog">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="table_id" jdbcType="INTEGER" property="tableId" />
+    <result column="operate_type" jdbcType="CHAR" property="operateType" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="pk" jdbcType="INTEGER" property="pk" />
+    <result column="bu_pk" jdbcType="VARCHAR" property="buPk" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <association property="table" column="table_id" select="com.delmar.core.mybatis.sql.TableMapper.selectByPrimaryKey" ></association>
+	</resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.delmar.core.model.Changelog">
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+          <if test="tableId != null">
+     and   table_id=#{tableId,jdbcType=INTEGER}
+      </if>
+  <if test="accessString!=null">and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, table_id, operate_type, created, user_id, pk, bu_pk, username
+  </sql>
+  <sql id="Blob_Column_List">
+    context
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+     select
+
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from core_changelog 
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByExampleWithBLOBs" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from core_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="java.util.Map" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+     ,
+    <include refid="Blob_Column_List" /> 
+    from core_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="java.util.Map">
+    delete from core_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.delmar.core.model.Changelog" useGeneratedKeys="true">
+    insert into core_changelog (table_id, operate_type, created, 
+      user_id, pk, bu_pk, username, 
+      context)
+    values (#{tableId,jdbcType=INTEGER}, #{operateType,jdbcType=CHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=INTEGER}, #{pk,jdbcType=INTEGER}, #{buPk,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{context,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.delmar.core.model.Changelog" useGeneratedKeys="true">
+    insert into core_changelog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        table_id,
+      </if>
+      <if test="operateType != null">
+        operate_type,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="pk != null">
+        pk,
+      </if>
+      <if test="buPk != null">
+        bu_pk,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=INTEGER},
+      </if>
+      <if test="operateType != null">
+        #{operateType,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="pk != null">
+        #{pk,jdbcType=INTEGER},
+      </if>
+      <if test="buPk != null">
+        #{buPk,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from core_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+</mapper>

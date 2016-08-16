@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.crm.mybatis.sql.CustomerExtraPropDefineMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.crm.model.CustomerExtraPropDefine" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="propValue" property="propValue" jdbcType="VARCHAR" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdByName" property="createdByName" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedBy" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedByName" property="updatedByName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+       	<if test="accessString!=null"> and ${accessString} </if>
+       	<if test="id!=null"> and id=#{id,jdbcType=INTEGER} </if>
+        <if test="userId!=null"> and user_id=#{userId,jdbcType=INTEGER} </if>       	
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, propValue, client_id, org_id, user_id, user_name, created, createdBy, createdByName, 
+    updated, updatedBy, updatedByName
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from b_crm_customer_extra_propdefine
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_crm_customer_extra_propdefine
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_crm_customer_extra_propdefine
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" >
+    delete from b_crm_customer_extra_propdefine
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_customer_extra_propdefine (propValue, client_id, org_id, 
+      user_id, user_name, created, 
+      createdBy, createdByName, updated, 
+      updatedBy, updatedByName)
+    values (#{propValue,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=INTEGER}, #{createdByName,jdbcType=VARCHAR}, #{updated,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=INTEGER}, #{updatedByName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_crm_customer_extra_propdefine
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="propValue != null" >
+        propValue,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="createdByName != null" >
+        createdByName,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedBy != null" >
+        updatedBy,
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="propValue != null" >
+        #{propValue,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        #{updatedByName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" resultType="java.lang.Integer" >
+    select count(*) from b_crm_customer_extra_propdefine
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" >
+    update b_crm_customer_extra_propdefine
+    <set >
+      <if test="propValue != null" >
+        propValue = #{propValue,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updatedBy = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByname != null" >
+        updatedByName = #{updatedByName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.crm.model.CustomerExtraPropDefine" >
+    update b_crm_customer_extra_propdefine
+    set propValue = #{propValue,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedBy = #{updatedBy,jdbcType=INTEGER},
+      updatedByName = #{updatedByName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

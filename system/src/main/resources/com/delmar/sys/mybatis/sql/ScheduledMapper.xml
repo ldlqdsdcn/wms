@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.ScheduledMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sys.model.Scheduled" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="isactive" property="isactive" jdbcType="CHAR" />
+    <result column="delay" property="delay" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="createdby" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdbyName" property="createdByName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedbyName" property="updatedByName" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="nextRunTime" property="nextRunTime" jdbcType="INTEGER"/>
+    <result column="run_count" property="runCount" jdbcType="INTEGER"/>
+    <result column="run_type" property="runType" jdbcType="INTEGER"/>
+    <result column="time_year" property="timeYear" jdbcType="VARCHAR"/>
+    <result column="time_month" property="timeMonth" jdbcType="VARCHAR"/>
+    <result column="time_day" property="timeDay" jdbcType="VARCHAR"/>
+    <result column="time_week" property="timeWeek" jdbcType="VARCHAR"/>
+    <result column="time_time" property="timeTime" jdbcType="VARCHAR"/>
+    <result column="previousrun" property="previousrun" jdbcType="VARCHAR"/>
+    
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+    <if test="className!=null"> and class_name=#{className,jdbcType=VARCHAR}</if>
+    <if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code,name, class_name, isactive, delay,run_type,time_year,time_month,time_day,time_time, user_id, user_name, org_id, client_id, 
+     remark, createdby,createdbyName, created, updatedby,updatedByName, updated,nextRuntime,run_count,previousrun
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_scheduled
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_scheduled
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_scheduled
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from sys_scheduled
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sys.model.Scheduled" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_scheduled (code,name, class_name, isactive, 
+      run_type,delay,time_year,time_month,time_day,time_week,time_time, user_id, user_name, 
+      org_id, client_id, 
+       remark, createdby,createdbyName, 
+      created, updatedby,updatedbyName, updated,nextruntime,run_count
+      ,previousrun
+      )
+    values (#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{isactive,jdbcType=CHAR}, 
+      #{runType,jdbcType=INTEGER},#{delay,jdbcType=INTEGER},#{timeYear,jdbcType=VARCHAR},
+      #{timeMonth,jdbcType=VARCHAR},#{timeDay,jdbcType=VARCHAR},#{timeWeek,jdbcType=VARCHAR},#{timeTime,jdbcType=VARCHAR},
+      #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=INTEGER},  #{clientId,jdbcType=INTEGER}, 
+       #{remark,jdbcType=VARCHAR}, #{createdBy,jdbcType=INTEGER},  #{createdByName,jdbcType=VARCHAR},
+      #{created,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR},  #{updated,jdbcType=TIMESTAMP}
+      ,#{nextRunTime,jdbcType=INTEGER},#{runCount,jdbcType=INTEGER},#{previousrun,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.sys.model.Scheduled" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_scheduled
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>    
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="isactive != null" >
+        isactive,
+      </if>
+      <if test="runType != null" >
+        run_Type,
+      </if>      
+      <if test="delay != null" >
+        delay,
+      </if>
+      <if test="timeYear != null" >
+        time_Year,
+      </if>
+      <if test="timeMonth != null" >
+        time_Month,
+      </if>      
+      <if test="timeDay != null" >
+        time_Day,
+      </if>      
+      <if test="timeWeek != null" >
+        time_Week,
+      </if>      
+      <if test="timeTime != null" >
+        time_Time,
+      </if>      
+
+            
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createdBy != null" >
+        createdby,
+      </if>
+      <if test="createdByName != null" >
+        createdbyName,
+      </if>      
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updatedBy != null" >
+        updatedby,
+      </if>
+      <if test="updatedByName != null" >
+        updatedbyName,
+      </if>
+      
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="nextRunTime!=null">
+      	nextRunTime,
+      </if>
+      <if test="runCount!=null">
+      	runCount,
+      </if>
+      <if test="previousrun!=null">
+      previousrun,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>      
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="runType != null" >
+        #{runType,jdbcType=INTEGER},
+      </if>      
+      <if test="delay != null" >
+        #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="timeYear != null" >
+       #{timeYear,jdbcType=VARCHAR},
+      </if>
+      <if test="timeMonth != null" >
+        #{timeMonth,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeDay != null" >
+       #{timeDay,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeWeek != null" >
+        #{timeWeek,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeTime != null" >
+        #{timeTime,jdbcType=VARCHAR},
+      </if>    
+            
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        #{updatedByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextRunTime!=null">
+      #{nextRunTime,jdbcType=INTEGER},
+      </if>
+      <if test="runCount!=null">
+      #{runCount,jdbcType=INTEGER},
+      </if>
+      <if test="previousrun!=null">
+      #{previousrun,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from sys_scheduled
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.Scheduled" >
+    update sys_scheduled
+    <set >
+      <if test="name != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>    
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null" >
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="runType != null" >
+        run_type = #{runType,jdbcType=INTEGER},
+      </if>      
+      <if test="delay != null" >
+        delay = #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="timeYear != null" >
+        time_year = #{timeYear,jdbcType=VARCHAR},
+      </if>
+      <if test="timeMonth != null" >
+        time_Month = #{timeMonth,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeDay != null" >
+        time_Day = #{timeDay,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeWeek != null" >
+        time_Week = #{timeWeek,jdbcType=VARCHAR},
+      </if>      
+      <if test="timeTime != null" >
+        time_time = #{timeTime,jdbcType=VARCHAR},
+      </if>      
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null" >
+        updatedby = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        updatedbyName = #{updatedByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+       <if test="nextRunTime!=null">
+     	nextRunTime= #{nextRunTime,jdbcType=INTEGER},
+      </if>
+       <if test="runCount!=null">
+     	run_count= #{runCount,jdbcType=INTEGER},
+      </if>
+      <if test="previousrun!=null">
+      previousrun=#{previousrun,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.Scheduled" >
+    update sys_scheduled
+    set
+      code = #{code,jdbcType=VARCHAR}, 
+      name = #{name,jdbcType=VARCHAR},
+      class_name = #{className,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      run_type = #{runType,jdbcType=INTEGER},
+      delay = #{delay,jdbcType=INTEGER},
+      time_year = #{timeYear,jdbcType=VARCHAR},
+      time_month = #{timeMonth,jdbcType=VARCHAR},
+      time_day = #{timeDay,jdbcType=VARCHAR},
+      time_week = #{timeWeek,jdbcType=VARCHAR},
+      time_time = #{timeTime,jdbcType=VARCHAR},         
+      remark = #{remark,jdbcType=VARCHAR},
+      updatedby = #{updatedBy,jdbcType=INTEGER},
+      updatedbyName = #{updatedByName,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      nextruntime= #{nextRunTime,jdbcType=INTEGER},
+      run_count= #{runCount,jdbcType=INTEGER} ,
+      previousrun=#{previousrun,jdbcType=VARCHAR} 
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

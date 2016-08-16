@@ -1,0 +1,7 @@
+1、用户登录
+2、基本权限过滤
+3、菜单模块移植
+4、struts集成spring  添加 struts2-spring-plugin jar包
+5、核心action父类实现。
+6、数据过滤权限设计
+7、下午每周会议。

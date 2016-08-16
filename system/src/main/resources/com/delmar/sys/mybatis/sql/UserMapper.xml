@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sys.model.User" >
+
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="NVARCHAR" />
+    <result column="email" property="email" jdbcType="NVARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="NVARCHAR" />
+    <result column="managerId" property="managerId" jdbcType="INTEGER" />
+    <result column="userPic" property="userPic" jdbcType="BLOB"/>   
+    <result column="userType_Id" property="userTypeId" jdbcType="INTEGER"/>
+    <result column="remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="init" property="init" jdbcType="NVARCHAR" />
+    <result column="isActive" property="isActive" jdbcType="INTEGER" />
+    <result column="passNextDate" property="passNextDate" jdbcType="TIMESTAMP" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdbyName" property="createdByName" jdbcType="VARCHAR" />    
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedbyName" property="updatedByName" jdbcType="VARCHAR" />    
+
+        
+    <association property="managerName" column="managerId" select="selectNameById"></association>    
+  </resultMap>
+  
+  	<resultMap type="com.delmar.sys.model.User" id="userAllResult" extends="BaseResultMap">
+		<association property="roles" column="id" select="com.delmar.sys.mybatis.sql.RoleMapper.selectRoles" ></association>
+		<association property="accessOrgs" column="id" select="com.delmar.sys.mybatis.sql.OrgMapper.selectOrgs"></association>	
+		<association property="org" column="org_id" select="com.delmar.sys.mybatis.sql.OrgMapper.selectByPrimaryKey" ></association>
+	</resultMap>
+   	<resultMap type="com.delmar.sys.model.User" id="userListResult" extends="BaseResultMap">
+		<association property="org" column="org_id" select="com.delmar.sys.mybatis.sql.OrgMapper.selectByPrimaryKey" ></association>
+	</resultMap>
+	
+	
+  <sql id="Example_Where_Clause" >
+
+    <where >
+	    <if test="username!=null"> and username=#{username,jdbcType=VARCHAR} </if>
+	    <if test="accessString!=null">  <![CDATA[ ${accessString} ]]>  </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+
+    id, username, password, name, email,telephone,managerId,userPic,userType_Id,remark, org_id, client_id,init,
+    isActive,passNextDate,created,createdby, createdByName,updated, updatedby,updatedbyName
+  </sql>
+  
+	<select id="selectNameById"  resultType="java.lang.String" parameterType="java.lang.Integer"  >
+	select userName from sys_user where id = #{id,jdbcType=INTEGER}
+	</select>
+  
+  
+  <select id="getUsers"  resultMap="userAllResult"  parameterType="java.util.Map" >
+  
+   select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <cache flushInterval="60000" size="100" ></cache>
+  <select id="getUserById" resultMap="userAllResult" parameterType="java.lang.Integer"  useCache="true">
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getUserOrgByRoleId" resultMap="userListResult" parameterType="java.lang.Integer"   useCache="false" >
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id in (Select user_id from sys_user_role where role_id= #{id,jdbcType=INTEGER}) 
+  </select>  
+  
+  <select id="getUserSubstituteById" resultMap="userListResult" parameterType="java.lang.Integer"   useCache="false" >
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id in (Select suser_id from sys_user_substitute where user_id= #{id,jdbcType=INTEGER}) 
+  </select>  
+    
+  <select id="getNonUserSubstituteById" resultMap="userListResult" parameterType="java.lang.Integer"   useCache="false" >
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id not in (Select suser_id from sys_user_substitute where user_id= #{id,jdbcType=INTEGER}) 
+  </select>  
+  
+    
+  <select id="getNonUserOrgByRoleId" resultMap="userListResult" parameterType="java.lang.Integer"   useCache="false">
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    <![CDATA[ where id not  in (Select user_id from sys_user_role where role_id = #{id,jdbcType=INTEGER}) ]]> 
+  </select>    
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer"  useCache="true">
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer"  flushCache="true">
+
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" flushCache="true" >
+
+    delete from sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sys.model.User" useGeneratedKeys="true" keyProperty="id"  flushCache="true">
+
+    insert into sys_user (username, password, name,email,telephone,managerId,userPic,userType_Id, 
+      remark, org_id, client_id,init,isActive,passNextDate,created,createdby, createdByName,updated, updatedby,updatedbyName
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=NVARCHAR}, 
+    #{email,jdbcType=NVARCHAR},#{telephone,jdbcType=NVARCHAR},#{managerId,jdbcType=INTEGER},#{userPic,jdbcType=BLOB},#{userTypeId,jdbcType=INTEGER},
+      #{remark,jdbcType=NVARCHAR}, #{orgId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER},#{init,jdbcType=CHAR}
+      ,#{isActive,jdbcType=INTEGER},#{passNextDate,jdbcType=TIMESTAMP},#{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER},#{createdByName,jdbcType=VARCHAR}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER},#{updatedByName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.sys.model.User" useGeneratedKeys="true" keyProperty="id"  flushCache="true">
+
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="managerId != null" >
+        managerId,
+      </if>
+      <if test="userPic != null" >
+        userPic,
+      </if>
+      <if test="userTypeId != null" >
+        userType_Id,
+      </if>
+      
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+       <if test="init != null" >
+        init,
+      </if>
+      <if test="isActive != null" >
+        isActive,
+      </if>
+      <if test="passNextDate != null" >
+        passNextDate,
+      </if>            
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdBy != null" >
+        createdby,
+      </if>
+      <if test="createdByName != null" >
+        createdbyName,
+      </if>      
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedBy != null" >
+        updatedby,
+      </if>
+      <if test="updatedByName != null" >
+        updatedbyName,
+      </if>
+
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="managerId != null" >
+        #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="userPic != null" >
+        #{userPic,jdbcType=BLOB},
+      </if>
+      <if test="userTypeId != null" >
+        #{userTypeId,jdbcType=INTEGER},
+      </if>                        
+                              
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="init != null" >
+        #{init,jdbcType=CHAR},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="passNextDate != null" >
+        #{passNextDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        #{createdByName,jdbcType=VARCHAR},
+      </if>      
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        #{updatedByName,jdbcType=VARCHAR},
+      </if>      
+      
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+
+    select count(*) from sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.User"  flushCache="true">
+
+    update sys_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="managerId != null" >
+        managerId = #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="userPic != null" >
+        userPic = #{userPic,jdbcType=BLOB},
+      </if>
+      <if test="userTypeId != null" >
+        userType_Id = #{userTypeId,jdbcType=INTEGER},
+      </if>
+      
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+       <if test="init != null" >
+        init=#{init,jdbcType=CHAR},
+      </if>
+       <if test="isActive != null" >
+        isActive=#{isActive,jdbcType=INTEGER},
+      </if>     
+      <if test="passNextDate != null" >
+        passNextDate = #{passNextDate,jdbcType=TIMESTAMP},
+      </if>       
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updatedby = #{updatedBy,jdbcType=INTEGER},
+      </if>
+      <if test="updatedByName != null" >
+        updatedByName = #{updatedByName,jdbcType=VARCHAR},
+      </if>       
+      
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.User"  flushCache="true">
+
+    update sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      email = #{email,jdbcType=NVARCHAR},
+      telephone = #{telephone,jdbcType=NVARCHAR},
+      managerId = #{managerId,jdbcType=INTEGER},
+      userPic = #{userPic,jdbcType=BLOB},
+      userType_Id = #{userTypeId,jdbcType=BLOB},      
+      remark = #{remark,jdbcType=NVARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=INTEGER},
+      init=#{init,jdbcType=CHAR},
+      isActive=#{isActive,jdbcType=INTEGER},
+      passNextDate=#{passNextDate,jdbcType=TIMESTAMP},      
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedBy = #{updatedBy,jdbcType=INTEGER},
+      updatedByName = #{updatedByName,jdbcType=VARCHAR}
+       
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="getNonUserOrgByUsergroupId" resultMap="userListResult" parameterType="java.util.Map"   useCache="false">
+
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    <![CDATA[ where id not  in (Select user_id from sys_usergroup_access where usergroup_id = #{id,jdbcType=INTEGER}) and org_id=#{orgId,jdbcType=INTEGER} ]]> 
+  </select>  
+    
+</mapper>

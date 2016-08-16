@@ -1,0 +1,677 @@
+@charset "utf-8";
+/*********************************************************整体页面类***************************************************/
+/* Menu */
+
+#menu-wrapper {
+	overflow: hidden;
+	height: 40px;
+	background: #EDEDED;
+}
+
+#menu {
+	width: 1000px;
+	height: 39px;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	border-right: 1px solid #FFFFFF;
+}
+
+#menu a {
+	display: block;
+	letter-spacing: 1px;
+	line-height: 39px;
+	padding: 0px 30px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Arvo', serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #3B3B3B;
+	border: none;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	background: #000000;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#menu .current_page_item a {
+	background: #000000;
+}
+
+
+BODY
+	{
+	font-weight: normal;
+	}
+/* CSS Document */
+.CButtonEnableLogin {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	WIDTH: 38mm;
+	COLOR: #ffffff;
+	FONT-FAMILY: "Verdana";
+	BACKGROUND-COLOR: #6483b9;
+	TEXT-DECORATION: none;
+	padding-top: 2px;
+}
+
+.CButtonEnableLogin:hover {
+	CURSOR: pointer;
+	COLOR: #0000cc;
+	BACKGROUND-COLOR: #e6e6fa
+}
+TD.pageTitle {
+	font-size: 16px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.subtext {
+	MARGIN-TOP: 1px;
+	FONT-SIZE: 11px;
+	MARGIN-BOTTOM: 1px;
+	MARGIN-LEFT: 3px;
+	COLOR: #f26521;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.groupHead {
+	MARGIN-TOP: 0px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	MARGIN-BOTTOM: 0px;
+	COLOR: #6483b9;
+	LINE-HEIGHT: 100%;
+	BORDER-BOTTOM: #6483b9 1px solid;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+td.linkBox {
+	border-left-color: #6483b9;
+	border-left-style: none;
+	border-left-width: 1px;
+	border-right-color: #6483b9;
+	border-right-style: none;
+	border-right-width: 1px;
+	border-top-color: #6483b9;
+	border-top-style: none;
+	border-top-width: 1px;
+	font-size: 12px;
+	font-family: 微软雅黑;
+	color: #6483b9;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+td.linkBoxActive {
+	border-left-color: #F26521;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: #F26521;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: #F26521;
+	border-top-style: solid;
+	border-top-width: 1px;
+	background-color: #E6E7E8;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #F26521;
+}
+a.Headerlink {
+	color: #6483b9;
+}
+
+a.Headerlink:hover {
+	color: #F26521;
+}
+.content {
+	FONT-SIZE: 10pt;
+	COLOR: #6483b9;
+}
+IMG
+{border: none;
+	}
+	
+
+body {
+    margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+	background: url("../images/bg_1.gif");
+}
+td {
+	font-family: "宋体";
+	font-size: 12px;
+}
+.black {
+	font-family: "宋体";
+	font-size: 19px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+/*页面链接样式--整体*/
+A:link {
+	FONT-SIZE: 9pt; COLOR: #0000DE; TEXT-DECORATION: underline}
+A:visited {
+	FONT-SIZE: 9pt; COLOR: #0000DE; TEXT-DECORATION: underline}
+A:hover {
+	FONT-SIZE: 9pt; COLOR: #FF0000; TEXT-DECORATION: none}
+.white{	
+	color: #FFFFFF;
+}
+/*页面链接样式--白色*/
+.white A:link {
+	FONT-SIZE: 9pt; COLOR: #FFFFFF; TEXT-DECORATION: none}
+.white A:visited {
+	FONT-SIZE: 9pt; COLOR: #FFFFFF; TEXT-DECORATION: none}
+.white A:hover {
+	FONT-SIZE: 9pt; COLOR: #FFFF00; TEXT-DECORATION: none
+}
+/*********************************************************按钮表单类***************************************************/
+
+/*页面统一提交按钮样式*/
+.input_submit {
+	font-size: 12px;
+	width: 70px;
+	height: 19px;
+	border: 0;
+	background-image: url(../images/conn.gif);
+	padding: 2px 0 0 1px;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+
+.input_href {
+	font-size: 12px;
+	width: 70px;
+	height: 19px;
+	border: 0;
+	background-image: url(../images/conn.gif);
+	padding: 2px 0 0 1px;
+	margin-bottom: 1px;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+
+
+
+
+/*页面统一提交按钮样式--短*/
+.input_submit_d {
+	font-size: 12px;
+	width: 60px;
+	height: 19px;
+	border: 0;
+	background-image: url(../images/conn_1.gif);
+	padding: 2px 0 0 1px;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+/*页面统一提交按钮样式--长*/
+.input_submit_H {
+	font-size: 12px;
+	height: 21px;
+	background-image: url(../images/conn_bg.gif);
+	padding: 2px 0 0 1px;
+	margin-bottom: 1px;
+	cursor: pointer;
+	border: 1px solid #3C7FB1;
+}
+
+/*不设定长度文本框样式*/
+.input_no_long {
+	font-size: 12px;
+	height: 20px;
+	border-top: 1px solid #373737;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-left: 1px solid #373737;
+}
+/*下拉框表单样式-120像素*/
+.input_select_c {
+	border: 1px solid #CAD9EA;
+	width: 120px;
+}
+/*下拉框表单样式-200像素*/
+.input_select_d {
+	border: 1px solid #CAD9EA;
+	width: 168px;
+	text-decoration: none;
+
+}
+/*上传文件表单样式*/
+.input_file {
+	line-height: 22px;
+	height: 19px;
+	font-family: "arial", "verdana";
+	border: 1px solid #CAD9EA;
+	background-color: #FFFFFF;
+}
+/*文本框（备注类）表单样式*/
+.input_textarea {
+	height: 60px;
+	border-top: 1px solid #373737;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-left: 1px solid #373737;
+	width: 97%;
+}
+/*文本框（备注类）表单样式*/
+.input_textarea_no_long {
+	border-top: 1px solid #373737;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-left: 1px solid #373737;
+	width: 97%;
+}
+
+/*搜索表单*/
+.Search_input	{
+	font-size: 12px;
+	margin:0 0 1px;
+	height:20px;
+	padding:1px 0 0 20px!important;
+	padding:1 0 0 21px;
+	background:url(../images/sousou.gif) no-repeat 1 0px #fffce9;
+	border:solid #7F9DB9 1px ;
+	color: #494949;
+}
+
+/*********************************************************数据列表区***************************************************/
+/*带边框表格*/
+.cTableBorder{
+	width:100%;
+	text-align: center;
+	font-size: 12px;
+	border: 1px solid #8AB6ED;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+}
+/*导航栏*/
+.navig{
+	font-family:  "宋体";
+	background-image: url(../images/title_bg_123.gif);
+	/*background-image: url(../images/top2.png);height: 32px;*/
+	padding-left: 10px;
+	height: 26px;
+	white-space:nowrap;
+	vertical-align: middle;
+}
+
+/*表格边框样式*/
+.table_blue{
+font-size: 12px;
+	background-color: #FFFFFF;
+	border: 1px solid #8AB6ED;
+
+}
+/*表格表头样式*/
+.td_title {
+	font-size: 12px;
+	background-image: url(../images/title_bg_4.gif);
+	color: #000000;
+	padding-left: 10px;
+	height: 20px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+}
+/*表格小标题居中样式*/
+.font_table_title_center{
+	font-size: 12px;
+	text-align: center;
+	color: #045295;
+	height:28px;
+	background-color: #C7D8F6;
+	font-weight: bold;
+	vertical-align: middle;
+}
+/*表格小标题左对齐样式*/
+.font_table_title_left{
+	font-size: 12px;
+	text-align: left;
+	color: #045295;
+	height:22px;
+	font-weight: bold;
+	background-color: #C7D8F6;
+	padding-left: 10px;
+}
+/*数据表第一行:内容居中样式*/
+.td_one_center{
+	text-align:center;
+	background-color: #e6e8eb;
+	height: 22px;
+	}
+/**数据表第一行:内容居左样式*/
+.td_one_left{
+	text-align:left;
+	background-color: #e6e8eb;
+	padding-left: 10px;
+	height: 22px;
+}
+/*数据表第二行:内容居中样式*/
+.td_two_center{
+	text-align:center;
+	background-color: #F4F8F9;
+	height: 22px;
+	}
+/**数据表第二行:内容居左样式*/
+.td_two_left{
+	text-align:left;
+	background-color: #F4F8F9;
+	padding-left: 10px;
+	height: 22px;
+}
+/**翻页表格内容居右样式*/
+.td_page_left{
+	text-align:left;
+	background-color: #D5E1F5;
+	padding-left: 10px;
+	vertical-align:middle;
+	font-weight:bold;
+	height: 24px;
+}
+.td_page_right{
+	text-align:right;
+	background-color: #D5E1F5;
+	padding-left: 10px;
+	vertical-align:bottom;
+	height: 24px;
+}
+.td_page_center{
+	text-align:center;
+	background-color: #D5E1F5;
+	padding-left: 10px;
+	vertical-align:bottom;
+	height: 24px;
+}
+
+
+
+/**竖排表格居左样式*/
+.td_erect_left{
+	text-align:left;
+	padding-left: 10px;
+	height: 22px;
+	border-bottom-style: solid;
+	border-bottom-color: #CAD9EA;
+	border-bottom-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+/**竖排表格居中样式*/
+.td_erect_center{
+	text-align:center;
+	padding-left: 10px;
+	height: 22px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+/*********************************************************查询输入区***************************************************/
+/*查询区第一行:内容居中样式*/
+.query_one_center{
+	text-align:center;
+	background-color: #e6e8eb;
+	height: 22px;
+	white-space: nowrap;
+	}
+/**查询区第一行:内容居左样式*/
+.query_one_left{
+	text-align:left;
+	padding-left: 10px;
+	background-color: #e6e8eb;
+	height: 22px;
+	white-space: nowrap;
+}
+.query_one td 
+{
+	text-align:left;
+	padding-left: 10px;
+	background-color: #ffffff;
+	height: 22px;
+	white-space: nowrap;
+}
+
+/**查询区第一行:内容居右样式*/
+.query_one_right{
+	text-align:right;
+	padding-right: 10px;
+	background-color: #e6e8eb;
+	height: 22px;
+	white-space: nowrap;
+}
+/*查询区第二行:内容居中样式*/
+.query_two_center{
+	text-align:center;
+	background-color: #F4F8F9;
+	height: 22px;
+	white-space: nowrap;
+	}
+	
+/**查询区第二行:内容居左样式*/
+
+.query_two td 
+{
+	text-align:left;
+	background-color: #F4F8F9;
+	padding-left: 10px;
+	height: 22px;
+	white-space: nowrap;	
+}
+
+.query_two_left{
+	text-align:left;
+	background-color: #F4F8F9;
+	padding-left: 10px;
+	height: 22px;
+	white-space: nowrap;	
+}
+/**查询区第二行:内容居右样式*/
+.query_two_right{
+	text-align:right;
+	background-color: #F4F8F9;
+	padding-right: 10px;
+	height: 22px;
+	white-space: nowrap;
+}
+
+/**查询区:按钮所在TD样式*/
+.query_input_td{
+	text-align:left;
+	padding-left: 10px;
+	background-color: #D5E1F5;
+	height: 22px;
+	white-space: nowrap;
+}
+/*********************************************************弹出窗口区***************************************************/
+/**列表表头:内容居左样式*/
+.window_td_left_title{
+	text-align:left;
+	padding-left: 10px;
+	height: 22px;
+	border-bottom-style: solid;
+	border-bottom-color: #CAD9EA;
+	border-bottom-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CAD9EA;
+	background-color: #E8F3FD;
+}
+/**文本输入:内容居左样式*/
+.window_td_left{
+	text-align:left;
+	padding-left: 10px;
+	height: 22px;
+	border-bottom-style: solid;
+	border-bottom-color: #CAD9EA;
+	border-bottom-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+/**文本输入带左右边线:内容居左样式*/
+.window_td_left_line{
+	text-align:left;
+	padding-left: 10px;
+	height: 22px;
+	border-bottom-style: solid;
+	border-bottom-color: #CAD9EA;
+	border-bottom-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CAD9EA;
+}
+/**弹出窗口大标题:内容居左样式*/
+.window_title {
+	font-size: 12px;
+	background-image: url(../images/table_page_bg.gif);
+	color: #000000;
+	padding-left: 5px;
+	height: 26px;
+}
+/**表单提交按钮行:内容居中样式*/
+.window_td_center_input{
+	text-align:center;
+	border-bottom-style: solid;
+	border-bottom-color: #CAD9EA;
+	border-bottom-width: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CAD9EA;
+	background-color: #E8F3FD;
+}
+/*********************************************************图片预览样式***************************************************/
+/*图片未选中*/
+.pic_no_clicked {
+	border: 1 solid #CCCCCC;
+}
+/*图片已选中*/
+.pic_yes_clicked {
+	border: 3 solid #316AC5;
+}
+/*图片文字未选中*/
+.font_no_clicked {
+	color: #000000;
+
+}
+/*图片文字已选中*/
+.font_yes_clicked {
+	color: #FFFFFF;
+	background-color: #316AC5;
+}
+/**等待框的样式*/
+.WaitBox {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:1000;
+	padding:0px;
+	background-color:#FFFFA3;
+	color:#201000;
+    FONT-FAMILY: 宋体;
+    FONT-SIZE: 10pt;
+	font-weight: bold;
+	border:1px solid #284860;
+	CURSOR: hand
+}
+
+.large{
+width:330px;
+}
+.medium{
+    width: 150px;
+}
+input text
+{
+	width: 180px;
+}
+
+/*table style as displayTag*/
+.dtable th.sorted {
+    /*background-color: #ffd;*/
+    color: #000000;
+}
+
+.dtable th.sorted a, .table th.sortable a 
+{ 
+	font-size: 12px; background-position: right 50%; background-repeat: no-repeat; display: block;
+	color:#000000; 
+}
+.dtable th {font-size: 12px; color: #fff; background-position: right 50%; background-repeat: no-repeat;}
+.dtable tr.even { background: #F7F7F7; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, 瀹嬩綋;height: 22px; }
+.dtable tr.even:hover
+{
+ background: #ffffd9 !important;
+}
+.dtable tr.odd { 	text-align:left;
+	background-color: #e6e8eb;
+	padding-left: 10px;
+	height: 22px;}
+.dtable tr.odd:hover
+{
+ background: #ffffd9 !important;
+}
+.dtable td{ margin: 0; font-weight:normal;work-wrap:break-word;
+					word-break:break-all; }
+		
+.groupfooter {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; MARGIN-TOP: 0px; COLOR: #6483b9; LINE-HEIGHT: 100%; BORDER-TOP: #6483b9 1px solid; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+input.short{
+color:#000000;
+width: 110px;
+}
+/*---------*/
+TD.pageTitle{ font-size:16px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+  .td01{text-align: right;padding-right: 2px;vertical-align: middle;font-weight: bold;}
+.td02{text-align: left;padding-left: 2px;vertical-align: middle;font-weight: normal;}
+  .CButtonEnable {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; WIDTH: 20mm; height:5mm;COLOR: #ffffff; FONT-FAMILY: "Verdana"; BACKGROUND-COLOR: #6483b9; TEXT-DECORATION: none
+}
+.CButtonEnable:hover {
+	CURSOR: pointer; COLOR: #0000cc; BACKGROUND-COLOR: #e6e6fa
+}
+  .taCmandatory{
+	WIDTH: 90%; HEIGHT: 50px;background:#E6E6FA;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	border:1px solid #6483b9;
+}
+input.textRemark{
+	maxlength:70;
+	width:100%;border-top-color:#FFFFFF; border-left-color:#FFFFFF; border-right-color:#FFFFFF; border-bottom-color:#6483b9;
+	font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px;
+}
+

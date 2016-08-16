@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.common.mybatis.sql.FtpConnectionMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.common.model.FtpConnection" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="ftpserver" property="ftpserver" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="ftpfolder" property="ftpfolder" jdbcType="VARCHAR" />
+    <result column="ftpport" property="ftpport" jdbcType="INTEGER" />
+    <result column="baseftp" property="baseftp" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+                	<if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, ftpserver, username, password, ftpfolder, ftpport, baseftp
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from comm_ftpconnection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comm_ftpconnection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comm_ftpconnection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from comm_ftpconnection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.common.model.FtpConnection" useGeneratedKeys="true" keyProperty="id" >
+    insert into comm_ftpconnection (name, ftpserver, username, 
+      password, ftpfolder, ftpport, 
+      baseftp)
+    values (#{name,jdbcType=VARCHAR}, #{ftpserver,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{ftpfolder,jdbcType=VARCHAR}, #{ftpport,jdbcType=INTEGER}, 
+      #{baseftp,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.common.model.FtpConnection" useGeneratedKeys="true" keyProperty="id" >
+    insert into comm_ftpconnection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="ftpserver != null" >
+        ftpserver,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="ftpfolder != null" >
+        ftpfolder,
+      </if>
+      <if test="ftpport != null" >
+        ftpport,
+      </if>
+      <if test="baseftp != null" >
+        baseftp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpserver != null" >
+        #{ftpserver,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpfolder != null" >
+        #{ftpfolder,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpport != null" >
+        #{ftpport,jdbcType=INTEGER},
+      </if>
+      <if test="baseftp != null" >
+        #{baseftp,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from comm_ftpconnection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.common.model.FtpConnection" >
+    update comm_ftpconnection
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpserver != null" >
+        ftpserver = #{ftpserver,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpfolder != null" >
+        ftpfolder = #{ftpfolder,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpport != null" >
+        ftpport = #{ftpport,jdbcType=INTEGER},
+      </if>
+      <if test="baseftp != null" >
+        baseftp = #{baseftp,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.common.model.FtpConnection" >
+    update comm_ftpconnection
+    set name = #{name,jdbcType=VARCHAR},
+      ftpserver = #{ftpserver,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      ftpfolder = #{ftpfolder,jdbcType=VARCHAR},
+      ftpport = #{ftpport,jdbcType=INTEGER},
+      baseftp = #{baseftp,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

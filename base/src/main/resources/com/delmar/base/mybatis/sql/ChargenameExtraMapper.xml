@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.base.mybatis.sql.ChargenameExtraMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.base.model.ChargenameExtra" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="LimitWeight" property="limitweight" jdbcType="NUMERIC" />
+    <result column="LimitWeightMin" property="limitweightmin" jdbcType="NUMERIC" />    
+    <result column="LimitSize" property="limitsize" jdbcType="NUMERIC" />
+    <result column="LimitLength" property="limitlength" jdbcType="NUMERIC" />
+    <result column="LimitWidth" property="limitwidth" jdbcType="NUMERIC" />
+    <result column="LimitHeight" property="limitheight" jdbcType="NUMERIC" />
+    <result column="WeightSizeMin" property="weightsizemin" jdbcType="NUMERIC" />
+    <result column="WeightSizeMax" property="weightsizemax" jdbcType="NUMERIC" />    
+    <result column="extraType" property="extraType" jdbcType="VARCHAR" />    
+    <result column="LimitWeightMin" property="limitweightmin" jdbcType="NUMERIC" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="base_chargename_id" property="baseChargenameId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+         <if test="accessString!=null"> and <![CDATA[ ${accessString} ]]>  </if>
+           
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, LimitWeight,LimitWeightMin, LimitSize, LimitLength, LimitWidth, LimitHeight, WeightSizeMin,WeightSizeMax,ExtraType,Remark, base_chargename_id
+  </sql>
+  
+    <select id="selectSuitTrunk" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select     top 1  
+    <include refid="Base_Column_List" />
+    from base_chargename_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_chargename_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_chargename_extra
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_chargename_extra
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from base_chargename_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.base.model.ChargenameExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_chargename_extra (LimitWeight,LimitWeightMin, LimitSize, LimitLength, 
+      LimitWidth, LimitHeight,WeightSizeMax,WeightSizeMin,extraType, Remark, 
+      base_chargename_id)
+    values (#{limitweight,jdbcType=NUMERIC},#{limitweightmin,jdbcType=NUMERIC}, #{limitsize,jdbcType=NUMERIC}, #{limitlength,jdbcType=NUMERIC}, 
+      #{limitwidth,jdbcType=NUMERIC}, #{limitheight,jdbcType=NUMERIC},#{weightsizemin,jdbcType=NUMERIC},#{weightsizemax,jdbcType=NUMERIC},#{extraType,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{baseChargenameId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.base.model.ChargenameExtra" useGeneratedKeys="true" keyProperty="id" >
+    insert into base_chargename_extra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="limitweight != null" >
+        LimitWeight,
+      </if>
+      <if test="limitweightmin != null" >
+        LimitWeightMin,
+      </if>      
+      <if test="limitsize != null" >
+        LimitSize,
+      </if>
+      <if test="limitlength != null" >
+        LimitLength,
+      </if>
+      <if test="limitwidth != null" >
+        LimitWidth,
+      </if>
+      <if test="limitheight != null" >
+        LimitHeight,
+      </if>
+      <if test="weightsizemin != null" >
+        WeightSizeMin,
+      </if>
+      <if test="weightsizemax != null" >
+        WeightSizeMax,
+      </if>
+      <if test="extraType != null" >
+        extraType,
+      </if>                  
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="baseChargenameId != null" >
+        base_chargename_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="limitweight != null" >
+        #{limitweight,jdbcType=NUMERIC},
+      </if>
+      <if test="limitweightmin != null" >
+        #{limitweightmin,jdbcType=NUMERIC},
+      </if>      
+      <if test="limitsize != null" >
+        #{limitsize,jdbcType=NUMERIC},
+      </if>
+      <if test="limitlength != null" >
+        #{limitlength,jdbcType=NUMERIC},
+      </if>
+      <if test="limitwidth != null" >
+        #{limitwidth,jdbcType=NUMERIC},
+      </if>
+      <if test="limitheight != null" >
+        #{limitheight,jdbcType=NUMERIC},
+      </if>
+
+      <if test="weightsizemin != null" >
+        #{weightsizemin,jdbcType=NUMERIC},
+      </if>
+      <if test="weightsizemax != null" >
+        #{weightsizemax,jdbcType=NUMERIC},
+      </if>
+      <if test="extraType != null" >
+        #{extraType,jdbcType=VARCHAR},
+      </if>      
+            
+            
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="baseChargenameId != null" >
+        #{baseChargenameId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from base_chargename_extra
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.base.model.ChargenameExtra" >
+    update base_chargename_extra
+    <set >
+      <if test="limitweight != null" >
+        LimitWeight = #{limitweight,jdbcType=NUMERIC},
+      </if>
+      <if test="limitweightmin != null" >
+        LimitWeightMin = #{limitweightmin,jdbcType=NUMERIC},
+      </if>      
+      <if test="limitsize != null" >
+        LimitSize = #{limitsize,jdbcType=NUMERIC},
+      </if>
+      <if test="limitlength != null" >
+        LimitLength = #{limitlength,jdbcType=NUMERIC},
+      </if>
+      <if test="limitwidth != null" >
+        LimitWidth = #{limitwidth,jdbcType=NUMERIC},
+      </if>
+      <if test="limitheight != null" >
+        LimitHeight = #{limitheight,jdbcType=NUMERIC},
+      </if>
+      <if test="weightsizemin != null" >
+        WeightSizeMin = #{weightsizemin,jdbcType=NUMERIC},
+      </if>
+      <if test="weightsizemax != null" >
+        WeightSizeMax = #{weightsizemax,jdbcType=NUMERIC},
+      </if>
+      <if test="extraType != null" >
+        extraType = #{extraType,jdbcType=VARCHAR},
+      </if>                  
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="baseChargenameId != null" >
+        base_chargename_id = #{baseChargenameId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.base.model.ChargenameExtra" >
+    update base_chargename_extra
+    set LimitWeight = #{limitweight,jdbcType=NUMERIC},
+      LimitWeightMin = #{limitweightmin,jdbcType=NUMERIC},
+      LimitSize = #{limitsize,jdbcType=NUMERIC},
+      LimitLength = #{limitlength,jdbcType=NUMERIC},
+      LimitWidth = #{limitwidth,jdbcType=NUMERIC},
+      LimitHeight = #{limitheight,jdbcType=NUMERIC},
+WeightSizemin = #{weightsizemin,jdbcType=NUMERIC},
+WeightSizeMax = #{weightsizemax,jdbcType=NUMERIC},
+extraType = #{extraType,jdbcType=VARCHAR},      
+      Remark = #{remark,jdbcType=VARCHAR},
+      base_chargename_id = #{baseChargenameId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,7 @@
+测试数据
+发货港  DKAAL
+目的港 DKAAR
+重量  1000
+体积 0.15
+最终结果
+{"price":1100.00,"currency":"CNY","curr":{"code":"CNY","cname":"CNY","ename":"CNY","remark":"1","rate":1.0000,"id":1}}

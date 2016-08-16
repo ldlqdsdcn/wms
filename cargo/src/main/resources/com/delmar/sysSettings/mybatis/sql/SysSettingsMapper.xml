@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sysSettings.mybatis.sql.SysSettingsMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sysSettings.model.SysSettings" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="set_value_string" property="setValueString" jdbcType="NVARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="NVARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="set_user_id" property="setUserId" jdbcType="INTEGER" />
+    <result column="set_org_id" property="setOrgId" jdbcType="INTEGER" />
+    <result column="set_client_id" property="setClientId" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="INTEGER" />
+    <result column="createdByName" property="createdByName" jdbcType="NVARCHAR" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedBy" property="updatedBy" jdbcType="INTEGER" />
+    <result column="updatedByName" property="updatedByName" jdbcType="NVARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="indexOrder" property="indexOrder" jdbcType="INTEGER" />
+    
+    <association property="sysSettingsItem" column="item_id" select="com.delmar.sysSettings.mybatis.sql.SysSettingsItemMapper.selectByPrimaryKey"></association>    
+    <collection property="sysSettingsValues" select="com.delmar.sysSettings.mybatis.sql.SysSettingsValuesMapper.selectByFatherKey" column="id">  </collection>  
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      	<if test="accessString!=null"> 	 <![CDATA[ ${accessString} ]]>  </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, set_value_string, user_id, user_name, org_id, client_id, set_user_id, set_org_id, set_client_id, created, createdBy
+    , createdByName, updated, updatedBy, updatedByName, item_id, indexOrder
+   
+  </sql>
+  
+	<select id="selectNameById"  resultType="java.lang.String" parameterType="java.lang.Integer"  >
+	   select name from sys_settings where id = #{id,jdbcType=INTEGER}
+	</select>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <if test="topnumber!=null" >
+       ${topnumber}
+    </if>        
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <if test="columns != null" >
+        ${columns}
+    </if>
+    
+    <if test="columns == null" >
+       <include refid="Base_Column_List" />
+    </if>    
+    
+    from sys_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+    
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_settings
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey"  parameterType="java.lang.Integer" >
+    delete from sys_settings
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from sys_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sysSettings.model.SysSettings" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_settings (set_value_string, user_id, user_name, org_id, client_id, set_user_id, 
+    set_org_id, set_client_id, created, createdBy, createdByName, updated, updatedBy, updatedByName, item_id, indexOrder)
+    values (#{setValueString,jdbcType=NVARCHAR}, #{userId,jdbcType=INTEGER}
+      ,#{userName,jdbcType=NVARCHAR}, #{orgId,jdbcType=INTEGER}
+      ,#{clientId,jdbcType=INTEGER}, #{setUserId,jdbcType=INTEGER}
+      ,#{setOrgId,jdbcType=INTEGER}, #{setClientId,jdbcType=INTEGER}
+      ,#{created,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER}
+      ,#{createdByName,jdbcType=NVARCHAR}, #{updated,jdbcType=TIMESTAMP}
+      ,#{updatedBy,jdbcType=INTEGER}, #{updatedByName,jdbcType=NVARCHAR}
+      ,#{itemId,jdbcType=INTEGER},#{indexOrder,jdbcType=INTEGER})
+      
+  </insert>
+  
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from sys_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sysSettings.model.SysSettings" >
+    update sys_settings
+    set  
+    	set_value_string = #{setValueString,jdbcType=NVARCHAR}, 
+      	user_id = #{userId,jdbcType=INTEGER},
+      	user_name = #{userName,jdbcType=NVARCHAR}, 
+      	org_id = #{orgId,jdbcType=INTEGER},
+      	client_id = #{clientId,jdbcType=INTEGER}, 
+      	set_user_id = #{setUserId,jdbcType=INTEGER},
+      	set_org_id = #{setOrgId,jdbcType=INTEGER}, 
+      	set_client_id = #{setClientId,jdbcType=INTEGER},
+      	created = #{created,jdbcType=TIMESTAMP}, 
+      	createdBy = #{createdBy,jdbcType=INTEGER},
+      	createdByName = #{createdByName,jdbcType=NVARCHAR}, 
+      	updated = #{updated,jdbcType=TIMESTAMP},
+      	updatedBy = #{updatedBy,jdbcType=INTEGER}, 
+      	updatedByName = #{updatedByName,jdbcType=NVARCHAR},
+      	item_id = #{itemId,jdbcType=INTEGER},
+      	indexOrder = #{indexOrder,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sysSettings.model.SysSettings" >
+    update sys_settings
+    <set >
+      
+      <if test="setValueString != null" >
+        set_value_string = #{setValueString,jdbcType=NVARCHAR}, 
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER}, 
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=NVARCHAR}, 
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER}, 
+      </if>
+      <if test="setUserId != null" >
+        set_user_id = #{setUserId,jdbcType=INTEGER},
+      </if>
+      <if test="setOrgId != null" >
+        set_org_id = #{setOrgId,jdbcType=INTEGER}, 
+      </if>
+      <if test="setClientId != null" >
+        set_client_id = #{setClientId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP}, 
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="createdByName != null" >
+        createdByName = #{createdByName,jdbcType=NVARCHAR},  
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+       <if test="updatedBy != null" >
+        updatedBy = #{updatedBy,jdbcType=INTEGER}, 
+      </if>
+       <if test="updatedByName != null" >
+        updatedByName = #{updatedByName,jdbcType=NVARCHAR},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="indexOrder != null" >
+        indexOrder = #{indexOrder,jdbcType=INTEGER},
+      </if>
+     
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

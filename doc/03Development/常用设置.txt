@@ -1,0 +1,2 @@
+设置jdk初始内存值
+-Xms256m -Xmx1024m -XX:MaxPermSize=512m

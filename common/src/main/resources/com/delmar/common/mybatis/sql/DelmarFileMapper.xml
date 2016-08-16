@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.common.mybatis.sql.DelmarFileMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.common.model.DelmarFile" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+    <result column="file_type" property="fileType" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="extension" property="extension" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="INTEGER" />
+    <result column="file_created" property="fileCreated" jdbcType="TIMESTAMP" />
+    <result column="file_updated" property="fileUpdated" jdbcType="TIMESTAMP" />
+    <result column="file_isreadonly" property="fileIsreadonly" jdbcType="INTEGER" />
+    <result column="file_ishidden" property="fileIshidden" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="common_file_setting_id" property="commonFileSettingId" jdbcType="INTEGER" />
+    <result column="file_abstract" property="fileAbstract" jdbcType="VARCHAR" />
+    <result column="file_keyword" property="fileKeyword" jdbcType="VARCHAR" />
+    <result column="file_mode" property="fileMode" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.delmar.common.model.DelmarFile" extends="BaseResultMap" >
+    <result column="file_blob" property="fileBlob" jdbcType="BLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+                	<if test="accessString!=null"> and ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, filename, file_type, path, extension, file_size, file_created, file_updated, 
+    file_isreadonly, file_ishidden, created, common_file_setting_id, file_abstract, file_keyword, 
+    file_mode
+  </sql>
+  <sql id="Blob_Column_List" >
+    file_blob
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from common_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from common_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from common_file
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from common_file
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from common_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.common.model.DelmarFile" useGeneratedKeys="true" keyProperty="id" >
+    insert into common_file (filename, file_type, path, 
+      extension, file_size, file_created, 
+      file_updated, file_isreadonly, file_ishidden, 
+      created, common_file_setting_id, file_abstract, 
+      file_keyword, file_mode, file_blob
+      )
+    values (#{filename,jdbcType=VARCHAR}, #{fileType,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{extension,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{fileCreated,jdbcType=TIMESTAMP}, 
+      #{fileUpdated,jdbcType=TIMESTAMP}, #{fileIsreadonly,jdbcType=INTEGER}, #{fileIshidden,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{commonFileSettingId,jdbcType=INTEGER}, #{fileAbstract,jdbcType=VARCHAR}, 
+      #{fileKeyword,jdbcType=VARCHAR}, #{fileMode,jdbcType=INTEGER}, #{fileBlob,jdbcType=BLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.common.model.DelmarFile" useGeneratedKeys="true" keyProperty="id" >
+    insert into common_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="filename != null" >
+        filename,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="extension != null" >
+        extension,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="fileCreated != null" >
+        file_created,
+      </if>
+      <if test="fileUpdated != null" >
+        file_updated,
+      </if>
+      <if test="fileIsreadonly != null" >
+        file_isreadonly,
+      </if>
+      <if test="fileIshidden != null" >
+        file_ishidden,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="commonFileSettingId != null" >
+        common_file_setting_id,
+      </if>
+      <if test="fileAbstract != null" >
+        file_abstract,
+      </if>
+      <if test="fileKeyword != null" >
+        file_keyword,
+      </if>
+      <if test="fileMode != null" >
+        file_mode,
+      </if>
+      <if test="fileBlob != null" >
+        file_blob,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="extension != null" >
+        #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileCreated != null" >
+        #{fileCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileUpdated != null" >
+        #{fileUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileIsreadonly != null" >
+        #{fileIsreadonly,jdbcType=INTEGER},
+      </if>
+      <if test="fileIshidden != null" >
+        #{fileIshidden,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commonFileSettingId != null" >
+        #{commonFileSettingId,jdbcType=INTEGER},
+      </if>
+      <if test="fileAbstract != null" >
+        #{fileAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="fileKeyword != null" >
+        #{fileKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMode != null" >
+        #{fileMode,jdbcType=INTEGER},
+      </if>
+      <if test="fileBlob != null" >
+        #{fileBlob,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from common_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.common.model.DelmarFile" >
+    update common_file
+    <set >
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="extension != null" >
+        extension = #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileCreated != null" >
+        file_created = #{fileCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileUpdated != null" >
+        file_updated = #{fileUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileIsreadonly != null" >
+        file_isreadonly = #{fileIsreadonly,jdbcType=INTEGER},
+      </if>
+      <if test="fileIshidden != null" >
+        file_ishidden = #{fileIshidden,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commonFileSettingId != null" >
+        common_file_setting_id = #{commonFileSettingId,jdbcType=INTEGER},
+      </if>
+      <if test="fileAbstract != null" >
+        file_abstract = #{fileAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="fileKeyword != null" >
+        file_keyword = #{fileKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMode != null" >
+        file_mode = #{fileMode,jdbcType=INTEGER},
+      </if>
+      <if test="fileBlob != null" >
+        file_blob = #{fileBlob,jdbcType=BLOB},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.delmar.common.model.DelmarFile" >
+    update common_file
+    set filename = #{filename,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      extension = #{extension,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=INTEGER},
+      file_created = #{fileCreated,jdbcType=TIMESTAMP},
+      file_updated = #{fileUpdated,jdbcType=TIMESTAMP},
+      file_isreadonly = #{fileIsreadonly,jdbcType=INTEGER},
+      file_ishidden = #{fileIshidden,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      common_file_setting_id = #{commonFileSettingId,jdbcType=INTEGER},
+      file_abstract = #{fileAbstract,jdbcType=VARCHAR},
+      file_keyword = #{fileKeyword,jdbcType=VARCHAR},
+      file_mode = #{fileMode,jdbcType=INTEGER},
+      file_blob = #{fileBlob,jdbcType=BLOB}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.common.model.DelmarFile" >
+    update common_file
+    set filename = #{filename,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      extension = #{extension,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=INTEGER},
+      file_created = #{fileCreated,jdbcType=TIMESTAMP},
+      file_updated = #{fileUpdated,jdbcType=TIMESTAMP},
+      file_isreadonly = #{fileIsreadonly,jdbcType=INTEGER},
+      file_ishidden = #{fileIshidden,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      common_file_setting_id = #{commonFileSettingId,jdbcType=INTEGER},
+      file_abstract = #{fileAbstract,jdbcType=VARCHAR},
+      file_keyword = #{fileKeyword,jdbcType=VARCHAR},
+      file_mode = #{fileMode,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

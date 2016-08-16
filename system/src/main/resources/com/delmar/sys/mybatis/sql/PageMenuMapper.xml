@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.sys.mybatis.sql.PageMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.sys.model.PageMenu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="menu_type" property="menuType" jdbcType="CHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="VARCHAR" />
+    <result column="parent_menu_id" property="parentMenuId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="ico_path" property="icoPath" jdbcType="VARCHAR" />
+    <result column="page_url" property="pageUrl" jdbcType="VARCHAR" />
+    <result column="messagekey" property="messagekey" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+    		<if test="menuType!=null"> and menu_type=#{menuType,jdbcType=CHAR}</if>
+    		<if test="parentMenuId!=null"> and parent_Menu_Id=#{parentMenuId,jdbcType=INTEGER}</if>
+          <if test="accessString!=null"> ${accessString} </if>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, menu_type, seq_no, parent_menu_id, remark, ico_path, page_url, messagekey
+  </sql>
+  <select id="getPageMenuByUserId" resultMap="BaseResultMap"  parameterType="java.lang.Integer">
+  SELECT     id, name, menu_type, seq_no, parent_menu_id, remark, ico_path, page_url, messagekey
+FROM         sys_page_menu
+WHERE     (id IN
+                          (SELECT     sys_module_menu.menu_id
+                            FROM          sys_module_menu where sys_module_menu.module_id in(select mr.module_id from sys_user_role  ur inner join 
+sys_module_role mr on ur.role_id=mr.role_id inner join sys_privilege pr on mr.id=pr.module_role_id  
+ inner join sys_operator op on pr.operator_id=op.id
+ where user_id=#{value,jdbcType=INTEGER} and op.value='view')))
+  	
+  </select>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_page_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_page_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_page_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from sys_page_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.sys.model.PageMenu" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_page_menu (name, menu_type, seq_no,       parent_menu_id, remark, ico_path, 
+      page_url, messagekey)
+    values (#{name,jdbcType=VARCHAR}, #{menuType,jdbcType=CHAR}, #{seqNo,jdbcType=VARCHAR}, 
+      #{parentMenuId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{icoPath,jdbcType=VARCHAR}, 
+      #{pageUrl,jdbcType=VARCHAR}, #{messagekey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.sys.model.PageMenu" useGeneratedKeys="true" keyProperty="id" >
+    insert into sys_page_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="parentMenuId != null" >
+        parent_menu_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="icoPath != null" >
+        ico_path,
+      </if>
+      <if test="pageUrl != null" >
+        page_url,
+      </if>
+      <if test="messagekey != null" >
+        messagekey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMenuId != null" >
+        #{parentMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="icoPath != null" >
+        #{icoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pageUrl != null" >
+        #{pageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="messagekey != null" >
+        #{messagekey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from sys_page_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.sys.model.PageMenu" >
+    update sys_page_menu
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMenuId != null" >
+        parent_menu_id = #{parentMenuId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="icoPath != null" >
+        ico_path = #{icoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pageUrl != null" >
+        page_url = #{pageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="messagekey != null" >
+        messagekey = #{messagekey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.sys.model.PageMenu" >
+    update sys_page_menu
+    set name = #{name,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=CHAR},
+      seq_no = #{seqNo,jdbcType=VARCHAR},
+      parent_menu_id = #{parentMenuId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      ico_path = #{icoPath,jdbcType=VARCHAR},
+      page_url = #{pageUrl,jdbcType=VARCHAR},
+      messagekey = #{messagekey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
