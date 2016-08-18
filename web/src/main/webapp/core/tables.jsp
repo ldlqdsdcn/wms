@@ -34,7 +34,7 @@
                   
                   
                   <input type="button" value="<delmar:message key="common.button.create" />" class="input_submit" onclick="viewExport(0)">
-                  
+					<input type="button" value="创建表向导" class="input_submit" onclick="viewExport(1)">
                   <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"></s:submit>
                  </td>
               </tr>
@@ -83,6 +83,10 @@
     {
     	window.location='<c:url value="/core/table_edit.action"/>';
     }
+    else if(id==1)
+	{
+		window.location='<c:url value="/core/table_saveTableByWizard.action"/>';
+	}
     else
     {
        window.location='<c:url value="/core/table_edit.action"/>?id='+id;

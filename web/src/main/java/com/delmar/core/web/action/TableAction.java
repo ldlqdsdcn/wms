@@ -81,6 +81,15 @@ public class TableAction extends CoreEditAction {
 		System.out.println("columns.size="+columns.size());
 		return "edit";
 	}
+	public String addTableByWizard()
+	{
+		return  "wizard";
+	}
+	public String saveTableByWizard()
+	{
+		return "wizard";
+	}
+
 	public String save()
 	{
 		table=tableService.saveTable(table, columns);

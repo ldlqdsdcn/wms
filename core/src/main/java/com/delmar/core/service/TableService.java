@@ -10,6 +10,7 @@ package com.delmar.core.service;
 
 import java.util.List;
 
+import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.model.Table;
 import com.delmar.core.model.TableColumn;
 import com.delmar.core.service.CoreService;
@@ -31,6 +32,6 @@ public interface TableService extends CoreService<Table> {
 	 */
 	Table saveTable(Table table, List<TableColumn> columns);
 
-
+	TableMetaDataDto getTableDescription(String tableName);
 
 }

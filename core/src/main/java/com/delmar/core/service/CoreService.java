@@ -56,7 +56,7 @@ public interface CoreService<T> {
 	public Integer save(T model) ;
 	/**
 	 * 根据主键删除对象
-	 * @param id
+	 * @param example
 	 */
 	public Integer deleteByExample(Map example) ;
 	/**

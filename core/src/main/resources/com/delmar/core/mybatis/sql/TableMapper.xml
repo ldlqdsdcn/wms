@@ -9,6 +9,7 @@
     <result column="out_log" property="outLog" jdbcType="CHAR" />
     <result column="bu_pk" property="buPk" jdbcType="VARCHAR" />
     <result column="descr" property="descr" jdbcType="NVARCHAR" />
+    <result column="uk_index_json" property="ukIndexJson" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -22,7 +23,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, table_name_tr, class_name, out_log, bu_pk, descr
+    id, name, table_name_tr, class_name, out_log, bu_pk, descr,uk_index_json
   </sql>
   
   <cache flushInterval="7200000" size="1000"></cache>
@@ -60,9 +61,9 @@
   </delete>
   <insert id="insert" parameterType="com.delmar.core.model.Table" useGeneratedKeys="true" keyProperty="id"  flushCache="true">
     insert into core_table (name, table_name_tr, class_name, 
-      out_log, bu_pk, descr)
+      out_log, bu_pk, descr,uk_index_json)
     values (#{name,jdbcType=VARCHAR}, #{tableNameTr,jdbcType=NVARCHAR}, #{className,jdbcType=NVARCHAR}, 
-      #{outLog,jdbcType=CHAR}, #{buPk,jdbcType=VARCHAR}, #{descr,jdbcType=NVARCHAR})
+      #{outLog,jdbcType=CHAR}, #{buPk,jdbcType=VARCHAR}, #{descr,jdbcType=NVARCHAR},#{ukIndexJson,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.delmar.core.model.Table" useGeneratedKeys="true" keyProperty="id" flushCache="true" >
     insert into core_table
@@ -85,6 +86,9 @@
       <if test="descr != null" >
         descr,
       </if>
+      <if test="ukIndexJson != null" >
+        uk_index_json,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="name != null" >
@@ -104,6 +108,9 @@
       </if>
       <if test="descr != null" >
         #{descr,jdbcType=NVARCHAR},
+      </if>
+      <if test="ukIndexJson != null" >
+        #{ukIndexJson,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -134,6 +141,9 @@
       <if test="descr != null" >
         descr = #{descr,jdbcType=NVARCHAR},
       </if>
+      <if test="ukIndexJson != null" >
+        uk_index_json = #{ukIndexJson,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -144,7 +154,8 @@
       class_name = #{className,jdbcType=NVARCHAR},
       out_log = #{outLog,jdbcType=CHAR},
       bu_pk = #{buPk,jdbcType=VARCHAR},
-      descr = #{descr,jdbcType=NVARCHAR}
+      descr = #{descr,jdbcType=NVARCHAR},
+      uk_index_json = #{ukIndexJson,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

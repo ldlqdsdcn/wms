@@ -65,6 +65,7 @@
 	<action name="table_*" class="com.delmar.core.web.action.TableAction" method="{1}">
 		<result name="list">/core/tables.jsp</result>
 		<result name="edit">/core/tableForm.jsp</result>
+		<result name="wizard">/core/tableAddByWizard.jsp</result>
 	</action>
 	<!-- 语言 -->
 	<action name="language_*" class="com.delmar.core.web.action.LanguageAction" method="{1}">

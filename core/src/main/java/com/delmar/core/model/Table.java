@@ -18,7 +18,9 @@ public class Table extends CoreModel {
     private String buPk;
 
     private String descr;
-    
+
+    private String ukIndexJson;
+
     private List<TableColumn> tableColumnList;
 
     /**
@@ -89,5 +91,13 @@ public class Table extends CoreModel {
 
     public void setDescr(String descr) {
         this.descr = descr == null ? null : descr.trim();
+    }
+
+    public String getUkIndexJson() {
+        return ukIndexJson;
+    }
+
+    public void setUkIndexJson(String ukIndexJson) {
+        this.ukIndexJson = ukIndexJson;
     }
 }

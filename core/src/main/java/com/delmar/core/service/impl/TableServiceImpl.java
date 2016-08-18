@@ -9,6 +9,8 @@ package com.delmar.core.service.impl;
 
 import java.util.List;
 
+import com.delmar.core.dto.TableMetaDataDto;
+import com.delmar.utils.DmLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,7 @@ import com.delmar.core.service.TableService;
 @Service("tableService")
 public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		TableService {
+	private static final DmLog dmLog=DmLog.getLogger(TableServiceImpl.class);
 	@Autowired
 	private TableDao tableDao;
 	
@@ -61,5 +64,31 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		return table;
 	}
 
-	
+	public TableMetaDataDto getTableDescription(String tableName) {
+		dmLog.debug(tableName);
+		TableMetaDataDto tableMetaDataDto=new TableMetaDataDto();
+		tableMetaDataDto.setName(tableName);
+		String primaryKey=tableDao.getPrimaryKey(tableName);
+		tableMetaDataDto.setPk_column(primaryKey);
+		String uniqueIndex=tableDao.getUniqueIndex(tableName);
+		tableMetaDataDto.setUniqueKey(uniqueIndex);
+
+		//List<String> tableList=tableDao.getTableDescription(tableName);
+
+		dmLog.debug("uniqueIndex="+uniqueIndex);
+
+		dmLog.debug("primaryKey="+primaryKey);
+		String exportedKeys=tableDao.getExportedKeys(tableName);
+		tableMetaDataDto.setExportedFK(exportedKeys);
+		dmLog.debug("exportedKeys="+exportedKeys);
+		String importedKeys=tableDao.getImportedKeys(tableName);
+		tableMetaDataDto.setImportedFK(importedKeys);
+		dmLog.debug("importedKeys="+importedKeys);
+		String columns=tableDao.getTableColumns(tableName);
+		tableMetaDataDto.setColumnList(columns);
+		dmLog.debug("columns="+columns);
+		return tableMetaDataDto;
+	}
+
+
 }
