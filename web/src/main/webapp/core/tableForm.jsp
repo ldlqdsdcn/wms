@@ -198,7 +198,7 @@
                                                                             <td>
                                                                                 <s:select
                                                                                         name="%{'columns['+#st.index+'].dataType'}"
-                                                                                        list="#{1:'数值',2:'字符',3:'日期'}"></s:select>
+                                                                                        list="#{0:'整数',1:'浮点数',2:'字符',3:'日期',4:'其它'}"></s:select>
                                                                             </td>
                                                                             <td>
                                                                                 <s:radio

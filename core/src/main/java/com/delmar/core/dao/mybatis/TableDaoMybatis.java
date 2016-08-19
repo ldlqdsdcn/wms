@@ -39,7 +39,6 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
 
     private static final String COLUMN_NAME = "COLUMN_NAME";
     private static final String TYPE_NAME = "TYPE_NAME";
-    private static final String DATA_TYPE = "DATA_TYPE";
     private static final String COLUMN_SIZE = "COLUMN_SIZE";
     private static final String DECIMAL_DIGITS = "DECIMAL_DIGITS";
     private static final String NULLABLE = "NULLABLE";
@@ -89,6 +88,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (Exception e) {
             throw new DataBaseException("获取 PrimaryKey失败", e);
         }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
+        }
         return jsonObject.toString();
     }
 
@@ -111,6 +115,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
 
         } catch (Exception e) {
             throw new DataBaseException("获取 Index失败", e);
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
         }
         return jsonArray.toString();
     }
@@ -143,6 +152,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("获取 外部引用键值失败", e);
         }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
+        }
         return jsonArray.toString();
     }
 
@@ -173,6 +187,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("获取 引用外部键值失败", e);
         }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
+        }
         return jsonArray.toString();
     }
 
@@ -198,13 +217,18 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 jsonObject.addProperty(COLUMN_SIZE, column_size);
                 jsonObject.addProperty(DECIMAL_DIGITS, digits);
                 jsonObject.addProperty(NULLABLE, nullable);
-                jsonObject.addProperty(DATA_TYPE, colRet.getInt(DATA_TYPE));
+                //jsonObject.addProperty(DATA_TYPE, colRet.getInt(DATA_TYPE));
                 jsonArray.add(jsonObject);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataBaseException("获取数据库列信息异常", e);
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
         }
         return jsonArray.toString();
     }

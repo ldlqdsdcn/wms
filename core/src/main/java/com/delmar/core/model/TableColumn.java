@@ -18,6 +18,14 @@ public class TableColumn extends CoreModel{
 
     private String descr;
 
+    private String isUnique;
+
+    private Integer columnSize;
+
+    private Integer digits;
+
+    private Integer nullable;
+
     public Integer getId() {
         return id;
     }
@@ -88,5 +96,37 @@ public class TableColumn extends CoreModel{
 
     public void setDescr(String descr) {
         this.descr = descr == null ? null : descr.trim();
+    }
+
+    public String getIsUnique() {
+        return isUnique;
+    }
+
+    public void setIsUnique(String isUnique) {
+        this.isUnique = isUnique;
+    }
+
+    public Integer getColumnSize() {
+        return columnSize;
+    }
+
+    public void setColumnSize(Integer columnSize) {
+        this.columnSize = columnSize;
+    }
+
+    public Integer getDigits() {
+        return digits;
+    }
+
+    public void setDigits(Integer digits) {
+        this.digits = digits;
+    }
+
+    public Integer getNullable() {
+        return nullable;
+    }
+
+    public void setNullable(Integer nullable) {
+        this.nullable = nullable;
     }
 }

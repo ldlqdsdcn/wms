@@ -1,0 +1,44 @@
+package com.delmar.core.def;
+
+/**
+ * Created by admin on 2016/8/19.
+ */
+public enum FieldType {
+    TINYINT(-6,"TINYINT",0),//-128到127  0-255
+    SMALLINT(5,"SMALLINT",0),//–32768 到 32767 0-65535
+    BIGINT(-5,"BIGINT",0),
+    BIT(-7,"BIT",0),
+    INTEGER(	4,"整数",0),
+    DOUBLE(8,"双精度",1),
+    FLOAT(7,"单精度",1),
+    DECIMAL(3,"DECIMAL",1),
+    CHAR(1,"CHAR",2),
+    VARCHAR(12,"VARCHAR",2),
+    DATE(91,"DATE YEAR",2),
+    TIME(92,"TIME",2),
+    TIMESTAMP(93,"TIMESTAMP",3),
+    TINYBLOB(-2,"TINYBLOB",4),
+    BLOB(-4,"BLOB",4),
+    TEXT(-1,"Text",4)
+    ;
+    FieldType(int key,String desc,int type)
+    {
+        this.key=key;
+        this.desc=desc;
+    }
+    private int key;
+    private String desc;
+    private int type;
+
+    public int getKey() {
+        return key;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+    public int getType()
+    {
+        return type;
+    }
+}

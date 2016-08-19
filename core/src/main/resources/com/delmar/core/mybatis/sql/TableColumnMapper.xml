@@ -11,18 +11,22 @@
     <result column="attribute_name" jdbcType="VARCHAR" property="attributeName" />
     <result column="out_log" jdbcType="CHAR" property="outLog" />
     <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="is_unique" jdbcType="CHAR" property="isUnique"/>
+    <result column="column_size" jdbcType="INTEGER" property="columnSize"/>
+    <result column="digits" jdbcType="INTEGER" property="digits"/>
+    <result column="nullable" jdbcType="CHAR" property="nullable"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
-              <if test="tableId != null">
+    <if test="tableId != null">
      and   table_id=#{tableId,jdbcType=INTEGER}
-      </if>
+    </if>
   <if test="accessString!=null">and ${accessString} </if>
     </where>
   </sql>
   <sql id="Base_Column_List">
     id, column_name, data_type, table_id, can_show, column_name_tr, attribute_name, out_log, 
-    descr
+    descr,is_unique,column_size,digits,nullable
   </sql>
   
     <cache flushInterval="7200000" size="1000"></cache>
@@ -60,7 +64,7 @@
   <insert id="insert" keyProperty="id" parameterType="com.delmar.core.model.TableColumn" useGeneratedKeys="true" flushCache="true">
     insert into core_table_column (column_name, data_type, table_id, 
       can_show, column_name_tr, attribute_name, 
-      out_log, descr)
+      out_log, descr,is_unique,column_size,digits,nullable)
     values (#{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, #{tableId,jdbcType=INTEGER}, 
       #{canShow,jdbcType=CHAR}, #{columnNameTr,jdbcType=VARCHAR}, #{attributeName,jdbcType=VARCHAR}, 
       #{outLog,jdbcType=CHAR}, #{descr,jdbcType=VARCHAR})
