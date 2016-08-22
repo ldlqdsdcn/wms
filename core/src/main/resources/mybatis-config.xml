@@ -21,5 +21,10 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
 </environments>
  -->
  <settings><setting name="logImpl" value="LOG4J"/></settings>
- 
+ <plugins>
+  <plugin interceptor="org.mybatis.pagination.PaginationInterceptor">
+   <property name="dbms" value="mysql"/>
+   <property name="sqlRegex" value=".*findAll.*"/>
+  </plugin>
+ </plugins>
 </configuration>

@@ -26,6 +26,30 @@
               <groupId>com.delmar</groupId>
               <version>1.0</version>
           </dependency>
+         <!--mybatis paging begin-->
+         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+         <dependency>
+             <groupId>com.google.guava</groupId>
+             <artifactId>guava</artifactId>
+             <version>15.0</version>
+         </dependency>
+
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-api</artifactId>
+             <version>1.5.8</version>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.commons</groupId>
+             <artifactId>commons-lang3</artifactId>
+             <version>3.1</version>
+         </dependency>
+         <dependency>
+             <groupId>org.sonatype.sisu</groupId>
+             <artifactId>sisu-guava</artifactId>
+             <version>0.9.9</version>
+         </dependency>
+         <!--mybatis paging end-->
      </dependencies>
     <build>
         <plugins>
@@ -34,6 +58,14 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
         </plugins>

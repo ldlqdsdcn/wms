@@ -1,0 +1,3876 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @115.28.186.84" uuid="2bc2ccf1-6257-4b77-8cab-6ee2c377ebbf">
+    <database-info product="MySQL" version="5.7.13-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="aeon_wms">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="aeon_wms_test"/>
+      <schema id="3" name="information_schema"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="sakila"/>
+      <schema id="7" name="sys"/>
+      <schema id="8" name="world"/>
+      <table id="9" parent="1" name="wms_basic_article">
+        <comment>商品类别表</comment>
+      </table>
+      <table id="10" parent="1" name="wms_basic_car">
+        <comment>车辆表</comment>
+      </table>
+      <table id="11" parent="1" name="wms_basic_container">
+        <comment>容器表</comment>
+      </table>
+      <table id="12" parent="1" name="wms_basic_hht_update">
+        <comment>HHT自动更新</comment>
+      </table>
+      <table id="13" parent="1" name="wms_basic_item">
+        <comment>商品表</comment>
+      </table>
+      <table id="14" parent="1" name="wms_basic_item_barcode">
+        <comment>商品条码</comment>
+      </table>
+      <table id="15" parent="1" name="wms_basic_logistic">
+        <comment>物流类别表</comment>
+      </table>
+      <table id="16" parent="1" name="wms_basic_position">
+        <comment>仓位表</comment>
+      </table>
+      <table id="17" parent="1" name="wms_basic_store">
+        <comment>店铺表</comment>
+      </table>
+      <table id="18" parent="1" name="wms_basic_user">
+        <comment>用户表</comment>
+      </table>
+      <table id="19" parent="1" name="wms_basic_vendor">
+        <comment>供应商表</comment>
+      </table>
+      <table id="20" parent="1" name="wms_basic_vendor_article">
+        <comment>供应商商品类别关系表</comment>
+      </table>
+      <table id="21" parent="1" name="wms_business_car_load_detail">
+        <comment>车辆装载明细</comment>
+      </table>
+      <table id="22" parent="1" name="wms_business_container_load_detail">
+        <comment>容器装载明细</comment>
+      </table>
+      <table id="23" parent="1" name="wms_business_container_move_record">
+        <comment>容器移动记录</comment>
+      </table>
+      <table id="24" parent="1" name="wms_business_manage_tag">
+        <comment>库存管理标签</comment>
+      </table>
+      <table id="25" parent="1" name="wms_business_oos_reason_dict">
+        <comment>商品欠品原因</comment>
+      </table>
+      <table id="26" parent="1" name="wms_business_oos_reason_record">
+        <comment>商品欠品记录表</comment>
+      </table>
+      <table id="27" parent="1" name="wms_business_scm">
+        <comment>SCM标签</comment>
+      </table>
+      <table id="28" parent="1" name="wms_business_scm_detail">
+        <comment>SCM标签商品绑定</comment>
+      </table>
+      <table id="29" parent="1" name="wms_business_stock">
+        <comment>库存表</comment>
+      </table>
+      <table id="30" parent="1" name="wms_business_stock_detail">
+        <comment>库存明细</comment>
+      </table>
+      <table id="31" parent="1" name="wms_business_stock_record">
+        <comment>库存台帐表</comment>
+      </table>
+      <table id="32" parent="1" name="wms_note_ck_detail">
+        <comment>出库单明细</comment>
+      </table>
+      <table id="33" parent="1" name="wms_note_ck_form">
+        <comment>出库单表头</comment>
+      </table>
+      <table id="34" parent="1" name="wms_note_pick_detail">
+        <comment>拣货单明细</comment>
+      </table>
+      <table id="35" parent="1" name="wms_note_pick_form">
+        <comment>拣货单表头</comment>
+      </table>
+      <table id="36" parent="1" name="wms_note_po_detail">
+        <comment>PF入库单明细</comment>
+      </table>
+      <table id="37" parent="1" name="wms_note_po_form">
+        <comment>PF入库单表头</comment>
+      </table>
+      <table id="38" parent="1" name="wms_note_po_merge_detail">
+        <comment>集约入库单明细</comment>
+      </table>
+      <table id="39" parent="1" name="wms_note_po_merge_form">
+        <comment>集约入库单表头</comment>
+      </table>
+      <table id="40" parent="1" name="wms_note_prove_ck">
+        <comment>到店证明出库单关系表</comment>
+      </table>
+      <table id="41" parent="1" name="wms_note_prove_container_detail">
+        <comment>到店证明容器明细</comment>
+      </table>
+      <table id="42" parent="1" name="wms_note_prove_form">
+        <comment>到店证明表头</comment>
+      </table>
+      <table id="43" parent="1" name="wms_note_prove_scm_detail">
+        <comment>到店证明SCM明细</comment>
+      </table>
+      <table id="44" parent="1" name="wms_note_rtn_detail">
+        <comment>退货单明细</comment>
+      </table>
+      <table id="45" parent="1" name="wms_note_rtn_form">
+        <comment>退货单表头</comment>
+      </table>
+      <table id="46" parent="1" name="wms_note_ty_detail">
+        <comment>PF验收单明细</comment>
+      </table>
+      <table id="47" parent="1" name="wms_note_ty_form">
+        <comment>PF验收单表头</comment>
+      </table>
+      <table id="48" parent="1" name="wms_note_ty_merge_detail">
+        <comment>集约验收单明细</comment>
+      </table>
+      <table id="49" parent="1" name="wms_note_ty_merge_form">
+        <comment>集约验收单表头</comment>
+      </table>
+      <table id="50" parent="1" name="wms_purview_menu">
+        <comment>系统菜单</comment>
+      </table>
+      <table id="51" parent="1" name="wms_purview_user">
+        <comment>用户表</comment>
+      </table>
+      <table id="52" parent="1" name="wms_purview_user_group">
+        <comment>用户组</comment>
+      </table>
+      <table id="53" parent="1" name="wms_purview_user_group_menu">
+        <comment>权限用户组关系表</comment>
+      </table>
+      <table id="54" parent="1" name="wms_purview_user_user_group">
+        <comment>用户组用户关系表</comment>
+      </table>
+      <table id="55" parent="1" name="wms_seed_sequence">
+        <comment>单据编号种子序列表</comment>
+      </table>
+      <routine id="56" parent="1" name="wms_kbno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="57" parent="1" name="wms_lcno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="58" parent="1" name="wms_noteproveno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="59" parent="1" name="wms_orderno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="60" parent="1" name="wms_scmno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="61" parent="1" name="wms_seed_currval">
+        <comment>获取种子的当前值</comment>
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="62" parent="1" name="wms_seed_nextval">
+        <comment>获取种子的下一个值</comment>
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="63" parent="1" name="wms_seed_setval">
+        <comment>设置种子的当前值</comment>
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="64" parent="1" name="wms_stockno_generate">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <column id="65" parent="9" name="article_code">
+        <comment>商品类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="66" parent="9" name="article_desc">
+        <comment>商品类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="67" parent="9" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="68" parent="9" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="69" parent="9" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="70" parent="9" name="is_temp">
+        <comment>是否临时</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="71" parent="9" name="merge_days">
+        <comment>集约规则中的提前天数，即：3为D-3，2为D-2</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+        <default-expression>&apos;2&apos;</default-expression>
+      </column>
+      <key id="72" parent="9" name="PRIMARY">
+        <columns>article_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="73" parent="10" name="car_code">
+        <comment>车牌号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="74" parent="10" name="tonnage">
+        <comment>吨位</comment>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="75" parent="10" name="task_status">
+        <comment>作业状态：1=无作业；2=物流运输</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="76" parent="10" name="send_time">
+        <comment>发车时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="77" parent="10" name="container_total">
+        <comment>容器数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="78" parent="10" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="79" parent="10" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="80" parent="10" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="81" parent="10" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="82" parent="10" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="83" parent="10" name="PRIMARY">
+        <columns>car_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="84" parent="11" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="85" parent="11" name="container_type">
+        <comment>容器类型：1=笼车；2=临时卡板</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="86" parent="11" name="store_code">
+        <comment>店铺编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="87" parent="11" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="88" parent="11" name="scm_total">
+        <comment>SCM数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="89" parent="11" name="position_type">
+        <comment>位置类型：1=在库；2=运输在途；3=到店</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="90" parent="11" name="position_info">
+        <comment>位置，详细位置信息</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="91" parent="11" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="92" parent="11" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="93" parent="11" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="94" parent="11" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="95" parent="11" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="96" parent="11" name="PRIMARY">
+        <columns>container_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="97" parent="12" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="98" parent="12" name="file_name">
+        <comment>文件名</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="99" parent="12" name="file_path">
+        <comment>文件路径</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="100" parent="12" name="version_no">
+        <comment>版本号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="101" parent="12" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="102" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="103" parent="13" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="104" parent="13" name="item_desc">
+        <comment>商品描述，此处代指商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="105" parent="13" name="section_code">
+        <comment>组别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="106" parent="13" name="article_code">
+        <comment>商品类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="107" parent="13" name="dept_code">
+        <comment>部门编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="108" parent="13" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="109" parent="13" name="price">
+        <comment>销售价格</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="110" parent="13" name="brand">
+        <comment>品牌名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)|0</data-type>
+      </column>
+      <column id="111" parent="13" name="pack">
+        <comment>销售单位与采购单位的转换因子。例：采购单位为KG，销售单位为500g，1KG=2*500g，则此处为2。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="112" parent="13" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="113" parent="13" name="color">
+        <comment>颜色</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="114" parent="13" name="stock_onhand">
+        <comment>现有库存数量。生鲜商品此处格式为小数</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="115" parent="13" name="org_price">
+        <comment>原价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="116" parent="13" name="jc_price">
+        <comment>佳世客会员卡价格</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="117" parent="13" name="bundle_type">
+        <comment>包装类型，仅供香港佳世客使用</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="118" parent="13" name="holding">
+        <comment>若Holding字段为 T，则库存字段值为整数，没有则为小数。？</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="119" parent="13" name="pack_unit">
+        <comment>销售单位</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="120" parent="13" name="tldc_mark">
+        <comment>采购业务。1：店铺向供应商采购，供应商送货至DC或店铺；2：店铺向TLDC采购，TLDC向供应商采购。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="121" parent="13" name="stop_ord">
+        <comment>Profit中商品属性，商品是否允许订货。Y，不允许。N，允许。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="122" parent="13" name="stop_rtn">
+        <comment>Profit中商品属性，商品是否允许退货、做退货确认。Y，不允许。N，允许。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="123" parent="13" name="hold_order">
+        <comment>Profit中商品属性，商品是否允许订货、收货。Y，不允许。N，允许。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="124" parent="13" name="discontinue">
+        <comment>Profit中商品属性，商品是否允许订货、生鲜订货、退货、确认退货、收货。Y，不允许。N，允许。</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="125" parent="13" name="delete">
+        <comment>删除标识。Y：删除；N：未删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="126" parent="13" name="contract_code">
+        <comment>供应商合同代码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="127" parent="13" name="is_delete">
+        <comment>WMS是否删除，WMS使用的是否删除标识字段，与delete区分（暂不使用）</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="128" parent="13" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="129" parent="13" name="is_temp">
+        <comment>是否临时</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="130" parent="13" name="tax_price">
+        <comment>含税进价（暂不使用）</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="131" parent="13" name="notax_price">
+        <comment>无税进价（暂不使用）</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="132" parent="13" name="is_valid_exp">
+        <comment>是否效期管理，默认为否（暂不使用）</comment>
+        <data-type>bit(1)|0</data-type>
+      </column>
+      <column id="133" parent="13" name="exp_num">
+        <comment>保质期时间数量（暂不使用）</comment>
+        <data-type>int(20)|0</data-type>
+      </column>
+      <column id="134" parent="13" name="exp_unit">
+        <comment>保质期时间单位：日/周/月/年（暂不使用）</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <key id="135" parent="13" name="PRIMARY">
+        <columns>item_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="136" parent="14" name="barcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="137" parent="14" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="138" parent="14" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <index id="139" parent="14" name="itembarcode_itemcode">
+        <columns>item_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="140" parent="14" name="PRIMARY">
+        <columns>barcode</columns>
+        <primary>1</primary>
+      </key>
+      <column id="141" parent="15" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="142" parent="15" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="143" parent="15" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="144" parent="15" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="145" parent="15" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="146" parent="15" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="147" parent="15" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="148" parent="15" name="PRIMARY">
+        <columns>logistic_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="149" parent="16" name="position_code">
+        <comment>仓位编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(17)|0</data-type>
+      </column>
+      <column id="150" parent="16" name="warehouse_code">
+        <comment>仓库号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="151" parent="16" name="region_code">
+        <comment>区号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(3)|0</data-type>
+      </column>
+      <column id="152" parent="16" name="shelf_code">
+        <comment>货架编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(3)|0</data-type>
+      </column>
+      <column id="153" parent="16" name="column_no">
+        <comment>货架列数</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="154" parent="16" name="layer_no">
+        <comment>货架层数</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="155" parent="16" name="store_code">
+        <comment>店铺编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="156" parent="16" name="store_name">
+        <comment>店铺名称</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="157" parent="16" name="item_total">
+        <comment>商品数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="158" parent="16" name="sort">
+        <comment>排序序号，正序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="159" parent="16" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="160" parent="16" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="161" parent="16" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="162" parent="16" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="163" parent="16" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="164" parent="16" name="PRIMARY">
+        <columns>position_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="165" parent="17" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="166" parent="17" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="167" parent="17" name="compy_code">
+        <comment>公司编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(3)|0</data-type>
+      </column>
+      <column id="168" parent="17" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="169" parent="17" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="170" parent="17" name="is_temp">
+        <comment>是否临时</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <key id="171" parent="17" name="PRIMARY">
+        <columns>store_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="172" parent="18" name="user">
+        <comment>用户ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="173" parent="18" name="password">
+        <comment>密码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="174" parent="18" name="password_hash">
+        <comment>密码加密盐</comment>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="175" parent="18" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="176" parent="18" name="update_time">
+        <comment>更新时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="177" parent="18" name="is_delete">
+        <comment>是否已删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="178" parent="18" name="is_temp">
+        <comment>是否为临时数据</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="179" parent="19" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="180" parent="19" name="vendor_name">
+        <comment>供应商名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="181" parent="19" name="is_delete">
+        <comment>是否删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="182" parent="19" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="183" parent="19" name="is_temp">
+        <comment>是否临时</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="184" parent="19" name="is_merge">
+        <comment>标记是否针对供应商的订单进行集约，true：集约；false：不集约</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;1&apos;</default-expression>
+      </column>
+      <key id="185" parent="19" name="PRIMARY">
+        <columns>vendor_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="186" parent="20" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="187" parent="20" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="188" parent="20" name="article_code">
+        <comment>商品类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="189" parent="20" name="article_name">
+        <comment>商品类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="190" parent="20" name="order_type">
+        <comment>订货方式：1=店别；2=总量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="191" parent="20" name="is_original">
+        <comment>是否原装箱</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+      </column>
+      <column id="192" parent="20" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="193" parent="20" name="merge_days">
+        <comment>集约天数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;2&apos;</default-expression>
+      </column>
+      <column id="194" parent="20" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="195" parent="20" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="196" parent="20" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="197" parent="20" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="198" parent="20" name="vendorarticle_articlecode">
+        <columns>article_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="199" parent="20" name="vendorarticle_vendorcode">
+        <columns>vendor_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="200" parent="20" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="201" parent="21" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="202" parent="21" name="car_code">
+        <comment>车牌号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="203" parent="21" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="204" parent="21" name="container_type">
+        <comment>容器类型：1=笼车；2=临时卡板</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="205" parent="21" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="206" parent="21" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="207" parent="21" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="208" parent="21" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="209" parent="21" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="210" parent="21" name="scm_total">
+        <comment>SCM数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(6)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="211" parent="21" name="binding_time">
+        <comment>绑定时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="212" parent="21" name="binding_account">
+        <comment>绑定帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="213" parent="21" name="carloaddetail_carcode">
+        <columns>car_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="214" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="215" parent="22" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="216" parent="22" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="217" parent="22" name="scm_code">
+        <comment>SCM编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="218" parent="22" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="219" parent="22" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="220" parent="22" name="orderno">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="221" parent="22" name="item_code">
+        <comment>商品编号（非业务字段，可空）</comment>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="222" parent="22" name="item_name">
+        <comment>商品名称（非业务字段，可空）</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="223" parent="22" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="224" parent="22" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="225" parent="22" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="226" parent="22" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="227" parent="22" name="item_total">
+        <comment>商品总数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="228" parent="22" name="vendor_code">
+        <comment>供应商编号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="229" parent="22" name="vendor_name">
+        <comment>供应商名称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="230" parent="22" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="231" parent="22" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="232" parent="22" name="binding_time">
+        <comment>绑定时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="233" parent="22" name="binding_account">
+        <comment>绑定帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="234" parent="22" name="containerloaddetail_containercode">
+        <columns>container_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="235" parent="22" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="236" parent="23" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="237" parent="23" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="238" parent="23" name="container_type">
+        <comment>容器类型：1=笼车；2=临时卡板</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="239" parent="23" name="action_type">
+        <comment>操作类型：1=发货；2=到店登记；3=回仓登记</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="240" parent="23" name="position_info">
+        <comment>位置明细</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="241" parent="23" name="add_time">
+        <comment>时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <index id="242" parent="23" name="containermoverecord_containercode">
+        <columns>container_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="243" parent="23" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="244" parent="24" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="245" parent="24" name="manage_tag_code">
+        <comment>库存管理标签编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(24)|0</data-type>
+      </column>
+      <column id="246" parent="24" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="247" parent="24" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="248" parent="24" name="item_barcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="249" parent="24" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="250" parent="24" name="orderno">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="251" parent="24" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="252" parent="24" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="253" parent="24" name="add_time">
+        <comment>上架时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <index id="254" parent="24" name="managetag_managetagcode">
+        <columns>manage_tag_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="255" parent="24" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="256" parent="25" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="257" parent="25" name="oos_reason">
+        <comment>欠品原因</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="258" parent="25" name="is_enable">
+        <comment>是否可用</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;1&apos;</default-expression>
+      </column>
+      <key id="259" parent="25" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="260" parent="26" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="261" parent="26" name="orderno">
+        <comment>PF入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="262" parent="26" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="263" parent="26" name="vendor_name">
+        <comment>供应商名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="264" parent="26" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="265" parent="26" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="266" parent="26" name="oos_reason_id">
+        <comment>欠品原因ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="267" parent="26" name="oos_count">
+        <comment>欠品数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+      </column>
+      <column id="268" parent="26" name="ty_time">
+        <comment>验收时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="269" parent="26" name="ty_account">
+        <comment>验收账号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="270" parent="26" name="oosreasonrecord_orderno">
+        <columns>orderno</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="271" parent="26" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="272" parent="27" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="273" parent="27" name="scm_code">
+        <comment>SCM编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="274" parent="27" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="275" parent="27" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="276" parent="27" name="orderno">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="277" parent="27" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="278" parent="27" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="279" parent="27" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="280" parent="27" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="281" parent="27" name="item_total">
+        <comment>商品总数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="282" parent="27" name="vendor_code">
+        <comment>供应商编号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="283" parent="27" name="vendor_name">
+        <comment>供应商名称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="284" parent="27" name="dc_code">
+        <comment>物流中心编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="285" parent="27" name="dc_name">
+        <comment>物流中心名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="286" parent="27" name="item_code">
+        <comment>商品编号（非业务必须字段，可空）</comment>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="287" parent="27" name="item_name">
+        <comment>商品名称（非业务必须字段，可空）</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="288" parent="27" name="article_code">
+        <comment>商品类别编号（非业务必须字段，可空）</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="289" parent="27" name="article_name">
+        <comment>商品类别名称（非业务必须字段，可空）</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="290" parent="27" name="logistic_type">
+        <comment>物流模式：1=XD（通过型）；2=DC（库存型）</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="291" parent="27" name="box_no">
+        <comment>箱装序号</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="292" parent="27" name="print_no">
+        <comment>打印序号（暂不使用）</comment>
+        <data-type>int(4)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="293" parent="27" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="294" parent="27" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="295" parent="27" name="send_status">
+        <comment>发货状态：1=待发货；2=运输在途；3=到店</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="296" parent="27" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="297" parent="27" name="create_account">
+        <comment>创建账号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="298" parent="27" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="299" parent="28" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="300" parent="28" name="scm_code">
+        <comment>SCM编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="301" parent="28" name="orderno">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="302" parent="28" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="303" parent="28" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="304" parent="28" name="item_count">
+        <comment>商品数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="305" parent="28" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="306" parent="28" name="create_account">
+        <comment>创建账号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="307" parent="28" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="308" parent="28" name="update_account">
+        <comment>修改账号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="309" parent="28" name="scmdetail_scmcode">
+        <columns>scm_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="310" parent="28" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="311" parent="29" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="312" parent="29" name="item_code">
+        <comment>商品编号</comment>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="313" parent="29" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="314" parent="29" name="stock">
+        <comment>商品库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="315" parent="29" name="position_stock">
+        <comment>仓位库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="316" parent="29" name="lock_stock">
+        <comment>锁定库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="317" parent="29" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="318" parent="29" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="319" parent="29" name="mfd_date">
+        <comment>生产日期（暂不使用）</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="320" parent="29" name="exp_date">
+        <comment>过期时间（暂不使用）</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <index id="321" parent="29" name="stock_itemcode">
+        <columns>item_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="322" parent="29" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="323" parent="30" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="324" parent="30" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="325" parent="30" name="manage_tag_code">
+        <comment>库存管理标签编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(24)|0</data-type>
+      </column>
+      <column id="326" parent="30" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="327" parent="30" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="328" parent="30" name="position_code">
+        <comment>仓位编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(17)|0</data-type>
+      </column>
+      <column id="329" parent="30" name="position_stock">
+        <comment>仓位库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="330" parent="30" name="lock_stock">
+        <comment>锁定库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="331" parent="30" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="332" parent="30" name="vendor_name">
+        <comment>供应商名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="333" parent="30" name="add_time">
+        <comment>上架时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="334" parent="30" name="stock_status">
+        <comment>库存状态：1正常/2锁定</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="335" parent="30" name="update_time">
+        <comment>修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="336" parent="30" name="update_account">
+        <comment>修改帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="337" parent="30" name="mfd_date">
+        <comment>生产日期（暂不使用）</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="338" parent="30" name="exp_date">
+        <comment>过期时间（暂不使用）</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <index id="339" parent="30" name="stockdetail_itemcode">
+        <columns>item_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="340" parent="30" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="341" parent="31" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="342" parent="31" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="343" parent="31" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="344" parent="31" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="345" parent="31" name="action_type">
+        <comment>操作类型：1=入库验收；2=拣货出库；3=盘盈；4=盘亏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="346" parent="31" name="note_code">
+        <comment>单据编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="347" parent="31" name="update_count">
+        <comment>发生数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="348" parent="31" name="current_count">
+        <comment>结存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="349" parent="31" name="action_time">
+        <comment>时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="350" parent="31" name="action_account">
+        <comment>操作人</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="351" parent="31" name="tax_price">
+        <comment>含税进价（暂不使用）</comment>
+        <data-type>decimal(10,2)|0</data-type>
+      </column>
+      <column id="352" parent="31" name="notax_price">
+        <comment>无税进价（暂不使用）</comment>
+        <data-type>decimal(10,2)|0</data-type>
+      </column>
+      <column id="353" parent="31" name="sale_price">
+        <comment>售价（暂不使用）</comment>
+        <data-type>decimal(10,2)|0</data-type>
+      </column>
+      <index id="354" parent="31" name="stockrecord_itemcode">
+        <columns>item_code</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="355" parent="31" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="356" parent="32" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="357" parent="32" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="358" parent="32" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="359" parent="32" name="po_no">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="360" parent="32" name="store_code">
+        <comment>店铺编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="361" parent="32" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="362" parent="32" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="363" parent="32" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="364" parent="32" name="vendor_name">
+        <comment>供应商名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="365" parent="32" name="article_code">
+        <comment>商品类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="366" parent="32" name="article_name">
+        <comment>商品类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="367" parent="32" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="368" parent="32" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="369" parent="32" name="item_format">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="370" parent="32" name="unit_quantity">
+        <comment>单位入数</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="371" parent="32" name="order_count">
+        <comment>库存单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(8)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="372" parent="32" name="po_order_count">
+        <comment>采购单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="373" parent="32" name="ck_count">
+        <comment>实际出库数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(6)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="374" parent="32" name="color">
+        <comment>颜色</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="375" parent="32" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="376" parent="32" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="377" parent="32" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <index id="378" parent="32" name="ckdetail_ckno">
+        <columns>ck_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="379" parent="32" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="380" parent="33" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="381" parent="33" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="382" parent="33" name="po_merge_no">
+        <comment>集约入库单编号（DC时为空）</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="383" parent="33" name="po_no">
+        <comment>PF入库单编号（DC时为空）</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="384" parent="33" name="logistic_type">
+        <comment>物流模式：1=XD（通过型）；2=DC（库存型）</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="385" parent="33" name="order_type">
+        <comment>订货方式：1=店别；2=总量，创建DC出库单时，默认为1</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="386" parent="33" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="387" parent="33" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="388" parent="33" name="dc_code">
+        <comment>物流中心编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="389" parent="33" name="dc_name">
+        <comment>物流中心名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="390" parent="33" name="vendor_code">
+        <comment>供应商编号（DC时为空）</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="391" parent="33" name="vendor_name">
+        <comment>供应商名称（DC时为空）</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="392" parent="33" name="logistic_code">
+        <comment>物流类别编号（DC时为空）</comment>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="393" parent="33" name="logistic_name">
+        <comment>物流类别名称（DC时为空）</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="394" parent="33" name="delivery_date">
+        <comment>送货日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="395" parent="33" name="ds_no">
+        <comment>调拨单编号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="396" parent="33" name="ck_remark">
+        <comment>出库单备注</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="397" parent="33" name="order_box_total">
+        <comment>订货总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="398" parent="33" name="ck_box_total">
+        <comment>实际出库总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="399" parent="33" name="scm_print_count">
+        <comment>原装箱SCM打印次数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="400" parent="33" name="action_status">
+        <comment>操作状态：1=待配货，2=正在配货，3=待出库，4=正在出库，5=完成，6=取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;3&apos;</default-expression>
+      </column>
+      <column id="401" parent="33" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="402" parent="33" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="403" parent="33" name="send_time">
+        <comment>发货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="404" parent="33" name="send_account">
+        <comment>发货帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="405" parent="33" name="update_time">
+        <comment>修改时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="406" parent="33" name="update_account">
+        <comment>修改帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="407" parent="33" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="408" parent="33" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="409" parent="33" name="ckform_ckno">
+        <columns>ck_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="410" parent="33" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="411" parent="34" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="412" parent="34" name="pick_no">
+        <comment>拣货单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="413" parent="34" name="position_code">
+        <comment>仓位编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(17)|0</data-type>
+      </column>
+      <column id="414" parent="34" name="position_sort">
+        <comment>仓位排序序号</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+      </column>
+      <column id="415" parent="34" name="manage_tag_code">
+        <comment>库存管理标签编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(24)|0</data-type>
+      </column>
+      <column id="416" parent="34" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="417" parent="34" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="418" parent="34" name="ck_count">
+        <comment>出库数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="419" parent="34" name="pick_count">
+        <comment>拣货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="420" parent="34" name="pick_time">
+        <comment>拣货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="421" parent="34" name="pick_account">
+        <comment>拣货帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="422" parent="34" name="pickdetail_pickno">
+        <columns>pick_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="423" parent="34" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="424" parent="35" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="425" parent="35" name="pick_no">
+        <comment>拣货单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="426" parent="35" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="427" parent="35" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="428" parent="35" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="429" parent="35" name="article_code">
+        <comment>商品类别编号（可空）</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="430" parent="35" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="431" parent="35" name="pick_box_total">
+        <comment>实际拣货总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(6)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="432" parent="35" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="433" parent="35" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="434" parent="35" name="pick_time">
+        <comment>配货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="435" parent="35" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="436" parent="35" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="437" parent="35" name="pickform_pickno">
+        <columns>pick_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="438" parent="35" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="439" parent="36" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="440" parent="36" name="vno">
+        <comment>PF入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="441" parent="36" name="po_merge_no">
+        <comment>集约入库单号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="442" parent="36" name="stoco">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="443" parent="36" name="itnum">
+        <comment>Item序号</comment>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="444" parent="36" name="itco">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="445" parent="36" name="itna">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="446" parent="36" name="std">
+        <comment>商品规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="447" parent="36" name="ordun">
+        <comment>单位入数</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="448" parent="36" name="istaxra">
+        <comment>是否有税率</comment>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="449" parent="36" name="taxra">
+        <comment>进项税率</comment>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="450" parent="36" name="orderqut">
+        <comment>库存单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(8)|0</data-type>
+      </column>
+      <column id="451" parent="36" name="cost">
+        <comment>成本单价</comment>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="452" parent="36" name="sellpri">
+        <comment>销售单价</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="453" parent="36" name="costt">
+        <comment>成本合计</comment>
+        <data-type>decimal(24,6)|0</data-type>
+      </column>
+      <column id="454" parent="36" name="sellt">
+        <comment>售价合计</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="455" parent="36" name="guige">
+        <comment>采购单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="456" parent="36" name="color">
+        <comment>颜色</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="457" parent="36" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="458" parent="36" name="sellun">
+        <comment>销售单位</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="459" parent="36" name="primarybarcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="460" parent="36" name="binding_count">
+        <comment>SCM绑定数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <index id="461" parent="36" name="podetail_vno">
+        <columns>vno</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="462" parent="36" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="463" parent="37" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="464" parent="37" name="orderno">
+        <comment>PF入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="465" parent="37" name="po_merge_no">
+        <comment>集约入库单号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="466" parent="37" name="pkbn">
+        <comment>是否送货到DC</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="467" parent="37" name="stoco">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="468" parent="37" name="stona">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="469" parent="37" name="cmpco">
+        <comment>供应商编号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="470" parent="37" name="cmpabby">
+        <comment>供应商简称</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="471" parent="37" name="cmpna">
+        <comment>供应商全称</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="472" parent="37" name="itdeco">
+        <comment>管理部代码</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="473" parent="37" name="deco">
+        <comment>商品类别</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="474" parent="37" name="indentno">
+        <comment>订货单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="475" parent="37" name="orderdate">
+        <comment>订单建立日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="476" parent="37" name="receivedate">
+        <comment>送货日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="477" parent="37" name="paydate">
+        <comment>预定支付日</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="478" parent="37" name="credate">
+        <comment>创建日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="479" parent="37" name="username">
+        <comment>采购员</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="480" parent="37" name="contactno">
+        <comment>合同号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="481" parent="37" name="dc">
+        <comment>物流中心编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="482" parent="37" name="stock_dc">
+        <comment>物流模式</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="483" parent="37" name="special_insrecv">
+        <comment>验收部特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="484" parent="37" name="special_insvendor">
+        <comment>供应商特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="485" parent="37" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="486" parent="37" name="order_type">
+        <comment>订货方式：1=店别；2=总量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="487" parent="37" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="488" parent="37" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="489" parent="37" name="box_total">
+        <comment>总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+      </column>
+      <column id="490" parent="37" name="order_status">
+        <comment>订单状态：1正常/2挂起/3取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="491" parent="37" name="import_time">
+        <comment>导入时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="492" parent="37" name="merge_time">
+        <comment>集约时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="493" parent="37" name="merge_account">
+        <comment>集约帐号（暂不使用）</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="494" parent="37" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="495" parent="37" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="496" parent="37" name="poform_orderno">
+        <columns>orderno</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="497" parent="37" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="498" parent="38" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="499" parent="38" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="500" parent="38" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="501" parent="38" name="item_no">
+        <comment>Item序号</comment>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="502" parent="38" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="503" parent="38" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="504" parent="38" name="item_format">
+        <comment>商品规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="505" parent="38" name="unit_quantity">
+        <comment>单位入数</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="506" parent="38" name="has_tax">
+        <comment>是否有税率</comment>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="507" parent="38" name="tax">
+        <comment>进项税率</comment>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="508" parent="38" name="order_count">
+        <comment>库存单位订货数量，即为订单订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(8)|0</data-type>
+      </column>
+      <column id="509" parent="38" name="cost_price">
+        <comment>成本单价</comment>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="510" parent="38" name="sale_price">
+        <comment>销售单价</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="511" parent="38" name="cost_amount">
+        <comment>成本合计</comment>
+        <data-type>decimal(24,6)|0</data-type>
+      </column>
+      <column id="512" parent="38" name="sale_amount">
+        <comment>售价合计</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="513" parent="38" name="po_order_count">
+        <comment>采购单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="514" parent="38" name="color">
+        <comment>颜色</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="515" parent="38" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="516" parent="38" name="sale_unit">
+        <comment>销售单位</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="517" parent="38" name="item_barcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="518" parent="38" name="package_type">
+        <comment>包装类型：1原装/2混装/3低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="519" parent="38" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <index id="520" parent="38" name="pomergedetail_pomergeno">
+        <columns>po_merge_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="521" parent="38" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="522" parent="39" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="523" parent="39" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="524" parent="39" name="pkbn">
+        <comment>是否送货到DC</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="525" parent="39" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="526" parent="39" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="527" parent="39" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="528" parent="39" name="vendor_name">
+        <comment>供应商全称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="529" parent="39" name="vendor_name_simple">
+        <comment>供应商简称</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="530" parent="39" name="itdeco">
+        <comment>管理部代码</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="531" parent="39" name="article_code">
+        <comment>商品类别</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="532" parent="39" name="order_create_time">
+        <comment>订单建立日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="533" parent="39" name="delivery_date">
+        <comment>送货日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="534" parent="39" name="pay_date">
+        <comment>预定支付日</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="535" parent="39" name="create_date">
+        <comment>创建日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="536" parent="39" name="user_name">
+        <comment>采购员</comment>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="537" parent="39" name="deal_code">
+        <comment>合同号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="538" parent="39" name="dc_code">
+        <comment>物流中心编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="539" parent="39" name="logistic_type">
+        <comment>物流模式：1=XD（通过型）；2=DC（库存型）</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="540" parent="39" name="special_insrecv">
+        <comment>验收部特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="541" parent="39" name="special_insvendor">
+        <comment>供应商特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="542" parent="39" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="543" parent="39" name="order_type">
+        <comment>订货方式：1=店别；2=总量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="544" parent="39" name="box_total">
+        <comment>总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+      </column>
+      <column id="545" parent="39" name="scm_print_count">
+        <comment>原装箱SCM打印次数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="546" parent="39" name="order_status">
+        <comment>订单状态：1正常/2挂起/3取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="547" parent="39" name="action_status">
+        <comment>操作状态：1=待入库，2=正在入库，3=挂起，4=已集约，5=完成，6=取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;4&apos;</default-expression>
+      </column>
+      <column id="548" parent="39" name="is_send">
+        <comment>是否发送WEBEDI</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="549" parent="39" name="merge_time">
+        <comment>集约时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="550" parent="39" name="merge_account">
+        <comment>集约帐号（暂不使用）</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="551" parent="39" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="552" parent="39" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="553" parent="39" name="pomergeform_pomergeno">
+        <columns>po_merge_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="554" parent="39" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="555" parent="40" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="556" parent="40" name="prove_no">
+        <comment>到店证明编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="557" parent="40" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <index id="558" parent="40" name="proveck_proveno">
+        <columns>prove_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="559" parent="40" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="560" parent="41" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="561" parent="41" name="prove_no">
+        <comment>到店证明编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="562" parent="41" name="car_code">
+        <comment>车牌号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="563" parent="41" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="564" parent="41" name="container_type">
+        <comment>容器类型：1=笼车；2=临时卡板</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="565" parent="41" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="566" parent="41" name="scm_count">
+        <comment>SCM数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(6)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="567" parent="41" name="provecontainerdetail_proveno">
+        <columns>prove_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="568" parent="41" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="569" parent="42" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="570" parent="42" name="prove_no">
+        <comment>到店证明编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="571" parent="42" name="car_code">
+        <comment>车牌号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="572" parent="42" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="573" parent="42" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="574" parent="42" name="temperature_name">
+        <comment>温度类型：常温/低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="575" parent="42" name="driver_name">
+        <comment>司机姓名</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="576" parent="42" name="driver_company">
+        <comment>司机所属公司</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="577" parent="42" name="car_type">
+        <comment>车型</comment>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="578" parent="42" name="tel">
+        <comment>电话</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="579" parent="42" name="print_count">
+        <comment>打印次数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="580" parent="42" name="container_count">
+        <comment>容器数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="581" parent="42" name="scm_count">
+        <comment>SCM数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(6)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="582" parent="42" name="status">
+        <comment>状态：1=待发货；2=运输在途；3=到店</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="583" parent="42" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="584" parent="42" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="585" parent="42" name="send_time">
+        <comment>发货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="586" parent="42" name="send_account">
+        <comment>发货帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="587" parent="42" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="588" parent="42" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="589" parent="42" name="proveform_proveno">
+        <columns>prove_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="590" parent="42" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="591" parent="43" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="592" parent="43" name="prove_no">
+        <comment>到店证明编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="593" parent="43" name="car_code">
+        <comment>车牌号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="594" parent="43" name="container_code">
+        <comment>容器编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)|0</data-type>
+      </column>
+      <column id="595" parent="43" name="scm_code">
+        <comment>SCM编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="596" parent="43" name="ck_no">
+        <comment>出库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="597" parent="43" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="598" parent="43" name="orderno">
+        <comment>PF入库单编号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="599" parent="43" name="item_code">
+        <comment>商品编号（非业务字段，可空）</comment>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="600" parent="43" name="item_name">
+        <comment>商品名称（非业务字段，可空）</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="601" parent="43" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="602" parent="43" name="logistic_name">
+        <comment>物流类别名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="603" parent="43" name="item_count">
+        <comment>商品总数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="604" parent="43" name="vendor_code">
+        <comment>供应商编号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="605" parent="43" name="vendor_name">
+        <comment>供应商名称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="606" parent="43" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="607" parent="43" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <index id="608" parent="43" name="provescmdetail_proveno">
+        <columns>prove_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="609" parent="43" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="610" parent="44" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="611" parent="44" name="rtn_no">
+        <comment>退货单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="612" parent="44" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="613" parent="44" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="614" parent="44" name="item_format">
+        <comment>商品规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="615" parent="44" name="rtn_qty">
+        <comment>退货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="616" parent="44" name="po_no">
+        <comment>入库单号</comment>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="617" parent="44" name="s_rtn_qty">
+        <comment>店铺实退数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="618" parent="44" name="po_vat">
+        <comment>进项税率</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)|0</data-type>
+      </column>
+      <column id="619" parent="44" name="sale_vat">
+        <comment>销项税率</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)|0</data-type>
+      </column>
+      <column id="620" parent="44" name="nit_cost">
+        <comment>不含税进价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="621" parent="44" name="it_cost">
+        <comment>含税进价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="622" parent="44" name="it_selling">
+        <comment>含税售价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="623" parent="44" name="discount">
+        <comment>折扣率</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="624" parent="44" name="sub_class">
+        <comment>子类</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(9)|0</data-type>
+      </column>
+      <column id="625" parent="44" name="rtn_count">
+        <comment>实际退货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="626" parent="44" name="rtn_time">
+        <comment>退货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="627" parent="44" name="rtn_account">
+        <comment>退货账号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="628" parent="44" name="rtndetail_rtnno">
+        <columns>rtn_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="629" parent="44" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="630" parent="45" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="631" parent="45" name="rtn_no">
+        <comment>退货单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="632" parent="45" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="633" parent="45" name="vendor_name">
+        <comment>供应商名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="634" parent="45" name="rtn_date">
+        <comment>退货日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="635" parent="45" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="636" parent="45" name="delivery_dc">
+        <comment>是否退货到DC，Y-从物流中心退货；D-从门店退货</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="637" parent="45" name="article_code">
+        <comment>商品类别</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="638" parent="45" name="reason">
+        <comment>退货理由</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="639" parent="45" name="return_by">
+        <comment>退货人</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="640" parent="45" name="r_date">
+        <comment>退货日期（此处PF给的接口中，退货日期重复了两遍，推测是因为退货的表头表体合并后导致的，因这个退货日期在WMS中并不作为逻辑判断的主要依据，所以与PF接口保持一致）</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="641" parent="45" name="approved_by">
+        <comment>授权人</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="642" parent="45" name="a_date">
+        <comment>授权日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="643" parent="45" name="rtn_total">
+        <comment>退货金额</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="644" parent="45" name="real_rtn_total">
+        <comment>实退金额</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(20,6)|0</data-type>
+        <default-expression>&apos;0.000000&apos;</default-expression>
+      </column>
+      <column id="645" parent="45" name="is_send_pf">
+        <comment>是否发送到Profit（Windows Service使用的字段，判断是否已向PF提交）</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="646" parent="45" name="print_count">
+        <comment>打印次数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="647" parent="45" name="rtn_time">
+        <comment>退货时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="648" parent="45" name="rtn_account">
+        <comment>退货账号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="649" parent="45" name="rtn_id">
+        <comment>退货账号ID，因退货在向Profit发送时需要发送UserID，故添加此字段</comment>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="650" parent="45" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="651" parent="45" name="complete_account">
+        <comment>入账账号（暂不使用）</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="652" parent="45" name="rtnform_rtnno">
+        <columns>rtn_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="653" parent="45" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="654" parent="46" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="655" parent="46" name="ty_no">
+        <comment>PF验收单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="656" parent="46" name="ty_merge_no">
+        <comment>集约验收单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="657" parent="46" name="stoco">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="658" parent="46" name="itnum">
+        <comment>Item序号</comment>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="659" parent="46" name="itco">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="660" parent="46" name="itna">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="661" parent="46" name="std">
+        <comment>商品规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="662" parent="46" name="ordun">
+        <comment>单位入数</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="663" parent="46" name="istaxra">
+        <comment>是否有税率</comment>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="664" parent="46" name="taxra">
+        <comment>进项税率</comment>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="665" parent="46" name="orderqut">
+        <comment>库存单位订货数量，即为订单订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(8)|0</data-type>
+      </column>
+      <column id="666" parent="46" name="cost">
+        <comment>成本单价</comment>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="667" parent="46" name="sellpri">
+        <comment>销售单价</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="668" parent="46" name="costt">
+        <comment>成本合计</comment>
+        <data-type>decimal(24,6)|0</data-type>
+      </column>
+      <column id="669" parent="46" name="sellt">
+        <comment>售价合计</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="670" parent="46" name="guige">
+        <comment>采购单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="671" parent="46" name="color">
+        <comment>颜色</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="672" parent="46" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="673" parent="46" name="sellun">
+        <comment>销售单位</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="674" parent="46" name="primarybarcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="675" parent="46" name="lack_register_count">
+        <comment>欠品登记数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="676" parent="46" name="lack_register_time">
+        <comment>欠品登记时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="677" parent="46" name="lack_register_account">
+        <comment>欠品登记帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="678" parent="46" name="ty_count">
+        <comment>验收数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="679" parent="46" name="ty_time">
+        <comment>验收时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="680" parent="46" name="ty_account">
+        <comment>验收帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="681" parent="46" name="tydetail_tyno">
+        <columns>ty_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="682" parent="46" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="683" parent="47" name="id">
+        <comment>主键自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="684" parent="47" name="ty_no">
+        <comment>PF验收单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="685" parent="47" name="ty_merge_no">
+        <comment>集约验收单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="686" parent="47" name="orderno">
+        <comment>PF入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="687" parent="47" name="po_merge_no">
+        <comment>集约入库单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="688" parent="47" name="pkbn">
+        <comment>是否送货到DC</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="689" parent="47" name="stoco">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="690" parent="47" name="stona">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="691" parent="47" name="cmpco">
+        <comment>供应商编号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="692" parent="47" name="cmpabby">
+        <comment>供应商简称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="693" parent="47" name="cmpna">
+        <comment>供应商全称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="694" parent="47" name="itdeco">
+        <comment>管理部代码</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="695" parent="47" name="deco">
+        <comment>商品类别</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="696" parent="47" name="indentno">
+        <comment>订货单号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(14)|0</data-type>
+      </column>
+      <column id="697" parent="47" name="orderdate">
+        <comment>订单建立日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="698" parent="47" name="receivedate">
+        <comment>送货日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="699" parent="47" name="paydate">
+        <comment>预定支付日</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="700" parent="47" name="username">
+        <comment>采购员</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="701" parent="47" name="contactno">
+        <comment>合同号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="702" parent="47" name="dc">
+        <comment>物流中心编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="703" parent="47" name="stock_dc">
+        <comment>物流模式</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="704" parent="47" name="special_insrecv">
+        <comment>验收部特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="705" parent="47" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="706" parent="47" name="order_type">
+        <comment>订货方式：1=店别；2=总量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="707" parent="47" name="package_type">
+        <comment>包装类型：1=原装；2=混装；3=低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="708" parent="47" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="709" parent="47" name="box_total">
+        <comment>总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+      </column>
+      <column id="710" parent="47" name="ty_time">
+        <comment>验收时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="711" parent="47" name="ty_account">
+        <comment>验收帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="712" parent="47" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="713" parent="47" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="714" parent="47" name="tyform_tyno">
+        <columns>ty_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="715" parent="47" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="716" parent="48" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="717" parent="48" name="ty_meger_no">
+        <comment>集约验收单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="718" parent="48" name="store_code">
+        <comment>店铺编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="719" parent="48" name="item_no">
+        <comment>Item序号</comment>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="720" parent="48" name="item_code">
+        <comment>商品编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(13)|0</data-type>
+      </column>
+      <column id="721" parent="48" name="item_name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="722" parent="48" name="item_format">
+        <comment>商品规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="723" parent="48" name="unit_quantity">
+        <comment>单位入数</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="724" parent="48" name="has_tax">
+        <comment>是否有税率</comment>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="725" parent="48" name="tax">
+        <comment>进项税率</comment>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="726" parent="48" name="order_count">
+        <comment>库存单位订货数量，即为订单订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(20)|0</data-type>
+      </column>
+      <column id="727" parent="48" name="cost_price">
+        <comment>成本单价</comment>
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="728" parent="48" name="sale_price">
+        <comment>销售单价</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="729" parent="48" name="cost_amount">
+        <comment>成本合计</comment>
+        <data-type>decimal(24,6)|0</data-type>
+      </column>
+      <column id="730" parent="48" name="sale_amount">
+        <comment>售价合计</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="731" parent="48" name="po_order_count">
+        <comment>采购单位订货数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(4)|0</data-type>
+      </column>
+      <column id="732" parent="48" name="color">
+        <comment>颜色</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="733" parent="48" name="size">
+        <comment>规格</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="734" parent="48" name="sale_unit">
+        <comment>销售单位</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="735" parent="48" name="item_barcode">
+        <comment>商品条码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="736" parent="48" name="package_type">
+        <comment>包装类型：1原装/2混装/3低温</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="737" parent="48" name="temperature_type">
+        <comment>温度类型：1=常温；2=冷冻；3=冷藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="738" parent="48" name="lack_register_count">
+        <comment>欠品登记数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="739" parent="48" name="lack_register_time">
+        <comment>欠品登记时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="740" parent="48" name="lack_register_account">
+        <comment>欠品登记帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="741" parent="48" name="ty_count">
+        <comment>验收数量</comment>
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="742" parent="48" name="ty_time">
+        <comment>验收时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="743" parent="48" name="ty_account">
+        <comment>验收帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="744" parent="48" name="tymergedetail_tymegerno">
+        <columns>ty_meger_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="745" parent="48" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="746" parent="49" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="747" parent="49" name="ty_merge_no">
+        <comment>集约验收单编号</comment>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="748" parent="49" name="po_merge_no">
+        <comment>集约入库单编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(18)|0</data-type>
+      </column>
+      <column id="749" parent="49" name="pkbn">
+        <comment>是否送货到DC</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="750" parent="49" name="store_code">
+        <comment>店铺编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="751" parent="49" name="store_name">
+        <comment>店铺名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="752" parent="49" name="vendor_code">
+        <comment>供应商编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="753" parent="49" name="vendor_name">
+        <comment>供应商全称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="754" parent="49" name="vendor_name_simple">
+        <comment>供应商简称</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="755" parent="49" name="itdeco">
+        <comment>管理部代码</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="756" parent="49" name="article_code">
+        <comment>商品类别</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="757" parent="49" name="order_create_time">
+        <comment>订单建立日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="758" parent="49" name="delivery_date">
+        <comment>送货日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="759" parent="49" name="pay_date">
+        <comment>预定支付日</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="760" parent="49" name="create_date">
+        <comment>创建日期</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="761" parent="49" name="user_name">
+        <comment>采购员</comment>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="762" parent="49" name="deal_code">
+        <comment>合同号</comment>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="763" parent="49" name="dc_code">
+        <comment>物流中心编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <column id="764" parent="49" name="logistic_type">
+        <comment>物流模式：1=XD（通过型）；2=DC（库存型）</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="765" parent="49" name="special_insrecv">
+        <comment>验收部特别指令</comment>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="766" parent="49" name="logistic_code">
+        <comment>物流类别编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(6)|0</data-type>
+      </column>
+      <column id="767" parent="49" name="order_type">
+        <comment>订货方式：1=店别；2=总量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <column id="768" parent="49" name="print_count">
+        <comment>打印次数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="769" parent="49" name="box_total">
+        <comment>总箱数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(5)|0</data-type>
+      </column>
+      <column id="770" parent="49" name="is_send_pf">
+        <comment>是否发送WEBEDI</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="771" parent="49" name="ty_time">
+        <comment>验收时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="772" parent="49" name="ty_account">
+        <comment>验收帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="773" parent="49" name="complete_time">
+        <comment>入账时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="774" parent="49" name="complete_account">
+        <comment>入账帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <index id="775" parent="49" name="tymergeform_tyno">
+        <columns>ty_merge_no</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="776" parent="49" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="777" parent="50" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="778" parent="50" name="name">
+        <comment>菜单名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="779" parent="50" name="path">
+        <comment>路径</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="780" parent="50" name="params">
+        <comment>参数</comment>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="781" parent="50" name="description">
+        <comment>描述</comment>
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="782" parent="50" name="is_hide">
+        <comment>是否隐藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="783" parent="50" name="ordinal">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="784" parent="50" name="parent_id">
+        <comment>父级菜单ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="785" parent="50" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="786" parent="51" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="787" parent="51" name="user_name">
+        <comment>账号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="788" parent="51" name="password">
+        <comment>密码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="789" parent="51" name="name">
+        <comment>姓名</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="790" parent="51" name="department">
+        <comment>部门</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="791" parent="51" name="tel">
+        <comment>电话</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="792" parent="51" name="is_enable">
+        <comment>是否启用</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;1&apos;</default-expression>
+      </column>
+      <column id="793" parent="51" name="is_sys">
+        <comment>是否为系统管理员</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;0&apos;</default-expression>
+      </column>
+      <column id="794" parent="51" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="795" parent="51" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="796" parent="51" name="update_time">
+        <comment>修改时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="797" parent="51" name="update_account">
+        <comment>修改帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="798" parent="51" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="799" parent="52" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="800" parent="52" name="name">
+        <comment>组名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="801" parent="52" name="description">
+        <comment>组描述</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="802" parent="52" name="is_enable">
+        <comment>是否启用</comment>
+        <mandatory>1</mandatory>
+        <data-type>bit(1)|0</data-type>
+        <default-expression>b&apos;1&apos;</default-expression>
+      </column>
+      <column id="803" parent="52" name="create_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="804" parent="52" name="create_account">
+        <comment>创建帐号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="805" parent="52" name="update_time">
+        <comment>修改时间</comment>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="806" parent="52" name="update_account">
+        <comment>修改帐号</comment>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="807" parent="52" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="808" parent="53" name="user_group_id">
+        <comment>联合主键，外键，用户组ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="809" parent="53" name="menu_id">
+        <comment>联合主键，外键，权限菜单ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <index id="810" parent="53" name="menu_id">
+        <columns>menu_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="811" parent="53" name="PRIMARY">
+        <columns>user_group_id
+menu_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="812" parent="53" name="fk_wmspurviewusergroupmenu_usergroupid">
+        <columns>user_group_id</columns>
+        <ref-key>~.wms_purview_user_group.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="813" parent="53" name="fk_wmspurviewusergroupmenu_menuid">
+        <columns>menu_id</columns>
+        <ref-key>~.wms_purview_menu.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="814" parent="54" name="user_id">
+        <comment>联合主键，外键，用户ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="815" parent="54" name="user_group_id">
+        <comment>联合主键，外键，用户组ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <index id="816" parent="54" name="user_group_id">
+        <columns>user_group_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="817" parent="54" name="user_id">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="818" parent="54" name="PRIMARY">
+        <columns>user_group_id
+user_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="819" parent="54" name="fk_wmspurviewuserusergroup_userid">
+        <columns>user_id</columns>
+        <ref-key>~.wms_purview_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="820" parent="54" name="fk_wmspurviewuserusergroup_usergroupid">
+        <columns>user_group_id</columns>
+        <ref-key>~.wms_purview_user_group.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="821" parent="55" name="name">
+        <comment>种子名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="822" parent="55" name="current_datekey">
+        <comment>当前日期key</comment>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="823" parent="55" name="current_value">
+        <comment>当前种子值</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned|0</data-type>
+        <default-expression>&apos;100001&apos;</default-expression>
+      </column>
+      <column id="824" parent="55" name="store_code">
+        <comment>店铺编号</comment>
+        <data-type>varchar(4)|0</data-type>
+      </column>
+      <argument id="825" parent="56" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="826" parent="57" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="827" parent="58" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="828" parent="58" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(6)|0</data-type>
+      </argument>
+      <argument id="829" parent="59" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="830" parent="59" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(6)|0</data-type>
+      </argument>
+      <argument id="831" parent="60" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="832" parent="60" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(6)|0</data-type>
+      </argument>
+      <argument id="833" parent="61">
+        <direction>RETURN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="834" parent="61" name="seq_name">
+        <direction>IN</direction>
+        <data-type>varchar(50)|0</data-type>
+      </argument>
+      <argument id="835" parent="61" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="836" parent="62">
+        <direction>RETURN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="837" parent="62" name="seq_name">
+        <direction>IN</direction>
+        <data-type>varchar(50)|0</data-type>
+      </argument>
+      <argument id="838" parent="62" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="839" parent="62" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(6)|0</data-type>
+      </argument>
+      <argument id="840" parent="63">
+        <direction>RETURN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="841" parent="63" name="seq_name">
+        <direction>IN</direction>
+        <data-type>varchar(50)|0</data-type>
+      </argument>
+      <argument id="842" parent="63" name="storecode">
+        <direction>IN</direction>
+        <data-type>varchar(4)|0</data-type>
+      </argument>
+      <argument id="843" parent="63" name="value">
+        <direction>IN</direction>
+        <data-type>bigint(20)|0</data-type>
+      </argument>
+      <argument id="844" parent="64" name="item_code">
+        <direction>IN</direction>
+        <data-type>varchar(20)|0</data-type>
+      </argument>
+      <argument id="845" parent="64" name="num">
+        <direction>IN</direction>
+        <data-type>bigint(6)|0</data-type>
+      </argument>
+    </database-model>
+  </data-source>
+</component>
