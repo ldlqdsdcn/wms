@@ -148,6 +148,9 @@
                 {
                     $scope.tableInfo=data.data;
                 }
+                else {
+                    bootbox.alert(data.message);
+                }
 
             });
 

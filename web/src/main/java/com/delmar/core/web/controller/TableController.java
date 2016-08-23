@@ -1,8 +1,10 @@
 package com.delmar.core.web.controller;
 
 import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.StatusCode;
 import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.TableMetaDataDto;
+import com.delmar.core.excep.ValidateException;
 import com.delmar.core.service.TableService;
 import com.delmar.core.web.vo.TableGenerateVo;
 import com.google.gson.Gson;
@@ -24,36 +26,40 @@ import org.springframework.web.servlet.ModelAndView;
 public class TableController {
     @Autowired
     private TableService tableService;
-    @RequestMapping(value="/getTableInfo", method= RequestMethod.GET)
+
+    @RequestMapping(value = "/getTableInfo", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResult<TableMetaDataDto> getTableInfo(String tableName)
-    {
-        ApiResult<TableMetaDataDto> tableMetaDataDto=tableService.getTableDescription(tableName);
+    public ApiResult<TableMetaDataDto> getTableInfo(String tableName) {
+        ApiResult<TableMetaDataDto> tableMetaDataDto = tableService.getTableDescription(tableName);
         return tableMetaDataDto;
     }
-    @RequestMapping(value="/initTableInfo", method= RequestMethod.GET)
-    public ModelAndView initTableInfo()
-    {
-        ModelAndView modelAndView=new ModelAndView("/core/tableAddByWizard2.jsp");
-        ColumnDataType[] columnDataTypes= ColumnDataType.values();
-        JsonArray jsonArray=new JsonArray();
-        for(ColumnDataType columnDataType:columnDataTypes)
-        {
-            JsonObject jsonObject=new JsonObject();
-            jsonObject.addProperty("key",columnDataType.getKey());
-            jsonObject.addProperty("desc",columnDataType.getDesc());
+
+    @RequestMapping(value = "/initTableInfo", method = RequestMethod.GET)
+    public ModelAndView initTableInfo() {
+        ModelAndView modelAndView = new ModelAndView("/core/tableAddByWizard2.jsp");
+        ColumnDataType[] columnDataTypes = ColumnDataType.values();
+        JsonArray jsonArray = new JsonArray();
+        for (ColumnDataType columnDataType : columnDataTypes) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("key", columnDataType.getKey());
+            jsonObject.addProperty("desc", columnDataType.getDesc());
             jsonArray.add(jsonObject);
         }
 
-        modelAndView.addObject("columnDataTypes",jsonArray.toString());
+        modelAndView.addObject("columnDataTypes", jsonArray.toString());
 
         return modelAndView;
     }
-    @RequestMapping(value="/saveTableInfo", method= RequestMethod.POST)
+
+    @RequestMapping(value = "/saveTableInfo", method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo)
-    {
-        System.out.println(tableInfo.toString());
-        return  ApiResult.success(tableInfo);
+    public ApiResult<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo) {
+        try {
+            tableService.saveTableInfoByWizard(tableInfo);
+        } catch (ValidateException validateException) {
+            ApiResult.fail(StatusCode.BUSINESS_EXCEPTION.getCode(), validateException.getMessage());
+        }
+        //System.out.println(tableInfo.toString());
+        return ApiResult.success(tableInfo);
     }
 }

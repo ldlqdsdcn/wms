@@ -7,7 +7,9 @@
 
 package com.delmar.core.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.delmar.core.api.ApiResult;
 import com.delmar.core.api.StatusCode;
@@ -17,6 +19,7 @@ import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.dto.UniqueIndexDto;
 import com.delmar.core.excep.DataBaseException;
+import com.delmar.core.excep.ValidateException;
 import com.delmar.utils.DmLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +110,17 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 			return ApiResult.fail(StatusCode.BUSINESS_EXCEPTION.getCode(),e.getMessage());
 		}
 		return ApiResult.success(tableMetaDataDto);
+	}
+
+	@Override
+	public void saveTableInfoByWizard(TableMetaDataDto tableMetaDataDto) {
+		Map<String,String> param=new HashMap<>();
+		param.put("name",tableMetaDataDto.getName().trim());
+		List<Table> tableList=tableDao.selectByExample(param);
+		if(tableList!=null&&tableList.size()>0)
+		{
+			throw new ValidateException("该表已经存在，不能重复创建");
+		}
 	}
 
 
