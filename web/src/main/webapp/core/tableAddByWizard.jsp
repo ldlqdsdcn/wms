@@ -16,6 +16,7 @@
     <script type='text/javascript' src='../js/jquery/jquery-1.11.1.min.js'></script>
     <script type='text/javascript' src='../js/bootstrap/bootstrap.js'></script>
     <script type='text/javascript' src='../js/jquery/plugin/common.js'></script>
+    <script type='text/javascript' src="../js/angular/angular.min.js"></script>
     <script type="text/javascript">
         function validateForm()
         {
@@ -48,7 +49,9 @@
             editForm.submit();
         }
         $(document).ready(function(){
-
+            $("#goNext").click(function(){
+                window.location="/core/tableAddByWizard2.jsp";
+            });
             $("#next").click(function () {
                    $.ajax({
                     type : 'get',
@@ -195,8 +198,8 @@
                                                     <tr>
                                                         <td colspan="4" class="td_page_right">
                                                             <input type="button" value="下一步" id="next" class="input_submit">
+                                                            <input type="button" value="生成记录" id="goNext" class="input_submit"/>
 
-                                                            <s:submit method="save"  value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" onclick="return validateForm()"></s:submit>
 
 
 

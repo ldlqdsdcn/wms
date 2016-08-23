@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.ForeignKey;
+import com.delmar.core.dto.UniqueIndexDto;
 import com.delmar.core.excep.DataBaseException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -42,6 +45,8 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
     private static final String COLUMN_SIZE = "COLUMN_SIZE";
     private static final String DECIMAL_DIGITS = "DECIMAL_DIGITS";
     private static final String NULLABLE = "NULLABLE";
+    private static final String REMARKS="REMARKS";
+    private static final String COLUMN_DEF="COLUMN_DEF";
 
     /* (non-Javadoc)
      * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
@@ -70,6 +75,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
      * @return Json String
      */
     public String getPrimaryKey(String tableName) {
+        String primaryKey="";
         JsonObject jsonObject = new JsonObject();
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
         try {
@@ -82,6 +88,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 String keySeq = rs.getString(PRIMARY_KEY_KEY_SEQ);
                 jsonObject.addProperty(INDEX_COLUMN_NAME, indexName);
                 jsonObject.addProperty(PRIMARY_KEY_KEY_SEQ, keySeq);
+                primaryKey=indexName;
 
             }
 
@@ -93,11 +100,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("关闭数据连接失败", e);
         }
-        return jsonObject.toString();
+        return primaryKey;
     }
 
-    public String getUniqueIndex(String tableName) {
-        JsonArray jsonArray = new JsonArray();
+    public List<UniqueIndexDto> getUniqueIndex(String tableName) {
+        List<UniqueIndexDto> list=new ArrayList<>();
 
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
         try {
@@ -108,9 +115,10 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 JsonObject jsonObject = new JsonObject();
                 String indexName = rs.getString(INDEX_COLUMN_NAME);
                 String columnName = rs.getString(INDEX_NAME);
-                jsonObject.addProperty(INDEX_COLUMN_NAME, indexName);
-                jsonObject.addProperty(INDEX_NAME, columnName);
-                jsonArray.add(jsonObject);
+                UniqueIndexDto uniqueIndexDto=new UniqueIndexDto();
+                uniqueIndexDto.setIndexColumnName(indexName);
+                uniqueIndexDto.setIndexColumnName(columnName);
+                list.add(uniqueIndexDto);
             }
 
         } catch (Exception e) {
@@ -121,11 +129,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("关闭数据连接失败", e);
         }
-        return jsonArray.toString();
+        return list;
     }
 
-    public String getExportedKeys(String tableName) {
-        JsonArray jsonArray = new JsonArray();
+    public List<ForeignKey> getExportedKeys(String tableName) {
+        List<ForeignKey> list=new ArrayList<>();
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
         try {
 
@@ -133,21 +141,8 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             ResultSet rs = databaseMetaData.getExportedKeys(null, null, tableName);
             while (rs.next()) {
 
-                JsonObject jsonObject = new JsonObject();
-                String fkColumn = rs.getString(EXPORT_KEY_FK_COLUMN_NAME);
-                String fkTable = rs.getString(EXPORT_KEY_FK_TABLE_NAME);
-                String pkColumn = rs.getString(EXPORT_KEY_PK_COLUMN_NAME);
-                String pkTable = rs.getString(EXPORT_KEY_PK_TABLE_NAME);
-                String fkName = rs.getString(EXPORT_KEY_FK_NAME);
-                String pkName = rs.getString(EXPORT_KEY_PK_NAME);
-
-                jsonObject.addProperty(EXPORT_KEY_FK_COLUMN_NAME, fkColumn);
-                jsonObject.addProperty(EXPORT_KEY_FK_TABLE_NAME, fkTable);
-                jsonObject.addProperty(EXPORT_KEY_PK_COLUMN_NAME, pkColumn);
-                jsonObject.addProperty(EXPORT_KEY_PK_TABLE_NAME, pkTable);
-                jsonObject.addProperty(EXPORT_KEY_FK_NAME, fkName);
-                jsonObject.addProperty(EXPORT_KEY_PK_NAME, pkName);
-                jsonArray.add(jsonObject);
+                ForeignKey foreignKey=getForeignKeyByResultSet(rs);
+                list.add(foreignKey);
             }
         } catch (SQLException e) {
             throw new DataBaseException("获取 外部引用键值失败", e);
@@ -157,32 +152,19 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("关闭数据连接失败", e);
         }
-        return jsonArray.toString();
+        return list;
     }
 
-    public String getImportedKeys(String tableName) {
-        JsonArray jsonArray = new JsonArray();
+    public List<ForeignKey> getImportedKeys(String tableName) {
+       List<ForeignKey> list=new ArrayList<>();
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
         try {
 
             DatabaseMetaData databaseMetaData = conn.getMetaData();
             ResultSet rs = databaseMetaData.getImportedKeys(null, null, tableName);
             while (rs.next()) {
-                JsonObject jsonObject = new JsonObject();
-                String fkColumn = rs.getString(EXPORT_KEY_FK_COLUMN_NAME);
-                String fkTable = rs.getString(EXPORT_KEY_FK_TABLE_NAME);
-                String pkColumn = rs.getString(EXPORT_KEY_PK_COLUMN_NAME);
-                String pkTable = rs.getString(EXPORT_KEY_PK_TABLE_NAME);
-                String fkName = rs.getString(EXPORT_KEY_FK_NAME);
-                String pkName = rs.getString(EXPORT_KEY_PK_NAME);
-
-                jsonObject.addProperty(EXPORT_KEY_FK_COLUMN_NAME, fkColumn);
-                jsonObject.addProperty(EXPORT_KEY_FK_TABLE_NAME, fkTable);
-                jsonObject.addProperty(EXPORT_KEY_PK_COLUMN_NAME, pkColumn);
-                jsonObject.addProperty(EXPORT_KEY_PK_TABLE_NAME, pkTable);
-                jsonObject.addProperty(EXPORT_KEY_FK_NAME, fkName);
-                jsonObject.addProperty(EXPORT_KEY_PK_NAME, pkName);
-                jsonArray.add(jsonObject);
+                ForeignKey foreignKey=getForeignKeyByResultSet(rs);
+                list.add(foreignKey);
             }
         } catch (SQLException e) {
             throw new DataBaseException("获取 引用外部键值失败", e);
@@ -192,10 +174,33 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("关闭数据连接失败", e);
         }
-        return jsonArray.toString();
+        return list;
     }
+    private ForeignKey getForeignKeyByResultSet(ResultSet rs)
+    {
+        ForeignKey foreignKey=new ForeignKey();
 
-    public String getTableColumns(String tableName) {
+        try {
+            String fkColumn = rs.getString(EXPORT_KEY_FK_COLUMN_NAME);
+            String fkTable = rs.getString(EXPORT_KEY_FK_TABLE_NAME);
+            String pkColumn = rs.getString(EXPORT_KEY_PK_COLUMN_NAME);
+            String pkTable = rs.getString(EXPORT_KEY_PK_TABLE_NAME);
+            String fkName = rs.getString(EXPORT_KEY_FK_NAME);
+            String pkName = rs.getString(EXPORT_KEY_PK_NAME);
+            foreignKey.setFkColumnName(fkColumn);
+            foreignKey.setFkTableName(fkTable);
+            foreignKey.setPkColumnName(pkColumn);
+            foreignKey.setPkTableName(pkTable);
+            foreignKey.setFkName(fkName);
+            foreignKey.setPkName(pkName);
+        } catch (SQLException e) {
+            throw new DataBaseException("获取 外部键值失败", e);
+        }
+
+        return foreignKey;
+    }
+    public List<ColumnMetaDataDto> getTableColumns(String tableName) {
+        List<ColumnMetaDataDto> list=new ArrayList<>();
         JsonArray jsonArray = new JsonArray();
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
 
@@ -205,20 +210,32 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             String columnName;
             String columnType;
             ResultSet colRet = databaseMetaData.getColumns(null, "%", tableName, "%");
+           // ResultSetMetaData resultSetMetaData=  colRet.getMetaData();
+
             while (colRet.next()) {
+                ColumnMetaDataDto columnMetaDataDto=new ColumnMetaDataDto();
                 JsonObject jsonObject = new JsonObject();
                 columnName = colRet.getString(COLUMN_NAME);
                 columnType = colRet.getString(TYPE_NAME);
                 int column_size = colRet.getInt(COLUMN_SIZE);
                 int digits = colRet.getInt(DECIMAL_DIGITS);
                 int nullable = colRet.getInt(NULLABLE);
-                jsonObject.addProperty(COLUMN_NAME, columnName);
-                jsonObject.addProperty(TYPE_NAME, columnType);
-                jsonObject.addProperty(COLUMN_SIZE, column_size);
-                jsonObject.addProperty(DECIMAL_DIGITS, digits);
-                jsonObject.addProperty(NULLABLE, nullable);
-                //jsonObject.addProperty(DATA_TYPE, colRet.getInt(DATA_TYPE));
-                jsonArray.add(jsonObject);
+                String remarks=colRet.getString(REMARKS);
+                String colDef=colRet.getString(COLUMN_DEF);
+
+                columnMetaDataDto.setColumnName(columnName);
+                columnMetaDataDto.setType(columnType);
+                columnMetaDataDto.setColumnSize(column_size);
+                columnMetaDataDto.setDecimalDigits(digits);
+                columnMetaDataDto.setNullable(nullable==1?true:false);
+                columnMetaDataDto.setRemarks(remarks);
+                columnMetaDataDto.setColumnDefault(colDef);
+                list.add(columnMetaDataDto);
+
+               /* for(int i=1;i<resultSetMetaData.getColumnCount();i++)
+                {
+                    System.out.println(resultSetMetaData.getColumnName(i)+" "+resultSetMetaData.getColumnLabel(i)+" "+colRet.getObject(i));
+                }*/
             }
 
         } catch (Exception e) {
@@ -230,7 +247,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         } catch (SQLException e) {
             throw new DataBaseException("关闭数据连接失败", e);
         }
-        return jsonArray.toString();
+        return list;
     }
 
 

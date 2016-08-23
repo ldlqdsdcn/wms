@@ -1,7 +1,7 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												      *
- *	作者：刘大磊								                                      *
- * 电话：0532-66701118                                                          * 
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：刘大磊								                              *
+ * 电话：0532-66701118                                                        *
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
@@ -9,8 +9,16 @@ package com.delmar.core.service.impl;
 
 import java.util.List;
 
+import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.StatusCode;
+import com.delmar.core.def.ColumnDataType;
+import com.delmar.core.def.FieldType;
+import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
+import com.delmar.core.dto.UniqueIndexDto;
+import com.delmar.core.excep.DataBaseException;
 import com.delmar.utils.DmLog;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +33,9 @@ import com.delmar.core.service.TableService;
  * @author 刘大磊 22015-01-09 10:48:25
  */
 @Service("tableService")
+@Slf4j
 public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		TableService {
-	private static final DmLog dmLog=DmLog.getLogger(TableServiceImpl.class);
 	@Autowired
 	private TableDao tableDao;
 	
@@ -64,30 +72,41 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		return table;
 	}
 
-	public TableMetaDataDto getTableDescription(String tableName) {
-		dmLog.debug(tableName);
-		TableMetaDataDto tableMetaDataDto=new TableMetaDataDto();
-		tableMetaDataDto.setName(tableName);
-		String primaryKey=tableDao.getPrimaryKey(tableName);
-		tableMetaDataDto.setPk_column(primaryKey);
-		String uniqueIndex=tableDao.getUniqueIndex(tableName);
-		tableMetaDataDto.setUniqueKey(uniqueIndex);
+	public ApiResult<TableMetaDataDto> getTableDescription(String tableName) {
+		TableMetaDataDto tableMetaDataDto= null;
+		try {
+			log.debug(tableName);
+			tableMetaDataDto = new TableMetaDataDto();
+			tableMetaDataDto.setName(tableName);
+			String primaryKey=tableDao.getPrimaryKey(tableName);
+			tableMetaDataDto.setPkColumn(primaryKey);
+			List<UniqueIndexDto> uniqueIndexList=tableDao.getUniqueIndex(tableName);
+			tableMetaDataDto.setUniqueKeyList(uniqueIndexList);
+			log.debug("primaryKey="+primaryKey);
+			tableMetaDataDto.setExportedFK(tableDao.getExportedKeys(tableName));
+			tableMetaDataDto.setImportedFK(tableDao.getExportedKeys(tableName));
+			List<ColumnMetaDataDto> columns=tableDao.getTableColumns(tableName);
+			FieldType[] columnDataTypes= FieldType.values();
+			for(ColumnMetaDataDto dto:columns)
+			{
+					for(FieldType type:columnDataTypes)
+					{
 
-		//List<String> tableList=tableDao.getTableDescription(tableName);
+						if(type.getDesc().equals(dto.getType()))
+						{
+							dto.setDataType(type.getType());
+						}
+					}
+			}
 
-		dmLog.debug("uniqueIndex="+uniqueIndex);
+			tableMetaDataDto.setColumnList(columns);
 
-		dmLog.debug("primaryKey="+primaryKey);
-		String exportedKeys=tableDao.getExportedKeys(tableName);
-		tableMetaDataDto.setExportedFK(exportedKeys);
-		dmLog.debug("exportedKeys="+exportedKeys);
-		String importedKeys=tableDao.getImportedKeys(tableName);
-		tableMetaDataDto.setImportedFK(importedKeys);
-		dmLog.debug("importedKeys="+importedKeys);
-		String columns=tableDao.getTableColumns(tableName);
-		tableMetaDataDto.setColumnList(columns);
-		dmLog.debug("columns="+columns);
-		return tableMetaDataDto;
+
+			log.debug("columns="+columns);
+		} catch (DataBaseException e) {
+			return ApiResult.fail(StatusCode.BUSINESS_EXCEPTION.getCode(),e.getMessage());
+		}
+		return ApiResult.success(tableMetaDataDto);
 	}
 
 

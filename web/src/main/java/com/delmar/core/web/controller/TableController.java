@@ -1,13 +1,20 @@
 package com.delmar.core.web.controller;
 
+import com.delmar.core.api.ApiResult;
+import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.service.TableService;
 import com.delmar.core.web.vo.TableGenerateVo;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by admin on 2016/8/18.
@@ -19,16 +26,34 @@ public class TableController {
     private TableService tableService;
     @RequestMapping(value="/getTableInfo", method= RequestMethod.GET)
     @ResponseBody
-    public TableGenerateVo getTableInfo(String tableName)
+    public ApiResult<TableMetaDataDto> getTableInfo(String tableName)
     {
-        TableMetaDataDto tableMetaDataDto=tableService.getTableDescription(tableName);
-        TableGenerateVo tableGenerateVo=new TableGenerateVo();
-        tableGenerateVo.setTableName(tableName);
-        tableGenerateVo.setExportedFK(tableMetaDataDto.getExportedFK());
-        tableGenerateVo.setImportedFK(tableMetaDataDto.getImportedFK());
-        tableGenerateVo.setPrimaryKey(tableMetaDataDto.getPk_column());
-        tableGenerateVo.setUniqueIndex(tableMetaDataDto.getUniqueKey());
-        tableGenerateVo.setColumnList(tableMetaDataDto.getColumnList());
-        return     tableGenerateVo;
+        ApiResult<TableMetaDataDto> tableMetaDataDto=tableService.getTableDescription(tableName);
+        return tableMetaDataDto;
+    }
+    @RequestMapping(value="/initTableInfo", method= RequestMethod.GET)
+    public ModelAndView initTableInfo()
+    {
+        ModelAndView modelAndView=new ModelAndView("/core/tableAddByWizard2.jsp");
+        ColumnDataType[] columnDataTypes= ColumnDataType.values();
+        JsonArray jsonArray=new JsonArray();
+        for(ColumnDataType columnDataType:columnDataTypes)
+        {
+            JsonObject jsonObject=new JsonObject();
+            jsonObject.addProperty("key",columnDataType.getKey());
+            jsonObject.addProperty("desc",columnDataType.getDesc());
+            jsonArray.add(jsonObject);
+        }
+
+        modelAndView.addObject("columnDataTypes",jsonArray.toString());
+
+        return modelAndView;
+    }
+    @RequestMapping(value="/saveTableInfo", method= RequestMethod.POST)
+    @ResponseBody
+    public ApiResult<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo)
+    {
+        System.out.println(tableInfo.toString());
+        return  ApiResult.success(tableInfo);
     }
 }

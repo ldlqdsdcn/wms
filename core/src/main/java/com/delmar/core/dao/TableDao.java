@@ -7,6 +7,9 @@
 
 package com.delmar.core.dao;
 
+import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.ForeignKey;
+import com.delmar.core.dto.UniqueIndexDto;
 import com.delmar.core.model.Table;
 import com.delmar.core.dao.CoreDao;
 
@@ -23,7 +26,7 @@ public interface TableDao extends CoreDao<Table> {
      * @param tableName
      * @return
      */
-    public String getUniqueIndex(String tableName);
+    List<UniqueIndexDto> getUniqueIndex(String tableName);
 
     /**
      * 获取表的主键
@@ -37,7 +40,7 @@ public interface TableDao extends CoreDao<Table> {
      * @param tableName
      * @return
      */
-    public String getExportedKeys(String tableName);
-    public String getImportedKeys(String tableName);
-    String getTableColumns(String tableName);
+    public List<ForeignKey> getExportedKeys(String tableName);
+    public List<ForeignKey> getImportedKeys(String tableName);
+    public List<ColumnMetaDataDto> getTableColumns(String tableName);
 }

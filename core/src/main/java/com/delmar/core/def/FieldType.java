@@ -25,6 +25,7 @@ public enum FieldType {
     {
         this.key=key;
         this.desc=desc;
+        this.type=type;
     }
     private int key;
     private String desc;

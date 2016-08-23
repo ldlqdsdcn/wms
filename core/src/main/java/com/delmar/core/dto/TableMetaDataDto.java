@@ -1,6 +1,9 @@
 package com.delmar.core.dto;
 
+import com.delmar.core.dao.TableColumnDao;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Created by admin on 2016/8/18.
@@ -12,15 +15,35 @@ public class TableMetaDataDto {
      */
     private String name;
     /**
+     * 表注释
+     */
+    private String tableTrlName;
+    /**
+     * 是否出错日志
+     */
+    private boolean outLog;
+    /**
+     * model类名字
+     */
+    private String className;
+    /**
+     * 业务主键
+     */
+    private String busPk;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
      *
      */
-    private String pk_column;
+    private String pkColumn;
 
-    private String exportedFK;
+    private List<ForeignKey> exportedFK;
 
-    private String importedFK;
+    private List<ForeignKey> importedFK;
 
-    private String columnList;
+    private List<ColumnMetaDataDto> columnList;
 
-    private String uniqueKey;
+    private List<UniqueIndexDto> uniqueKeyList;
 }

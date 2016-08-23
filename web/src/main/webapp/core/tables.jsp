@@ -85,7 +85,7 @@
     }
     else if(id==1)
 	{
-		window.location='<c:url value="/core/table_saveTableByWizard.action"/>';
+		window.location='<c:url value="/core/initTableInfo.do"/>';
 	}
     else
     {
