@@ -1,6 +1,9 @@
+
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01											  *
- *	作者：张宗锐								                              *
+ * 德玛国际物流有限公司  2013-07-01												      *
+ *	作者：刘大磊								                                      *
+ * 电话：0532-66701118                                                          * 
+ * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
 package ${packagename};
@@ -9,7 +12,7 @@ import ${modelpackage}.${modelname};
 import com.delmar.core.service.CoreService;
 
 /**
- * @author 张宗锐 ${datetime}
+ * @author 刘大磊 ${datetime}
  */
 public interface ${modelname}Service extends CoreService<${modelname}> {
 	/**

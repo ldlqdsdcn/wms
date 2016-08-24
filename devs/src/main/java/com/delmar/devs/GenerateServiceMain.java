@@ -46,8 +46,8 @@ public class GenerateServiceMain {
 		   Map root = new HashMap();  
 		
 		Date date=new Date();
-		String interfacepackage="com.kudan."+modulename+".service";
-		String modelpackage="com.kudan."+modulename+".model";
+		String interfacepackage="com.delmar."+modulename+".service";
+		String modelpackage="com.delmar."+modulename+".model";
 		String datetime=DateTimeDecorator.dateToLongString(date);
 		root.put("packagename", interfacepackage);
 		root.put("modelpackage", modelpackage);

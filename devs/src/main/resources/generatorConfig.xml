@@ -27,15 +27,15 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://mlbtest1.mysql.rds.aliyuncs.com:3306/mlb" userId="test_root"
-                        password="q1w2e3r4" />
+                        connectionURL="jdbc:mysql://localhost:3306/prodbms" userId="root"
+                        password="romantic" />
 
-        <javaModelGenerator targetPackage="com.uncle5.mlb.hui.entity.po"
+        <javaModelGenerator targetPackage="com.delmar.core.model"
                             targetProject="../devs/src/main/java">
-            <property name="rootClass" value="com.uncle5.mlb.hui.entity.po.Po" />
+            <property name="rootClass" value="com.delmar.core.model.CoreModel" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mybatis.mappers"
+        <sqlMapGenerator targetPackage="com.delmar.core.mybatis.sql"
                          targetProject="../devs/src/main/resources" />
 
         <!-- <javaClientGenerator targetPackage="com.uncle5.webapp.baseweb.dao.mapper" -->
@@ -136,7 +136,7 @@
                     enableDeleteByExample="false" enableUpdateByExample="false">
                     <generatedKey column="id" sqlStatement="MySql" identity="true" />
                 </table>-->
-        <table schema="" tableName="sys_wechat_constants" domainObjectName="SysWeChatConstants"
+        <table schema="" tableName="core_window" domainObjectName="Window"
                enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
