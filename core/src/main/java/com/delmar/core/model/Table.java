@@ -19,7 +19,7 @@ public class Table extends CoreModel {
 
     private String descr;
 
-    private String ukIndexJson;
+    private String externJson;
 
     private List<TableColumn> tableColumnList;
 
@@ -93,11 +93,11 @@ public class Table extends CoreModel {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public String getUkIndexJson() {
-        return ukIndexJson;
+    public String getExternJson() {
+        return externJson;
     }
 
-    public void setUkIndexJson(String ukIndexJson) {
-        this.ukIndexJson = ukIndexJson;
+    public void setExternJson(String externJson) {
+        this.externJson = externJson;
     }
 }

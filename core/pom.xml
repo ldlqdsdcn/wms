@@ -16,16 +16,30 @@
              <artifactId>mail</artifactId>
              <version>1.4.7</version>
          </dependency>
-         <dependency>
-             <groupId>c3p0</groupId>
-             <artifactId>c3p0</artifactId>
-             <version>0.9.1.2</version>
-         </dependency>
           <dependency>
               <artifactId>utils</artifactId>
               <groupId>com.delmar</groupId>
               <version>1.0</version>
           </dependency>
+         <!-- db -->
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>1.0.1</version>
+         </dependency>
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>5.1.21</version>
+         </dependency>
+         <dependency>
+             <groupId>com.h2database</groupId>
+             <artifactId>h2</artifactId>
+             <version>1.3.176</version>
+         </dependency>
+         <!-- db -->
+
+
          <!--mybatis paging begin-->
          <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
          <dependency>

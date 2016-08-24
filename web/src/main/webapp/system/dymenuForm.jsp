@@ -37,7 +37,7 @@
 <tr class="query_two">
 <td width="15%" class="td1"><fmt:message key="dymenuForm.label.type"></fmt:message></td>
 <td><fmt:message key="dymenuForm.label.type.menu"></fmt:message>
-<input type="radio" name="menuType" value="Y"/>&nbsp;&nbsp;<fmt:message key="dymenuForm.label.type.hyperlink"></fmt:message><input type="radio" name="menuType" value="N"/>
+<input type="radio" name="menuType" value="Y"/>&nbsp;&nbsp;<fmt:message key="dymenuForm.label.type.hyperlink"></fmt:message><input type="radio" name="menuType" value="N"/> &nbsp;&nbsp;窗体<input type="radio" name="menuType" value="Z"/>
 </td>
 <td width="15%" class="td1">
 <fmt:message key="dymenuForm.label.parentMenu"></fmt:message>

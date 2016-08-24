@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/commons/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,12 +29,12 @@
         <label for="name" class="col-sm-2 control-label">表名</label>
         <div class="col-md-4">
         <input type="text" id="name" placeholder="请输入名称" ng-model="tableInfo.name" ng-keypress="enter($event)"
-               class="form-control " >
+               class="form-control " required >
             </div>
         <label for="tableTrlName" class="col-sm-2 control-label">表注释</label>
         <div class="col-md-4">
             <input type="text" id="tableTrlName" placeholder="请输入表注释" ng-model="tableInfo.tableTrlName"
-                   class="form-control " >
+                   class="form-control " required>
         </div>
     </div>
     <div class="form-group row" >
@@ -71,12 +72,52 @@
     </div>
 
         <div class="form-group">
-              <button type="button" class="btn btn-primary" ng-click="submit()">保存</button>
+              <button  type="button" class="btn btn-primary" ng-click="submit()" >保存</button>
             </div>
+    <div class="form-group" ng-show="tableInfo.uniqueKeyList!=null">
+        <label for="unique_list" class="control-label">索引</label>
+        <table id="unique_list"  class="table table-hover table-bordered">
+            <thead>
+                <th>字段名</th>
+                <th>索引名</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in tableInfo.uniqueKeyList track by $index">
+                <td>{{x.indexName}}</td><td>{{x.indexColumnName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group" ng-show="tableInfo.exportedFK!=null" >
+        <label for="exportedFK" class="control-label">外部关联表</label>
+        <table id="exportedFK" class="table table-hover table-bordered">
+            <thead>
+            <td>字段</td><td>引用表</td><td>引用字段</td>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in tableInfo.exportedFK track by $index">
+                <td>{{x.pkColumnName}}</td><td>{{x.fkTableName}}</td><td>{{x.fkColumnName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group" ng-show="tableInfo.importedFK!=null">
+        <label for="importedFK" class="control-label">外键</label>
+        <table id="importedFK" class="table table-hover table-bordered">
+            <thead>
+            <td>字段</td><td>引用表</td><td>引用字段</td>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in tableInfo.importedFK track by $index">
+                <td>{{x.fkColumnName}}</td><td>{{x.pkTableName}}</td><td>{{x.pkColumnName}}</td>
+            </tr>
+            </tbody>
+        </table>
 
-    <div class="form-group">
-
-        <table id="column_list" ng-show="tableInfo.columnList!=null" class="table table-hover table-bordered">
+    </div>
+    <div class="form-group" ng-show="tableInfo.columnList!=null">
+        <label for="column_list" class="control-label">字段列表</label>
+        <table id="column_list"  class="table table-hover table-bordered">
             <thead>
             <th>字段名</th>
             <th>字段类型</th>
@@ -105,7 +146,7 @@
                 <td>{{x.columnSize}}</td>
                 <td>{{x.decimalDigits}}</td>
                 <td><input type="checkbox" ng-model="x.nullable"></td>
-                <td><input type="text" ng-model="x.remarks"/></td>
+                <td><input type="text" ng-model="x.remarks" required/></td>
                 <td><input type="text" ng-model="x.columnDefault"/></td>
             </tr>
 
@@ -115,6 +156,7 @@
 </form>
 
 </body>
+
 <script>
     var app = angular.module('myApp', []);
     app.controller('tableCtrl', function ($scope, $http) {
@@ -142,7 +184,7 @@
         };
         $scope.submit = function () {
 
-            $http.post("/core/saveTableInfo.do",$scope.tableInfo).success(function(data)
+            $http.post("<c:url value="/core/saveTableInfo.do"/>",$scope.tableInfo).success(function(data)
             {
                 if(data.success)
                 {

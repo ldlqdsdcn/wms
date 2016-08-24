@@ -1,14 +1,14 @@
 package com.delmar.common;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.delmar.utils.StringUtil;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.sql.*;
 
 public class DBUtil {
 	
 	// 数据库ProLimsSH
-	private static ComboPooledDataSource cpdsProLimsSH = null; 
+	private static DruidDataSource cpdsProLimsSH = null;
 	private static DBUtil dbconn = null;
 	
 	public static DBUtil getInstance(){

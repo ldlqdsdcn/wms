@@ -102,7 +102,37 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         }
         return primaryKey;
     }
+    public String getTableRemark(String tableName)
+    {
+        Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
+        try {
+            DatabaseMetaData databaseMetaData = conn.getMetaData();
+            String[] types={ "TABLE" };
+            ResultSet rs= databaseMetaData.getTables(null,null,tableName,types );
 
+                    ResultSetMetaData rsmd=rs.getMetaData();
+
+            int count= rsmd.getColumnCount();
+            while (rs.next())
+            {
+                for(int i=1;i<=count;i++)
+                {
+                    System.out.print(" "+rsmd.getColumnName(i)+" "+rsmd.getColumnTypeName(i)+" "+rs.getString(i));
+                }
+                System.out.println(rs.getString("REMARKS"));
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            throw new DataBaseException("获取 表信息失败", e);
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new DataBaseException("关闭数据连接失败", e);
+        }
+        return "";
+    }
     public List<UniqueIndexDto> getUniqueIndex(String tableName) {
         List<UniqueIndexDto> list=new ArrayList<>();
 
@@ -112,12 +142,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             DatabaseMetaData databaseMetaData = conn.getMetaData();
             ResultSet rs = databaseMetaData.getIndexInfo(null, null, tableName, true, true);
             while (rs.next()) {
-                JsonObject jsonObject = new JsonObject();
                 String indexName = rs.getString(INDEX_COLUMN_NAME);
                 String columnName = rs.getString(INDEX_NAME);
                 UniqueIndexDto uniqueIndexDto=new UniqueIndexDto();
-                uniqueIndexDto.setIndexColumnName(indexName);
                 uniqueIndexDto.setIndexColumnName(columnName);
+                uniqueIndexDto.setIndexName(indexName);
                 list.add(uniqueIndexDto);
             }
 

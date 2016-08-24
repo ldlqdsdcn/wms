@@ -21,6 +21,7 @@ import com.delmar.core.dto.UniqueIndexDto;
 import com.delmar.core.excep.DataBaseException;
 import com.delmar.core.excep.ValidateException;
 import com.delmar.utils.DmLog;
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,7 +88,7 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 			tableMetaDataDto.setUniqueKeyList(uniqueIndexList);
 			log.debug("primaryKey="+primaryKey);
 			tableMetaDataDto.setExportedFK(tableDao.getExportedKeys(tableName));
-			tableMetaDataDto.setImportedFK(tableDao.getExportedKeys(tableName));
+			tableMetaDataDto.setImportedFK(tableDao.getImportedKeys(tableName));
 			List<ColumnMetaDataDto> columns=tableDao.getTableColumns(tableName);
 			FieldType[] columnDataTypes= FieldType.values();
 			for(ColumnMetaDataDto dto:columns)
@@ -101,7 +102,7 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 						}
 					}
 			}
-
+			//tableDao.getTableRemark(tableName);
 			tableMetaDataDto.setColumnList(columns);
 
 
@@ -121,6 +122,23 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		{
 			throw new ValidateException("该表已经存在，不能重复创建");
 		}
+		TableMetaDataDto tmdd=new TableMetaDataDto();
+		tmdd.setExportedFK(tableMetaDataDto.getExportedFK());
+		tmdd.setImportedFK(tableMetaDataDto.getImportedFK());
+		tmdd.setUniqueKeyList(tableMetaDataDto.getUniqueKeyList());
+
+		Gson gson=new Gson();
+		Table table=new Table();
+		table.setName(tableMetaDataDto.getName());
+		table.setClassName(tableMetaDataDto.getClassName());
+		table.setTableNameTr(tableMetaDataDto.getTableTrlName());
+		table.setBuPk(tableMetaDataDto.getBusPk());
+		table.setExternJson(gson.toJson(tmdd));
+		table.setDescr(tableMetaDataDto.getRemark());
+		tableDao.save(table);
+
+
+
 	}
 
 

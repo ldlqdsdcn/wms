@@ -262,75 +262,14 @@
 
 
 <package name="cargo" namespace="/cargo" extends="default">
-	<action name="busquery_*" class="com.delmar.cargo.web.action.BusinessQueryAction" method="{1}">
-		<result name="lists">/cargo/busshipment.jsp</result>
-		<result name="listi">/cargo/businvoice.jsp</result>
-		<result name="listc">/cargo/buscustomer.jsp</result>		
-        <result name="listp">/cargo/bussalesperformance.jsp</result>		
-		<result name="searchs">/cargo/busshipment.jsp</result>		
-        <result name="searchi">/cargo/businvoice.jsp</result>		
-        <result name="searchc">/cargo/buscustomer.jsp</result>        
-        <result name="searchp">/cargo/bussalesperformance.jsp</result>
-        <result name="searchCustom">/cargo/busCustomSearch.jsp</result>
-        
-	</action>
-	<action name="customQuery_*" class="com.delmar.cargo.web.action.CustomAction" method="{1}">
-        <result name="searchCustom">/cargo/busCustomSearch.jsp</result>
-	</action>
-	
-	<action name="squery_*" class="com.delmar.cargo.web.action.ShipmentQueryAction" method="{1}">
-		<result name="lists">/cargo/busshipment.jsp</result>
-		<result name="searchs">/cargo/busshipment.jsp</result>		
-	</action>
 
-	<action name="iquery_*" class="com.delmar.cargo.web.action.InvoiceQueryAction" method="{1}">
-		<result name="listi">/cargo/businvoice.jsp</result>
-        <result name="searchi">/cargo/businvoice.jsp</result>
-		<result name="listdebit">/cargo/businvoicestate.jsp</result>
-        <result name="searchdebit">/cargo/businvoicestate.jsp</result>		
-        		
-	</action>
 
-	<action name="cquery_*" class="com.delmar.cargo.web.action.CustomerQueryAction" method="{1}">
-		<result name="listc">/cargo/buscustomer.jsp</result>		
-        <result name="searchc">/cargo/buscustomer.jsp</result>
-        <result name="searchcargo" type="redirectAction" >
-			<param name="namespace">/crm</param>
-			<param name="actionName">linkrecord_searchcargo</param>        
-        </result>        
-		<result name="listtop">/cargo/buscustomertop.jsp</result>		
-        <result name="searchtop">/cargo/buscustomertop.jsp</result>        
-                
-	</action>
-
-	<action name="pquery_*" class="com.delmar.cargo.web.action.SalesPerformanceQueryAction" method="{1}">
-        <result name="listp">/cargo/bussalesperformance.jsp</result>		
-        <result name="searchp">/cargo/bussalesperformance.jsp</result>
-	</action>
-	
-	<action name="cstastics_*" class="com.delmar.cargo.web.action.CustomerStateAction" method="{1}">
-        <result name="lists">/cargo/buscustomerstastics.jsp</result>		
-        <result name="searchs">/cargo/buscustomerstastics.jsp</result>
-	</action>
 
 </package>
 
 <package name="station" namespace="/station" extends="default">
-	<action name="warehouseForwarder_*" class="com.delmar.station.web.action.WarehouseForwarderAction" method="{1}">
-        <result name="list">/station/warehouseForwarderList.jsp</result>	
-        <result name="scan">/station/warehouseForwarderScan.jsp</result>	
-	</action>
-	
-	<action name="wfDetail_*" class="com.delmar.station.web.action.WFDetailAction" method="{1}">
-		<result name="list">/station/wfDetailList.jsp</result>	
-        <result name="print">/station/wfDetailFormPrint.jsp</result>
-        <result name="initDetail">/station/wfDetailFormAdd.jsp</result>	
-         <result name="delete" type="redirectAction" >
-			<param name="namespace">/station</param>
-			<param name="actionName">warehouseForwarder_list</param>        
-        </result>    
-        	
-	</action>
+
+
 </package>
 
 <package name="officeTest" namespace="/officeTest" extends="default">

@@ -15,8 +15,6 @@
 		<convert match="com.delmar.crm.model.Linkman" converter="bean"></convert>
 		<convert match="com.delmar.station.model.ObjWFDetail" converter="bean"></convert>
 		<convert match="com.delmar.crm.model.Linkrecord" converter="bean"></convert>
-		<convert match="com.delmar.cargo.model.ReportFareInvoice" converter="bean"></convert>		
-		<convert match="com.delmar.cargo.model.FareInfo" converter="bean"></convert>
 		<convert match="com.delmar.crm.service.CustomerExtraPropDefineService" converter="bean"></convert>
 		
 		<create javascript="fileDwr" creator="new">
@@ -64,33 +62,16 @@
 			<include method="getLinkmanList"/>
 			<include method="getLinkmanGson"/>
 		</create>
-		<create javascript="linkStationRecordDwr" creator="spring">
-			<param name="beanName" value="linkStationRecordDwr"></param>
-			<include method="getLinkStationRecordList"/>
-			<include method="getLinkStationRecordGson"/>
-		</create>
-		<create javascript="linkBankCategoryDwr" creator="spring">
-			<param name="beanName" value="linkBankCategoryDwr"></param>
-			<include method="getLinkBankCategoryList"/>
-			<include method="getLinkBankCategoryGson"/>
-		</create>
+
 		<create javascript="linkrecordDwr" creator="spring">
 			<param name="beanName" value="linkrecordDwr"></param>
 			<include method="getLinkrecordList"/>
 			<include method="getLinkrecordGson"/>
 		</create>
 		
-		<create javascript="reportfareinvoiceDwr" creator="spring">
-			<param name="beanName" value="reportfareinvoiceDwr"></param>
-			<include method="getInvoiceList"/>
-			<include method="getInvoiceGson"/>
-		</create>
+
 			
-		<create javascript="fareinfoDwr" creator="spring">
-			<param name="beanName" value="fareinfoDwr"></param>
-             <include method="getFareInfoList"/>			
-			<include method="getFareInfoGson"/>
-		</create>	
+
 		
 			
 		<create javascript="customerExtraPropDwr" creator="spring">

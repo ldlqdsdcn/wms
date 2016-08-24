@@ -17,7 +17,7 @@ import com.delmar.base.model.DatadictTrl;
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictService;
 import com.delmar.core.DelmarConst;
-import com.delmar.core.model.HbnHsql;
+
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.action.PrivilegeOperator;
 import com.delmar.core.web.bean.UserResource;

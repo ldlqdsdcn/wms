@@ -43,4 +43,11 @@ public interface TableDao extends CoreDao<Table> {
     public List<ForeignKey> getExportedKeys(String tableName);
     public List<ForeignKey> getImportedKeys(String tableName);
     public List<ColumnMetaDataDto> getTableColumns(String tableName);
+
+    /**
+     * 获取表备注信息
+     * @param tableName
+     * @return
+     */
+    public String getTableRemark(String tableName);
 }

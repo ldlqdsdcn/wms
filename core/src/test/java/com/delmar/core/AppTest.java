@@ -4,7 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 
 /**
  * Unit test for simple App.
@@ -28,7 +28,6 @@ public class AppTest
     public static Test suite()
     {
     	
-    	ComboPooledDataSource s=null;
         return new TestSuite( AppTest.class );
     }
 
