@@ -16,6 +16,7 @@
         <module>base</module>
         <module>cargo</module>
         <module>web</module>
+        <module>devs</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
