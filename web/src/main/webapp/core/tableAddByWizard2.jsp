@@ -24,7 +24,7 @@
     <h3>根据表结构生成模块第二步-生成table和table_column
     </h3>
 </div>
-<form role="form">
+<form role="form" name="myform">
     <div class="form-group row" >
         <label for="name" class="col-sm-2 control-label">表名</label>
         <div class="col-md-4">
@@ -72,7 +72,7 @@
     </div>
 
         <div class="form-group">
-              <button  type="button" class="btn btn-primary" ng-click="submit()" >保存</button>
+              <button  type="submit" class="btn btn-primary" ng-click="submit()"  ng-disabled="tableInfo.columnList==null">保存</button>
             </div>
     <div class="form-group" ng-show="tableInfo.uniqueKeyList!=null">
         <label for="unique_list" class="control-label">索引</label>
@@ -184,17 +184,22 @@
         };
         $scope.submit = function () {
 
-            $http.post("<c:url value="/core/saveTableInfo.do"/>",$scope.tableInfo).success(function(data)
+            if($scope.myform.$valid)
             {
-                if(data.success)
+                $http.post("<c:url value="/core/saveTableInfo.do"/>",$scope.tableInfo).success(function(data)
                 {
-                    $scope.tableInfo=data.data;
-                }
-                else {
-                    bootbox.alert(data.message);
-                }
+                    if(data.success)
+                    {
+                        bootbox.alert("保存表信息成功");
+                        $scope.tableInfo=data.data;
+                    }
+                    else {
+                        bootbox.alert(data.message);
+                    }
 
-            });
+                });
+            }
+
 
         };
     });

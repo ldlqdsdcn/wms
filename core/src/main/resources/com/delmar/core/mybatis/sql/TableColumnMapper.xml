@@ -67,7 +67,8 @@
       out_log, descr,is_unique,column_size,digits,nullable)
     values (#{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, #{tableId,jdbcType=INTEGER}, 
       #{canShow,jdbcType=CHAR}, #{columnNameTr,jdbcType=VARCHAR}, #{attributeName,jdbcType=VARCHAR}, 
-      #{outLog,jdbcType=CHAR}, #{descr,jdbcType=VARCHAR})
+      #{outLog,jdbcType=CHAR}, #{descr,jdbcType=VARCHAR},#{isUnique,jdbcType=CHAR},#{columnSize,jdbcType=INTEGER},
+      #{digits,jdbcType=INTEGER},#{nullable,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" keyProperty="id" parameterType="com.delmar.core.model.TableColumn" useGeneratedKeys="true">
     insert into core_table_column
@@ -96,6 +97,18 @@
       <if test="descr != null">
         descr,
       </if>
+      <if test="isUnique != null">
+        isUnique,
+      </if>
+      <if test="columnSize != null">
+        columnSize,
+      </if>
+      <if test="digits != null">
+        digits,
+      </if>
+      <if test="nullable != null">
+        nullable,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="columnName != null">
@@ -121,6 +134,18 @@
       </if>
       <if test="descr != null">
         #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnique != null">
+        #{isUnique,jdbcType=CHAR},
+      </if>
+      <if test="columnSize != null">
+        #{columnSize,jdbcType=INTEGER},
+      </if>
+      <if test="digits != null">
+        #{digits,jdbcType=INTEGER},
+      </if>
+      <if test="nullable != null">
+        #{nullable,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -157,6 +182,18 @@
       <if test="descr != null">
         descr = #{descr,jdbcType=VARCHAR},
       </if>
+      <if test="isUnique != null">
+        is_unique=#{isUnique,jdbcType=CHAR},
+      </if>
+      <if test="columnSize != null">
+        column_size= #{columnSize,jdbcType=INTEGER},
+      </if>
+      <if test="digits != null">
+        digits=#{digits,jdbcType=INTEGER},
+      </if>
+      <if test="nullable != null">
+        nullable= #{nullable,jdbcType=CHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -169,7 +206,11 @@
       column_name_tr = #{columnNameTr,jdbcType=VARCHAR},
       attribute_name = #{attributeName,jdbcType=VARCHAR},
       out_log = #{outLog,jdbcType=CHAR},
-      descr = #{descr,jdbcType=VARCHAR}
+      descr = #{descr,jdbcType=VARCHAR},
+      is_unique=#{isUnique,jdbcType=CHAR},
+      column_size= #{columnSize,jdbcType=INTEGER},
+      digits=#{digits,jdbcType=INTEGER},
+      nullable= #{nullable,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   

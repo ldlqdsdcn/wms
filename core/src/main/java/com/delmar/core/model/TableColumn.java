@@ -24,7 +24,7 @@ public class TableColumn extends CoreModel{
 
     private Integer digits;
 
-    private Integer nullable;
+    private String nullable;
 
     public Integer getId() {
         return id;
@@ -122,11 +122,11 @@ public class TableColumn extends CoreModel{
         this.digits = digits;
     }
 
-    public Integer getNullable() {
+    public String getNullable() {
         return nullable;
     }
 
-    public void setNullable(Integer nullable) {
+    public void setNullable(String nullable) {
         this.nullable = nullable;
     }
 }

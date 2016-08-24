@@ -59,6 +59,9 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		if(ids!=null)
 			for(Integer id:ids)
 			{
+				Map<String,Integer> param=new HashMap<>();
+				param.put("tableId",id);
+				tableColumnDao.deleteByExample(param);
 				tableDao.deleteByPrimaryKey(id);
 			}
 		
@@ -137,6 +140,31 @@ public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		table.setDescr(tableMetaDataDto.getRemark());
 		tableDao.save(table);
 
+		List<ColumnMetaDataDto> columnMetaDataDtoList=tableMetaDataDto.getColumnList();
+		for(ColumnMetaDataDto columnMetaDataDto:columnMetaDataDtoList)
+		{
+			TableColumn tableColumn=new TableColumn();
+			tableColumn.setTableId(table.getId());
+			tableColumn.setColumnName(columnMetaDataDto.getColumnName());
+			tableColumn.setCanShow("Y");
+			tableColumn.setColumnNameTr(columnMetaDataDto.getRemarks());
+			tableColumn.setColumnSize(columnMetaDataDto.getColumnSize());
+			tableColumn.setDigits(columnMetaDataDto.getDecimalDigits());
+			tableColumn.setDataType(columnMetaDataDto.getDataType());
+			tableColumn.setOutLog("Y");
+			tableColumn.setNullable(columnMetaDataDto.getNullable()?"Y":"N");
+			List<UniqueIndexDto> uniqueKeyList=tableMetaDataDto.getUniqueKeyList();
+			tableColumn.setIsUnique("N");
+			for(UniqueIndexDto uk:uniqueKeyList)
+			{
+				if(uk.getIndexColumnName().equals(tableColumn.getColumnName()))
+				{
+					tableColumn.setIsUnique("Y");
+				}
+			}
+			tableColumnDao.save(tableColumn);
+
+		}
 
 
 	}

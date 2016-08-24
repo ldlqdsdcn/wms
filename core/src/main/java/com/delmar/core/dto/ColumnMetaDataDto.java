@@ -13,7 +13,7 @@ public class ColumnMetaDataDto implements java.io.Serializable{
     private int dataType;
     private int columnSize;
     private int decimalDigits;
-    private boolean nullable;
+    private Boolean nullable;
     private String remarks;
     private String columnDefault;
 
