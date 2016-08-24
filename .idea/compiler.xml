@@ -14,7 +14,7 @@
       <entry name="!?*.aj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true">
+      <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Maven default annotation processors profile" enabled="true">
@@ -28,12 +28,6 @@
         <module name="core" />
         <module name="system" />
         <module name="utils" />
-      </profile>
-      <profile default="false" name="Annotation profile for web" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="web" />
       </profile>
     </annotationProcessing>
@@ -41,7 +35,7 @@
       <module name="base" target="1.5" />
       <module name="cargo" target="1.5" />
       <module name="common" target="1.5" />
-      <module name="core" target="1.5" />
+      <module name="core" target="1.7" />
       <module name="delmar_platform" target="1.5" />
       <module name="system" target="1.5" />
       <module name="utils" target="1.5" />
