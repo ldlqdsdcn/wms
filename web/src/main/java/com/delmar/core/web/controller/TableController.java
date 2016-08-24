@@ -22,19 +22,18 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by admin on 2016/8/18.
  */
 @Controller
-@RequestMapping("/core")
 public class TableController {
     @Autowired
     private TableService tableService;
 
-    @RequestMapping(value = "/getTableInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/core/getTableInfo", method = RequestMethod.GET)
     @ResponseBody
     public ApiResult<TableMetaDataDto> getTableInfo(String tableName) {
         ApiResult<TableMetaDataDto> tableMetaDataDto = tableService.getTableDescription(tableName);
         return tableMetaDataDto;
     }
 
-    @RequestMapping(value = "/initTableInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/core/initTableInfo", method = RequestMethod.GET)
     public ModelAndView initTableInfo() {
         ModelAndView modelAndView = new ModelAndView("/core/tableAddByWizard2.jsp");
         ColumnDataType[] columnDataTypes = ColumnDataType.values();
@@ -46,12 +45,12 @@ public class TableController {
             jsonArray.add(jsonObject);
         }
 
-        modelAndView.addObject("columnDataTypes", jsonArray.toString());
+        modelAndView.addObject("/core/columnDataTypes", jsonArray.toString());
 
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saveTableInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/core/saveTableInfo", method = RequestMethod.POST)
     @ResponseBody
     public ApiResult<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo) {
         try {

@@ -21,7 +21,7 @@
 </head>
 <body class="container" ng-app="myApp" ng-controller="tableCtrl">
 <div class="page-header">
-    <h3>根据表结构生成模块第二步-生成table和table_column
+    <h3>根据表结构生成生成table和table_column
     </h3>
 </div>
 <form role="form" name="myform">
