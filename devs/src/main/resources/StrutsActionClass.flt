@@ -1,0 +1,116 @@
+/******************************************************************************
+ * 德玛国际物流有限公司  2013-07-01												  *
+ *	作者：张宗锐								                                              *
+ *****************************************************************************/
+package ${packagename};
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import CoreEditPrivAction;
+
+import ${modelpackage}.${modelname};
+
+import ${servicepackage}.${modelname}Service;
+
+
+/**
+ * @author 张宗锐 ${datetime}
+ */
+public class ${modelname}Action extends CoreEditPrivAction {
+	private ${modelname}  ${modelObjname};
+	
+	@Autowired
+	private ${modelname}Service ${modelObjname}Service;
+	
+	private void init()
+	{
+
+	}
+	
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#getModuleName()
+	 */
+	@Override
+	public String getModuleName() {
+		return "${modelObjname}";
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#delete()
+	 */
+	@Override
+	public String delete() {
+		${modelObjname}Service.deleteByPrimaryKey(${modelObjname}.getId());
+		return "list";
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#deleteList(java.lang.Integer[])
+	 */
+	@Override
+	public void deleteList(Integer[] ids) {
+		
+		${modelObjname}Service.delete${modelname}List(ids);
+
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#getModelId()
+	 */
+	@Override
+	public Integer getModelId() {
+
+		return ${modelObjname}.getId();
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#editForm()
+	 */
+	@Override
+	public void editForm() {
+		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
+
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#search()
+	 */
+	@Override
+	public List search() {
+		return ${modelObjname}Service.selectByExample(null);
+	}
+
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#createForm()
+	 */
+	@Override
+	public void createForm() {
+		${modelObjname}=new ${modelname}();
+	}
+	
+	/* (non-Javadoc)
+	 * @see CoreEditPrivAction#saveForm()
+	 */
+	@Override
+	public String saveForm() {
+
+		${modelObjname}Service.save(${modelObjname});
+		return "edit";
+	}
+	/**
+	 * @return the usergroup
+	 */
+	public ${modelname} get${modelname}() {
+		return ${modelObjname};
+	}
+
+	/**
+	 * @param usergroup the usergroup to set
+	 */
+	public void set${modelname}(${modelname} ${modelObjname}) {
+		this.${modelObjname} = ${modelObjname};
+	}
+
+}

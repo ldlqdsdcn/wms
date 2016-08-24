@@ -1,0 +1,31 @@
+/******************************************************************************
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：张宗锐								                              *                                                             *
+ *****************************************************************************/
+
+package ${packagename};
+
+import org.springframework.stereotype.Repository;
+
+import ${interfacefullname};
+import ${modelpackage}.${modelname};
+import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
+
+/**
+ * @author 张宗锐 ${datetime}
+ */
+@Repository("${repositoryname}") 
+public class ${modelname}DaoMybatis extends CoreDaoMyBatis<${modelname}> implements ${modelname}Dao {
+
+	/* (non-Javadoc)
+	 * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
+	 */
+	@Override
+	protected String getSqlName() {
+		
+		return "${mappername}";
+	}
+
+
+
+}

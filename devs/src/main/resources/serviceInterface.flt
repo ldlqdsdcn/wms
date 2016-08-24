@@ -1,0 +1,19 @@
+/******************************************************************************
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：张宗锐								                              *
+ *****************************************************************************/
+
+package ${packagename};
+
+import ${modelpackage}.${modelname};
+import com.delmar.core.service.CoreService;
+
+/**
+ * @author 张宗锐 ${datetime}
+ */
+public interface ${modelname}Service extends CoreService<${modelname}> {
+	/**
+	 * @param ids
+	 */
+	public void delete${modelname}List(Integer[] ids);
+}

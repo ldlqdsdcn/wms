@@ -1,0 +1,16 @@
+/******************************************************************************
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：张宗锐								                              *
+ *****************************************************************************/
+
+package ${packagename};
+
+import ${modelpackage}.${modelname};
+import com.delmar.core.dao.CoreDao;
+
+/**
+ * @author 张宗锐 ${datetime}
+ */
+public interface ${modelname}Dao extends CoreDao<${modelname}> {
+
+}

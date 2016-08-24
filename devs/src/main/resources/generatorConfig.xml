@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="e:/lib/mysql-connector-java-5.1.36.jar" />
+
+    <!-- flat表示一张表生成一个java对象，MyBatis3Simple不会生成example语句 -->
+    <!-- mbg eclipse plugin 不支持MyBatis3Simple -->
+    <context id="myContext" targetRuntime="MyBatis3"
+             defaultModelType="flat">
+        <!-- sql关键字会加上` -->
+        <property name="autoDelimitKeywords" value="true" />
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+
+        <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin> -->
+        <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+            <property name="targetPackage" value="mybatis" />
+            <property name="targetProject" value="../devs/src/main/resources" />
+        </plugin>
+        <!-- <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> -->
+
+        <commentGenerator>
+            <!-- 屏蔽自动注释 -->
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://mlbtest1.mysql.rds.aliyuncs.com:3306/mlb" userId="test_root"
+                        password="q1w2e3r4" />
+
+        <javaModelGenerator targetPackage="com.uncle5.mlb.hui.entity.po"
+                            targetProject="../devs/src/main/java">
+            <property name="rootClass" value="com.uncle5.mlb.hui.entity.po.Po" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis.mappers"
+                         targetProject="../devs/src/main/resources" />
+
+        <!-- <javaClientGenerator targetPackage="com.uncle5.webapp.baseweb.dao.mapper" -->
+        <!-- targetProject="baseweb/src/main/java" type="XMLMAPPER" /> -->
+
+        <!--		<table schema="" tableName="banner" domainObjectName="BannerPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="category" domainObjectName="CategoryPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="free_commodity" domainObjectName="FreeCommodityPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="free_commodity_record"
+                    domainObjectName="FreeCommodityRecordPo" enableCountByExample="false"
+                    enableSelectByExample="false" enableDeleteByExample="false"
+                    enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="free_commodity_review"
+                    domainObjectName="FreeCommodityReviewPo" enableCountByExample="false"
+                    enableSelectByExample="false" enableDeleteByExample="false"
+                    enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="free_commodity_review_reply"
+                    domainObjectName="FreeCommodityReviewReplyPo" enableCountByExample="false"
+                    enableSelectByExample="false" enableDeleteByExample="false"
+                    enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="member_level" domainObjectName="MemberLevelPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="merchant" domainObjectName="MerchantPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="merchant_review" domainObjectName="MerchantReviewPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="merchant_review_reply"
+                    domainObjectName="MerchantReviewReplyPo" enableCountByExample="false"
+                    enableSelectByExample="false" enableDeleteByExample="false"
+                    enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="region" domainObjectName="RegionPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user" domainObjectName="UserPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user_access" domainObjectName="UserAccessPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user_distribution_record"
+                    domainObjectName="UserDistributionRecordPo" enableCountByExample="false"
+                    enableSelectByExample="false" enableDeleteByExample="false"
+                    enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user_member" domainObjectName="UserMemberPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user_promotion" domainObjectName="UserPromotionPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="user_weixin" domainObjectName="UserWeixinPo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>
+                <table schema="" tableName="region_attribute" domainObjectName="RegionAttributePo"
+                    enableCountByExample="false" enableSelectByExample="false"
+                    enableDeleteByExample="false" enableUpdateByExample="false">
+                    <generatedKey column="id" sqlStatement="MySql" identity="true" />
+                </table>-->
+        <table schema="" tableName="sys_wechat_constants" domainObjectName="SysWeChatConstants"
+               enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+    </context>
+</generatorConfiguration>
