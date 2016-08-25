@@ -136,4 +136,9 @@ public class StringUtil {
 		return  name;
 
 	}
+	public static String upperFirstChar(String name) {
+		name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		return  name;
+
+	}
 }

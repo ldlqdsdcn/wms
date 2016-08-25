@@ -69,8 +69,8 @@ public class GenerateServiceMain {
 					}
 	                //System.out.println("file exist");    
 	                file.createNewFile();    
-	            }    
-	            Writer out = new BufferedWriter(new FileWriter(file));    
+	            }
+				OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
 	            template.process(root, out);    
 	            out.flush();   
 	            out.close();
@@ -127,8 +127,8 @@ public class GenerateServiceMain {
 						file.getParentFile().mkdirs();
 					}
 	                file.createNewFile();    
-	            }    
-	            Writer out = new BufferedWriter(new FileWriter(file));    
+	            }
+				OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
 	            template.process(root, out);    
 	            out.flush();   
 	            out.close();

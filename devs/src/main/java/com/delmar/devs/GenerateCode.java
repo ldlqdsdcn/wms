@@ -55,7 +55,7 @@ public class GenerateCode {
 		gam.generateActionclass();
 
 		//Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath
-		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(config,"/"+modulename,modelList,titleList,user,genmodelpath);
+		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(config,"/"+modulename,modelList,titleList,user,genmodelpath,modulename);
 		generateJspPageMain.generateJspPage();
 
 

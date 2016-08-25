@@ -98,7 +98,7 @@ public class GenerateActionMain {
                     }
                     file.createNewFile();
                 }
-                Writer out = new BufferedWriter(new FileWriter(file));
+                OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
                 template.process(root, out);
                 out.flush();
                 out.close();

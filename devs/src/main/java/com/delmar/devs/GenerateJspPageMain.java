@@ -29,10 +29,10 @@ public class GenerateJspPageMain {
 
     private  String[] modeList;
     private String[] modeNameList;
-
+    private String module;
     private  String namespace = "/core";
     private  Configuration config;
-    public GenerateJspPageMain(Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath)
+    public GenerateJspPageMain(Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath,String module)
     {
         this.config=config;
         this.namespace=namespace;
@@ -40,6 +40,7 @@ public class GenerateJspPageMain {
         this.modeNameList=modeNameList;
         this.user=user;
         this.genmodelpath=genmodelpath;
+        this.module=module;
 
 
     }
@@ -64,7 +65,7 @@ public class GenerateJspPageMain {
     }
 
     public  void generateFormPage(String mode,String title) {
-        List<JspListProp> jspFormPropList = getOutPutList();
+        List<JspListProp> jspFormPropList = getOutPutList(mode);
 
         Template template = null;
         try {
@@ -89,7 +90,7 @@ public class GenerateJspPageMain {
     }
 
     public  void generateListPage(String mode,String title) {
-        List<JspListProp> jspListPropList = getOutPutList();
+        List<JspListProp> jspListPropList = getOutPutList(mode);
         Template template = null;
         try {
             template = config.getTemplate("listPage.flt", "UTF-8");
@@ -107,14 +108,23 @@ public class GenerateJspPageMain {
 
         root.put("datetime", datetime);
         root.put("propertyList", jspListPropList);
+
         File file = new File(genmodelpath + "src/main/webapp" + namespace + "/" + mode + "List.jsp");
         storeFile(file, template, root);
 
     }
-    private static List<JspListProp> getOutPutList()
+    private  List<JspListProp> getOutPutList(String mode)
     {
+       String modeName= com.delmar.utils.StringUtil.upperFirstChar(mode);
+        Class cla=null;
+        try {
+            System.out.println("com.delmar."+module+".model."+modeName);
+            cla=Class.forName("com.delmar."+module+".model."+modeName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         List<JspListProp> jspFormPropList = new ArrayList<JspListProp>();
-        java.lang.reflect.Field[] fields = BeanHelper.getAllFields(Window.class);
+        java.lang.reflect.Field[] fields = BeanHelper.getAllFields(cla);
         for (java.lang.reflect.Field f : fields) {
             if(IntelliKeyWord.hasSkipped(f.getName()))
             {
@@ -162,7 +172,7 @@ public class GenerateJspPageMain {
                 }
                 file.createNewFile();
             }
-            Writer out = new BufferedWriter(new FileWriter(file));
+            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
             template.process(root, out);
             out.flush();
             out.close();
