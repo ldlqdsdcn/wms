@@ -19,11 +19,9 @@ import java.io.IOException;
  * 生成dao层 和Service 层代码
  */
 public class GenerateCode {
-/*	public static String[] modelList={"Carrier","Chargename","Commdity","Currency","Datadict","Nameaccounts",
-		"Port","Strategy","Unit"};*/
-	//public static String[] modelList={"Client","Org","User"};,"Module","ModuleJavabean","ModuleMenu","ModulePage","ModuleRole","Operator","Org","Page","PageMenu","Privilege","Role","UserRole","UserorgAccess"
+	private static String user="刘大磊";
 	public static String[] modelList={"Window","Page","Field"};
-	
+	public static String[] titleList={"窗体","页面","字段"};
 	public  static String modulename="core";
 	public static String genmodelpath="d:/IdeaProjects/MyHome/";
 	public static Configuration config;
@@ -33,20 +31,33 @@ public class GenerateCode {
 	public static void main(String[] args) {
 		File filepath=new File(GenerateDaoMain.class.getResource("/").getFile());
 		   config = new Configuration();
+			config.setDefaultEncoding("utf-8");
 		  try {
 			config.setDirectoryForTemplateLoading(filepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    
 		  config.setObjectWrapper(new DefaultObjectWrapper());
-		  
+		  //生成dao
 		  GenerateDaoMain gdm=new GenerateDaoMain(config,modulename,genmodelpath,modelList);
 		  gdm.generateInterface();
 		  gdm.generatedaoclass();
-		  
+		  //生成 service
 		  GenerateServiceMain gsm=new GenerateServiceMain(config,modulename,genmodelpath,modelList);
 		  gsm.generateInterface();
 		  gsm.generateServiceclass();
+		//生成struts Configuration config, String modulename, String genmodelpath, String[] modelList
+		GenerateActionMain generateActionMain=new GenerateActionMain(config,modulename,genmodelpath,modelList);
+		generateActionMain.generateActionclass();
+		//生成struts xml
+		GenerateStrutsConfigMain gam=new GenerateStrutsConfigMain(config,"core"
+				,genmodelpath,modelList);
+		gam.generateActionclass();
+
+		//Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath
+		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(config,"/"+modulename,modelList,titleList,user,genmodelpath);
+		generateJspPageMain.generateJspPage();
+
 
 	}
 

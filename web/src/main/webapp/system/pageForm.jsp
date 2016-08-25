@@ -35,14 +35,7 @@
     	<table border="0" cellpadding="0" cellspacing="0" class="cTableBorder">
         <tr> 
           <td align="left" class="navig">
-                   	<img alt="" src="../images/ico22/create.png">
 
-         	<img alt="" src="../images/ico22/save.png" class="testimg">
-
-         	<img alt="" src="../images/ico22/delete.png">
-
-         	<img alt="" src="../images/ico22/back.png" >
-         	<img alt="" src="../images/ico22/next.png" >
           <delmar:message key="page.location"/></td>
          <td background="../images/top2.png" width="*"  height="32" align="right">
          
@@ -130,7 +123,6 @@
                 <tr>
                 <td colspan="4">
                 <s:actionmessage cssStyle="color:red"/>
-                <img alt="Base" src="../images/base.gif">
                 </td>
                 </tr>
                 </table></td></tr></table>

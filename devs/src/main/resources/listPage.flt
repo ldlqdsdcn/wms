@@ -16,7 +16,7 @@
   <script type='text/javascript' src='../js/ea.effect.js'></script>
     <script type='text/javascript' src='../js/ea.validate.js'></script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
 </head>
 
 <body >
@@ -44,7 +44,7 @@
       </table> 
 
 
- <display:table name="sessionScope.MAP_KEY_OF_SESSION.${mode}List" cellspacing="0" cellpadding="0"  requestURI=""
+ <display:table name="sessionScope.MAP_KEY_OF_SESSION.${mode? uncap_first}List" cellspacing="0" cellpadding="0"  requestURI=""
 		    id="list" pagesize="20" class="table" export="true">
 		    <display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>">
 
@@ -76,7 +76,7 @@
 
 <script type="text/javascript">
     function viewExport(id) {
-       window.location='<c:url value="${namespace}/${mode}_edit.action"/>?id='+id;
+       window.location='<c:url value="${namespace}/${mode? uncap_first}_edit.action"/>?id='+id;
     }
     highlightTableRows("list");
     

@@ -21,31 +21,49 @@ import java.util.List;
  * Created by admin on 2016/8/25.
  */
 public class GenerateJspPageMain {
-    private static String genmodelpath = "d:/IdeaProjects/MyHome/";
-    private static String user = "刘大磊";
+    private  String genmodelpath = "d:/IdeaProjects/MyHome/";
+    private  String user = "刘大磊";
     /**
      * 填写对应的模块名
      */
-    private static String mode = "window";
-    private static String title = "窗体";
-    private static String namespace = "/core";
+
+    private  String[] modeList;
+    private String[] modeNameList;
+
+    private  String namespace = "/core";
+    private  Configuration config;
+    public GenerateJspPageMain(Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath)
+    {
+        this.config=config;
+        this.namespace=namespace;
+        this.modeList=modeList;
+        this.modeNameList=modeNameList;
+        this.user=user;
+        this.genmodelpath=genmodelpath;
 
 
-    private static Configuration config;
-
-    public static void main(String[] args) {
-        File filepath = new File(GenerateDaoMain.class.getResource("/").getFile());
-        config = new Configuration();
-        try {
-            config.setDirectoryForTemplateLoading(filepath);
-        } catch (IOException e) {
-            e.printStackTrace();
+    }
+    public void generateJspPage()
+    {
+        for(int i=0;i<modeList.length;i++)
+        {
+            String mode=com.delmar.utils.StringUtil.lowerFirstChar(modeList[i]);
+            generateListPage(mode, modeNameList[i]);
+            generateFormPage(mode,modeNameList[i]);
         }
-        generateListPage();
-        generateFormPage();
+    }
+    public static void main(String[] args) {
+//        File filepath = new File(GenerateDaoMain.class.getResource("/").getFile());
+//        config = new Configuration();
+//        try {
+//            config.setDirectoryForTemplateLoading(filepath);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
-    public static void generateFormPage() {
+    public  void generateFormPage(String mode,String title) {
         List<JspListProp> jspFormPropList = getOutPutList();
 
         Template template = null;
@@ -70,7 +88,7 @@ public class GenerateJspPageMain {
         storeFile(file, template, root);
     }
 
-    public static void generateListPage() {
+    public  void generateListPage(String mode,String title) {
         List<JspListProp> jspListPropList = getOutPutList();
         Template template = null;
         try {
@@ -147,7 +165,6 @@ public class GenerateJspPageMain {
             Writer out = new BufferedWriter(new FileWriter(file));
             template.process(root, out);
             out.flush();
-
             out.close();
         } catch (IOException e) {
             e.printStackTrace();

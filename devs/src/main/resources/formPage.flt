@@ -7,10 +7,11 @@
 <%@ include file="/commons/taglib.jsp"%>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>
 	${title}
 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
 <link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
 <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
@@ -18,15 +19,13 @@
 <script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
 <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" />
-<link href="../js/jquery/plugin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-<SCRIPT  type="text/javascript" src="../js/jquery/plugin/ligerUI/js/ligerui.min.js"></SCRIPT>
  <script type='text/javascript' src='../js/dm/delmar.js'></script>
  <script type="text/javascript" src="../js/jquery/plugin/delmar/functions.js"></script>
 
 <script type="text/javascript">
  function gotoList()
  {
-	 window.location='<c:url value="${namespace}/${mode}_list.action"/>';
+	 window.location='<c:url value="${namespace}/${mode? uncap_first}_list.action"/>';
  }
  $(document).ready(function(){
     $('#formDetail tr:odd').addClass("query_one");
@@ -36,8 +35,8 @@
 </script>
 </head>
 <body>
-<s:form id="editForm" action="${mode}_edit" namespace='${namespace}' theme="simple">
-<s:hidden id="id" name="${mode}.id"></s:hidden>
+<s:form id="editForm" action="${mode? uncap_first}_edit" namespace='${namespace}' theme="simple">
+<s:hidden id="id" name="${mode? uncap_first}.id"></s:hidden>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -70,9 +69,11 @@
           <!--table 04 bgn-->
             <table width="100%" cellpadding="10" cellspacing="0" >
               <tr>
-                <td align="center"> <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
+                <td align="center"> <table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
                 <tr>
                 <td>
+
+
                 <!--table 05 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                   <#list propertyList as prop>
@@ -80,15 +81,15 @@
                         <td width="20%"><s:label for="${prop.prop}" value="${prop.label}" ></s:label></td>
                         <td width="30%">
                         <#if prop.foreign>
-                                <delmar:user userId="${r'${'}${prop.prop}${r'}'}" module="${module}"/>
+                           <delmar:user userId="${r'${'}${mode? uncap_first}.${prop.prop}}" module="${prop.module}"/>
                         <#elseif prop.date >
-                        <s:textfield name="${mode}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if>>
-                         <s:param name="value"><s:date name="${mode}.${prop.prop}"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
+                        <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if>>
+                         <s:param name="value"><s:date name="${mode? uncap_first}.${prop.prop}"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
                          <#elseif prop.booleanTag>
-                          <s:radio id="${prop.prop}" name="${mode}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"></s:radio>
+                          <s:radio id="${prop.prop}" name="${mode? uncap_first}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"></s:radio>
                           <#else>
-                          <s:textfield name="${mode}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} ></s:textfield>
+                          <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} ></s:textfield>
                           </#if>
                           </td>
                         </tr>
@@ -97,7 +98,7 @@
                 <td colspan="4" class="td_page_right">
                     <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
 						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
-						<c:if test="${r'${'}${mode}.id!=null${r'}'}">
+						<c:if test="${r'${'}${mode? uncap_first}.id!=null${r'}'}">
 						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
 						</c:if>
 						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >

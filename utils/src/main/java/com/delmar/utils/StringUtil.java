@@ -131,4 +131,9 @@ public class StringUtil {
 		}
 		return sb.toString();
 	}
+	public static String lowerFirstChar(String name) {
+		name = name.substring(0, 1).toLowerCase() + name.substring(1);
+		return  name;
+
+	}
 }
