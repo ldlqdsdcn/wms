@@ -26,6 +26,7 @@
         <module name="cargo" />
         <module name="common" />
         <module name="core" />
+        <module name="devs" />
         <module name="system" />
         <module name="utils" />
         <module name="web" />
@@ -37,6 +38,7 @@
       <module name="common" target="1.5" />
       <module name="core" target="1.7" />
       <module name="delmar_platform" target="1.5" />
+      <module name="devs" target="1.5" />
       <module name="system" target="1.5" />
       <module name="utils" target="1.5" />
       <module name="web" target="1.7" />

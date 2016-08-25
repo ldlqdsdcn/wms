@@ -3,6 +3,6 @@
 .idea
 .idea/*
 *.iml
-devs/src/main/resources/mybatis/mappers/
 /.idea/
 /delmar_platform.iml
+

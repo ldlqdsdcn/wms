@@ -65,7 +65,7 @@
 	<action name="table_*" class="com.delmar.core.web.action.TableAction" method="{1}">
 		<result name="list">/core/tables.jsp</result>
 		<result name="edit">/core/tableForm.jsp</result>
-		<result name="wizard">/core/tableAddByWizard.jsp</result>
+		<result name="wizard">/core/tableAddByWizard2.jsp</result>
 	</action>
 	<!-- 语言 -->
 	<action name="language_*" class="com.delmar.core.web.action.LanguageAction" method="{1}">
@@ -76,6 +76,18 @@
 	<action name="search_*" class="com.delmar.core.web.action.SearchAction" method="{1}">
 		<result name="list">/core/searchs.jsp</result>
 		<result name="edit">/core/searchForm.jsp</result>
+	</action>
+	<action name="window_*" class="com.delmar.core.web.action.WindowAction" method="{1}">
+		<result name="list">/core/windowList.jsp</result>
+		<result name="edit">/core/windowForm.jsp</result>
+	</action>
+	<action name="page_*" class="com.delmar.core.web.action.PageAction" method="{1}">
+		<result name="list">/core/pageList.jsp</result>
+		<result name="edit">/core/pageForm.jsp</result>
+	</action>
+	<action name="field_*" class="com.delmar.core.web.action.FieldAction" method="{1}">
+		<result name="list">/core/fieldList.jsp</result>
+		<result name="edit">/core/fieldForm.jsp</result>
 	</action>
 </package>
 

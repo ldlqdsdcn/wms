@@ -7,7 +7,7 @@
 
 package com.delmar.devs;
 
-import com.delmar.util.DateTimeDecorator;
+import com.delmar.utils.DateTimeDecorator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
@@ -44,7 +44,7 @@ public class GenerateDaoMain {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
-		
+
 		File filepath=new File(GenerateDaoMain.class.getResource("/").getFile());
 		   Map root = new HashMap();  
 		
@@ -96,8 +96,8 @@ public class GenerateDaoMain {
 		   Map root = new HashMap();  
 		
 		Date date=new Date();
-		String classpackage="com.kudan."+modulename+".dao.mybatis";
-		String modelpackage="com.kudan."+modulename+".model";
+		String classpackage="com.delmar."+modulename+".dao.mybatis";
+		String modelpackage="com.delmar."+modulename+".model";
 		String datetime=DateTimeDecorator.dateToLongString(date);
 		root.put("packagename", classpackage);
 	
@@ -109,14 +109,14 @@ public class GenerateDaoMain {
 			for(String model:modelList)
 			{
 				//toUpperCase
-				root.put("interfacefullname", "com.kudan."+modulename+".dao."+model+"Dao");
+				root.put("interfacefullname", "com.delmar."+modulename+".dao."+model+"Dao");
 				System.out.println(genmodelpath+"src/main/java/"+classpackage.replace(".", "/")+"/"+model+"DaoMybatis.java");
 				 File file = new File(genmodelpath+"src/main/java/"+classpackage.replace(".", "/")+"/"+model+"DaoMybatis.java"); 
 				root.put("modelname", model);
 				String bgnChar=model.substring(0,1);
 				
 				root.put("repositoryname", bgnChar.toLowerCase()+model.substring(1)+"Dao");
-				root.put("mappername", "com.kudan."+modulename+".mybatis.sql."+model+"Mapper");
+				root.put("mappername", "com.delmar."+modulename+".mybatis.sql."+model+"Mapper");
 				if(!file.exists()){    
 	                //System.out.println("file exist");  
 					if(!file.getParentFile().exists())

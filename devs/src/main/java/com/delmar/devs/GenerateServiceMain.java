@@ -7,7 +7,7 @@
 
 package com.delmar.devs;
 
-import com.delmar.util.DateTimeDecorator;
+import com.delmar.utils.DateTimeDecorator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
@@ -95,10 +95,10 @@ public class GenerateServiceMain {
 		   Map root = new HashMap();  
 		
 		Date date=new Date();
-		String classpackage="com.kudan."+modulename+".service.impl";
-		String modelpackage="com.kudan."+modulename+".model";
+		String classpackage="com.delmar."+modulename+".service.impl";
+		String modelpackage="com.delmar."+modulename+".model";
 		String datetime=DateTimeDecorator.dateToLongString(date);
-		root.put("packagename", "com.kudan."+modulename+".service.impl");
+		root.put("packagename", "com.delmar."+modulename+".service.impl");
 	
 		root.put("modelpackage", modelpackage);
 		root.put("datetime", datetime);
@@ -107,16 +107,16 @@ public class GenerateServiceMain {
 		{
 			for(String model:modelList)
 			{
-				root.put("interfacefulldaoname", "com.kudan."+modulename+".dao."+model+"Dao");
+				root.put("interfacefulldaoname", "com.delmar."+modulename+".dao."+model+"Dao");
 				//toUpperCase
-				root.put("interfacefullservicename", "com.kudan."+modulename+".service."+model+"Service");
+				root.put("interfacefullservicename", "com.delmar."+modulename+".service."+model+"Service");
 				System.out.println(genmodelpath+"src/main/java/"+classpackage.replace(".", "/")+"/"+model+"ServiceImpl.java");
 				 File file = new File(genmodelpath+"src/main/java/"+classpackage.replace(".", "/")+"/"+model+"ServiceImpl.java"); 
 				root.put("modelname", model);
 				String bgnChar=model.substring(0,1);
 				
 				root.put("repositoryname", bgnChar.toLowerCase()+model.substring(1)+"Dao");
-				root.put("mappername", "com.kudan."+modulename+".mybatis.sql."+model+"Mapper");
+				root.put("mappername", "com.delmar."+modulename+".mybatis.sql."+model+"Mapper");
 				String modelname2=model.substring(0,1).toLowerCase()+model.substring(1);
 				System.out.println("modelname2="+modelname2);
 				root.put("serviceName", "@Service(\""+modelname2+"Service\")");

@@ -4,7 +4,7 @@
  * 电话：0532-66701118                                                                * 
  * email:liua@delmarchina.com						                              *
  *****************************************************************************/
-package ${packagename};
+package com.delmar.core.web.action;
 
 import java.util.List;
 
@@ -12,19 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
 
-import ${modelpackage}.${modelname};
+import com.delmar.core.model.Page;
 
-import ${servicepackage}.${modelname}Service;
+import com.delmar.core.service.PageService;
 
 
 /**
- * @author 刘大磊 ${datetime}
+ * @author 刘大磊 2016-08-25 11:11:32
  */
-public class ${modelname}Action extends CoreEditPrivAction {
-	private ${modelname}  ${modelObjname};
+public class PageAction extends CoreEditPrivAction {
+	private Page  page;
 	
 	@Autowired
-	private ${modelname}Service ${modelObjname}Service;
+	private PageService pageService;
 	
 	private void init()
 	{
@@ -36,7 +36,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String getModuleName() {
-		return "${modelObjname}";
+		return "page";
 	}
 
 	/* (non-Javadoc)
@@ -44,8 +44,8 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String delete() {
-		${modelObjname}Service.deleteByPrimaryKey(${modelObjname}.getId());
-		return list();;
+		pageService.deleteByPrimaryKey(page.getId());
+		return "list";
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +54,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public void deleteList(Integer[] ids) {
 		
-		${modelObjname}Service.delete${modelname}List(ids);
+		pageService.deletePageList(ids);
 
 	}
 
@@ -64,7 +64,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public Integer getModelId() {
 
-		return ${modelObjname}.getId();
+		return page.getId();
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +72,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public void editForm() {
-		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
+		 page= pageService.selectByPrimaryKey(id);
 
 	}
 
@@ -81,7 +81,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return ${modelObjname}Service.selectByExample(null);
+		return pageService.selectByExample(null);
 	}
 
 	/* (non-Javadoc)
@@ -89,7 +89,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public void createForm() {
-		${modelObjname}=new ${modelname}();
+		page=new Page();
 	}
 	
 	/* (non-Javadoc)
@@ -98,21 +98,21 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public String saveForm() {
 
-		${modelObjname}Service.save(${modelObjname});
+		pageService.save(page);
 		return "edit";
 	}
 	/**
 	 * @return the usergroup
 	 */
-	public ${modelname} get${modelname}() {
-		return ${modelObjname};
+	public Page getPage() {
+		return page;
 	}
 
 	/**
 	 * @param usergroup the usergroup to set
 	 */
-	public void set${modelname}(${modelname} ${modelObjname}) {
-		this.${modelObjname} = ${modelObjname};
+	public void setPage(Page page) {
+		this.page = page;
 	}
 
 }

@@ -4,27 +4,29 @@
  * 电话：0532-66701118                                                                * 
  * email:liua@delmarchina.com						                              *
  *****************************************************************************/
-package ${packagename};
+package com.delmar.core.web.action;
 
+import java.util.Date;
 import java.util.List;
 
+import com.delmar.core.web.util.FacesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
 
-import ${modelpackage}.${modelname};
+import com.delmar.core.model.Window;
 
-import ${servicepackage}.${modelname}Service;
+import com.delmar.core.service.WindowService;
 
 
 /**
- * @author 刘大磊 ${datetime}
+ * @author 刘大磊 2016-08-25 11:11:32
  */
-public class ${modelname}Action extends CoreEditPrivAction {
-	private ${modelname}  ${modelObjname};
+public class WindowAction extends CoreEditPrivAction {
+	private Window  window;
 	
 	@Autowired
-	private ${modelname}Service ${modelObjname}Service;
+	private WindowService windowService;
 	
 	private void init()
 	{
@@ -36,7 +38,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String getModuleName() {
-		return "${modelObjname}";
+		return "window";
 	}
 
 	/* (non-Javadoc)
@@ -44,8 +46,8 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String delete() {
-		${modelObjname}Service.deleteByPrimaryKey(${modelObjname}.getId());
-		return list();;
+		windowService.deleteByPrimaryKey(window.getId());
+		return list();
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +56,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public void deleteList(Integer[] ids) {
 		
-		${modelObjname}Service.delete${modelname}List(ids);
+		windowService.deleteWindowList(ids);
 
 	}
 
@@ -64,7 +66,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public Integer getModelId() {
 
-		return ${modelObjname}.getId();
+		return window.getId();
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +74,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public void editForm() {
-		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
+		 window= windowService.selectByPrimaryKey(id);
 
 	}
 
@@ -81,7 +83,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return ${modelObjname}Service.selectByExample(null);
+		return windowService.selectByExample(null);
 	}
 
 	/* (non-Javadoc)
@@ -89,7 +91,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public void createForm() {
-		${modelObjname}=new ${modelname}();
+		window=new Window();
 	}
 	
 	/* (non-Javadoc)
@@ -97,22 +99,31 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
+		Integer userId=getCurrentUser();
+		Date now=new Date();
+		if(window.isnew())
+		{
+			window.setCreatedby(userId);
+			window.setCreated(now);
+		}
 
-		${modelObjname}Service.save(${modelObjname});
+		window.setUpdated(now);
+		window.setUpdatedby(userId);
+		windowService.save(window);
 		return "edit";
 	}
 	/**
 	 * @return the usergroup
 	 */
-	public ${modelname} get${modelname}() {
-		return ${modelObjname};
+	public Window getWindow() {
+		return window;
 	}
 
 	/**
-	 * @param usergroup the usergroup to set
+	 * @param window the usergroup to set
 	 */
-	public void set${modelname}(${modelname} ${modelObjname}) {
-		this.${modelObjname} = ${modelObjname};
+	public void setWindow(Window window) {
+		this.window = window;
 	}
 
 }

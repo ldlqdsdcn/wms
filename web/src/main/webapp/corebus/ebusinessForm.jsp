@@ -185,8 +185,8 @@ $(document).ready(function() {
 						<td >
 						<s:textfield  name="realTrans.flightdate" id="flightdate" >
 	               			<s:param name="value">
-	               				<s:date name="realTrans.flightdate"  format="yyyy-MM-dd"/>
-	               			</s:param>
+							<s:date name="realTrans.flightdate"  format="yyyy-MM-dd"/>
+						</s:param>
                			</s:textfield>   
 						</td>
 					</tr>

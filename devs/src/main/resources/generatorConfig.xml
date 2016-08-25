@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-            location="e:/lib/mysql-connector-java-5.1.36.jar" />
+            location="e:/lib/mysql-connector-java-5.1.21.jar" />
 
     <!-- flat表示一张表生成一个java对象，MyBatis3Simple不会生成example语句 -->
     <!-- mbg eclipse plugin 不支持MyBatis3Simple -->
@@ -137,8 +137,18 @@
                     <generatedKey column="id" sqlStatement="MySql" identity="true" />
                 </table>-->
         <table schema="" tableName="core_window" domainObjectName="Window"
-               enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
+                        enableCountByExample="true" enableSelectByExample="true"
+                        enableDeleteByExample="true" enableUpdateByExample="false">
+        <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="" tableName="core_page" domainObjectName="Page"
+               enableCountByExample="true" enableSelectByExample="true"
+               enableDeleteByExample="true" enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+        <table schema="" tableName="core_field" domainObjectName="Field"
+               enableCountByExample="true" enableSelectByExample="true"
+               enableDeleteByExample="true" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
     </context>

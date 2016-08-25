@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.core.mybatis.sql.FieldMapper" >
+  <resultMap id="BaseResultMap" type="com.delmar.core.model.Field" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="label_id" property="labelId" jdbcType="INTEGER" />
+    <result column="is_required" property="isRequired" jdbcType="CHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="tab_id" property="tabId" jdbcType="INTEGER" />
+    <result column="column_id" property="columnId" jdbcType="INTEGER" />
+    <result column="show_type" property="showType" jdbcType="INTEGER" />
+    <result column="link_table_id" property="linkTableId" jdbcType="INTEGER" />
+    <result column="link_value_column_id" property="linkValueColumnId" jdbcType="INTEGER" />
+    <result column="link_label_column_id" property="linkLabelColumnId" jdbcType="INTEGER" />
+    <result column="help" property="help" jdbcType="VARCHAR" />
+    <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="sameline" property="sameline" jdbcType="CHAR" />
+    <result column="line_tab_id" property="lineTabId" jdbcType="INTEGER" />
+    <result column="link_table_filter_sql" property="linkTableFilterSql" jdbcType="VARCHAR" />
+    <result column="validate_role" property="validateRole" jdbcType="VARCHAR" />
+    <result column="show_in_list" property="showInList" jdbcType="CHAR" />
+    <result column="show_in_form" property="showInForm" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, `name`, label_id, is_required, type_id, tab_id, column_id, show_type, link_table_id, 
+    link_value_column_id, link_label_column_id, help, default_value, seq_no, sameline, 
+    line_tab_id, link_table_filter_sql, validate_role, show_in_list, show_in_form
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from core_field
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from core_field
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from core_field
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="java.util.Map" >
+    delete from core_field
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.delmar.core.model.Field" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into core_field (`name`, label_id, is_required, 
+      type_id, tab_id, column_id, 
+      show_type, link_table_id, link_value_column_id, 
+      link_label_column_id, help, default_value, 
+      seq_no, sameline, line_tab_id, 
+      link_table_filter_sql, validate_role, show_in_list, 
+      show_in_form)
+    values (#{name,jdbcType=VARCHAR}, #{labelId,jdbcType=INTEGER}, #{isRequired,jdbcType=CHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{tabId,jdbcType=INTEGER}, #{columnId,jdbcType=INTEGER}, 
+      #{showType,jdbcType=INTEGER}, #{linkTableId,jdbcType=INTEGER}, #{linkValueColumnId,jdbcType=INTEGER}, 
+      #{linkLabelColumnId,jdbcType=INTEGER}, #{help,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, 
+      #{seqNo,jdbcType=INTEGER}, #{sameline,jdbcType=CHAR}, #{lineTabId,jdbcType=INTEGER}, 
+      #{linkTableFilterSql,jdbcType=VARCHAR}, #{validateRole,jdbcType=VARCHAR}, #{showInList,jdbcType=CHAR}, 
+      #{showInForm,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.delmar.core.model.Field" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into core_field
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="labelId != null" >
+        label_id,
+      </if>
+      <if test="isRequired != null" >
+        is_required,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="tabId != null" >
+        tab_id,
+      </if>
+      <if test="columnId != null" >
+        column_id,
+      </if>
+      <if test="showType != null" >
+        show_type,
+      </if>
+      <if test="linkTableId != null" >
+        link_table_id,
+      </if>
+      <if test="linkValueColumnId != null" >
+        link_value_column_id,
+      </if>
+      <if test="linkLabelColumnId != null" >
+        link_label_column_id,
+      </if>
+      <if test="help != null" >
+        help,
+      </if>
+      <if test="defaultValue != null" >
+        default_value,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="sameline != null" >
+        sameline,
+      </if>
+      <if test="lineTabId != null" >
+        line_tab_id,
+      </if>
+      <if test="linkTableFilterSql != null" >
+        link_table_filter_sql,
+      </if>
+      <if test="validateRole != null" >
+        validate_role,
+      </if>
+      <if test="showInList != null" >
+        show_in_list,
+      </if>
+      <if test="showInForm != null" >
+        show_in_form,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="labelId != null" >
+        #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="isRequired != null" >
+        #{isRequired,jdbcType=CHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="tabId != null" >
+        #{tabId,jdbcType=INTEGER},
+      </if>
+      <if test="columnId != null" >
+        #{columnId,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        #{showType,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableId != null" >
+        #{linkTableId,jdbcType=INTEGER},
+      </if>
+      <if test="linkValueColumnId != null" >
+        #{linkValueColumnId,jdbcType=INTEGER},
+      </if>
+      <if test="linkLabelColumnId != null" >
+        #{linkLabelColumnId,jdbcType=INTEGER},
+      </if>
+      <if test="help != null" >
+        #{help,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="sameline != null" >
+        #{sameline,jdbcType=CHAR},
+      </if>
+      <if test="lineTabId != null" >
+        #{lineTabId,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableFilterSql != null" >
+        #{linkTableFilterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="validateRole != null" >
+        #{validateRole,jdbcType=VARCHAR},
+      </if>
+      <if test="showInList != null" >
+        #{showInList,jdbcType=CHAR},
+      </if>
+      <if test="showInForm != null" >
+        #{showInForm,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(*) from core_field
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Field" >
+    update core_field
+    <set >
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="labelId != null" >
+        label_id = #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="isRequired != null" >
+        is_required = #{isRequired,jdbcType=CHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="tabId != null" >
+        tab_id = #{tabId,jdbcType=INTEGER},
+      </if>
+      <if test="columnId != null" >
+        column_id = #{columnId,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        show_type = #{showType,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableId != null" >
+        link_table_id = #{linkTableId,jdbcType=INTEGER},
+      </if>
+      <if test="linkValueColumnId != null" >
+        link_value_column_id = #{linkValueColumnId,jdbcType=INTEGER},
+      </if>
+      <if test="linkLabelColumnId != null" >
+        link_label_column_id = #{linkLabelColumnId,jdbcType=INTEGER},
+      </if>
+      <if test="help != null" >
+        help = #{help,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultValue != null" >
+        default_value = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="sameline != null" >
+        sameline = #{sameline,jdbcType=CHAR},
+      </if>
+      <if test="lineTabId != null" >
+        line_tab_id = #{lineTabId,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableFilterSql != null" >
+        link_table_filter_sql = #{linkTableFilterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="validateRole != null" >
+        validate_role = #{validateRole,jdbcType=VARCHAR},
+      </if>
+      <if test="showInList != null" >
+        show_in_list = #{showInList,jdbcType=CHAR},
+      </if>
+      <if test="showInForm != null" >
+        show_in_form = #{showInForm,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Field" >
+    update core_field
+    set `name` = #{name,jdbcType=VARCHAR},
+      label_id = #{labelId,jdbcType=INTEGER},
+      is_required = #{isRequired,jdbcType=CHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      tab_id = #{tabId,jdbcType=INTEGER},
+      column_id = #{columnId,jdbcType=INTEGER},
+      show_type = #{showType,jdbcType=INTEGER},
+      link_table_id = #{linkTableId,jdbcType=INTEGER},
+      link_value_column_id = #{linkValueColumnId,jdbcType=INTEGER},
+      link_label_column_id = #{linkLabelColumnId,jdbcType=INTEGER},
+      help = #{help,jdbcType=VARCHAR},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      seq_no = #{seqNo,jdbcType=INTEGER},
+      sameline = #{sameline,jdbcType=CHAR},
+      line_tab_id = #{lineTabId,jdbcType=INTEGER},
+      link_table_filter_sql = #{linkTableFilterSql,jdbcType=VARCHAR},
+      validate_role = #{validateRole,jdbcType=VARCHAR},
+      show_in_list = #{showInList,jdbcType=CHAR},
+      show_in_form = #{showInForm,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

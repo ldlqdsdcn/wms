@@ -37,7 +37,11 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	public abstract List<CoreModel> search();
 	public abstract void createForm();
 	public abstract String saveForm();	
-	public abstract String getPurpose();  //记录Action起到的作用
+	//// TODO: 2016/8/25
+	public  String getPurpose()
+	{
+		return this.getModuleName();
+	}
 	
 	
 

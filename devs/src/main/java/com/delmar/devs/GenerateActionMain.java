@@ -36,9 +36,9 @@ public class GenerateActionMain {
         config.setObjectWrapper(new DefaultObjectWrapper());
 
 
-//		GenerateActionMain gam=new  GenerateActionMain(config,"sys"
-//				,"G:/IdeaProjects/MyHome/",new String[]{"SysOrgExtra"});
-//		gam.generateActionclass();
+		GenerateActionMain gam=new  GenerateActionMain(config,"core"
+				,"d:/IdeaProjects/MyHome/",new String[]{"Window","Field","Page"});
+		gam.generateActionclass();
     }
 
 
@@ -70,7 +70,7 @@ public class GenerateActionMain {
         String classpackage = "com.delmar." + modulename + ".web.action";
         String modelpackage = "com.delmar." + modulename + ".model";
         String servicepackage = "com.delmar." + modulename + ".service";
-        String datetime = com.delmar.util.DateTimeDecorator.dateToLongString(date);
+        String datetime = com.delmar.utils.DateTimeDecorator.dateToLongString(date);
         root.put("packagename", classpackage);
 
         root.put("modelpackage", modelpackage);

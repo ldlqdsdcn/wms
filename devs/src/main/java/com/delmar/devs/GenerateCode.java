@@ -22,7 +22,7 @@ public class GenerateCode {
 /*	public static String[] modelList={"Carrier","Chargename","Commdity","Currency","Datadict","Nameaccounts",
 		"Port","Strategy","Unit"};*/
 	//public static String[] modelList={"Client","Org","User"};,"Module","ModuleJavabean","ModuleMenu","ModulePage","ModuleRole","Operator","Org","Page","PageMenu","Privilege","Role","UserRole","UserorgAccess"
-	public static String[] modelList={"Window"};
+	public static String[] modelList={"Window","Page","Field"};
 	
 	public  static String modulename="core";
 	public static String genmodelpath="d:/IdeaProjects/MyHome/";

@@ -107,4 +107,21 @@
 			<type>java.lang.String</type>
 		</attribute>		
 	</tag>
+	<tag>
+		<name>user</name>
+		<tag-class>com.delmar.core.web.tld.UserTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>userId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Integer</type>
+		</attribute>
+		<attribute>
+			<name>module</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
 </taglib>
