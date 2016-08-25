@@ -30,4 +30,5 @@ public class JspListProp {
     private boolean booleanTag;
     private String cssStyle;
     private String module;
+    private boolean foreign;
 }

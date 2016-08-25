@@ -79,8 +79,8 @@
                         <tr>
                         <td width="20%"><s:label for="${prop.prop}" value="${prop.label}" ></s:label></td>
                         <td width="30%">
-                        <#if prop.module! >
-                            <delmar:user userId="${r'${'}${prop.prop}${r'}'}" module="${module}"/>
+                        <#if prop.foreign>
+                                <delmar:user userId="${r'${'}${prop.prop}${r'}'}" module="${module}"/>
                         <#elseif prop.date >
                         <s:textfield name="${mode}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if>>
                          <s:param name="value"><s:date name="${mode}.${prop.prop}"  format="yyyy-MM-dd HH:mm:ss"/></s:param>

@@ -117,6 +117,10 @@ public class GenerateJspPageMain {
                 jspListProp.setBooleanTag(true);
             }
             jspListProp.setModule(IntelliKeyWord.getModule(f.getName()));
+            if(jspListProp.getModule()!=null)
+            {
+                jspListProp.setForeign(true);
+            }
             String width=IntelliKeyWord.getWidth(f.getName());
             //todo 不合理，代码
             if(width!=null)
