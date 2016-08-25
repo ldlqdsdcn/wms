@@ -22,11 +22,15 @@ public class UserTag extends BodyTagSupport {
     public int doEndTag() throws JspException {
         if(module.equals("user"))
         {
-
+            if(userId==null)
+            {
+                return super.doEndTag();
+            }
             HttpServletRequest request=(HttpServletRequest)pageContext.getRequest();
             UserService userService=EaContext.ApplicationContext.getBean(UserService.class);
             User user=userService.selectByPrimaryKey(userId);
             try {
+                if(user!=null)
                 pageContext.getOut().print(user.getName());
             } catch (IOException e) {
                 e.printStackTrace();
