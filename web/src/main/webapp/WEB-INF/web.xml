@@ -192,6 +192,10 @@
       <param-value>true</param-value>
     </init-param>
     <init-param>
+      <param-name>crossDomainSessionSecurity</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
       <param-name>activeReverseAjaxEnabled</param-name>
       <param-value>true</param-value>
     </init-param>
