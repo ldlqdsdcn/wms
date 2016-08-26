@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kudan</groupId>
+            <groupId>com.delmar</groupId>
             <artifactId>core</artifactId>
             <version>1.0</version>
         </dependency>

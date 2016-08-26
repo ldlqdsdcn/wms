@@ -110,7 +110,7 @@ function validateDate(value) {
 
     
     
-    
+
     $(table).find("tr").each(function(i)
     	{
     	  $(this).bind("click",function()
@@ -119,7 +119,7 @@ function validateDate(value) {
     		         {
     		        	 $(this).removeClass("d-selected");
     		         });
-    		       
+
     		         $(this).addClass("d-selected");
     			  });
     	});

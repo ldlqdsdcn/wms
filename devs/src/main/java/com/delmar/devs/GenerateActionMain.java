@@ -6,6 +6,7 @@
  *****************************************************************************/
 package com.delmar.devs;
 
+import com.delmar.devs.ftl.FreeMarkerHelper;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -19,50 +20,24 @@ import java.util.Map;
  * @author 刘大磊 2015年1月21日 上午10:02:58
  */
 public class GenerateActionMain {
-    /*public static String[] modelList={"Usergroup"};
-
-    public  static String modulename="sys";
-    public static String genmodelpath="D:/code/platform/delmar_system/";
-    public static Configuration config;*/
     public static void main(String[] args) {
 
-        File filepath = new File(GenerateDaoMain.class.getResource("/").getFile());
-        Configuration config = new Configuration();
-        try {
-            config.setDirectoryForTemplateLoading(filepath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        config.setObjectWrapper(new DefaultObjectWrapper());
 
-
-		GenerateActionMain gam=new  GenerateActionMain(config,"core"
-				,"d:/IdeaProjects/MyHome/",new String[]{"Window","Field","Page"});
-		gam.generateActionclass();
+        GenerateActionMain gam = new GenerateActionMain("core", new String[]{"Window", "Field", "Page"});
+        gam.generateActionclass();
     }
 
 
     String[] modelList;
-    private Configuration config;
     private String modulename;
-    private String genmodelpath;
 
-    public GenerateActionMain(Configuration config, String modulename, String genmodelpath, String[] modelList) {
-        this.config = config;
+    public GenerateActionMain(String modulename, String[] modelList) {
         this.modulename = modulename;
-        this.genmodelpath = genmodelpath;
+
         this.modelList = modelList;
     }
 
     public void generateActionclass() {
-        Template template = null;
-        try {
-            template = config.getTemplate("StrutsActionClass.flt", "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        File filepath = new File(GenerateDaoMain.class.getResource("/").getFile());
         Map root = new HashMap();
 
         Date date = new Date();
@@ -72,7 +47,6 @@ public class GenerateActionMain {
         String servicepackage = "com.delmar." + modulename + ".service";
         String datetime = com.delmar.utils.DateTimeDecorator.dateToLongString(date);
         root.put("packagename", classpackage);
-
         root.put("modelpackage", modelpackage);
         root.put("servicepackage", servicepackage);
 
@@ -82,26 +56,12 @@ public class GenerateActionMain {
         try {
             for (String model : modelList) {
                 //toUpperCase
-
-                System.out.println(genmodelpath + "src/main/java/" + classpackage.replace(".", "/") + "/" + model + "Action.java");
-                File file = new File(genmodelpath + "src/main/java/" + classpackage.replace(".", "/") + "/" + model + "Action.java");
                 root.put("modelname", model);
                 String bgnChar = model.substring(0, 1);
                 root.put("modelObjname", bgnChar.toLowerCase() + model.substring(1));
+                FreeMarkerHelper.getInstance().outFile("StrutsActionClass.ftl", root, "src/main/java/" + classpackage.replace(".", "/") + "/" + model + "Action.java",true);
 
-                if (!file.exists()) {
-                    //System.out.println("file exist");
-                    if (!file.getParentFile().exists()) {
-                        file.getParentFile().mkdirs();
-                    } else {
-                        file.delete();
-                    }
-                    file.createNewFile();
-                }
-                OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
-                template.process(root, out);
-                out.flush();
-                out.close();
+
             }
         } catch (Exception e) {
             e.printStackTrace();

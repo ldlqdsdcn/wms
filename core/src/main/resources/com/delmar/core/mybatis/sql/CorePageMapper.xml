@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.core.mybatis.sql.CorePageMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.core.model.CorePage" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+            <result column="descr" property="descr" jdbcType="VARCHAR" />
+            <result column="help" property="help" jdbcType="VARCHAR" />
+            <result column="window_id" property="windowId" jdbcType="INTEGER" />
+            <result column="table_id" property="tableId" jdbcType="INTEGER" />
+            <result column="filter_column_id" property="filterColumnId" jdbcType="INTEGER" />
+            <result column="isactive" property="isactive" jdbcType="CHAR" />
+            <result column="show_in_tab" property="showInTab" jdbcType="CHAR" />
+            <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+            <result column="filter_sql" property="filterSql" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+      id,   name,   descr,   help,   window_id,   table_id,   filter_column_id,   isactive,   show_in_tab,   seq_no,   filter_sql 
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from core_window
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from core_page
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from core_page
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map" >
+        delete from core_page
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.core.model.CorePage" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into core_page (     name,   descr,   help,   window_id,   table_id,   filter_column_id,   isactive,   show_in_tab,   seq_no,   filter_sql )
+        values (  #{name,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{help,jdbcType=VARCHAR}, #{windowId,jdbcType=INTEGER}, #{tableId,jdbcType=INTEGER}, #{filterColumnId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, #{showInTab,jdbcType=CHAR}, #{seqNo,jdbcType=INTEGER}, #{filterSql,jdbcType=VARCHAR} )
+    </insert>
+    <insert id="insertSelective" parameterType="com.delmar.core.model.CorePage" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into core_page
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="name != null" >
+                    name,
+                </if>
+                <if test="descr != null" >
+                    descr,
+                </if>
+                <if test="help != null" >
+                    help,
+                </if>
+                <if test="windowId != null" >
+                    window_id,
+                </if>
+                <if test="tableId != null" >
+                    table_id,
+                </if>
+                <if test="filterColumnId != null" >
+                    filter_column_id,
+                </if>
+                <if test="isactive != null" >
+                    isactive,
+                </if>
+                <if test="showInTab != null" >
+                    show_in_tab,
+                </if>
+                <if test="seqNo != null" >
+                    seq_no,
+                </if>
+                <if test="filterSql != null" >
+                    filter_sql,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="name != null" >
+    #{name,jdbcType=VARCHAR}},
+    </if>
+    <if test="descr != null" >
+    #{descr,jdbcType=VARCHAR}},
+    </if>
+    <if test="help != null" >
+    #{help,jdbcType=VARCHAR}},
+    </if>
+    <if test="windowId != null" >
+    #{windowId,jdbcType=VARCHAR}},
+    </if>
+    <if test="tableId != null" >
+    #{tableId,jdbcType=VARCHAR}},
+    </if>
+    <if test="filterColumnId != null" >
+    #{filterColumnId,jdbcType=VARCHAR}},
+    </if>
+    <if test="isactive != null" >
+    #{isactive,jdbcType=VARCHAR}},
+    </if>
+    <if test="showInTab != null" >
+    #{showInTab,jdbcType=VARCHAR}},
+    </if>
+    <if test="seqNo != null" >
+    #{seqNo,jdbcType=VARCHAR}},
+    </if>
+    <if test="filterSql != null" >
+    #{filterSql,jdbcType=VARCHAR}},
+    </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+        select count(*) from core_page
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.CorePage" >
+        update core_page
+        <set >
+    <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+    </if>
+    <if test="descr != null" >
+        descr = #{descr,jdbcType=VARCHAR},
+    </if>
+    <if test="help != null" >
+        help = #{help,jdbcType=VARCHAR},
+    </if>
+    <if test="windowId != null" >
+        window_id = #{windowId,jdbcType=INTEGER},
+    </if>
+    <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=INTEGER},
+    </if>
+    <if test="filterColumnId != null" >
+        filter_column_id = #{filterColumnId,jdbcType=INTEGER},
+    </if>
+    <if test="isactive != null" >
+        isactive = #{isactive,jdbcType=CHAR},
+    </if>
+    <if test="showInTab != null" >
+        show_in_tab = #{showInTab,jdbcType=CHAR},
+    </if>
+    <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+    </if>
+    <if test="filterSql != null" >
+        filter_sql = #{filterSql,jdbcType=VARCHAR},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+        update core_page
+        set 
+            
+            name = #{name,jdbcType=VARCHAR},
+
+            descr = #{descr,jdbcType=VARCHAR},
+
+            help = #{help,jdbcType=VARCHAR},
+
+            window_id = #{windowId,jdbcType=INTEGER},
+
+            table_id = #{tableId,jdbcType=INTEGER},
+
+            filter_column_id = #{filterColumnId,jdbcType=INTEGER},
+
+            isactive = #{isactive,jdbcType=CHAR},
+
+            show_in_tab = #{showInTab,jdbcType=CHAR},
+
+            seq_no = #{seqNo,jdbcType=INTEGER},
+
+            filter_sql = #{filterSql,jdbcType=VARCHAR}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

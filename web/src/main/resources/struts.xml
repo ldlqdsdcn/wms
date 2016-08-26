@@ -81,14 +81,19 @@
 		<result name="list">/core/windowList.jsp</result>
 		<result name="edit">/core/windowForm.jsp</result>
 	</action>
-	<action name="page_*" class="com.delmar.core.web.action.PageAction" method="{1}">
-		<result name="list">/core/pageList.jsp</result>
-		<result name="edit">/core/pageForm.jsp</result>
+	<action name="page_*" class="com.delmar.core.web.action.CorePageAction" method="{1}">
+		<result name="list">/core/corePageList.jsp</result>
+		<result name="edit">/core/corePageForm.jsp</result>
 	</action>
 	<action name="field_*" class="com.delmar.core.web.action.FieldAction" method="{1}">
 		<result name="list">/core/fieldList.jsp</result>
 		<result name="edit">/core/fieldForm.jsp</result>
 	</action>
+	<action name="message_*" class="com.delmar.core.web.action.MessageAction" method="{1}">
+		<result name="list">/core/messageList.jsp</result>
+		<result name="edit">/core/messageForm.jsp</result>
+	</action>
+
 </package>
 
 <package name="base" namespace="/base" extends="default">

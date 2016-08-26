@@ -1,11 +1,18 @@
 package com.delmar.devs;
 
 import com.delmar.cons.IntelliKeyWord;
+import com.delmar.core.def.ColumnDataType;
+import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.model.*;
 import com.delmar.core.model.Window;
+import com.delmar.devs.ftl.FreeMarkerHelper;
+import com.delmar.devs.model.ColumnInfo;
 import com.delmar.devs.model.JspListProp;
 import com.delmar.utils.BeanHelper;
+import com.delmar.utils.CommonConverter;
 import com.delmar.utils.DateTimeDecorator;
+import com.delmar.utils.StringUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -21,7 +28,6 @@ import java.util.List;
  * Created by admin on 2016/8/25.
  */
 public class GenerateJspPageMain {
-    private  String genmodelpath = "d:/IdeaProjects/MyHome/";
     private  String user = "刘大磊";
     /**
      * 填写对应的模块名
@@ -30,19 +36,16 @@ public class GenerateJspPageMain {
     private  String[] modeList;
     private String[] modeNameList;
     private String module;
-    private  String namespace = "/core";
-    private  Configuration config;
-    public GenerateJspPageMain(Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath,String module)
+    private  String namespace ;
+    private TableMetaDataDto tableMetaDataDto;
+    public GenerateJspPageMain(String[] modeList,String[] modeNameList,String user,String module,TableMetaDataDto tableMetaDataDto)
     {
-        this.config=config;
-        this.namespace=namespace;
         this.modeList=modeList;
         this.modeNameList=modeNameList;
         this.user=user;
-        this.genmodelpath=genmodelpath;
         this.module=module;
-
-
+        this.namespace="/"+module;
+        this.tableMetaDataDto=tableMetaDataDto;
     }
     public void generateJspPage()
     {
@@ -54,25 +57,11 @@ public class GenerateJspPageMain {
         }
     }
     public static void main(String[] args) {
-//        File filepath = new File(GenerateDaoMain.class.getResource("/").getFile());
-//        config = new Configuration();
-//        try {
-//            config.setDirectoryForTemplateLoading(filepath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
     }
 
     public  void generateFormPage(String mode,String title) {
         List<JspListProp> jspFormPropList = getOutPutList(mode);
-
-        Template template = null;
-        try {
-            template = config.getTemplate("formPage.flt", "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Map root = new HashMap();
         root.put("mode", mode);
         root.put("title", title);
@@ -85,71 +74,62 @@ public class GenerateJspPageMain {
 
         root.put("datetime", datetime);
         root.put("propertyList", jspFormPropList);
-        File file = new File(genmodelpath + "src/main/webapp" + namespace + "/" + mode + "Form.jsp");
-        storeFile(file, template, root);
+
+        FreeMarkerHelper.getInstance().outFile("formPage.ftl",root,"src/main/webapp" + namespace + "/" + mode + "Form.jsp",true);
     }
 
     public  void generateListPage(String mode,String title) {
         List<JspListProp> jspListPropList = getOutPutList(mode);
-        Template template = null;
-        try {
-            template = config.getTemplate("listPage.flt", "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Map root = new HashMap();
         root.put("mode", mode);
         root.put("title", title);
         root.put("namespace", namespace);
         root.put("user", user);
         Date date = new Date();
-
         String datetime = DateTimeDecorator.dateToLongString(date);
-
         root.put("datetime", datetime);
         root.put("propertyList", jspListPropList);
-
-        File file = new File(genmodelpath + "src/main/webapp" + namespace + "/" + mode + "List.jsp");
-        storeFile(file, template, root);
-
+        FreeMarkerHelper.getInstance().outFile("listPage.ftl",root,"src/main/webapp" + namespace + "/" + mode + "List.jsp",true);
     }
     private  List<JspListProp> getOutPutList(String mode)
     {
        String modeName= com.delmar.utils.StringUtil.upperFirstChar(mode);
-        Class cla=null;
-        try {
-            System.out.println("com.delmar."+module+".model."+modeName);
-            cla=Class.forName("com.delmar."+module+".model."+modeName);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         List<JspListProp> jspFormPropList = new ArrayList<JspListProp>();
-        java.lang.reflect.Field[] fields = BeanHelper.getAllFields(cla);
-        for (java.lang.reflect.Field f : fields) {
-            if(IntelliKeyWord.hasSkipped(f.getName()))
+        List<ColumnMetaDataDto> columnMetaDataDtoList=tableMetaDataDto.getColumnList();
+
+        for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
+            ColumnInfo columnInfo=new ColumnInfo();
+            try {
+                CommonConverter.copyProperties(columnMetaDataDto,columnInfo);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            columnInfo.setPropertyName(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+            if(IntelliKeyWord.hasSkipped(columnInfo.getPropertyName()))
             {
                 continue;
             }
             boolean date = false;
-            if (f.getType().equals(Date.class)) {
+            if (columnInfo.getDataType()== ColumnDataType.DATE.getKey()) {
                 date = true;
             }
-            boolean isreadOnly = IntelliKeyWord.isReadOnly(f.getName());
-            String label = IntelliKeyWord.getLabel(f.getName());
+            boolean isreadOnly = IntelliKeyWord.isReadOnly(columnInfo.getPropertyName());
+            String label = IntelliKeyWord.getLabel(columnInfo.getPropertyName());
             if (label == null) {
-                label = f.getName();
+                label = columnInfo.getPropertyName();
             }
-            JspListProp jspListProp= new JspListProp(f.getName(), label, date, !isreadOnly);
-            if(IntelliKeyWord.isBooleanTag(f.getName()))
+            JspListProp jspListProp= new JspListProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
+            if(IntelliKeyWord.isBooleanTag(columnInfo.getPropertyName()))
             {
                 jspListProp.setBooleanTag(true);
             }
-            jspListProp.setModule(IntelliKeyWord.getModule(f.getName()));
+            jspListProp.setModule(IntelliKeyWord.getModule(columnInfo.getPropertyName()));
             if(jspListProp.getModule()!=null)
             {
                 jspListProp.setForeign(true);
             }
-            String width=IntelliKeyWord.getWidth(f.getName());
+            String width=IntelliKeyWord.getWidth(columnInfo.getPropertyName());
             //todo 不合理，代码
             if(width!=null)
             {
@@ -162,24 +142,5 @@ public class GenerateJspPageMain {
             jspFormPropList.add(jspListProp);
         }
         return jspFormPropList;
-    }
-    private static void storeFile(File file, Template template, Map root) {
-        try {
-            if (!file.exists()) {
-                //System.out.println("file exist");
-                if (!file.getParentFile().exists()) {
-                    file.getParentFile().mkdirs();
-                }
-                file.createNewFile();
-            }
-            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
-            template.process(root, out);
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TemplateException e) {
-            e.printStackTrace();
-        }
     }
 }

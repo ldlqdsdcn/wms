@@ -17,7 +17,7 @@ import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
 
 /**
- * @author 刘大磊 22016-08-25 16:30:43
+ * @author 刘大磊 22016-08-26 17:08:24
  */
 @Service("windowService")
 public class WindowServiceImpl extends CoreServiceImpl<Window> implements

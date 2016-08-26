@@ -18,7 +18,7 @@ import com.delmar.core.service.FieldService;
 
 
 /**
- * @author 刘大磊 2016-08-25 11:11:32
+ * @author 刘大磊 2016-08-26 17:08:24
  */
 public class FieldAction extends CoreEditPrivAction {
 	private Field  field;
@@ -45,7 +45,7 @@ public class FieldAction extends CoreEditPrivAction {
 	@Override
 	public String delete() {
 		fieldService.deleteByPrimaryKey(field.getId());
-		return "list";
+		return list();
 	}
 
 	/* (non-Javadoc)
@@ -101,9 +101,6 @@ public class FieldAction extends CoreEditPrivAction {
 		fieldService.save(field);
 		return "edit";
 	}
-
-
-
 	/**
 	 * @return the usergroup
 	 */
@@ -112,7 +109,7 @@ public class FieldAction extends CoreEditPrivAction {
 	}
 
 	/**
-	 * @param usergroup the usergroup to set
+	 * @param field the field to set
 	 */
 	public void setField(Field field) {
 		this.field = field;

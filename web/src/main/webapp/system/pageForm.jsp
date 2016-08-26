@@ -28,10 +28,11 @@
 
 <s:form id="editForm" action="page_edit" namespace='/system' theme="simple">
 <s:hidden id="id" name="page.id"></s:hidden>
-
+<!--table 01-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
     <td valign="top">
+		<!--table 02-->
     	<table border="0" cellpadding="0" cellspacing="0" class="cTableBorder">
         <tr> 
           <td align="left" class="navig">
@@ -54,17 +55,21 @@
 		</div></td>
         </tr>
       </table>
+		<!--table 02 end-->
+		<!--table 03-->
     	<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="table_blue">
         <tr align="center" valign="top"> 
           <td>
           
-           
+           <!--table 04-->
             <table width="100%" cellpadding="10" cellspacing="0" >
               <tr> 
-                <td align="center"> <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
+                <td align="center">
+					<!--table 05-->
+					<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
                 <tr>
                 <td>
-                
+                <!--table 06-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                <tr  class="query_one">
                	<td width="20%">
@@ -116,7 +121,7 @@
                 </tr>
                 
                 </table>
-                
+                <!--table 06 end-->
                 
                 </td>
                 </tr>
@@ -125,9 +130,14 @@
                 <s:actionmessage cssStyle="color:red"/>
                 </td>
                 </tr>
-                </table></td></tr></table>
-</td></tr></table></td></tr>
+                </table>
+				<!--table 05 end-->
+				</td></tr></table> <!--table 04 end-->
+</td></tr></table>
+		<!--table 03 end-->
+	</td></tr>
 </table>
+	<!--table 01 end-->
 </s:form>
 
 

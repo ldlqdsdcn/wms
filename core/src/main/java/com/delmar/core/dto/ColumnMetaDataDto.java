@@ -17,4 +17,5 @@ public class ColumnMetaDataDto implements java.io.Serializable{
     private String remarks;
     private String columnDefault;
 
+
 }

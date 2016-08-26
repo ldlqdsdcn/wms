@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.core.mybatis.sql.MessageMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.core.model.Message" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="value" property="value" jdbcType="VARCHAR" />
+            <result column="msgtext" property="msgtext" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+      id,   value,   msgtext 
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from core_message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from core_message
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from core_message
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map" >
+        delete from core_message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.core.model.Message" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into core_message (     value,   msgtext )
+        values (  #{value,jdbcType=VARCHAR}, #{msgtext,jdbcType=VARCHAR} )
+    </insert>
+    <insert id="insertSelective" parameterType="com.delmar.core.model.Message" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into core_message
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="value != null" >
+                    value,
+                </if>
+                <if test="msgtext != null" >
+                    msgtext,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="value != null" >
+    #{value,jdbcType=VARCHAR}},
+    </if>
+    <if test="msgtext != null" >
+    #{msgtext,jdbcType=VARCHAR}},
+    </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+        select count(*) from core_message
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Message" >
+        update core_message
+        <set >
+    <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+    </if>
+    <if test="msgtext != null" >
+        msgtext = #{msgtext,jdbcType=VARCHAR},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+        update core_message
+        set 
+            
+            value = #{value,jdbcType=VARCHAR},
+
+            msgtext = #{msgtext,jdbcType=VARCHAR}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

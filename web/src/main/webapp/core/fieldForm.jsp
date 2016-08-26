@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-25 22:44:28
+  Date: 2016-08-26 17:08:24
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -13,14 +13,8 @@
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
-<link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
 <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
 <script type='text/javascript' src='../js/ea.validate.js'></script>
-<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
-<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" />
- <script type='text/javascript' src='../js/dm/delmar.js'></script>
- <script type="text/javascript" src="../js/jquery/plugin/delmar/functions.js"></script>
 
 <script type="text/javascript">
  function gotoList()
@@ -69,12 +63,14 @@
           <!--table 04 bgn-->
             <table width="100%" cellpadding="10" cellspacing="0" >
               <tr>
-                <td align="center"> <table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
+                <td align="center">
+                    <!--table 05 bgn-->
+                    <table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
                 <tr>
                 <td>
 
 
-                <!--table 05 bgn-->
+                    <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
                         <td width="20%"><s:label for="name" value="名称" ></s:label></td>
@@ -201,20 +197,21 @@
                 </td>
                 </tr>
                 </table>
-                <!--table 05 end-->
+                    <!--table 06 end-->
                 </td>
                 </tr>
                 <tr>
-                <td colspan="4">
+                <td >
                 <s:actionmessage cssStyle="color:red"/>
 
                 </td>
                 </tr>
                 </table>
-                <!--table 04 end-->
+                <!--table 05 end-->
                 </td></tr></table>
-                <!--table 03 end-->
+                <!--table 04 end-->
 </td></tr></table>
+    </td></tr></table>
 </s:form>
 </body>
 </html>

@@ -16,6 +16,9 @@ public class IntelliKeyWord {
     private static Set<String> BOOL_SELECTION_SET=new HashSet<String>();
     private static Map<String,String> FIELD_WIDTH_MAP=new HashMap<String,String>();
     private static Map<String,String> FOREIGN_MAP=new HashMap<String, String>();
+    private static Set<String> SQL_KEY_WORD_MAP=new HashSet<String>();
+    private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
+
     static
     {
         LABEL_MAP.put("name","名称");
@@ -39,6 +42,9 @@ public class IntelliKeyWord {
         FIELD_WIDTH_MAP.put("remark","width:500px;");
         FOREIGN_MAP.put("createdby","user");
         FOREIGN_MAP.put("updatedby","user");
+        SQL_KEY_WORD_MAP.add("name");
+        SQL_TYPE_MAP.put("INT","INTEGER");
+        SQL_TYPE_MAP.put("INT UNSIGNED","INTEGER");
     }
     public static String getModule(String key)
     {
@@ -75,6 +81,22 @@ public class IntelliKeyWord {
     public static String getWidth(String key)
     {
         return FIELD_WIDTH_MAP.get(key);
+    }
+
+    public static boolean isKeyWord(String key)
+    {
+        if(SQL_KEY_WORD_MAP.contains(key))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static String getSQlType(String key)
+    {
+        return SQL_TYPE_MAP.get(key);
     }
 
 }

@@ -45,7 +45,7 @@ public class TableController {
             jsonArray.add(jsonObject);
         }
 
-        modelAndView.addObject("/core/columnDataTypes", jsonArray.toString());
+        modelAndView.addObject("columnDataTypes", jsonArray.toString());
 
         return modelAndView;
     }

@@ -39,23 +39,23 @@ public class GenerateCode {
 		}    
 		  config.setObjectWrapper(new DefaultObjectWrapper());
 		  //生成dao
-		  GenerateDaoMain gdm=new GenerateDaoMain(config,modulename,genmodelpath,modelList);
+		  GenerateDaoMain gdm=new GenerateDaoMain(modulename,modelList);
 		  gdm.generateInterface();
 		  gdm.generatedaoclass();
 		  //生成 service
-		  GenerateServiceMain gsm=new GenerateServiceMain(config,modulename,genmodelpath,modelList);
+		  GenerateServiceMain gsm=new GenerateServiceMain(modulename,modelList);
 		  gsm.generateInterface();
 		  gsm.generateServiceclass();
 		//生成struts Configuration config, String modulename, String genmodelpath, String[] modelList
-		GenerateActionMain generateActionMain=new GenerateActionMain(config,modulename,genmodelpath,modelList);
+		GenerateActionMain generateActionMain=new GenerateActionMain(modulename,modelList);
 		generateActionMain.generateActionclass();
 		//生成struts xml
-		GenerateStrutsConfigMain gam=new GenerateStrutsConfigMain(config,"core"
-				,genmodelpath,modelList);
-		gam.generateActionclass();
+		GenerateStrutsConfigMain gam=new GenerateStrutsConfigMain("core"
+				,modelList);
+		gam.generateStrutsConfig();
 
 		//Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath
-		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(config,"/"+modulename,modelList,titleList,user,genmodelpath,modulename);
+		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(modelList,titleList,user,modulename,null);
 		generateJspPageMain.generateJspPage();
 
 

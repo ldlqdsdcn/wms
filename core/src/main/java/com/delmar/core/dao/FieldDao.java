@@ -11,7 +11,7 @@ import com.delmar.core.model.Field;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-08-25 16:30:43
+ * @author 刘大磊 2016-08-26 17:08:24
  */
 public interface FieldDao extends CoreDao<Field> {
 

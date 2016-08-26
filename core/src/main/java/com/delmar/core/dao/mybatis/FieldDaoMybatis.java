@@ -14,7 +14,7 @@ import com.delmar.core.model.Field;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-08-25 16:30:43
+ * @author 刘大磊 2016-08-26 17:08:24
  */
 @Repository("fieldDao") 
 public class FieldDaoMybatis extends CoreDaoMyBatis<Field> implements FieldDao {

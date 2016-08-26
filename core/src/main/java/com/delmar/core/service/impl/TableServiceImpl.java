@@ -37,9 +37,9 @@ import com.delmar.core.service.TableService;
  * @author 刘大磊 22015-01-09 10:48:25
  */
 @Service("tableService")
-@Slf4j
 public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		TableService {
+private DmLog log=DmLog.getLogger(TableServiceImpl.class);
 	@Autowired
 	private TableDao tableDao;
 	
