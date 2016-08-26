@@ -8,9 +8,6 @@
 package com.delmar.utils;
 
 
-import org.apache.commons.lang3.CharUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -97,8 +94,8 @@ public class StringUtil {
 		char[] chars = property.toCharArray();
 		StringBuffer sb = new StringBuffer();
 		for (char c : chars) {
-			if (CharUtils.isAsciiAlphaUpper(c)) {
-				sb.append("_" + StringUtils.lowerCase(CharUtils.toString(c)));
+			if (Character.isUpperCase(c)) {
+				sb.append("_" + Character.toLowerCase(c));
 			} else {
 				sb.append(c);
 			}
@@ -122,7 +119,8 @@ public class StringUtil {
 			if (c == '_') {
 				int j = i + 1;
 				if (j < chars.length) {
-					sb.append(StringUtils.upperCase(CharUtils.toString(chars[j])));
+
+					sb.append(String.valueOf(chars[j]).toUpperCase());
 					i++;
 				}
 			} else {
