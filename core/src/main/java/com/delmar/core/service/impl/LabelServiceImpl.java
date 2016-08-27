@@ -17,7 +17,7 @@ import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
 
 /**
- * @author 刘大磊 22016-08-27 08:23:58
+ * @author 刘大磊 22016-08-27 10:31:45
  */
 @Service("labelService")
 public class LabelServiceImpl extends CoreServiceImpl<Label> implements

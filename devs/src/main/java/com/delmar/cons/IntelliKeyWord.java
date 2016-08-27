@@ -31,6 +31,12 @@ public class IntelliKeyWord {
         LABEL_MAP.put("descr","描述");
         LABEL_MAP.put("remark","备注");
         LABEL_MAP.put("help","帮助");
+        LABEL_MAP.put("value","键值");
+        LABEL_MAP.put("msgtext","信息");
+        LABEL_MAP.put("bgnTime","开始时间");
+        LABEL_MAP.put("endTime","介绍时间");
+        LABEL_MAP.put("bgnDate","开始日期");
+        LABEL_MAP.put("endDate","结束日期");
         READ_ONLY_SET.add("created");
         READ_ONLY_SET.add("createdby");
         READ_ONLY_SET.add("updated");

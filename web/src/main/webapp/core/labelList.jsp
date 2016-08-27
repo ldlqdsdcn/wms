@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-27 08:23:58
+  Date: 2016-08-27 10:31:45
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -44,12 +44,13 @@
         <display:column title="序号" media="html csv excel xml pdf rtf">
               	<c:out value=" ${list_rowNum}"/>
         </display:column>
-        <display:column   title="value" sortable="true" media="html">
+        <display:column   title="键值" sortable="true" media="html">
                  <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.value}"/></a>
         </display:column>
-        <display:column property="value" media="csv excel xml pdf rtf"	title="value" />
-        <display:column property="msgtext"  escapeXml="true" title="msgtext" sortable="true" />
-        <display:column property="compDate"  escapeXml="true" title="compDate" sortable="true" />
+        <display:column property="value" media="csv excel xml pdf rtf"	title="键值" />
+        <display:column property="msgtext"  escapeXml="true" title="信息" sortable="true" />
+        <display:column property="compDate"  escapeXml="true" title="compDate" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
+        <display:column property="bgnTime"  escapeXml="true" title="开始时间" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
     </display:table>
 </td>
 </tr>

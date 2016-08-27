@@ -18,7 +18,7 @@ import com.delmar.core.service.LabelService;
 
 
 /**
- * @author 刘大磊 2016-08-27 08:23:58
+ * @author 刘大磊 2016-08-27 10:31:45
  */
 public class LabelAction extends CoreEditPrivAction {
 	private Label  label;
