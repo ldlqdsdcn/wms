@@ -23,7 +23,7 @@ public class GenerateCodeTest {
     public void testGenerateCode()
     {
         List<GenModelDto> list=new ArrayList<GenModelDto>();
-        list.add(new GenModelDto("core_message","Message","core","消息"));
+        list.add(new GenModelDto("core_label","Label","core","标签"));
 
         codeGenerationService.generateMapperAndModel(list);
     }

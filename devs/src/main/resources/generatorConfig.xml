@@ -136,17 +136,8 @@
                     enableDeleteByExample="false" enableUpdateByExample="false">
                     <generatedKey column="id" sqlStatement="MySql" identity="true" />
                 </table>-->
-        <table schema="" tableName="core_window" domainObjectName="Window"
-                        enableCountByExample="true" enableSelectByExample="true"
-                        enableDeleteByExample="true" enableUpdateByExample="false">
-        <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-        <table schema="" tableName="core_page" domainObjectName="Page"
-               enableCountByExample="true" enableSelectByExample="true"
-               enableDeleteByExample="true" enableUpdateByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-        <table schema="" tableName="core_field" domainObjectName="Field"
+
+        <table schema="" tableName="test_table" domainObjectName="Field"
                enableCountByExample="true" enableSelectByExample="true"
                enableDeleteByExample="true" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />

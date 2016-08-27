@@ -14,7 +14,7 @@ import com.delmar.core.model.Label;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-08-26 23:24:10
+ * @author 刘大磊 2016-08-27 08:23:58
  */
 @Repository("labelDao") 
 public class LabelDaoMybatis extends CoreDaoMyBatis<Label> implements LabelDao {

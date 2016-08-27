@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-26 23:24:10
+  Date: 2016-08-27 08:23:58
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -44,11 +44,12 @@
         <display:column title="序号" media="html csv excel xml pdf rtf">
               	<c:out value=" ${list_rowNum}"/>
         </display:column>
-        <display:column   title="键值" sortable="true" media="html">
+        <display:column   title="value" sortable="true" media="html">
                  <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.value}"/></a>
         </display:column>
-        <display:column property="value" media="csv excel xml pdf rtf"	title="键值" />
-        <display:column property="msgtext"  escapeXml="true" title="消息" sortable="true" />
+        <display:column property="value" media="csv excel xml pdf rtf"	title="value" />
+        <display:column property="msgtext"  escapeXml="true" title="msgtext" sortable="true" />
+        <display:column property="compDate"  escapeXml="true" title="compDate" sortable="true" />
     </display:table>
 </td>
 </tr>

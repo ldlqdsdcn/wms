@@ -5,6 +5,7 @@
             <id column="id" property="id" jdbcType="INTEGER" />
             <result column="value" property="value" jdbcType="VARCHAR" />
             <result column="msgtext" property="msgtext" jdbcType="VARCHAR" />
+            <result column="comp_date" property="compDate" jdbcType="TIMESTAMP" />
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
@@ -12,7 +13,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   value,   msgtext 
+      id,   value,   msgtext,   comp_date 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -48,8 +49,8 @@
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_label (     value,   msgtext )
-        values (  #{value,jdbcType=VARCHAR}, #{msgtext,jdbcType=VARCHAR} )
+        insert into core_label (     value,   msgtext,   comp_date )
+        values (  #{value,jdbcType=VARCHAR}, #{msgtext,jdbcType=VARCHAR}, #{compDate,jdbcType=TIMESTAMP} )
     </insert>
     <insert id="insertSelective" parameterType="com.delmar.core.model.Label" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -63,6 +64,9 @@
                 <if test="msgtext != null" >
                     msgtext,
                 </if>
+                <if test="compDate != null" >
+                    comp_date,
+                </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
     <if test="value != null" >
@@ -70,6 +74,9 @@
     </if>
     <if test="msgtext != null" >
     #{msgtext,jdbcType=VARCHAR}},
+    </if>
+    <if test="compDate != null" >
+    #{compDate,jdbcType=VARCHAR}},
     </if>
         </trim>
     </insert>
@@ -88,6 +95,9 @@
     <if test="msgtext != null" >
         msgtext = #{msgtext,jdbcType=VARCHAR},
     </if>
+    <if test="compDate != null" >
+        comp_date = #{compDate,jdbcType=TIMESTAMP},
+    </if>
 
         </set>
         where id = #{id,jdbcType=INTEGER}
@@ -98,7 +108,9 @@
             
             value = #{value,jdbcType=VARCHAR},
 
-            msgtext = #{msgtext,jdbcType=VARCHAR}
+            msgtext = #{msgtext,jdbcType=VARCHAR},
+
+            comp_date = #{compDate,jdbcType=TIMESTAMP}
 
         where id = #{id,jdbcType=INTEGER}
     </update>

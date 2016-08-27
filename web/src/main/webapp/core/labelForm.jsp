@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-26 23:24:10
+  Date: 2016-08-27 08:23:58
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -15,7 +15,9 @@
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
 <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
 <script type='text/javascript' src='../js/ea.validate.js'></script>
-
+<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/i18n/datepicker-<s:property value='#session.currentlanguageoriginal'/>.js"/></script>
+<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
+<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" />
 <script type="text/javascript">
  function gotoList()
  {
@@ -25,6 +27,7 @@
     $('#formDetail tr:odd').addClass("query_one");
      $('#formDetail tr:even').addClass("query_two");
      $("#formDetail").find("tr:last").removeClass("query_one").removeClass("query_two");
+
  });
 </script>
 </head>
@@ -73,15 +76,21 @@
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="value" value="键值" ></s:label></td>
+                        <td width="20%"><s:label for="value" value="value" ></s:label></td>
                         <td width="30%">
                           <s:textfield name="label.value" id="value"   ></s:textfield>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="msgtext" value="消息" ></s:label></td>
+                        <td width="20%"><s:label for="msgtext" value="msgtext" ></s:label></td>
                         <td width="30%">
                           <s:textfield name="label.msgtext" id="msgtext"   ></s:textfield>
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="compDate" value="compDate" ></s:label></td>
+                        <td width="30%">
+                          <s:textfield name="label.compDate" id="compDate"   ></s:textfield>
                           </td>
                         </tr>
                 <tr>

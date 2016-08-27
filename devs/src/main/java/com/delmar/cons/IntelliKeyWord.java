@@ -45,6 +45,7 @@ public class IntelliKeyWord {
         SQL_KEY_WORD_MAP.add("name");
         SQL_TYPE_MAP.put("INT","INTEGER");
         SQL_TYPE_MAP.put("INT UNSIGNED","INTEGER");
+        SQL_TYPE_MAP.put("DATETIME","TIMESTAMP");
     }
     public static String getModule(String key)
     {

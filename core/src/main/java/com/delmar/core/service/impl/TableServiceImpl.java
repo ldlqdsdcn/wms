@@ -99,10 +99,19 @@ private DmLog log=DmLog.getLogger(TableServiceImpl.class);
 					for(FieldType type:columnDataTypes)
 					{
 
-						if(type.getDesc().equals(dto.getType()))
+						if("DOUBLE".equals(dto.getType()))
+						{
+							System.out.println("DOUBLE------>"+dto.getDataType());
+						}
+						if(type.getDesc().equals(dto.getType())||type.getKey()==dto.getDataType())
 						{
 							dto.setDataType(type.getType());
+							break;
 						}
+					}
+					if("DOUBLE".equals(dto.getType()))
+					{
+						System.out.println("DOUBLE------>"+dto.getDataType());
 					}
 			}
 			//tableDao.getTableRemark(tableName);

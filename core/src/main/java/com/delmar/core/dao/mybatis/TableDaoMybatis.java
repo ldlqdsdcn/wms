@@ -42,6 +42,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
 
     private static final String COLUMN_NAME = "COLUMN_NAME";
     private static final String TYPE_NAME = "TYPE_NAME";
+    private static final String DATA_TYPE="DATA_TYPE";
     private static final String COLUMN_SIZE = "COLUMN_SIZE";
     private static final String DECIMAL_DIGITS = "DECIMAL_DIGITS";
     private static final String NULLABLE = "NULLABLE";
@@ -230,7 +231,6 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
     }
     public List<ColumnMetaDataDto> getTableColumns(String tableName) {
         List<ColumnMetaDataDto> list=new ArrayList<>();
-        JsonArray jsonArray = new JsonArray();
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
 
         try {
@@ -239,19 +239,19 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             String columnName;
             String columnType;
             ResultSet colRet = databaseMetaData.getColumns(null, "%", tableName, "%");
-           // ResultSetMetaData resultSetMetaData=  colRet.getMetaData();
+           ResultSetMetaData resultSetMetaData=  colRet.getMetaData();
 
             while (colRet.next()) {
                 ColumnMetaDataDto columnMetaDataDto=new ColumnMetaDataDto();
-                JsonObject jsonObject = new JsonObject();
                 columnName = colRet.getString(COLUMN_NAME);
                 columnType = colRet.getString(TYPE_NAME);
+                 Integer dataType=colRet.getInt(DATA_TYPE);
                 int column_size = colRet.getInt(COLUMN_SIZE);
                 int digits = colRet.getInt(DECIMAL_DIGITS);
                 int nullable = colRet.getInt(NULLABLE);
                 String remarks=colRet.getString(REMARKS);
                 String colDef=colRet.getString(COLUMN_DEF);
-
+                columnMetaDataDto.setDataType(dataType);
                 columnMetaDataDto.setColumnName(columnName);
                 columnMetaDataDto.setType(columnType);
                 columnMetaDataDto.setColumnSize(column_size);
@@ -260,11 +260,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 columnMetaDataDto.setRemarks(remarks);
                 columnMetaDataDto.setColumnDefault(colDef);
                 list.add(columnMetaDataDto);
-
-               /* for(int i=1;i<resultSetMetaData.getColumnCount();i++)
+                System.out.println(columnMetaDataDto.toString());
+                for(int i=1;i<resultSetMetaData.getColumnCount();i++)
                 {
-                    System.out.println(resultSetMetaData.getColumnName(i)+" "+resultSetMetaData.getColumnLabel(i)+" "+colRet.getObject(i));
-                }*/
+                    System.out.print(resultSetMetaData.getColumnName(i)+" "+resultSetMetaData.getColumnLabel(i)+" "+colRet.getObject(i)+"   ");
+                }
             }
 
         } catch (Exception e) {

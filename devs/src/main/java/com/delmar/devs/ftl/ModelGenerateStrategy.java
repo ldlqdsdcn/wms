@@ -54,7 +54,7 @@ public class ModelGenerateStrategy {
                     {
                         param.put("hasDate",true);
                     }
-                    if(columnInfo.getDataType()==ColumnDataType.FLOAT.getKey())
+                    if(columnInfo.getDataType()==ColumnDataType.DECIMAL.getKey())
                     {
                         param.put("hasDecimal",true);
                     }

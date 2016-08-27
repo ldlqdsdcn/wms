@@ -6668,7 +6668,7 @@ user_id</columns>
       </foreign-key>
       <foreign-key id="932" parent="67" name="fk_column_id">
         <columns>fk_column_id</columns>
-        <ref-key>PRIMARY</ref-key>
+        <ref-key>~.bussinessman.PRIMARY</ref-key>
         <cascade-update-rule>no_action</cascade-update-rule>
         <cascade-delete-rule>no_action</cascade-delete-rule>
       </foreign-key>
