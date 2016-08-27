@@ -55,9 +55,6 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	@Autowired
 	private UsergroupAccessDao usergroupAccessDao;
 
-	/** (non-Javadoc)
-	 * @see CoreService.CoreServiceImpl#getCoreDao()
-	 */
 	@Override
 	protected CoreDao<User> getCoreDao() {
 		return userDao;
@@ -65,7 +62,6 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	/** (non-Javadoc)
 	 * @see com.delmar.sys.service.UserService#getUserByUsername(String)
 	 */
-	@Override
 	public User getUserByUsername(String username) {
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("username", username);
@@ -79,7 +75,6 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	/** (non-Javadoc)
 	 * @see com.delmar.sys.service.UserService#getUserPrivileges(Integer)
 	 */
-	@Override
 	public UserContent getUserPrivileges(Integer userId) {
 		UserContent uc=new UserContent();
 		
@@ -96,7 +91,6 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	/** (non-Javadoc)
 	 * @see com.delmar.sys.service.UserService#validateUsernameExist(String, Integer)
 	 */
-	@Override
 	public boolean validateUsernameExist(String username, Integer id) {
 		Map param=new HashMap();
 		param.put("username", username);
@@ -108,9 +102,8 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	}
 
 	/** (non-Javadoc)
-	 * @see com.delmar.sys.service.UserService#saveUser(com.delmar.sys.model.User, java.util.List, java.util.List, java.util.List)
+	 * @see com.delmar.sys.service.UserService# saveUser(com.delmar.sys.model.User, java.util.List, java.util.List, java.util.List)
 	 */
-	@Override
 	public Integer saveUser(User user, List<Integer> roles,
 			String[] orgList,String[] saveGroupList) {
 		boolean isnew=user.isnew();
@@ -169,7 +162,7 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	/* (non-Javadoc)
 	 * @see com.delmar.sys.service.UserService#getUsers(java.util.Map)
 	 */
-	@Override
+
 	public List getUsers(Map<String, Object> param) {
 		return userDao.getUsers(param);
 	}
@@ -206,7 +199,6 @@ public class UserServiceImpl extends CoreServiceImpl<User> implements
 	/* (non-Javadoc)
 	 * @see com.delmar.sys.service.UserService#getNonUserOrgByUsergroupId(java.lang.Integer)
 	 */
-	@Override
 	public List<User> getNonUserOrgByUsergroupId(Integer usergroupId,Integer orgId) {
 		return userDao.getNonUserOrgByUsergroupId(usergroupId,orgId);
 	}

@@ -27,6 +27,9 @@ public class IntelliKeyWord {
         LABEL_MAP.put("createdby","创建人");
         LABEL_MAP.put("updatedby","修改人");
         LABEL_MAP.put("isactive","是否有效");
+        LABEL_MAP.put("level","等级");
+        LABEL_MAP.put("title","标题");
+        LABEL_MAP.put("role","角色");
         LABEL_MAP.put("desc","描述");
         LABEL_MAP.put("descr","描述");
         LABEL_MAP.put("remark","备注");

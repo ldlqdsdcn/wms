@@ -13,7 +13,6 @@ public class GenModelDto {
     private String modelName;
     private String module;
     private String remark;
-    private List<GenModelDto> includeModelList;
     /**
      * 是否生成web代码
      */
@@ -21,7 +20,9 @@ public class GenModelDto {
     /**
      * 是否生成serviceCode
      */
-    private boolean serviceService;
+    private boolean generateService;
+    private List<GenModelDto> includeModelList;
+
     /**
      *
      * @param tableName 表名
@@ -48,5 +49,7 @@ public class GenModelDto {
         this.module=module;
         this.remark=remark;
         this.includeModelList=includeModelList;
+        generateWeb=true;
+        generateService=true;
     }
 }

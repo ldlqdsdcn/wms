@@ -12,7 +12,9 @@
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-
+            <#list foreignList as item>
+                <if test="${item.propertyName}!=null"> and ${item.columnName}=${r'#{'}${item.propertyName},jdbcType=${item.type}} </if>
+            </#list>
         </where>
     </sql>
     <sql id="Base_Column_List" >

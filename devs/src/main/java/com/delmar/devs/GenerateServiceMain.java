@@ -7,49 +7,61 @@
 
 package com.delmar.devs;
 
+import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.devs.ftl.FreeMarkerHelper;
+import com.delmar.devs.model.GenModelDto;
+import com.delmar.devs.model.ServiceModel;
 import com.delmar.utils.DateTimeDecorator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 import java.io.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 刘大磊 2014年12月22日 下午12:44:44
  */
 public class GenerateServiceMain {
-	String[] modelList;
+	private TableMetaDataDto tableMetaDataDto;
+	private GenModelDto model;
+	List<ServiceModel> lineList;
+	public GenerateServiceMain(TableMetaDataDto tableMetaDataDto, GenModelDto model) {
+		this.tableMetaDataDto=tableMetaDataDto;
+		this.model=model;
+		lineList=new ArrayList<ServiceModel>();
 
-	private String modulename;
-
-	public GenerateServiceMain( String modulename,String[] modelList) {
-		this.modulename=modulename;
-		this.modelList=modelList;
+		if(model.getIncludeModelList()!=null)
+		{
+			for(GenModelDto m:model.getIncludeModelList())
+			{
+				ServiceModel sm=new ServiceModel();
+				sm.setModel(m.getModelName());
+				sm.setModule(m.getModule());
+				lineList.add(sm);
+			}
+		}
 	}
-	
-	
+
+
 	public  void generateInterface()
 	{
 	   Map root = new HashMap();
 		Date date=new Date();
-		String interfacepackage="com.delmar."+modulename+".service";
-		String modelpackage="com.delmar."+modulename+".model";
+		String interfacepackage="com.delmar."+model.getModule()+".service";
+		String modelpackage="com.delmar."+model.getModule()+".model";
 		String datetime=DateTimeDecorator.dateToLongString(date);
 		root.put("packagename", interfacepackage);
 		root.put("modelpackage", modelpackage);
 		root.put("datetime", datetime);
+		root.put("lineList",lineList);
 		//gc.setTime(date);
 		try
 		{
-			for(String model:modelList)
-			{
 
-				root.put("modelname", model);
-				FreeMarkerHelper.getInstance().outFile("serviceInterface.ftl",root,"src/main/java/"+interfacepackage.replace(".", "/")+"/"+model+"Service.java");
-			}
+
+				root.put("modelname", model.getModelName());
+				FreeMarkerHelper.getInstance().outFile("serviceInterface.ftl",root,"src/main/java/"+interfacepackage.replace(".", "/")+"/"+model.getModelName()+"Service.java");
+
 		}
 		catch(Exception e)
 		{
@@ -61,33 +73,35 @@ public class GenerateServiceMain {
 	{
 		Map root = new HashMap();
 		Date date=new Date();
-		String classpackage="com.delmar."+modulename+".service.impl";
-		String modelpackage="com.delmar."+modulename+".model";
+		String classpackage="com.delmar."+model.getModule()+".service.impl";
+		String modelpackage="com.delmar."+model.getModule()+".model";
 		String datetime=DateTimeDecorator.dateToLongString(date);
-		root.put("packagename", "com.delmar."+modulename+".service.impl");
+		root.put("packagename", "com.delmar."+model.getModule()+".service.impl");
 	
 		root.put("modelpackage", modelpackage);
 		root.put("datetime", datetime);
+
+
+		root.put("lineList",lineList);
 		//gc.setTime(date);
 		try
 		{
-			for(String model:modelList)
-			{
-				root.put("interfacefulldaoname", "com.delmar."+modulename+".dao."+model+"Dao");
-				//toUpperCase
-				root.put("interfacefullservicename", "com.delmar."+modulename+".service."+model+"Service");
 
-				root.put("modelname", model);
-				String bgnChar=model.substring(0,1);
+				root.put("interfacefulldaoname", "com.delmar."+model.getModule()+".dao."+model.getModelName()+"Dao");
+				//toUpperCase
+				root.put("interfacefullservicename", "com.delmar."+model.getModule()+".service."+model.getModelName()+"Service");
+
+				root.put("modelname", model.getModelName());
+				String bgnChar=model.getModelName().substring(0,1);
 				
-				root.put("repositoryname", bgnChar.toLowerCase()+model.substring(1)+"Dao");
-				root.put("mappername", "com.delmar."+modulename+".mybatis.sql."+model+"Mapper");
-				String modelname2=model.substring(0,1).toLowerCase()+model.substring(1);
+				root.put("repositoryname", bgnChar.toLowerCase()+model.getModelName().substring(1)+"Dao");
+				root.put("mappername", "com.delmar."+model.getModule()+".mybatis.sql."+model.getModelName()+"Mapper");
+				String modelname2=model.getModelName().substring(0,1).toLowerCase()+model.getModelName().substring(1);
 				System.out.println("modelname2="+modelname2);
 				root.put("serviceName", "@Service(\""+modelname2+"Service\")");
 
-				FreeMarkerHelper.getInstance().outFile("serviceClass.ftl",root,"src/main/java/"+classpackage.replace(".", "/")+"/"+model+"ServiceImpl.java");
-			}
+				FreeMarkerHelper.getInstance().outFile("serviceClass.ftl",root,"src/main/java/"+classpackage.replace(".", "/")+"/"+model.getModelName()+"ServiceImpl.java");
+
 		}
 		catch(Exception e)
 		{

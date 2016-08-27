@@ -26,11 +26,15 @@
  {
 	 window.location='<c:url value="${namespace}/${mode? uncap_first}_list.action"/>';
  }
+ <#if lineList?exists>
+     <#include "inc/lineTableScript.ftl"/>
+ </#if>
  $(document).ready(function(){
     $('#formDetail tr:odd').addClass("query_one");
      $('#formDetail tr:even').addClass("query_two");
      $("#formDetail").find("tr:last").removeClass("query_one").removeClass("query_two");
     <#include "inc/datapicker.ftl"/>
+
  });
 </script>
 </head>
@@ -106,6 +110,9 @@
 						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                 </td>
                 </tr>
+                 <#if lineList?exists>
+                     <#include "inc/lineTable.ftl"/>
+                 </#if>
                 <#--<#if needI18n>-->
                   <#--<#include "/ftl/i18njsp.ftl">-->
                 <#--</#if>-->

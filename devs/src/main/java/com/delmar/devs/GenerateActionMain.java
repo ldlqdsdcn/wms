@@ -7,34 +7,29 @@
 package com.delmar.devs;
 
 import com.delmar.devs.ftl.FreeMarkerHelper;
+import com.delmar.devs.model.FormLine;
+import com.delmar.devs.model.GenModelDto;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 
 import java.io.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 刘大磊 2015年1月21日 上午10:02:58
  */
 public class GenerateActionMain {
+
     public static void main(String[] args) {
 
-
-        GenerateActionMain gam = new GenerateActionMain("core", new String[]{"Window", "Field", "Page"});
-        gam.generateActionclass();
     }
 
+    private GenModelDto genModelDto;
 
-    String[] modelList;
-    private String modulename;
 
-    public GenerateActionMain(String modulename, String[] modelList) {
-        this.modulename = modulename;
-
-        this.modelList = modelList;
+    public GenerateActionMain(GenModelDto genModelDto) {
+       this.genModelDto=genModelDto;
     }
 
     public void generateActionclass() {
@@ -42,9 +37,9 @@ public class GenerateActionMain {
 
         Date date = new Date();
 
-        String classpackage = "com.delmar." + modulename + ".web.action";
-        String modelpackage = "com.delmar." + modulename + ".model";
-        String servicepackage = "com.delmar." + modulename + ".service";
+        String classpackage = "com.delmar." + genModelDto.getModule() + ".web.action";
+        String modelpackage = "com.delmar." + genModelDto.getModule()  + ".model";
+        String servicepackage = "com.delmar." + genModelDto.getModule()  + ".service";
         String datetime = com.delmar.utils.DateTimeDecorator.dateToLongString(date);
         root.put("packagename", classpackage);
         root.put("modelpackage", modelpackage);
@@ -54,15 +49,29 @@ public class GenerateActionMain {
         root.put("datetime", datetime);
         //gc.setTime(date);
         try {
-            for (String model : modelList) {
+
                 //toUpperCase
-                root.put("modelname", model);
-                String bgnChar = model.substring(0, 1);
-                root.put("modelObjname", bgnChar.toLowerCase() + model.substring(1));
-                FreeMarkerHelper.getInstance().outFile("StrutsActionClass.ftl", root, "src/main/java/" + classpackage.replace(".", "/") + "/" + model + "Action.java",true);
+                root.put("modelname", genModelDto.getModelName());
+                String bgnChar = genModelDto.getModelName().substring(0, 1);
+                root.put("modelObjname", bgnChar.toLowerCase() + genModelDto.getModelName().substring(1));
+
+                if(genModelDto.getIncludeModelList()!=null)
+                {
+                    List<FormLine> formLineList=new ArrayList<FormLine>();
+                    for(GenModelDto gm:genModelDto.getIncludeModelList())
+                    {
+                        FormLine fl=new FormLine();
+                        fl.setLabel(gm.getRemark());
+                        fl.setModel(gm.getModelName());
+                        fl.setModule(gm.getModule());
+                        formLineList.add(fl);
+                    }
+                    root.put("lineList",formLineList);
+                }
+
+                FreeMarkerHelper.getInstance().outFile("StrutsActionClass.ftl", root, "src/main/java/" + classpackage.replace(".", "/") + "/" + genModelDto.getModelName() + "Action.java",true);
 
 
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

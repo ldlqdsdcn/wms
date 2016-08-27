@@ -36,6 +36,10 @@ public class GenerateStrutsConfigMain {
     public GenerateStrutsConfigMain( String modulename,  String[] modelList) {
         this.modulename = modulename;
         this.modelList = modelList;
+        for(String s:modelList)
+        {
+            System.out.println("---------------------->s="+s);
+        }
     }
 
     public void generateStrutsConfig() {

@@ -39,17 +39,25 @@ public class CodeGenerationServiceImpl implements CodeGenerationService {
             generateDaoMain.generateInterface();
             generateDaoMain.generatedaoclass();
             //生成service
-            GenerateServiceMain generateServiceMain=new GenerateServiceMain(model.getModule(),new String[]{model.getModelName()});
-            generateServiceMain.generateInterface();
-            generateServiceMain.generateServiceclass();
-            //生成 Struts action
-            GenerateActionMain generateActionMain=new GenerateActionMain(model.getModule(),new String[]{model.getModelName()});
-            generateActionMain.generateActionclass();
+            if(model.isGenerateService())
+            {
+                GenerateServiceMain generateServiceMain=new GenerateServiceMain(tableMetaDataDto,model);
+                generateServiceMain.generateInterface();
+                generateServiceMain.generateServiceclass();
+                if(model.isGenerateWeb())
+                {
+                    //生成 Struts action
+                    GenerateActionMain generateActionMain=new GenerateActionMain( model);
+                    generateActionMain.generateActionclass();
+                    //生成 jsp
+                    GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(model,"刘大磊",model.getModule(),tableMetaDataDto,tableService);
+                    generateJspPageMain.generateJspPage();
+                    modelList[i++]=model.getModelName();
+                }
 
-            //生成 jsp
-            GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(new String[]{model.getModelName()},new String[]{model.getRemark()},"刘大磊",model.getModule(),tableMetaDataDto);
-            generateJspPageMain.generateJspPage();
-            modelList[i++]=model.getModelName();
+            }
+
+
         }
         //生成 struts config
         GenerateStrutsConfigMain generateStrutsConfigMain=new GenerateStrutsConfigMain(genModelDtoList.get(0).getModule(),modelList);

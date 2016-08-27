@@ -39,5 +39,6 @@ public class WindowServiceImpl extends CoreServiceImpl<Window> implements
 			windowDao.deleteByPrimaryKey(id);
 		}
 	}
-	
+
+
 }

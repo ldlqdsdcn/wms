@@ -2,6 +2,7 @@ package com.delmar.devs.ftl;
 
 import com.delmar.cons.IntelliKeyWord;
 import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.ForeignKey;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.devs.model.ColumnInfo;
 import com.delmar.devs.model.GenModelDto;
@@ -50,6 +51,21 @@ public class MapperGenerateStrategy {
             columnInfoList.add(columnInfo);
         }
         param.put("columnList",columnInfoList);
+        List<ColumnInfo> foreignList=new ArrayList<ColumnInfo>();
+        List<ForeignKey>  list=tableMetaDataDto.getImportedFK();
+        if(list!=null)
+        for(ColumnInfo c:columnInfoList)
+        {
+            for(ForeignKey key:list)
+            {
+                if(key.getFkColumnName().equals(c.getColumnName()))
+                {
+                    foreignList.add(c);
+                    break;
+                }
+            }
+        }
+        param.put("foreignList",foreignList);
         FreeMarkerHelper.getInstance().outFile("mapper.ftl",param,"src/main/resources/com/delmar/"+genModelDto.getModule()+"/mybatis/sql/"+genModelDto.getModelName()+"Mapper.xml");
 
     }

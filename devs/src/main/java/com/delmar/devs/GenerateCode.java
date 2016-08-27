@@ -29,34 +29,7 @@ public class GenerateCode {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File filepath=new File(GenerateDaoMain.class.getResource("/").getFile());
-		   config = new Configuration();
-			config.setDefaultEncoding("utf-8");
-		  try {
-			config.setDirectoryForTemplateLoading(filepath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}    
-		  config.setObjectWrapper(new DefaultObjectWrapper());
-		  //生成dao
-		  GenerateDaoMain gdm=new GenerateDaoMain(modulename,modelList);
-		  gdm.generateInterface();
-		  gdm.generatedaoclass();
-		  //生成 service
-		  GenerateServiceMain gsm=new GenerateServiceMain(modulename,modelList);
-		  gsm.generateInterface();
-		  gsm.generateServiceclass();
-		//生成struts Configuration config, String modulename, String genmodelpath, String[] modelList
-		GenerateActionMain generateActionMain=new GenerateActionMain(modulename,modelList);
-		generateActionMain.generateActionclass();
-		//生成struts xml
-		GenerateStrutsConfigMain gam=new GenerateStrutsConfigMain("core"
-				,modelList);
-		gam.generateStrutsConfig();
 
-		//Configuration config,String namespace,String[] modeList,String[] modeNameList,String user,String genmodelpath
-		GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(modelList,titleList,user,modulename,null);
-		generateJspPageMain.generateJspPage();
 
 
 	}

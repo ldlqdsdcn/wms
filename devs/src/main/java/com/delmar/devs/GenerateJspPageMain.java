@@ -1,13 +1,17 @@
 package com.delmar.devs;
 
 import com.delmar.cons.IntelliKeyWord;
+import com.delmar.core.api.ApiResult;
 import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.model.*;
 import com.delmar.core.model.Window;
+import com.delmar.core.service.TableService;
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.ColumnInfo;
+import com.delmar.devs.model.FormLine;
+import com.delmar.devs.model.GenModelDto;
 import com.delmar.devs.model.JspListProp;
 import com.delmar.utils.BeanHelper;
 import com.delmar.utils.CommonConverter;
@@ -28,43 +32,41 @@ import java.util.List;
  * Created by admin on 2016/8/25.
  */
 public class GenerateJspPageMain {
-    private  String user = "刘大磊";
+    private String user = "刘大磊";
+    private TableService tableService;
     /**
      * 填写对应的模块名
      */
-
-    private  String[] modeList;
-    private String[] modeNameList;
+    GenModelDto model;
     private String module;
-    private  String namespace ;
+    private String namespace;
     private TableMetaDataDto tableMetaDataDto;
-    public GenerateJspPageMain(String[] modeList,String[] modeNameList,String user,String module,TableMetaDataDto tableMetaDataDto)
-    {
-        this.modeList=modeList;
-        this.modeNameList=modeNameList;
-        this.user=user;
-        this.module=module;
-        this.namespace="/"+module;
-        this.tableMetaDataDto=tableMetaDataDto;
+
+    public GenerateJspPageMain(GenModelDto model, String user, String module, TableMetaDataDto tableMetaDataDto, TableService tableService) {
+        this.model = model;
+        this.user = user;
+        this.module = module;
+        this.namespace = "/" + module;
+        this.tableMetaDataDto = tableMetaDataDto;
+        this.tableService=tableService;
     }
-    public void generateJspPage()
-    {
-        for(int i=0;i<modeList.length;i++)
-        {
-            String mode=com.delmar.utils.StringUtil.lowerFirstChar(modeList[i]);
-            generateListPage(mode, modeNameList[i]);
-            generateFormPage(mode,modeNameList[i]);
-        }
+
+    public void generateJspPage() {
+
+        generateListPage();
+        generateFormPage();
+
     }
+
     public static void main(String[] args) {
 
     }
 
-    public  void generateFormPage(String mode,String title) {
-        List<JspListProp> jspFormPropList = getOutPutList(mode);
+    public void generateFormPage() {
+        List<JspListProp> jspFormPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
         Map root = new HashMap();
-        root.put("mode", mode);
-        root.put("title", title);
+        root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
+        root.put("title", model.getRemark());
         root.put("namespace", namespace);
         root.put("user", user);
 
@@ -74,44 +76,62 @@ public class GenerateJspPageMain {
 
         root.put("datetime", datetime);
         root.put("propertyList", jspFormPropList);
+        List<FormLine> formLines = new ArrayList<FormLine>();
+        List<GenModelDto> genModelDtoList = this.model.getIncludeModelList();
+        for (GenModelDto genModelDto : genModelDtoList) {
+            FormLine formLine = new FormLine();
+            formLine.setLabel(genModelDto.getRemark());
+            formLine.setModel(genModelDto.getModelName());
 
-        FreeMarkerHelper.getInstance().outFile("formPage.ftl",root,"src/main/webapp" + namespace + "/" + mode + "Form.jsp",true);
+            ApiResult<TableMetaDataDto> apiResult = tableService.getTableDescription(genModelDto.getTableName());
+            TableMetaDataDto tableMetaDataDto = apiResult.getData();
+
+            List<JspListProp> linePropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), tableMetaDataDto);
+            formLine.setPropertyList(linePropList);
+            formLines.add(formLine);
+        }
+        if(formLines.size()>0)
+        {
+            root.put("lineList", formLines);
+        }
+
+
+        FreeMarkerHelper.getInstance().outFile("formPage.ftl", root, "src/main/webapp" + namespace + "/" + com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()) + "Form.jsp", true);
     }
 
-    public  void generateListPage(String mode,String title) {
-        List<JspListProp> jspListPropList = getOutPutList(mode);
+    public void generateListPage() {
+        List<JspListProp> jspListPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
         Map root = new HashMap();
-        root.put("mode", mode);
-        root.put("title", title);
+        root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
+        root.put("title", model.getRemark());
         root.put("namespace", namespace);
         root.put("user", user);
         Date date = new Date();
         String datetime = DateTimeDecorator.dateToLongString(date);
         root.put("datetime", datetime);
         root.put("propertyList", jspListPropList);
-        FreeMarkerHelper.getInstance().outFile("listPage.ftl",root,"src/main/webapp" + namespace + "/" + mode + "List.jsp",true);
+        FreeMarkerHelper.getInstance().outFile("listPage.ftl", root, "src/main/webapp" + namespace + "/" + com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()) + "List.jsp", true);
     }
-    private  List<JspListProp> getOutPutList(String mode)
-    {
-       String modeName= com.delmar.utils.StringUtil.upperFirstChar(mode);
+
+    private List<JspListProp> getOutPutList(String mode, TableMetaDataDto tableData) {
+        String modeName = com.delmar.utils.StringUtil.upperFirstChar(mode);
 
         List<JspListProp> jspFormPropList = new ArrayList<JspListProp>();
-        List<ColumnMetaDataDto> columnMetaDataDtoList=tableMetaDataDto.getColumnList();
+        List<ColumnMetaDataDto> columnMetaDataDtoList = tableData.getColumnList();
 
         for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
-            ColumnInfo columnInfo=new ColumnInfo();
+            ColumnInfo columnInfo = new ColumnInfo();
             try {
-                CommonConverter.copyProperties(columnMetaDataDto,columnInfo);
+                CommonConverter.copyProperties(columnMetaDataDto, columnInfo);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             columnInfo.setPropertyName(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
-            if(IntelliKeyWord.hasSkipped(columnInfo.getPropertyName()))
-            {
+            if (IntelliKeyWord.hasSkipped(columnInfo.getPropertyName())) {
                 continue;
             }
             boolean date = false;
-            if (columnInfo.getDataType()== ColumnDataType.DATE.getKey()) {
+            if (columnInfo.getDataType() == ColumnDataType.DATE.getKey()) {
                 date = true;
             }
             boolean isreadOnly = IntelliKeyWord.isReadOnly(columnInfo.getPropertyName());
@@ -119,24 +139,19 @@ public class GenerateJspPageMain {
             if (label == null) {
                 label = columnInfo.getPropertyName();
             }
-            JspListProp jspListProp= new JspListProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
-            if(IntelliKeyWord.isBooleanTag(columnInfo.getPropertyName()))
-            {
+            JspListProp jspListProp = new JspListProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
+            if (IntelliKeyWord.isBooleanTag(columnInfo.getPropertyName())) {
                 jspListProp.setBooleanTag(true);
             }
             jspListProp.setModule(IntelliKeyWord.getModule(columnInfo.getPropertyName()));
-            if(jspListProp.getModule()!=null)
-            {
+            if (jspListProp.getModule() != null) {
                 jspListProp.setForeign(true);
             }
-            String width=IntelliKeyWord.getWidth(columnInfo.getPropertyName());
+            String width = IntelliKeyWord.getWidth(columnInfo.getPropertyName());
             //todo 不合理，代码
-            if(width!=null)
-            {
-                jspListProp.setCssStyle("cssStyle=\""+width+"\"");
-            }
-            else
-            {
+            if (width != null) {
+                jspListProp.setCssStyle("cssStyle=\"" + width + "\"");
+            } else {
                 jspListProp.setCssStyle("");
             }
             jspFormPropList.add(jspListProp);

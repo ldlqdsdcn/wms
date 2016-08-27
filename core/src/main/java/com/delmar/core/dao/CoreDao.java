@@ -54,9 +54,9 @@ public interface CoreDao<T> {
 	public Integer save(T model)  ;
 	/**
 	 * 根据主键删除对象
-	 * @param id
+	 * @param example
 	 */
-	public Integer deleteByExample(Map example)  ;
+	public Integer deleteByExample(Map example);
 	/**
 	 * 
 	 * @param example
