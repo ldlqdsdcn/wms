@@ -14,7 +14,6 @@
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-
         </where>
     </sql>
     <sql id="Base_Column_List" >
@@ -26,7 +25,7 @@
             distinct
         </if>
         <include refid="Base_Column_List" />
-        from core_window
+        from core_Window
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
@@ -37,15 +36,15 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
         <include refid="Base_Column_List" />
-        from core_window
+        from core_Window
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from core_window
+        delete from core_Window
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <delete id="deleteByExample" parameterType="java.util.Map" >
-        delete from core_window
+        delete from core_Window
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
@@ -54,14 +53,14 @@
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_window (     name,   descr,   help,   created,   createdby,   updated,   updatedby,   isactive )
+        insert into core_Window (     name,   descr,   help,   created,   createdby,   updated,   updatedby,   isactive )
         values (  #{name,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{help,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{createdby,jdbcType=INTEGER}, #{updated,jdbcType=TIMESTAMP}, #{updatedby,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR} )
     </insert>
     <insert id="insertSelective" parameterType="com.delmar.core.model.Window" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_window
+        insert into core_Window
         <trim prefix="(" suffix=")" suffixOverrides="," >
                 <if test="name != null" >
                     name,
@@ -116,13 +115,13 @@
         </trim>
     </insert>
     <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
-        select count(*) from core_window
+        select count(*) from core_Window
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </select>
     <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Window" >
-        update core_window
+        update core_Window
         <set >
     <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -153,7 +152,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
-        update core_window
+        update core_Window
         set 
             
             name = #{name,jdbcType=VARCHAR},

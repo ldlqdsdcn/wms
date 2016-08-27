@@ -19,21 +19,21 @@ import ${servicepackage}.${modelname}Service;
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
-</#if>
+
 <#list lineList as item>
 import com.delmar.${item.module}.model.${item.model};
 </#list>
-
+</#if>
 /**
  * @author 刘大磊 ${datetime}
  */
 public class ${modelname}Action extends CoreEditPrivAction {
 	private ${modelname}  ${modelObjname};
-
+<#if lineList?exists>
 <#list lineList as item>
 	private List<${item.model}> ${item.model?uncap_first}List=new ArrayList<${item.model}>();;
 </#list>
-
+</#if>
 	@Autowired
 	private ${modelname}Service ${modelObjname}Service;
 	
@@ -84,9 +84,10 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public void editForm() {
 		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
+<#if lineList?exists>
 		<#list lineList as item>
 		${item.model?uncap_first}List=${modelObjname}Service.get${item.model}ListBy${modelname}Id(id);
-		</#list>
+		</#list></#if>
 
 	}
 
@@ -104,10 +105,13 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public void createForm() {
 		${modelObjname}=new ${modelname}();
+<#if lineList?exists>
 		<#list lineList as item>
 		${item.model?uncap_first}List=new ArrayList<${item.model}>();
 		</#list>
+</#if>
 	}
+<#if lineList?exists>
 	<#list lineList as item>
     public String add${item.model}()
     {
@@ -141,13 +145,14 @@ public class ${modelname}Action extends CoreEditPrivAction {
         return "edit";
 	}
 	</#list>
+</#if>
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#saveForm()
 	 */
 	@Override
 	public String saveForm() {
 
-		${modelObjname}Service.save${modelname}(${modelObjname}<#list lineList as item>,${item.model?uncap_first}List</#list>);
+		${modelObjname}Service.save${modelname}(${modelObjname}<#if lineList?exists><#list lineList as item>,${item.model?uncap_first}List</#list></#if>);
 		return "edit";
 	}
 	/**
@@ -163,6 +168,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	public void set${modelname}(${modelname} ${modelObjname}) {
 		this.${modelObjname} = ${modelObjname};
 	}
+<#if lineList?exists>
 <#list lineList as item>
 public List<${item.model}> get${item.model}List()
 {
@@ -173,4 +179,5 @@ public void set${item.model}List(List<${item.model}> ${item.model?uncap_first}Li
 	this.${item.model?uncap_first}List=${item.model?uncap_first}List;
 }
 </#list>
+</#if>
 }

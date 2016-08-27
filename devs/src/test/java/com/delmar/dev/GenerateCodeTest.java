@@ -23,7 +23,7 @@ public class GenerateCodeTest {
     public void testGenerateCode()
     {
         List<GenModelDto> list=new ArrayList<GenModelDto>();
-        GenModelDto line1=  new GenModelDto("core_meeting_participant","MeetingParticipant","core","参与人");
+        /*GenModelDto line1=  new GenModelDto("core_meeting_participant","MeetingParticipant","core","参与人");
         line1.setGenerateService(false);
         list.add(line1);
         GenModelDto line2=  new GenModelDto("core_meeting_topic","MeetingTopic","core","讨论内容");
@@ -34,8 +34,9 @@ public class GenerateCodeTest {
         lineList.add(line1);
         lineList.add(line2);
         modelDto.setIncludeModelList(lineList);
+        list.add(modelDto);*/
+        GenModelDto modelDto=new GenModelDto("core_Window","Window","core","窗体");
         list.add(modelDto);
-
         codeGenerationService.generateMapperAndModel(list);
     }
 }

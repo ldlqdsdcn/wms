@@ -80,6 +80,7 @@
 	<action name="window_*" class="com.delmar.core.web.action.WindowAction" method="{1}">
 		<result name="list">/core/windowList.jsp</result>
 		<result name="edit">/core/windowForm.jsp</result>
+		<result name="input">/core/windowForm.jsp</result>
 	</action>
 	<action name="label_*" class="com.delmar.core.web.action.LabelAction" method="{1}">
 		<result name="list">/core/labelList.jsp</result>

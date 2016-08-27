@@ -1,13 +1,13 @@
 <#list lineList as line>
-<tr xmlns:s="http://java.sun.com/jsf/html">
-    <td colspan="4">
+<tr>
+    <td colspan="4" style="padding-left: 0px;">
         <!-- table 页 bgn -->
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                        <td width="90" height="26" align="center" background="../images/table_page_1.gif">
+                        <td  style="height: 26px;width: 90px;" align="center" background="../images/table_page_1.gif">
                             ${line.label}
                         </td>
-                <td background="../images/table_page_bg.gif" width="*"  height="26"><div class="C_S_F_L">
+                <td background="../images/table_page_bg.gif" width="*"  style="height: 26px;"><div class="C_S_F_L">
                     &nbsp;
                 </div></td>
             </tr>

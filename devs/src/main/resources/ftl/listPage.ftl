@@ -29,7 +29,7 @@
                         <td>
                             <input type="button" value="查询" class="input_submit">
                             <s:submit method="create" cssClass="input_submit" value="新建"></s:submit>
-                            <s:submit method="deletes" cssClass="input_submit" value="删除"></s:submit>
+                            <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"></s:submit>
                         </td>
                     </tr>
                 </table>
@@ -51,7 +51,8 @@
         </display:column>
         <display:column property="${prop.prop}" media="csv excel xml pdf rtf"	title="${prop.label}" />
         <#else>
-        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" sortable="true" <#if  prop.date >decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"</#if>/>
+        <#--TODO foreign 需要改掉-->
+        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" sortable="true" <#if  prop.date >decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"</#if><#if prop.foreign>decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"</#if>/>
         </#if>
         </#list>
     </display:table>
@@ -62,6 +63,15 @@
 <script type="text/javascript">
     function viewExport(id) {
        window.location='<c:url value="${namespace}/${mode? uncap_first}_edit.action"/>?id='+id;
+    }
+    function confirmListDelete()
+    {
+        if(isEmptyCheckBox('ids'))
+        {
+            alert('请先选择记录再删除');
+            return false;
+        }
+        return confirm("<delmar:message key="org.message.confirmdelete" />");
     }
     highlightTableRows("list");
 </script>

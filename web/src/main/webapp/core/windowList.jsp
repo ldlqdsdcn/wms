@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-26 17:08:24
+  Date: 2016-08-27 16:44:29
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -29,7 +29,7 @@
                         <td>
                             <input type="button" value="查询" class="input_submit">
                             <s:submit method="create" cssClass="input_submit" value="新建"></s:submit>
-                            <s:submit method="deletes" cssClass="input_submit" value="删除"></s:submit>
+                            <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"></s:submit>
                         </td>
                     </tr>
                 </table>
@@ -51,9 +51,9 @@
         <display:column property="descr"  escapeXml="true" title="描述" sortable="true" />
         <display:column property="help"  escapeXml="true" title="帮助" sortable="true" />
         <display:column property="created"  escapeXml="true" title="创建时间" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
-        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true" />
+        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
         <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
-        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true" />
+        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
         <display:column property="isactive"  escapeXml="true" title="是否有效" sortable="true" />
     </display:table>
 </td>
@@ -63,6 +63,15 @@
 <script type="text/javascript">
     function viewExport(id) {
        window.location='<c:url value="/core/window_edit.action"/>?id='+id;
+    }
+    function confirmListDelete()
+    {
+        if(isEmptyCheckBox('ids'))
+        {
+            alert('请先选择记录再删除');
+            return false;
+        }
+        return confirm("<delmar:message key="org.message.confirmdelete" />");
     }
     highlightTableRows("list");
 </script>

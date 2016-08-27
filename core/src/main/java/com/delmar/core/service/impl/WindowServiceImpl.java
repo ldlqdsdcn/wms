@@ -15,9 +15,11 @@ import com.delmar.core.model.Window;
 import com.delmar.core.service.WindowService;
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
-
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 /**
- * @author 刘大磊 22016-08-26 17:08:24
+ * @author 刘大磊 2016-08-27 16:44:29
  */
 @Service("windowService")
 public class WindowServiceImpl extends CoreServiceImpl<Window> implements
@@ -27,7 +29,6 @@ public class WindowServiceImpl extends CoreServiceImpl<Window> implements
 	/* (non-Javadoc)
 	 * @see CoreService.CoreServiceImpl#getCoreDao()
 	 */
-	@Override
 	protected CoreDao<Window> getCoreDao() {
 		return windowDao;
 	}
@@ -36,9 +37,19 @@ public class WindowServiceImpl extends CoreServiceImpl<Window> implements
 		if(ids!=null)
 		for(Integer id:ids)
 		{
-			windowDao.deleteByPrimaryKey(id);
+			deleteByPrimaryKey(id);
 		}
 	}
 
+
+public Integer saveWindow(Window window) {
+	Integer id=save(window);
+	return id;
+}
+
+
+    public Integer deleteByPrimaryKey(Integer id) {
+    return super.deleteByPrimaryKey(id);
+    }
 
 }

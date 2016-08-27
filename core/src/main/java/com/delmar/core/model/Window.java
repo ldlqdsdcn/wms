@@ -3,8 +3,8 @@ package com.delmar.core.model;
 import java.util.Date;
 import lombok.Data;
  /**
-  * table name core_window
-  * Date:2016-08-26 17:08:24
+  * table name core_Window
+  * Date:2016-08-27 16:44:29
   **/
 @Data
 public class Window extends CoreModel {

@@ -78,6 +78,7 @@ public class GenerateJspPageMain {
         root.put("propertyList", jspFormPropList);
         List<FormLine> formLines = new ArrayList<FormLine>();
         List<GenModelDto> genModelDtoList = this.model.getIncludeModelList();
+        if(genModelDtoList!=null)
         for (GenModelDto genModelDto : genModelDtoList) {
             FormLine formLine = new FormLine();
             formLine.setLabel(genModelDto.getRemark());

@@ -1,14 +1,14 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												  *
- *	作者：刘大磊								                                              *
- * 电话：0532-66701118                                                                * 
- * email:liua@delmarchina.com						                              *
+ * 德玛国际物流有限公司  2013-07-01										      *
+ *	作者：刘大磊								                              *
+ * 电话：0532-66701118                                                        *
+ * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.Date;
 import java.util.List;
 
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
@@ -16,14 +16,11 @@ import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.model.Window;
 
 import com.delmar.core.service.WindowService;
-
-
 /**
- * @author 刘大磊 2016-08-26 17:08:24
+ * @author 刘大磊 2016-08-27 16:44:29
  */
 public class WindowAction extends CoreEditPrivAction {
 	private Window  window;
-	
 	@Autowired
 	private WindowService windowService;
 	
@@ -92,24 +89,30 @@ public class WindowAction extends CoreEditPrivAction {
 	public void createForm() {
 		window=new Window();
 	}
-	
+	@RequiredFieldValidator(message = "窗体不允许为空",fieldName = "window.name")
+	public String save()
+	{
+		if(!((PrivilegeOperator.isCreate()&&getModelId()==null)||PrivilegeOperator.isUpdate()))
+		{
+			return NOPRIVILEGE;
+		}
+		String msgKey="success.update";
+		if(this.getModelId()==null)
+		{
+			msgKey="success.create";
+		}
+		addActionMessage(getText(msgKey));
+		String returnUrl=saveForm();
+
+		return returnUrl;
+	}
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#saveForm()
 	 */
 	@Override
 	public String saveForm() {
 
-		Integer userId=getCurrentUser();
-		Date now=new Date();
-		if(window.isnew())
-		{
-			window.setCreatedby(userId);
-			window.setCreated(now);
-		}
-
-		window.setUpdated(now);
-		window.setUpdatedby(userId);
-		windowService.save(window);
+		windowService.saveWindow(window);
 		return "edit";
 	}
 	/**
@@ -125,5 +128,4 @@ public class WindowAction extends CoreEditPrivAction {
 	public void setWindow(Window window) {
 		this.window = window;
 	}
-
 }

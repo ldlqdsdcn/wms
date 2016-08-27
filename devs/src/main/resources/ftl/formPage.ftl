@@ -86,6 +86,7 @@
                         <tr>
                         <td width="20%"><s:label for="${prop.prop}" value="${prop.label}" ></s:label></td>
                         <td width="30%">
+                        
                         <#if prop.foreign>
                            <delmar:user userId="${r'${'}${mode? uncap_first}.${prop.prop}}" module="${prop.module}"/>
                         <#elseif prop.date >
@@ -100,19 +101,20 @@
                           </td>
                         </tr>
                  </#list>
-                <tr>
-                <td colspan="4" class="td_page_right">
-                    <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
-						<c:if test="${r'${'}${mode? uncap_first}.id!=null${r'}'}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
-						</c:if>
-						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
-                </td>
-                </tr>
+
                  <#if lineList?exists>
                      <#include "inc/lineTable.ftl"/>
                  </#if>
+                      <tr>
+                          <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
+                              <s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+                              <c:if test="${r'${'}${mode? uncap_first}.id!=null${r'}'}">
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                              </c:if>
+                              <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
+                          </td>
+                      </tr>
                 <#--<#if needI18n>-->
                   <#--<#include "/ftl/i18njsp.ftl">-->
                 <#--</#if>-->
