@@ -6,9 +6,15 @@
  *****************************************************************************/
 package com.delmar.devs;
 
+import com.delmar.cons.IntelliKeyWord;
+import com.delmar.core.def.ColumnDataType;
+import com.delmar.core.def.FieldType;
+import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.FormLine;
 import com.delmar.devs.model.GenModelDto;
+import com.delmar.utils.StringUtil;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -24,12 +30,13 @@ public class GenerateActionMain {
     public static void main(String[] args) {
 
     }
-
+    TableMetaDataDto tableMetaDataDto;
     private GenModelDto genModelDto;
 
 
-    public GenerateActionMain(GenModelDto genModelDto) {
+    public GenerateActionMain(GenModelDto genModelDto, TableMetaDataDto tableMetaDataDto) {
        this.genModelDto=genModelDto;
+        this.tableMetaDataDto=tableMetaDataDto;
     }
 
     public void generateActionclass() {
@@ -44,9 +51,54 @@ public class GenerateActionMain {
         root.put("packagename", classpackage);
         root.put("modelpackage", modelpackage);
         root.put("servicepackage", servicepackage);
+        List<String> requiredStrings=new ArrayList<String>();
+        List<String> requiredFields=new ArrayList<>();
+
+        boolean hasCreated=false;
+        boolean hasUpdated=false;
+        for(ColumnMetaDataDto columnMetaDataDto:tableMetaDataDto.getColumnList())
+        {
+            if(!IntelliKeyWord.isNotValidate(columnMetaDataDto.getColumnName()))
+            { if(!columnMetaDataDto.getNullable())
+            {
 
 
+                if(columnMetaDataDto.getDataType()== ColumnDataType.STRING.getKey())
+                {
+
+                    requiredStrings.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+                }
+                else
+                {
+                    requiredFields.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+                }
+            }
+            }
+
+
+            if(columnMetaDataDto.getColumnName().equalsIgnoreCase("created"))
+            {
+                 hasCreated=true;
+            }
+            if(columnMetaDataDto.getColumnName().equalsIgnoreCase("updated"))
+            {
+                 hasUpdated=true;
+            }
+
+        }
+        root.put("requiredStrings",requiredStrings);
+        root.put("requiredFields",requiredFields);
+        if(requiredStrings.size()>0||requiredFields.size()>0)
+        {
+            root.put("needValidate",true);
+        }
+        else
+        {
+            root.put("needValidate",false);
+        }
         root.put("datetime", datetime);
+        root.put("hasCreated", hasCreated);
+        root.put("hasUpdated", hasUpdated);
         //gc.setTime(date);
         try {
 

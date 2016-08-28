@@ -93,10 +93,13 @@
                         <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if>>
                          <s:param name="value"><s:date name="${mode? uncap_first}.${prop.prop}"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
+                            <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"   cssStyle="color:red" />
                          <#elseif prop.booleanTag>
                           <s:radio id="${prop.prop}" name="${mode? uncap_first}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"></s:radio>
+                            <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red"/>
                           <#else>
                           <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} ></s:textfield>
+                            <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red" />
                           </#if>
                           </td>
                         </tr>

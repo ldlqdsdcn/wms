@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-27 16:44:29
+  Date: 2016-08-28 17:16:34
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-<s:form id="editForm" action="window_save" namespace='/core' theme="simple" validate="true">
+<s:form id="editForm" action="window_edit" namespace='/core' theme="simple">
 <s:hidden id="id" name="window.id"></s:hidden>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
@@ -50,10 +50,14 @@
 
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
+
 				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
 			</c:if>
-            <c:if test="${!isLast}">
+
+
+			<c:if test="${!isLast}">
 			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+
 			</c:if>
 		</div></td>
         </tr>
@@ -80,6 +84,7 @@
                         <td width="30%">
                         
                           <s:textfield name="window.name" id="name"   ></s:textfield>
+                            <s:fielderror fieldName="window.name"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -87,6 +92,7 @@
                         <td width="30%">
                         
                           <s:textfield name="window.descr" id="descr"  cssStyle="width:500px;" ></s:textfield>
+                            <s:fielderror fieldName="window.descr"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -94,6 +100,7 @@
                         <td width="30%">
                         
                           <s:textfield name="window.help" id="help"  cssStyle="width:500px;" ></s:textfield>
+                            <s:fielderror fieldName="window.help"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -103,6 +110,7 @@
                         <s:textfield name="window.created" id="created" readonly="true">
                          <s:param name="value"><s:date name="window.created"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
+                            <s:fielderror fieldName="window.created"   cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -119,6 +127,7 @@
                         <s:textfield name="window.updated" id="updated" readonly="true">
                          <s:param name="value"><s:date name="window.updated"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
+                            <s:fielderror fieldName="window.updated"   cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -133,6 +142,7 @@
                         <td width="30%">
                         
                           <s:radio id="isactive" name="window.isactive" list="#{'Y':'Y','N':'N'}" required="true"></s:radio>
+                            <s:fielderror fieldName="window.isactive"    cssStyle="color:red"/>
                           </td>
                         </tr>
 

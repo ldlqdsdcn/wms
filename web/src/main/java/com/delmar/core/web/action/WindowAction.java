@@ -8,17 +8,22 @@ package com.delmar.core.web.action;
 
 import java.util.List;
 
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
-
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.core.model.Window;
-
 import com.delmar.core.service.WindowService;
+import java.util.Date;
 /**
- * @author 刘大磊 2016-08-27 16:44:29
+ * @author 刘大磊 2016-08-28 17:16:34
  */
+@Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
+trim=true, fieldName = "window.name", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
+trim=true, fieldName = "window.isactive", message = "不允许为空") })
 public class WindowAction extends CoreEditPrivAction {
 	private Window  window;
 	@Autowired
@@ -89,29 +94,20 @@ public class WindowAction extends CoreEditPrivAction {
 	public void createForm() {
 		window=new Window();
 	}
-	@RequiredFieldValidator(message = "窗体不允许为空",fieldName = "window.name")
-	public String save()
-	{
-		if(!((PrivilegeOperator.isCreate()&&getModelId()==null)||PrivilegeOperator.isUpdate()))
-		{
-			return NOPRIVILEGE;
-		}
-		String msgKey="success.update";
-		if(this.getModelId()==null)
-		{
-			msgKey="success.create";
-		}
-		addActionMessage(getText(msgKey));
-		String returnUrl=saveForm();
-
-		return returnUrl;
-	}
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#saveForm()
 	 */
 	@Override
 	public String saveForm() {
-
+Date date=new Date();
+Integer currentUserId=getCurrentUser();
+if(window.isnew())
+{
+window.setCreated(date);
+window.setCreatedby(currentUserId);
+}
+window.setUpdated(date);
+window.setUpdatedby(currentUserId);
 		windowService.saveWindow(window);
 		return "edit";
 	}

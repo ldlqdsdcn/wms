@@ -39,7 +39,7 @@ public class DelmarTask implements BeanFactoryAware {
 	@Autowired
 	private ScheduledLogService scheduledLogService;
 
-	@Scheduled(fixedDelay = 60000)
+
 	public void runTask() {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("accessString", "isactive='Y'");
@@ -60,7 +60,6 @@ public class DelmarTask implements BeanFactoryAware {
 	 * org.springframework.beans.factory.BeanFactoryAware#setBeanFactory(org
 	 * .springframework.beans.factory.BeanFactory)
 	 */
-	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		this.beanFactory = beanFactory;
 

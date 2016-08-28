@@ -47,7 +47,7 @@ public class CodeGenerationServiceImpl implements CodeGenerationService {
                 if(model.isGenerateWeb())
                 {
                     //生成 Struts action
-                    GenerateActionMain generateActionMain=new GenerateActionMain( model);
+                    GenerateActionMain generateActionMain=new GenerateActionMain( model,tableMetaDataDto);
                     generateActionMain.generateActionclass();
                     //生成 jsp
                     GenerateJspPageMain generateJspPageMain=new GenerateJspPageMain(model,"刘大磊",model.getModule(),tableMetaDataDto,tableService);

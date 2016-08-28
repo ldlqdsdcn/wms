@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+		"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+		"http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-<package name="default" extends="struts-default">
-	 <interceptors> 
-<interceptor name="footmark"   class="com.delmar.core.interceptor.FootmarkInterceptor" />
-<interceptor name="dmexception"   class="com.delmar.core.interceptor.DMExceptionInterceptor" />
-            <interceptor-stack name="defaultStack">
-            <interceptor-ref name="params"> 
-                  <param name="excludeParams">dojo..*,d-..*</param> 
-             </interceptor-ref>
-              <interceptor-ref name="defaultStack">
-             	<param name="workflow.excludeMethods">default</param>
-             </interceptor-ref>
-             </interceptor-stack>     
-	<interceptor-stack name="delmar_struts_default">
-                <interceptor-ref name="defaultStack" />
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="footmark"   class="com.delmar.core.interceptor.FootmarkInterceptor" />
+			<interceptor name="dmexception"   class="com.delmar.core.interceptor.DMExceptionInterceptor" />
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo..*,d-..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack">
+					<param name="workflow.excludeMethods">default</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="delmar_struts_default">
+				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="footmark" />
 				<interceptor-ref name="dmexception" />
-            </interceptor-stack>
-    </interceptors>
-    
-    <default-interceptor-ref name="delmar_struts_default" />    
-    
-    <global-results>
-	<result name="nopriv" type="redirect">/noprivileges.jsp</result>
-	<result name="noid" type="redirect">/noprivileges.jsp</result>
-	<result name="error" type="redirect">/error/sysfail.jsp</result>
-    </global-results>
-<action name="userLogin" class="com.delmar.system.web.action.UserLoginAction" method="login">
-		<result name="input">/login.jsp</result>
-        <result name="changep">/changepass.jsp</result>		
-		<result name="success" type="redirect">/main.jsp</result>
-</action>
+			</interceptor-stack>
+		</interceptors>
 
-<action name="userLogsub" class="com.delmar.system.web.action.UserLoginAction" method="sublogin">
-    <result name="relogin">/login.jsp</result>
-    <result name="success" type="redirect">/main.jsp</result>
-</action>
-	
-<action name="changePass" class="com.delmar.system.web.action.UserLoginAction" method="changePass">
-		<result name="input">/login.jsp</result>
-        <result name="changep">/changepass.jsp</result>		
-</action>
-		
-	<action name="changeLanguage" class="com.delmar.system.web.action.ChangeLanguageAction" method="changeLanguage">
-		<result name="input">/login.jsp</result>
-	</action>
-</package>
+		<default-interceptor-ref name="delmar_struts_default" />
 
-<package name="core" namespace="/core" extends="default">
+		<global-results>
+			<result name="nopriv" type="redirect">/noprivileges.jsp</result>
+			<result name="noid" type="redirect">/noprivileges.jsp</result>
+			<result name="error" type="redirect">/error/sysfail.jsp</result>
+		</global-results>
+		<action name="userLogin" class="com.delmar.system.web.action.UserLoginAction" method="login">
+			<result name="input">/login.jsp</result>
+			<result name="changep">/changepass.jsp</result>
+			<result name="success" type="redirect">/main.jsp</result>
+		</action>
+
+		<action name="userLogsub" class="com.delmar.system.web.action.UserLoginAction" method="sublogin">
+			<result name="relogin">/login.jsp</result>
+			<result name="success" type="redirect">/main.jsp</result>
+		</action>
+
+		<action name="changePass" class="com.delmar.system.web.action.UserLoginAction" method="changePass">
+			<result name="input">/login.jsp</result>
+			<result name="changep">/changepass.jsp</result>
+		</action>
+
+		<action name="changeLanguage" class="com.delmar.system.web.action.ChangeLanguageAction" method="changeLanguage">
+			<result name="input">/login.jsp</result>
+		</action>
+	</package>
+
+	<package name="core" namespace="/core" extends="default">
 		<!-- 登陆日志 -->
-	<action name="userLoginLog" class="com.delmar.core.web.action.UserSessionAction" method="searchList">
-		<result name="list" type="redirect">/core/userLoginLogs.jsp</result>
-	</action>
-	<!-- 操作日志 -->
-	<action name="changeLog_*" class="com.delmar.core.web.action.ChangeLogAction" method="{1}">
-		<result name="list" type="redirect">/core/changeLogs.jsp</result>
-		<result name="view">/core/changeLogForm.jsp</result>
-	</action>
-	<!-- 操作日志维护界面 -->
-	<action name="table_*" class="com.delmar.core.web.action.TableAction" method="{1}">
-		<result name="list">/core/tables.jsp</result>
-		<result name="edit">/core/tableForm.jsp</result>
-		<result name="wizard">/core/tableAddByWizard2.jsp</result>
-	</action>
-	<!-- 语言 -->
-	<action name="language_*" class="com.delmar.core.web.action.LanguageAction" method="{1}">
-		<result name="list">/core/languages.jsp</result>
-		<result name="edit">/core/languageForm.jsp</result>
-	</action>
-	<!-- 查询模块 -->
-	<action name="search_*" class="com.delmar.core.web.action.SearchAction" method="{1}">
-		<result name="list">/core/searchs.jsp</result>
-		<result name="edit">/core/searchForm.jsp</result>
-	</action>
-	<action name="window_*" class="com.delmar.core.web.action.WindowAction" method="{1}">
-		<result name="list">/core/windowList.jsp</result>
-		<result name="edit">/core/windowForm.jsp</result>
-		<result name="input">/core/windowForm.jsp</result>
-	</action>
-	<action name="label_*" class="com.delmar.core.web.action.LabelAction" method="{1}">
-		<result name="list">/core/labelList.jsp</result>
-		<result name="edit">/core/labelForm.jsp</result>
-	</action>
+		<action name="userLoginLog" class="com.delmar.core.web.action.UserSessionAction" method="searchList">
+			<result name="list" type="redirect">/core/userLoginLogs.jsp</result>
+		</action>
+		<!-- 操作日志 -->
+		<action name="changeLog_*" class="com.delmar.core.web.action.ChangeLogAction" method="{1}">
+			<result name="list" type="redirect">/core/changeLogs.jsp</result>
+			<result name="view">/core/changeLogForm.jsp</result>
+		</action>
+		<!-- 操作日志维护界面 -->
+		<action name="table_*" class="com.delmar.core.web.action.TableAction" method="{1}">
+			<result name="list">/core/tables.jsp</result>
+			<result name="edit">/core/tableForm.jsp</result>
+			<result name="wizard">/core/tableAddByWizard2.jsp</result>
+		</action>
+		<!-- 语言 -->
+		<action name="language_*" class="com.delmar.core.web.action.LanguageAction" method="{1}">
+			<result name="list">/core/languages.jsp</result>
+			<result name="edit">/core/languageForm.jsp</result>
+		</action>
+		<!-- 查询模块 -->
+		<action name="search_*" class="com.delmar.core.web.action.SearchAction" method="{1}">
+			<result name="list">/core/searchs.jsp</result>
+			<result name="edit">/core/searchForm.jsp</result>
+		</action>
+		<action name="window_*" class="com.delmar.core.web.action.WindowAction" method="{1}">
+			<result name="list">/core/windowList.jsp</result>
+			<result name="edit">/core/windowForm.jsp</result>
+			<result name="input">/core/windowForm.jsp</result>
+		</action>
+		<action name="label_*" class="com.delmar.core.web.action.LabelAction" method="{1}">
+			<result name="list">/core/labelList.jsp</result>
+			<result name="edit">/core/labelForm.jsp</result>
+		</action>
 
-	<action name="page_*" class="com.delmar.core.web.action.CorePageAction" method="{1}">
-		<result name="list">/core/corePageList.jsp</result>
-		<result name="edit">/core/corePageForm.jsp</result>
-	</action>
-	<action name="field_*" class="com.delmar.core.web.action.FieldAction" method="{1}">
-		<result name="list">/core/fieldList.jsp</result>
-		<result name="edit">/core/fieldForm.jsp</result>
-	</action>
-	<action name="message_*" class="com.delmar.core.web.action.MessageAction" method="{1}">
-		<result name="list">/core/messageList.jsp</result>
-		<result name="edit">/core/messageForm.jsp</result>
-	</action>
-	<action name="meeting_*" class="com.delmar.core.web.action.MeetingAction" method="{1}">
-		<result name="list">/core/meetingList.jsp</result>
-		<result name="edit">/core/meetingForm.jsp</result>
-	</action>
-</package>
+		<action name="page_*" class="com.delmar.core.web.action.CorePageAction" method="{1}">
+			<result name="list">/core/corePageList.jsp</result>
+			<result name="edit">/core/corePageForm.jsp</result>
+		</action>
+		<action name="field_*" class="com.delmar.core.web.action.FieldAction" method="{1}">
+			<result name="list">/core/fieldList.jsp</result>
+			<result name="edit">/core/fieldForm.jsp</result>
+		</action>
+		<action name="message_*" class="com.delmar.core.web.action.MessageAction" method="{1}">
+			<result name="list">/core/messageList.jsp</result>
+			<result name="edit">/core/messageForm.jsp</result>
+		</action>
+		<action name="meeting_*" class="com.delmar.core.web.action.MeetingAction" method="{1}">
+			<result name="list">/core/meetingList.jsp</result>
+			<result name="edit">/core/meetingForm.jsp</result>
+		</action>
+	</package>
 
-<package name="base" namespace="/base" extends="default">
+	<package name="base" namespace="/base" extends="default">
 		<action name="datadicttype_*"  class="com.delmar.base.web.action.DatadictTypeAction" method="{1}">
-				<result name="list">/base/datadicttypes.jsp</result>
-				<result name="edit">/base/datadicttypeForm.jsp</result>
+			<result name="list">/base/datadicttypes.jsp</result>
+			<result name="edit">/base/datadicttypeForm.jsp</result>
 		</action>
 		<action name="datadict_*"  class="com.delmar.base.web.action.DatadictAction" method="{1}">
 			<result name="list">/base/datadicts.jsp</result>
@@ -130,216 +130,216 @@
 		<action name="citySearch" class="com.delmar.base.web.action.CitySearchAction" method="list">
 			<result name="list">/commons/autocomplete.jsp</result>
 		</action>
-</package>
-<package name="system" namespace="/system" extends="default">
+	</package>
+	<package name="system" namespace="/system" extends="default">
 		<!-- 模块信息 -->
-	<action name="module_*" class="com.delmar.system.web.action.ModuleAction" method="{1}">
-		<result name="edit">/system/moduleForm.jsp</result>
-		<result name="editPage">/system/modulePage.jsp</result>
-		<result name="editJavabean">/system/moduleJavabean.jsp</result>
-		<result name="list" type="redirect">/system/modules.jsp</result>
-	</action>
+		<action name="module_*" class="com.delmar.system.web.action.ModuleAction" method="{1}">
+			<result name="edit">/system/moduleForm.jsp</result>
+			<result name="editPage">/system/modulePage.jsp</result>
+			<result name="editJavabean">/system/moduleJavabean.jsp</result>
+			<result name="list" type="redirect">/system/modules.jsp</result>
+		</action>
 		<!-- 页面信息 -->
-	<action name="page_*" class="com.delmar.system.web.action.PageAction"  method="{1}">
-		<result name="edit">/system/pageForm.jsp</result>
-		<result name="list">/system/pages.jsp</result>
-	</action>
+		<action name="page_*" class="com.delmar.system.web.action.PageAction"  method="{1}">
+			<result name="edit">/system/pageForm.jsp</result>
+			<result name="list">/system/pages.jsp</result>
+		</action>
 		<!-- 角色维护 -->
-	<action name="role_*" class="com.delmar.system.web.action.RoleAction" method="{1}">
-		<!-- <result name="edit" type="freemarker">/WEB-INF/flt/test.flt</result> -->
-		<result name="edit" >/system/roleForm.jsp</result>
-		<result name="list">/system/roles.jsp</result>
-		<result name="adduser" >/system/addRoleUser.jsp</result>		
-	</action>
-    <!-- 实体信息 -->
-	<action name="client_*" class="com.delmar.system.web.action.ClientAction" method="{1}">
-		<result name="edit">/system/clientForm.jsp</result>
-		<result name="list">/system/clients.jsp</result>
-	</action>
+		<action name="role_*" class="com.delmar.system.web.action.RoleAction" method="{1}">
+			<!-- <result name="edit" type="freemarker">/WEB-INF/flt/test.flt</result> -->
+			<result name="edit" >/system/roleForm.jsp</result>
+			<result name="list">/system/roles.jsp</result>
+			<result name="adduser" >/system/addRoleUser.jsp</result>
+		</action>
+		<!-- 实体信息 -->
+		<action name="client_*" class="com.delmar.system.web.action.ClientAction" method="{1}">
+			<result name="edit">/system/clientForm.jsp</result>
+			<result name="list">/system/clients.jsp</result>
+		</action>
 		<!-- java类管理 -->
-	<action name="javabean_*" class="com.delmar.system.web.action.JavabeanAction" method="{1}">
-		<result name="edit">/system/javabeanForm.jsp</result>
-		<result name="list">/system/javabeans.jsp</result>
-	</action>
+		<action name="javabean_*" class="com.delmar.system.web.action.JavabeanAction" method="{1}">
+			<result name="edit">/system/javabeanForm.jsp</result>
+			<result name="list">/system/javabeans.jsp</result>
+		</action>
 		<!-- 操作权限 -->
-	<action name="operator_*" class="com.delmar.system.web.action.OperatorAction" method="{1}">
-		<result name="list">/system/operators.jsp</result>
-		<result name="edit">/system/operatorForm.jsp</result>
-	</action>
+		<action name="operator_*" class="com.delmar.system.web.action.OperatorAction" method="{1}">
+			<result name="list">/system/operators.jsp</result>
+			<result name="edit">/system/operatorForm.jsp</result>
+		</action>
 		<!-- 在线用户 -->
-	<action name="userOnLine" class="com.delmar.core.web.action.UserOnLineAction" method="searchList">
-		<result name="success" type="redirect">/core/userOnlines.jsp</result>
-	</action>
+		<action name="userOnLine" class="com.delmar.core.web.action.UserOnLineAction" method="searchList">
+			<result name="success" type="redirect">/core/userOnlines.jsp</result>
+		</action>
 		<!-- 用户列表 -->
-	<action name="user_*" class="com.delmar.system.web.action.UserAction" method="{1}">
-		<result name="edit">/system/userForm.jsp</result>
-		<result name="list">/system/users.jsp</result>
-		<result name="input">/system/userForm.jsp</result>
-	</action>
-	<!-- com.delmar.system.web.action -->
-	<action name="usergroup_*"  class="com.delmar.system.web.action.UsergroupAction" method="{1}">
-		<result name="list">/system/usergroups.jsp</result>
-		<result name="edit">/system/usergroupForm.jsp</result>
-		<result name="input">/system/usergroupForm.jsp</result>
-		<result name="adduser" >/system/addUsergroupUser.jsp</result>		
-	</action>
-	
-	<action name="userthird_*" class="com.delmar.system.web.action.UserThirdPartyJsonAction" method="{1}">
-	</action>
-	
-	<action name="userthirds_*" class="com.delmar.system.web.action.UserThirdPartyAction" method="{1}">
-	    <result name="list">/system/userthirdparty.jsp</result>
-	</action>	
-	
-	<action name="userextra_*" class="com.delmar.system.web.action.UserExtraJsonAction" method="{1}">
-	</action>
-	
-	<action name="userextras_*" class="com.delmar.system.web.action.UserExtraAction" method="{1}">
-	    <result name="list">/system/userextra.jsp</result>
-	</action>	
-	
-	<action name="clientextra_*" class="com.delmar.system.web.action.ClientExtraJsonAction" method="{1}">
-	</action>
-	
-	<action name="clientextras_*" class="com.delmar.system.web.action.ClientExtraAction" method="{1}">
-	    <result name="list">/system/clientextra.jsp</result>
-	</action>	
-	
-	<action name="orgextra_*" class="com.delmar.system.web.action.OrgExtraJsonAction" method="{1}">
-	</action>
-	
-	<action name="orgextras_*" class="com.delmar.system.web.action.OrgExtraAction" method="{1}">
-	    <result name="list">/system/orgextra.jsp</result>
-	</action>			
-		
-	
-	<action name="usersub_*" class="com.delmar.system.web.action.UserSubstituteJsonAction" method="{1}">
-		<result name="adduser" >/system/addRoleUser.jsp</result>
-		<result name="listuser" >/system/usersubstitute.jsp</result>		
-	</action>	
-		
-	<action name="mobileclient_*" class="com.delmar.system.web.action.MobileClientAction"  method="{1}">
-		<result name="list">/system/mobileclients.jsp</result>
-		<result name="edit">/system/mobileclientForm.jsp</result>
-	</action>	
-	
-</package>
-<package name="crm" namespace="/crm" extends="default">
-	<action name="customer_*" class="com.delmar.crm.web.action.CustomerAction" method="{1}">
-		<result name="list">/crm/customers.jsp</result>
-		<result name="edit">/crm/customerForm.jsp</result>
-		<result name="input">/crm/customerForm.jsp</result>
-	</action>
-	<action name="linkman_*" class="com.delmar.crm.web.action.LinkmanAction" method="{1}">
-		<result name="list">/crm/linkmans.jsp</result>
-		<result name="edit">/crm/linkmanForm.jsp</result>
-		<result name="input">/crm/linkmanForm.jsp</result>
-	</action>
-	<action name="linkrecord_*" class="com.delmar.crm.web.action.LinkrecordAction" method="{1}">
-		<result name="list">/crm/linkrecords.jsp</result>
-		<result name="edit">/crm/linkrecordForm.jsp</result>
-		<result name="input">/crm/linkrecordForm.jsp</result>
-	</action>
-	<action name="crmstastics_*" class="com.delmar.crm.web.action.CRMStasticsAction" method="{1}">
-		<result name="list">/crm/crmstastics.jsp</result>
-		<result name="listt">/crm/crmtracestastics.jsp</result>
-		<result name="trace">/crm/crmtracestastics.jsp</result>		
-	</action>	
-	<action name="busForecast_*" class="com.delmar.crm.web.action.BusForecastAction" method="{1}">
-		<result name="list">/crm/busForecasts.jsp</result>
-		<result name="edit">/crm/busForecastForm.jsp</result>
-		<result name="input">/crm/busForecastForm.jsp</result>
-	</action>	
-	
+		<action name="user_*" class="com.delmar.system.web.action.UserAction" method="{1}">
+			<result name="edit">/system/userForm.jsp</result>
+			<result name="list">/system/users.jsp</result>
+			<result name="input">/system/userForm.jsp</result>
+		</action>
+		<!-- com.delmar.system.web.action -->
+		<action name="usergroup_*"  class="com.delmar.system.web.action.UsergroupAction" method="{1}">
+			<result name="list">/system/usergroups.jsp</result>
+			<result name="edit">/system/usergroupForm.jsp</result>
+			<result name="input">/system/usergroupForm.jsp</result>
+			<result name="adduser" >/system/addUsergroupUser.jsp</result>
+		</action>
 
-</package>
-<package name="rate" namespace="/rate" extends="default">
-	<action name="ratemaster_*" class="com.delmar.rate.web.action.RatemasterAction" method="{1}">
-		<result name="list">/rate/ratemasters.jsp</result>
-		<result name="edit">/rate/ratemasterForm.jsp</result>
-		<result name="input">/rate/ratemasterForm.jsp</result>
-	</action>
+		<action name="userthird_*" class="com.delmar.system.web.action.UserThirdPartyJsonAction" method="{1}">
+		</action>
+
+		<action name="userthirds_*" class="com.delmar.system.web.action.UserThirdPartyAction" method="{1}">
+			<result name="list">/system/userthirdparty.jsp</result>
+		</action>
+
+		<action name="userextra_*" class="com.delmar.system.web.action.UserExtraJsonAction" method="{1}">
+		</action>
+
+		<action name="userextras_*" class="com.delmar.system.web.action.UserExtraAction" method="{1}">
+			<result name="list">/system/userextra.jsp</result>
+		</action>
+
+		<action name="clientextra_*" class="com.delmar.system.web.action.ClientExtraJsonAction" method="{1}">
+		</action>
+
+		<action name="clientextras_*" class="com.delmar.system.web.action.ClientExtraAction" method="{1}">
+			<result name="list">/system/clientextra.jsp</result>
+		</action>
+
+		<action name="orgextra_*" class="com.delmar.system.web.action.OrgExtraJsonAction" method="{1}">
+		</action>
+
+		<action name="orgextras_*" class="com.delmar.system.web.action.OrgExtraAction" method="{1}">
+			<result name="list">/system/orgextra.jsp</result>
+		</action>
 
 
-</package>
+		<action name="usersub_*" class="com.delmar.system.web.action.UserSubstituteJsonAction" method="{1}">
+			<result name="adduser" >/system/addRoleUser.jsp</result>
+			<result name="listuser" >/system/usersubstitute.jsp</result>
+		</action>
 
-<package name="corebus" namespace="/corebus" extends="default">
+		<action name="mobileclient_*" class="com.delmar.system.web.action.MobileClientAction"  method="{1}">
+			<result name="list">/system/mobileclients.jsp</result>
+			<result name="edit">/system/mobileclientForm.jsp</result>
+		</action>
 
-<action name="ebusiness_*" class="com.delmar.corebus.web.action.EbusinessAction" method="{1}">
-	<result name="list">/corebus/ebusinessList.jsp</result>
-	<result name="edit">/corebus/ebusinessForm.jsp</result>
-</action>
-<action name="realtrans_*" class="com.delmar.corebus.web.action.RealTransAction" method="{1}">
-	<result name="list">/corebus/realtransList.jsp</result>
-	<result name="edit">/corebus/realtransForm.jsp</result>	
-</action>
+	</package>
+	<package name="crm" namespace="/crm" extends="default">
+		<action name="customer_*" class="com.delmar.crm.web.action.CustomerAction" method="{1}">
+			<result name="list">/crm/customers.jsp</result>
+			<result name="edit">/crm/customerForm.jsp</result>
+			<result name="input">/crm/customerForm.jsp</result>
+		</action>
+		<action name="linkman_*" class="com.delmar.crm.web.action.LinkmanAction" method="{1}">
+			<result name="list">/crm/linkmans.jsp</result>
+			<result name="edit">/crm/linkmanForm.jsp</result>
+			<result name="input">/crm/linkmanForm.jsp</result>
+		</action>
+		<action name="linkrecord_*" class="com.delmar.crm.web.action.LinkrecordAction" method="{1}">
+			<result name="list">/crm/linkrecords.jsp</result>
+			<result name="edit">/crm/linkrecordForm.jsp</result>
+			<result name="input">/crm/linkrecordForm.jsp</result>
+		</action>
+		<action name="crmstastics_*" class="com.delmar.crm.web.action.CRMStasticsAction" method="{1}">
+			<result name="list">/crm/crmstastics.jsp</result>
+			<result name="listt">/crm/crmtracestastics.jsp</result>
+			<result name="trace">/crm/crmtracestastics.jsp</result>
+		</action>
+		<action name="busForecast_*" class="com.delmar.crm.web.action.BusForecastAction" method="{1}">
+			<result name="list">/crm/busForecasts.jsp</result>
+			<result name="edit">/crm/busForecastForm.jsp</result>
+			<result name="input">/crm/busForecastForm.jsp</result>
+		</action>
 
-</package>
 
-<package name="commons" namespace="/commons" extends="default">
-	<action name="usersetting" class="com.delmar.common.web.action.UserSettingAction" method="save">
+	</package>
+	<package name="rate" namespace="/rate" extends="default">
+		<action name="ratemaster_*" class="com.delmar.rate.web.action.RatemasterAction" method="{1}">
+			<result name="list">/rate/ratemasters.jsp</result>
+			<result name="edit">/rate/ratemasterForm.jsp</result>
+			<result name="input">/rate/ratemasterForm.jsp</result>
+		</action>
+
+
+	</package>
+
+	<package name="corebus" namespace="/corebus" extends="default">
+
+		<action name="ebusiness_*" class="com.delmar.corebus.web.action.EbusinessAction" method="{1}">
+			<result name="list">/corebus/ebusinessList.jsp</result>
+			<result name="edit">/corebus/ebusinessForm.jsp</result>
+		</action>
+		<action name="realtrans_*" class="com.delmar.corebus.web.action.RealTransAction" method="{1}">
+			<result name="list">/corebus/realtransList.jsp</result>
+			<result name="edit">/corebus/realtransForm.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="commons" namespace="/commons" extends="default">
+		<action name="usersetting" class="com.delmar.common.web.action.UserSettingAction" method="save">
 			<result name="input">/commons/usersetting.jsp</result>
-	</action>
-	<action name="commonFile_*" class="com.delmar.common.web.action.CommonFileAction" method="{1}">
+		</action>
+		<action name="commonFile_*" class="com.delmar.common.web.action.CommonFileAction" method="{1}">
 			<result name="edit">/commons/commonFileForm.jsp</result>
 			<result name="list">/commons/commonFiles.jsp</result>
-	</action>
-</package>
+		</action>
+	</package>
 
 
-<package name="cargo" namespace="/cargo" extends="default">
+	<package name="cargo" namespace="/cargo" extends="default">
 
 
 
-</package>
+	</package>
 
-<package name="station" namespace="/station" extends="default">
+	<package name="station" namespace="/station" extends="default">
 
 
-</package>
+	</package>
 
-<package name="officeTest" namespace="/officeTest" extends="default">
-	
-	<action name="officeTestBankCategory_*" class="com.delmar.officeTest.web.action.OfficeTestBankCategoryAction" method="{1}">
-        <result name="edit">/officeTest/officeTestBankCategoryAdd.jsp</result>
-        <result name="delete" type="redirectAction" >
-			<param name="namespace">/officeTest</param>
-			<param name="actionName">officeTestBank_list</param>        
-        </result>  
-	</action>
-	<action name="officeTestBank_*" class="com.delmar.officeTest.web.action.OfficeTestBankAction" method="{1}">
-        <result name="list">/officeTest/officeTestBankList.jsp</result>	
-        <result name="edit">/officeTest/officeTestBankAdd.jsp</result>
-        <result name="input">/officeTest/officeTestBankAdd.jsp</result>
-        
-	</action>
-	<action name="officeTestQuestion_*" class="com.delmar.officeTest.web.action.OfficeTestQuestionAction" method="{1}">
-        <result name="list">/officeTest/officeTestQuestionList.jsp</result>
-        <result name="edit">/officeTest/officeTestQuestionAdd.jsp</result>	
-        <result name="toExcelImp">/officeTest/officeTestQuestionExcelImp.jsp</result>	
-	</action>
-	<action name="officeTestExamDetail_*" class="com.delmar.officeTest.web.action.OfficeTestExamDetailAction" method="{1}">
-        <result name="toExam">/officeTest/officeTestToExam.jsp</result>	
-        <result name="start">/officeTest/officeTestStartExam.jsp</result>
-        <result name="end">/officeTest/officeTestExamEnd.jsp</result>
-        <result name="alreadyExam">/officeTest/officeTestAlreadyExam.jsp</result>
-        <result name="list">/officeTest/officeTestExamDetailList.jsp</result>
-	</action>
-	<action name="officeTestExam_*" class="com.delmar.officeTest.web.action.OfficeTestExamAction" method="{1}">
-        <result name="list">/officeTest/officeTestExamList.jsp</result>	
-        <result name="add">/officeTest/officeTestExamAdd.jsp</result>
-	</action>
-	
-</package>
-<package name="sysSettings" namespace="/sysSettings" extends="default">
-	
-	<action name="sysSettingsItemAction_*" class="com.delmar.sysSettings.web.action.SysSettingsItemAction" method="{1}">
-        <result name="list">/sysSettings/sysSettingsItemList.jsp</result>
-        <result name="edit">/sysSettings/sysSettingsItemAdd.jsp</result>
-	</action>
-	<action name="sysSettingsAction_*" class="com.delmar.sysSettings.web.action.SysSettingsAction" method="{1}">
-        <result name="list">/sysSettings/sysSettingsList.jsp</result>
-	</action>
-</package>
+	<package name="officeTest" namespace="/officeTest" extends="default">
+
+		<action name="officeTestBankCategory_*" class="com.delmar.officeTest.web.action.OfficeTestBankCategoryAction" method="{1}">
+			<result name="edit">/officeTest/officeTestBankCategoryAdd.jsp</result>
+			<result name="delete" type="redirectAction" >
+				<param name="namespace">/officeTest</param>
+				<param name="actionName">officeTestBank_list</param>
+			</result>
+		</action>
+		<action name="officeTestBank_*" class="com.delmar.officeTest.web.action.OfficeTestBankAction" method="{1}">
+			<result name="list">/officeTest/officeTestBankList.jsp</result>
+			<result name="edit">/officeTest/officeTestBankAdd.jsp</result>
+			<result name="input">/officeTest/officeTestBankAdd.jsp</result>
+
+		</action>
+		<action name="officeTestQuestion_*" class="com.delmar.officeTest.web.action.OfficeTestQuestionAction" method="{1}">
+			<result name="list">/officeTest/officeTestQuestionList.jsp</result>
+			<result name="edit">/officeTest/officeTestQuestionAdd.jsp</result>
+			<result name="toExcelImp">/officeTest/officeTestQuestionExcelImp.jsp</result>
+		</action>
+		<action name="officeTestExamDetail_*" class="com.delmar.officeTest.web.action.OfficeTestExamDetailAction" method="{1}">
+			<result name="toExam">/officeTest/officeTestToExam.jsp</result>
+			<result name="start">/officeTest/officeTestStartExam.jsp</result>
+			<result name="end">/officeTest/officeTestExamEnd.jsp</result>
+			<result name="alreadyExam">/officeTest/officeTestAlreadyExam.jsp</result>
+			<result name="list">/officeTest/officeTestExamDetailList.jsp</result>
+		</action>
+		<action name="officeTestExam_*" class="com.delmar.officeTest.web.action.OfficeTestExamAction" method="{1}">
+			<result name="list">/officeTest/officeTestExamList.jsp</result>
+			<result name="add">/officeTest/officeTestExamAdd.jsp</result>
+		</action>
+
+	</package>
+	<package name="sysSettings" namespace="/sysSettings" extends="default">
+
+		<action name="sysSettingsItemAction_*" class="com.delmar.sysSettings.web.action.SysSettingsItemAction" method="{1}">
+			<result name="list">/sysSettings/sysSettingsItemList.jsp</result>
+			<result name="edit">/sysSettings/sysSettingsItemAdd.jsp</result>
+		</action>
+		<action name="sysSettingsAction_*" class="com.delmar.sysSettings.web.action.SysSettingsAction" method="{1}">
+			<result name="list">/sysSettings/sysSettingsList.jsp</result>
+		</action>
+	</package>
 
 </struts>

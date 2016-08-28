@@ -18,9 +18,7 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
  * 类说明 
  */
 public class DMExceptionInterceptor implements Interceptor  {
-	
 
-	
 	public void destroy()
 	{}
 	

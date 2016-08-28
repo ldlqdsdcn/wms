@@ -61,19 +61,7 @@ if(cookie!=null)
 	    function validateForm() {
         var userName=document.getElementById('userName');
         var password=document.getElementById('password');
-        if(isEmpty(userName.value)) 
-        {alert('用户名不允许为空');
-        userName.focus(); 
-        
-        	return false;
-        }
-        if(isEmpty(password.value))
-        {
-        	alert('密码不允许为空');
-        	password.focus(); 
-        	
-        	return false;
-        }
+
         return true;
       }
 	    

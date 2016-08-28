@@ -14,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import com.delmar.core.model.CoreModel;
 import com.delmar.core.service.exception.ServiceException;
 import com.delmar.core.web.util.FacesUtils;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 /**
  * @author 刘大磊 2015年1月15日 下午4:16:51
@@ -50,6 +51,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	 * 新建表单
 	 * @return
 	 */
+	@SkipValidation
 	public String create() 
 	{
 		if(!PrivilegeOperator.isCreate())
@@ -63,6 +65,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	 * 修改单据、查看单据
 	 * @return
 	 */
+	@SkipValidation
 	public String edit()
 	{
 		if(!(PrivilegeOperator.isUpdate()||PrivilegeOperator.isView()))
@@ -99,6 +102,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
+	@SkipValidation
 	public String list()
 	{
 		if(!(PrivilegeOperator.isView()))
@@ -124,7 +128,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	{
 		return true;
 	}
-	
+	@SkipValidation
 	public String deletes()
 	{
 		if(!(PrivilegeOperator.isDelete()))

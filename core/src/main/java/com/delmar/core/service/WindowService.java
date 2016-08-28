@@ -12,7 +12,7 @@ import com.delmar.core.model.Window;
 import com.delmar.core.service.CoreService;
 import java.util.List;
 /**
- * @author 刘大磊 2016-08-27 16:44:29
+ * @author 刘大磊 2016-08-28 17:16:34
  */
 public interface WindowService extends CoreService<Window> {
 	/**

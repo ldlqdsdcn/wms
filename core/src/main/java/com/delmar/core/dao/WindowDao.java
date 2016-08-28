@@ -11,7 +11,7 @@ import com.delmar.core.model.Window;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-08-27 16:44:29
+ * @author 刘大磊 2016-08-28 17:16:34
  */
 public interface WindowDao extends CoreDao<Window> {
 

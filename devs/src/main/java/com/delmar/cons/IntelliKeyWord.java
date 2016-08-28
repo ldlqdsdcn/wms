@@ -18,7 +18,7 @@ public class IntelliKeyWord {
     private static Map<String,String> FOREIGN_MAP=new HashMap<String, String>();
     private static Set<String> SQL_KEY_WORD_MAP=new HashSet<String>();
     private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
-
+    private static Set<String> NOT_NEED_VAL_COLUMN_SET=new HashSet<>();
     static
     {
         LABEL_MAP.put("name","名称");
@@ -46,15 +46,21 @@ public class IntelliKeyWord {
         READ_ONLY_SET.add("updatedby");
         SKIPPED_FIELD_SET.add("id");
         BOOL_SELECTION_SET.add("isactive");
-        FIELD_WIDTH_MAP.put("descr","width:500px;");
+        FIELD_WIDTH_MAP.put("descr", "width:500px;");
         FIELD_WIDTH_MAP.put("help","width:500px;");
         FIELD_WIDTH_MAP.put("remark","width:500px;");
         FOREIGN_MAP.put("createdby","user");
         FOREIGN_MAP.put("updatedby","user");
         SQL_KEY_WORD_MAP.add("name");
-        SQL_TYPE_MAP.put("INT","INTEGER");
+        SQL_TYPE_MAP.put("INT", "INTEGER");
         SQL_TYPE_MAP.put("INT UNSIGNED","INTEGER");
         SQL_TYPE_MAP.put("DATETIME","TIMESTAMP");
+
+        NOT_NEED_VAL_COLUMN_SET.add("id");
+        NOT_NEED_VAL_COLUMN_SET.add("created");
+        NOT_NEED_VAL_COLUMN_SET.add("createdby");
+        NOT_NEED_VAL_COLUMN_SET.add("updated");
+        NOT_NEED_VAL_COLUMN_SET.add("updatedby");
     }
     public static String getModule(String key)
     {
@@ -109,4 +115,12 @@ public class IntelliKeyWord {
         return SQL_TYPE_MAP.get(key);
     }
 
+    public static boolean isNotValidate(String key)
+    {
+        if(NOT_NEED_VAL_COLUMN_SET.contains(key))
+        {
+            return true;
+        }
+        return false;
+    }
 }

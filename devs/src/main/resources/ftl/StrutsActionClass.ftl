@@ -11,15 +11,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
-
+<#if (requiredStrings?size>0)>
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+</#if>
+<#if (requiredFields?size>0)>
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+</#if>
+<#if needValidate>
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+</#if>
+import org.springframework.beans.factory.annotation.Autowired;
 import ${modelpackage}.${modelname};
-
 import ${servicepackage}.${modelname}Service;
+<#include "inc/strutsActionInclude.ftl"/>
 <#if lineList?exists>
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
-
 <#list lineList as item>
 import com.delmar.${item.module}.model.${item.model};
 </#list>
@@ -27,6 +36,11 @@ import com.delmar.${item.module}.model.${item.model};
 /**
  * @author 刘大磊 ${datetime}
  */
+<#if needValidate>
+<#--TODO 需要完善-->
+@Validations(<#if (requiredStrings?size>0)>requiredStrings = {<#list requiredStrings as prop>@RequiredStringValidator(type = ValidatorType.FIELD,
+trim=true, fieldName = "${modelObjname}.${prop}", message = "不允许为空") <#if prop_has_next>,</#if></#list>}<#if (requiredFields?size>0)>,</#if></#if><#if (requiredFields?size>0)>requiredFields = {<#list requiredFields as prop>@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "${modelObjname}.${prop}",message = "不允许为空")<#if prop_has_next>,</#if></#list>}</#if>)
+</#if>
 public class ${modelname}Action extends CoreEditPrivAction {
 	private ${modelname}  ${modelObjname};
 <#if lineList?exists>
@@ -151,7 +165,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
-
+		<#include "inc/strutsActionSave.ftl"/>
 		${modelObjname}Service.save${modelname}(${modelObjname}<#if lineList?exists><#list lineList as item>,${item.model?uncap_first}List</#list></#if>);
 		return "edit";
 	}
