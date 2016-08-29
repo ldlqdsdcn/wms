@@ -15,6 +15,14 @@
   <script type='text/javascript' src='../js/bootstrap/bootstrap.js'></script>
   <script type='text/javascript' src='../js/jquery/plugin/bootbox.min.js'></script>
   <script type='text/javascript' src="../js/angular/angular.min.js"></script>
+  <script type="text/javascript" src="../js/jquery/plugin/jquery.datetimepicker.full.min.js"></script>
+  <link rel="Stylesheet" href="../js/jquery/plugin/jquery.datetimepicker.min.css" type="text/css" >
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $.datetimepicker.setLocale('en');
+    });
+
+  </script>
 </head>
 <body class="container" ng-app="myApp" ng-controller="tableCtrl">
 <form role="form" name="myform" class="form-inline">
@@ -31,13 +39,13 @@
       <input type="text" class="form-control" ng-model="column.value">
     </div>
     <div ng-switch-when="2">
-      <select  class="form-control" id="value" ng-model="column.value" ng-options="option.key as option.label for option in column.commonSearchResultList"></select>
+      <select  class="form-control"  ng-model="column.value" ng-options="option.key as option.label for option in column.commonSearchResultList"></select>
     </div>
     <div ng-switch-when="3">
-      <input type="text" class="form-control" id="value">
+      <input type="text" class="form-control" id="value-date">
     </div>
     <div ng-switch-when="4">
-      <input type="text" class="form-control" id="value">
+      <input type="text" class="form-control" id="value-date-time">
     </div>
   </div>
 </form>
