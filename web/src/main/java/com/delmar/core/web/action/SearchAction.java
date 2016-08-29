@@ -6,8 +6,12 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.List;
+import java.util.*;
 
+import com.delmar.core.def.RelOperDef;
+import com.delmar.core.def.SearchDataTypeDef;
+import com.delmar.core.def.SearchShowTypeDef;
+import com.delmar.core.model.CommonSearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
@@ -18,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.core.model.Search;
 import com.delmar.core.service.SearchService;
 import java.util.List;
-import java.util.ArrayList;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import com.delmar.core.model.SearchColumn;
@@ -30,13 +34,30 @@ trim=true, fieldName = "search.name", message = "不允许为空") ,@RequiredStr
 trim=true, fieldName = "search.pageUrl", message = "不允许为空") })
 public class SearchAction extends CoreEditPrivAction {
 	private Search  search;
-	private List<SearchColumn> searchColumnList=new ArrayList<SearchColumn>();;
+	private List<SearchColumn> searchColumnList=new ArrayList<SearchColumn>();
+	private Map<String,String> operMap=new TreeMap<>();
+	private Map<Integer,String> dataTypeMap=new TreeMap<>();
+	private Map<Integer,String> showTypeMap=new TreeMap<>();
 	@Autowired
 	private SearchService searchService;
 	
 	private void init()
 	{
-
+		RelOperDef[] relOperDefs=RelOperDef.values();
+		for(RelOperDef relOperDef:relOperDefs)
+		{
+			operMap.put(relOperDef.getKey()+"",relOperDef.getDesc());
+		}
+		SearchDataTypeDef[] searchDataTypeDefs=SearchDataTypeDef.values();
+		for(SearchDataTypeDef relOperDef:searchDataTypeDefs)
+		{
+			dataTypeMap.put(relOperDef.getKey(),relOperDef.getDesc());
+		}
+		SearchShowTypeDef[] searchShowTypeDefs=SearchShowTypeDef.values();
+		for(SearchShowTypeDef relOperDef:searchShowTypeDefs)
+		{
+			showTypeMap.put(relOperDef.getKey(),relOperDef.getDesc());
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -80,6 +101,7 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public void editForm() {
+		init();
 		 search= searchService.selectByPrimaryKey(id);
 		searchColumnList=searchService.getSearchColumnListBySearchId(id);
 
@@ -98,6 +120,7 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public void createForm() {
+		init();
 		search=new Search();
 		searchColumnList=new ArrayList<SearchColumn>();
 	}
@@ -141,7 +164,8 @@ public class SearchAction extends CoreEditPrivAction {
 	public String saveForm() {
 Integer currentUserId=getCurrentUser();
 		searchService.saveSearch(search,searchColumnList);
-		return "edit";
+		this.id=search.getId();
+		return edit();
 	}
 	/**
 	 * @return the usergroup
@@ -164,4 +188,16 @@ public void setSearchColumnList(List<SearchColumn> searchColumnList)
 {
 	this.searchColumnList=searchColumnList;
 }
+
+	public Map<String, String> getOperMap() {
+		return operMap;
+	}
+
+	public Map<Integer, String> getDataTypeMap() {
+		return dataTypeMap;
+	}
+
+	public Map<Integer, String> getShowTypeMap() {
+		return showTypeMap;
+	}
 }

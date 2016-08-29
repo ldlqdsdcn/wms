@@ -8,6 +8,8 @@
 
 package com.delmar.core.service;
 
+import com.delmar.core.model.CommonSearchParam;
+import com.delmar.core.model.CommonSearchResult;
 import com.delmar.core.model.Search;
 import com.delmar.core.service.CoreService;
 import com.delmar.core.model.SearchColumn;
@@ -22,6 +24,10 @@ public interface SearchService extends CoreService<Search> {
 	public void deleteSearchList(Integer[] ids);
     public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId);
 
-public Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
+	public Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
+	public List<CommonSearchResult> selectCommonList(CommonSearchParam commonSearchParam);
+	public List<CommonSearchResult> getCommonSearchListByColumnId(Integer columnId);
+	public Search getSearchByPageUrl(String pageUrl);
+
 
 }

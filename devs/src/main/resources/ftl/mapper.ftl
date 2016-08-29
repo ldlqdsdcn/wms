@@ -15,6 +15,9 @@
             <#list foreignList as item>
                 <if test="${item.propertyName}!=null"> and ${item.columnName}=${r'#{'}${item.propertyName},jdbcType=${item.type}} </if>
             </#list>
+                <if test="${searchString!=null}"> and ${accessString} </if>
+                <if test="${accessString!=null}"> and ${accessString} </if>
+
         </where>
     </sql>
     <sql id="Base_Column_List" >

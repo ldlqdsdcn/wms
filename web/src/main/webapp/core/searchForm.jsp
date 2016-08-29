@@ -305,14 +305,14 @@ $("input[name^=searchColumnList]").each(function(i, item){
                         <s:hidden name="%{'searchColumnList['+#st.index+'].searchId'}"></s:hidden>
                     </td>
                 <td>
-                    <s:select name="%{'searchColumnList['+#st.index+'].dataType'}" list="#{1:'数值',2:'字符',3:'日期'}"></s:select>
+                    <s:select name="%{'searchColumnList['+#st.index+'].dataType'}" list="dataTypeMap" listKey="key" listValue="value"></s:select>
                     <span style="color:red">*</span>
                 </td>
                 <td>
-                    <s:select name="%{'searchColumnList['+#st.index+'].showType'}" list="#{'1':'input','2':'select','3':'datapicker'}"  ></s:select> <span style="color:red">*</span>
+                    <s:select name="%{'searchColumnList['+#st.index+'].showType'}" list="showTypeMap" listKey="key" listValue="value" ></s:select> <span style="color:red">*</span>
                 </td>
                 <td>
-                    <s:select name="%{'searchColumnList['+#st.index+'].relOper'}" list="#{'1':'>','2':'>=','3':'<','4':'<=','5':'=','6':'like' }"></s:select> <span style="color:red">*</span>
+                    <s:checkboxlist name="%{'searchColumnList['+#st.index+'].relOperList'}" list="operMap" listKey="key" listValue="value" ></s:checkboxlist> <span style="color:red">*</span>
                 </td>
                 <td>
                     <s:textfield

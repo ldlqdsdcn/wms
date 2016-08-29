@@ -7,6 +7,17 @@
             <result column="remark" property="remark" jdbcType="VARCHAR" />
             <result column="page_url" property="pageUrl" jdbcType="VARCHAR" />
     </resultMap>
+    <resultMap id="commonListResult" type="com.delmar.core.model.CommonSearchResult">
+        <result column="key" property="key" jdbcType="VARCHAR" />
+        <result column="label" property="label" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectCommonList" parameterType="com.delmar.core.model.CommonSearchParam">
+        select ${keyValue} as key, ${labelValue} as label from ${tableName}
+        <where >
+            <if test="searchString!=null"> and ${searchString} </if>
+        </where>
+    </select>
+    
     <sql id="Example_Where_Clause" >
         <where >
               <if test="pageUrl!=null"> and page_url= #{pageUrl,jdbcType=VARCHAR}} </if>

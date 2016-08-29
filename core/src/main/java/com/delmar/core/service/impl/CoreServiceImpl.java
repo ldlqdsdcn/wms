@@ -142,4 +142,6 @@ public abstract  class CoreServiceImpl<T> implements CoreService<T> {
 		return getCoreDao().selectByExample(example);			
 	}
 
+
+
 }

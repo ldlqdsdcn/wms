@@ -7,6 +7,8 @@
 
 package com.delmar.core.service.impl;
 
+import com.delmar.core.model.CommonSearchParam;
+import com.delmar.core.model.CommonSearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,8 +58,37 @@ public Integer saveSearch(Search search,List<SearchColumn> searchColumnList) {
 	return id;
 }
 
+	@Override
+	public List<CommonSearchResult> selectCommonList(CommonSearchParam commonSearchParam) {
+		return searchDao.selectCommonList(commonSearchParam);
+	}
 
-    public Integer deleteByPrimaryKey(Integer id) {
+	@Override
+	public List<CommonSearchResult> getCommonSearchListByColumnId(Integer columnId) {
+		SearchColumn searchColumn=searchColumnDao.selectByPrimaryKey(columnId);
+		CommonSearchParam param=new CommonSearchParam();
+		param.setKeyValue(searchColumn.getFkKeyColumn());
+		param.setLabelValue(searchColumn.getFkLabelColumn());
+		param.setSearchString(searchColumn.getCoditions());
+		param.setTableName(searchColumn.getFkTable());
+		return searchDao.selectCommonList(param);
+	}
+
+	@Override
+	public Search getSearchByPageUrl(String pageUrl) {
+		Map<String,Object> param=new HashMap<>();
+		param.put("pageUrl", pageUrl);
+		List<Search> list= searchDao.selectByExample(param);
+		if(list==null||list.size()==0)
+		return null;
+		else
+		{
+			return list.get(0);
+		}
+	}
+
+
+	public Integer deleteByPrimaryKey(Integer id) {
     Map<String,Object> searchColumnParam=new HashMap<String,Object>();
 searchColumnParam.put("searchId",id);
 searchColumnDao.deleteByExample(searchColumnParam);

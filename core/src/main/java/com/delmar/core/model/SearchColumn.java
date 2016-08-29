@@ -24,6 +24,7 @@ private String[] relOperList;
 
   public String[] getRelOperList()
   {
+      System.out.println("---------------getRelOperList:"+relOper);
     if(relOper==null) return null;
    relOperList=relOper.split(",");
    return relOperList;
@@ -48,6 +49,7 @@ private String[] relOperList;
     {
      relOper=null;
     }
+      System.out.println("---------------setRelOperList:"+relOper);
   }
 
 }
