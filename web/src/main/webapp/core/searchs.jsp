@@ -19,7 +19,7 @@
 
 <body >
 
-<s:form action="table_list" namespace="/core"  theme="simple" >
+<s:form action="search_list" namespace="/core"  theme="simple" >
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
 
 <tr>

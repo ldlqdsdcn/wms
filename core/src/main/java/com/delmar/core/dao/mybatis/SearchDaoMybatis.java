@@ -14,7 +14,7 @@ import com.delmar.core.model.Search;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2015-03-02 10:59:25
+ * @author 刘大磊 2016-08-29 16:03:22
  */
 @Repository("searchDao") 
 public class SearchDaoMybatis extends CoreDaoMyBatis<Search> implements SearchDao {

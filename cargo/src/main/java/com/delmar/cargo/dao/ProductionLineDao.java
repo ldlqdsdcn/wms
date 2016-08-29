@@ -5,14 +5,14 @@
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
-package com.delmar.core.dao;
+package com.delmar.cargo.dao;
 
-import com.delmar.core.model.Search;
+import com.delmar.cargo.model.ProductionLine;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-29 15:01:00
  */
-public interface SearchDao extends CoreDao<Search> {
+public interface ProductionLineDao extends CoreDao<ProductionLine> {
 
 }

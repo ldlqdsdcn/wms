@@ -4,7 +4,7 @@
  * 电话：0532-66701118                                                        *
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
-package com.delmar.core.web.action;
+package com.delmar.cargo.web.action;
 
 import java.util.List;
 
@@ -12,27 +12,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.core.model.Search;
-import com.delmar.core.service.SearchService;
+import com.delmar.cargo.model.Production;
+import com.delmar.cargo.service.ProductionService;
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import com.delmar.core.model.SearchColumn;
+import com.delmar.cargo.model.ProductionLine;
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-29 15:01:00
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
-trim=true, fieldName = "search.name", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
-trim=true, fieldName = "search.pageUrl", message = "不允许为空") })
-public class SearchAction extends CoreEditPrivAction {
-	private Search  search;
-	private List<SearchColumn> searchColumnList=new ArrayList<SearchColumn>();;
+trim=true, fieldName = "production.documentno", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
+trim=true, fieldName = "production.name", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
+trim=true, fieldName = "production.status", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.completeDate",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.orgId",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.clientId",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.userId",message = "不允许为空")})
+public class ProductionAction extends CoreEditPrivAction {
+	private Production  production;
+	private List<ProductionLine> productionLineList=new ArrayList<ProductionLine>();;
 	@Autowired
-	private SearchService searchService;
+	private ProductionService productionService;
 	
 	private void init()
 	{
@@ -44,7 +47,7 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String getModuleName() {
-		return "search";
+		return "production";
 	}
 
 	/* (non-Javadoc)
@@ -52,7 +55,7 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String delete() {
-		searchService.deleteByPrimaryKey(search.getId());
+		productionService.deleteByPrimaryKey(production.getId());
 		return list();
 	}
 
@@ -62,7 +65,7 @@ public class SearchAction extends CoreEditPrivAction {
 	@Override
 	public void deleteList(Integer[] ids) {
 		
-		searchService.deleteSearchList(ids);
+		productionService.deleteProductionList(ids);
 
 	}
 
@@ -72,7 +75,7 @@ public class SearchAction extends CoreEditPrivAction {
 	@Override
 	public Integer getModelId() {
 
-		return search.getId();
+		return production.getId();
 	}
 
 	/* (non-Javadoc)
@@ -80,8 +83,8 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public void editForm() {
-		 search= searchService.selectByPrimaryKey(id);
-		searchColumnList=searchService.getSearchColumnListBySearchId(id);
+		 production= productionService.selectByPrimaryKey(id);
+		productionLineList=productionService.getProductionLineListByProductionId(id);
 
 	}
 
@@ -90,7 +93,7 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return searchService.selectByExample(null);
+		return productionService.selectByExample(null);
 	}
 
 	/* (non-Javadoc)
@@ -98,20 +101,20 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public void createForm() {
-		search=new Search();
-		searchColumnList=new ArrayList<SearchColumn>();
+		production=new Production();
+		productionLineList=new ArrayList<ProductionLine>();
 	}
     @SkipValidation
-    public String addSearchColumn()
+    public String addProductionLine()
     {
-    SearchColumn  searchColumn=new SearchColumn();
-	searchColumnList.add(searchColumn);
+    ProductionLine  productionLine=new ProductionLine();
+	productionLineList.add(productionLine);
     return "edit";
     }
     @SkipValidation
-    public String deleteSearchColumns()
+    public String deleteProductionLines()
     {
-    String[] ids=ServletActionContext.getRequest().getParameterValues("SearchColumn_ids");
+    String[] ids=ServletActionContext.getRequest().getParameterValues("ProductionLine_ids");
     List<String> idList=new ArrayList<String>();
 
         //
@@ -121,7 +124,7 @@ public class SearchAction extends CoreEditPrivAction {
         {
         idList.add(ids[i]);
         Integer index=Integer.parseInt(ids[i]);
-	   SearchColumn column=searchColumnList.get(index);
+	   ProductionLine column=productionLineList.get(index);
         if(column.getId()!=null&&column.getId()!=0)
         {
         intids[i]=column.getId();
@@ -130,7 +133,7 @@ public class SearchAction extends CoreEditPrivAction {
         java.util.Collections.sort(idList);
         for(int i=idList.size()-1;i>=0;i--)
         {
-        	searchColumnList.remove(Integer.parseInt(idList.get(i)));
+        	productionLineList.remove(Integer.parseInt(idList.get(i)));
         }
         return "edit";
 	}
@@ -139,29 +142,37 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
+Date date=new Date();
 Integer currentUserId=getCurrentUser();
-		searchService.saveSearch(search,searchColumnList);
+if(production.isnew())
+{
+production.setCreated(date);
+production.setCreatedby(currentUserId);
+}
+production.setUpdated(date);
+production.setUpdatedby(currentUserId);
+		productionService.saveProduction(production,productionLineList);
 		return "edit";
 	}
 	/**
 	 * @return the usergroup
 	 */
-	public Search getSearch() {
-		return search;
+	public Production getProduction() {
+		return production;
 	}
 
 	/**
-	 * @param search the search to set
+	 * @param production the production to set
 	 */
-	public void setSearch(Search search) {
-		this.search = search;
+	public void setProduction(Production production) {
+		this.production = production;
 	}
-public List<SearchColumn> getSearchColumnList()
+public List<ProductionLine> getProductionLineList()
 {
-	return searchColumnList;
+	return productionLineList;
 }
-public void setSearchColumnList(List<SearchColumn> searchColumnList)
+public void setProductionLineList(List<ProductionLine> productionLineList)
 {
-	this.searchColumnList=searchColumnList;
+	this.productionLineList=productionLineList;
 }
 }

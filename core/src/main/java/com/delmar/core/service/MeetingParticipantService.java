@@ -8,20 +8,15 @@
 
 package com.delmar.core.service;
 
-import com.delmar.core.model.Search;
+import com.delmar.core.model.MeetingParticipant;
 import com.delmar.core.service.CoreService;
-import com.delmar.core.model.SearchColumn;
 import java.util.List;
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-27 13:57:01
  */
-public interface SearchService extends CoreService<Search> {
+public interface MeetingParticipantService extends CoreService<MeetingParticipant> {
 	/**
 	 * @param ids
 	 */
-	public void deleteSearchList(Integer[] ids);
-    public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId);
-
-public Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
-
+	public void deleteMeetingParticipantList(Integer[] ids);
 }

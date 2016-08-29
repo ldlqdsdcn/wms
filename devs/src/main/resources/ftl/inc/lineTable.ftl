@@ -46,7 +46,7 @@
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
                     <td>
-                        <input type="checkbox" name="${line.model}_ids"
+                        <input type="checkbox"  name="${line.model}_ids"
                                value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>

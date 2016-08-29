@@ -7,12 +7,12 @@
 
 package com.delmar.core.dao;
 
-import com.delmar.core.model.Search;
+import com.delmar.core.model.MeetingTopic;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-27 16:28:14
  */
-public interface SearchDao extends CoreDao<Search> {
+public interface MeetingTopicDao extends CoreDao<MeetingTopic> {
 
 }

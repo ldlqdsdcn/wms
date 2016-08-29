@@ -5,19 +5,19 @@
  * email:liua@delmarchina.com						                               *
  *****************************************************************************/
 
-package com.delmar.core.dao.mybatis;
+package com.delmar.cargo.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.core.dao.SearchColumnDao;
-import com.delmar.core.model.SearchColumn;
+import com.delmar.cargo.dao.ProductionDao;
+import com.delmar.cargo.model.Production;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-29 15:01:00
  */
-@Repository("searchColumnDao") 
-public class SearchColumnDaoMybatis extends CoreDaoMyBatis<SearchColumn> implements SearchColumnDao {
+@Repository("productionDao") 
+public class ProductionDaoMybatis extends CoreDaoMyBatis<Production> implements ProductionDao {
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
@@ -25,7 +25,7 @@ public class SearchColumnDaoMybatis extends CoreDaoMyBatis<SearchColumn> impleme
 	@Override
 	protected String getSqlName() {
 		
-		return "com.delmar.core.mybatis.sql.SearchColumnMapper";
+		return "com.delmar.cargo.mybatis.sql.ProductionMapper";
 	}
 
 

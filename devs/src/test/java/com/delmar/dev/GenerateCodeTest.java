@@ -40,15 +40,25 @@ public class GenerateCodeTest {
         list.add(modelDto);
         codeGenerationService.generateMapperAndModel(list);*/
 
-        GenModelDto line1=  new GenModelDto("b_production_line","ProductionLine","cargo","生产明细");
+//        GenModelDto line1=  new GenModelDto("b_production_line","ProductionLine","cargo","生产明细");
+//        line1.setGenerateService(false);
+//        list.add(line1);
+//
+//        GenModelDto modelDto=new GenModelDto("b_production","Production","cargo","生产");
+//        List<GenModelDto> lineList=new ArrayList<GenModelDto>();
+//        lineList.add(line1);
+//        modelDto.setIncludeModelList(lineList);
+//        list.add(modelDto);
+        GenModelDto line1=  new GenModelDto("core_search_column","SearchColumn","core","查询字段");
         line1.setGenerateService(false);
         list.add(line1);
 
-        GenModelDto modelDto=new GenModelDto("b_production","Production","cargo","生产");
-        List<GenModelDto> lineList=new ArrayList<GenModelDto>();
+        GenModelDto modelDto=new GenModelDto("core_search","Search","core","查询模块");
+        List<GenModelDto> lineList=new ArrayList<>();
         lineList.add(line1);
         modelDto.setIncludeModelList(lineList);
         list.add(modelDto);
+
         codeGenerationService.generateMapperAndModel(list);
     }
 }

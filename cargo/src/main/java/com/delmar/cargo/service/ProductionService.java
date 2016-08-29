@@ -6,22 +6,22 @@
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
-package com.delmar.core.service;
+package com.delmar.cargo.service;
 
-import com.delmar.core.model.Search;
+import com.delmar.cargo.model.Production;
 import com.delmar.core.service.CoreService;
-import com.delmar.core.model.SearchColumn;
+import com.delmar.cargo.model.ProductionLine;
 import java.util.List;
 /**
- * @author 刘大磊 2016-08-29 16:03:22
+ * @author 刘大磊 2016-08-29 15:01:00
  */
-public interface SearchService extends CoreService<Search> {
+public interface ProductionService extends CoreService<Production> {
 	/**
 	 * @param ids
 	 */
-	public void deleteSearchList(Integer[] ids);
-    public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId);
+	public void deleteProductionList(Integer[] ids);
+    public List<ProductionLine> getProductionLineListByProductionId(Integer productionId);
 
-public Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
+public Integer saveProduction(Production production,List<ProductionLine> productionLineList);
 
 }

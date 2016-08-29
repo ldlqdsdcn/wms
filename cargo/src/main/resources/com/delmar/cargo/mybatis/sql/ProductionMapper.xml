@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.cargo.mybatis.sql.ProductionMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.cargo.model.Production" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="documentno" property="documentno" jdbcType="VARCHAR" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+            <result column="complete_date" property="completeDate" jdbcType="TIMESTAMP" />
+            <result column="created" property="created" jdbcType="TIMESTAMP" />
+            <result column="createdby" property="createdby" jdbcType="INTEGER" />
+            <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+            <result column="updatedby" property="updatedby" jdbcType="INTEGER" />
+            <result column="org_id" property="orgId" jdbcType="INTEGER" />
+            <result column="client_id" property="clientId" jdbcType="INTEGER" />
+            <result column="user_id" property="userId" jdbcType="INTEGER" />
+            <result column="status" property="status" jdbcType="CHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+      id,   documentno,   name,   complete_date,   created,   createdby,   updated,   updatedby,   org_id,   client_id,   user_id,   status 
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from b_production
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from b_production
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from b_production
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map" >
+        delete from b_production
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.cargo.model.Production" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into b_production (     documentno,   name,   complete_date,   created,   createdby,   updated,   updatedby,   org_id,   client_id,   user_id,   status )
+        values (  #{documentno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{completeDate,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP}, #{createdby,jdbcType=INTEGER}, #{updated,jdbcType=TIMESTAMP}, #{updatedby,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{status,jdbcType=CHAR} )
+    </insert>
+    <insert id="insertSelective" parameterType="com.delmar.cargo.model.Production" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into b_production
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="documentno != null" >
+                    documentno,
+                </if>
+                <if test="name != null" >
+                    name,
+                </if>
+                <if test="completeDate != null" >
+                    complete_date,
+                </if>
+                <if test="created != null" >
+                    created,
+                </if>
+                <if test="createdby != null" >
+                    createdby,
+                </if>
+                <if test="updated != null" >
+                    updated,
+                </if>
+                <if test="updatedby != null" >
+                    updatedby,
+                </if>
+                <if test="orgId != null" >
+                    org_id,
+                </if>
+                <if test="clientId != null" >
+                    client_id,
+                </if>
+                <if test="userId != null" >
+                    user_id,
+                </if>
+                <if test="status != null" >
+                    status,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="documentno != null" >
+    #{documentno,jdbcType=VARCHAR}},
+    </if>
+    <if test="name != null" >
+    #{name,jdbcType=VARCHAR}},
+    </if>
+    <if test="completeDate != null" >
+    #{completeDate,jdbcType=VARCHAR}},
+    </if>
+    <if test="created != null" >
+    #{created,jdbcType=VARCHAR}},
+    </if>
+    <if test="createdby != null" >
+    #{createdby,jdbcType=VARCHAR}},
+    </if>
+    <if test="updated != null" >
+    #{updated,jdbcType=VARCHAR}},
+    </if>
+    <if test="updatedby != null" >
+    #{updatedby,jdbcType=VARCHAR}},
+    </if>
+    <if test="orgId != null" >
+    #{orgId,jdbcType=VARCHAR}},
+    </if>
+    <if test="clientId != null" >
+    #{clientId,jdbcType=VARCHAR}},
+    </if>
+    <if test="userId != null" >
+    #{userId,jdbcType=VARCHAR}},
+    </if>
+    <if test="status != null" >
+    #{status,jdbcType=VARCHAR}},
+    </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+        select count(*) from b_production
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.cargo.model.Production" >
+        update b_production
+        <set >
+    <if test="documentno != null" >
+        documentno = #{documentno,jdbcType=VARCHAR},
+    </if>
+    <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+    </if>
+    <if test="completeDate != null" >
+        complete_date = #{completeDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createdby != null" >
+        createdby = #{createdby,jdbcType=INTEGER},
+    </if>
+    <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+    </if>
+    <if test="updatedby != null" >
+        updatedby = #{updatedby,jdbcType=INTEGER},
+    </if>
+    <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+    </if>
+    <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+    </if>
+    <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+    </if>
+    <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+        update b_production
+        set 
+            
+            documentno = #{documentno,jdbcType=VARCHAR},
+
+            name = #{name,jdbcType=VARCHAR},
+
+            complete_date = #{completeDate,jdbcType=TIMESTAMP},
+
+            created = #{created,jdbcType=TIMESTAMP},
+
+            createdby = #{createdby,jdbcType=INTEGER},
+
+            updated = #{updated,jdbcType=TIMESTAMP},
+
+            updatedby = #{updatedby,jdbcType=INTEGER},
+
+            org_id = #{orgId,jdbcType=INTEGER},
+
+            client_id = #{clientId,jdbcType=INTEGER},
+
+            user_id = #{userId,jdbcType=INTEGER},
+
+            status = #{status,jdbcType=CHAR}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

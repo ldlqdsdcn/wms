@@ -5,7 +5,8 @@
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
-
+<#include "inc/marco.ftl"/>
+<html>
 <head>
 
 <title>
@@ -21,6 +22,10 @@
     <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" >
     <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" >
     <link rel="Stylesheet" href="../js/jquery/plugin/jquery.datetimepicker.min.css" type="text/css" >
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap-theme.min.css" type="text/css" media="all"/>
+    <script type='text/javascript' src='../js/bootstrap/bootstrap.js'></script>
+    <script type='text/javascript' src='../js/jquery/plugin/bootbox.min.js'></script>
 <script type="text/javascript">
  function gotoList()
  {
@@ -36,45 +41,21 @@
     <#include "inc/datapicker.ftl"/>
      $("#saveBtn").click(function(){
      <#list propertyList as prop>
-         <#if prop.validationList?exists>
-             <#list prop.validationList as val>
-                 <#if val==0>
-                     if (isEmpty($("#${prop.prop}").val())) {
-                         alert("${prop.label}不允许为空");
-                         $("#${prop.prop}").focus();
-                         return false;
-                     }
-                 <#elseif val==1>
-                     if (isInt($("#${prop.prop}").val())) {
-                         alert("${prop.label}必须为整数");
-                         $("#${prop.prop}").focus();
-                         return false;
-                     }
-                     <#elseif val==2>
-                     if (isDouble($("#${prop.prop}").val())) {
-                         alert("${prop.label}必须为数值");
-                         $("#${prop.prop}").focus();
-                         return false;
-                     }
-                 <#elseif val==3&&(prop.prop?upper_case)?index_of("TIME")==-1 >
-                     if (validateDate($("#${prop.prop}").val())) {
-                         alert("${prop.label}必须为日期");
-                         $("#${prop.prop}").focus();
-                         return false;
-                     }
-                     <#elseif val==3>
-                     if (validateDate($("#${prop.prop}").val())) {
-                         alert("${prop.label}必须为日期时间");
-                         $("#${prop.prop}").focus();
-                         return false;
-                     }
-
-                 </#if>
-
-
-             </#list>
-         </#if>
+         <@validateProperty prop.prop prop/>
      </#list>
+
+
+     <#if lineList?exists>
+         var validateLine=true;
+         var lineMsg="";
+         <#include "inc/lineValidate.ftl"/>
+        if(!validateLine)
+        {
+            bootbox.alert(lineMsg);
+            return false;
+        }
+     </#if>
+
          return true;
      });
  });

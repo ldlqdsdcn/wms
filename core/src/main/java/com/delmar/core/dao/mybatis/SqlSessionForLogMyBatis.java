@@ -56,19 +56,7 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 	 */
 	public int delete(String statement, CoreModel model) {
 		Integer id=null;
-		try {
-			id=(Integer) PropertyUtils.getProperty(model, "id");
-			
-		} catch (IllegalAccessException e) {
-			logger.error(e,e);
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			logger.error(e,e);
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			logger.error(e,e);
-			e.printStackTrace();
-		}
+		id=model.getId();
 		writeLog(model, SessionContent.OPERATE_DELETE);
 		return sqlSessionTemplate.delete(statement, model);
 	}

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.cargo.mybatis.sql.ProductionLineMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.cargo.model.ProductionLine" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="product_name" property="productName" jdbcType="VARCHAR" />
+            <result column="amount" property="amount" jdbcType="INTEGER" />
+            <result column="production_id" property="productionId" jdbcType="INTEGER" />
+            <result column="batch" property="batch" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+                <if test="productionId!=null"> and production_id=#{productionId,jdbcType=INTEGER} </if>
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+      id,   product_name,   amount,   production_id,   batch 
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from b_production_line
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from b_production_line
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from b_production_line
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map" >
+        delete from b_production_line
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.cargo.model.ProductionLine" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into b_production_line (     product_name,   amount,   production_id,   batch )
+        values (  #{productName,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, #{productionId,jdbcType=INTEGER}, #{batch,jdbcType=VARCHAR} )
+    </insert>
+    <insert id="insertSelective" parameterType="com.delmar.cargo.model.ProductionLine" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into b_production_line
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="productName != null" >
+                    product_name,
+                </if>
+                <if test="amount != null" >
+                    amount,
+                </if>
+                <if test="productionId != null" >
+                    production_id,
+                </if>
+                <if test="batch != null" >
+                    batch,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="productName != null" >
+    #{productName,jdbcType=VARCHAR}},
+    </if>
+    <if test="amount != null" >
+    #{amount,jdbcType=VARCHAR}},
+    </if>
+    <if test="productionId != null" >
+    #{productionId,jdbcType=VARCHAR}},
+    </if>
+    <if test="batch != null" >
+    #{batch,jdbcType=VARCHAR}},
+    </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+        select count(*) from b_production_line
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.cargo.model.ProductionLine" >
+        update b_production_line
+        <set >
+    <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+    </if>
+    <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+    </if>
+    <if test="productionId != null" >
+        production_id = #{productionId,jdbcType=INTEGER},
+    </if>
+    <if test="batch != null" >
+        batch = #{batch,jdbcType=VARCHAR},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+        update b_production_line
+        set 
+            
+            product_name = #{productName,jdbcType=VARCHAR},
+
+            amount = #{amount,jdbcType=INTEGER},
+
+            production_id = #{productionId,jdbcType=INTEGER},
+
+            batch = #{batch,jdbcType=VARCHAR}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

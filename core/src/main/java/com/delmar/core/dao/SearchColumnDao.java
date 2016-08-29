@@ -11,7 +11,7 @@ import com.delmar.core.model.SearchColumn;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2015-03-02 10:59:25
+ * @author 刘大磊 2016-08-29 16:03:22
  */
 public interface SearchColumnDao extends CoreDao<SearchColumn> {
 

@@ -29,6 +29,7 @@ public class JspModelProp {
     private String prop;
     private String label;
     private boolean date;
+    private boolean datetime;
     private boolean edit;
     private boolean booleanTag;
     private String cssStyle;

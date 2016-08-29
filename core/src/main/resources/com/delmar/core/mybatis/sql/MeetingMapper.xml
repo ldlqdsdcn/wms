@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.delmar.core.mybatis.sql.SearchMapper" >
-    <resultMap id="BaseResultMap" type="com.delmar.core.model.Search" >
+<mapper namespace="com.delmar.core.mybatis.sql.MeetingMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.core.model.Meeting" >
             <id column="id" property="id" jdbcType="INTEGER" />
             <result column="name" property="name" jdbcType="VARCHAR" />
-            <result column="remark" property="remark" jdbcType="VARCHAR" />
-            <result column="page_url" property="pageUrl" jdbcType="VARCHAR" />
+            <result column="bgn_time" property="bgnTime" jdbcType="TIMESTAMP" />
+            <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+            <result column="descr" property="descr" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-              <if test="pageUrl!=null"> and page_url= #{pageUrl,jdbcType=VARCHAR}} </if>
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   name,   remark,   page_url 
+      id,   name,   bgn_time,   end_time,   descr 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -21,7 +21,7 @@
             distinct
         </if>
         <include refid="Base_Column_List" />
-        from core_search
+        from core_meeting
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
@@ -32,85 +32,96 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
         <include refid="Base_Column_List" />
-        from core_search
+        from core_meeting
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from core_search
+        delete from core_meeting
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <delete id="deleteByExample" parameterType="java.util.Map" >
-        delete from core_search
+        delete from core_meeting
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </delete>
-    <insert id="insert" parameterType="com.delmar.core.model.Search" >
+    <insert id="insert" parameterType="com.delmar.core.model.Meeting" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_search (     name,   remark,   page_url )
-        values (  #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{pageUrl,jdbcType=VARCHAR} )
+        insert into core_meeting (     name,   bgn_time,   end_time,   descr )
+        values (  #{name,jdbcType=VARCHAR}, #{bgnTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{descr,jdbcType=VARCHAR} )
     </insert>
-    <insert id="insertSelective" parameterType="com.delmar.core.model.Search" >
+    <insert id="insertSelective" parameterType="com.delmar.core.model.Meeting" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_search
+        insert into core_meeting
         <trim prefix="(" suffix=")" suffixOverrides="," >
                 <if test="name != null" >
                     name,
                 </if>
-                <if test="remark != null" >
-                    remark,
+                <if test="bgnTime != null" >
+                    bgn_time,
                 </if>
-                <if test="pageUrl != null" >
-                    page_url,
+                <if test="endTime != null" >
+                    end_time,
+                </if>
+                <if test="descr != null" >
+                    descr,
                 </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
     <if test="name != null" >
     #{name,jdbcType=VARCHAR}},
     </if>
-    <if test="remark != null" >
-    #{remark,jdbcType=VARCHAR}},
+    <if test="bgnTime != null" >
+    #{bgnTime,jdbcType=VARCHAR}},
     </if>
-    <if test="pageUrl != null" >
-    #{pageUrl,jdbcType=VARCHAR}},
+    <if test="endTime != null" >
+    #{endTime,jdbcType=VARCHAR}},
+    </if>
+    <if test="descr != null" >
+    #{descr,jdbcType=VARCHAR}},
     </if>
         </trim>
     </insert>
     <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
-        select count(*) from core_search
+        select count(*) from core_meeting
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </select>
-    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Search" >
-        update core_search
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Meeting" >
+        update core_meeting
         <set >
     <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
     </if>
-    <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
+    <if test="bgnTime != null" >
+        bgn_time = #{bgnTime,jdbcType=TIMESTAMP},
     </if>
-    <if test="pageUrl != null" >
-        page_url = #{pageUrl,jdbcType=VARCHAR},
+    <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="descr != null" >
+        descr = #{descr,jdbcType=VARCHAR},
     </if>
 
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
-        update core_search
+        update core_meeting
         set 
             
             name = #{name,jdbcType=VARCHAR},
 
-            remark = #{remark,jdbcType=VARCHAR},
+            bgn_time = #{bgnTime,jdbcType=TIMESTAMP},
 
-            page_url = #{pageUrl,jdbcType=VARCHAR}
+            end_time = #{endTime,jdbcType=TIMESTAMP},
+
+            descr = #{descr,jdbcType=VARCHAR}
 
         where id = #{id,jdbcType=INTEGER}
     </update>

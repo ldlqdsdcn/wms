@@ -1,0 +1,12 @@
+	<action name="window_*" class="com.delmar.core.web.action.WindowAction" method="{1}">
+		<result name="list">/core/windowList.jsp</result>
+		<result name="edit">/core/windowForm.jsp</result>
+	</action>
+	<action name="page_*" class="com.delmar.core.web.action.PageAction" method="{1}">
+		<result name="list">/core/pageList.jsp</result>
+		<result name="edit">/core/pageForm.jsp</result>
+	</action>
+	<action name="field_*" class="com.delmar.core.web.action.FieldAction" method="{1}">
+		<result name="list">/core/fieldList.jsp</result>
+		<result name="edit">/core/fieldForm.jsp</result>
+	</action>

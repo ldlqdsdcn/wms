@@ -61,34 +61,32 @@ function isFloat(fieldValue) {
 	}
 	return true;
 }
+function startWith(value,str){
+	var reg=new RegExp("^"+str);
+	return reg.test(value);
+}
 
+function endWith(value,str){
+	var reg=new RegExp(str+"$");
+	return reg.test(value);
+}
 function isInt(fieldValue) {
-	var isdot;
-	isdot = 0;
-	if (fieldValue == '') {
-		return true;
-	} else {
-		tmp = fieldValue;
-		for (j = 0; j < tmp.length; j++) {
-			// alert(tmp.substring(j,j+1));
-			if (isNaN(parseInt(tmp.substring(j, j + 1)))) {
-				return false;
-			}
-		}
+	var reg = new RegExp("^[0-9]*$");
+	if(!reg.test(fieldValue)){
+		return false;
 	}
 	return true;
 }
 function validateDate(value) {
 	if (isEmpty(value))
-		return true;
+		return false;
 	re = /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/(19[0-9]{2}|20[0-9]{2})$/;
 	
 	if (value.match(re) != null)
-		return true;
-	else
 		return false;
+	else
+		return true;
 }
-////| 格式为：YYYY-MM-DD HH:MM:SS
 function validateDateTime(str){
 	var reg=/^(\d+)-(\d{ 1,2})-(\d{ 1,2})(\d{ 1,2}):(\d{1,2}):(\d{1,2})$/;
 	var r=str.match(reg);
