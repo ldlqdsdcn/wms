@@ -29,6 +29,7 @@ import ${servicepackage}.${modelname}Service;
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 <#list lineList as item>
 import com.delmar.${item.module}.model.${item.model};
 </#list>
@@ -127,12 +128,14 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	}
 <#if lineList?exists>
 	<#list lineList as item>
+    @SkipValidation
     public String add${item.model}()
     {
     ${item.model}  ${item.model?uncap_first}=new ${item.model}();
 	${item.model?uncap_first}List.add(${item.model?uncap_first});
     return "edit";
     }
+    @SkipValidation
     public String delete${item.model}s()
     {
     String[] ids=ServletActionContext.getRequest().getParameterValues("${item.model}_ids");
