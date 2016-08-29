@@ -1,21 +1,24 @@
 package com.delmar.devs.model;
 
+import com.delmar.devs.def.ValidationDef;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Created by admin on 2016/8/25.
  */
 @Data
-public class JspListProp {
-    public JspListProp(String prop,String label)
+public class JspModelProp {
+    public JspModelProp(String prop, String label)
     {
         this(prop,label,false);
     }
-    public JspListProp(String prop,String label,boolean isDate)
+    public JspModelProp(String prop, String label, boolean isDate)
     {
         this(prop,label,isDate,true);
     }
-    public JspListProp(String prop,String label,boolean isDate,boolean edit)
+    public JspModelProp(String prop, String label, boolean isDate, boolean edit)
     {
         this.prop=prop;
         this.label=label;
@@ -31,4 +34,6 @@ public class JspListProp {
     private String cssStyle;
     private String module;
     private boolean foreign;
+    private boolean required;
+    private List<Integer> validationList;
 }

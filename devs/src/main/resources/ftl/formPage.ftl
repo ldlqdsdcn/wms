@@ -34,7 +34,49 @@
      $('#formDetail tr:even').addClass("query_two");
      $("#formDetail").find("tr:last").removeClass("query_one").removeClass("query_two");
     <#include "inc/datapicker.ftl"/>
+     $("#saveBtn").click(function(){
+     <#list propertyList as prop>
+         <#if prop.validationList?exists>
+             <#list prop.validationList as val>
+                 <#if val==0>
+                     if (isEmpty($("#${prop.prop}").val())) {
+                         alert("${prop.label}不允许为空");
+                         $("#${prop.prop}").focus();
+                         return false;
+                     }
+                 <#elseif val==1>
+                     if (isInt($("#${prop.prop}").val())) {
+                         alert("${prop.label}必须为整数");
+                         $("#${prop.prop}").focus();
+                         return false;
+                     }
+                     <#elseif val==2>
+                     if (isDouble($("#${prop.prop}").val())) {
+                         alert("${prop.label}必须为数值");
+                         $("#${prop.prop}").focus();
+                         return false;
+                     }
+                 <#elseif val==3&&(prop.prop?upper_case)?index_of("TIME")==-1 >
+                     if (validateDate($("#${prop.prop}").val())) {
+                         alert("${prop.label}必须为日期");
+                         $("#${prop.prop}").focus();
+                         return false;
+                     }
+                     <#elseif val==3>
+                     if (validateDate($("#${prop.prop}").val())) {
+                         alert("${prop.label}必须为日期时间");
+                         $("#${prop.prop}").focus();
+                         return false;
+                     }
 
+                 </#if>
+
+
+             </#list>
+         </#if>
+     </#list>
+         return true;
+     });
  });
 </script>
 </head>
@@ -93,12 +135,16 @@
                         <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if>>
                          <s:param name="value"><s:date name="${mode? uncap_first}.${prop.prop}"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
+                        <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"   cssStyle="color:red" />
                          <#elseif prop.booleanTag>
                           <s:radio id="${prop.prop}" name="${mode? uncap_first}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"></s:radio>
+                            <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red"/>
+
                           <#else>
                           <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} ></s:textfield>
+                            <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red" />
                           </#if>
                           </td>
@@ -111,7 +157,7 @@
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
                               <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
                               <c:if test="${r'${'}${mode? uncap_first}.id!=null${r'}'}">
                                   <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
                               </c:if>

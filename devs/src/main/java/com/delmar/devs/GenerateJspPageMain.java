@@ -5,26 +5,14 @@ import com.delmar.core.api.ApiResult;
 import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
-import com.delmar.core.model.*;
-import com.delmar.core.model.Window;
 import com.delmar.core.service.TableService;
+import com.delmar.devs.def.ValidationDef;
 import com.delmar.devs.ftl.FreeMarkerHelper;
-import com.delmar.devs.model.ColumnInfo;
-import com.delmar.devs.model.FormLine;
-import com.delmar.devs.model.GenModelDto;
-import com.delmar.devs.model.JspListProp;
-import com.delmar.utils.BeanHelper;
+import com.delmar.devs.model.*;
 import com.delmar.utils.CommonConverter;
 import com.delmar.utils.DateTimeDecorator;
 import com.delmar.utils.StringUtil;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import org.apache.commons.beanutils.BeanUtils;
 
-import java.awt.*;
-import java.io.*;
-import java.lang.reflect.*;
 import java.util.*;
 import java.util.List;
 
@@ -48,7 +36,7 @@ public class GenerateJspPageMain {
         this.module = module;
         this.namespace = "/" + module;
         this.tableMetaDataDto = tableMetaDataDto;
-        this.tableService=tableService;
+        this.tableService = tableService;
     }
 
     public void generateJspPage() {
@@ -63,7 +51,7 @@ public class GenerateJspPageMain {
     }
 
     public void generateFormPage() {
-        List<JspListProp> jspFormPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
+        List<JspModelProp> jspFormPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
         Map root = new HashMap();
         root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
         root.put("title", model.getRemark());
@@ -78,21 +66,20 @@ public class GenerateJspPageMain {
         root.put("propertyList", jspFormPropList);
         List<FormLine> formLines = new ArrayList<FormLine>();
         List<GenModelDto> genModelDtoList = this.model.getIncludeModelList();
-        if(genModelDtoList!=null)
-        for (GenModelDto genModelDto : genModelDtoList) {
-            FormLine formLine = new FormLine();
-            formLine.setLabel(genModelDto.getRemark());
-            formLine.setModel(genModelDto.getModelName());
+        if (genModelDtoList != null)
+            for (GenModelDto genModelDto : genModelDtoList) {
+                FormLine formLine = new FormLine();
+                formLine.setLabel(genModelDto.getRemark());
+                formLine.setModel(genModelDto.getModelName());
 
-            ApiResult<TableMetaDataDto> apiResult = tableService.getTableDescription(genModelDto.getTableName());
-            TableMetaDataDto tableMetaDataDto = apiResult.getData();
+                ApiResult<TableMetaDataDto> apiResult = tableService.getTableDescription(genModelDto.getTableName());
+                TableMetaDataDto tableMetaDataDto = apiResult.getData();
 
-            List<JspListProp> linePropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), tableMetaDataDto);
-            formLine.setPropertyList(linePropList);
-            formLines.add(formLine);
-        }
-        if(formLines.size()>0)
-        {
+                List<JspModelProp> linePropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), tableMetaDataDto);
+                formLine.setPropertyList(linePropList);
+                formLines.add(formLine);
+            }
+        if (formLines.size() > 0) {
             root.put("lineList", formLines);
         }
 
@@ -101,7 +88,7 @@ public class GenerateJspPageMain {
     }
 
     public void generateListPage() {
-        List<JspListProp> jspListPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
+        List<JspModelProp> jspListPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
         Map root = new HashMap();
         root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
         root.put("title", model.getRemark());
@@ -114,14 +101,15 @@ public class GenerateJspPageMain {
         FreeMarkerHelper.getInstance().outFile("listPage.ftl", root, "src/main/webapp" + namespace + "/" + com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()) + "List.jsp", true);
     }
 
-    private List<JspListProp> getOutPutList(String mode, TableMetaDataDto tableData) {
+    private List<JspModelProp> getOutPutList(String mode, TableMetaDataDto tableData) {
         String modeName = com.delmar.utils.StringUtil.upperFirstChar(mode);
 
-        List<JspListProp> jspFormPropList = new ArrayList<JspListProp>();
+        List<JspModelProp> jspFormPropList = new ArrayList<JspModelProp>();
         List<ColumnMetaDataDto> columnMetaDataDtoList = tableData.getColumnList();
 
         for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
             ColumnInfo columnInfo = new ColumnInfo();
+            List<Integer> validationList = new ArrayList<>();
             try {
                 CommonConverter.copyProperties(columnMetaDataDto, columnInfo);
             } catch (Exception e) {
@@ -132,15 +120,41 @@ public class GenerateJspPageMain {
                 continue;
             }
             boolean date = false;
-            if (columnInfo.getDataType() == ColumnDataType.DATE.getKey()) {
-                date = true;
-            }
+            ColumnDataType[] columnDataTypes = ColumnDataType.values();
+
             boolean isreadOnly = IntelliKeyWord.isReadOnly(columnInfo.getPropertyName());
+            if(!isreadOnly)
+            {
+                switch (columnDataTypes[columnInfo.getDataType()]) {
+                    case DATE: {
+                        validationList.add(ValidationDef.DATE.getKey());
+                        break;
+                    }
+                    case INT: {
+                        validationList.add(ValidationDef.INT.getKey());
+                        break;
+                    }
+                    case FLOAT:
+                    case DECIMAL: {
+                        validationList.add(ValidationDef.FLOAT.getKey());
+                        break;
+                    }
+                }
+                if (!columnInfo.getNullable()) {
+                    validationList.add(ValidationDef.REQUIRED.getKey());
+                }
+                if (columnInfo.getDataType() == ColumnDataType.DATE.getKey()) {
+                    date = true;
+                    validationList.add(ValidationDef.DATE.getKey());
+                }
+            }
+
             String label = IntelliKeyWord.getLabel(columnInfo.getPropertyName());
             if (label == null) {
                 label = columnInfo.getPropertyName();
             }
-            JspListProp jspListProp = new JspListProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
+            JspModelProp jspListProp = new JspModelProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
+            jspListProp.setRequired(!columnInfo.getNullable());
             if (IntelliKeyWord.isBooleanTag(columnInfo.getPropertyName())) {
                 jspListProp.setBooleanTag(true);
             }
@@ -154,6 +168,9 @@ public class GenerateJspPageMain {
                 jspListProp.setCssStyle("cssStyle=\"" + width + "\"");
             } else {
                 jspListProp.setCssStyle("");
+            }
+            if (validationList.size() > 0) {
+                jspListProp.setValidationList(validationList);
             }
             jspFormPropList.add(jspListProp);
         }

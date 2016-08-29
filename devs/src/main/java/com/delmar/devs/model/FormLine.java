@@ -12,5 +12,5 @@ public class FormLine {
     private String label;
     private String model;
     private String module;
-    private List<JspListProp> propertyList;
+    private List<JspModelProp> propertyList;
 }
