@@ -40,6 +40,11 @@
         {
             $("#selectDiv").dialog('close');
         }
+        function search()
+        {
+            closeDialog();
+            document.forms[0].submit();
+        }
     </script>
 </head>
 <body >

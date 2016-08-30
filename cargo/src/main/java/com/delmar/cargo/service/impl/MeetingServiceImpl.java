@@ -23,7 +23,7 @@ import com.delmar.cargo.model.MeetingTopic;
 import com.delmar.cargo.dao.MeetingParticipantDao;
 import com.delmar.cargo.dao.MeetingTopicDao;
 /**
- * @author 刘大磊 2016-08-30 17:40:14
+ * @author 刘大磊 2016-08-30 22:15:08
  */
 @Service("meetingService")
 public class MeetingServiceImpl extends CoreServiceImpl<Meeting> implements
@@ -80,12 +80,20 @@ meetingTopicDao.deleteByExample(meetingTopicParam);
 	{
 		Map<String,Object> param=new HashMap<String,Object>();
         param.put("meetingId",meetingId);
+		if(meetingId==null)
+		{
+			return new java.util.ArrayList<MeetingParticipant>();
+		}
 		return meetingParticipantDao.selectByExample(param);
 	}
 	public List<MeetingTopic> getMeetingTopicListByMeetingId(Integer meetingId)
 	{
 		Map<String,Object> param=new HashMap<String,Object>();
         param.put("meetingId",meetingId);
+		if(meetingId==null)
+		{
+			return new java.util.ArrayList<MeetingTopic>();
+		}
 		return meetingTopicDao.selectByExample(param);
 	}
 }

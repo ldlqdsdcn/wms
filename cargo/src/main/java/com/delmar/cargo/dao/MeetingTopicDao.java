@@ -11,7 +11,7 @@ import com.delmar.cargo.model.MeetingTopic;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-08-30 17:40:14
+ * @author 刘大磊 2016-08-30 22:15:08
  */
 public interface MeetingTopicDao extends CoreDao<MeetingTopic> {
 

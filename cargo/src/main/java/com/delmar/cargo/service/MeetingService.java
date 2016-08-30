@@ -14,7 +14,7 @@ import com.delmar.cargo.model.MeetingParticipant;
 import com.delmar.cargo.model.MeetingTopic;
 import java.util.List;
 /**
- * @author 刘大磊 2016-08-30 17:40:14
+ * @author 刘大磊 2016-08-30 22:15:08
  */
 public interface MeetingService extends CoreService<Meeting> {
 	/**

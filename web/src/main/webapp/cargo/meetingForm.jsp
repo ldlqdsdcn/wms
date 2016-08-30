@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-30 17:40:14
+  Date: 2016-08-30 22:15:08
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -109,7 +109,7 @@ editForm.submit();
 
 
             if (!validateDateTime($("#endTime").val())) {
-            alert("介绍时间必须为日期时间");
+            alert("结束时间必须为日期时间");
             $("#endTime").focus();
             return false;
             }
@@ -117,14 +117,14 @@ editForm.submit();
 
 
             if (isEmpty($("#endTime").val())) {
-            alert("介绍时间不允许为空");
+            alert("结束时间不允许为空");
             $("#endTime").focus();
             return false;
             }
 
 
             if (!validateDateTime($("#endTime").val())) {
-            alert("介绍时间必须为日期时间");
+            alert("结束时间必须为日期时间");
             $("#endTime").focus();
             return false;
             }
@@ -142,8 +142,20 @@ $("input[name^=meetingParticipantList]").each(function(i, item){
 
 
 
+
+
+
+
+
+
 });
 $("input[name^=meetingTopicList]").each(function(i, item){
+
+
+
+
+
+
 
 
 
@@ -227,7 +239,7 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="endTime" value="介绍时间" ></s:label></td>
+                        <td width="20%"><s:label for="endTime" value="结束时间" ></s:label></td>
                         <td width="30%">
                         
                         <s:textfield name="meeting.endTime" id="endTime" >
@@ -347,6 +359,9 @@ $("input[name^=meetingTopicList]").each(function(i, item){
             <th>序号</th>
             <th >名称</th>
             <th >角色</th>
+            <th >userId</th>
+            <th >组织</th>
+            <th >实体</th>
             </thead>
             <tbody>
             <s:iterator value="meetingParticipantList" status="st">
@@ -370,6 +385,21 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                     <s:textfield
                             name="%{'meetingParticipantList['+#st.index+'].role'}">
                     </s:textfield> 
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingParticipantList['+#st.index+'].userId'}">
+                    </s:textfield> <span style="color:red">*</span>
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingParticipantList['+#st.index+'].orgId'}">
+                    </s:textfield> <span style="color:red">*</span>
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingParticipantList['+#st.index+'].clientId'}">
+                    </s:textfield> <span style="color:red">*</span>
                         <s:hidden name="%{'meetingParticipantList['+#st.index+'].meetingId'}"></s:hidden>
                 </td>
 
@@ -420,6 +450,9 @@ $("input[name^=meetingTopicList]").each(function(i, item){
             <th>序号</th>
             <th >标题</th>
             <th >等级</th>
+            <th >userId</th>
+            <th >组织</th>
+            <th >实体</th>
             </thead>
             <tbody>
             <s:iterator value="meetingTopicList" status="st">
@@ -443,6 +476,21 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                     <s:textfield
                             name="%{'meetingTopicList['+#st.index+'].level'}">
                     </s:textfield> 
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingTopicList['+#st.index+'].userId'}">
+                    </s:textfield> <span style="color:red">*</span>
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingTopicList['+#st.index+'].orgId'}">
+                    </s:textfield> <span style="color:red">*</span>
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meetingTopicList['+#st.index+'].clientId'}">
+                    </s:textfield> <span style="color:red">*</span>
                         <s:hidden name="%{'meetingTopicList['+#st.index+'].meetingId'}"></s:hidden>
                 </td>
 

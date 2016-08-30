@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-30 17:40:14
+  Date: 2016-08-30 22:15:08
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -88,7 +88,7 @@
                                                                                     />
 
 
-        <display:column property="endTime"  escapeXml="true" title="介绍时间" sortable="true"
+        <display:column property="endTime"  escapeXml="true" title="结束时间" sortable="true"
         
                  decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"
                                                                                     />

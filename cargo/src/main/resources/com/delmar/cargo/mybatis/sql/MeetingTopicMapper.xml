@@ -6,6 +6,9 @@
             <result column="title" property="title" jdbcType="VARCHAR" />
             <result column="meeting_id" property="meetingId" jdbcType="INTEGER" />
             <result column="level" property="level" jdbcType="VARCHAR" />
+            <result column="user_id" property="userId" jdbcType="INTEGER" />
+            <result column="org_id" property="orgId" jdbcType="INTEGER" />
+            <result column="client_id" property="clientId" jdbcType="INTEGER" />
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
@@ -16,7 +19,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   title,   meeting_id,   level 
+      id,   title,   meeting_id,   level,   user_id,   org_id,   client_id 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -52,8 +55,8 @@
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into b_meeting_topic (     title,   meeting_id,   level )
-        values (  #{title,jdbcType=VARCHAR}, #{meetingId,jdbcType=INTEGER}, #{level,jdbcType=VARCHAR} )
+        insert into b_meeting_topic (     title,   meeting_id,   level,   user_id,   org_id,   client_id )
+        values (  #{title,jdbcType=VARCHAR}, #{meetingId,jdbcType=INTEGER}, #{level,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER} )
     </insert>
     <insert id="insertSelective" parameterType="com.delmar.cargo.model.MeetingTopic" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -70,6 +73,15 @@
                 <if test="level != null" >
                     level,
                 </if>
+                <if test="userId != null" >
+                    user_id,
+                </if>
+                <if test="orgId != null" >
+                    org_id,
+                </if>
+                <if test="clientId != null" >
+                    client_id,
+                </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
     <if test="title != null" >
@@ -80,6 +92,15 @@
     </if>
     <if test="level != null" >
     #{level,jdbcType=VARCHAR}},
+    </if>
+    <if test="userId != null" >
+    #{userId,jdbcType=VARCHAR}},
+    </if>
+    <if test="orgId != null" >
+    #{orgId,jdbcType=VARCHAR}},
+    </if>
+    <if test="clientId != null" >
+    #{clientId,jdbcType=VARCHAR}},
     </if>
         </trim>
     </insert>
@@ -101,6 +122,15 @@
     <if test="level != null" >
         level = #{level,jdbcType=VARCHAR},
     </if>
+    <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+    </if>
+    <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+    </if>
+    <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=INTEGER},
+    </if>
 
         </set>
         where id = #{id,jdbcType=INTEGER}
@@ -113,7 +143,13 @@
 
             meeting_id = #{meetingId,jdbcType=INTEGER},
 
-            level = #{level,jdbcType=VARCHAR}
+            level = #{level,jdbcType=VARCHAR},
+
+            user_id = #{userId,jdbcType=INTEGER},
+
+            org_id = #{orgId,jdbcType=INTEGER},
+
+            client_id = #{clientId,jdbcType=INTEGER}
 
         where id = #{id,jdbcType=INTEGER}
     </update>

@@ -5,7 +5,7 @@ import com.delmar.core.model.CoreModel;
 import lombok.Data;
  /**
   * table name b_meeting
-  * Date:2016-08-30 17:40:14
+  * Date:2016-08-30 22:15:08
   **/
 @Data
 public class Meeting extends CoreModel {
