@@ -36,5 +36,6 @@ public class JspModelProp {
     private String module;
     private boolean foreign;
     private boolean required;
+    private int decoratorType;
     private List<Integer> validationList;
 }

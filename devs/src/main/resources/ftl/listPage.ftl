@@ -28,7 +28,7 @@
             highlightTableRows("list");
             $('#search_but').click(function()
             {
-                openDialog('core_window');
+                openDialog('${module}_${mode}');
             });
         });
         function openDialog(url)
@@ -54,7 +54,7 @@
                 <table id="normalQuery" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td>
-                            <input type="button" value="查询" class="input_submit">
+                            <input type="button" value="查询" class="input_submit" id="search_but">
                             <s:submit method="create" cssClass="input_submit" value="新建"></s:submit>
                             <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"></s:submit>
                         </td>
@@ -78,9 +78,23 @@
         </display:column>
         <display:column property="${prop.prop}" media="csv excel xml pdf rtf"	title="${prop.label}" />
         <#else>
-        <#--TODO foreign 需要改掉-->
-        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" sortable="true" <#if  prop.date >decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"</#if><#if prop.foreign>decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"</#if>/>
+        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" sortable="true"
+        
+                <#if prop.decoratorType==1>
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                </#if>
+                <#if prop.decoratorType==2> decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"
+                </#if>
+                        <#if prop.decoratorType==3>decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                        </#if>
+                        <#if prop.decoratorType==4>decorator="com.delmar.base.web.displaytag.decorator.OrgDecorator"
+                        </#if>
+                        <#if prop.decoratorType==5>decorator="com.delmar.system.web.displaytag.decorator.ClientDecorator"
+                        </#if>
+            />
         </#if>
+
+
         </#list>
     </display:table>
 </td>

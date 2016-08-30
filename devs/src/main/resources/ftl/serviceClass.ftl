@@ -81,6 +81,10 @@ ${line.model?uncap_first}Dao.deleteByExample(${line.model?uncap_first}Param);
 	{
 		Map<String,Object> param=new HashMap<String,Object>();
         param.put("${modelname?uncap_first}Id",${modelname?uncap_first}Id);
+		if(${modelname?uncap_first}Id==null)
+		{
+			return new java.util.ArrayList<${line.model}>();
+		}
 		return ${line.model?uncap_first}Dao.selectByExample(param);
 	}
 	</#list>

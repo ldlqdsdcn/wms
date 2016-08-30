@@ -29,7 +29,7 @@
     <select  class="form-control" id="opearType" ng-model="currentColumn.opearType" ng-options="m for m in  currentColumn.relOpearList">
     </select>
   </div>
-  <div class="form-group" ng-switch="column.inputType">
+  <div class="form-group">
     <input type="text" class="form-control" ng-model="currentColumn.value"  ng-show="currentColumn.inputType==1">
     <select  class="form-control"  ng-model="currentColumn.value" ng-options="option.key as option.label for option in currentColumn.commonSearchResultList" ng-show="currentColumn.inputType==2"></select>
     <input type="text"  ng-show="currentColumn.inputType==3" class="form-control" id="value-date"  ng-model="currentColumn.value">
@@ -44,8 +44,8 @@
     <table id="column_list"  class="table table-hover table-bordered">
       <thead>
       <th>字段</th>
-      <th></th>
-      <th>条件</th>
+      <th>比较符</th>
+      <th>值</th>
       <th></th>
       </thead>
       <tbody>
@@ -53,7 +53,14 @@
         <td>{{x.columnLabel}}</td>
         <td>{{x.opearType}}</td>
         <td>
-         {{x.value}}
+          <div ng-switch="x.inputType">
+            <div ng-switch-when="2">
+              <select   ng-model="x.value" ng-options="option.key as option.label for option in x.commonSearchResultList" disabled="disabled"></select>
+            </div>
+            <div ng-switch-default>
+              {{x.value}}
+            </div>
+          </div>
         </td>
         <td><button  type="button" class="btn btn-default" ng-click="delete(x)"  >删除</button></td>
       </tr>

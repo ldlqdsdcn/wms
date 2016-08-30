@@ -6,6 +6,7 @@ import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.service.TableService;
+import com.delmar.devs.def.DecoratorType;
 import com.delmar.devs.def.ValidationDef;
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.*;
@@ -93,6 +94,7 @@ public class GenerateJspPageMain {
         root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
         root.put("title", model.getRemark());
         root.put("namespace", namespace);
+        root.put("module",model.getModule());
         root.put("user", user);
         Date date = new Date();
         String datetime = DateTimeDecorator.dateToLongString(date);
@@ -119,6 +121,7 @@ public class GenerateJspPageMain {
             if (IntelliKeyWord.hasSkipped(columnInfo.getPropertyName())) {
                 continue;
             }
+
             boolean date = false;
             ColumnDataType[] columnDataTypes = ColumnDataType.values();
 
@@ -154,6 +157,7 @@ public class GenerateJspPageMain {
                 label = columnInfo.getPropertyName();
             }
             JspModelProp jspListProp = new JspModelProp(columnInfo.getPropertyName(), label, date, !isreadOnly);
+
             jspListProp.setRequired(!columnInfo.getNullable());
             if (IntelliKeyWord.isBooleanTag(columnInfo.getPropertyName())) {
                 jspListProp.setBooleanTag(true);
@@ -172,6 +176,28 @@ public class GenerateJspPageMain {
             if (validationList.size() > 0) {
                 jspListProp.setValidationList(validationList);
             }
+
+            if(columnInfo.getDataType()==ColumnDataType.DATE.getKey())
+            {
+                if(columnInfo.getColumnName().toUpperCase().indexOf("TIME")!=-1)
+                {
+                    jspListProp.setDecoratorType(DecoratorType.DATETIME.getKey());
+                }
+                else
+                {
+                    jspListProp.setDecoratorType(DecoratorType.DATE.getKey());
+                }
+            }
+            else
+            {
+                jspListProp.setDecoratorType(IntelliKeyWord.getDecorator(jspListProp.getProp()));
+            }
+            if(IntelliKeyWord.isNotValidate(columnInfo.getPropertyName()))
+            {
+                jspListProp.setValidationList(null);
+
+            }
+
             jspFormPropList.add(jspListProp);
         }
         return jspFormPropList;

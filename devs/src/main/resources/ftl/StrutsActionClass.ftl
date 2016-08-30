@@ -7,7 +7,7 @@
 package ${packagename};
 
 import java.util.List;
-
+import com.delmar.sys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
@@ -113,7 +113,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		Map<String,Object> param=new HashedMap();
+		Map<String,Object> param=new HashMap();
 		param.put("searchString",getSearchWhere());
 		return ${modelObjname}Service.selectByExample(param);
 	}

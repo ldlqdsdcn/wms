@@ -12,6 +12,7 @@ import java.util.List;
 import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.service.SearchService;
+import com.delmar.sys.model.User;
 import com.delmar.system.web.WebConst;
 import org.apache.struts2.ServletActionContext;
 
@@ -247,5 +248,10 @@ public abstract class CoreEditPrivAction extends CoreAction {
 		id=ids.get(i+1);
 		return edit();
 	}
+	public User getUserInSession()
+	{
+		return	(User)FacesUtils.getSession().getAttribute(WebConst.SESSION_ACTUALUSER);
+	}
+
 
 }

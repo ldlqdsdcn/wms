@@ -21,6 +21,7 @@ import com.delmar.core.service.SearchService;
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -153,6 +154,10 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
     public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchId", searchId);
+        if(searchId==null)
+        {
+            return new ArrayList<SearchColumn>();
+        }
         return searchColumnDao.selectByExample(param);
     }
 }

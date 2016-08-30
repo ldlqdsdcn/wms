@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by admin on 2016/8/26.
  */
 public class FreeMarkerHelper {
-    private static String  genmodelpath="D:\\projects\\delmar_platform\\core\\";
+    private static String  genmodelpath="D:\\projects\\delmar_platform\\cargo\\";
     private static String genActionPath="D:\\projects\\delmar_platform\\web\\";
     private static FreeMarkerHelper freeMarkerHelper;
     private Configuration config = new Configuration();

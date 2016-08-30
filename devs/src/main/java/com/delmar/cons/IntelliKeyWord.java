@@ -1,5 +1,7 @@
 package com.delmar.cons;
 
+import com.delmar.devs.def.DecoratorType;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +21,7 @@ public class IntelliKeyWord {
     private static Set<String> SQL_KEY_WORD_MAP=new HashSet<String>();
     private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
     private static Set<String> NOT_NEED_VAL_COLUMN_SET=new HashSet<>();
+    private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<>();
     static
     {
         LABEL_MAP.put("name","名称");
@@ -37,9 +40,11 @@ public class IntelliKeyWord {
         LABEL_MAP.put("value","键值");
         LABEL_MAP.put("msgtext","信息");
         LABEL_MAP.put("bgnTime","开始时间");
-        LABEL_MAP.put("endTime","介绍时间");
+        LABEL_MAP.put("endTime","结束时间");
         LABEL_MAP.put("bgnDate","开始日期");
         LABEL_MAP.put("endDate","结束日期");
+        LABEL_MAP.put("orgId","组织");
+        LABEL_MAP.put("clientId","实体");
         READ_ONLY_SET.add("created");
         READ_ONLY_SET.add("createdby");
         READ_ONLY_SET.add("updated");
@@ -51,6 +56,9 @@ public class IntelliKeyWord {
         FIELD_WIDTH_MAP.put("remark","width:500px;");
         FOREIGN_MAP.put("createdby","user");
         FOREIGN_MAP.put("updatedby","user");
+        FOREIGN_MAP.put("userId","user");
+        FOREIGN_MAP.put("orgId","org");
+        FOREIGN_MAP.put("clientId","client");
         SQL_KEY_WORD_MAP.add("name");
         SQL_TYPE_MAP.put("INT", "INTEGER");
         SQL_TYPE_MAP.put("INT UNSIGNED","INTEGER");
@@ -61,7 +69,33 @@ public class IntelliKeyWord {
         NOT_NEED_VAL_COLUMN_SET.add("createdby");
         NOT_NEED_VAL_COLUMN_SET.add("updated");
         NOT_NEED_VAL_COLUMN_SET.add("updatedby");
+        NOT_NEED_VAL_COLUMN_SET.add("org_id");
+        NOT_NEED_VAL_COLUMN_SET.add("client_id");
+        NOT_NEED_VAL_COLUMN_SET.add("user_id");
+        NOT_NEED_VAL_COLUMN_SET.add("orgId");
+        NOT_NEED_VAL_COLUMN_SET.add("clientId");
+        NOT_NEED_VAL_COLUMN_SET.add("userId");
+
+        DISPLAY_DECORATOR_MAP.put("orgId", DecoratorType.ORG.getKey());
+        DISPLAY_DECORATOR_MAP.put("clientId",DecoratorType.CLIENT.getKey());
+        DISPLAY_DECORATOR_MAP.put("userId",DecoratorType.USER.getKey());
+        DISPLAY_DECORATOR_MAP.put("created",DecoratorType.DATETIME.getKey());
+
+        DISPLAY_DECORATOR_MAP.put("updated",DecoratorType.DATETIME.getKey());
+        DISPLAY_DECORATOR_MAP.put("createdby",DecoratorType.USER.getKey());
+        DISPLAY_DECORATOR_MAP.put("updatedby",DecoratorType.USER.getKey());
+
     }
+    public static Integer getDecorator(String propertyKey)
+    {
+        Integer decoType=DISPLAY_DECORATOR_MAP.get(propertyKey);
+        if(decoType==null)
+        {
+            decoType=0;
+        }
+        return decoType;
+    }
+
     public static String getModule(String key)
     {
         return FOREIGN_MAP.get(key);

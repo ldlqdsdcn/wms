@@ -49,13 +49,16 @@ public class GenerateCodeTest {
 //        lineList.add(line1);
 //        modelDto.setIncludeModelList(lineList);
 //        list.add(modelDto);
-        GenModelDto line1=  new GenModelDto("core_search_column","SearchColumn","core","查询字段");
+        GenModelDto line1=  new GenModelDto("b_meeting_participant","MeetingParticipant","cargo","参与人");
         line1.setGenerateService(false);
         list.add(line1);
-
-        GenModelDto modelDto=new GenModelDto("core_search","Search","core","查询模块");
+        GenModelDto line2=  new GenModelDto("b_meeting_topic","MeetingTopic","cargo","讨论内容");
+        line2.setGenerateService(false);
+        list.add(line2);
+        GenModelDto modelDto=new GenModelDto("b_meeting","Meeting","cargo","会议纪要");
         List<GenModelDto> lineList=new ArrayList<>();
         lineList.add(line1);
+        lineList.add(line2);
         modelDto.setIncludeModelList(lineList);
         list.add(modelDto);
 

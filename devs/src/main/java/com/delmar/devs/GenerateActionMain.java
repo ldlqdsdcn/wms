@@ -56,6 +56,9 @@ public class GenerateActionMain {
 
         boolean hasCreated=false;
         boolean hasUpdated=false;
+        boolean hasUserId=false;
+        boolean hasOrgId=false;
+        boolean hasClientId=false;
         for(ColumnMetaDataDto columnMetaDataDto:tableMetaDataDto.getColumnList())
         {
             if(!IntelliKeyWord.isNotValidate(columnMetaDataDto.getColumnName()))
@@ -79,10 +82,24 @@ public class GenerateActionMain {
             if(columnMetaDataDto.getColumnName().equalsIgnoreCase("created"))
             {
                  hasCreated=true;
-            }
+            } else
             if(columnMetaDataDto.getColumnName().equalsIgnoreCase("updated"))
             {
                  hasUpdated=true;
+            } else
+            if(columnMetaDataDto.getColumnName().equalsIgnoreCase("user_id"))
+            {
+                hasUserId=true;
+            }
+            else
+            if(columnMetaDataDto.getColumnName().equalsIgnoreCase("org_id"))
+            {
+                hasOrgId=true;
+            }
+            else
+            if(columnMetaDataDto.getColumnName().equalsIgnoreCase("client_id"))
+            {
+                hasClientId=true;
             }
 
         }
@@ -99,6 +116,9 @@ public class GenerateActionMain {
         root.put("datetime", datetime);
         root.put("hasCreated", hasCreated);
         root.put("hasUpdated", hasUpdated);
+        root.put("hasClientId", hasClientId);
+        root.put("hasOrgId", hasOrgId);
+        root.put("hasUserId", hasUserId);
         //gc.setTime(date);
         try {
 
