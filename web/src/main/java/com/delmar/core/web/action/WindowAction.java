@@ -8,6 +8,8 @@ package com.delmar.core.web.action;
 
 import java.util.List;
 
+import com.delmar.core.web.util.FacesUtils;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.core.model.Window;
 import com.delmar.core.service.WindowService;
 import java.util.Date;
+import java.util.Map;
+
 /**
  * @author 刘大磊 2016-08-28 17:16:34
  */
@@ -84,7 +88,9 @@ public class WindowAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return windowService.selectByExample(null);
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return windowService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)
@@ -99,15 +105,15 @@ public class WindowAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
-Date date=new Date();
-Integer currentUserId=getCurrentUser();
-if(window.isnew())
-{
-window.setCreated(date);
-window.setCreatedby(currentUserId);
-}
-window.setUpdated(date);
-window.setUpdatedby(currentUserId);
+		Date date=new Date();
+		Integer currentUserId=getCurrentUser();
+		if(window.isnew())
+		{
+			window.setCreated(date);
+			window.setCreatedby(currentUserId);
+		}
+		window.setUpdated(date);
+		window.setUpdatedby(currentUserId);
 		windowService.saveWindow(window);
 		return "edit";
 	}

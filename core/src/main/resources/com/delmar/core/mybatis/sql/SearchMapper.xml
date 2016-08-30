@@ -20,7 +20,7 @@
     
     <sql id="Example_Where_Clause" >
         <where >
-              <if test="pageUrl!=null"> and page_url= #{pageUrl,jdbcType=VARCHAR}} </if>
+              <if test="pageUrl!=null"> and page_url= #{pageUrl,jdbcType=VARCHAR} </if>
         </where>
     </sql>
     <sql id="Base_Column_List" >

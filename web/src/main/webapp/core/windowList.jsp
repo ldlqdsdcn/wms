@@ -29,23 +29,22 @@ System.out.println("-------------url="+url);%>
             highlightTableRows("list");
             $('#search_but').click(function()
             {
-                openDialog('/system/user_list.action');
+                openDialog('core_window');
             });
         });
-
         function openDialog(url)
         {
             document.getElementById('selectIframe').src='<c:url value='/commons/searchPage.do'/>?action_value='+url;
             $('#selectDiv').dialog('open');
-
-
         }
         function closeDialog()
         {
-
-
             $("#selectDiv").dialog('close');
-
+        }
+        function search()
+        {
+            closeDialog();
+            document.forms[0].submit();
         }
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8"/>

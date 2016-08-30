@@ -9,19 +9,25 @@ package com.delmar.core.web.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.delmar.common.vo.SearchColumnVo;
+import com.delmar.core.dto.SearchColumnDto;
+import com.delmar.core.service.SearchService;
+import com.delmar.system.web.WebConst;
 import org.apache.struts2.ServletActionContext;
 
 import com.delmar.core.model.CoreModel;
 import com.delmar.core.service.exception.ServiceException;
 import com.delmar.core.web.util.FacesUtils;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author 刘大磊 2015年1月15日 下午4:16:51
  */
 public abstract class CoreEditPrivAction extends CoreAction {
 	protected Integer id;
-
+	@Autowired
+	private SearchService searchService;
 	protected static final String EDIT="edit";
 
 
@@ -45,7 +51,28 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	}
 	
 	
+	public String getSearchWhere()
+	{
+		List<SearchColumnVo> list=(List)FacesUtils.getValueInHashtableOfSession(WebConst.SESSION_SEARCH_CONDITIONS);
+		if(list==null||list.size()==0)
+		{
+			return null;
+		}
+		else
+		{
 
+			List<SearchColumnDto> searchColumnDtoList=new ArrayList<>();
+			for(SearchColumnVo vo:list)
+			{
+				SearchColumnDto searchColumnDto=new SearchColumnDto();
+				searchColumnDto.setOpearType(vo.getOpearType());
+				searchColumnDto.setColumnId(vo.getColumnId());
+				searchColumnDto.setValue(vo.getValue());
+				searchColumnDtoList.add(searchColumnDto);
+			}
+			return searchService.buildSqlBySearchColumnList(searchColumnDtoList);
+		}
+	}
 	
 	/**
 	 * 新建表单
@@ -96,7 +123,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 
 		return returnUrl;
 	}
-	
+
 	/**
 	 * 
 	 * @return

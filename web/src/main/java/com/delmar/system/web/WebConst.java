@@ -20,6 +20,8 @@ public class WebConst {
 	public static final String SESSION_THIRDPARTYUSERMAP="userthirdpartyUserMap";
 	//也是采用MAP的形式存储，不过VALUE为用户的LIST
 	public static final String SESSION_THIRDPARTYUSER="userthirdpartyUser";
+
+	public static final String SESSION_SEARCH_CONDITIONS="searchConditions";
 	
 	
 }

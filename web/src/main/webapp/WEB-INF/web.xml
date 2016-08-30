@@ -19,9 +19,26 @@
     <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
     <param-value>zh_CN</param-value>
   </context-param>
-  
- 
-    
+  <mime-mapping>
+    <extension>woff</extension>
+    <mime-type>application/x-font-woff</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>woff2</extension>
+    <mime-type>application/x-font-woff</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>ttf</extension>
+    <mime-type>application/x-font-ttf</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>svg</extension>
+    <mime-type>image/svg+xml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>eot</extension>
+    <mime-type>application/vnd.ms-fontobject</mime-type>
+  </mime-mapping>
       
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

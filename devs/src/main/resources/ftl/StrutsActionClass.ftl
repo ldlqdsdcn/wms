@@ -28,6 +28,8 @@ import ${servicepackage}.${modelname}Service;
 <#if lineList?exists>
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 <#list lineList as item>
@@ -99,7 +101,7 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	@Override
 	public void editForm() {
 		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
-<#if lineList?exists>
+		<#if lineList?exists>
 		<#list lineList as item>
 		${item.model?uncap_first}List=${modelObjname}Service.get${item.model}ListBy${modelname}Id(id);
 		</#list></#if>
@@ -111,7 +113,9 @@ public class ${modelname}Action extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return ${modelObjname}Service.selectByExample(null);
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return ${modelObjname}Service.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

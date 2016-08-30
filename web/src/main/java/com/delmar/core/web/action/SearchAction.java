@@ -127,6 +127,7 @@ public class SearchAction extends CoreEditPrivAction {
     @SkipValidation
     public String addSearchColumn()
     {
+		init();
     SearchColumn  searchColumn=new SearchColumn();
 	searchColumnList.add(searchColumn);
     return "edit";
@@ -134,6 +135,7 @@ public class SearchAction extends CoreEditPrivAction {
     @SkipValidation
     public String deleteSearchColumns()
     {
+		init();
     String[] ids=ServletActionContext.getRequest().getParameterValues("SearchColumn_ids");
     List<String> idList=new ArrayList<String>();
 

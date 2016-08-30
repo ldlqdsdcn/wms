@@ -8,6 +8,7 @@
 
 package com.delmar.core.service;
 
+import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.model.CommonSearchParam;
 import com.delmar.core.model.CommonSearchResult;
 import com.delmar.core.model.Search;
@@ -29,5 +30,6 @@ public interface SearchService extends CoreService<Search> {
 	public List<CommonSearchResult> getCommonSearchListByColumnId(Integer columnId);
 	public Search getSearchByPageUrl(String pageUrl);
 
+	public String buildSqlBySearchColumnList(List<SearchColumnDto> searchColumnDtoList);
 
 }
