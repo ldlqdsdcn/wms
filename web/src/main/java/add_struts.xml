@@ -1,0 +1,5 @@
+	<action name="meeting_*" class="com.delmar.cargo.web.action.MeetingAction" method="{1}">
+		<result name="list">/cargo/meetingList.jsp</result>
+		<result name="edit">/cargo/meetingForm.jsp</result>
+        <result name="input">/cargo/meetingForm.jsp</result>
+	</action>

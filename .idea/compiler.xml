@@ -33,14 +33,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="base" target="1.5" />
-      <module name="cargo" target="1.5" />
-      <module name="common" target="1.5" />
+      <module name="base" target="1.7" />
+      <module name="cargo" target="1.7" />
+      <module name="common" target="1.7" />
       <module name="core" target="1.7" />
-      <module name="delmar_platform" target="1.5" />
-      <module name="devs" target="1.5" />
-      <module name="system" target="1.5" />
-      <module name="utils" target="1.5" />
+      <module name="delmar_platform" target="1.7" />
+      <module name="devs" target="1.7" />
+      <module name="system" target="1.7" />
+      <module name="utils" target="1.7" />
       <module name="web" target="1.7" />
     </bytecodeTargetLevel>
   </component>

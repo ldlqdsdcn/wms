@@ -99,10 +99,7 @@
 			<result name="list">/core/messageList.jsp</result>
 			<result name="edit">/core/messageForm.jsp</result>
 		</action>
-		<action name="meeting_*" class="com.delmar.core.web.action.MeetingAction" method="{1}">
-			<result name="list">/core/meetingList.jsp</result>
-			<result name="edit">/core/meetingForm.jsp</result>
-		</action>
+
 	</package>
 
 	<package name="base" namespace="/base" extends="default">
@@ -288,6 +285,16 @@
 
 
 	<package name="cargo" namespace="/cargo" extends="default">
+		<action name="production_*" class="com.delmar.cargo.web.action.ProductionAction" method="{1}">
+			<result name="list">/cargo/productionList.jsp</result>
+			<result name="edit">/cargo/productionForm.jsp</result>
+			<result name="input">/cargo/productionForm.jsp</result>
+		</action>
+		<action name="meeting_*" class="com.delmar.cargo.web.action.MeetingAction" method="{1}">
+			<result name="list">/cargo/meetingList.jsp</result>
+			<result name="edit">/cargo/meetingForm.jsp</result>
+			<result name="input">/cargo/meetingForm.jsp</result>
+		</action>
 
 
 
