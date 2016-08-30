@@ -10,6 +10,6 @@ public class CommonSearchParam {
     private String keyValue;
     private String labelValue;
     private String tableName;
-    private String searchString;
+    private String conditions;
 
 }

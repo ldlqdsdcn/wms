@@ -11,6 +11,7 @@ import com.delmar.core.def.SearchDataTypeDef;
 import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.model.CommonSearchParam;
 import com.delmar.core.model.CommonSearchResult;
+import com.delmar.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,7 +75,8 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
         CommonSearchParam param = new CommonSearchParam();
         param.setKeyValue(searchColumn.getFkKeyColumn());
         param.setLabelValue(searchColumn.getFkLabelColumn());
-        param.setSearchString(searchColumn.getCoditions());
+        if(StringUtil.isNotEmpty(searchColumn.getCoditions()))
+        param.setConditions(searchColumn.getCoditions());
         param.setTableName(searchColumn.getFkTable());
         return searchDao.selectCommonList(param);
     }
@@ -112,28 +114,31 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
 
         switch (searchDataTypeDefs[dataTypeIndex]) {
             case CHAR:
-                sqlBuilder.append(searchColumn.getColumnName());
+            {sqlBuilder.append(searchColumn.getColumnName());
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
                 sqlBuilder.append("'%").append(searchColumnDto.getValue().trim()).append("%'");
-                break;
+                break;}
             case FLOAT:
             case NUMBER:
+            {
                 sqlBuilder.append(searchColumn.getColumnName());
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
                 sqlBuilder.append("").append(searchColumnDto.getValue().trim()).append("");
-                break;
+                break;}
             case DATE:
-                sqlBuilder.append(String.format("date_format(%s,'%Y-%m-%d')='%s'", searchColumn.getColumnName(), searchColumnDto.getValue()));
+            {
+                sqlBuilder.append("date_format("+searchColumn.getColumnName()+",'%Y-%m-%d')");
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
 
                 sqlBuilder.append("'").append(searchColumnDto.getValue().trim()).append("'");
 
-                break;
+                break;}
             case DATETIME:
-                sqlBuilder.append(String.format("date_format(%s,'%Y-%m-%d %H:%s:%i')='%s'", searchColumn.getColumnName(), searchColumnDto.getValue()));
+            {
+                sqlBuilder.append("date_format("+searchColumn.getColumnName()+",'%Y-%m-%d %H:%s:%i')");
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
                 sqlBuilder.append("'").append(searchColumnDto.getValue().trim()).append("'");
-                break;
+                break;}
         }
         return sqlBuilder.toString();
     }

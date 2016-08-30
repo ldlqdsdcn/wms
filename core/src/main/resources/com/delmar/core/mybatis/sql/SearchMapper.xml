@@ -8,13 +8,13 @@
             <result column="page_url" property="pageUrl" jdbcType="VARCHAR" />
     </resultMap>
     <resultMap id="commonListResult" type="com.delmar.core.model.CommonSearchResult">
-        <result column="key" property="key" jdbcType="VARCHAR" />
-        <result column="label" property="label" jdbcType="VARCHAR" />
+        <result column="c_key" property="key" jdbcType="VARCHAR" />
+        <result column="c_label" property="label" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="selectCommonList" parameterType="com.delmar.core.model.CommonSearchParam">
-        select ${keyValue} as key, ${labelValue} as label from ${tableName}
+    <select id="selectCommonList" parameterType="com.delmar.core.model.CommonSearchParam" resultMap="commonListResult">
+        select ${keyValue} as c_key, ${labelValue} as c_label from ${tableName}
         <where >
-            <if test="searchString!=null"> and ${searchString} </if>
+            <if test="conditions!=null"> and ${conditions} </if>
         </where>
     </select>
     
