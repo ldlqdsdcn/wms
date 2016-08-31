@@ -14,7 +14,7 @@ import com.delmar.cargo.model.MeetingTopic;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-08-30 22:15:08
+ * @author 刘大磊 2016-08-31 15:25:16
  */
 @Repository("meetingTopicDao") 
 public class MeetingTopicDaoMybatis extends CoreDaoMyBatis<MeetingTopic> implements MeetingTopicDao {

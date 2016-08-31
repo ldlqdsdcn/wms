@@ -28,7 +28,7 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 import com.delmar.cargo.model.MeetingParticipant;
 import com.delmar.cargo.model.MeetingTopic;
 /**
- * @author 刘大磊 2016-08-30 22:15:08
+ * @author 刘大磊 2016-08-31 15:25:16
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "meeting.title", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeting.bgnTime",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeting.endTime",message = "不允许为空")})

@@ -1,7 +1,7 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												      *
- *	作者：刘大磊								                                      *
- * 电话：0532-66701118                                                          * 
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：刘大磊								                              *
+ * 电话：0532-66701118                                                        *
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
@@ -18,12 +18,13 @@ import com.delmar.core.service.impl.CoreServiceImpl;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Date;
 import com.delmar.cargo.model.MeetingParticipant;
 import com.delmar.cargo.model.MeetingTopic;
 import com.delmar.cargo.dao.MeetingParticipantDao;
 import com.delmar.cargo.dao.MeetingTopicDao;
 /**
- * @author 刘大磊 2016-08-30 22:15:08
+ * @author 刘大磊 2016-08-31 15:25:16
  */
 @Service("meetingService")
 public class MeetingServiceImpl extends CoreServiceImpl<Meeting> implements
@@ -52,13 +53,33 @@ public class MeetingServiceImpl extends CoreServiceImpl<Meeting> implements
 
 public Integer saveMeeting(Meeting meeting,List<MeetingParticipant> meetingParticipantList,List<MeetingTopic> meetingTopicList) {
 	Integer id=save(meeting);
+	Date now=new Date();
 		for(MeetingParticipant meetingParticipant: meetingParticipantList)
 		{
+			if(meetingParticipant.isnew())
+			{
+				meetingParticipant.setCreated(now);
+				meetingParticipant.setCreatedby(meeting.getUpdatedby());
+			}
+		meetingParticipant.setUpdated(now);
+		meetingParticipant.setUpdatedby(meeting.getUpdatedby());
+		meetingParticipant.setUserId(meeting.getUserId());
+		meetingParticipant.setOrgId(meeting.getOrgId());
+		meetingParticipant.setClientId(meeting.getClientId());
 			meetingParticipant.setMeetingId(id);
 			meetingParticipantDao.save(meetingParticipant);
 		}
 		for(MeetingTopic meetingTopic: meetingTopicList)
 		{
+			if(meetingTopic.isnew())
+			{
+				meetingTopic.setCreated(now);
+				meetingTopic.setCreatedby(meeting.getUpdatedby());
+			}
+		meetingTopic.setUpdated(now);
+		meetingTopic.setUpdatedby(meeting.getUpdatedby());
+		meetingTopic.setUserId(meeting.getUserId());
+		meetingTopic.setClientId(meeting.getClientId());
 			meetingTopic.setMeetingId(id);
 			meetingTopicDao.save(meetingTopic);
 		}
