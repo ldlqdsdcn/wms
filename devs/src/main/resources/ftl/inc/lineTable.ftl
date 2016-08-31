@@ -37,7 +37,9 @@
             <th>序号</th>
             <#list line.propertyList as prop>
                 <#if prop.prop!='id'&&prop.prop!=((mode? uncap_first)+'Id')>
+                    <#if prop.prop!='orgId'&&prop.prop!='userId'&&prop.prop!='clientId'&&prop.prop!='created'&&prop.prop!='createdby'&&prop.prop!='updated'&&prop.prop!='updatedby'>
             <th >${prop.label}</th>
+                    </#if>
                 </#if>
             </#list>
             </thead>
@@ -56,6 +58,7 @@
                     </td>
     <#list line.propertyList as prop>
             <#if prop.prop!='id'&&prop.prop!=((mode? uncap_first)+'Id')>
+               <#if prop.prop!='orgId'&&prop.prop!='userId'&&prop.prop!='clientId'&&prop.prop!='created'&&prop.prop!='createdby'&&prop.prop!='updated'&&prop.prop!='updatedby'>
                 <td>
                     <s:textfield
                             name="%{'${line.model?uncap_first}List['+#st.index+'].${prop.prop}'}">
@@ -64,6 +67,7 @@
                         <s:hidden name="%{'${line.model?uncap_first}List['+#st.index+'].${(mode? uncap_first)+'Id'}'}"></s:hidden>
                     </#if>
                 </td>
+               </#if>
             </#if>
     </#list>
 

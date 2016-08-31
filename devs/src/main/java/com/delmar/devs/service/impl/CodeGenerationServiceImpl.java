@@ -41,7 +41,7 @@ public class CodeGenerationServiceImpl implements CodeGenerationService {
             //生成service
             if(model.isGenerateService())
             {
-                GenerateServiceMain generateServiceMain=new GenerateServiceMain(tableMetaDataDto,model);
+                GenerateServiceMain generateServiceMain=new GenerateServiceMain(tableMetaDataDto,model,tableService);
                 generateServiceMain.generateInterface();
                 generateServiceMain.generateServiceclass();
                 if(model.isGenerateWeb())

@@ -1,7 +1,7 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												      *
- *	作者：刘大磊								                                      *
- * 电话：0532-66701118                                                          * 
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：刘大磊								                              *
+ * 电话：0532-66701118                                                        *
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
@@ -19,6 +19,7 @@ import com.delmar.core.service.impl.CoreServiceImpl;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Date;
 </#if>
 <#list lineList as item>
 import com.delmar.${item.module}.model.${item.model};
@@ -56,9 +57,28 @@ public class ${modelname}ServiceImpl extends CoreServiceImpl<${modelname}> imple
 
 public Integer save${modelname}(${modelname} ${modelname?uncap_first}<#list lineList as item>,List<${item.model}> ${item.model?uncap_first}List</#list>) {
 	Integer id=save(${modelname?uncap_first});
+	Date now=new Date();
 	<#list lineList as item>
 		for(${item.model} ${item.model?uncap_first}: ${item.model?uncap_first}List)
 		{
+		<#if item.hasCreated>
+			if(${item.model?uncap_first}.isnew())
+			{
+				${item.model?uncap_first}.setCreated(now);
+				${item.model?uncap_first}.setCreatedby(${modelname?uncap_first}.getUpdatedby());
+			}
+		${item.model?uncap_first}.setUpdated(now);
+		${item.model?uncap_first}.setUpdatedby(${modelname?uncap_first}.getUpdatedby());
+		</#if>
+		<#if item.hasUserId>
+		${item.model?uncap_first}.setUserId(${modelname?uncap_first}.getUserId());
+		</#if>
+		<#if item.hasOrgId>
+		${item.model?uncap_first}.setOrgId(${modelname?uncap_first}.getOrgId());
+		</#if>
+		<#if item.hasClientId>
+		${item.model?uncap_first}.setClientId(${modelname?uncap_first}.getClientId());
+		</#if>
 			${item.model?uncap_first}.set${modelname}Id(id);
 			${item.model?uncap_first}Dao.save(${item.model?uncap_first});
 		}

@@ -22,6 +22,7 @@ public class IntelliKeyWord {
     private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
     private static Set<String> NOT_NEED_VAL_COLUMN_SET=new HashSet<>();
     private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<>();
+
     static
     {
         LABEL_MAP.put("name","名称");

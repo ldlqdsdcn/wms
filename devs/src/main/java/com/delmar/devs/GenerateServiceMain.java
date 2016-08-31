@@ -7,7 +7,10 @@
 
 package com.delmar.devs;
 
+import com.delmar.core.api.ApiResult;
+import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
+import com.delmar.core.service.TableService;
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.GenModelDto;
 import com.delmar.devs.model.ServiceModel;
@@ -22,12 +25,14 @@ import java.util.*;
  * @author 刘大磊 2014年12月22日 下午12:44:44
  */
 public class GenerateServiceMain {
+	private TableService tableService;
 	private TableMetaDataDto tableMetaDataDto;
 	private GenModelDto model;
 	List<ServiceModel> lineList;
-	public GenerateServiceMain(TableMetaDataDto tableMetaDataDto, GenModelDto model) {
+	public GenerateServiceMain(TableMetaDataDto tableMetaDataDto, GenModelDto model,TableService tableService) {
 		this.tableMetaDataDto=tableMetaDataDto;
 		this.model=model;
+		this.tableService=tableService;
 		lineList=new ArrayList<ServiceModel>();
 
 		if(model.getIncludeModelList()!=null)
@@ -37,6 +42,30 @@ public class GenerateServiceMain {
 				ServiceModel sm=new ServiceModel();
 				sm.setModel(m.getModelName());
 				sm.setModule(m.getModule());
+				ApiResult<TableMetaDataDto> apiResult= tableService.getTableDescription(m.getTableName());
+				TableMetaDataDto lineData=apiResult.getData();
+				List<ColumnMetaDataDto> columnList=lineData.getColumnList();
+				for(ColumnMetaDataDto columnMetaDataDto:columnList)
+				{
+					System.out.println("---------------->"+columnMetaDataDto.getColumnName());
+					if("user_id".equals(columnMetaDataDto.getColumnName()))
+					{
+						sm.setHasUserId(true);
+					}
+					if("org_id".equals(columnMetaDataDto.getColumnName()))
+					{
+						sm.setHasOrgId(true);
+					}
+					if("client_id".equals(columnMetaDataDto.getColumnName()))
+					{
+						sm.setHasClientId(true);
+					}
+					if("createdby".equals(columnMetaDataDto.getColumnName()))
+					{
+						sm.setHasCreated(true);
+					}
+				}
+
 				lineList.add(sm);
 			}
 		}

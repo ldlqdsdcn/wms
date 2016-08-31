@@ -9,4 +9,9 @@ import lombok.Data;
 public class ServiceModel {
     private String model;
     private String module;
+
+    private boolean hasCreated;
+    private boolean hasUserId;
+    private boolean hasOrgId;
+    private boolean hasClientId;
 }
