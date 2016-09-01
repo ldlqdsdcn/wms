@@ -27,7 +27,7 @@ public class SqlUtil {
 			 appendString="'";
 		 }
 		
-		 StringBuffer sb=new  StringBuffer(column);
+		 StringBuilder sb=new StringBuilder(column);
 		 sb.append(" in(");
 		 sb.append(appendString);
 		 sb.append(list.get(0));
@@ -52,7 +52,7 @@ public class SqlUtil {
 			 appendString="'";
 		 }
 		
-		 StringBuffer sb=new  StringBuffer(column);
+		 StringBuilder sb=new StringBuilder(column);
 		 sb.append(" in(");
 		 sb.append(appendString);
 		 sb.append(list[0]);

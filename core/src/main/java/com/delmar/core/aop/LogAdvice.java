@@ -29,11 +29,10 @@ public class LogAdvice {
 	{
 		
 		 DmLog dmLog=DmLog.getLogger(joinPoint.getTarget().getClass());
-			StringBuilder sb=new StringBuilder();
-			sb.append(joinPoint.getTarget().getClass().getName());
-			sb.append("  ");
-			sb.append(joinPoint.getSignature());
-			dmLog.error(sb.toString(), ex);
+		String sb = joinPoint.getTarget().getClass().getName() +
+				"  " +
+				joinPoint.getSignature();
+		dmLog.error(sb, ex);
 	}
 	 /**
 	  * 数据交互层异常捕获
@@ -44,11 +43,10 @@ public class LogAdvice {
 	 public void logDaoException(JoinPoint joinPoint,Throwable ex)
 		{
 		 	DmLog dmLog=DmLog.getLogger("SQLLogger."+joinPoint.getTarget().getClass());
-			StringBuilder sb=new StringBuilder();
-			sb.append(joinPoint.getTarget().getClass().getName());
-			sb.append("  ");
-			sb.append(joinPoint.getSignature());
-			dmLog.error(sb.toString(), ex);
+			String sb = joinPoint.getTarget().getClass().getName() +
+					"  " +
+					joinPoint.getSignature();
+			dmLog.error(sb, ex);
 		
 		}
 	 

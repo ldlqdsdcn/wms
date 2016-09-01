@@ -73,7 +73,7 @@ public class PageMyBatis<E> extends ArrayList<E> {
      * @return the page
      */
     public DataTablesResultSet<E> warp() {
-        return new DataTablesResultSet<E>(pageable == null ? 0 : pageable.getPageNumber(), this);
+        return new DataTablesResultSet<>(pageable == null ? 0 : pageable.getPageNumber(), this);
     }
 
     @Override

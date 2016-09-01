@@ -30,7 +30,7 @@ import org.mybatis.pagination.dialect.db.SybaseDialect;
  */
 public class DialectClient implements Serializable {
 	private static final long serialVersionUID = 8107330250767760951L;
-	private static final Map<DBMS, Dialect> DBMS_DIALECT = new HashMap<DBMS, Dialect>();
+	private static final Map<DBMS, Dialect> DBMS_DIALECT = new HashMap<>();
 
 	/**
 	 * 根据数据库名称获取数据库分页查询的方言实现。

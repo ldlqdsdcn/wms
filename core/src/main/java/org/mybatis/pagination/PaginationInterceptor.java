@@ -53,8 +53,8 @@ import java.util.Properties;
 public class PaginationInterceptor implements Interceptor, Serializable {
     /** serial Version */
     private static final long serialVersionUID = -6075937069117597841L;
-    private static final ThreadLocal<Integer> PAGINATION_TOTAL = new ThreadLocal<Integer>();
-    private static final ThreadLocal<PagingCriteria> PAGE_REQUEST = new ThreadLocal<PagingCriteria>();
+    private static final ThreadLocal<Integer> PAGINATION_TOTAL = new ThreadLocal<>();
+    private static final ThreadLocal<PagingCriteria> PAGE_REQUEST = new ThreadLocal<>();
     /** logging */
     private static final Log log = LogFactory.getLog(PaginationInterceptor.class);
     /** mapped statement parameter index. */
@@ -316,7 +316,7 @@ public class PaginationInterceptor implements Interceptor, Serializable {
     }
 
     public static class BoundSqlSqlSource implements SqlSource {
-        BoundSql boundSql;
+        final BoundSql boundSql;
 
         public BoundSqlSqlSource(BoundSql boundSql) {
             this.boundSql = boundSql;

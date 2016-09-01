@@ -13,7 +13,7 @@ import java.util.Map;
  * @author 刘大磊 2015年1月9日 上午9:08:20
  */
 public class SessionContent {
-	private static Map<Long,String> sessionMap=new Hashtable<Long,String>(); 
+	private static Map<Long,String> sessionMap= new Hashtable<>();
 	public static  void putUser(Long threadId,String username)
 	{
 		//Thread.currentThread().getId();
@@ -23,12 +23,6 @@ public class SessionContent {
 	{
 		return sessionMap.get(threadId);
 	}
-	/**
-	 * 日志 数据类型
-	 */
-	public static final int TYPE_NUMBER=1;
-	public static final int TYPE_CHAR=2;
-	public static final int TYPE_DATE=3;
 	/**
 	 * 日志 操作类型
 	 */

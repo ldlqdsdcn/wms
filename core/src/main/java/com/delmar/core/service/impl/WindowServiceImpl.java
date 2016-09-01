@@ -7,17 +7,12 @@
 
 package com.delmar.core.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.delmar.core.dao.CoreDao;
 import com.delmar.core.dao.WindowDao;
 import com.delmar.core.model.Window;
 import com.delmar.core.service.WindowService;
-import com.delmar.core.dao.CoreDao;
-import com.delmar.core.service.impl.CoreServiceImpl;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 /**
  * @author 刘大磊 2016-08-28 17:16:34
  */
@@ -43,8 +38,7 @@ public class WindowServiceImpl extends CoreServiceImpl<Window> implements
 
 
 public Integer saveWindow(Window window) {
-	Integer id=save(window);
-	return id;
+	return save(window);
 }
 
 

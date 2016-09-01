@@ -128,7 +128,7 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
                 break;}
             case DATE:
             {
-                sqlBuilder.append("date_format("+searchColumn.getColumnName()+",'%Y-%m-%d')");
+                sqlBuilder.append("date_format(").append(searchColumn.getColumnName()).append(",'%Y-%m-%d')");
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
 
                 sqlBuilder.append("'").append(searchColumnDto.getValue().trim()).append("'");
@@ -136,7 +136,7 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
                 break;}
             case DATETIME:
             {
-                sqlBuilder.append("date_format("+searchColumn.getColumnName()+",'%Y-%m-%d %H:%s:%i')");
+                sqlBuilder.append("date_format(").append(searchColumn.getColumnName()).append(",'%Y-%m-%d %H:%s:%i')");
                 sqlBuilder.append(" ").append(searchColumnDto.getOpearType()).append(" ");
                 sqlBuilder.append("'").append(searchColumnDto.getValue().trim()).append("'");
                 break;}
@@ -145,18 +145,18 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
     }
 
     public Integer deleteByPrimaryKey(Integer id) {
-        Map<String, Object> searchColumnParam = new HashMap<String, Object>();
+        Map<String, Object> searchColumnParam = new HashMap<>();
         searchColumnParam.put("searchId", id);
         searchColumnDao.deleteByExample(searchColumnParam);
         return super.deleteByPrimaryKey(id);
     }
 
     public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId) {
-        Map<String, Object> param = new HashMap<String, Object>();
+        Map<String, Object> param = new HashMap<>();
         param.put("searchId", searchId);
         if(searchId==null)
         {
-            return new ArrayList<SearchColumn>();
+            return new ArrayList<>();
         }
         return searchColumnDao.selectByExample(param);
     }

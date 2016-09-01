@@ -35,6 +35,6 @@ public interface TableService extends CoreService<Table> {
 
 	ApiResult<TableMetaDataDto> getTableDescription(String tableName);
 
-	public void saveTableInfoByWizard(TableMetaDataDto tableMetaDataDto);
+	 void saveTableInfoByWizard(TableMetaDataDto tableMetaDataDto);
 
 }

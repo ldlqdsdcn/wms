@@ -19,10 +19,11 @@ import java.util.List;
  * @author 刘大磊 2015-01-09 10:48:25
  */
 public interface TableDao extends CoreDao<Table> {
-	public Table getTablebyClassName(String className);
+    Table getTablebyClassName(String className);
 
     /**
      * 获取表的所有唯一索引
+     *
      * @param tableName
      * @return
      */
@@ -30,24 +31,27 @@ public interface TableDao extends CoreDao<Table> {
 
     /**
      * 获取表的主键
-     * @param tableName
-     * @return
-     */
-    public String getPrimaryKey(String tableName);
-
-    /**
      *
      * @param tableName
      * @return
      */
-    public List<ForeignKey> getExportedKeys(String tableName);
-    public List<ForeignKey> getImportedKeys(String tableName);
-    public List<ColumnMetaDataDto> getTableColumns(String tableName);
+    String getPrimaryKey(String tableName);
 
     /**
-     * 获取表备注信息
      * @param tableName
      * @return
      */
-    public String getTableRemark(String tableName);
+    List<ForeignKey> getExportedKeys(String tableName);
+
+    List<ForeignKey> getImportedKeys(String tableName);
+
+    List<ColumnMetaDataDto> getTableColumns(String tableName);
+
+    /**
+     * 获取表备注信息
+     *
+     * @param tableName
+     * @return
+     */
+    String getTableRemark(String tableName);
 }

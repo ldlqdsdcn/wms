@@ -89,7 +89,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  
+  <select id="selectByPaging" parameterType="java.util.Map">
+
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <cache flushInterval="60000" size="100" ></cache>
   <select id="getUserById" resultMap="userAllResult" parameterType="java.lang.Integer"  useCache="true">
 

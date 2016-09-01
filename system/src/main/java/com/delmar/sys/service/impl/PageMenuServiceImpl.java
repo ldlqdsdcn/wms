@@ -87,11 +87,11 @@ public class PageMenuServiceImpl extends CoreServiceImpl<PageMenu> implements
 		 ResourceBundle bundle=null;
 		if(local==null)
 		{
-			bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLENAME);
+			bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME);
 		}
 		else
 		{
-			bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLENAME,local);
+			bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,local);
 		}
 
 		//d.add(1,0,'<fmt:message key="menu.system"/>');

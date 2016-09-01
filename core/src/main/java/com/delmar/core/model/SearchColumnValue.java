@@ -38,12 +38,13 @@ public class SearchColumnValue {
 		
 		
 		SearchColumnValue scv=(SearchColumnValue)obj;
-		boolean result=(relOper==scv.relOper||relOper!=null&&relOper.equals(scv.relOper))
-				&&(value==scv.value||value!=null&&value.equals(scv.value))
-				&&(link==scv.link||link!=null&&link.equals(scv.link))
-				&&(searchColumnId==scv.searchColumnId||searchColumnId!=null&&searchColumnId.equals(scv.searchColumnId));
-		
-		return result;
+
+		if ((relOper == scv.relOper) || ((relOper != null) && relOper.equals(scv.relOper)))
+			if ((value == scv.value) || ((value != null) && value.equals(scv.value)))
+				if ((link == scv.link) || ((link != null) && link.equals(scv.link)))
+					if ((searchColumnId == scv.searchColumnId) || ((searchColumnId != null) && searchColumnId.equals(scv.searchColumnId)))
+						return true;
+		return false;
 		//return ;
 	}
 	

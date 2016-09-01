@@ -19,8 +19,8 @@ public interface MailInfoService extends CoreService<MailInfo> {
 	/**
 	 * @param ids
 	 */
-	public void deleteMailInfoList(Integer[] ids);
+	 void deleteMailInfoList(Integer[] ids);
 	
-	public void updateMailFinishStatus(Integer id);
-	public List<MailInfo> getPendingMail();
+	 void updateMailFinishStatus(Integer id);
+	 List<MailInfo> getPendingMail();
 }

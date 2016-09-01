@@ -10,7 +10,7 @@ package com.delmar.core.dao;
  * @author 刘大磊 2015年1月20日 上午11:32:18
  */
 public interface UserInterface {
-	public Integer getId();
-	public String getUsername();
+	 Integer getId();
+	 String getUsername();
 	
 }

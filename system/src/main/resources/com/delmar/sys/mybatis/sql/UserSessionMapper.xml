@@ -21,6 +21,21 @@
     id, user_id, session_id, login_date, logout_date, remote_addr, remote_host, created, 
     updated
   </sql>
+  <select id="selectByPaging"  parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_user_session
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
     <if test="distinct">

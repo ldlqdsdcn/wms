@@ -2,6 +2,9 @@ package com.delmar.core.model;
 
 import java.util.Date;
 
+/**
+ * 操作日志
+ */
 public class Changelog extends CoreModel{
 
     private Integer tableId;

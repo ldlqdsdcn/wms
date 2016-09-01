@@ -20,7 +20,7 @@ public interface LanguageService extends CoreService<Language> {
 	/**
 	 * @param ids
 	 */
-	public void deleteLanguageList(Integer[] ids);
+	 void deleteLanguageList(Integer[] ids);
 	
-	public void saveLanguage(Language language,List<LanguageTrl> trlList);
+	 void saveLanguage(Language language,List<LanguageTrl> trlList);
 }

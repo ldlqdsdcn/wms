@@ -42,7 +42,7 @@ private List<SearchColumnValue> columnValueList;
 	
 	public SearchColumnList()
 	{
-		columnValueList=new ArrayList<SearchColumnValue>();
+		columnValueList= new ArrayList<>();
 	}
 	public SearchColumnList(List<SearchColumnValue> columnList)
 	{

@@ -18,7 +18,7 @@ public interface CoreCreatCodeService extends CoreService<CoreCreatCode> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCoreCreatCodeList(Integer[] ids);
-	public Integer getMaxValue(String code, Integer clientId);
-	public void updateMaxValue(CoreCreatCode coreCreatCode);
+	 void deleteCoreCreatCodeList(Integer[] ids);
+	 Integer getMaxValue(String code, Integer clientId);
+	 void updateMaxValue(CoreCreatCode coreCreatCode);
 }

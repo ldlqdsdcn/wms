@@ -18,18 +18,18 @@ import java.util.List;
 /**
  * @author 刘大磊 2016-08-29 16:03:22
  */
-public interface SearchService extends CoreService<Search> {
+ public interface SearchService extends CoreService<Search> {
 	/**
 	 * @param ids
 	 */
-	public void deleteSearchList(Integer[] ids);
-    public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId);
+	 void deleteSearchList(Integer[] ids);
+     List<SearchColumn> getSearchColumnListBySearchId(Integer searchId);
 
-	public Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
-	public List<CommonSearchResult> selectCommonList(CommonSearchParam commonSearchParam);
-	public List<CommonSearchResult> getCommonSearchListByColumnId(Integer columnId);
-	public Search getSearchByPageUrl(String pageUrl);
+	 Integer saveSearch(Search search,List<SearchColumn> searchColumnList);
+	 List<CommonSearchResult> selectCommonList(CommonSearchParam commonSearchParam);
+	 List<CommonSearchResult> getCommonSearchListByColumnId(Integer columnId);
+	 Search getSearchByPageUrl(String pageUrl);
 
-	public String buildSqlBySearchColumnList(List<SearchColumnDto> searchColumnDtoList);
+	 String buildSqlBySearchColumnList(List<SearchColumnDto> searchColumnDtoList);
 
 }

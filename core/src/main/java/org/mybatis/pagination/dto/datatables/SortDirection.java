@@ -24,7 +24,7 @@ public enum SortDirection {
     DESC("desc");
     private String direction;
 
-    private SortDirection(String direction) {
+    SortDirection(String direction) {
         this.direction = direction;
     }
 

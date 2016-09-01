@@ -7,21 +7,6 @@
 package com.delmar.core.dao.mybatis;
 
 
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.log4j.Logger;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.delmar.core.content.SessionContent;
 import com.delmar.core.dao.SqlSessionForLog;
 import com.delmar.core.dao.UserInterface;
@@ -31,6 +16,17 @@ import com.delmar.core.model.Table;
 import com.delmar.core.model.TableColumn;
 import com.delmar.utils.StringUtil;
 import com.google.gson.Gson;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.log4j.Logger;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年1月9日 上午11:57:00
@@ -72,7 +68,7 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 	   public void writeLog(CoreModel model,String operateType)
 	   {
 		 String name=  model.getClass().getName();
-		 Map<String,Object> param=new HashMap<String,Object>();
+		 Map<String,Object> param= new HashMap<>();
 		 param.put("className", name);
 		 param.put("outLog", "Y");
 		List<Table> tableList= sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableMapper.selectByExample", param);
@@ -86,10 +82,10 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 		 {
 		 if(table!=null)
 		 {
-			 param=new HashMap<String,Object>();
+			 param= new HashMap<>();
 			 param.put("tableId", table.getId());
 			 List<TableColumn> tableColumnList=sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableColumnMapper.selectByExample", param);
-			 Map<String,Object> obj=new HashMap<String,Object>();
+			 Map<String,Object> obj= new HashMap<>();
 			 if(tableColumnList!=null)
 			 {
 				 for(TableColumn column:tableColumnList)

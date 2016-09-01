@@ -16,11 +16,6 @@
              <artifactId>mail</artifactId>
              <version>1.4.7</version>
          </dependency>
-          <dependency>
-              <artifactId>utils</artifactId>
-              <groupId>com.delmar</groupId>
-              <version>1.0</version>
-          </dependency>
          <!-- db -->
          <dependency>
              <groupId>com.alibaba</groupId>
@@ -69,6 +64,11 @@
              <groupId>org.sonatype.sisu</groupId>
              <artifactId>sisu-guava</artifactId>
              <version>0.9.9</version>
+         </dependency>
+         <dependency>
+             <groupId>com.delmar</groupId>
+             <artifactId>utils</artifactId>
+             <version>1.0</version>
          </dependency>
          <!--mybatis paging end-->
      </dependencies>

@@ -6,7 +6,6 @@ package org.mybatis.pagination.dialect.db;
 
 
 import org.mybatis.pagination.dialect.Dialect;
-import org.mybatis.pagination.helpers.CountHelper;
 import org.mybatis.pagination.helpers.SqlRemoveHelper;
 import org.mybatis.pagination.helpers.StringHelper;
 
@@ -92,19 +91,18 @@ public class SQLServer2005Dialect implements Dialect {
             orderby = "ORDER BY CURRENT_TIMESTAMP";
         }
 
-        StringBuilder result = new StringBuilder();
-        result.append("WITH query AS (SELECT ")
-                .append(distinctStr)
-                .append("TOP 100 PERCENT ")
-                .append(" ROW_NUMBER() OVER (")
-                .append(orderby)
-                .append(") as __row_number__, ")
-                .append(pagingBuilder)
-                .append(") SELECT * FROM query WHERE __row_number__ BETWEEN ")
-                .append(offset + 1).append(" AND ").append(offset + limit)
-                .append(" ORDER BY __row_number__");
+        String result = "WITH query AS (SELECT " +
+                distinctStr +
+                "TOP 100 PERCENT " +
+                " ROW_NUMBER() OVER (" +
+                orderby +
+                ") as __row_number__, " +
+                pagingBuilder +
+                ") SELECT * FROM query WHERE __row_number__ BETWEEN " +
+                (offset + 1) + " AND " + (offset + limit) +
+                " ORDER BY __row_number__";
 
-        return result.toString();
+        return result;
     }
 
     @Override

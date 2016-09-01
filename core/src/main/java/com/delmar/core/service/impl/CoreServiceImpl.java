@@ -7,17 +7,15 @@
 
 package com.delmar.core.service.impl;
 
+import com.delmar.core.dao.CoreDao;
+import com.delmar.core.service.CoreService;
+import com.delmar.utils.DmLog;
+import com.delmar.utils.ResourceMessage;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import com.delmar.core.dao.CoreDao;
-import com.delmar.core.dao.exception.DaoException;
-import com.delmar.core.service.CoreService;
-import com.delmar.core.service.exception.ServiceException;
-import com.delmar.utils.DmLog;
-import com.delmar.utils.ResourceMessage;
 
 /**
  * @author 刘大磊 2014年12月22日 上午11:56:58
@@ -31,17 +29,14 @@ public abstract  class CoreServiceImpl<T> implements CoreService<T> {
 	protected String getString()
 	{
 		return getClass().getName();
-	};
+	}
 	
 	
 	public String getText(String keyName,String defaultValue) {
 		
-		ResourceBundle bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLENAME,Locale.getDefault());
+		ResourceBundle bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,Locale.getDefault());
 		String keyValue=bundle.getString(keyName);
-		if(keyValue!=null)
-	   	   return keyValue;
-		else
-		   return defaultValue;
+		return keyValue;
 		
 	}
 	

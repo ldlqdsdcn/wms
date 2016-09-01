@@ -10,8 +10,8 @@ public enum RelOperDef {
         this.key=key;
         this.desc=desc;
     }
-    private int key;
-    private String desc;
+    private final int key;
+    private final String desc;
 
     public int getKey() {
         return key;

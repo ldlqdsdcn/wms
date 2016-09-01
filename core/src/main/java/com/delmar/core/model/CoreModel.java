@@ -28,9 +28,6 @@ public class CoreModel implements Serializable  {
 		this.id = id;
 	}
 	public boolean isnew() {
-		if (id == null || id == 0)
-			return true;
-		else
-			return false;
+        return id == null || id == 0;
 	}
 }

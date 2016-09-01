@@ -23,7 +23,7 @@ public class UserResource {
 	public UserResource(Locale locale) {
 		
 		this.locale=locale;
-		bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLENAME,locale);
+		bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,locale);
 
 	}
 	

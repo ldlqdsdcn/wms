@@ -1,8 +1,6 @@
 package com.delmar.core.service.exception;
 
-import com.delmar.core.excep.CoreException;
-
-/** 
+/**
  * @author Charles Luo  luos@delmarchina.com
  * @version V2.0 2015年7月24日 下午4:57:40 
  * 类说明   参数缺少

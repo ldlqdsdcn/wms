@@ -1,6 +1,5 @@
 package com.delmar.core.dto;
 
-import com.delmar.core.dao.TableColumnDao;
 import lombok.Data;
 
 import java.util.List;

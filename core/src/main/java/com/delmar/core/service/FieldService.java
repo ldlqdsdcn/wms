@@ -15,8 +15,8 @@ import com.delmar.core.service.CoreService;
  * @author 刘大磊 2016-08-26 17:08:24
  */
 public interface FieldService extends CoreService<Field> {
-	/**
-	 * @param ids
-	 */
-	public void deleteFieldList(Integer[] ids);
+    /**
+     * @param ids
+     */
+    void deleteFieldList(Integer[] ids);
 }

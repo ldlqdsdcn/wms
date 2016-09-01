@@ -25,7 +25,7 @@ public class TempTest<T> {
 	 */
 	public static void main(String[] args) {
 		Codemapinfo  ci=new Codemapinfo ();
-		TempTest tt=new TempTest<Codemapinfo>(ci);
+		TempTest tt= new TempTest<>(ci);
 		System.out.println();
 
 	}

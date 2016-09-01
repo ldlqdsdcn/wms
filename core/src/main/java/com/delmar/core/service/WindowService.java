@@ -9,8 +9,6 @@
 package com.delmar.core.service;
 
 import com.delmar.core.model.Window;
-import com.delmar.core.service.CoreService;
-import java.util.List;
 /**
  * @author 刘大磊 2016-08-28 17:16:34
  */
@@ -18,8 +16,8 @@ public interface WindowService extends CoreService<Window> {
 	/**
 	 * @param ids
 	 */
-	public void deleteWindowList(Integer[] ids);
+	 void deleteWindowList(Integer[] ids);
 
-public Integer saveWindow(Window window);
+	 Integer saveWindow(Window window);
 
 }

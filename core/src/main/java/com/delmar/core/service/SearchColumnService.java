@@ -18,5 +18,5 @@ public interface SearchColumnService extends CoreService<SearchColumn> {
 	/**
 	 * @param ids
 	 */
-	public void deleteSearchColumnList(Integer[] ids);
+	 void deleteSearchColumnList(Integer[] ids);
 }

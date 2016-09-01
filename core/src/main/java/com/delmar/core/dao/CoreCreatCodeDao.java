@@ -16,6 +16,6 @@ import com.delmar.core.dao.CoreDao;
 public interface CoreCreatCodeDao extends CoreDao<CoreCreatCode> {
 
 	
-	public void updateMaxValue(CoreCreatCode creatCode);
-	public Integer getMaxValue(String code, Integer clientId);
+	 void updateMaxValue(CoreCreatCode creatCode);
+	 Integer getMaxValue(String code, Integer clientId);
 }

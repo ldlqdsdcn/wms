@@ -18,7 +18,7 @@ public interface LanguageTrlService extends CoreService<LanguageTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deleteLanguageTrlList(Integer[] ids);
+	 void deleteLanguageTrlList(Integer[] ids);
 	
 	//public List< LanguageTrl> selectLanguageTrlList(String by)
 }

@@ -7,22 +7,20 @@
 
 package com.delmar.core.dao.mybatis;
 
+import com.delmar.core.dao.TableDao;
+import com.delmar.core.dto.ColumnMetaDataDto;
+import com.delmar.core.dto.ForeignKey;
+import com.delmar.core.dto.UniqueIndexDto;
+import com.delmar.core.excep.DataBaseException;
+import com.delmar.core.model.Table;
+import com.google.gson.JsonObject;
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.delmar.core.dto.ColumnMetaDataDto;
-import com.delmar.core.dto.ForeignKey;
-import com.delmar.core.dto.UniqueIndexDto;
-import com.delmar.core.excep.DataBaseException;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import org.springframework.stereotype.Repository;
-
-import com.delmar.core.dao.TableDao;
-import com.delmar.core.model.Table;
 
 /**
  * @author 刘大磊 2015-01-09 10:48:25
@@ -62,7 +60,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
      * @see com.delmar.core.dao.TableDao#getTablebyClassName(java.lang.String)
      */
     public Table getTablebyClassName(String className) {
-        Map<String, String> param = new HashMap<String, String>();
+        Map<String, String> param = new HashMap<>();
         param.put("className", className);
         List<Table> tableList = this.selectByExample(param);
         if (tableList != null && tableList.size() > 1) {
@@ -256,7 +254,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 columnMetaDataDto.setType(columnType);
                 columnMetaDataDto.setColumnSize(column_size);
                 columnMetaDataDto.setDecimalDigits(digits);
-                columnMetaDataDto.setNullable(nullable==1?true:false);
+                columnMetaDataDto.setNullable(nullable == 1);
                 columnMetaDataDto.setRemarks(remarks);
                 columnMetaDataDto.setColumnDefault(colDef);
                 list.add(columnMetaDataDto);

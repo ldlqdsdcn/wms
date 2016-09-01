@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -39,6 +40,8 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 		this.sqlSessionForLog = sqlSessionForLog;
 	}*/
 	protected static final String selectList_SQL=".selectByExample";
+
+	protected static final String selectByPaging_SQL=".selectByPaging";
 	//private static final String delete_SQL=".delete";
 	protected static final String updateByPrimaryKey=".updateByPrimaryKey";
 	
@@ -78,6 +81,7 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	}
 	private String selectListSQL()
 	{
+
 		return getSqlName()+selectList_SQL;
 	}
 	
@@ -87,22 +91,21 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	protected String getString()
 	{
 		return getClass().getName();
-	};
+	}
 	
 	
 	public String getText(String keyName,String defaultValue) {
 		
-		ResourceBundle bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLENAME,Locale.getDefault());
+		ResourceBundle bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,Locale.getDefault());
 		String keyValue=bundle.getString(keyName);
-		if(keyValue!=null)
-	   	   return keyValue;
-		else
-		   return defaultValue;
+		return keyValue;
 		
 	}
 	
 	public T getByExample(Map example)  {
-		   return (T) sqlSessionTemplate.selectOne(this.selectListSQL(),example);
+
+
+		return (T) sqlSessionTemplate.selectOne(this.selectListSQL(),example);
 	}
 
 	public Integer insert(T model)   {
@@ -157,8 +160,7 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	}
 	public Integer countObjects(Map example)   
 	{
-		Integer count=(Integer)sqlSessionTemplate.selectOne(countSQL(), example);
-		return count;
+		return sqlSessionTemplate.selectOne(countSQL(), example);
 	}
 	public Integer insertSelective(T model)   
 	{
@@ -183,7 +185,7 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	public T selectFieldsByPrimaryKey(String fieldColumns,Integer id)   
 	{
 	
-		Map<String, Object> newMap = new HashMap<String, Object>(2);
+		Map<String, Object> newMap = new HashMap<>(2);
 		newMap.put("columns", fieldColumns);
 		newMap.put("id", id);
 		return (T)sqlSessionTemplate.selectOne(this.getSqlName()+selectFieldsByPrimaryKey,newMap);
@@ -191,11 +193,26 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	}
 	
 	public List<T> selectByExample(Map example)  	{
-		
+		if(example!=null)
+		{
+			Integer pageNo=(Integer)example.get("pageNo");
+			Integer pageSize=(Integer)example.get("pageSize");
+			if(pageNo!=null&&pageSize!=null)
+			{
+				int offset = (pageNo - 1) * pageSize;
+				int limit = pageSize;
+				return  sqlSessionTemplate.selectList(this.selectListSQL(),example,new RowBounds(offset,limit));
+			}
+
+		}
 		return sqlSessionTemplate.selectList(this.getSqlName()+selectByExample, example);
 		
 	}
-	
+	public List<T> selectByPaging(Map example)  	{
+
+		return sqlSessionTemplate.selectList(this.getSqlName()+selectByExample, example);
+
+	}
 	
 
 }

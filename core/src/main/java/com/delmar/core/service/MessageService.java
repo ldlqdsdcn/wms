@@ -18,5 +18,5 @@ public interface MessageService extends CoreService<Message> {
 	/**
 	 * @param ids
 	 */
-	public void deleteMessageList(Integer[] ids);
+	 void deleteMessageList(Integer[] ids);
 }

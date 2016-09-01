@@ -9,7 +9,6 @@ package com.delmar.crm.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.core.dao.exception.DaoException;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 import com.delmar.crm.dao.LinkmanDao;
 import com.delmar.crm.model.Linkman;

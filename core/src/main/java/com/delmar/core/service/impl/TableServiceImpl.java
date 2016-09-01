@@ -7,31 +7,28 @@
 
 package com.delmar.core.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.delmar.core.api.ApiResult;
 import com.delmar.core.api.StatusCode;
-import com.delmar.core.def.ColumnDataType;
+import com.delmar.core.dao.CoreDao;
+import com.delmar.core.dao.TableColumnDao;
+import com.delmar.core.dao.TableDao;
 import com.delmar.core.def.FieldType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.dto.UniqueIndexDto;
 import com.delmar.core.excep.DataBaseException;
 import com.delmar.core.excep.ValidateException;
-import com.delmar.utils.DmLog;
-import com.google.gson.Gson;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.delmar.core.dao.CoreDao;
-import com.delmar.core.dao.TableColumnDao;
-import com.delmar.core.dao.TableDao;
 import com.delmar.core.model.Table;
 import com.delmar.core.model.TableColumn;
 import com.delmar.core.service.TableService;
+import com.delmar.utils.DmLog;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 22015-01-09 10:48:25

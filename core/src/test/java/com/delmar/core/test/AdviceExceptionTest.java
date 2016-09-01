@@ -21,7 +21,7 @@ import com.delmar.utils.DmLog;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class AdviceExceptionTest {
-	DmLog log=DmLog.getLogger(AdviceExceptionTest.class);
+	final DmLog log=DmLog.getLogger(AdviceExceptionTest.class);
 	@Autowired
 	LanguageService peopleService;
 	@Test

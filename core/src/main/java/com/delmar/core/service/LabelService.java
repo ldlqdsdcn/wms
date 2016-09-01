@@ -18,5 +18,5 @@ public interface LabelService extends CoreService<Label> {
 	/**
 	 * @param ids
 	 */
-	public void deleteLabelList(Integer[] ids);
+	 void deleteLabelList(Integer[] ids);
 }

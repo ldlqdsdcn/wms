@@ -12,9 +12,9 @@ public enum  ColumnDataType implements java.io.Serializable{
         this.desc=desc;
         this.value=value;
     }
-    private int key;
-    private String desc;
-    private String value;
+    private final int key;
+    private final String desc;
+    private final String value;
 
     public int getKey() {
         return key;

@@ -18,5 +18,5 @@ public interface CorePageService extends CoreService<CorePage> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCorePageList(Integer[] ids);
+	 void deleteCorePageList(Integer[] ids);
 }

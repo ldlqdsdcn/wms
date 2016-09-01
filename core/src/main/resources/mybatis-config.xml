@@ -24,7 +24,6 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
  <plugins>
   <plugin interceptor="org.mybatis.pagination.PaginationInterceptor">
    <property name="dbms" value="mysql"/>
-   <property name="sqlRegex" value=".*findAll.*"/>
   </plugin>
  </plugins>
 </configuration>

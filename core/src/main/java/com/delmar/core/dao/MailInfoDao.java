@@ -16,5 +16,5 @@ import com.delmar.core.dao.CoreDao;
 public interface MailInfoDao extends CoreDao<MailInfo> {
 
 	
-	public void updateMailFinishStatus(Integer id);
+	 void updateMailFinishStatus(Integer id);
 }
