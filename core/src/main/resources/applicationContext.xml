@@ -12,7 +12,7 @@
                http://www.springframework.org/schema/task  
                http://www.springframework.org/schema/task/spring-task-3.1.xsd ">
 	<import resource="classpath*:application-*.xml" />
-	<!-- <import resource="classpath:application-resources.xml" />
+	<!--
 	<import resource="classpath:application-dao.xml" />
 	<import resource="classpath:application-service.xml" />
 	<import resource="classpath:cxf-servlet.xml" />
@@ -35,63 +35,20 @@
     <context:annotation-config />    
     <task:annotation-driven/>
     <!-- 配置要扫描的包 -->    
-    <context:component-scan base-package="com.delmar"></context:component-scan> 
-   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <context:component-scan base-package="com.delmar"></context:component-scan>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	<!-- <property name="location" value="classpath:database.properties"></property> -->
 	<property name="locations">
 		<list>
 		<value>classpath:database.properties</value>
 		<value>classpath:mail.properties</value>
+		<value>classpath*:redis.properties</value>
 		</list>
 	</property>
 	
 </bean>
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" >
-		 <property name="host" value="${mailserver.host}" />  
-        <property name="port" value="${mailserver.port}" />  
-        <property name="username" value="${mailserver.username}" />  
-        <property name="password" value="${mailserver.password}" />  
-        <property name="defaultEncoding" value="utf-8" />  
-        <property name="javaMailProperties">  
-            <props>  
-                <prop key="mail.smtp.auth">true</prop>  
-            </props>  
-        </property>  
-</bean>
-	<!-- 采用druid作为连接池 -->
-	<bean id="dataSourceCore" class="com.alibaba.druid.pool.DruidDataSource"
-		  init-method="init" destroy-method="close">
-		<!-- 基本属性 url、user、password -->
-		<property name="url" value="${jdbc.core.connection.url}"/>
-		<property name="username" value="${jdbc.core.connection.username}"/>
-		<property name="password" value="${jdbc.core.connection.password}"/>
 
-		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="1"/>
-		<property name="minIdle" value="1"/>
-		<property name="maxActive" value="20"/>
 
-		<!-- 配置获取连接等待超时的时间 -->
-		<property name="maxWait" value="60000"/>
-
-		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
-
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-		<property name="minEvictableIdleTimeMillis" value="300000"/>
-		<property name="validationQuery" value="SELECT 'x'"/>
-		<property name="testWhileIdle" value="true"/>
-		<property name="testOnBorrow" value="false"/>
-		<property name="testOnReturn" value="false"/>
-
-		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-		<property name="poolPreparedStatements" value="true"/>
-		<property name="maxPoolPreparedStatementPerConnectionSize"
-				  value="20"/>
-
-		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="stat"/>
-	</bean>
 
     <!-- Session工厂 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
@@ -114,6 +71,7 @@
 		<aop:pointcut id="serviceMethod" expression="execution(* com.delmar..*Service*.*(..))"/>
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
 	</aop:config>
+
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="save*"  propagation="REQUIRED"/>
@@ -146,5 +104,10 @@
 	<bean id="systemLog" class="com.powere2e.log.LogFactory"></bean>
 	</aop:config> -->
 	<!-- 系统日志 -->
-
+	<!--datasource-->
+	<import resource="classpath:spring/spring-database.xml"/>
+	<!--redis-->
+	<import resource="classpath:spring/spring-redis.xml" />
+	<!--java mail-->
+	<import resource="classpath:spring/spring-mail.xml" />
 </beans>
