@@ -95,11 +95,7 @@ public class FacesUtils {
 	/**
 	 * Get a FacesMessage instance
 	 * 
-	 * @param messageId
-	 *            identifier in the resource bundle
-	 * @param params
-	 *            display ArgumentIndex value message like {0},{1}.
-	 * @param severity
+	 * @param defaultObject
 	 *            message level
 	 * @return instance of facesMessage
 	 */
@@ -116,7 +112,7 @@ public class FacesUtils {
 	/**
 	 * Evaluate the integer value of a JSF expression.
 	 * 
-	 * @param el
+	 * @param strKey
 	 *            the JSF expression
 	 * @return the integer value associated with the JSF expression
 	 */
@@ -273,7 +269,7 @@ public class FacesUtils {
 	/**
 	 * Iterator all the parameter
 	 * 
-	 * @param id
+	 * @param key
 	 *            the Component Id --format,formID:componentID
 	 * @return the component's value
 	 * @author Draco

@@ -17,7 +17,6 @@ import com.delmar.system.web.WebConst;
 import org.apache.struts2.ServletActionContext;
 
 import com.delmar.core.model.CoreModel;
-import com.delmar.core.service.exception.ServiceException;
 import com.delmar.core.web.util.FacesUtils;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.annotation.Autowired;

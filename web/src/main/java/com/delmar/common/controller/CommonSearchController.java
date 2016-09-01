@@ -4,7 +4,6 @@ import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.api.ApiResult;
 import com.delmar.core.def.RelOperDef;
 import com.delmar.core.def.SearchShowTypeDef;
-import com.delmar.core.def.ShowType;
 import com.delmar.core.model.CommonSearchResult;
 import com.delmar.core.model.Search;
 import com.delmar.core.model.SearchColumn;
