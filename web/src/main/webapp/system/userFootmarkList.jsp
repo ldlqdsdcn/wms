@@ -68,7 +68,7 @@
             </td>
         </tr>
     </table>
-    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI=""
+    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI="/system/userFootmark_list.action"
 		    id="list" pagesize="20" class="table" export="true">
 		<display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>" media="html">
           		<input type="checkbox" name="ids" value="<c:out value='${list.id}'/>" style='border: none' />
@@ -79,7 +79,7 @@
 
 
 
-        <display:column property="visiteDate"  escapeXml="true" title="visiteDate" sortable="true"
+        <display:column property="visiteDate"  escapeXml="true" title="visiteDate" sortable="false"
         
                         decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
                                                                                                     />
@@ -89,29 +89,29 @@
 
 
 
-        <display:column property="userId"  escapeXml="true" title="userId" sortable="true"
+        <display:column property="userId"  escapeXml="true" title="userId" sortable="false"
         
                                         decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
                                                             />
 
 
-        <display:column property="orgId"  escapeXml="true" title="组织" sortable="true"
+        <display:column property="orgId"  escapeXml="true" title="组织" sortable="false"
         
                                                                 decorator="com.delmar.base.web.displaytag.decorator.OrgDecorator"
                                     />
 
 
-        <display:column property="remark"  escapeXml="true" title="备注" sortable="true"
+        <display:column property="remark"  escapeXml="true" title="备注" sortable="false"
         
                                                                                                     />
 
 
-        <display:column property="remoteAddr"  escapeXml="true" title="remoteAddr" sortable="true"
+        <display:column property="remoteAddr"  escapeXml="true" title="remoteAddr" sortable="false"
         
                                                                                                     />
 
 
-        <display:column property="remoteHost"  escapeXml="true" title="remoteHost" sortable="true"
+        <display:column property="remoteHost"  escapeXml="true" title="remoteHost" sortable="false"
         
                                                                                                     />
 

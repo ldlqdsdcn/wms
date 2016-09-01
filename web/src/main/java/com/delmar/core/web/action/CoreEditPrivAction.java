@@ -13,16 +13,19 @@ import java.util.Map;
 
 import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.dto.SearchColumnDto;
+import com.delmar.core.service.CoreService;
 import com.delmar.core.service.SearchService;
 import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 import com.delmar.core.web.def.PagingType;
 import com.delmar.sys.model.User;
 import com.delmar.system.web.WebConst;
+import com.delmar.utils.StringUtil;
 import org.apache.struts2.ServletActionContext;
 
 import com.delmar.core.model.CoreModel;
 import com.delmar.core.web.util.FacesUtils;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.displaytag.properties.SortOrderEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,9 +53,18 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	public abstract void deleteList(Integer[] ids);
 	public abstract Integer getModelId();
 	public abstract void editForm();
-	public abstract List<CoreModel> search();
+
 	public abstract void createForm();
-	public abstract String saveForm();	
+	public abstract String saveForm();
+	private CoreService coreService;
+	public PaginatedListHelper searchPaginatedList()
+	{
+			return null;
+	}
+	public  List<CoreModel> search()
+	{
+		return null;
+	}
 	//// TODO: 2016/8/25
 	public  String getPurpose()
 	{
@@ -149,15 +161,41 @@ public abstract class CoreEditPrivAction extends CoreAction {
 		if(pagingType==PagingType.DATABASE)
         {
             HttpServletRequest request=ServletActionContext.getRequest();
-            Enumeration<String> params=request.getParameterNames();
-            while (params.hasMoreElements())
-            {
-                String key= params.nextElement();
-                System.out.println("-------------------->"+key+"="+request.getParameter(key));
-            }
-            FacesUtils.setValueInHashtableOfSession("pageNumber",1);
-            FacesUtils.setValueInHashtableOfSession("pageSize",20);
+            String pageString=request.getParameter("page");
+			String sort=request.getParameter("sort");
+            if(StringUtil.isEmpty(pageString)&&sort==null)
+			{
+				pageString="1";
+				FacesUtils.setValueInHashtableOfSession("pageNumber",Integer.parseInt(pageString));
+				FacesUtils.setValueInHashtableOfSession("pageSize",20);
+			}
+			else if(sort!=null)
+			{
+				String dir=request.getParameter("dir");
+				PaginatedListHelper paginatedListHelper=(PaginatedListHelper)FacesUtils.getValueInHashtableOfSession(getModuleName() + "List");
+				paginatedListHelper.setSortCriterion(sort);
+				SortOrderEnum sortOrderEnum=SortOrderEnum.ASCENDING;
+				if(!"asc".equals(dir))
+				{
+					sortOrderEnum=SortOrderEnum.DESCENDING;
+				}
+				paginatedListHelper.setSortDirection(sortOrderEnum);
+			}
+			else
+			{
+				FacesUtils.setValueInHashtableOfSession("pageNumber",Integer.parseInt(pageString));
+				FacesUtils.setValueInHashtableOfSession("pageSize",20);
+			}
 
+			PaginatedListHelper paginatedListHelper=searchPaginatedList();
+			List<CoreModel> list=paginatedListHelper.getList();
+			List<Integer> ids=new ArrayList<Integer>();
+			for(CoreModel model:list)
+			{
+				ids.add(model.getId());
+			}
+			FacesUtils.setValueInHashtableOfSession(getModuleName() + "IdList", ids);
+			FacesUtils.setValueInHashtableOfSession(getModuleName()+"List", paginatedListHelper);
         }
         else
         {

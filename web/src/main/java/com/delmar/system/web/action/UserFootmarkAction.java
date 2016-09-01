@@ -10,7 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.delmar.core.service.CoreService;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 import com.delmar.core.web.def.PagingType;
+import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -83,35 +86,33 @@ public class UserFootmarkAction extends CoreEditPrivAction {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.delmar.core.web.action.CoreEditPrivAction#search()
-	 */
+
+
 	@Override
-	public List search() {
-		if (pagingType == PagingType.DATABASE) {
-
-		}
-		else
-		{
-
-		}
+	public PaginatedListHelper searchPaginatedList() {
 		Map<String, Object> param = new HashMap();
 		param.put("searchString", getSearchWhere());
+		Integer pageNumber=(Integer)FacesUtils.getValueInHashtableOfSession("pageNumber");
+		param.put("pageNo", FacesUtils.getValueInHashtableOfSession("pageNumber"));
+		param.put("pageSize",20);
+		int fullListSize = userFootmarkService.countObjects(param);
+		List list = userFootmarkService.selectByExample(param);
+		PaginatedListHelper paginatedListHelper = new PaginatedListHelper(pageNumber, fullListSize, list);
+		return paginatedListHelper;
 
-		return userFootmarkService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
-	 */
-	@Override
+         * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
+         */
+
 	public void createForm() {
 		userFootmark=new UserFootmark();
 	}
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#saveForm()
 	 */
-	@Override
+
 	public String saveForm() {
 Integer currentUserId=getCurrentUser();
 User user=getUserInSession();
@@ -131,4 +132,5 @@ User user=getUserInSession();
 	public void setUserFootmark(UserFootmark userFootmark) {
 		this.userFootmark = userFootmark;
 	}
+
 }

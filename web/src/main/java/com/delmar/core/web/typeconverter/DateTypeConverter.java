@@ -63,7 +63,7 @@ public class DateTypeConverter extends StrutsTypeConverter {
   
 /** 
     * 更改日期格式（可以同时更新到数据库） 
-    * @param format 
+    * @param shortFormat
     */  
    public void changeShortFormat(String shortFormat) {  
        this.shortFormat = shortFormat;  
