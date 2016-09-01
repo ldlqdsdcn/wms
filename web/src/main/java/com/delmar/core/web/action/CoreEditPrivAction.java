@@ -12,6 +12,7 @@ import java.util.List;
 import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.service.SearchService;
+import com.delmar.core.web.def.PagingType;
 import com.delmar.sys.model.User;
 import com.delmar.system.web.WebConst;
 import org.apache.struts2.ServletActionContext;
@@ -25,6 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author 刘大磊 2015年1月15日 下午4:16:51
  */
 public abstract class CoreEditPrivAction extends CoreAction {
+	//默认分页方式为内存分页
+	protected PagingType pagingType=PagingType.MEMORY;
 	protected Integer id;
 	@Autowired
 	private SearchService searchService;
