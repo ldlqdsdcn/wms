@@ -129,6 +129,11 @@
 		</action>
 	</package>
 	<package name="system" namespace="/system" extends="default">
+		<action name="userFootmark_*" class="com.delmar.system.web.action.UserFootmarkAction" method="{1}">
+			<result name="list">/system/userFootmarkList.jsp</result>
+			<result name="edit">/system/userFootmarkForm.jsp</result>
+			<result name="input">/system/userFootmarkForm.jsp</result>
+		</action>
 		<!-- 模块信息 -->
 		<action name="module_*" class="com.delmar.system.web.action.ModuleAction" method="{1}">
 			<result name="edit">/system/moduleForm.jsp</result>

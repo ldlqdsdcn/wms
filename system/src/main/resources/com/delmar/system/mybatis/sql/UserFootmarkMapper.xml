@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.delmar.system.mybatis.sql.UserFootmarkMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.system.model.UserFootmark" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="ActionMethod" property="ActionMethod" jdbcType="VARCHAR" />
+            <result column="visiteDate" property="visiteDate" jdbcType="TIMESTAMP" />
+            <result column="ActionName" property="ActionName" jdbcType="VARCHAR" />
+            <result column="ActionPurpose" property="ActionPurpose" jdbcType="VARCHAR" />
+            <result column="user_id" property="userId" jdbcType="INTEGER" />
+            <result column="org_id" property="orgId" jdbcType="INTEGER" />
+            <result column="remark" property="remark" jdbcType="VARCHAR" />
+            <result column="remote_addr" property="remoteAddr" jdbcType="VARCHAR" />
+            <result column="remote_host" property="remoteHost" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+                <if test="searchString!=null"> and ${searchString} </if>
+                <if test="accessString!=null"> and ${accessString} </if>
+
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+      id,   ActionMethod,   visiteDate,   ActionName,   ActionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host 
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from sys_user_footmark
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from sys_user_footmark
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from sys_user_footmark
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="java.util.Map" >
+        delete from sys_user_footmark
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.delmar.system.model.UserFootmark" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user_footmark (     ActionMethod,   visiteDate,   ActionName,   ActionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host )
+        values (  #{ActionMethod,jdbcType=VARCHAR}, #{visiteDate,jdbcType=TIMESTAMP}, #{ActionName,jdbcType=VARCHAR}, #{ActionPurpose,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{remoteAddr,jdbcType=VARCHAR}, #{remoteHost,jdbcType=VARCHAR} )
+    </insert>
+    <insert id="insertSelective" parameterType="com.delmar.system.model.UserFootmark" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user_footmark
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="ActionMethod != null" >
+                    ActionMethod,
+                </if>
+                <if test="visiteDate != null" >
+                    visiteDate,
+                </if>
+                <if test="ActionName != null" >
+                    ActionName,
+                </if>
+                <if test="ActionPurpose != null" >
+                    ActionPurpose,
+                </if>
+                <if test="userId != null" >
+                    user_id,
+                </if>
+                <if test="orgId != null" >
+                    org_id,
+                </if>
+                <if test="remark != null" >
+                    remark,
+                </if>
+                <if test="remoteAddr != null" >
+                    remote_addr,
+                </if>
+                <if test="remoteHost != null" >
+                    remote_host,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="ActionMethod != null" >
+    #{ActionMethod,jdbcType=VARCHAR}},
+    </if>
+    <if test="visiteDate != null" >
+    #{visiteDate,jdbcType=VARCHAR}},
+    </if>
+    <if test="ActionName != null" >
+    #{ActionName,jdbcType=VARCHAR}},
+    </if>
+    <if test="ActionPurpose != null" >
+    #{ActionPurpose,jdbcType=VARCHAR}},
+    </if>
+    <if test="userId != null" >
+    #{userId,jdbcType=VARCHAR}},
+    </if>
+    <if test="orgId != null" >
+    #{orgId,jdbcType=VARCHAR}},
+    </if>
+    <if test="remark != null" >
+    #{remark,jdbcType=VARCHAR}},
+    </if>
+    <if test="remoteAddr != null" >
+    #{remoteAddr,jdbcType=VARCHAR}},
+    </if>
+    <if test="remoteHost != null" >
+    #{remoteHost,jdbcType=VARCHAR}},
+    </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+        select count(*) from sys_user_footmark
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.system.model.UserFootmark" >
+        update sys_user_footmark
+        <set >
+    <if test="ActionMethod != null" >
+        ActionMethod = #{ActionMethod,jdbcType=VARCHAR},
+    </if>
+    <if test="visiteDate != null" >
+        visiteDate = #{visiteDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="ActionName != null" >
+        ActionName = #{ActionName,jdbcType=VARCHAR},
+    </if>
+    <if test="ActionPurpose != null" >
+        ActionPurpose = #{ActionPurpose,jdbcType=VARCHAR},
+    </if>
+    <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+    </if>
+    <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+    </if>
+    <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+    </if>
+    <if test="remoteAddr != null" >
+        remote_addr = #{remoteAddr,jdbcType=VARCHAR},
+    </if>
+    <if test="remoteHost != null" >
+        remote_host = #{remoteHost,jdbcType=VARCHAR},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+        update sys_user_footmark
+        set 
+            
+            ActionMethod = #{ActionMethod,jdbcType=VARCHAR},
+
+            visiteDate = #{visiteDate,jdbcType=TIMESTAMP},
+
+            ActionName = #{ActionName,jdbcType=VARCHAR},
+
+            ActionPurpose = #{ActionPurpose,jdbcType=VARCHAR},
+
+            user_id = #{userId,jdbcType=INTEGER},
+
+            org_id = #{orgId,jdbcType=INTEGER},
+
+            remark = #{remark,jdbcType=VARCHAR},
+
+            remote_addr = #{remoteAddr,jdbcType=VARCHAR},
+
+            remote_host = #{remoteHost,jdbcType=VARCHAR}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

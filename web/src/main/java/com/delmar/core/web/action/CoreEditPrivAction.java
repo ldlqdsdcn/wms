@@ -7,11 +7,14 @@
 package com.delmar.core.web.action;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.service.SearchService;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 import com.delmar.core.web.def.PagingType;
 import com.delmar.sys.model.User;
 import com.delmar.system.web.WebConst;
@@ -22,12 +25,15 @@ import com.delmar.core.web.util.FacesUtils;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author 刘大磊 2015年1月15日 下午4:16:51
  */
 public abstract class CoreEditPrivAction extends CoreAction {
 	//默认分页方式为内存分页
 	protected PagingType pagingType=PagingType.MEMORY;
+    protected Integer pageNo;
 	protected Integer id;
 	@Autowired
 	private SearchService searchService;
@@ -57,6 +63,7 @@ public abstract class CoreEditPrivAction extends CoreAction {
 	public String getSearchWhere()
 	{
 		List<SearchColumnVo> list=(List)FacesUtils.getValueInHashtableOfSession(WebConst.SESSION_SEARCH_CONDITIONS);
+
 		if(list==null||list.size()==0)
 		{
 			return null;
@@ -139,14 +146,32 @@ public abstract class CoreEditPrivAction extends CoreAction {
 		{
 			return NOPRIVILEGE;
 		}
-		List<CoreModel> list=search();
-		List<Integer> ids=new ArrayList<Integer>();
-		for(CoreModel model:list)
-		{
-			ids.add(model.getId());
-		}
-		FacesUtils.setValueInHashtableOfSession(getModuleName()+"IdList", ids);
-		FacesUtils.setValueInHashtableOfSession(getModuleName()+"List", list);
+		if(pagingType==PagingType.DATABASE)
+        {
+            HttpServletRequest request=ServletActionContext.getRequest();
+            Enumeration<String> params=request.getParameterNames();
+            while (params.hasMoreElements())
+            {
+                String key= params.nextElement();
+                System.out.println("-------------------->"+key+"="+request.getParameter(key));
+            }
+            FacesUtils.setValueInHashtableOfSession("pageNumber",1);
+            FacesUtils.setValueInHashtableOfSession("pageSize",20);
+
+        }
+        else
+        {
+            List<CoreModel> list=search();
+            List<Integer> ids=new ArrayList<Integer>();
+            for(CoreModel model:list)
+            {
+                ids.add(model.getId());
+            }
+            FacesUtils.setValueInHashtableOfSession(getModuleName()+"IdList", ids);
+            FacesUtils.setValueInHashtableOfSession(getModuleName()+"List", list);
+        }
+
+
 		return LIST;
 	}
 	public List<Integer> getIdList()

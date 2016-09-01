@@ -27,6 +27,7 @@ public class MapperGenerateStrategy {
     private GenModelDto genModelDto;
     public void generateMapper()
     {
+
         Map<String,Object> param=new HashMap<String,Object>();
         param.put("module",genModelDto.getModule());
         param.put("model",genModelDto.getModelName());

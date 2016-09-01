@@ -1,23 +1,26 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												      *
- *	作者：刘大磊								                                      *
- * 电话：0532-66701118                                                          * 
+ * 德玛国际物流有限公司  2013-07-01											  *
+ *	作者：刘大磊								                              *
+ * 电话：0532-66701118                                                        *
  * email:liua@delmarchina.com						                          *
  *****************************************************************************/
 
-package com.delmar.sys.service.impl;
+package com.delmar.system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.delmar.sys.dao.UserFootmarkDao;
-import com.delmar.sys.model.UserFootmark;
-import com.delmar.sys.service.UserFootmarkService;
+import com.delmar.system.dao.UserFootmarkDao;
+import com.delmar.system.model.UserFootmark;
+import com.delmar.system.service.UserFootmarkService;
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
-
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Date;
 /**
- * @author 刘大磊 22015-07-10 14:40:37
+ * @author 刘大磊 2016-09-01 17:30:01
  */
 @Service("userFootmarkService")
 public class UserFootmarkServiceImpl extends CoreServiceImpl<UserFootmark> implements
@@ -27,7 +30,6 @@ public class UserFootmarkServiceImpl extends CoreServiceImpl<UserFootmark> imple
 	/* (non-Javadoc)
 	 * @see CoreService.CoreServiceImpl#getCoreDao()
 	 */
-	@Override
 	protected CoreDao<UserFootmark> getCoreDao() {
 		return userFootmarkDao;
 	}
@@ -36,8 +38,20 @@ public class UserFootmarkServiceImpl extends CoreServiceImpl<UserFootmark> imple
 		if(ids!=null)
 		for(Integer id:ids)
 		{
-			userFootmarkDao.deleteByPrimaryKey(id);
+			deleteByPrimaryKey(id);
 		}
 	}
-	
+
+
+public Integer saveUserFootmark(UserFootmark userFootmark) {
+	Integer id=save(userFootmark);
+	Date now=new Date();
+	return id;
+}
+
+
+    public Integer deleteByPrimaryKey(Integer id) {
+    return super.deleteByPrimaryKey(id);
+    }
+
 }

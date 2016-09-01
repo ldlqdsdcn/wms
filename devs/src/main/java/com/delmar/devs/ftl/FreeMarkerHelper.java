@@ -18,13 +18,13 @@ import java.util.Map;
  * Created by admin on 2016/8/26.
  */
 public class FreeMarkerHelper {
-    private static String  genmodelpath="D:\\projects\\delmar_platform\\cargo\\";
-    private static String genActionPath="D:\\projects\\delmar_platform\\web\\";
+    private static String  genmodelpath="D:\\projects\\wms\\system\\";
+    private static String genActionPath="D:\\projects\\wms\\web\\";
     private static FreeMarkerHelper freeMarkerHelper;
     private Configuration config = new Configuration();
     private FreeMarkerHelper()
     {
-        File filepath = new File("D:\\projects\\delmar_platform\\devs\\src\\main\\resources\\ftl");
+        File filepath = new File("D:\\projects\\wms\\devs\\src\\main\\resources\\ftl");
         try {
             config.setDirectoryForTemplateLoading(filepath);
         } catch (IOException e) {

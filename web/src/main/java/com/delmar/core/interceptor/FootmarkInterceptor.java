@@ -1,20 +1,18 @@
 package com.delmar.core.interceptor;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.sys.model.User;
-import com.delmar.sys.model.UserFootmark;
-import com.delmar.sys.service.UserFootmarkService;
+import com.delmar.system.model.UserFootmark;
+import com.delmar.system.service.UserFootmarkService;
 import com.delmar.system.web.WebConst;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  *@ClassName:   FootmarkInterceptor.java 
@@ -28,7 +26,7 @@ public class FootmarkInterceptor implements Interceptor {
 	
 	
 	@Autowired
-	private UserFootmarkService  userFootmarkService;
+	private UserFootmarkService userFootmarkService;
 	
 	
 	public void destroy()

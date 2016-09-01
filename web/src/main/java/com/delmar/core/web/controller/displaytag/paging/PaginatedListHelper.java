@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by admin on 2016/9/1.
  */
-public class PaginatedListHelper implements PaginatedList {
+public class PaginatedListHelper implements PaginatedList{
     private int fullListSize; // 总记录数
     private List list; // 每页列表
     private int objectsPerPage=20;// 每页记录数 page size
@@ -16,9 +16,11 @@ public class PaginatedListHelper implements PaginatedList {
     private String searchId;
     private String sortCriterion;
     private SortOrderEnum sortDirection;
-    public PaginatedListHelper(int fullListSize)
+    public PaginatedListHelper(int pageNumber,int fullListSize,List list)
     {
-
+        this.pageNumber=pageNumber;
+        this.fullListSize=fullListSize;
+        this.list=list;
     }
     @Override
     public List getList() {

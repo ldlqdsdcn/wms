@@ -5,16 +5,16 @@
  * email:liua@delmarchina.com						                               *
  *****************************************************************************/
 
-package com.delmar.sys.dao.mybatis;
+package com.delmar.system.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.sys.dao.UserFootmarkDao;
-import com.delmar.sys.model.UserFootmark;
+import com.delmar.system.dao.UserFootmarkDao;
+import com.delmar.system.model.UserFootmark;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2015-07-10 14:40:37
+ * @author 刘大磊 2016-09-01 17:30:01
  */
 @Repository("userFootmarkDao") 
 public class UserFootmarkDaoMybatis extends CoreDaoMyBatis<UserFootmark> implements UserFootmarkDao {
@@ -25,7 +25,7 @@ public class UserFootmarkDaoMybatis extends CoreDaoMyBatis<UserFootmark> impleme
 	@Override
 	protected String getSqlName() {
 		
-		return "com.delmar.sys.mybatis.sql.UserFootmarkMapper";
+		return "com.delmar.system.mybatis.sql.UserFootmarkMapper";
 	}
 
 
