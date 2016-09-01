@@ -23,41 +23,40 @@ public class ProDateUtil {
 	/**
 	 * 获得历史多少天之前的这一天的日期,包括时间
 	 * 
-	 * @param his
+	 * @param his 距离今天的天数
 	 */
 	public static Date getHisDate(int his) {
-		GregorianCalendar thisday = new GregorianCalendar();
-		thisday.add(GregorianCalendar.DATE, -1 * his);// 今天前的**天
-		return thisday.getTime();
+		GregorianCalendar currentCalendar = new GregorianCalendar();
+		currentCalendar.add(GregorianCalendar.DATE, -1 * his);// 今天前的**天
+		return currentCalendar.getTime();
 	}
 	
 	/**
 	 * 获得历史多少天之前的这一天的日期，包括时间
 	 * 
-	 * @返回字符类型
+	 * @return 返回 yyyy-MM-dd kk:mm:ss 格式日期
 	 */
 	
 	public static String getLongHisDateStr(int his) {
 		GregorianCalendar thisday = new GregorianCalendar();
 		thisday.add(GregorianCalendar.DATE, -1 * his);// 今天前的**天
-		SimpleDateFormat shortformatter = new SimpleDateFormat(
+		SimpleDateFormat shortFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd kk:mm:ss");
-		String dateStr = shortformatter.format(thisday.getTime());
-		return dateStr;
+		return shortFormatter.format(thisday.getTime());
 	}
 	
 	public static String getShortHisDateStr(int his) {
 		Date hisDate = getHisDate(his);
-		SimpleDateFormat shortformatter = new SimpleDateFormat("yyyy-MM-dd");
-		String dateStr = shortformatter.format(hisDate);
-		return dateStr;
+		SimpleDateFormat shortFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		return shortFormatter.format(hisDate);
 	}	
 	
 	
 	/**
 	 * 获得历史多少天之前的这一天的日期
 	 * 
-	 * @param his
+	 * @param his 距离当前日期的时间间隔 天
+	 * @return  返回历史日期
 	 */
 	public static Date getHisDate(Date start, int his) {
 		GregorianCalendar thisday = new GregorianCalendar();
@@ -75,17 +74,15 @@ public class ProDateUtil {
 		GregorianCalendar thisday = new GregorianCalendar();
 		thisday.setTime(start);
 		thisday.add(GregorianCalendar.DATE, -1 * his);// 今天前的**天
-		SimpleDateFormat shortformatter = new SimpleDateFormat(
+		SimpleDateFormat shortFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd kk:mm:ss");
-		String dateStr = shortformatter.format(thisday.getTime());
-		return dateStr;
+		return shortFormatter.format(thisday.getTime());
 	}
 
 	public static String getShortHisDateStr(Date start, int his) {
 		Date hisDate = getHisDate(start, his);
-		SimpleDateFormat shortformatter = new SimpleDateFormat("yyyy-MM-dd");
-		String dateStr = shortformatter.format(hisDate);
-		return dateStr;
+		SimpleDateFormat shortFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		return shortFormatter.format(hisDate);
 	}
 	
 	/***************************************************************************
@@ -102,27 +99,27 @@ public class ProDateUtil {
 		Date BeginDate = formatter.parse(begindate, pos1);
 		Date EndDate = formatter.parse(enddate, pos2);
 		long dateDiff = EndDate.getTime() - BeginDate.getTime();
-		Float minuteDiff = new Float(dateDiff / 1000 / 60);
+		Float minuteDiff = (float) (dateDiff / 1000 / 60);
 		return minuteDiff.intValue();
 	}
 
 	public static long getDateDiffHour(String begindate, String enddate) {
 		long minuteDiff = getDateDiffMinute(begindate, enddate);
-		Float hourDiff = new Float(minuteDiff / 60);
+		Float hourDiff = (float) (minuteDiff / 60);
 		return hourDiff.intValue();
 	}
 
 	public static long getDateDiffDay(String begindate, String enddate) {
 		long hourDiff = getDateDiffHour(begindate, enddate);
-		Float dayDiff = new Float(hourDiff / 24);
+		Float dayDiff = (float) (hourDiff / 24);
 		return dayDiff.intValue();
 	}
 	
 	public static long getDateDiffDay(String begindate) {
 		GregorianCalendar thisday = new GregorianCalendar();
-		SimpleDateFormat shortformatter = new SimpleDateFormat(
+		SimpleDateFormat shortFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd");
-		String thisdateStr = shortformatter.format(thisday.getTime());
+		String thisdateStr = shortFormatter.format(thisday.getTime());
 		
 		return getDateDiffDay(begindate, thisdateStr);
 	}	
@@ -246,7 +243,6 @@ public class ProDateUtil {
 		ParsePosition pos = new ParsePosition(0);
 		try
 		{
-	    	Date current = formatter.parse(dateStr, pos);
 	    	return true;
 		} catch (Exception e)
 		{

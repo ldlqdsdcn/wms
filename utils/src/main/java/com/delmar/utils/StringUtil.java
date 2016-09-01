@@ -16,15 +16,12 @@ import java.util.regex.Pattern;
  */
 public class StringUtil {
 	/**
-	 * 判断字符串是否为�?""
+	 * 判断字符串是否为空
 	 * @param value
 	 * @return
 	 */
-	public static boolean isEmpty(String value)
-	{
-		if(value==null) return true;
-		if(value.trim().length()==0)return true;
-		return false;
+	public static boolean isEmpty(String value) {
+		return value == null || value.trim().length() == 0;
 	}
 	/**
 	 * 非空判断
@@ -56,11 +53,8 @@ public class StringUtil {
 	{
 		 Pattern pattern = Pattern.compile("[0-9]*"); 
 		 Matcher isNum = pattern.matcher(value);
-		 if( !isNum.matches() ){
-		      return false; 
-		  } 
-		   return true; 
-	}
+        return isNum.matches();
+    }
 	
 	
 	public static String convertToSqlParam(String value)
@@ -92,10 +86,10 @@ public class StringUtil {
 			return "";
 		}
 		char[] chars = property.toCharArray();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (char c : chars) {
 			if (Character.isUpperCase(c)) {
-				sb.append("_" + Character.toLowerCase(c));
+				sb.append("_").append(Character.toLowerCase(c));
 			} else {
 				sb.append(c);
 			}
@@ -113,7 +107,7 @@ public class StringUtil {
 			return "";
 		}
 		char[] chars = field.toCharArray();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < chars.length; i++) {
 			char c = chars[i];
 			if (c == '_') {

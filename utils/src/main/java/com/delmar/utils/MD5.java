@@ -38,11 +38,11 @@ public class MD5
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
         0, 0, 0, 0
     };
-    private long state[];
-    private long count[];
-    private byte buffer[];
+    private final long[] state;
+    private final long[] count;
+    private final byte[] buffer;
     public String digestHexStr;
-    private byte digest[];
+    private final byte[] digest;
 
     public MD5()
     {
@@ -148,12 +148,11 @@ public class MD5
     	char ac1[] = new char[2];
         ac1[0] = ac[byte0 >>> 4 & 0xf];
         ac1[1] = ac[byte0 & 0xf];
-        String s = new String(ac1);
-        return s;
+        return new String(ac1);
     }
 
     /**
-     * @param 要加密的字符串
+     * @param  s 要加密的字符串
      * @return MD5加密后字符串
      */
     public String getMD5ofStr(String s)
@@ -215,9 +214,7 @@ public class MD5
 
     private void md5Memcpy(byte abyte0[], byte abyte1[], int i, int j, int k)
     {
-        for(int l = 0; l < k; l++)
-            abyte0[i + l] = abyte1[j + l];
-
+        System.arraycopy(abyte1, j, abyte0, i, k);
     }
 
     private void md5Transform(byte abyte0[])

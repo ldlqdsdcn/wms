@@ -37,19 +37,19 @@ public class ProDirFileUtil {
 		if(file1.exists() && file1.isFile()){
 			FileInputStream fis = new FileInputStream(file1);
 			FileOutputStream fos = null;
-			byte [] bytegroup = new byte[512];
-			int temp = 0;
+			byte [] byteGroup = new byte[512];
+			int temp;
 			
 			//如果选择覆盖并且复制路径上不存在同名文件
-			if(file2.exists() == false || file2.isFile() == false){
+			if(!file2.exists() || !file2.isFile()){
 					fos = new FileOutputStream(des);
-					while((temp = fis.read(bytegroup)) != -1 ){
-						fos.write(bytegroup,0,temp);
+					while((temp = fis.read(byteGroup)) != -1 ){
+						fos.write(byteGroup,0,temp);
 					}
 			}else if(overcast){
 					fos = new FileOutputStream(des);
-					while((temp = fis.read(bytegroup)) != -1 ){
-						fos.write(bytegroup,0,temp);
+					while((temp = fis.read(byteGroup)) != -1 ){
+						fos.write(byteGroup,0,temp);
 					}
 			}
 			//关闭文件流
@@ -81,15 +81,16 @@ public class ProDirFileUtil {
 		if (file1.exists()){
 			
 			//判断复制到目录是否存在如果不存在就新建
-			if(file2.exists() == false || overcast){
+			if(!file2.exists() || overcast){
+				//noinspection ResultOfMethodCallIgnored
 				(new File(desPath)).mkdirs();
 			
 			//取得file1目录下所有子文件和文件夹
 			String [] file = file1.list();
-			File temp = null;
+			File temp;
 			
 			//取得file1目录下所有文件和文件夹
-			for(int i = 0; i < file.length; i++){
+			for(int i = 0; i < (file != null ? file.length : 0); i++){
 				if(srcPath.endsWith(File.separator)){
 					temp = new File(srcPath + file[i]);
 				}else{
@@ -99,7 +100,7 @@ public class ProDirFileUtil {
 				if(temp.isFile()){
 					FileInputStream input = new FileInputStream(temp);
 					FileOutputStream output = new FileOutputStream(
-							desPath + "/" + (temp.getName()).toString());
+							desPath + "/" + (temp.getName()));
 					byte[] b = new byte[1024 * 5];
 			          int len;
 			          while ( (len = input.read(b)) != -1) {
@@ -142,21 +143,21 @@ public class ProDirFileUtil {
 		if(file1.exists() && file1.isFile()){
 			FileInputStream fis = new FileInputStream(file1);
 			FileOutputStream fos = null;
-			byte [] bytegroup = new byte[512];
-			int temp = 0;
+			byte [] byteGroup = new byte[512];
+			int temp;
 			
 			//如果选择覆盖并且复制路径上不存在同名文件
-			if(file2.exists() == false || file2.isFile() == false){
+			if(!file2.exists() || !file2.isFile()){
 					fos = new FileOutputStream(des);
-					while((temp = fis.read(bytegroup)) != -1 ){
-						fos.write(bytegroup,0,temp);
+					while((temp = fis.read(byteGroup)) != -1 ){
+						fos.write(byteGroup,0,temp);
 					}
 					//删除旧文件
 					file1.deleteOnExit();
 			}else if(overcast){
 					fos = new FileOutputStream(des);
-					while((temp = fis.read(bytegroup)) != -1 ){
-						fos.write(bytegroup,0,temp);
+					while((temp = fis.read(byteGroup)) != -1 ){
+						fos.write(byteGroup,0,temp);
 					}
 					//删除旧文件
 					file1.deleteOnExit();
@@ -190,16 +191,18 @@ public class ProDirFileUtil {
 		if (file1.exists()){
 			
 			//判断复制到目录是否存在如果不存在就新建
-			if(file2.exists() == false || overcast){
+			if(!file2.exists() || overcast){
+				//noinspection ResultOfMethodCallIgnored
 				(new File(desDir)).mkdirs();
 			
 			//取得file1目录下所有子文件和文件夹
 			String [] file = file1.list();
 			File [] list = file1.listFiles();
-			File temp = null;
+			File temp;
 			
 			//取得file1目录下所有文件和文件夹
-			for(int i = 0; i < file.length; i++){
+				assert file != null;
+				for(int i = 0; i < file.length; i++){
 				if(srcDir.endsWith(File.separator)){
 					temp = new File(srcDir + file[i]);
 				}else{
@@ -209,7 +212,7 @@ public class ProDirFileUtil {
 				if(temp.isFile()){
 					FileInputStream input = new FileInputStream(temp);
 					FileOutputStream output = new FileOutputStream(
-							desDir + "/" + (temp.getName()).toString());
+							desDir + "/" + (temp.getName()));
 					byte[] b = new byte[1024 * 5];
 			          int len;
 			          while ( (len = input.read(b)) != -1) {
@@ -232,6 +235,7 @@ public class ProDirFileUtil {
 				}
 				
 			}
+				//noinspection ResultOfMethodCallIgnored
 				file1.delete();
 				
 			}
@@ -264,9 +268,7 @@ public class ProDirFileUtil {
 	            fis.close();  
 	            bos.close();  
 	            buffer = bos.toByteArray();  
-	        } catch (FileNotFoundException e) {  
-	            e.printStackTrace();  
-	        } catch (IOException e) {  
+	        } catch (IOException e) {
 	            e.printStackTrace();  
 	        }  
 	        return buffer;  
@@ -295,7 +297,7 @@ public class ProDirFileUtil {
 		    
 	        BufferedOutputStream bos = null;  
 	        FileOutputStream fos = null;  
-	        File file = null;  
+	        File file;
 	        try {  
 	            File dir = new File(filePath);  
 	            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在  

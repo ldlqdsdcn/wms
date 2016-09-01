@@ -15,16 +15,15 @@ import java.util.ResourceBundle;
  */
 public class ResourceMessage {
 
-	public static final String BUNDLENAME="ApplicationMessages";
+	public static final String BUNDLE_NAME="ApplicationMessages";
 	private static ResourceBundle bundle;
 	
 	public static String getMessage(String msgCode)
 	{
-		bundle=ResourceBundle.getBundle(BUNDLENAME);
+		bundle=ResourceBundle.getBundle(BUNDLE_NAME);
 		try
 		{
-		String message=bundle.getString(msgCode);
-		return message;
+			return bundle.getString(msgCode);
 		} catch (Exception ex)
 		{
 			return "";
@@ -52,8 +51,7 @@ public class ResourceMessage {
 	 * @Date          2015年7月10日 下午3:29:18 
 	 */
 	public static String getMessage(String msgCode, Object arg0) {
-		bundle=ResourceBundle.getBundle(BUNDLENAME);
-		String message=MessageFormat.format(bundle.getString(msgCode),arg0.toString());
-		return message;
+		bundle=ResourceBundle.getBundle(BUNDLE_NAME);
+		return MessageFormat.format(bundle.getString(msgCode),arg0.toString());
 	}	
 }

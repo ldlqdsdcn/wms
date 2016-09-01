@@ -29,7 +29,7 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Solomon Test :-)
      */
     public void testApp()
     {

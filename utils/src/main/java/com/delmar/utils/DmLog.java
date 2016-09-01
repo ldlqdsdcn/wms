@@ -1,7 +1,7 @@
 /******************************************************************************
  * 德玛国际物流有限公司  2013-07-01												  *
  *	作者：刘大磊								                                              *
- * 电话：0532-66701118                                                               * 
+ * 电话：0532-66701118                                                               *
  * email:liua@delmarchina.com						                              *
  *****************************************************************************/
 package com.delmar.utils;
@@ -58,13 +58,11 @@ public class DmLog {
 	}
 
 	public static DmLog getLogger(Class clazz) {
-		DmLog delmarLogger = new DmLog(clazz);
-		return delmarLogger;
+		return new DmLog(clazz);
 	}
 
 	public static DmLog getLogger(String tag) {
-		DmLog delmarLogger = new DmLog(tag);
-		return delmarLogger;
+		return new DmLog(tag);
 	}
 
 	public void debug(String message) {
@@ -105,28 +103,28 @@ public class DmLog {
 	/**
 	 * @author 刘大磊 2015年7月21日 下午2:18:09
 	 */
-	private static interface Log {
-		public void debug(String message);
+	private interface Log {
+		void debug(String message);
 
-		public void debug(Object message);
+		void debug(Object message);
 
-		public void info(String message);
+		void info(String message);
 
-		public void info(Object message);
+		void info(Object message);
 
-		public void warn(String message);
+		void warn(String message);
 
-		public void warn(Object message);
+		void warn(Object message);
 
-		public void error(String message);
+		void error(String message);
 
-		public void error(Object message);
+		void error(Object message);
 
-		public void error(Object message, Throwable t);
+		void error(Object message, Throwable t);
 	}
 	
 	private static  class Log4jLog implements Log {
-		private Logger logger;
+		private final Logger logger;
 		
 		private Log4jLog(Class clazz) {
 			logger = Logger.getLogger(clazz.getName());
@@ -221,7 +219,7 @@ public class DmLog {
 		private ConsoleLog(String tag) {
 			TAG = tag;
 		}
-		private  void outputlog(String level,String message)
+		private  void outPutLog(String level,String message)
 		{
 			System.out.printf("%20s %-7s %-30s %s\n", DateTimeDecorator.dateToLongString(new Date()),level,TAG,message);
 		}
@@ -229,15 +227,15 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#debug(java.lang.String)
 		 */
 		public void debug(String message) {
-		
-			outputlog("DEBUG",message);
+
+			outPutLog("DEBUG",message);
 		}
 
 		/* (non-Javadoc)
 		 * @see com.delmar.utils.Log#debug(java.lang.Object)
 		 */
 		public void debug(Object message) {
-			outputlog("DEBUG",message==null?null:message.toString());
+			outPutLog("DEBUG",message==null?null:message.toString());
 			
 		}
 
@@ -245,7 +243,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#info(java.lang.String)
 		 */
 		public void info(String message) {
-			outputlog("INFO",message);
+			outPutLog("INFO",message);
 			
 		}
 
@@ -253,7 +251,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#info(java.lang.Object)
 		 */
 		public void info(Object message) {
-			outputlog("INFO",message==null?null:message.toString());
+			outPutLog("INFO",message==null?null:message.toString());
 			
 		}
 
@@ -261,7 +259,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#warn(java.lang.String)
 		 */
 		public void warn(String message) {
-			outputlog("WARN",message);
+			outPutLog("WARN",message);
 			
 		}
 
@@ -269,7 +267,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#warn(java.lang.Object)
 		 */
 		public void warn(Object message) {
-			outputlog("WARN",message==null?null:message.toString());
+			outPutLog("WARN",message==null?null:message.toString());
 			
 		}
 
@@ -277,7 +275,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#error(java.lang.String)
 		 */
 		public void error(String message) {
-			outputlog("ERROR",message);
+			outPutLog("ERROR",message);
 			
 		}
 
@@ -285,7 +283,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#error(java.lang.Object)
 		 */
 		public void error(Object message) {
-			outputlog("ERROR",message==null?null:message.toString());
+			outPutLog("ERROR",message==null?null:message.toString());
 			
 		}
 
@@ -293,7 +291,7 @@ public class DmLog {
 		 * @see com.delmar.utils.Log#error(java.lang.Object, java.lang.Throwable)
 		 */
 		public void error(Object message, Throwable t) {
-			outputlog("ERROR",message==null?null:message.toString()+getErrorInfoFromException(t));
+			outPutLog("ERROR",message==null?null:message.toString()+getErrorInfoFromException(t));
 			
 		}
 

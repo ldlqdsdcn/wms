@@ -13,40 +13,40 @@ import java.util.List;
  */
 public class ProObjectUtil {
 	
-	 public static void copyPropertiesExclude(Object from, Object to, String[] excludsArray) throws Exception {  
+	 public static void copyPropertiesExclude(Object from, Object to, String[] excludeArray) throws Exception {
 	        List<String> excludesList = null;  
-	        if(excludsArray != null && excludsArray.length > 0) {  
-	            excludesList = Arrays.asList(excludsArray); //构造列表对象  
+	        if(excludeArray != null && excludeArray.length > 0) {
+	            excludesList = Arrays.asList(excludeArray); //构造列表对象
 	        } 
 	        
 	        Method[] fromMethods = from.getClass().getDeclaredMethods();  
 	        Method[] toMethods = to.getClass().getDeclaredMethods();  
-	        Method fromMethod = null, toMethod = null;  
-	        String fromMethodName = null, toMethodName = null;  
-	        for (int i = 0; i < fromMethods.length; i++) {  
-	            fromMethod = fromMethods[i];  
-	            fromMethodName = fromMethod.getName();  
-	            if (!fromMethodName.contains("get"))  
-	                continue;  
-	            //排除列表检测  
-	            if(excludesList != null && excludesList.contains(fromMethodName.substring(3).toLowerCase())) {  
-	                continue;  
-	            }  
-	            toMethodName = "set" + fromMethodName.substring(3);  
-	            toMethod = findMethodByName(toMethods, toMethodName);  
-	            if (toMethod == null)  
-	                continue;  
-	            Object value = fromMethod.invoke(from, new Object[0]);  
-	            if(value == null)  
-	                continue;  
-	            //集合类判空处理  
-	            if(value instanceof Collection) {  
-	                Collection newValue = (Collection)value;  
-	                if(newValue.size() <= 0)  
-	                    continue;  
-	            }  
-	            toMethod.invoke(to, new Object[] {value});  
-	        }  
+	        Method fromMethod, toMethod;
+	        String fromMethodName, toMethodName;
+		 for (Method fromMethod1 : fromMethods) {
+			 fromMethod = fromMethod1;
+			 fromMethodName = fromMethod.getName();
+			 if (!fromMethodName.contains("get"))
+				 continue;
+			 //排除列表检测
+			 if (excludesList != null && excludesList.contains(fromMethodName.substring(3).toLowerCase())) {
+				 continue;
+			 }
+			 toMethodName = "set" + fromMethodName.substring(3);
+			 toMethod = findMethodByName(toMethods, toMethodName);
+			 if (toMethod == null)
+				 continue;
+			 Object value = fromMethod.invoke(from);
+			 if (value == null)
+				 continue;
+			 //集合类判空处理
+			 if (value instanceof Collection) {
+				 Collection newValue = (Collection) value;
+				 if (newValue.size() <= 0)
+					 continue;
+			 }
+			 toMethod.invoke(to, value);
+		 }
 	    }  
 	 
 	 
@@ -54,46 +54,46 @@ public class ProObjectUtil {
 	     * 对象属性值复制，仅复制指定名称的属性值 
 	     * @param from 
 	     * @param to 
-	     * @param includsArray 
+	     * @param includeArray
 	     * @throws Exception 
 	     */  
 	    @SuppressWarnings("unchecked")  
-	    public static void copyPropertiesInclude(Object from, Object to, String[] includsArray) throws Exception {  
-	        List<String> includesList = null;  
-	        if(includsArray != null && includsArray.length > 0) {  
-	            includesList = Arrays.asList(includsArray); //构造列表对象  
+	    public static void copyPropertiesInclude(Object from, Object to, String[] includeArray) throws Exception {
+	        List<String> includesList;
+	        if(includeArray != null && includeArray.length > 0) {
+	            includesList = Arrays.asList(includeArray); //构造列表对象
 	        } else {  
 	            return;  
 	        }  
 	        Method[] fromMethods = from.getClass().getDeclaredMethods();  
 	        Method[] toMethods = to.getClass().getDeclaredMethods();  
-	        Method fromMethod = null, toMethod = null;  
-	        String fromMethodName = null, toMethodName = null;  
-	        for (int i = 0; i < fromMethods.length; i++) {  
-	            fromMethod = fromMethods[i];  
-	            fromMethodName = fromMethod.getName();  
-	            if (!fromMethodName.contains("get"))  
-	                continue;  
-	            //排除列表检测  
-	            String str = fromMethodName.substring(3);  
-	            if(!includesList.contains(str.substring(0,1).toLowerCase() + str.substring(1))) {  
-	                continue;  
-	            }  
-	            toMethodName = "set" + fromMethodName.substring(3);  
-	            toMethod = findMethodByName(toMethods, toMethodName);  
-	            if (toMethod == null)  
-	                continue;  
-	            Object value = fromMethod.invoke(from, new Object[0]);  
-	            if(value == null)  
-	                continue;  
-	            //集合类判空处理  
-	            if(value instanceof Collection) {  
-	                Collection newValue = (Collection)value;  
-	                if(newValue.size() <= 0)  
-	                    continue;  
-	            }  
-	            toMethod.invoke(to, new Object[] {value});  
-	        }  
+	        Method fromMethod, toMethod;
+	        String fromMethodName, toMethodName;
+			for (Method fromMethod1 : fromMethods) {
+				fromMethod = fromMethod1;
+				fromMethodName = fromMethod.getName();
+				if (!fromMethodName.contains("get"))
+					continue;
+				//排除列表检测
+				String str = fromMethodName.substring(3);
+				if (!includesList.contains(str.substring(0, 1).toLowerCase() + str.substring(1))) {
+					continue;
+				}
+				toMethodName = "set" + fromMethodName.substring(3);
+				toMethod = findMethodByName(toMethods, toMethodName);
+				if (toMethod == null)
+					continue;
+				Object value = fromMethod.invoke(from);
+				if (value == null)
+					continue;
+				//集合类判空处理
+				if (value instanceof Collection) {
+					Collection newValue = (Collection) value;
+					if (newValue.size() <= 0)
+						continue;
+				}
+				toMethod.invoke(to, value);
+			}
 	    }  
 	      	 
 	 
@@ -105,48 +105,46 @@ public class ProObjectUtil {
 	     * @param name 
 	     * @return 
 	     */  
-	    public static Method findMethodByName(Method[] methods, String name) {  
-	        for (int j = 0; j < methods.length; j++) {  
-	            if (methods[j].getName().equals(name))  
-	                return methods[j];  
-	        }  
+	    public static Method findMethodByName(Method[] methods, String name) {
+			for (Method method : methods) {
+				if (method.getName().equals(name))
+					return method;
+			}
 	        return null;  
 	    }  	
 	    
 	    
 	    public static List<String> retrieveFieldList(List originList,String fieldName) throws Exception 
 	    {
-	    	List<String> stringList=new ArrayList<String>();
+	    	List<String> stringList= new ArrayList<>();
 	    	
  
-	        Method fromMethod = null;   
-	        String fromMethodName = null;  	    		  
+	        Method fromMethod;
+	        String fromMethodName;
 
 	    	for (Object obj:originList)
 	    	{
 	    		  Method[] fromMethods = obj.getClass().getDeclaredMethods();
-	    		  for (int i = 0; i < fromMethods.length; i++) {  
-	  	            fromMethod = fromMethods[i];  
-	  	            fromMethodName = fromMethod.getName();  
-	  	            if (!fromMethodName.contains("get"))  
-	  	                continue;  
-	  	            //排除列表检测  
-	  	            String str = fromMethodName.substring(3);  
-	  	            if(fieldName.equalsIgnoreCase(str)) {
-	  		            Object value = fromMethod.invoke(obj, new Object[0]);  
-	  		            if(value == null)  
-	  		            {
-	  		                break;
-	  		            }
-	  		            
-	  		            if (value instanceof  String)
-	  		            {
-	  		            	stringList.add((String)value);
-	  		            	break;
-	  		            }
-	  	            }
-	  	                
-	  	            }  	    		
+				for (Method fromMethod1 : fromMethods) {
+					fromMethod = fromMethod1;
+					fromMethodName = fromMethod.getName();
+					if (!fromMethodName.contains("get"))
+						continue;
+					//排除列表检测
+					String str = fromMethodName.substring(3);
+					if (fieldName.equalsIgnoreCase(str)) {
+						Object value = fromMethod.invoke(obj);
+						if (value == null) {
+							break;
+						}
+
+						if (value instanceof String) {
+							stringList.add((String) value);
+							break;
+						}
+					}
+
+				}
 	    	}
 	    	
 	    	
