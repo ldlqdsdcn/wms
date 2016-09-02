@@ -32,10 +32,10 @@ public class TestVariablePerformance {
 		TestVariablePerformance tp=new TestVariablePerformance();
 		long bgn=System.currentTimeMillis();
 		System.out.println("bgntime="+bgn);
-		long s=0;
+
 		for(int i=0;i<2000000000;i++)
 		{
-			s=	tp.testStringVariable();
+				tp.testStringVariable();
 		}
 		long end=System.currentTimeMillis();
 		System.out.println("endtime="+end);

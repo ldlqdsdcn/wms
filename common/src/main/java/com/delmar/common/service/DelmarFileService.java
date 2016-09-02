@@ -18,5 +18,5 @@ public interface DelmarFileService extends CoreService<DelmarFile> {
 	/**
 	 * @param ids
 	 */
-	public void deleteDelmarFileList(Integer[] ids);
+	void deleteDelmarFileList(Integer[] ids);
 }

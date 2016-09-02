@@ -18,5 +18,5 @@ public interface FtpConnectionService extends CoreService<FtpConnection> {
 	/**
 	 * @param ids
 	 */
-	public void deleteFtpConnectionList(Integer[] ids);
+	void deleteFtpConnectionList(Integer[] ids);
 }

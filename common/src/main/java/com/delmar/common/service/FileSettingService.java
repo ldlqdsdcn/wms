@@ -18,5 +18,5 @@ public interface FileSettingService extends CoreService<FileSetting> {
 	/**
 	 * @param ids
 	 */
-	public void deleteFileSettingList(Integer[] ids);
+	void deleteFileSettingList(Integer[] ids);
 }

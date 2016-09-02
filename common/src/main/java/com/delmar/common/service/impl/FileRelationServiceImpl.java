@@ -7,17 +7,14 @@
 
 package com.delmar.common.service.impl;
 
-import java.io.File;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.delmar.common.dao.FileRelationDao;
 import com.delmar.common.model.FileRelation;
 import com.delmar.common.service.DelmarFileService;
 import com.delmar.common.service.FileRelationService;
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author 刘大磊 22015-04-16 08:53:59

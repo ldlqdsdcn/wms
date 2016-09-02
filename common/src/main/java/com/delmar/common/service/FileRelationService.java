@@ -18,7 +18,7 @@ public interface FileRelationService extends CoreService<FileRelation> {
 	/**
 	 * @param ids
 	 */
-	public void deleteFileRelationList(Integer[] ids);
+	void deleteFileRelationList(Integer[] ids);
 	
-	public void deleteFileRelation(FileRelation fileRelation);
+	void deleteFileRelation(FileRelation fileRelation);
 }

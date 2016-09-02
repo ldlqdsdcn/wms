@@ -7,7 +7,7 @@
     <result column="table_name" property="tableName" jdbcType="VARCHAR" />
     <result column="table_id" property="tableId" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
-    <association property="delmarFile" column="file_id" select="com.delmar.common.mybatis.sql.DelmarFileMapper.selectByPrimaryKey" ></association>
+    <association property="delmarFile" column="file_id" select="com.delmar.common.mybatis.sql.DelmarFileMapper.selectByPrimaryKey" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
