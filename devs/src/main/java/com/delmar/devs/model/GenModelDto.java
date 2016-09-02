@@ -14,6 +14,10 @@ public class GenModelDto {
     private String module;
     private String remark;
     /**
+     * 是否数据库分页
+     */
+    private boolean pagingByDb;
+    /**
      * 是否生成web代码
      */
     private boolean generateWeb;

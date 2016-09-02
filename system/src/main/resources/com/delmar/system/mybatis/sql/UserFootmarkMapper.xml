@@ -3,10 +3,10 @@
 <mapper namespace="com.delmar.system.mybatis.sql.UserFootmarkMapper" >
     <resultMap id="BaseResultMap" type="com.delmar.system.model.UserFootmark" >
             <id column="id" property="id" jdbcType="INTEGER" />
-            <result column="ActionMethod" property="ActionMethod" jdbcType="VARCHAR" />
+            <result column="actionMethod" property="actionMethod" jdbcType="VARCHAR" />
             <result column="visiteDate" property="visiteDate" jdbcType="TIMESTAMP" />
-            <result column="ActionName" property="ActionName" jdbcType="VARCHAR" />
-            <result column="ActionPurpose" property="ActionPurpose" jdbcType="VARCHAR" />
+            <result column="actionName" property="actionName" jdbcType="VARCHAR" />
+            <result column="actionPurpose" property="actionPurpose" jdbcType="VARCHAR" />
             <result column="user_id" property="userId" jdbcType="INTEGER" />
             <result column="org_id" property="orgId" jdbcType="INTEGER" />
             <result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -21,7 +21,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   ActionMethod,   visiteDate,   ActionName,   ActionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host 
+      id,   actionMethod,   visiteDate,   actionName,   actionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -57,8 +57,8 @@
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into sys_user_footmark (     ActionMethod,   visiteDate,   ActionName,   ActionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host )
-        values (  #{ActionMethod,jdbcType=VARCHAR}, #{visiteDate,jdbcType=TIMESTAMP}, #{ActionName,jdbcType=VARCHAR}, #{ActionPurpose,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{remoteAddr,jdbcType=VARCHAR}, #{remoteHost,jdbcType=VARCHAR} )
+        insert into sys_user_footmark (     actionMethod,   visiteDate,   actionName,   actionPurpose,   user_id,   org_id,   remark,   remote_addr,   remote_host )
+        values (  #{actionMethod,jdbcType=VARCHAR}, #{visiteDate,jdbcType=TIMESTAMP}, #{actionName,jdbcType=VARCHAR}, #{actionPurpose,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{remoteAddr,jdbcType=VARCHAR}, #{remoteHost,jdbcType=VARCHAR} )
     </insert>
     <insert id="insertSelective" parameterType="com.delmar.system.model.UserFootmark" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -66,17 +66,17 @@
         </selectKey>
         insert into sys_user_footmark
         <trim prefix="(" suffix=")" suffixOverrides="," >
-                <if test="ActionMethod != null" >
-                    ActionMethod,
+                <if test="actionMethod != null" >
+                    actionMethod,
                 </if>
                 <if test="visiteDate != null" >
                     visiteDate,
                 </if>
-                <if test="ActionName != null" >
-                    ActionName,
+                <if test="actionName != null" >
+                    actionName,
                 </if>
-                <if test="ActionPurpose != null" >
-                    ActionPurpose,
+                <if test="actionPurpose != null" >
+                    actionPurpose,
                 </if>
                 <if test="userId != null" >
                     user_id,
@@ -95,17 +95,17 @@
                 </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-    <if test="ActionMethod != null" >
-    #{ActionMethod,jdbcType=VARCHAR}},
+    <if test="actionMethod != null" >
+    #{actionMethod,jdbcType=VARCHAR}},
     </if>
     <if test="visiteDate != null" >
     #{visiteDate,jdbcType=VARCHAR}},
     </if>
-    <if test="ActionName != null" >
-    #{ActionName,jdbcType=VARCHAR}},
+    <if test="actionName != null" >
+    #{actionName,jdbcType=VARCHAR}},
     </if>
-    <if test="ActionPurpose != null" >
-    #{ActionPurpose,jdbcType=VARCHAR}},
+    <if test="actionPurpose != null" >
+    #{actionPurpose,jdbcType=VARCHAR}},
     </if>
     <if test="userId != null" >
     #{userId,jdbcType=VARCHAR}},
@@ -133,17 +133,17 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.delmar.system.model.UserFootmark" >
         update sys_user_footmark
         <set >
-    <if test="ActionMethod != null" >
-        ActionMethod = #{ActionMethod,jdbcType=VARCHAR},
+    <if test="actionMethod != null" >
+        actionMethod = #{actionMethod,jdbcType=VARCHAR},
     </if>
     <if test="visiteDate != null" >
         visiteDate = #{visiteDate,jdbcType=TIMESTAMP},
     </if>
-    <if test="ActionName != null" >
-        ActionName = #{ActionName,jdbcType=VARCHAR},
+    <if test="actionName != null" >
+        actionName = #{actionName,jdbcType=VARCHAR},
     </if>
-    <if test="ActionPurpose != null" >
-        ActionPurpose = #{ActionPurpose,jdbcType=VARCHAR},
+    <if test="actionPurpose != null" >
+        actionPurpose = #{actionPurpose,jdbcType=VARCHAR},
     </if>
     <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
@@ -168,13 +168,13 @@
         update sys_user_footmark
         set 
             
-            ActionMethod = #{ActionMethod,jdbcType=VARCHAR},
+            actionMethod = #{actionMethod,jdbcType=VARCHAR},
 
             visiteDate = #{visiteDate,jdbcType=TIMESTAMP},
 
-            ActionName = #{ActionName,jdbcType=VARCHAR},
+            actionName = #{actionName,jdbcType=VARCHAR},
 
-            ActionPurpose = #{ActionPurpose,jdbcType=VARCHAR},
+            actionPurpose = #{actionPurpose,jdbcType=VARCHAR},
 
             user_id = #{userId,jdbcType=INTEGER},
 

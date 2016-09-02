@@ -6,11 +6,17 @@
  *****************************************************************************/
 package ${packagename};
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.delmar.sys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-
+<#if pagingByDb>
+import com.delmar.core.web.action.CoreEditPagingAction;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
+<#else>
 import com.delmar.core.web.action.CoreEditPrivAction;
+</#if>
 <#if (requiredStrings?size>0)>
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 </#if>
@@ -26,10 +32,7 @@ import ${modelpackage}.${modelname};
 import ${servicepackage}.${modelname}Service;
 <#include "inc/strutsActionInclude.ftl"/>
 <#if lineList?exists>
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 <#list lineList as item>
@@ -44,7 +47,7 @@ import com.delmar.${item.module}.model.${item.model};
 @Validations(<#if (requiredStrings?size>0)>requiredStrings = {<#list requiredStrings as prop>@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "${modelObjname}.${prop}", message = "不允许为空") <#if prop_has_next>,</#if></#list>}<#if (requiredFields?size>0)>,</#if></#if><#if (requiredFields?size>0)>requiredFields = {<#list requiredFields as prop>@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "${modelObjname}.${prop}",message = "不允许为空")<#if prop_has_next>,</#if></#list>}</#if>)
 </#if>
-public class ${modelname}Action extends CoreEditPrivAction {
+public class ${modelname}Action extends <#if pagingByDb>CoreEditPagingAction<#else>CoreEditPrivAction</#if> {
 	private ${modelname}  ${modelObjname};
 <#if lineList?exists>
 <#list lineList as item>
@@ -107,16 +110,30 @@ public class ${modelname}Action extends CoreEditPrivAction {
 		</#list></#if>
 
 	}
+<#if pagingByDb>
+public PaginatedListHelper searchPaginatedList()
+{
+Map<String, Object> param = new HashMap();
+param.put("searchString", getSearchWhere());
+param.put("pageNo", page);
+param.put("pageSize",20);
+int fullListSize = ${modelObjname}Service.countObjects(param);
+List list = ${modelObjname}Service.selectByExample(param);
+PaginatedListHelper paginatedListHelper = new PaginatedListHelper(page, fullListSize, list);
+return paginatedListHelper;
+}
+<#else>
+/* (non-Javadoc)
+* @see com.delmar.core.web.action.CoreEditPrivAction#search()
+*/
+@Override
+public List search() {
+Map<String,Object> param=new HashMap();
+param.put("searchString",getSearchWhere());
+return ${modelObjname}Service.selectByExample(param);
+}
+</#if>
 
-	/* (non-Javadoc)
-	 * @see com.delmar.core.web.action.CoreEditPrivAction#search()
-	 */
-	@Override
-	public List search() {
-		Map<String,Object> param=new HashMap();
-		param.put("searchString",getSearchWhere());
-		return ${modelObjname}Service.selectByExample(param);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()

@@ -32,6 +32,7 @@ public class GenerateCodeTest {
 //        line2.setGenerateService(false);
 //        list.add(line2);
         GenModelDto modelDto=new GenModelDto("sys_user_footmark","UserFootmark","system","Struts日志");
+        modelDto.setPagingByDb(true);
        // List<GenModelDto> lineList=new ArrayList<>();
 //        lineList.add(line1);
 //        lineList.add(line2);

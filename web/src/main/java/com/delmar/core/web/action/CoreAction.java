@@ -86,34 +86,4 @@ public class CoreAction extends ActionSupport{
 		else
 			return "";
 	}	
-	
-
-	
-    public String getErrorForward(HttpServletRequest request, String e,Exception ex)
-    {
-        request.setAttribute("error", e);
-        request.setAttribute("errordetail", ex.getMessage());
-        addActionError(e);        
-        return "ERROR";
-    }
-    
-
-    public String getErrorForward(HttpServletRequest request, Exception e)
-    {
-    	request.setAttribute("error",getText("public.message.viewdetailerror"));
-    	request.setAttribute("errordetail", e.getMessage());
-        addActionError(e.getMessage());        
-        return "ERROR";
-    }
-
-    public String getErrorForward(HttpServletRequest request, String e)
-    {
-        request.setAttribute("error", e);
-        request.setAttribute("errordetail",getText("public.message.nodetailerror") );
-        addActionError(e);        
-        return "ERROR";
-    }
-	
-	
-	
 }

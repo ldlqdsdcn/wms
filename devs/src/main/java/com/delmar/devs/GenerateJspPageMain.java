@@ -96,6 +96,7 @@ public class GenerateJspPageMain {
         root.put("namespace", namespace);
         root.put("module",model.getModule());
         root.put("user", user);
+        root.put("pagingByDb",model.isPagingByDb());
         Date date = new Date();
         String datetime = DateTimeDecorator.dateToLongString(date);
         root.put("datetime", datetime);

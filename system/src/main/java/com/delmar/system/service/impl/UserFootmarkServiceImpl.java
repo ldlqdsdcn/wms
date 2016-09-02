@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Date;
 /**
- * @author 刘大磊 2016-09-01 17:30:01
+ * @author 刘大磊 2016-09-02 10:18:25
  */
 @Service("userFootmarkService")
 public class UserFootmarkServiceImpl extends CoreServiceImpl<UserFootmark> implements

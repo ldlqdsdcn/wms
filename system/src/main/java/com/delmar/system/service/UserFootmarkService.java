@@ -12,7 +12,7 @@ import com.delmar.system.model.UserFootmark;
 import com.delmar.core.service.CoreService;
 import java.util.List;
 /**
- * @author 刘大磊 2016-09-01 17:30:01
+ * @author 刘大磊 2016-09-02 10:18:25
  */
 public interface UserFootmarkService extends CoreService<UserFootmark> {
 	/**

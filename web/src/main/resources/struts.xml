@@ -130,7 +130,7 @@
 	</package>
 	<package name="system" namespace="/system" extends="default">
 		<action name="userFootmark_*" class="com.delmar.system.web.action.UserFootmarkAction" method="{1}">
-			<result name="list">/system/userFootmarkList.jsp</result>
+			<result name="list" type="redirect">/system/userFootmarkList.jsp</result>
 			<result name="edit">/system/userFootmarkForm.jsp</result>
 			<result name="input">/system/userFootmarkForm.jsp</result>
 		</action>

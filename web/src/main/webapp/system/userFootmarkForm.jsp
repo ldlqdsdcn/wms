@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-01 17:30:01
+  Date: 2016-09-02 10:18:25
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -117,12 +117,12 @@
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="ActionMethod" value="ActionMethod" ></s:label></td>
+                        <td width="20%"><s:label for="actionMethod" value="actionMethod" ></s:label></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.ActionMethod" id="ActionMethod"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionMethod" id="actionMethod"   ></s:textfield>
                             
-                            <s:fielderror fieldName="userFootmark.ActionMethod"    cssStyle="color:red" />
+                            <s:fielderror fieldName="userFootmark.actionMethod"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
@@ -137,21 +137,21 @@
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="ActionName" value="ActionName" ></s:label></td>
+                        <td width="20%"><s:label for="actionName" value="actionName" ></s:label></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.ActionName" id="ActionName"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionName" id="actionName"   ></s:textfield>
                             
-                            <s:fielderror fieldName="userFootmark.ActionName"    cssStyle="color:red" />
+                            <s:fielderror fieldName="userFootmark.actionName"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="ActionPurpose" value="ActionPurpose" ></s:label></td>
+                        <td width="20%"><s:label for="actionPurpose" value="actionPurpose" ></s:label></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.ActionPurpose" id="ActionPurpose"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionPurpose" id="actionPurpose"   ></s:textfield>
                             
-                            <s:fielderror fieldName="userFootmark.ActionPurpose"    cssStyle="color:red" />
+                            <s:fielderror fieldName="userFootmark.actionPurpose"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>

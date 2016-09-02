@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-01 17:30:01
+  Date: 2016-09-02 10:18:25
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -68,7 +68,7 @@
             </td>
         </tr>
     </table>
-    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI="/system/userFootmark_list.action"
+    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI="${pageContext.request.contextPath}/system/userFootmark_list.action"
 		    id="list" pagesize="20" class="table" export="true">
 		<display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>" media="html">
           		<input type="checkbox" name="ids" value="<c:out value='${list.id}'/>" style='border: none' />
@@ -76,43 +76,44 @@
         <display:column title="序号" media="html csv excel xml pdf rtf">
               	<c:out value=" ${list_rowNum}"/>
         </display:column>
+        <display:column   title="actionMethod" sortable="true" media="html">
+                 <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.actionMethod}"/></a>
+        </display:column>
+        <display:column property="actionMethod" media="csv excel xml pdf rtf"	title="actionMethod" />
 
 
-
-        <display:column property="visiteDate"  escapeXml="true" title="visiteDate" sortable="false"
-        
+        <display:column property="visiteDate"  escapeXml="true" title="visiteDate" 
                         decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
                                                                                                     />
 
 
+        <display:column property="actionName"  escapeXml="true" title="actionName" 
+                                                                                                    />
 
 
+        <display:column property="actionPurpose"  escapeXml="true" title="actionPurpose" 
+                                                                                                    />
 
 
-        <display:column property="userId"  escapeXml="true" title="userId" sortable="false"
-        
+        <display:column property="userId"  escapeXml="true" title="userId" 
                                         decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
                                                             />
 
 
-        <display:column property="orgId"  escapeXml="true" title="组织" sortable="false"
-        
+        <display:column property="orgId"  escapeXml="true" title="组织" 
                                                                 decorator="com.delmar.base.web.displaytag.decorator.OrgDecorator"
                                     />
 
 
-        <display:column property="remark"  escapeXml="true" title="备注" sortable="false"
-        
+        <display:column property="remark"  escapeXml="true" title="备注" 
                                                                                                     />
 
 
-        <display:column property="remoteAddr"  escapeXml="true" title="remoteAddr" sortable="false"
-        
+        <display:column property="remoteAddr"  escapeXml="true" title="remoteAddr" 
                                                                                                     />
 
 
-        <display:column property="remoteHost"  escapeXml="true" title="remoteHost" sortable="false"
-        
+        <display:column property="remoteHost"  escapeXml="true" title="remoteHost" 
                                                                                                     />
 
 

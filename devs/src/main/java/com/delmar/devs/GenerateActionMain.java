@@ -51,6 +51,7 @@ public class GenerateActionMain {
         root.put("packagename", classpackage);
         root.put("modelpackage", modelpackage);
         root.put("servicepackage", servicepackage);
+        root.put("pagingByDb",genModelDto.isPagingByDb());
         List<String> requiredStrings=new ArrayList<String>();
         List<String> requiredFields=new ArrayList<>();
 

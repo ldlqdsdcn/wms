@@ -9,15 +9,10 @@ package com.delmar.system.web.action;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.delmar.core.service.CoreService;
-import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
-import com.delmar.core.web.def.PagingType;
-import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.core.web.action.CoreEditPrivAction;
+import com.delmar.core.web.action.CoreEditPagingAction;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
@@ -25,17 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.system.model.UserFootmark;
 import com.delmar.system.service.UserFootmarkService;
 /**
- * @author 刘大磊 2016-09-01 17:30:01
+ * @author 刘大磊 2016-09-02 10:18:25
  */
 @Validations(requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "userFootmark.visiteDate",message = "不允许为空")})
-public class UserFootmarkAction extends CoreEditPrivAction {
+public class UserFootmarkAction extends CoreEditPagingAction {
 	private UserFootmark  userFootmark;
 	@Autowired
 	private UserFootmarkService userFootmarkService;
-	public UserFootmarkAction()
-	{
-		pagingType= PagingType.DATABASE;
-	}
+	
 	private void init()
 	{
 
@@ -85,34 +77,30 @@ public class UserFootmarkAction extends CoreEditPrivAction {
 		 userFootmark= userFootmarkService.selectByPrimaryKey(id);
 
 	}
+public PaginatedListHelper searchPaginatedList()
+{
+Map<String, Object> param = new HashMap();
+param.put("searchString", getSearchWhere());
+param.put("pageNo", page);
+param.put("pageSize",20);
+int fullListSize = userFootmarkService.countObjects(param);
+List list = userFootmarkService.selectByExample(param);
+PaginatedListHelper paginatedListHelper = new PaginatedListHelper(page, fullListSize, list);
+return paginatedListHelper;
+}
 
-
-
-	@Override
-	public PaginatedListHelper searchPaginatedList() {
-		Map<String, Object> param = new HashMap();
-		param.put("searchString", getSearchWhere());
-		Integer pageNumber=(Integer)FacesUtils.getValueInHashtableOfSession("pageNumber");
-		param.put("pageNo", FacesUtils.getValueInHashtableOfSession("pageNumber"));
-		param.put("pageSize",20);
-		int fullListSize = userFootmarkService.countObjects(param);
-		List list = userFootmarkService.selectByExample(param);
-		PaginatedListHelper paginatedListHelper = new PaginatedListHelper(pageNumber, fullListSize, list);
-		return paginatedListHelper;
-
-	}
 
 	/* (non-Javadoc)
-         * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
-         */
-
+	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
+	 */
+	@Override
 	public void createForm() {
 		userFootmark=new UserFootmark();
 	}
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#saveForm()
 	 */
-
+	@Override
 	public String saveForm() {
 Integer currentUserId=getCurrentUser();
 User user=getUserInSession();
@@ -132,5 +120,4 @@ User user=getUserInSession();
 	public void setUserFootmark(UserFootmark userFootmark) {
 		this.userFootmark = userFootmark;
 	}
-
 }

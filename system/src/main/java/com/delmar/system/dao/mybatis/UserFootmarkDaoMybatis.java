@@ -14,7 +14,7 @@ import com.delmar.system.model.UserFootmark;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-09-01 17:30:01
+ * @author 刘大磊 2016-09-02 10:18:25
  */
 @Repository("userFootmarkDao") 
 public class UserFootmarkDaoMybatis extends CoreDaoMyBatis<UserFootmark> implements UserFootmarkDao {

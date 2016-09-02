@@ -68,7 +68,7 @@
             </td>
         </tr>
     </table>
-    <display:table name="sessionScope.MAP_KEY_OF_SESSION.${mode? uncap_first}List" cellspacing="0" cellpadding="0"  requestURI=""
+    <display:table name="sessionScope.MAP_KEY_OF_SESSION.${mode? uncap_first}List" cellspacing="0" cellpadding="0"  requestURI="${r'${pageContext.request.contextPath}'}${namespace}/${mode}_list.action"
 		    id="list" pagesize="20" class="table" export="true">
 		<display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>" media="html">
           		<input type="checkbox" name="ids" value="<c:out value='${r'${list.id}'}'/>" style='border: none' />
@@ -83,9 +83,8 @@
         </display:column>
         <display:column property="${prop.prop}" media="csv excel xml pdf rtf"	title="${prop.label}" />
         <#else>
-        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" sortable="true"
-        
-                <#if prop.decoratorType==1>
+        <display:column property="${prop.prop}"  escapeXml="true" title="${prop.label}" <#if !pagingByDb>sortable="true"</#if>
+               <#if prop.decoratorType==1>
                         decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
                 </#if>
                 <#if prop.decoratorType==2> decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"
