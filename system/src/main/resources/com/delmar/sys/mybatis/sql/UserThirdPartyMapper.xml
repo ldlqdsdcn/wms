@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="partyUser" jdbcType="VARCHAR" property="partyUser" />
-    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />    
+    <result column="user_id" jdbcType="INTEGER" property="sysUserId" />    
     <result column="system_id" jdbcType="INTEGER" property="systemId" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="createdBy" jdbcType="INTEGER" property="createdBy" />
@@ -18,13 +18,13 @@
   </resultMap>
   <sql id="Example_Where_Clause">
     <where >
-	    <if test="sysuserid!=null"> and sys_user_id=#{sysuserid,jdbcType=INTEGER} </if>
+	    <if test="sysuserid!=null"> and user_id=#{sysuserid,jdbcType=INTEGER} </if>
 	    <if test="accessString!=null"> and ${accessString} </if>
     </where>
     
   </sql>
   <sql id="Base_Column_List">
-    id, password, partyUser, sys_user_id,system_id, created, createdBy, createdByName, updated, updatedBy, 
+    id, password, partyUser, user_id,system_id, created, createdBy, createdByName, updated, updatedBy, 
     updatedByName, partytype_id,remark 
   </sql>
   <select id="selectByExample" parameterType="com.delmar.sys.model.UserThirdParty" resultMap="BaseResultMap">
@@ -59,7 +59,7 @@
     </if>
   </delete>
   <insert id="insert" keyProperty="id" parameterType="com.delmar.sys.model.UserThirdParty" useGeneratedKeys="true">
-    insert into sys_user_thirdparty (password, partyUser, sys_user_id,system_id, 
+    insert into sys_user_thirdparty (password, partyUser, user_id,system_id, 
       created, createdBy, createdByName, 
       updated, updatedBy, updatedByName, 
       partytype_id,remark)
@@ -78,7 +78,7 @@
         partyUser,
       </if>
       <if test="sysUserId != null">
-        sys_user_id,
+        user_id,
       </if>
 
       <if test="systemId != null">
@@ -163,7 +163,7 @@
         partyUser = #{partyUser,jdbcType=VARCHAR},
       </if>
       <if test="sysUserId != null">
-        sys_User_Id = #{sysUserId,jdbcType=INTEGER},
+        user_id = #{sysUserId,jdbcType=INTEGER},
       </if>
       <if test="systemId != null">
         system_id = #{systemId,jdbcType=INTEGER},
@@ -192,7 +192,7 @@
     update sys_user_thirdparty
     set password = #{password,jdbcType=VARCHAR},
       partyUser = #{partyUser,jdbcType=VARCHAR},
-      sys_user_id = #{sysUserId,jdbcType=INTEGER},
+      user_id = #{sysUserId,jdbcType=INTEGER},
       system_id = #{systemId,jdbcType=INTEGER},
       updated = #{updated,jdbcType=TIMESTAMP},
       updatedBy = #{updatedBy,jdbcType=INTEGER},

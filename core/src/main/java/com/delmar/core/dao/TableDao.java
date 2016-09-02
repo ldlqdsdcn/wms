@@ -54,4 +54,16 @@ public interface TableDao extends CoreDao<Table> {
      * @return
      */
     String getTableRemark(String tableName);
+
+    /**
+     * 获取系统中所有的表
+     * @return
+     */
+    List   getAllTableName();
+
+    /**
+     * 执行sql命令
+     * @param sql
+     */
+    void execute(String sql);
 }

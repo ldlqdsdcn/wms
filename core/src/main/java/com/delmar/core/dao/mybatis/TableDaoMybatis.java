@@ -232,7 +232,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
 
         try {
-            System.out.println("获取 index");
+            //System.out.println("获取 index");
             DatabaseMetaData databaseMetaData = conn.getMetaData();
             String columnName;
             String columnType;
@@ -258,11 +258,11 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
                 columnMetaDataDto.setRemarks(remarks);
                 columnMetaDataDto.setColumnDefault(colDef);
                 list.add(columnMetaDataDto);
-                System.out.println(columnMetaDataDto.toString());
-                for(int i=1;i<resultSetMetaData.getColumnCount();i++)
-                {
-                    System.out.print(resultSetMetaData.getColumnName(i)+" "+resultSetMetaData.getColumnLabel(i)+" "+colRet.getObject(i)+"   ");
-                }
+               // System.out.println(columnMetaDataDto.toString());
+//                for(int i=1;i<resultSetMetaData.getColumnCount();i++)
+//                {
+//                    System.out.print(resultSetMetaData.getColumnName(i)+" "+resultSetMetaData.getColumnLabel(i)+" "+colRet.getObject(i)+"   ");
+//                }
             }
 
         } catch (Exception e) {
@@ -276,6 +276,47 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         }
         return list;
     }
+    public  List   getAllTableName() {
+        List   tables   =   new   ArrayList();
+        try {
+            Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
 
+
+            DatabaseMetaData   dbMetaData   =   conn.getMetaData();
+
+            //可为:"TABLE",   "VIEW",   "SYSTEM   TABLE",
+            //"GLOBAL   TEMPORARY",   "LOCAL   TEMPORARY",   "ALIAS",   "SYNONYM"
+            String[]   types   =   {"TABLE"};
+
+            ResultSet   tabs   =   dbMetaData.getTables(null,   null,   null,types/*只要表就好了*/);
+            while(tabs.next()){
+                //只要表名这一列
+                tables.add(tabs.getObject("TABLE_NAME"));
+
+            }
+            tabs.close();
+            conn.close();
+        } catch (SQLException e) {
+            logger.error("获取所有表目录异常",e);
+            throw new DataBaseException("获取数据库列信息异常", e);
+        }
+        logger.debug(tables);
+        return   tables;
+
+    }
+
+    @Override
+    public void execute(String sql) {
+        try {
+            Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
+            Statement statement=conn.createStatement();
+            statement.execute(sql);
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            logger.error("执行sql语句异常"+sql,e);
+            throw new DataBaseException("sql执行异常："+sql, e);
+        }
+    }
 
 }
