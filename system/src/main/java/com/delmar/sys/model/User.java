@@ -132,7 +132,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @return the value of sys_user.id
      *
-     * @mbggenerated
+     *
      */
     public Integer getId() {
         return id;
@@ -144,7 +144,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @param id the value for sys_user.id
      *
-     * @mbggenerated
+     *
      */
     public void setId(Integer id) {
         this.id = id;
@@ -156,7 +156,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @return the value of sys_user.username
      *
-     * @mbggenerated
+     *
      */
     public String getUsername() {
         return username;
@@ -168,7 +168,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @param username the value for sys_user.username
      *
-     * @mbggenerated
+     *
      */
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
@@ -180,7 +180,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @return the value of sys_user.password
      *
-     * @mbggenerated
+     *
      */
     public String getPassword() {
         return password;
@@ -192,7 +192,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @param password the value for sys_user.password
      *
-     * @mbggenerated
+     *
      */
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
@@ -204,7 +204,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @return the value of sys_user.name
      *
-     * @mbggenerated
+     *
      */
     public String getName() {
         return name;
@@ -216,7 +216,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @param name the value for sys_user.name
      *
-     * @mbggenerated
+     *
      */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
@@ -228,7 +228,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @return the value of sys_user.remark
      *
-     * @mbggenerated
+     *
      */
     public String getRemark() {
         return remark;
@@ -240,7 +240,7 @@ public class User extends CoreModel implements UserInterface{
      *
      * @param remark the value for sys_user.remark
      *
-     * @mbggenerated
+     *
      */
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();

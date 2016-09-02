@@ -22,5 +22,5 @@ public interface EventTypeService extends CoreService<EventType> {
 	 * @param mode
 	 * @return
 	 */
-	public List<EventType> getEventTypeListByMode(String mode);
+	List<EventType> getEventTypeListByMode(String mode);
 }

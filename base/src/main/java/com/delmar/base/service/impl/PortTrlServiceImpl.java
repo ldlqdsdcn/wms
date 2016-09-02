@@ -49,7 +49,7 @@ public class PortTrlServiceImpl extends CoreServiceImpl<PortTrl> implements
 		{
 			return null;
 		}
-	   Map param=new HashMap();
+		Map<String,Object> param=new HashMap<>();
 	   param.put("portId",portId);
 	   param.put("language",language);
 	   PortTrl portTrl=null;

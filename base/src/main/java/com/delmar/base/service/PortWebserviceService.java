@@ -19,7 +19,7 @@ public interface PortWebserviceService extends CoreService<PortWebservice> {
 	/**
 	 * @param ids
 	 */
-	public void deletePortWebserviceList(Integer[] ids);
+	void deletePortWebserviceList(Integer[] ids);
 	
 	/**
 	 * 根据关联表Port Id 选择系统中对应的Port
@@ -28,5 +28,5 @@ public interface PortWebserviceService extends CoreService<PortWebservice> {
 	 * @param serviceType 
 	 * @return
 	 */
-	public Port getPortByPortWebserviceName(String name, String serviceType, Integer integer);
+	Port getPortByPortWebserviceName(String name, String serviceType, Integer integer);
 }

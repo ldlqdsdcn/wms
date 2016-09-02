@@ -19,7 +19,7 @@
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
     <result column="updatedby" property="updatedBy" jdbcType="INTEGER" />
     <result column="updatedbyName" property="updatedByName" jdbcType="VARCHAR" />    
-    <association property="datadictType" column="datadict_type_id" select="com.delmar.base.mybatis.sql.DatadictTypeMapper.selectByPrimaryKey" ></association>
+    <association property="datadictType" column="datadict_type_id" select="com.delmar.base.mybatis.sql.DatadictTypeMapper.selectByPrimaryKey" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

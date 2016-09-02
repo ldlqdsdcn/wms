@@ -6,18 +6,13 @@
  *****************************************************************************/
 package com.delmar.base;
 
-import java.util.List;
-
+import com.delmar.base.service.CityService;
+import com.delmar.base.service.PortService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.delmar.base.model.City;
-import com.delmar.base.model.Port;
-import com.delmar.base.service.CityService;
-import com.delmar.base.service.PortService;
 
 /**
  * @author 刘大磊 2014年12月29日 下午4:29:29

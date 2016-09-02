@@ -18,7 +18,7 @@ public interface DatadictTrlService extends CoreService<DatadictTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deleteDatadictTrlList(Integer[] ids);
-	public void updateIndexOrder(Integer indexOrder,Integer datadictId) ;
+	void deleteDatadictTrlList(Integer[] ids);
+	void updateIndexOrder(Integer indexOrder, Integer datadictId) ;
 
 }

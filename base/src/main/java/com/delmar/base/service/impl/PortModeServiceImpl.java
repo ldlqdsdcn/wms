@@ -27,7 +27,6 @@ public class PortModeServiceImpl extends CoreServiceImpl<PortMode> implements
 	@Autowired
 	private PortModeDao portModeDao;
 	/** (non-Javadoc)
-	 * @see CoreService.CoreServiceImpl#getCoreDao()
 	 */
 	@Override
 	protected CoreDao<PortMode> getCoreDao() {

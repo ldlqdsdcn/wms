@@ -16,5 +16,5 @@ import com.delmar.core.service.CoreService;
  */
 public interface UnitService extends CoreService<Unit> {
 	
-	public Integer GetIdByCode(String code) throws Exception;
+	Integer GetIdByCode(String code);
 }

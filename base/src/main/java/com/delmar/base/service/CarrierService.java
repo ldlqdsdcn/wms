@@ -20,27 +20,27 @@ import com.delmar.core.service.CoreService;
  */
 public interface CarrierService extends CoreService<Carrier> {
 	
-	public Integer GetIdByCode(String code) throws Exception;
+	Integer GetIdByCode(String code);
 
 	/**
-	 * @param ids
+	 * @param ids 要删除的运输公司 id列表
 	 */
-	public void deleteCarrierList(Integer[] ids);
+	void deleteCarrierList(Integer[] ids);
 	
 	/**
 	 * 保存运输公司，和国际化信息
 	 * @param carrier
 	 * @param trlList
 	 */
-	public void saveCarrier(Carrier carrier,List<CarrierTrl> trlList);
+	void saveCarrier(Carrier carrier, List<CarrierTrl> trlList);
 
 	/**
 	 * @param carrier
 	 * @param carrierTrlList
 	 * @param fileRelationList
 	 */
-	public void saveCarrier(Carrier carrier, List<CarrierTrl> carrierTrlList,
-			List<FileRelation> fileRelationList);
+	void saveCarrier(Carrier carrier, List<CarrierTrl> carrierTrlList,
+					 List<FileRelation> fileRelationList);
 	
 
 }

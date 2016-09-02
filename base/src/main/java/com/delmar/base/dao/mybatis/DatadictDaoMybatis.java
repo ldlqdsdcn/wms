@@ -36,7 +36,7 @@ public class DatadictDaoMybatis extends CoreDaoMyBatis<Datadict> implements Data
 	 * @see com.delmar.base.dao.DatadictDao#getDatadictListByTypeId(java.lang.Integer)
 	 */
 	public List<Datadict> getDatadictListByTypeId(Integer typeId,Integer clientId) {
-		Map<String,Object>param=new HashMap<String,Object>();
+		Map<String,Object>param=new HashMap<>();
 		param.put("datadictTypeId", typeId);
 		if (clientId!=null)
   		  param.put("clientId", clientId);
@@ -45,7 +45,7 @@ public class DatadictDaoMybatis extends CoreDaoMyBatis<Datadict> implements Data
 	}
 	
 	public void updateIndexOrder(Integer indexOrder,Integer id) {
-		Map param=new HashMap();
+		HashMap<String,Object> param=new HashMap<>();
 		param.put("indexOrder", indexOrder);
 		param.put("id", id);		
 		sqlSessionTemplate.update(this.getSqlName()+".updateIndexOrder", param);

@@ -18,5 +18,5 @@ public interface CompanysSopService extends CoreService<CompanysSop> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCompanysSopList(Integer[] ids);
+	void deleteCompanysSopList(Integer[] ids);
 }

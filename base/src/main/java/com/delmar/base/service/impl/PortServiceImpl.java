@@ -7,13 +7,6 @@
 
 package com.delmar.base.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.delmar.base.dao.PortDao;
 import com.delmar.base.dao.PortModeDao;
 import com.delmar.base.dao.PortTrlDao;
@@ -24,8 +17,13 @@ import com.delmar.base.model.PortTrl;
 import com.delmar.base.service.DatadictService;
 import com.delmar.base.service.PortService;
 import com.delmar.core.dao.CoreDao;
-import com.delmar.core.service.CoreService;
 import com.delmar.core.service.impl.CoreServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2014-12-22 13:26:54
@@ -41,24 +39,21 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 	private PortModeDao portModeDao;
 	@Autowired
 	private DatadictService datadictService;
-	/** (non-Javadoc)
-	 * @see CoreService.CoreServiceImpl#getCoreDao()
-	 */
 	@Override
 	protected CoreDao<Port> getCoreDao() {
 		return portDao;
 	}
 	
-	public Integer GetIdByCode(String code) throws Exception
+	public Integer GetIdByCode(String code)
 	{
-		HashMap filterMap=new HashMap();
+		Map<String,Object> filterMap=new HashMap<>();
 		
 		filterMap.put("portcode",code);
 		
 		List<Port> objList=selectByExample(filterMap);
 		if (objList.size()==0)
 		{
-			return new Integer(0);
+			return 0;
 		}
 		else
 		{
@@ -69,7 +64,7 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 	}
 	public Port getPortByportcodeAndMode(String portcode,String mode)
 	{
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
 		param.put("mode", mode);
 		param.put("portcode", portcode);
 		 List<Port> list=portDao.selectPortByMode(param);
@@ -91,10 +86,10 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 	 */
 	@Override
 	public Integer deleteByPrimaryKey(Integer id) {
-		Map param=new HashMap();
+		Map<String,Object> param=new HashMap<>();
 		param.put("basePortId", id);
 		this.portModeDao.deleteByExample(param);
-		param=new HashMap();
+		param=new HashMap<>();
 		param.put("portId", id);
 		portTrlDao.deleteByExample(param);
 		
@@ -124,7 +119,7 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 					this.portTrlDao.save(trl);
 				}
 			}
-			Map param=new HashMap();
+			Map<String,Object> param=new HashMap<>();
 			param.put("basePortId", port.getId());
 			this.portModeDao.deleteByExample(param);
 			if(modIds!=null)
@@ -147,7 +142,7 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 	 * @see com.delmar.base.service.PortService#validatePortType(java.lang.Integer, java.lang.String)
 	 */
 	public boolean validatePortMode(Integer portId, String mode) {
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
 		param.put("basePortId", portId);
 		List<PortMode> portModeList=portModeDao.selectByExample(param);
 		if(portModeList!=null)
@@ -167,7 +162,7 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 	 * @see com.delmar.base.service.PortService#selectPortByCityIdAndMode(java.lang.Integer, java.lang.String)
 	 */
 	public Port selectPortByCityIdAndMode(Integer cityId, String mode) {
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
 		param.put("cityId", cityId);
 		param.put("accessString", "id in(select base_port_id from base_port_mode where mode='"+mode+"' )");
 		List<Port> portList=this.portDao.selectByExample(param);

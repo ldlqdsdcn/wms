@@ -19,18 +19,18 @@ import com.delmar.core.service.CoreService;
  * @author 刘大磊 2014-12-22 13:26:54
  */
 public interface PortService extends CoreService<Port> {
-	public Integer GetIdByCode(String code) throws Exception;
-	public List<Port> selectPortByMode(Map<String,Object> param) ;
-	public Port getPortByportcodeAndMode(String portcode,String mode);
+	Integer GetIdByCode(String code);
+	List<Port> selectPortByMode(Map<String, Object> param) ;
+	Port getPortByportcodeAndMode(String portcode, String mode);
 	/**
 	 * @param ids
 	 */
-	public void deletePortList(Integer[] ids);
+	void deletePortList(Integer[] ids);
 	
 	
-	public void savePort(Port port,List<PortTrl>trls,List<Integer>modIds);
+	void savePort(Port port, List<PortTrl> trls, List<Integer> modIds);
 	
-	public boolean validatePortMode(Integer portId,String mode);
+	boolean validatePortMode(Integer portId, String mode);
 	
-	public Port selectPortByCityIdAndMode(Integer cityId,String mode);
+	Port selectPortByCityIdAndMode(Integer cityId, String mode);
 }

@@ -23,15 +23,15 @@ public interface CityService extends CoreService<City> {
 	 * 获取关联城市
 	 * @return
 	 */
-	public City  getRelateCity(Integer relateCityId);
+	City  getRelateCity(Integer relateCityId);
 
 	/**
 	 * @param ids
 	 */
-	public void deleteCityList(Integer[] ids);
+	void deleteCityList(Integer[] ids);
 	
-	public void saveCity(City city,List<CityTrl> cityTrlList);
+	void saveCity(City city, List<CityTrl> cityTrlList);
 	
-	public CityTrl getCityTrl(String language,Integer cityId);
+	CityTrl getCityTrl(String language, Integer cityId);
 
 }

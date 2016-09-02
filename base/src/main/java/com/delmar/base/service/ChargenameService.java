@@ -18,7 +18,7 @@ import com.delmar.core.service.CoreService;
  */
 public interface ChargenameService extends CoreService<Chargename> {
 	
-	public Integer GetIdByCode(String code) throws Exception;
+	Integer GetIdByCode(String code);
 	
 	/**
 	 * 根据运输货物的重量，体积，获取卡车类型
@@ -26,6 +26,6 @@ public interface ChargenameService extends CoreService<Chargename> {
 	 * @param volume
 	 * @return
 	 */
-	public Chargename selectConformTruck(BigDecimal grossWeight,
-			BigDecimal volume,String extraType) ;
+	Chargename selectConformTruck(BigDecimal grossWeight,
+								  BigDecimal volume, String extraType) ;
 }

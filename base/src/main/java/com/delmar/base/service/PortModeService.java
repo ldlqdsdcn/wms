@@ -17,5 +17,5 @@ import com.delmar.core.service.CoreService;
  * @author 刘大磊 2014-12-29 16:12:54
  */
 public interface PortModeService extends CoreService<PortMode> {
-	public  List<PortMode> getPortModeListByPortId(Integer portId);
+	List<PortMode> getPortModeListByPortId(Integer portId);
 }

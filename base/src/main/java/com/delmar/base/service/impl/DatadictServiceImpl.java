@@ -68,9 +68,9 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	@Override
 	public Integer deleteByPrimaryKey(Integer id) {
-		Map map=new HashMap();
-		map.put("datadictId", id);
-		this.datadictTrlDao.deleteByExample(map);
+		HashMap<String,Object> param=new HashMap<>();
+		param.put("datadictId", id);
+		this.datadictTrlDao.deleteByExample(param);
 		return super.deleteByPrimaryKey(id);
 	}
 	/* (non-Javadoc)
@@ -82,9 +82,9 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	}
 	
 	public List<Datadict> getDatadictListByTypeIdAndDate(Integer typeId,String requestDate,Integer clientId) {
-		Map map=new HashMap();
-		map.put("accessString", " datadict_type_id="+typeId+" and client_id="+clientId+" and updated>=convert(datetime,'"+requestDate+"') ");
-		return datadictDao.selectByExample(map);
+		HashMap<String,Object> param=new HashMap<>();
+		param.put("accessString", " datadict_type_id="+typeId+" and client_id="+clientId+" and updated>=convert(datetime,'"+requestDate+"') ");
+		return datadictDao.selectByExample(param);
 	}
 	
 	/* (non-Javadoc)
@@ -92,11 +92,11 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	
 	public List<Datadict> getDatadictListByTypeValue(String value) {
-		Map<String,Object>param=new HashMap<String,Object>();
+		Map<String,Object>param=new HashMap<>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
-		if (dt.getBePublic().intValue()==DataDictPublicType.PRIVATE.getType())   //私有
+		if (dt.getBePublic()==DataDictPublicType.PRIVATE.getType())   //私有
 			throw new ParamMissingException(getText("public.exception.parammissingexception.noclient","参数缺少,没有client参数"));
 		
 		return datadictDao.getDatadictListByTypeId(dt.getId(),null);
@@ -104,11 +104,11 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	
 	
 	public List<Datadict> getDatadictListByTypeValue(String value,Integer clientId) {
-		Map<String,Object>param=new HashMap<String,Object>();
+		Map<String,Object>param=new HashMap<>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
-		if (dt.getBePublic().intValue()==DataDictPublicType.PUBLIC.getType())   //公有的
+		if (dt.getBePublic()==DataDictPublicType.PUBLIC.getType())   //公有的
 			clientId=null;
 		
 		return datadictDao.getDatadictListByTypeId(dt.getId(),clientId);
@@ -137,7 +137,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 		List<DatadictTrl> datadictTrlList=datadictTrlDao.getDatadictTrlByTypeId(typeId,language,clientId);
 		if(datadictTrlList==null||datadictTrlList.size()==0)
 		{
-			datadictTrlList=new ArrayList<DatadictTrl>();
+			datadictTrlList=new ArrayList<>();
 			List<Datadict> datadictList=this.getDatadictListByTypeId(typeId,clientId);
 			for(Datadict dict:datadictList)
 			{
@@ -156,7 +156,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 		List<DatadictTrl> datadictTrlList=datadictTrlDao.getDatadictTrlByTypeIdAndDate(typeId,requestDate,language,clientId);
 		if(datadictTrlList==null||datadictTrlList.size()==0)
 		{
-			datadictTrlList=new ArrayList<DatadictTrl>();
+			datadictTrlList=new ArrayList<>();
 			List<Datadict> datadictList=this.getDatadictListByTypeIdAndDate(typeId,requestDate,clientId);
 			for(Datadict dict:datadictList)
 			{
@@ -175,11 +175,11 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	
 	public List<DatadictTrl> getDatadictTrlByValue(String value,String language) {
-		Map<String,Object>param=new HashMap<String,Object>();
+		Map<String,Object>param=new HashMap<>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
-		if (dt.getBePublic().intValue()==1)   //私有
+		if (dt.getBePublic()==1)   //私有
 			throw new ParamMissingException(getText("public.exception.parammissingexception.noclient","参数缺少,没有client参数"));
 		
 		
@@ -188,12 +188,12 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	
 	
 	public List<DatadictTrl> getDatadictTrlByValue(String value,String language,Integer clientId) {
-		Map<String,Object>param=new HashMap<String,Object>();
+		Map<String,Object>param=new HashMap<>();
 		param.put("value", value);
 
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
-		if (dt.getBePublic().intValue()==0)   //私有
+		if (dt.getBePublic()==0)   //私有
 			clientId=null;
 			
 		return getDatadictTrlByTypeId(dt.getId(),language,clientId);
@@ -212,7 +212,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	public DatadictTrl getTrlByDataId(Integer dataId,String language)
 	{
-		Map<String,Object>param=new HashMap<String,Object>();		
+		Map<String,Object>param=new HashMap<>();
 		param.put("datadictId", dataId);
 	    param.put("language",language);
 		
@@ -229,9 +229,9 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 				dataTrl.setName(datadict.getName());
 				dataTrl.setValue(datadict.getValue());
 			}
-		};
-		
-		
+		}
+
+
 		return	dataTrl;
 				
 	}

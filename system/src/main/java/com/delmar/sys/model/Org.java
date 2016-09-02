@@ -64,7 +64,7 @@ public class Org extends CoreModel {
      *
      * @return the value of sys_org.id
      *
-     * @mbggenerated
+     *
      */
     public Integer getId() {
         return id;
@@ -76,7 +76,7 @@ public class Org extends CoreModel {
      *
      * @param id the value for sys_org.id
      *
-     * @mbggenerated
+     *
      */
     public void setId(Integer id) {
         this.id = id;
@@ -88,7 +88,7 @@ public class Org extends CoreModel {
      *
      * @return the value of sys_org.value
      *
-     * @mbggenerated
+     *
      */
     public String getValue() {
         return value;
@@ -100,7 +100,7 @@ public class Org extends CoreModel {
      *
      * @param value the value for sys_org.value
      *
-     * @mbggenerated
+     *
      */
     public void setValue(String value) {
         this.value = value == null ? null : value.trim();
@@ -112,7 +112,7 @@ public class Org extends CoreModel {
      *
      * @return the value of sys_org.name
      *
-     * @mbggenerated
+     *
      */
     public String getName() {
         return name;
@@ -124,7 +124,7 @@ public class Org extends CoreModel {
      *
      * @param name the value for sys_org.name
      *
-     * @mbggenerated
+     *
      */
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
@@ -136,7 +136,7 @@ public class Org extends CoreModel {
      *
      * @return the value of sys_org.remark
      *
-     * @mbggenerated
+     *
      */
     public String getRemark() {
         return remark;
@@ -148,7 +148,7 @@ public class Org extends CoreModel {
      *
      * @param remark the value for sys_org.remark
      *
-     * @mbggenerated
+     *
      */
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();

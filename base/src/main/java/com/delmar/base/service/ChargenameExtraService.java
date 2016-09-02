@@ -18,5 +18,5 @@ public interface ChargenameExtraService extends CoreService<ChargenameExtra> {
 	/**
 	 * @param ids
 	 */
-	public void deleteChargenameExtraList(Integer[] ids);
+	void deleteChargenameExtraList(Integer[] ids);
 }

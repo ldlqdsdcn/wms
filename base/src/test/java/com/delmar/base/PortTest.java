@@ -6,21 +6,19 @@
  *****************************************************************************/
 package com.delmar.base;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.delmar.base.dao.PortDao;
+import com.delmar.base.enumdef.ModeType;
+import com.delmar.base.model.Port;
+import com.delmar.base.service.PortService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.delmar.base.dao.PortDao;
-import com.delmar.base.enumdef.ModeType;
-import com.delmar.base.model.Datadict;
-import com.delmar.base.model.Port;
-import com.delmar.base.service.PortService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2014年12月23日 下午1:57:03
@@ -35,7 +33,7 @@ public class PortTest {
 	@Test
 	public void testPortSelect()
 	{
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
 		param.put("mode", ModeType.Air.toString());
 		List<Port> portList=portDao.selectPortByMode(param);
 		for(Port p:portList)

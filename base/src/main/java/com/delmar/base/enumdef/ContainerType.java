@@ -11,5 +11,5 @@ package com.delmar.base.enumdef;
  * 箱型 整箱 散箱
  */
 public enum ContainerType {
-	FCL,LCL;
+	FCL,LCL
 }

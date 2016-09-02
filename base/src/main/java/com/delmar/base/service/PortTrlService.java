@@ -8,7 +8,6 @@
 
 package com.delmar.base.service;
 
-import com.delmar.base.model.CityTrl;
 import com.delmar.base.model.PortTrl;
 import com.delmar.core.service.CoreService;
 
@@ -19,7 +18,7 @@ public interface PortTrlService extends CoreService<PortTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deletePortTrlList(Integer[] ids);
+	void deletePortTrlList(Integer[] ids);
 	
-	public PortTrl getPortTrl(String language,Integer portId);
+	PortTrl getPortTrl(String language, Integer portId);
 }

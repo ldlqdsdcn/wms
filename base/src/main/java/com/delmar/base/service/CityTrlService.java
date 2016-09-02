@@ -18,5 +18,5 @@ public interface CityTrlService extends CoreService<CityTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCityTrlList(Integer[] ids);
+	void deleteCityTrlList(Integer[] ids);
 }

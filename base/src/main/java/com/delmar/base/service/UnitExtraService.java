@@ -18,5 +18,5 @@ public interface UnitExtraService extends CoreService<UnitExtra> {
 	/**
 	 * @param ids
 	 */
-	public void deleteUnitExtraList(Integer[] ids);
+	void deleteUnitExtraList(Integer[] ids);
 }

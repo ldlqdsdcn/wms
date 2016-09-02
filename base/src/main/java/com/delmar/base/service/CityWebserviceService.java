@@ -8,7 +8,6 @@
 
 package com.delmar.base.service;
 
-import com.delmar.base.model.City;
 import com.delmar.base.model.CityWebservice;
 import com.delmar.core.service.CoreService;
 
@@ -19,12 +18,6 @@ public interface CityWebserviceService extends CoreService<CityWebservice> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCityWebserviceList(Integer[] ids);
+	void deleteCityWebserviceList(Integer[] ids);
 	
-	/**
-	 * 根据查询 名获取 City
-	 * @param queryName
-	 * @return
-	 */
-	public City getCityByCityWebServiceQueryName(String queryName);
 }

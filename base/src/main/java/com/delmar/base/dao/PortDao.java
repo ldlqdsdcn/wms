@@ -17,5 +17,5 @@ import com.delmar.core.dao.CoreDao;
  * @author 刘大磊 2014-12-22 13:26:54
  */
 public interface PortDao extends CoreDao<Port> {
-	public List<Port> selectPortByMode(Map<String,Object> param) ;
+	List<Port> selectPortByMode(Map<String, Object> param) ;
 }

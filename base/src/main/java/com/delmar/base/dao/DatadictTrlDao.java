@@ -25,5 +25,5 @@ public interface DatadictTrlDao extends CoreDao<DatadictTrl> {
 	List<DatadictTrl> getDatadictTrlByTypeId(Integer typeId, String language,Integer clientId);
 	List<DatadictTrl> getDatadictTrlByTypeIdAndDate(Integer typeId,String requestDate,
 			String language,Integer clientId);
-	public void updateIndexOrder(Integer indexOrder,Integer datadictId) ;
+	void updateIndexOrder(Integer indexOrder, Integer datadictId) ;
 }

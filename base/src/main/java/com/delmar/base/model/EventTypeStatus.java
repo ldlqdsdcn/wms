@@ -11,8 +11,8 @@ package com.delmar.base.model;
  */
 public enum EventTypeStatus {
     BGN_STATUS(1), MID_STATUS(2),END_STATUS(3);
-    private int state;
-    private EventTypeStatus(int state) {
+    private final int state;
+    EventTypeStatus(int state) {
         this.state = state;
     }
 

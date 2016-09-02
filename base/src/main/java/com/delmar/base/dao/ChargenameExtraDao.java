@@ -23,5 +23,5 @@ public interface ChargenameExtraDao extends CoreDao<ChargenameExtra> {
 	 * @param volume
 	 * @return
 	 */
-	public List<ChargenameExtra> selectConformCharenameExtra(BigDecimal grossWeight,BigDecimal volume,String extraType);
+	List<ChargenameExtra> selectConformCharenameExtra(BigDecimal grossWeight, BigDecimal volume, String extraType);
 }

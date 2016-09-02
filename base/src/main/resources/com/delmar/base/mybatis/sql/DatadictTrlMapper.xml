@@ -9,7 +9,7 @@
     <result column="indexOrder" property="indexOrder" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     
-    <association property="datadict" column="datadict_id" select="com.delmar.base.mybatis.sql.DatadictMapper.selectByPrimaryKey" ></association>    
+    <association property="datadict" column="datadict_id" select="com.delmar.base.mybatis.sql.DatadictMapper.selectByPrimaryKey" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

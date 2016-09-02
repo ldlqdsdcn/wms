@@ -9,7 +9,7 @@ public enum DataDictPublicType {
 	
 	private int type;
 	
-	private DataDictPublicType(int type)
+	DataDictPublicType(int type)
 	{
 		this.type=type;
 	}

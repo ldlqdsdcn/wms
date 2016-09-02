@@ -18,5 +18,5 @@ public interface CompanysTrlService extends CoreService<CompanysTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCompanysTrlList(Integer[] ids);
+	void deleteCompanysTrlList(Integer[] ids);
 }

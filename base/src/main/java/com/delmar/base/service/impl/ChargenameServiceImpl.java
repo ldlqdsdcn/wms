@@ -41,15 +41,15 @@ public class ChargenameServiceImpl extends CoreServiceImpl<Chargename> implement
 		return chargenameDao;
 	}
 	
-	public Integer GetIdByCode(String code) throws Exception
+	public Integer GetIdByCode(String code)
 	{
-		HashMap filterMap=new HashMap();
+		HashMap<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);
 		
 		List<Chargename> objList=selectByExample(filterMap);
 		if (objList.size()==0)
 		{
-			return new Integer(0);
+			return 0;
 		}
 		else
 		{
@@ -67,16 +67,16 @@ public class ChargenameServiceImpl extends CoreServiceImpl<Chargename> implement
 		List<ChargenameExtra> extraList=chargenameExtraDao.selectConformCharenameExtra(grossWeight, volume,extraType);
 		if (extraList==null)
 			return null;
-		
-		StringBuffer sb=new StringBuffer();
+
+		StringBuilder sb=new StringBuilder();
 		for (ChargenameExtra objOne:extraList)
 		{
-			sb.append(objOne.getBaseChargenameId()+",");
+			sb.append(objOne.getBaseChargenameId()).append(",");
 		}
 		
 		sb.deleteCharAt(sb.length()-1);
 		
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
 	    param.put("accessString", " id in ("+sb.toString()+")");
 	    List<Chargename> chargenameList=chargenameDao.selectByExample(param);
 	    if (chargenameList.size()==0)

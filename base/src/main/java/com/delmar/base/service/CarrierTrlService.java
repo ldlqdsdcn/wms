@@ -18,5 +18,5 @@ public interface CarrierTrlService extends CoreService<CarrierTrl> {
 	/**
 	 * @param ids
 	 */
-	public void deleteCarrierTrlList(Integer[] ids);
+	void deleteCarrierTrlList(Integer[] ids);
 }

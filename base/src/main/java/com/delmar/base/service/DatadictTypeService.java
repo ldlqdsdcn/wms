@@ -18,8 +18,8 @@ public interface DatadictTypeService extends CoreService<DatadictType> {
 	/**
 	 * @param ids
 	 */
-	public void deleteDatadictTypeList(Integer[] ids);
+	void deleteDatadictTypeList(Integer[] ids);
 	
-	public DatadictType getDatadictType(String value);
+	DatadictType getDatadictType(String value);
 	
 }

@@ -18,5 +18,5 @@ public interface EventTypeModeService extends CoreService<EventTypeMode> {
 	/**
 	 * @param ids
 	 */
-	public void deleteEventTypeModeList(Integer[] ids);
+	void deleteEventTypeModeList(Integer[] ids);
 }

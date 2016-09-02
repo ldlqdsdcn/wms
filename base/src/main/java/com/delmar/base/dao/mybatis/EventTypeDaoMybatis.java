@@ -36,7 +36,7 @@ public class EventTypeDaoMybatis extends CoreDaoMyBatis<EventType> implements Ev
 	 * @see com.delmar.base.dao.EventTypeDao#getEventTypeListByMode(java.lang.String)
 	 */
 	public List<EventType> getEventTypeListByMode(String mode) {
-	Map<String,Object>param=new HashMap<String,Object>();
+	Map<String,Object>param=new HashMap<>();
 	param.put("accessString", " id in(select eventtype_id from base_eventtype_mode where mode='"+mode+"')");
 		return this.selectByExample(param);
 	}

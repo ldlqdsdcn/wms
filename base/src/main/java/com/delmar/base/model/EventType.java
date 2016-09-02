@@ -158,7 +158,7 @@ public class EventType extends CoreModel{
     }
 
     public void setUpdatedbyname(String updatedbyname) {
-        updatedbyname = updatedbyname == null ? null : updatedbyname.trim();
+       this.updatedbyname = updatedbyname == null ? null : updatedbyname.trim();
     }
 
 	/**

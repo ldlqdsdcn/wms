@@ -35,15 +35,15 @@ public class CurrencyServiceImpl extends CoreServiceImpl<Currency> implements
 		return currencyDao;
 	}
 	
-	public Integer GetIdByCode(String code) throws Exception
+	public Integer GetIdByCode(String code)
 	{
-		HashMap filterMap=new HashMap();
+		HashMap<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);
 		
 		List<Currency> objList=selectByExample(filterMap);
 		if (objList.size()==0)
 		{
-			return new Integer(0);
+			return 0;
 		}
 		else
 		{

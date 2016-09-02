@@ -22,5 +22,5 @@ public interface DatadictDao extends CoreDao<Datadict> {
 	 * @return
 	 */
 	List<Datadict> getDatadictListByTypeId(Integer typeId,Integer clientId);
-	public void updateIndexOrder(Integer indexOrder,Integer id);
+	void updateIndexOrder(Integer indexOrder, Integer id);
 }

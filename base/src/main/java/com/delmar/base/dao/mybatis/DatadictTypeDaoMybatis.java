@@ -35,7 +35,7 @@ public class DatadictTypeDaoMybatis extends CoreDaoMyBatis<DatadictType> impleme
 	 * @see com.delmar.base.dao.DatadictTypeDao#datadictTypeDao(java.lang.String)
 	 */
 	public DatadictType datadictTypeDao(String value) {
-		Map param=new HashMap();
+		Map<String,Object> param=new HashMap<>();
 		param.put("value", value);
 		return this.getByExample(param);
 	}
