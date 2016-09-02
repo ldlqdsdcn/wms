@@ -1,8 +1,8 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												  *
+ * 刘大磊  2013-07-01												  *
  *	作者：刘大磊								                                   *
- * 电话：0532-66701118                                                          * 
- * email:liua@delmarchina.com						                           *
+ * 电话：13336390671                                                          * 
+ * email:ldlqdsd@126.com						                           *
  *****************************************************************************/
 package com.delmar.system;
 
@@ -38,8 +38,8 @@ public class ClientDaoTest {
 	private void addClient()
 	{
 		Client client=new Client();
-		client.setName("德玛国际物流有限公司");
-		client.setRemark("德玛国际物流有限公司");
+		client.setName("刘大磊");
+		client.setRemark("刘大磊");
 		client.setValue("delar");
 		clientDao.save(client);
 	}

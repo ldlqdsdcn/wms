@@ -22,10 +22,10 @@ import com.delmar.core.web.bean.EaContext;
 import com.delmar.core.web.util.FacesUtils;
 import com.google.gson.Gson;
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												  *
+ * 刘大磊  2013-07-01												  *
  *	作者：刘大磊								                                              *
- * 电话：0532-66701118                                                               * 
- * email:liua@delmarchina.com						                              *
+ * 电话：13336390671                                                               * 
+ * email:ldlqdsd@126.com						                              *
  *****************************************************************************/
 
 

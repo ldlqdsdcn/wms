@@ -1,8 +1,8 @@
 /******************************************************************************
- * 德玛国际物流有限公司  2013-07-01												  *
+ * 刘大磊  2013-07-01												  *
  *	作者：刘大磊								                                   *
- * 电话：0532-66701118                                                          * 
- * email:liua@delmarchina.com						                           *
+ * 电话：13336390671                                                          * 
+ * email:ldlqdsd@126.com						                           *
  *****************************************************************************/
 package com.delmar.system;
 
@@ -32,14 +32,14 @@ public class OrgDaoTest {
 	{
 		Client client=clientDao.selectByExample(null).get(0);
 		Org org=new Org();
-		org.setName("青岛德玛国际物流有限公司");
+		org.setName("青岛刘大磊");
 		org.setRemark("德玛集团青岛分公司");
 		org.setValue("delarqd");
 		org.setClientId(client.getId());
 		//orgDao.save(org);
 		System.out.println("orgid="+org.getId());
 		org=new Org();
-		org.setName("上海德玛国际物流有限公司");
+		org.setName("上海刘大磊");
 		org.setRemark("德玛集团上海分公司");
 		org.setValue("delarqd");
 		org.setClientId(client.getId());
