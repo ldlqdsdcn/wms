@@ -20,7 +20,7 @@ public class TempTest<T> {
 		System.out.println(obj.getClass().getName()); 
 	
 	}
-	/**
+	/**\
 	 * @param args
 	 */
 	public static void main(String[] args) {

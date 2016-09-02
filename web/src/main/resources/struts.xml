@@ -12,9 +12,6 @@
 				<interceptor-ref name="params">
 					<param name="excludeParams">dojo..*,d-..*</param>
 				</interceptor-ref>
-				<interceptor-ref name="defaultStack">
-					<param name="workflow.excludeMethods">default</param>
-				</interceptor-ref>
 			</interceptor-stack>
 			<interceptor-stack name="delmar_struts_default">
 				<interceptor-ref name="defaultStack" />
@@ -26,13 +23,12 @@
 		<default-interceptor-ref name="delmar_struts_default" />
 
 		<global-results>
-			<result name="nopriv" type="redirect">/noprivileges.jsp</result>
-			<result name="noid" type="redirect">/noprivileges.jsp</result>
+			<result name="nopriv" type="redirect">/error/noprivileges.jsp</result>
+			<result name="noid" type="redirect">/error/noprivileges.jsp</result>
 			<result name="error" type="redirect">/error/sysfail.jsp</result>
 		</global-results>
 		<action name="userLogin" class="com.delmar.system.web.action.UserLoginAction" method="login">
 			<result name="input">/login.jsp</result>
-			<result name="changep">/changepass.jsp</result>
 			<result name="success" type="redirect">/main.jsp</result>
 		</action>
 
@@ -43,7 +39,6 @@
 
 		<action name="changePass" class="com.delmar.system.web.action.UserLoginAction" method="changePass">
 			<result name="input">/login.jsp</result>
-			<result name="changep">/changepass.jsp</result>
 		</action>
 
 		<action name="changeLanguage" class="com.delmar.system.web.action.ChangeLanguageAction" method="changeLanguage">
@@ -255,28 +250,8 @@
 
 
 	</package>
-	<package name="rate" namespace="/rate" extends="default">
-		<action name="ratemaster_*" class="com.delmar.rate.web.action.RatemasterAction" method="{1}">
-			<result name="list">/rate/ratemasters.jsp</result>
-			<result name="edit">/rate/ratemasterForm.jsp</result>
-			<result name="input">/rate/ratemasterForm.jsp</result>
-		</action>
 
 
-	</package>
-
-	<package name="corebus" namespace="/corebus" extends="default">
-
-		<action name="ebusiness_*" class="com.delmar.corebus.web.action.EbusinessAction" method="{1}">
-			<result name="list">/corebus/ebusinessList.jsp</result>
-			<result name="edit">/corebus/ebusinessForm.jsp</result>
-		</action>
-		<action name="realtrans_*" class="com.delmar.corebus.web.action.RealTransAction" method="{1}">
-			<result name="list">/corebus/realtransList.jsp</result>
-			<result name="edit">/corebus/realtransForm.jsp</result>
-		</action>
-
-	</package>
 
 	<package name="commons" namespace="/commons" extends="default">
 		<action name="usersetting" class="com.delmar.common.web.action.UserSettingAction" method="save">
@@ -300,50 +275,9 @@
 			<result name="edit">/cargo/meetingForm.jsp</result>
 			<result name="input">/cargo/meetingForm.jsp</result>
 		</action>
-
-
-
-
 	</package>
 
-	<package name="station" namespace="/station" extends="default">
 
-
-	</package>
-
-	<package name="officeTest" namespace="/officeTest" extends="default">
-
-		<action name="officeTestBankCategory_*" class="com.delmar.officeTest.web.action.OfficeTestBankCategoryAction" method="{1}">
-			<result name="edit">/officeTest/officeTestBankCategoryAdd.jsp</result>
-			<result name="delete" type="redirectAction" >
-				<param name="namespace">/officeTest</param>
-				<param name="actionName">officeTestBank_list</param>
-			</result>
-		</action>
-		<action name="officeTestBank_*" class="com.delmar.officeTest.web.action.OfficeTestBankAction" method="{1}">
-			<result name="list">/officeTest/officeTestBankList.jsp</result>
-			<result name="edit">/officeTest/officeTestBankAdd.jsp</result>
-			<result name="input">/officeTest/officeTestBankAdd.jsp</result>
-
-		</action>
-		<action name="officeTestQuestion_*" class="com.delmar.officeTest.web.action.OfficeTestQuestionAction" method="{1}">
-			<result name="list">/officeTest/officeTestQuestionList.jsp</result>
-			<result name="edit">/officeTest/officeTestQuestionAdd.jsp</result>
-			<result name="toExcelImp">/officeTest/officeTestQuestionExcelImp.jsp</result>
-		</action>
-		<action name="officeTestExamDetail_*" class="com.delmar.officeTest.web.action.OfficeTestExamDetailAction" method="{1}">
-			<result name="toExam">/officeTest/officeTestToExam.jsp</result>
-			<result name="start">/officeTest/officeTestStartExam.jsp</result>
-			<result name="end">/officeTest/officeTestExamEnd.jsp</result>
-			<result name="alreadyExam">/officeTest/officeTestAlreadyExam.jsp</result>
-			<result name="list">/officeTest/officeTestExamDetailList.jsp</result>
-		</action>
-		<action name="officeTestExam_*" class="com.delmar.officeTest.web.action.OfficeTestExamAction" method="{1}">
-			<result name="list">/officeTest/officeTestExamList.jsp</result>
-			<result name="add">/officeTest/officeTestExamAdd.jsp</result>
-		</action>
-
-	</package>
 	<package name="sysSettings" namespace="/sysSettings" extends="default">
 
 		<action name="sysSettingsItemAction_*" class="com.delmar.sysSettings.web.action.SysSettingsItemAction" method="{1}">

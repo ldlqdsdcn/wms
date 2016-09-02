@@ -26,7 +26,7 @@
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from comm_ftpconnection
+    from common_ftpconnection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -37,21 +37,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from comm_ftpconnection
+    from common_ftpconnection
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from comm_ftpconnection
+    delete from common_ftpconnection
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="java.util.Map" >
-    delete from comm_ftpconnection
+    delete from common_ftpconnection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.delmar.common.model.FtpConnection" useGeneratedKeys="true" keyProperty="id" >
-    insert into comm_ftpconnection (name, ftpserver, username, 
+    insert into common_ftpconnection (name, ftpserver, username, 
       password, ftpfolder, ftpport, 
       baseftp)
     values (#{name,jdbcType=VARCHAR}, #{ftpserver,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
@@ -59,7 +59,7 @@
       #{baseftp,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.delmar.common.model.FtpConnection" useGeneratedKeys="true" keyProperty="id" >
-    insert into comm_ftpconnection
+    insert into common_ftpconnection
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="name != null" >
         name,
@@ -108,13 +108,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
-    select count(*) from comm_ftpconnection
+    select count(*) from common_ftpconnection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="com.delmar.common.model.FtpConnection" >
-    update comm_ftpconnection
+    update common_ftpconnection
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -141,7 +141,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.delmar.common.model.FtpConnection" >
-    update comm_ftpconnection
+    update common_ftpconnection
     set name = #{name,jdbcType=VARCHAR},
       ftpserver = #{ftpserver,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
