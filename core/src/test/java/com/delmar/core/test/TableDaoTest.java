@@ -21,9 +21,9 @@ public class TableDaoTest {
     DmLog log=DmLog.getLogger(TableDaoTest.class);
     @Autowired
     private TableDao tableDao;
-    //client_id org_id user_id role_id module_id javabean_id,menu_id,menu_id,operator_id,page_id,module_role_id,scheduled_id,usergroup_id,createdby,updatedby
-    private String key="updatedby";
-    private String fk_table="sys_user";
+    //client_id org_id user_id role_id module_id javabean_id,menu_id,menu_id,operator_id,page_id,module_role_id,scheduled_id,usergroup_id,createdby,updatedby,datadict_id,table_id,label_id,message_id eventtype_id
+    private String key="eventtype_id";
+    private String fk_table="base_eventtype";
     private String fk_table_pk="id";
     @Test
     public void testAddForeignKeys()
