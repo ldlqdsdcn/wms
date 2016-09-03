@@ -7,7 +7,7 @@ import com.delmar.core.service.CoreService;
 <#list lineList as item>
 import com.delmar.${item.module}.model.${item.model};
 </#list>
-<#if lineList?exists>
+<#if lineList??>
 import java.util.List;
 </#if>
 /**

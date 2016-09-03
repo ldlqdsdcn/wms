@@ -14,8 +14,8 @@ public enum  DecoratorType {
         this.key=key;
         this.className=className;
     }
-    private int key;
-    private String className;
+    private final int key;
+    private final String className;
 
     public int getKey() {
         return key;

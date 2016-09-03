@@ -1,6 +1,5 @@
 package com.delmar.devs.model;
 
-import com.delmar.devs.def.ValidationDef;
 import lombok.Data;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public class JspModelProp {
     {
         this(prop,label,false);
     }
-    public JspModelProp(String prop, String label, boolean isDate)
+    private JspModelProp(String prop, String label, boolean isDate)
     {
         this(prop,label,isDate,true);
     }

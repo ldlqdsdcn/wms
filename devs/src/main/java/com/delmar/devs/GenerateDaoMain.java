@@ -9,10 +9,7 @@ package com.delmar.devs;
 
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.utils.DateTimeDecorator;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 
-import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +18,7 @@ import java.util.Map;
  * @author 刘大磊 2014年12月22日 上午10:28:48
  */
 public class GenerateDaoMain {
-    String[] modelList;
+    private String[] modelList;
 
     private String modulename;
 
@@ -38,7 +35,7 @@ public class GenerateDaoMain {
     public void generateInterface() {
 
 
-        Map root = new HashMap();
+        Map<String,Object> root = new HashMap();
 
         Date date = new Date();
         String interfacepackage = "com.delmar." + modulename + ".dao";

@@ -21,7 +21,7 @@ public class GenerateCodeTest {
     private CodeGenerationService codeGenerationService;
     @Test
     public void testGenerateCode()
-    {List<GenModelDto> list=new ArrayList<GenModelDto>();
+    {List<GenModelDto> list=new ArrayList<>();
 //        List<GenModelDto> list=new ArrayList<GenModelDto>();
 //        //子模块1
 //        GenModelDto line1=  new GenModelDto("b_meeting_participant","MeetingParticipant","cargo","参与人");

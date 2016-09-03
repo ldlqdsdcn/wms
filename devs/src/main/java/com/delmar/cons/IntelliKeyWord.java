@@ -2,7 +2,6 @@ package com.delmar.cons;
 
 import com.delmar.devs.def.DecoratorType;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,16 +11,16 @@ import java.util.Set;
  * Created by admin on 2016/8/25.
  */
 public class IntelliKeyWord {
-    private static Map<String,String> LABEL_MAP=new HashMap<String,String>();
-    private static Set<String> READ_ONLY_SET=new HashSet<String>();
-    private static Set<String> SKIPPED_FIELD_SET=new HashSet<String>();
-    private static Set<String> BOOL_SELECTION_SET=new HashSet<String>();
-    private static Map<String,String> FIELD_WIDTH_MAP=new HashMap<String,String>();
-    private static Map<String,String> FOREIGN_MAP=new HashMap<String, String>();
-    private static Set<String> SQL_KEY_WORD_MAP=new HashSet<String>();
-    private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
+    private static Map<String,String> LABEL_MAP=new HashMap<>();
+    private static Set<String> READ_ONLY_SET=new HashSet<>();
+    private static Set<String> SKIPPED_FIELD_SET=new HashSet<>();
+    private static Set<String> BOOL_SELECTION_SET=new HashSet<>();
+    private static Map<String,String> FIELD_WIDTH_MAP=new HashMap<>();
+    private static Map<String,String> FOREIGN_MAP=new HashMap<>();
+    private static Set<String> SQL_KEY_WORD_MAP=new HashSet<>();
+    private static Map<String,String> SQL_TYPE_MAP=new HashMap<>();
     private static Set<String> NOT_NEED_VAL_COLUMN_SET=new HashSet<>();
-    private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<String,Object>();
+    private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<>();
 
     static
     {
@@ -107,27 +106,15 @@ public class IntelliKeyWord {
     }
     public static boolean isReadOnly(String key)
     {
-        if(READ_ONLY_SET.contains(key))
-        {
-            return true;
-        }
-        return false;
+        return READ_ONLY_SET.contains(key);
     }
     public static boolean hasSkipped(String key)
     {
-        if(SKIPPED_FIELD_SET.contains(key))
-        {
-            return true;
-        }
-        return false;
+        return SKIPPED_FIELD_SET.contains(key);
     }
     public static boolean isBooleanTag(String key)
     {
-        if(BOOL_SELECTION_SET.contains(key))
-        {
-            return true;
-        }
-        return false;
+        return BOOL_SELECTION_SET.contains(key);
     }
     public static String getWidth(String key)
     {
@@ -136,14 +123,7 @@ public class IntelliKeyWord {
 
     public static boolean isKeyWord(String key)
     {
-        if(SQL_KEY_WORD_MAP.contains(key))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return SQL_KEY_WORD_MAP.contains(key);
     }
     public static String getSQlType(String key)
     {
@@ -152,10 +132,6 @@ public class IntelliKeyWord {
 
     public static boolean isNotValidate(String key)
     {
-        if(NOT_NEED_VAL_COLUMN_SET.contains(key))
-        {
-            return true;
-        }
-        return false;
+        return NOT_NEED_VAL_COLUMN_SET.contains(key);
     }
 }

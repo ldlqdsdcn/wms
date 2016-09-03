@@ -3,7 +3,7 @@ $("input[name^=${line.model?uncap_first}List]").each(function(i, item){
 
     <#list line.propertyList as prop>
         <#if prop.prop!=(mode+'Id')>
-        <#if prop.validationList?exists>
+        <#if prop.validationList??>
         if(endWith(item.name,'${prop.prop}')){
             <#list prop.validationList as val>
                 <#if val==0>

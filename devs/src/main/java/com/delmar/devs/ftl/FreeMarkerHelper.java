@@ -1,12 +1,9 @@
 package com.delmar.devs.ftl;
 
-import com.delmar.devs.GenerateDaoMain;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -69,9 +66,7 @@ public class FreeMarkerHelper {
             out.flush();
             out.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TemplateException e) {
+        } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }
     }

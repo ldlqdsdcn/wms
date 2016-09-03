@@ -1,10 +1,8 @@
 package com.delmar.devs.util;
 
 import com.delmar.cons.IntelliKeyWord;
-import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.devs.model.JspModelProp;
-import com.delmar.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;

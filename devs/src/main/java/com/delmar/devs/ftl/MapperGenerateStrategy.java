@@ -28,11 +28,11 @@ public class MapperGenerateStrategy {
     public void generateMapper()
     {
 
-        Map<String,Object> param=new HashMap<String,Object>();
+        Map<String,Object> param=new HashMap<>();
         param.put("module",genModelDto.getModule());
         param.put("model",genModelDto.getModelName());
         param.put("tableName",tableMetaDataDto.getName());
-        List<ColumnInfo> columnInfoList=new ArrayList<ColumnInfo>();
+        List<ColumnInfo> columnInfoList=new ArrayList<>();
         for(ColumnMetaDataDto cmd:tableMetaDataDto.getColumnList())
         {
             ColumnInfo columnInfo=new ColumnInfo();
@@ -52,7 +52,7 @@ public class MapperGenerateStrategy {
             columnInfoList.add(columnInfo);
         }
         param.put("columnList",columnInfoList);
-        List<ColumnInfo> foreignList=new ArrayList<ColumnInfo>();
+        List<ColumnInfo> foreignList=new ArrayList<>();
         List<ForeignKey>  list=tableMetaDataDto.getImportedFK();
         if(list!=null)
         for(ColumnInfo c:columnInfoList)

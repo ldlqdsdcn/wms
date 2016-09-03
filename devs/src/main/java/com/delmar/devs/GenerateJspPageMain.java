@@ -9,13 +9,15 @@ import com.delmar.core.service.TableService;
 import com.delmar.devs.def.DecoratorType;
 import com.delmar.devs.def.ValidationDef;
 import com.delmar.devs.ftl.FreeMarkerHelper;
-import com.delmar.devs.model.*;
+import com.delmar.devs.model.ColumnInfo;
+import com.delmar.devs.model.FormLine;
+import com.delmar.devs.model.GenModelDto;
+import com.delmar.devs.model.JspModelProp;
 import com.delmar.utils.CommonConverter;
 import com.delmar.utils.DateTimeDecorator;
 import com.delmar.utils.StringUtil;
 
 import java.util.*;
-import java.util.List;
 
 /**
  * Created by admin on 2016/8/25.
@@ -26,7 +28,7 @@ public class GenerateJspPageMain {
     /**
      * 填写对应的模块名
      */
-    GenModelDto model;
+    private GenModelDto model;
     private String module;
     private String namespace;
     private TableMetaDataDto tableMetaDataDto;
@@ -47,13 +49,9 @@ public class GenerateJspPageMain {
 
     }
 
-    public static void main(String[] args) {
-
-    }
-
-    public void generateFormPage() {
+    private void generateFormPage() {
         List<JspModelProp> jspFormPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
-        Map root = new HashMap();
+        Map<String,Object> root = new HashMap();
         root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
         root.put("title", model.getRemark());
         root.put("namespace", namespace);
@@ -65,7 +63,7 @@ public class GenerateJspPageMain {
 
         root.put("datetime", datetime);
         root.put("propertyList", jspFormPropList);
-        List<FormLine> formLines = new ArrayList<FormLine>();
+        List<FormLine> formLines = new ArrayList<>();
         List<GenModelDto> genModelDtoList = this.model.getIncludeModelList();
         if (genModelDtoList != null)
             for (GenModelDto genModelDto : genModelDtoList) {
@@ -88,7 +86,7 @@ public class GenerateJspPageMain {
         FreeMarkerHelper.getInstance().outFile("formPage.ftl", root, "src/main/webapp" + namespace + "/" + com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()) + "Form.jsp", true);
     }
 
-    public void generateListPage() {
+    private void generateListPage() {
         List<JspModelProp> jspListPropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), this.tableMetaDataDto);
         Map root = new HashMap();
         root.put("mode", com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()));
@@ -107,7 +105,7 @@ public class GenerateJspPageMain {
     private List<JspModelProp> getOutPutList(String mode, TableMetaDataDto tableData) {
         String modeName = com.delmar.utils.StringUtil.upperFirstChar(mode);
 
-        List<JspModelProp> jspFormPropList = new ArrayList<JspModelProp>();
+        List<JspModelProp> jspFormPropList = new ArrayList<>();
         List<ColumnMetaDataDto> columnMetaDataDtoList = tableData.getColumnList();
 
         for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
@@ -180,7 +178,7 @@ public class GenerateJspPageMain {
 
             if(columnInfo.getDataType()==ColumnDataType.DATE.getKey())
             {
-                if(columnInfo.getColumnName().toUpperCase().indexOf("TIME")!=-1)
+                if(columnInfo.getColumnName().toUpperCase().contains("TIME"))
                 {
                     jspListProp.setDecoratorType(DecoratorType.DATETIME.getKey());
                 }

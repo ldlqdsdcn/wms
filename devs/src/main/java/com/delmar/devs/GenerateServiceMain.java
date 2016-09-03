@@ -15,10 +15,7 @@ import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.GenModelDto;
 import com.delmar.devs.model.ServiceModel;
 import com.delmar.utils.DateTimeDecorator;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -33,7 +30,7 @@ public class GenerateServiceMain {
 		this.tableMetaDataDto=tableMetaDataDto;
 		this.model=model;
 		this.tableService=tableService;
-		lineList=new ArrayList<ServiceModel>();
+		lineList=new ArrayList<>();
 
 		if(model.getIncludeModelList()!=null)
 		{
@@ -74,7 +71,7 @@ public class GenerateServiceMain {
 
 	public  void generateInterface()
 	{
-	   Map root = new HashMap();
+	   Map<String,Object>  root = new HashMap();
 		Date date=new Date();
 		String interfacepackage="com.delmar."+model.getModule()+".service";
 		String modelpackage="com.delmar."+model.getModule()+".model";

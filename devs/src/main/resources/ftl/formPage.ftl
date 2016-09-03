@@ -31,7 +31,7 @@
  {
 	 window.location='<c:url value="${namespace}/${mode? uncap_first}_list.action"/>';
  }
- <#if lineList?exists>
+ <#if lineList??>
      <#include "inc/lineTableScript.ftl"/>
  </#if>
  $(document).ready(function(){
@@ -45,7 +45,7 @@
      </#list>
 
 
-     <#if lineList?exists>
+     <#if lineList??>
          var validateLine=true;
          var lineMsg="";
          <#include "inc/lineValidate.ftl"/>
@@ -119,7 +119,7 @@
                         <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"   cssStyle="color:red" />
                          <#elseif prop.booleanTag>
-                          <s:radio id="${prop.prop}" name="${mode? uncap_first}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"></s:radio>
+                          <s:radio id="${prop.prop}" name="${mode? uncap_first}.${prop.prop}" list="#${r'{'}'Y':'Y','N':'N'${r'}'}" required="true"/>
                             <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red"/>
 
@@ -132,7 +132,7 @@
                         </tr>
                  </#list>
 
-                 <#if lineList?exists>
+                 <#if lineList??>
                      <#include "inc/lineTable.ftl"/>
                  </#if>
                       <tr>

@@ -1,6 +1,6 @@
 <#list lineList as line>
 <tr>
-    <td colspan="4" style="padding-left: 0px;">
+    <td colspan="4" style="padding-left: 0;">
         <!-- table 页 bgn -->
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -33,8 +33,7 @@
         <table id="${line.model}Table" class="table">
             <thead>
             <th>
-                <input type="checkbox"
-                       onclick="selectAll('${line.model}_ids',this);"/>
+                <input type="checkbox" onclick="selectAll('${line.model}_ids',this);"/>
             </th>
             <th>序号</th>
             <#list line.propertyList as prop>
@@ -50,8 +49,7 @@
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
                     <td>
-                        <input type="checkbox"  name="${line.model}_ids"
-                               value="<s:property value="#st.index"/>"/>
+                        <input type="checkbox"  name="${line.model}_ids"  value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>
                         <s:property value="#st.index+1"/>

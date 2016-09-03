@@ -10,7 +10,7 @@ import ${modelpackage}.${modelname};
 import ${interfacefullservicename};
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.service.impl.CoreServiceImpl;
-<#if lineList?exists>
+<#if lineList??>
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;

@@ -2,7 +2,6 @@ package com.delmar.devs.ftl;
 
 import com.delmar.cons.IntelliKeyWord;
 import com.delmar.core.def.ColumnDataType;
-import com.delmar.core.def.FieldType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.devs.model.ColumnInfo;
@@ -26,7 +25,7 @@ public class ModelGenerateStrategy {
     private GenModelDto genModelDto;
     public void generateModel()
     {
-        Map<String,Object> param=new HashMap<String,Object>();
+        Map<String,Object> param=new HashMap<>();
         param.put("module",genModelDto.getModule());
         param.put("model",genModelDto.getModelName());
         param.put("tableName",tableMetaDataDto.getName());
@@ -35,7 +34,7 @@ public class ModelGenerateStrategy {
         param.put("datetime",datetime);
         param.put("hasDate",false);
         param.put("hasDecimal",false);
-        List<ColumnInfo> columnInfoList=new ArrayList<ColumnInfo>();
+        List<ColumnInfo> columnInfoList=new ArrayList<>();
         ColumnDataType[] columnDataTypes=ColumnDataType.values();
         for(ColumnMetaDataDto cmd:tableMetaDataDto.getColumnList())
         {

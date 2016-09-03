@@ -8,18 +8,13 @@ package com.delmar.devs;
 
 import com.delmar.cons.IntelliKeyWord;
 import com.delmar.core.def.ColumnDataType;
-import com.delmar.core.def.FieldType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.devs.ftl.FreeMarkerHelper;
 import com.delmar.devs.model.FormLine;
 import com.delmar.devs.model.GenModelDto;
 import com.delmar.utils.StringUtil;
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -27,10 +22,8 @@ import java.util.*;
  */
 public class GenerateActionMain {
 
-    public static void main(String[] args) {
 
-    }
-    TableMetaDataDto tableMetaDataDto;
+    private TableMetaDataDto tableMetaDataDto;
     private GenModelDto genModelDto;
 
 
@@ -40,7 +33,7 @@ public class GenerateActionMain {
     }
 
     public void generateActionclass() {
-        Map root = new HashMap();
+        Map<String,Object> root = new HashMap();
 
         Date date = new Date();
 
@@ -52,7 +45,7 @@ public class GenerateActionMain {
         root.put("modelpackage", modelpackage);
         root.put("servicepackage", servicepackage);
         root.put("pagingByDb",genModelDto.isPagingByDb());
-        List<String> requiredStrings=new ArrayList<String>();
+        List<String> requiredStrings=new ArrayList<>();
         List<String> requiredFields=new ArrayList<>();
         boolean hasTrl=false;
         boolean hasCreated=false;
@@ -130,7 +123,7 @@ public class GenerateActionMain {
 
                 if(genModelDto.getIncludeModelList()!=null)
                 {
-                    List<FormLine> formLineList=new ArrayList<FormLine>();
+                    List<FormLine> formLineList=new ArrayList<>();
                     for(GenModelDto gm:genModelDto.getIncludeModelList())
                     {
                         FormLine fl=new FormLine();

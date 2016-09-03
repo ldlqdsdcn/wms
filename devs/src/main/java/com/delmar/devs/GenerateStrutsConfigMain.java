@@ -7,11 +7,7 @@
 package com.delmar.devs;
 
 import com.delmar.devs.ftl.FreeMarkerHelper;
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
 
-import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,16 +16,7 @@ import java.util.Map;
  * @author 刘大磊 2015年1月21日 上午10:02:58
  */
 public class GenerateStrutsConfigMain {
-    /*public static String[] modelList={"Usergroup"};
-
-    public  static String modulename="sys";
-    public static String genmodelpath="D:/code/platform/delmar_system/";
-    public static Configuration config;*/
-    public static void main(String[] args) {
-
-
-    }
-    String[] modelList;
+    private String[] modelList;
     private String modulename;
 
 
@@ -43,7 +30,7 @@ public class GenerateStrutsConfigMain {
     }
 
     public void generateStrutsConfig() {
-        Map root = new HashMap();
+        Map<String,Object>  root = new HashMap();
         Date date = new Date();
         String datetime = com.delmar.utils.DateTimeDecorator.dateToLongString(date);
         root.put("datetime", datetime);

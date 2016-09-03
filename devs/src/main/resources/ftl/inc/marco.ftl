@@ -1,5 +1,5 @@
 <#macro validateProperty id prop>
-    <#if prop.validationList?exists>
+    <#if prop.validationList??>
         <#list prop.validationList as val>
             <#if val==0>
             if (isEmpty($("#${id}").val())) {

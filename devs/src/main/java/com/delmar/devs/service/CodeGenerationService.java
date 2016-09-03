@@ -12,5 +12,5 @@ public interface CodeGenerationService {
      *
      * @param genModelDtoList
      */
-    public void generateMapperAndModel(List<GenModelDto> genModelDtoList);
+    void generateMapperAndModel(List<GenModelDto> genModelDtoList);
 }

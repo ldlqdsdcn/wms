@@ -51,7 +51,7 @@ public class GenModelDto {
      * @param remark 模块的名称
      * @param includeModelList 包含的模块
      */
-    public GenModelDto(String tableName,String modelName,String module,String remark,List<GenModelDto> includeModelList)
+    private GenModelDto(String tableName, String modelName, String module, String remark, List<GenModelDto> includeModelList)
     {
         this.tableName=tableName;
         this.modelName=modelName;

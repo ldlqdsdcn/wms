@@ -31,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ${modelpackage}.${modelname};
 import ${servicepackage}.${modelname}Service;
 <#include "inc/strutsActionInclude.ftl"/>
-<#if lineList?exists>
+<#if lineList??>
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -49,7 +49,7 @@ trim=true, fieldName = "${modelObjname}.${prop}", message = "不允许为空") <
 </#if>
 public class ${modelname}Action extends <#if pagingByDb>CoreEditPagingAction<#else>CoreEditPrivAction</#if> {
 	private ${modelname}  ${modelObjname};
-<#if lineList?exists>
+<#if lineList??>
 <#list lineList as item>
 	private List<${item.model}> ${item.model?uncap_first}List=new ArrayList<${item.model}>();;
 </#list>
@@ -108,7 +108,7 @@ private LanguageService languageService;
 	@Override
 public void editForm() {
 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
-	<#if lineList?exists>
+	<#if lineList??>
 		<#list lineList as item>
 
 		${item.model?uncap_first}List=${modelObjname}Service.get${item.model}ListBy${modelname}Id(id);
@@ -173,7 +173,7 @@ return ${modelObjname}Service.selectByExample(param);
 	@Override
 public void createForm() {
 ${modelObjname}=new ${modelname}();
-<#if lineList?exists>
+<#if lineList??>
 	<#list lineList as item>
 	${item.model?uncap_first}List=new ArrayList<${item.model}>();
 		<#if item.trl>
@@ -189,7 +189,7 @@ ${modelObjname}=new ${modelname}();
 	</#list>
 </#if>
     }
-<#if lineList?exists>
+<#if lineList??>
 	<#list lineList as item>
 	<#if !item.trl>
     @SkipValidation
@@ -234,7 +234,7 @@ ${modelObjname}=new ${modelname}();
 	@Override
 	public String saveForm() {
 		<#include "inc/strutsActionSave.ftl"/>
-		${modelObjname}Service.save${modelname}(${modelObjname}<#if lineList?exists><#list lineList as item>,${item.model?uncap_first}List</#list></#if>);
+		${modelObjname}Service.save${modelname}(${modelObjname}<#if lineList??><#list lineList as item>,${item.model?uncap_first}List</#list></#if>);
 		return "edit";
 	}
 	/**
@@ -250,7 +250,7 @@ ${modelObjname}=new ${modelname}();
 	public void set${modelname}(${modelname} ${modelObjname}) {
 		this.${modelObjname} = ${modelObjname};
 	}
-<#if lineList?exists>
+<#if lineList??>
 <#list lineList as item>
 public List<${item.model}> get${item.model}List()
 {
