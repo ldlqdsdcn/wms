@@ -11,7 +11,7 @@ import com.delmar.core.service.CoreService;
 import com.delmar.core.model.LabelTrl;
 import java.util.List;
 /**
- * @author 刘大磊 2016-09-03 23:25:22
+ * @author 刘大磊 2016-09-03 23:33:53
  */
 public interface LabelService extends CoreService<Label> {
 	/**

@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-03 23:25:22
+  Date: 2016-09-03 23:33:53
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -248,16 +248,6 @@ $("input[name^=labelTrlList]").each(function(i, item){
         <!-- table 页 end -->
     </td>
 
-</tr>
-<tr>
-    <td colspan="2" style="padding-left: 20px;text-align: left;">
-        <input value="添加标签翻译"
-        type="button" class="input_submit"
-        onclick="javascript:addLabelTrl()"/> &nbsp;&nbsp;
-        <input class="input_submit" type="button"  value="删除选中标签翻译"
-        onclick="javascript:deleteLabelTrls()"/>
-    </td>
-    <td colspan="2"></td>
 </tr>
 <tr>
     <td colspan="4">

@@ -61,6 +61,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
     private void init()
     {
+        this.setTitle("SWMS 代码生成工具");
         // Listen for changes in the text
         tableName.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {

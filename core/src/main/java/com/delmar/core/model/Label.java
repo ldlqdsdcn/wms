@@ -10,7 +10,7 @@ import java.util.Date;
 import lombok.Data;
  /**
   * table name core_label
-  * Date:2016-09-03 23:25:22
+  * Date:2016-09-03 23:33:53
   **/
 @Data
 public class Label extends CoreModel {
