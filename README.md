@@ -10,5 +10,7 @@
 缓存基于redis
 用户角色权限，基于RBAC设计
 该系统第一版只是wms系统的内核功能实现
+通过 代码生成界面，能够快速生成一个模块
+(https://github.com/ldlqdsdcn/wms/blob/master/doc/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90UI%E7%95%8C%E9%9D%A2.png)
 
  
