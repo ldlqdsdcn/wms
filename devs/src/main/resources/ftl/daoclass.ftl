@@ -1,4 +1,5 @@
 <#include "inc/class_header.ftl"/>
+
 package ${packagename};
 
 import org.springframework.stereotype.Repository;
