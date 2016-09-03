@@ -10,7 +10,7 @@ import com.delmar.core.model.LabelTrl;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-09-03 13:51:46
+ * @author 刘大磊 2016-09-03 23:25:22
  */
 public interface LabelTrlDao extends CoreDao<LabelTrl> {
 

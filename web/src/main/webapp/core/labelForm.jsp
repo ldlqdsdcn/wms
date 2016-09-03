@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-03 13:51:47
+  Date: 2016-09-03 23:25:22
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -233,7 +233,7 @@ $("input[name^=labelTrlList]").each(function(i, item){
                         </tr>
 
 <tr>
-    <td colspan="4" style="padding-left: 0px;">
+    <td colspan="4" style="padding-left: 0;">
         <!-- table 页 bgn -->
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -250,12 +250,21 @@ $("input[name^=labelTrlList]").each(function(i, item){
 
 </tr>
 <tr>
+    <td colspan="2" style="padding-left: 20px;text-align: left;">
+        <input value="添加标签翻译"
+        type="button" class="input_submit"
+        onclick="javascript:addLabelTrl()"/> &nbsp;&nbsp;
+        <input class="input_submit" type="button"  value="删除选中标签翻译"
+        onclick="javascript:deleteLabelTrls()"/>
+    </td>
+    <td colspan="2"></td>
+</tr>
+<tr>
     <td colspan="4">
         <table id="LabelTrlTable" class="table">
             <thead>
             <th>
-                <input type="checkbox"
-                       onclick="selectAll('LabelTrl_ids',this);"/>
+                <input type="checkbox" onclick="selectAll('LabelTrl_ids',this);"/>
             </th>
             <th>序号</th>
             <th >language</th>
@@ -266,8 +275,7 @@ $("input[name^=labelTrlList]").each(function(i, item){
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
                     <td>
-                        <input type="checkbox"  name="LabelTrl_ids"
-                               value="<s:property value="#st.index"/>"/>
+                        <input type="checkbox"  name="LabelTrl_ids"  value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>
                         <s:property value="#st.index+1"/>

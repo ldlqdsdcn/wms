@@ -21,7 +21,7 @@ import java.util.Date;
 import com.delmar.core.model.LabelTrl;
 import com.delmar.core.dao.LabelTrlDao;
 /**
- * @author 刘大磊 2016-09-03 13:51:47
+ * @author 刘大磊 2016-09-03 23:25:22
  */
 @Service("labelService")
 public class LabelServiceImpl extends CoreServiceImpl<Label> implements

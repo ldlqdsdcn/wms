@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-03 13:51:47
+  Date: 2016-09-03 23:25:22
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
     <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<c:url value="/js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/>"></script>
-    <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
-    <script type='text/javascript' src='../js/ea.effect.js'></script>
+    <link  rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css"  type="text/css" />
+    <script type='text/javascript'  src='../js/ea.effect.js'></script>
     <script type='text/javascript' src='../js/ea.validate.js'></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8"/>
     <script type="text/javascript">
@@ -112,12 +112,12 @@
             alert('请先选择记录再删除');
             return false;
         }
-        return confirm("<delmar:message key="org.message.confirmdelete" />");
+        return confirm("<delmar:message key="org.message.confirmdelete" />";);
     }
     highlightTableRows("list");
 </script>
 <div id="selectDiv">
-    <iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0px; border:0px; padding: 0px;" id="selectIframe"></iframe>
+    <iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0; border:0; padding: 0;" id="selectIframe"></iframe>
 </div>
 </body>
 </html>
