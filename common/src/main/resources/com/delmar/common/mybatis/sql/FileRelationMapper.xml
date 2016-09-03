@@ -11,9 +11,9 @@
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
-    				<if test="tableName!=null"> and table_name=#{tableName,jdbcType=VARCHAR}</if>
-    				<if test="tableId!=null"> and table_id=#{tableId,jdbcType=INTEGER}</if>
-                	<if test="accessString!=null"> and ${accessString} </if>
+        <if test="tableName!=null"> and table_name=#{tableName,jdbcType=VARCHAR}</if>
+        <if test="tableId!=null"> and table_id=#{tableId,jdbcType=INTEGER}</if>
+        <if test="accessString!=null"> and ${accessString} </if>
     </where>
   </sql>
   <sql id="Base_Column_List" >
