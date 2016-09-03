@@ -23,7 +23,7 @@ public class UserSessionTest {
     @Test
     public void testPagination()
     {
-        Map<String,Object> param=new HashMap<>();
+        Map<String,Object> param=new HashMap<String,Object>();
         param.put("pageNo",2);
         param.put("pageSize",15);
         List list= userSessionDao.selectByExample(param);

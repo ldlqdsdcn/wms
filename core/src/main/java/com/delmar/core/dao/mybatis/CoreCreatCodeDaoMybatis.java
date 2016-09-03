@@ -39,7 +39,7 @@ public class CoreCreatCodeDaoMybatis extends CoreDaoMyBatis<CoreCreatCode> imple
 	
 	public Integer getMaxValue(String code, Integer clientId)
 	{
-		Map<String,Object> param= new HashMap<>();
+		Map<String,Object> param= new HashMap<String,Object>();
 		param.put("code",code);
 		param.put("clientId", clientId);
 		return sqlSessionTemplate.selectOne(getSqlName()+".getMaxValue",param);

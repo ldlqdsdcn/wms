@@ -96,14 +96,14 @@ document.oncontextmenu=function(e){ return false };
  
  function becomeTo()
  {
-	 parent.content.location = '<c:url value='/system/usersub_listsub.action'/>'; 
+	 parent.content.location = '<c:url value='/system/usersub_listsub.action'/>';
 	 //page_go('<c:url value='/system/usersub_listsub.action'/>','substitute');
  }
  
  
  function becomeToSelf()
  {
-     window.location='<c:url value="/userLogsub.action"/>?sid=A';
+     window.location='<c:url value="/system/userLogsub.action"/>?sid=A';
  }
  
  

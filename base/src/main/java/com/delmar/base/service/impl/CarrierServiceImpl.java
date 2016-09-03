@@ -47,7 +47,7 @@ public class CarrierServiceImpl extends CoreServiceImpl<Carrier> implements
 	
 	public Integer GetIdByCode(String code)
 	{
-		Map<String,Object> filterMap=new HashMap<>();
+		Map<String,Object> filterMap=new HashMap<String,Object>();
 		filterMap.put("code",code);
 		
 		List<Carrier> objList=selectByExample(filterMap);
@@ -81,7 +81,7 @@ public class CarrierServiceImpl extends CoreServiceImpl<Carrier> implements
 	 */
 	@Override
 	public Integer deleteByPrimaryKey(Integer id) {
-		Map<String,Object> map=new HashMap<>();
+		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("carrierId", id);
 		this.carrierTrlDao.deleteByExample(map);
 		return super.deleteByPrimaryKey(id);

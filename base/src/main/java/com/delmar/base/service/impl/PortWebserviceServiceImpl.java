@@ -52,7 +52,7 @@ public class PortWebserviceServiceImpl extends CoreServiceImpl<PortWebservice> i
 	 * @see com.delmar.base.service.PortWebserviceService#getPortByPortWebserviceName(String,String,Integer)
 	 */
 	public Port getPortByPortWebserviceName(String name, String serviceType, Integer provider) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("queryname", name);
 		param.put("servicetype", serviceType);
 		param.put("clientId", provider);

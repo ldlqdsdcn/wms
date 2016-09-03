@@ -43,15 +43,15 @@
                                             <td>
                                                 <s:hidden name="%{'languageTrlList['+#st.index+'].id'}"/>
                                                 <s:textfield name="%{'languageTrlList['+#st.index+'].language'}"
-                                                             readonly="true"></s:textfield>
+                                                             readonly="true"/>
                                             </td>
                                             <td>
                                                 <s:textfield
-                                                        name="%{'languageTrlList['+#st.index+'].name'}"></s:textfield>
+                                                        name="%{'languageTrlList['+#st.index+'].name'}"/>
                                             </td>
                                             <td>
                                                 <s:textfield
-                                                        name="%{'languageTrlList['+#st.index+'].remark'}"></s:textfield>
+                                                        name="%{'languageTrlList['+#st.index+'].remark'}"/>
                                             </td>
                                     </s:iterator>
 

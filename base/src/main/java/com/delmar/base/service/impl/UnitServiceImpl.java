@@ -38,7 +38,7 @@ public class UnitServiceImpl extends CoreServiceImpl<Unit> implements
 
 	public Integer GetIdByCode(String code)
 	{
-		Map<String,Object> filterMap=new HashMap<>();
+		Map<String,Object> filterMap=new HashMap<String,Object>();
 		filterMap.put("code",code);
 		
 		List<Unit> objList=selectByExample(filterMap);

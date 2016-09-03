@@ -185,7 +185,7 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	public T selectFieldsByPrimaryKey(String fieldColumns,Integer id)   
 	{
 	
-		Map<String, Object> newMap = new HashMap<>(2);
+		Map<String, Object> newMap = new HashMap<String,Object>(2);
 		newMap.put("columns", fieldColumns);
 		newMap.put("id", id);
 		return (T)sqlSessionTemplate.selectOne(this.getSqlName()+selectFieldsByPrimaryKey,newMap);

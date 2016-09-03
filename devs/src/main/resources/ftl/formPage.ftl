@@ -63,7 +63,7 @@
 </head>
 <body>
 <s:form id="editForm" action="${mode? uncap_first}_edit" namespace='${namespace}' theme="simple">
-<s:hidden id="id" name="${mode? uncap_first}.id"></s:hidden>
+<s:hidden id="id" name="${mode? uncap_first}.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -77,12 +77,12 @@
          <div class="C_S_F_L">
 			<c:if test="${r'${!isFirst}'}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${r'${!isLast}'}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -107,7 +107,7 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                   <#list propertyList as prop>
                         <tr>
-                        <td width="20%"><s:label for="${prop.prop}" value="${prop.label}" ></s:label></td>
+                        <td width="20%"><s:label for="${prop.prop}" value="${prop.label}" /></td>
                         <td width="30%">
                         
                         <#if prop.foreign>
@@ -124,7 +124,7 @@
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red"/>
 
                           <#else>
-                          <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} ></s:textfield>
+                          <s:textfield name="${mode? uncap_first}.${prop.prop}" id="${prop.prop}" <#if !prop.edit>readonly="true"</#if> ${prop.cssStyle} />
                             <#if prop.required><span style="color:red">*</span></#if>
                             <s:fielderror fieldName="${mode? uncap_first}.${prop.prop}"    cssStyle="color:red" />
                           </#if>
@@ -137,10 +137,10 @@
                  </#if>
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${r'${'}${mode? uncap_first}.id!=null${r'}'}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

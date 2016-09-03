@@ -9,6 +9,7 @@ package com.delmar.base.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class CurrencyServiceImpl extends CoreServiceImpl<Currency> implements
 	
 	public Integer GetIdByCode(String code)
 	{
-		HashMap<String,Object> filterMap=new HashMap<>();
+		Map<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);
 		
 		List<Currency> objList=selectByExample(filterMap);

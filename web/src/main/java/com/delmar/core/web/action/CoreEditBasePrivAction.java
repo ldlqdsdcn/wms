@@ -2,14 +2,20 @@ package com.delmar.core.web.action;
 
 import com.delmar.common.vo.SearchColumnVo;
 import com.delmar.core.dto.SearchColumnDto;
+import com.delmar.core.model.CoreModel;
 import com.delmar.core.service.SearchService;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
+import com.delmar.core.web.def.PagingType;
 import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.User;
 import com.delmar.system.web.WebConst;
+import com.delmar.utils.StringUtil;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.displaytag.properties.SortOrderEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +76,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     @SkipValidation
     public String create()
     {
-        if(PrivilegeOperator.isCreate())
+        if(!PrivilegeOperator.isCreate())
         {
             return NOPRIVILEGE;
         }
@@ -84,7 +90,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     @SkipValidation
     public String edit()
     {
-        if(!(PrivilegeOperator.isUpdate()|| !PrivilegeOperator.isView()))
+        if(!(PrivilegeOperator.isUpdate()||PrivilegeOperator.isView()))
         {
             return NOPRIVILEGE;
         }
@@ -98,7 +104,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
      */
     public String save()
     {
-        if(!((!PrivilegeOperator.isCreate() &&getModelId()==null)||PrivilegeOperator.isUpdate()))
+        if(!((PrivilegeOperator.isCreate()&&getModelId()==null)||PrivilegeOperator.isUpdate()))
         {
             return NOPRIVILEGE;
         }
@@ -108,8 +114,9 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
             msgKey="success.create";
         }
         addActionMessage(getText(msgKey));
+        String returnUrl=saveForm();
 
-        return saveForm();
+        return returnUrl;
     }
 
 
@@ -125,7 +132,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     @SkipValidation
     public String deletes()
     {
-        if(!(!PrivilegeOperator.isDelete()))
+        if(!(PrivilegeOperator.isDelete()))
         {
             return NOPRIVILEGE;
         }
@@ -136,7 +143,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
             ServletActionContext.getRequest().getSession().setAttribute("msg", message);
 
         }
-        Integer[] idints=new Integer[ids != null ? ids.length : 0];
+        Integer[] idints=new Integer[ids.length];
 
         for(int i=0;i<idints.length;i++)
         {
@@ -165,7 +172,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
         {
             isFirst=true;
         }
-        int index= ids != null ? ids.indexOf(id) : 0;
+        int index=ids.indexOf(id);
         if(index==-1)
         {
             return true;
@@ -184,7 +191,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
         {
             isLast=true;
         }
-        int index= ids != null ? ids.indexOf(id) : 0;
+        int index=ids.indexOf(id);
         if(index==-1)
         {
             return true;
@@ -200,7 +207,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     {
         List<Integer>ids=(List)FacesUtils.getValueInHashtableOfSession(getModuleName()+"IdList");
 
-        int i = ids != null ? ids.indexOf(getModelId()) : 0;
+        int i = ids.indexOf(getModelId());
 
         id=ids.get(i - 1);
         return edit();
@@ -210,7 +217,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     public String getNextOne()
     {
         List<Integer>ids=(List)FacesUtils.getValueInHashtableOfSession(getModuleName()+"IdList");
-        int i = ids != null ? ids.indexOf(getModelId()) : 0;
+        int i = ids.indexOf(getModelId());
         id=ids.get(i+1);
         return edit();
     }

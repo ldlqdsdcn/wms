@@ -21,7 +21,7 @@ public class IntelliKeyWord {
     private static Set<String> SQL_KEY_WORD_MAP=new HashSet<String>();
     private static Map<String,String> SQL_TYPE_MAP=new HashMap<String, String>();
     private static Set<String> NOT_NEED_VAL_COLUMN_SET=new HashSet<>();
-    private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<>();
+    private static Map<String,Integer> DISPLAY_DECORATOR_MAP=new HashMap<String,Object>();
 
     static
     {

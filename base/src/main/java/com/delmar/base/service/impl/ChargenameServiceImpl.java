@@ -43,7 +43,7 @@ public class ChargenameServiceImpl extends CoreServiceImpl<Chargename> implement
 	
 	public Integer GetIdByCode(String code)
 	{
-		HashMap<String,Object> filterMap=new HashMap<>();
+		Map<String,Object> filterMap=new HashMap<String,Object>();
 		filterMap.put("code",code);
 		
 		List<Chargename> objList=selectByExample(filterMap);
@@ -76,7 +76,7 @@ public class ChargenameServiceImpl extends CoreServiceImpl<Chargename> implement
 		
 		sb.deleteCharAt(sb.length()-1);
 		
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 	    param.put("accessString", " id in ("+sb.toString()+")");
 	    List<Chargename> chargenameList=chargenameDao.selectByExample(param);
 	    if (chargenameList.size()==0)

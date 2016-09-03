@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 22014-12-29 09:54:05
@@ -61,7 +62,7 @@ public class CityServiceImpl extends CoreServiceImpl<City> implements
  */
 @Override
 public Integer deleteByPrimaryKey(Integer id) {
-	HashMap<String,Object> param=new HashMap<>();
+	Map<String,Object> param=new HashMap<>();
 	param.put("cityId", id);
 	cityTrlDao.deleteByExample(param);
 	return super.deleteByPrimaryKey(id);
@@ -90,7 +91,7 @@ public CityTrl getCityTrl(String language, Integer cityId) {
 	{
 		return null;
 	}
-	HashMap<String,Object> param=new HashMap<>();
+	Map<String,Object> param=new HashMap<>();
    param.put("cityId",cityId);
    param.put("language",language);
    CityTrl cityTrl=null;

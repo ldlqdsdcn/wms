@@ -66,7 +66,7 @@
                             name="%{'${line.model?uncap_first}List['+#st.index+'].${prop.prop}'}">
                     </s:textfield> <#if prop.required><span style="color:red">*</span></#if>
                     <#if !prop_has_next>
-                        <s:hidden name="%{'${line.model?uncap_first}List['+#st.index+'].${(mode? uncap_first)+'Id'}'}"></s:hidden>
+                        <s:hidden name="%{'${line.model?uncap_first}List['+#st.index+'].${(mode? uncap_first)+'Id'}'}"/>
                     </#if>
                 </td>
                </#if>

@@ -37,7 +37,7 @@ public class ChargenameExtraDaoMybatis extends CoreDaoMyBatis<ChargenameExtra> i
 	 */
 	public List<ChargenameExtra> selectConformCharenameExtra(BigDecimal grossWeight,
 			BigDecimal volume,String extraType) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		if (extraType.equals("FCL"))   //整车价格
 		{
 		   param.put("accessString", " LimitWeight >= "+grossWeight+" and LimitSize >= "+volume+" and ExtraType='FCL' ");

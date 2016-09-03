@@ -68,7 +68,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	@Override
 	public Integer deleteByPrimaryKey(Integer id) {
-		HashMap<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("datadictId", id);
 		this.datadictTrlDao.deleteByExample(param);
 		return super.deleteByPrimaryKey(id);
@@ -82,7 +82,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	}
 	
 	public List<Datadict> getDatadictListByTypeIdAndDate(Integer typeId,String requestDate,Integer clientId) {
-		HashMap<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("accessString", " datadict_type_id="+typeId+" and client_id="+clientId+" and updated>=convert(datetime,'"+requestDate+"') ");
 		return datadictDao.selectByExample(param);
 	}
@@ -92,7 +92,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	
 	public List<Datadict> getDatadictListByTypeValue(String value) {
-		Map<String,Object>param=new HashMap<>();
+		Map<String,Object>param=new HashMap<String,Object>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
@@ -104,7 +104,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	
 	
 	public List<Datadict> getDatadictListByTypeValue(String value,Integer clientId) {
-		Map<String,Object>param=new HashMap<>();
+		Map<String,Object>param=new HashMap<String,Object>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
@@ -175,7 +175,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	
 	public List<DatadictTrl> getDatadictTrlByValue(String value,String language) {
-		Map<String,Object>param=new HashMap<>();
+		Map<String,Object>param=new HashMap<String,Object>();
 		param.put("value", value);
 		DatadictType dt=	datadictTypeDao.getByExample(param);
 		
@@ -188,7 +188,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	
 	
 	public List<DatadictTrl> getDatadictTrlByValue(String value,String language,Integer clientId) {
-		Map<String,Object>param=new HashMap<>();
+		Map<String,Object>param=new HashMap<String,Object>();
 		param.put("value", value);
 
 		DatadictType dt=	datadictTypeDao.getByExample(param);
@@ -212,7 +212,7 @@ public class DatadictServiceImpl extends CoreServiceImpl<Datadict> implements
 	 */
 	public DatadictTrl getTrlByDataId(Integer dataId,String language)
 	{
-		Map<String,Object>param=new HashMap<>();
+		Map<String,Object>param=new HashMap<String,Object>();
 		param.put("datadictId", dataId);
 	    param.put("language",language);
 		

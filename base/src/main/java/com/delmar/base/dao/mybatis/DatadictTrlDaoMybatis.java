@@ -37,7 +37,7 @@ public class DatadictTrlDaoMybatis extends CoreDaoMyBatis<DatadictTrl> implement
 	 */
 	public List<DatadictTrl> getDatadictTrlByTypeId(Integer typeId,
 			String language,Integer clientId) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		if (clientId!=null)
 		  param.put("accessString", "datadict_id in(select id from base_datadict where datadict_type_id="+typeId+" and client_id="+clientId+" and IsActive=1) and language='"+language+"'");
 		else
@@ -48,13 +48,13 @@ public class DatadictTrlDaoMybatis extends CoreDaoMyBatis<DatadictTrl> implement
 	
 	public List<DatadictTrl> getDatadictTrlByTypeIdAndDate(Integer typeId,String requestDate,
 			String language,Integer clientId) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("accessString", "datadict_id in(select id from base_datadict where datadict_type_id="+typeId+"  and client_id="+clientId+" and updated>=convert(datetime,'"+requestDate+"')) and language='"+language+"'");
 		return this.selectByExample(param);
 	}	
 	
 	public void updateIndexOrder(Integer indexOrder,Integer datadictId) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("indexOrder", indexOrder);
 		param.put("datadictId", datadictId);		
 		sqlSessionTemplate.update(this.getSqlName()+".updateIndexOrder", param);

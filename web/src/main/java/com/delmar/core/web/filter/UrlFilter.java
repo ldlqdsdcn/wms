@@ -70,8 +70,7 @@ public class UrlFilter implements Filter {
 				RequestDispatcher rd = context
 						.getRequestDispatcher("/frameLogin.jsp");
 				rd.forward(request1, response1);
-				// response.sendRedirect("/kcyjxt/frameLogin.jsp");
-				
+
 				return;
 
 			}

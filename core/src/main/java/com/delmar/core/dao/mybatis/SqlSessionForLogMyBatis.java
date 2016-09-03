@@ -68,7 +68,7 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 	   public void writeLog(CoreModel model,String operateType)
 	   {
 		 String name=  model.getClass().getName();
-		 Map<String,Object> param= new HashMap<>();
+		 Map<String,Object> param= new HashMap<String,Object>();
 		 param.put("className", name);
 		 param.put("outLog", "Y");
 		List<Table> tableList= sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableMapper.selectByExample", param);
@@ -82,10 +82,10 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 		 {
 		 if(table!=null)
 		 {
-			 param= new HashMap<>();
+			 param= new HashMap<String,Object>();
 			 param.put("tableId", table.getId());
 			 List<TableColumn> tableColumnList=sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableColumnMapper.selectByExample", param);
-			 Map<String,Object> obj= new HashMap<>();
+			 Map<String,Object> obj= new HashMap<String,Object>();
 			 if(tableColumnList!=null)
 			 {
 				 for(TableColumn column:tableColumnList)

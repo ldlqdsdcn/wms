@@ -32,10 +32,7 @@
 			<result name="success" type="redirect">/main.jsp</result>
 		</action>
 
-		<action name="userLogsub" class="com.delmar.system.web.action.UserLoginAction" method="sublogin">
-			<result name="relogin">/login.jsp</result>
-			<result name="success" type="redirect">/main.jsp</result>
-		</action>
+
 
 		<action name="changePass" class="com.delmar.system.web.action.UserLoginAction" method="changePass">
 			<result name="input">/login.jsp</result>
@@ -215,7 +212,10 @@
 			<result name="adduser" >/system/addRoleUser.jsp</result>
 			<result name="listuser" >/system/usersubstitute.jsp</result>
 		</action>
-
+		<action name="userLogsub" class="com.delmar.system.web.action.UserLoginAction" method="sublogin">
+			<result name="relogin">/login.jsp</result>
+			<result name="success" type="redirect">/main.jsp</result>
+		</action>
 		<action name="mobileclient_*" class="com.delmar.system.web.action.MobileClientAction"  method="{1}">
 			<result name="list">/system/mobileclients.jsp</result>
 			<result name="edit">/system/mobileclientForm.jsp</result>
@@ -226,6 +226,7 @@
 		<action name="usersetting" class="com.delmar.common.web.action.UserSettingAction" method="save">
 			<result name="input">/commons/usersetting.jsp</result>
 		</action>
+
 		<action name="commonFile_*" class="com.delmar.common.web.action.CommonFileAction" method="{1}">
 			<result name="edit">/commons/commonFileForm.jsp</result>
 			<result name="list">/commons/commonFiles.jsp</result>

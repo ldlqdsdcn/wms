@@ -33,7 +33,7 @@ public class PortTest {
 	@Test
 	public void testPortSelect()
 	{
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("mode", ModeType.Air.toString());
 		List<Port> portList=portDao.selectPortByMode(param);
 		for(Port p:portList)

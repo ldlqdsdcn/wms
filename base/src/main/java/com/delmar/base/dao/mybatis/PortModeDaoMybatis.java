@@ -36,7 +36,7 @@ public class PortModeDaoMybatis extends CoreDaoMyBatis<PortMode> implements Port
 	 * @see com.delmar.base.dao.PortModeDao#getPortModeListByPortId(java.lang.Integer)
 	 */
 	public List<PortMode> getPortModeListByPortId(Integer portId) {
-		Map<String,Object> param=new HashMap<>();
+		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("basePortId", portId);
 		return this.selectByExample(param);
 	}
