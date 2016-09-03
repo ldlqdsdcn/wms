@@ -39,8 +39,7 @@ public class CitySearchAction extends CoreSearchAction{
 		System.out.println("value="+value);
 		UserResource ur=(UserResource)FacesUtils.getSession().getAttribute("resource");
 		param.put("accessString", "language='"+ur.getLocale().toString()+"' or name like '%"+value.trim()+"%'");
-		List<CityTrl> list=cityTrlService.selectByExample(param);
-		return list;
+		return cityTrlService.selectByExample(param);
 	}
 
 }

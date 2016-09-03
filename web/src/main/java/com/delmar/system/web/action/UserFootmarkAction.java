@@ -6,19 +6,19 @@
  *****************************************************************************/
 package com.delmar.system.web.action;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.delmar.sys.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.core.web.action.CoreEditPagingAction;
 import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
+import com.delmar.sys.model.User;
+import com.delmar.system.model.UserFootmark;
+import com.delmar.system.service.UserFootmarkService;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.system.model.UserFootmark;
-import com.delmar.system.service.UserFootmarkService;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  * @author 刘大磊 2016-09-02 10:18:25
  */
@@ -85,8 +85,7 @@ param.put("pageNo", page);
 param.put("pageSize",20);
 int fullListSize = userFootmarkService.countObjects(param);
 List list = userFootmarkService.selectByExample(param);
-PaginatedListHelper paginatedListHelper = new PaginatedListHelper(page, fullListSize, list);
-return paginatedListHelper;
+	return new PaginatedListHelper(page, fullListSize, list);
 }
 
 

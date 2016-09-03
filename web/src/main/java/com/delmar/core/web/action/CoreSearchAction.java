@@ -45,7 +45,7 @@ public abstract class CoreSearchAction extends CoreAction {
 			System.out.println(key+"="+ServletActionContext.getRequest().getParameter(key));
 		}
 		
-		if(!PrivilegeOperator.isCreate())
+		if(PrivilegeOperator.isCreate())
 		{
 			return NOPRIVILEGE;
 		}

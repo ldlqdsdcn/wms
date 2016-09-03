@@ -11,7 +11,6 @@
  
 <script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.5.custom.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/jquery.alerts.js"/>"></script>
 <link rel="Stylesheet" href="../css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" />
 <link rel="Stylesheet" href="../js/jquery.alerts.css" type="text/css" />
  <script type="text/javascript">
@@ -24,7 +23,8 @@
 	function deleteFiles()
 	{
 		var editForm=document.getElementById('editForm');
-		editForm.action='<c:url value="/base/carrier_deleteFiles.action"/>';
+		<s:url var="carrier_deleteFiles_url" namespace="/base" action="carrier_deleteFiles"/>
+		editForm.action='<c:url value="${carrier_deleteFiles_url}"/>';
 		editForm.submit();
 	}
 	function openDialog(rowIndex,tablename,tableid)
@@ -76,7 +76,7 @@
 <body>
 
 <s:form id="editForm" action="carrier_edit" namespace='/base' theme="simple">
-<s:hidden id="id" name="carrier.id"></s:hidden>
+<s:hidden id="id" name="carrier.id"/>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -89,10 +89,10 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"/>
 			</c:if>		
 			<c:if test="${!isLast}">
-				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"/>
 			</c:if>
 		</div></td>
         </tr>
@@ -111,42 +111,42 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                    <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="code" value="%{#session.resource.get('carrier.column.code')}"  ></s:label>
+               	<s:label for="code" value="%{#session.resource.get('carrier.column.code')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="carrier.code" id="code"></s:textfield>
+               	<s:textfield name="carrier.code" id="code"/>
                	</td>
 				</tr>
 				   <tr  class="query_two">
                	<td width="20%">
-               	<s:label for="code" value="%{#session.resource.get('carrier.column.scaccode')}"  ></s:label>
+               	<s:label for="code" value="%{#session.resource.get('carrier.column.scaccode')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="carrier.scaccode" id="scaccode"></s:textfield>
+               	<s:textfield name="carrier.scaccode" id="scaccode"/>
                	</td>
 				</tr>
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('carrier.column.cname')}"  ></s:label>
+               	<s:label for="name" value="%{#session.resource.get('carrier.column.cname')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="carrier.cname" id="name"  cssStyle="width:300px;"></s:textfield>
+               	<s:textfield name="carrier.cname" id="name"  cssStyle="width:300px;"/>
                	</td>
 				</tr>
 				<tr  class="query_two">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('carrier.column.planeocean')}"  ></s:label>
+               	<s:label for="name" value="%{#session.resource.get('carrier.column.planeocean')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="carrier.planeocean" id="planeocean"></s:textfield>
+               	<s:textfield name="carrier.planeocean" id="planeocean"/>
                	</td>
 				</tr>
 				
 						<tr  class="query_one">
 							
-							<td ><s:label for="descr"  value="%{#session.resource.get('common.label.remark')}"  ></s:label></td>
+							<td ><s:label for="descr"  value="%{#session.resource.get('common.label.remark')}"  /></td>
 							<td colspan="3">
-							<s:textfield name="carrier.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="carrier.remark" id="remark" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -161,10 +161,10 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${carrier.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						
 						<input onclick="window.location='<c:url value="/base/carrier_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
@@ -210,7 +210,7 @@
               <tr> 
                 <td align="center"> <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="table_blue">
                 
-            <input value="添加文件" type="button"  class="input_submit" onclick="javascript:addFile()"/> &nbsp;&nbsp;
+            <input value="添加文件" type="button"  class="input_submit" onclick="addFile()"/> &nbsp;&nbsp;
             <input class="input_submit" type="button"    value="删除文件" onclick="javascript:deleteFiles()"/>
                 <tr>
                 <td>
@@ -238,15 +238,15 @@
               	</td>
 						<td>
 							<s:hidden name="%{'fileRelationList['+#st.index+'].id'}" />
-							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.filename'}" readonly="true"></s:textfield>	
+							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.filename'}" readonly="true"/>
 						</td>
 						<td>
 							<s:hidden name="%{'fileRelationList['+#st.index+'].delmarFile.id'}" />
-							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.fileAbstract'}" cssStyle="width:300px"></s:textfield>	
+							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.fileAbstract'}" cssStyle="width:300px"/>
 						</td>
 						<td>
-							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.fileKeyword'}"></s:textfield>	
-							<s:hidden name="%{'fileRelationList['+#st.index+'].delmarFile.path'}"></s:hidden>
+							<s:textfield name="%{'fileRelationList['+#st.index+'].delmarFile.fileKeyword'}"/>
+							<s:hidden name="%{'fileRelationList['+#st.index+'].delmarFile.path'}"/>
 						</td>
 						<td>
 								<input type="button" onclick="javascript:uploadfile(this);" value="选择附件">
@@ -351,13 +351,13 @@
 								<tr  class="<s:property value="#st.index%2==0?'odd':'even'"/>">
 						<td>
 							<s:hidden name="%{'carrierTrlList['+#st.index+'].id'}" />
-							<s:textfield name="%{'carrierTrlList['+#st.index+'].language'}" readonly="true"></s:textfield>	
+							<s:textfield name="%{'carrierTrlList['+#st.index+'].language'}" readonly="true"/>
 						</td>
 						<td>
-							<s:textfield name="%{'carrierTrlList['+#st.index+'].name'}" cssStyle="width:300px"></s:textfield>	
+							<s:textfield name="%{'carrierTrlList['+#st.index+'].name'}" cssStyle="width:300px"/>
 						</td>
 						<td>
-						<s:textfield name="%{'carrierTrlList['+#st.index+'].remark'}"></s:textfield>	
+						<s:textfield name="%{'carrierTrlList['+#st.index+'].remark'}"/>
 						</td>
 						</s:iterator>
 					
@@ -393,7 +393,7 @@
 </s:form>
 
 <div id="selectDiv">
-		<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0px; border:0px; padding: 0px;" id="selectIframe"></iframe>
+		<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0; border:0; padding: 0;" id="selectIframe"></iframe>
 </div>
 
 

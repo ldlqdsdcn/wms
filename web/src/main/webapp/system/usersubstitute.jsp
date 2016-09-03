@@ -37,7 +37,7 @@
    				 <c:out value="${list.username}"/></a>
 	     </display:column>
 	     <display:column property="name"  titleKey="user.column.name"/>
-		 <display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" ></display:column>			
+		 <display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" />
 		</display:table>
 
 </td>

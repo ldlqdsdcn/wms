@@ -29,8 +29,8 @@
                 <td >
                 
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -58,10 +58,10 @@
 		     </display:column>
 		     <display:column property="code"    media="csv excel xml pdf rtf"	titleKey="city.column.code"/>
 				
-			<display:column property="id"  escapeXml="true" titleKey="city.column.cname" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"></display:column>				
-		    <display:column property="levelint"  escapeXml="true" titleKey="city.column.levelint" sortable="true"></display:column>
-		    <display:column property="parentId"  escapeXml="true" titleKey="city.column.parentCity" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"></display:column>
-		    <display:column property="relateCityId"  escapeXml="true" titleKey="city.column.relateCity" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"></display:column>
+			<display:column property="id"  escapeXml="true" titleKey="city.column.cname" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"/>
+		    <display:column property="levelint"  escapeXml="true" titleKey="city.column.levelint" sortable="true"/>
+		    <display:column property="parentId"  escapeXml="true" titleKey="city.column.parentCity" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"/>
+		    <display:column property="relateCityId"  escapeXml="true" titleKey="city.column.relateCity" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CityDecorator"/>
 		    <display:column property="remark"  escapeXml="true"  titleKey="common.label.remark" sortable="true"/>
 		</display:table>
 </td>
@@ -73,7 +73,7 @@
 
 <script type="text/javascript">
     function viewExport(id) {
-       window.location='<c:url value="/base/city_edit.action"/>?id='+id;
+       window.location='<s:url namespace="/base" action="city_edit"/>?id='+id;
     }
     highlightTableRows("list");
     

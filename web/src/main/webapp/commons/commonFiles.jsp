@@ -27,7 +27,7 @@
               <tr> 
                 <td >
               
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -45,7 +45,7 @@
       <display:column   	titleKey="delmarfile.column.filename"  sortable="true" media="html">
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value="${list.delmarFile.filename}"/></a>
 		     </display:column>
-		     <display:column property="delmarFile.fileAbstract"  escapeXml="true" titleKey="delmarfile.column.fileabstract"  sortable="true"></display:column>				
+		     <display:column property="delmarFile.fileAbstract"  escapeXml="true" titleKey="delmarfile.column.fileabstract"  sortable="true"/>
 		     <display:column property="delmarFile.fileKeyword"  titleKey="delmarfile.column.filekeyword" />
              <display:column   	titleKey="delmarfile.column.operate.open"  sortable="true" media="html">
              

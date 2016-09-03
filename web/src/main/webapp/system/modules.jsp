@@ -60,7 +60,7 @@
                 
                   <input type="button"  value='<delmar:message key="common.button.search" />'  id="search_but"   class="input_submit"/>
                   <input type="button" value='<delmar:message key="common.button.create" />'  class="input_submit"  onclick="viewExport(0)"/>
-				  <s:submit method="delete" cssClass="input_submit"   value=" %{#session.resource.get('common.button.delete')}"></s:submit>
+				  <s:submit method="delete" cssClass="input_submit"   value=" %{#session.resource.get('common.button.delete')}"/>
 
                  </td>
               </tr>
@@ -83,7 +83,7 @@
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')">
      				 <c:out value="${list.name}"/></a>
 		     </display:column>
-			<display:column property="dataFilter"  escapeXml="true"  titleKey="module.column.datafilter" sortable="true"></display:column>				
+			<display:column property="dataFilter"  escapeXml="true"  titleKey="module.column.datafilter" sortable="true"/>
 		    <display:column property="remark"  escapeXml="true" titleKey="module.column.remark" sortable="true"/>
 		    
 

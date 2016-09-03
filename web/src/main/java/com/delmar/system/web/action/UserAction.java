@@ -7,57 +7,24 @@
 package com.delmar.system.web.action;
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.base.model.DatadictTrl;
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictService;
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.util.FacesUtils;
-import com.delmar.sys.model.Client;
-import com.delmar.sys.model.Org;
-import com.delmar.sys.model.Role;
-import com.delmar.sys.model.User;
-import com.delmar.sys.model.UserExtra;
-import com.delmar.sys.model.UserSubstitute;
-import com.delmar.sys.model.UserThirdParty;
-import com.delmar.sys.model.Usergroup;
-import com.delmar.sys.model.UsergroupAccess;
-import com.delmar.sys.model.UserorgAccess;
-import com.delmar.sys.service.ClientService;
-import com.delmar.sys.service.OrgService;
-import com.delmar.sys.service.UserExtraService;
-import com.delmar.sys.service.UserRoleService;
-import com.delmar.sys.service.UserService;
-import com.delmar.sys.service.UserThirdPartyService;
-import com.delmar.sys.service.UsergroupAccessService;
-import com.delmar.sys.service.UsergroupService;
-import com.delmar.sys.service.UserorgAccessService;
+import com.delmar.sys.model.*;
+import com.delmar.sys.service.*;
 import com.delmar.system.web.WebConst;
 import com.delmar.system.web.dwr.UserDwr;
 import com.delmar.system.web.model.PrivilegesDataFilter;
-import com.delmar.utils.MD5;
-import com.delmar.utils.ProDateUtil;
-import com.delmar.utils.ProDirFileUtil;
-import com.delmar.utils.ResourceMessage;
-import com.delmar.utils.StringUtil;
+import com.delmar.utils.*;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+import java.util.*;
 
 /**
  * @author 刘大磊 2015年1月16日 下午5:27:52
@@ -191,7 +158,7 @@ public class UserAction extends CoreEditPrivAction{
 				{
 					roles.add(new Integer(value));
 				}
-				boolean isnew=user.getId()==null?true:false;
+				boolean isnew= user.getId() == null;
 				if(user.getPassword().length()<30)
 				{
 					MD5 md5=new MD5();

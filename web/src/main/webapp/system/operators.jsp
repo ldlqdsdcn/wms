@@ -29,8 +29,8 @@
               <tr> 
                 <td >
                   
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}"></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}"/>
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -57,7 +57,7 @@
 		     </display:column>
 		     <display:column property="name" media="csv excel xml pdf rtf"
 							titleKey="operator.column.name"/>
-			<display:column property="value"  escapeXml="true"  sortable="true" titleKey="operator.column.value"></display:column>				
+			<display:column property="value"  escapeXml="true"  sortable="true" titleKey="operator.column.value"/>
 		    <display:column property="remark"  escapeXml="true"  sortable="true" titleKey="operator.column.remark"/>
 		    <display:column property="init"  escapeXml="true" sortable="true" titleKey="operator.column.init"/>
 		    

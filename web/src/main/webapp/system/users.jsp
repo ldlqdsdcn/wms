@@ -62,9 +62,9 @@
               <tr> 
                 <td >
                   <input type="button"  value="<delmar:message key="common.button.search" />" id="search_but"  class="input_submit"/>
-                  <s:submit method="create"  value="%{#session.resource.get('common.button.create')}" cssClass="input_submit"></s:submit>
+                  <s:submit method="create"  value="%{#session.resource.get('common.button.create')}" cssClass="input_submit"/>
                  
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"></s:submit>
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"/>
                  </td>
               </tr>
             </table></td>
@@ -89,12 +89,12 @@
 			     <delmar:message key="user.column.name" /> 
 			   </td>
 			   <td   class="d-tdinput"> 
-			      <s:textfield name="name" value="%{#session.MAP_KEY_OF_SESSION.name}" class="d-inputtext"></s:textfield>
+			      <s:textfield name="name" value="%{#session.MAP_KEY_OF_SESSION.name}" class="d-inputtext"/>
 			      <s:checkbox name="invalid" id="invalid" fieldvalue="Y" value="%{#session.MAP_KEY_OF_SESSION.invalid}"/><delmar:message key="user.column.includeisactive" />  
 			   </td>
 
 			       <td  style="text-align:right; padding:5px;">     
-			       <s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" ></s:submit>
+			       <s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" />
                    <s:reset cssClass="input_submit" id="btnReset" value="%{#session.resource.get('common.button.reset')}" ></s:reset>			       
 			       </td>    
 			       </tr>
@@ -127,14 +127,14 @@
 		         <c:out value="${list.name}"/>
 		         </c:if>
 		     </display:column>
-			 <display:column property="client.name"  escapeXml="true"  titleKey="user.column.client" sortable="true" ></display:column>	
-			 <display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" ></display:column>			
+			 <display:column property="client.name"  escapeXml="true"  titleKey="user.column.client" sortable="true" />
+			 <display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" />
 			<%--
-			<display:column property="departments"  escapeXml="true" title="部门" sortable="true" decorator="com.ea.system.web.display.decorator.UserDepartmentDecorator"></display:column>
+			<display:column property="departments"  escapeXml="true" title="部门" sortable="true" decorator="com.ea.system.web.display.decorator.UserDepartmentDecorator"/>
 			 --%>				
 		    <display:column property="id"  escapeXml="true" titleKey="user.column.role"  sortable="true" decorator="com.delmar.system.web.displaytag.decorator.UserRoleDecorator"/>
 		   
-			<display:column property="init"  escapeXml="true"  titleKey="user.column.init" sortable="true" ></display:column>	
+			<display:column property="init"  escapeXml="true"  titleKey="user.column.init" sortable="true" />
 		</display:table>
 
 

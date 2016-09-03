@@ -6,17 +6,8 @@
  *****************************************************************************/
 package com.delmar.base.web.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.base.model.City;
 import com.delmar.base.model.CityTrl;
-import com.delmar.base.model.PortTrl;
 import com.delmar.base.service.CityService;
 import com.delmar.base.service.CityTrlService;
 import com.delmar.core.model.Language;
@@ -24,6 +15,13 @@ import com.delmar.core.service.LanguageService;
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.utils.ResourceMessage;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**

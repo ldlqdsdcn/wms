@@ -1,33 +1,23 @@
 package com.delmar.core.web.dwr;
 
+import com.delmar.base.model.Datadict;
+import com.delmar.base.model.DatadictType;
+import com.delmar.base.service.DatadictService;
+import com.delmar.core.DelmarConst;
+import com.delmar.core.web.bean.EaContext;
+import com.delmar.sys.SystemConst;
+import com.delmar.sys.model.*;
+import com.delmar.sys.service.ModulePageService;
+import com.delmar.sys.service.ModuleRoleService;
+import com.delmar.system.web.WebConst;
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.base.model.Datadict;
-import com.delmar.base.model.DatadictType;
-import com.delmar.base.service.DatadictService;
-import com.delmar.base.service.DatadictTypeService;
-import com.delmar.core.DelmarConst;
-import com.delmar.core.web.bean.EaContext;
-import com.delmar.sys.SystemConst;
-import com.delmar.sys.model.ModulePage;
-import com.delmar.sys.model.ModuleRole;
-import com.delmar.sys.model.Page;
-import com.delmar.sys.model.Role;
-import com.delmar.sys.model.User;
-import com.delmar.sys.model.UserContent;
-import com.delmar.sys.model.UserorgAccess;
-import com.delmar.sys.service.ModulePageService;
-import com.delmar.sys.service.ModuleRoleService;
-import com.delmar.system.web.WebConst;
 
 /** 
  * @author Charles Luo  luos@delmarchina.com
@@ -38,9 +28,7 @@ public class DwrPrivilegeDataFilter {
 	
 	private static ModulePageService modulePageService;	
 	private static ModuleRoleService moduleRoleService;
-	private static DatadictTypeService datadictTypeService;
-	private static DatadictService datadictService;
-	
+
 	private static List<Datadict> accessList;	
 	
 	private User user;
@@ -48,13 +36,10 @@ public class DwrPrivilegeDataFilter {
 	private static DwrPrivilegeDataFilter instance;
 	
 	static {
-		
-
-		datadictTypeService=EaContext.ApplicationContext.getBean("datadictTypeService",DatadictTypeService.class);
-		datadictService=EaContext.ApplicationContext.getBean("datadictService",DatadictService.class);
+		DatadictService datadictService = EaContext.ApplicationContext.getBean("datadictService", DatadictService.class);
 		moduleRoleService=EaContext.ApplicationContext.getBean("moduleRoleService",ModuleRoleService.class);
 		modulePageService=EaContext.ApplicationContext.getBean("modulePageService",ModulePageService.class);
-		accessList=datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);		
+		accessList= datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);
 		
 	}
 	
@@ -172,6 +157,10 @@ public class DwrPrivilegeDataFilter {
 					datadictAccess=dict;
 					break;
 				}
+			}
+			if(datadictAccess==null)
+			{
+				return 1;
 			}
 			if(datadictAccess.getValue().equals("ACCESS_ALL"))
 			{

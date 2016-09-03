@@ -6,24 +6,21 @@
  *****************************************************************************/
 package com.delmar.cargo.web.action;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.delmar.cargo.model.Production;
+import com.delmar.cargo.model.ProductionLine;
+import com.delmar.cargo.service.ProductionService;
 import com.delmar.core.web.action.CoreEditPrivAction;
-import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.cargo.model.Production;
-import com.delmar.cargo.service.ProductionService;
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import com.delmar.cargo.model.ProductionLine;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 /**
  * @author 刘大磊 2016-08-29 15:01:00
  */

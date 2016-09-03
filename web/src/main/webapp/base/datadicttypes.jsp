@@ -30,8 +30,8 @@
                 
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
                   
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" ></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" />
                  </td>
               </tr>
             </table></td>
@@ -55,7 +55,7 @@
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value="${list.value}"/>
      		  </a>
 		     </display:column>
-		    <display:column property="value" titleKey="datadictType.column.value"  media="csv excel xml pdf rtf"	></display:column>
+		    <display:column property="value" titleKey="datadictType.column.value"  media="csv excel xml pdf rtf"	/>
 		    <display:column property="name" titleKey="datadictType.column.name"   escapeXml="true"  sortable="true"/>
 		    <display:column titleKey="datadictType.column.bepublic"   escapeXml="true"  sortable="true">
 		    <c:if test="${list.bePublic==0}">

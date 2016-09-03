@@ -35,7 +35,7 @@ public class PageAction extends CoreEditAction {
 	}
 	public String save()
 	{
-		boolean isnew=page.getId()==null?true:false;
+		boolean isnew= page.getId() == null;
 		id=pageService.save(page);
 		page.setId(id);
 		if(isnew)

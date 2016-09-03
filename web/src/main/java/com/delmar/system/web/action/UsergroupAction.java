@@ -121,7 +121,7 @@ public class UsergroupAction extends CoreEditPrivAction {
 	
 	public String addUserGroupUser()
 	{
-		if(!(PrivilegeOperator.isView()))
+		if(!(!PrivilegeOperator.isView()))
 		{
 			return NOPRIVILEGE;
 		}		

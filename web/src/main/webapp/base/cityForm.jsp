@@ -96,7 +96,7 @@
 <body>
 
 <s:form id="editForm" action="city_edit" namespace='/base' theme="simple">
-<s:hidden id="id" name="city.id"></s:hidden>
+<s:hidden id="id" name="city.id"/>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -109,10 +109,10 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"/>
 			</c:if>		
 			<c:if test="${!isLast}">
-				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"/>
 			</c:if>
 		</div></td>
         </tr>
@@ -131,51 +131,51 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                    <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="code" value="%{#session.resource.get('city.column.code')}"  ></s:label>
+               	<s:label for="code" value="%{#session.resource.get('city.column.code')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="city.code" id="code"></s:textfield>
+               	<s:textfield name="city.code" id="code"/>
                	</td>
 				</tr>
 				   <tr  class="query_two">
                	<td width="20%">
-               	<s:label for="cname" value="%{#session.resource.get('city.column.cname')}"  ></s:label>
+               	<s:label for="cname" value="%{#session.resource.get('city.column.cname')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="city.cname" id="cname"></s:textfield>
+               	<s:textfield name="city.cname" id="cname"/>
                	</td>
 				</tr>
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="levelint" value="%{#session.resource.get('city.column.levelint')}"  ></s:label>
+               	<s:label for="levelint" value="%{#session.resource.get('city.column.levelint')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="city.levelint" id="levelint"  cssStyle="width:300px;"></s:textfield>
+               	<s:textfield name="city.levelint" id="levelint"  cssStyle="width:300px;"/>
                	</td>
 				</tr>
 				<tr  class="query_two">
                	<td width="20%">
-               	<s:label value="%{#session.resource.get('city.column.parentCity')}"  for="parentId"></s:label>
+               	<s:label value="%{#session.resource.get('city.column.parentCity')}"  for="parentId"/>
                	</td>
                	<td colspan="3">
-               	      	<s:hidden name="city.parentId" id="parentId" ></s:hidden>
-       					<s:textfield name="city.parent.name" id="parentCityName"  cssStyle="width:300px;"></s:textfield>
+               	      	<s:hidden name="city.parentId" id="parentId" />
+       					<s:textfield name="city.parent.name" id="parentCityName"  cssStyle="width:300px;"/>
                	</td>
 				</tr>
 				<tr  class="query_one">
                	<td width="20%">
-               	<s:label value="%{#session.resource.get('city.column.relateCity')}"  for="relateCityId"></s:label>
+               	<s:label value="%{#session.resource.get('city.column.relateCity')}"  for="relateCityId"/>
                	</td>
                	<td colspan="3">
-               	<s:hidden name="city.relateCityId" id="relateCityId" ></s:hidden>
-               	<s:textfield name="city.relateCity.name" id="relateCityName"  cssStyle="width:300px;"></s:textfield>
+               	<s:hidden name="city.relateCityId" id="relateCityId" />
+               	<s:textfield name="city.relateCity.name" id="relateCityName"  cssStyle="width:300px;"/>
                	</td>
 				</tr>
 						<tr  class="query_two">
 							
-							<td ><s:label for="remark"  value="%{#session.resource.get('common.label.remark')}"  ></s:label></td>
+							<td ><s:label for="remark"  value="%{#session.resource.get('common.label.remark')}"  /></td>
 							<td colspan="3">
-							<s:textfield name="city.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="city.remark" id="remark" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -189,13 +189,13 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${city.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						
-						<input onclick="window.location='<c:url value="/base/city_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
+						<input onclick="window.location='<s:url  namespace="/base" action="city_list"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
 						
 								
 				
@@ -256,13 +256,13 @@
 								<tr  class="<s:property value="#st.index%2==0?'odd':'even'"/>">
 						<td>
 							<s:hidden name="%{'cityTrlList['+#st.index+'].id'}" />
-							<s:textfield name="%{'cityTrlList['+#st.index+'].language'}" readonly="true"></s:textfield>	
+							<s:textfield name="%{'cityTrlList['+#st.index+'].language'}" readonly="true"/>
 						</td>
 						<td>
-							<s:textfield name="%{'cityTrlList['+#st.index+'].name'}" cssStyle="width:300px"></s:textfield>	
+							<s:textfield name="%{'cityTrlList['+#st.index+'].name'}" cssStyle="width:300px"/>
 						</td>
 						<td>
-						<s:textfield name="%{'cityTrlList['+#st.index+'].remark'}"></s:textfield>	
+						<s:textfield name="%{'cityTrlList['+#st.index+'].remark'}"/>
 						</td>
 						</s:iterator>
 					

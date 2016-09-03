@@ -109,10 +109,10 @@ function validate(ids) {
 	              <tr> 
 	                <td >
 	                <delmar:operatePriv operator="create">
-	                  <s:submit method="create" cssClass="input_submit"  value="%{#session.resource.get('common.button.create')}" ></s:submit>
+	                  <s:submit method="create" cssClass="input_submit"  value="%{#session.resource.get('common.button.create')}" />
 	                 </delmar:operatePriv>
 	                  <delmar:operatePriv operator="delete">
-	                  <s:submit method="deletes" cssClass="input_submit"  value="%{#session.resource.get('common.button.delete')}"   onclick="return confirmListDelete('ids')"></s:submit>
+	                  <s:submit method="deletes" cssClass="input_submit"  value="%{#session.resource.get('common.button.delete')}"   onclick="return confirmListDelete('ids')"/>
 	                  </delmar:operatePriv>
 	                 </td>
 	              </tr>
@@ -138,13 +138,13 @@ function validate(ids) {
 					   		<delmar:message key="sysSettingsItem.column.value"/>:
 					   </td>
 					   <td   class="d-tdinput"> 
-					       	<s:textfield name="value" id="value" cssClass="d-searchtext"></s:textfield>
+					       	<s:textfield name="value" id="value" cssClass="d-searchtext"/>
 					   </td>
 					   <td  class="d-tdlabel">
 					       	<delmar:message key="sysSettingsItem.column.name"/>:
 					   </td>
 					   <td class="d-tdinput"> 
-					       	<s:textfield name="name" id="name" cssClass="d-searchtext"></s:textfield>
+					       	<s:textfield name="name" id="name" cssClass="d-searchtext"/>
 					   </td>
 					</tr>
 					<tr>
@@ -170,14 +170,14 @@ function validate(ids) {
 					   		<delmar:message key="officeTestBank.column.remark" />：
 					   </td>
 					   <td   class="d-tdinput" colspan="3"> 
-					   		<s:textfield name="remark" id="remark" cssClass="d-searchtext"></s:textfield>
+					   		<s:textfield name="remark" id="remark" cssClass="d-searchtext"/>
 					   </td>
 					   
 					</tr>
 					
 					<tr>
 				       <td colspan=8  class="d-searchbutton">  
-				       		<s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" ></s:submit>
+				       		<s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" />
 		                  	<s:reset cssClass="input_submit" id="btnReset" value="%{#session.resource.get('common.button.reset')}" ></s:reset>			       
 				       </td>    
 			       </tr>
@@ -199,13 +199,13 @@ function validate(ids) {
     	<display:column  titleKey="sysSettingsItem.column.value"  sortable="true" >
     		<a href='javascript:void(0)' onclick="edit('<c:out value="${list.id}"/>')"><c:out value="${list.value}"/></a>
     	</display:column>
-    	<display:column  property="name" escapeXml="true" titleKey="sysSettingsItem.column.name"  sortable="true"></display:column>
+    	<display:column  property="name" escapeXml="true" titleKey="sysSettingsItem.column.name"  sortable="true"/>
     	<display:column  property="setLevel" escapeXml="true" titleKey="sysSettingsItem.column.level"  sortable="true" 
-    	decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsLevelDecorator"></display:column>
+    	decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsLevelDecorator"/>
     	<display:column  property="setType" escapeXml="true" titleKey="sysSettingsItem.column.inputType"  sortable="true" 
-    	decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsInputDecorator"></display:column>
-    	<display:column  property="indexOrder" escapeXml="true" titleKey="sysSettingsItem.column.indexOrder" sortable="true"></display:column>
-    	<display:column  property="remark" escapeXml="true" titleKey="sysSettingsItem.column.remark" sortable="true"></display:column>
+    	decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsInputDecorator"/>
+    	<display:column  property="indexOrder" escapeXml="true" titleKey="sysSettingsItem.column.indexOrder" sortable="true"/>
+    	<display:column  property="remark" escapeXml="true" titleKey="sysSettingsItem.column.remark" sortable="true"/>
     	
 	  </display:table>
 	</div>

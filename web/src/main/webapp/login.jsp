@@ -12,7 +12,7 @@ if(session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session")!=null)
 	com.opensymphony.xwork2.ActionContext.getContext().setLocale((Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session"));
 	com.delmar.core.web.bean.UserResource ur=new com.delmar.core.web.bean.UserResource( (Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session"));
 	session.setAttribute("resource", ur);
-	session.setAttribute("WW_TRANS_I18N_LOCALE", (Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session"));
+	session.setAttribute("WW_TRANS_I18N_LOCALE", session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session"));
 	session.setAttribute("currentlanguageoriginal",((Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session")).toLanguageTag());
 	session.setAttribute("currentlanguagelowercase",((Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session")).toLanguageTag().toLowerCase());	
 	request.getLocale().setDefault((Locale)session.getAttribute("javax.servlet.jsp.jstl.fmt.locale.session"));

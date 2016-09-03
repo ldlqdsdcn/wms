@@ -161,7 +161,7 @@ public class MobileClientAction extends CoreEditPrivAction {
 		FileSetting fs=(FileSetting)FacesUtils.getValueInHashtableOfSession("fileSetting");
 		for(FileRelation fr:fileRelationList)
 		{
-			fr.getDelmarFile().setCommonFileSettingId(fs.getId());
+			fr.getDelmarFile().setCommonFileSettingId(fs != null ? fs.getId() : null);
 		}
 		
 		mobileClientService.save(mobileClient,fileRelationList);	

@@ -25,7 +25,7 @@ public class UserSessionAction extends CoreAction {
 	}
 	public String searchList()
 	{
-		if(!(PrivilegeOperator.isView()))
+		if(!(!PrivilegeOperator.isView()))
 		{
 			return CoreEditPrivAction.NOPRIVILEGE;
 		}

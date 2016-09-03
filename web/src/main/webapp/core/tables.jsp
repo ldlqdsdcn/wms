@@ -30,12 +30,12 @@
           <td class="navig" align="right"> <table id="normalQuery" cellpadding="0" cellspacing="0" border="0">
               <tr> 
                 <td >
-                  <s:submit cssClass="input_submit" value="%{#session.resource.get('common.button.search')}"></s:submit>
+                  <s:submit cssClass="input_submit" value="%{#session.resource.get('common.button.search')}"/>
                   
                   
                   <input type="button" value="<delmar:message key="common.button.create" />" class="input_submit" onclick="viewExport(0)">
 					<input type="button" value="创建表向导" class="input_submit" onclick="viewExport(1)">
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"></s:submit>
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"/>
                  </td>
               </tr>
             </table></td>

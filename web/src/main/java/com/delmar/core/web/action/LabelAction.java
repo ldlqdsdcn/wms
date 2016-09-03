@@ -6,24 +6,21 @@
 */
 package com.delmar.core.web.action;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.delmar.sys.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.core.web.action.CoreEditPrivAction;
+import com.delmar.core.model.Label;
+import com.delmar.core.model.LabelTrl;
 import com.delmar.core.model.Language;
+import com.delmar.core.service.LabelService;
 import com.delmar.core.service.LanguageService;
+import com.delmar.sys.model.User;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.core.model.Label;
-import com.delmar.core.service.LabelService;
+
 import java.util.ArrayList;
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.validation.SkipValidation;
-import com.delmar.core.model.LabelTrl;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  * @author 刘大磊 2016-09-03 13:51:47
  */

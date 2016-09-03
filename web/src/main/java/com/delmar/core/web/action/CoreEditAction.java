@@ -6,14 +6,12 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.struts2.ServletActionContext;
-
 import com.delmar.core.model.CoreModel;
 import com.delmar.core.web.util.FacesUtils;
-import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 刘大磊 2015年1月14日 下午3:50:17
@@ -104,7 +102,7 @@ public abstract class CoreEditAction  extends CoreAction{
 		{
 			isFirst=true;
 		}
-		int index=ids.indexOf(id);
+		int index= ids != null ? ids.indexOf(id) : 0;
 		if(index==-1)
 		{
 			return true;
@@ -122,7 +120,7 @@ public abstract class CoreEditAction  extends CoreAction{
 		{
 			isLast=true;
 		}
-		int index=ids.indexOf(id);
+		int index= ids != null ? ids.indexOf(id) : 0;
 		if(index==-1)
 		{
 			return true;
@@ -138,7 +136,7 @@ public abstract class CoreEditAction  extends CoreAction{
 	{
 		List<Integer>ids=(List)FacesUtils.getValueInHashtableOfSession(getModuleName()+"IdList");
 		
-		int i = ids.indexOf(getModelId());
+		int i = ids != null ? ids.indexOf(getModelId()) : 0;
 		
 		id=ids.get(i - 1);
 		return edit();
@@ -148,7 +146,7 @@ public abstract class CoreEditAction  extends CoreAction{
 	public String getNextOne()
 	{
 		List<Integer>ids=(List)FacesUtils.getValueInHashtableOfSession(getModuleName()+"IdList");
-		int i = ids.indexOf(getModelId());
+		int i = ids != null ? ids.indexOf(getModelId()) : 0;
 		id=ids.get(i+1);
 		return edit();
 	}

@@ -74,7 +74,7 @@
 </head>
 <body>
 <s:form id="editForm" action="userFootmark_edit" namespace='/system' theme="simple">
-<s:hidden id="id" name="userFootmark.id"></s:hidden>
+<s:hidden id="id" name="userFootmark.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -88,12 +88,12 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -117,16 +117,16 @@
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="actionMethod" value="actionMethod" ></s:label></td>
+                        <td width="20%"><s:label for="actionMethod" value="actionMethod" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.actionMethod" id="actionMethod"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionMethod" id="actionMethod"   />
                             
                             <s:fielderror fieldName="userFootmark.actionMethod"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="visiteDate" value="visiteDate" ></s:label></td>
+                        <td width="20%"><s:label for="visiteDate" value="visiteDate" /></td>
                         <td width="30%">
                         
                         <s:textfield name="userFootmark.visiteDate" id="visiteDate" >
@@ -137,60 +137,60 @@
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="actionName" value="actionName" ></s:label></td>
+                        <td width="20%"><s:label for="actionName" value="actionName" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.actionName" id="actionName"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionName" id="actionName"   />
                             
                             <s:fielderror fieldName="userFootmark.actionName"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="actionPurpose" value="actionPurpose" ></s:label></td>
+                        <td width="20%"><s:label for="actionPurpose" value="actionPurpose" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.actionPurpose" id="actionPurpose"   ></s:textfield>
+                          <s:textfield name="userFootmark.actionPurpose" id="actionPurpose"   />
                             
                             <s:fielderror fieldName="userFootmark.actionPurpose"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="userId" value="userId" ></s:label></td>
+                        <td width="20%"><s:label for="userId" value="userId" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${userFootmark.userId}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="orgId" value="组织" ></s:label></td>
+                        <td width="20%"><s:label for="orgId" value="组织" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${userFootmark.orgId}" module="org"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="remark" value="备注" ></s:label></td>
+                        <td width="20%"><s:label for="remark" value="备注" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.remark" id="remark"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="userFootmark.remark" id="remark"  cssStyle="width:500px;" />
                             
                             <s:fielderror fieldName="userFootmark.remark"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="remoteAddr" value="remoteAddr" ></s:label></td>
+                        <td width="20%"><s:label for="remoteAddr" value="remoteAddr" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.remoteAddr" id="remoteAddr"   ></s:textfield>
+                          <s:textfield name="userFootmark.remoteAddr" id="remoteAddr"   />
                             
                             <s:fielderror fieldName="userFootmark.remoteAddr"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="remoteHost" value="remoteHost" ></s:label></td>
+                        <td width="20%"><s:label for="remoteHost" value="remoteHost" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="userFootmark.remoteHost" id="remoteHost"   ></s:textfield>
+                          <s:textfield name="userFootmark.remoteHost" id="remoteHost"   />
                             
                             <s:fielderror fieldName="userFootmark.remoteHost"    cssStyle="color:red" />
                           </td>
@@ -198,10 +198,10 @@
 
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${userFootmark.id!=null}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

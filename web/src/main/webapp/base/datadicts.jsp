@@ -33,8 +33,8 @@
           <table id="normalQuery" cellpadding="0" cellspacing="0" border="0">
               <tr> 
                 <td >
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit"   value="%{#session.resource.get('common.button.delete')}"  onclick="return confirmListDelete('ids')"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit"   value="%{#session.resource.get('common.button.delete')}"  onclick="return confirmListDelete('ids')"/>
                  </td>
               </tr>
             </table></td>
@@ -63,7 +63,7 @@
 			   </td>
 
 			       <td  style="text-align:right; padding:5px;">     
-			       <s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" ></s:submit>
+			       <s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" />
                    <s:reset cssClass="input_submit" id="btnReset" value="%{#session.resource.get('common.button.reset')}" ></s:reset>			       
 			       </td>    
 			       </tr>
@@ -89,7 +89,7 @@
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value="${list.value}"/>
      		  </a>
 		     </display:column>
-		     <display:column property="value"  escapeXml="true"  titleKey="datadict.column.value" media="csv excel xml pdf rtf"	></display:column>	
+		     <display:column property="value"  escapeXml="true"  titleKey="datadict.column.value" media="csv excel xml pdf rtf"	/>
 		     <display:column property="id"  titleKey="datadict.column.name" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.DatadictDecorator" />
 			 <display:column property="datadictTypeId"  titleKey="datadict.column.type" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.DatadictTypeDecorator" />		
 			 <display:column  escapeXml="false" titleKey="datadict.column.indexorder"  sortable="true">

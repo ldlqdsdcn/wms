@@ -30,8 +30,8 @@
                 
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
                   
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -58,8 +58,8 @@
      		  </a>
 		     </display:column>
 		     <display:column property="code"    media="csv excel xml pdf rtf"	titleKey="carrier.column.code"/>
-			<display:column property="scaccode"  escapeXml="true" titleKey="carrier.column.scaccode" sortable="true"></display:column>		
-			<display:column property="id"  escapeXml="true" titleKey="carrier.column.cname" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CarrierDecorator"></display:column>				
+			<display:column property="scaccode"  escapeXml="true" titleKey="carrier.column.scaccode" sortable="true"/>
+			<display:column property="id"  escapeXml="true" titleKey="carrier.column.cname" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.CarrierDecorator"/>
 		    <display:column property="remark"  escapeXml="true"  titleKey="common.label.remark" sortable="true"/>
 		</display:table>
 </td>
@@ -71,7 +71,7 @@
 
 <script type="text/javascript">
     function viewExport(id) {
-       window.location='<c:url value="/base/carrier_edit.action"/>?id='+id;
+       window.location='<s:url namespace="/base" action="carrier_edit"/>?id='+id;
     }
     highlightTableRows("list");
     

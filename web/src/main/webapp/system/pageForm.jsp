@@ -27,7 +27,7 @@
 <body>
 
 <s:form id="editForm" action="page_edit" namespace='/system' theme="simple">
-<s:hidden id="id" name="page.id"></s:hidden>
+<s:hidden id="id" name="page.id"/>
 <!--table 01-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -44,12 +44,12 @@
 
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>		
 			
 			
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 			
 			</c:if>
 		</div></td>
@@ -73,25 +73,25 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('page.column.name')}"></s:label>
+               	<s:label for="name" value="%{#session.resource.get('page.column.name')}"/>
                	</td>
                	<td colspan="3">
-               	<s:textfield name="page.name" id="name"></s:textfield>
+               	<s:textfield name="page.name" id="name"/>
                	</td>
 				</tr>
 				
 				<tr  class="query_two">
-				<td ><s:label for="pageUrl" value="%{#session.resource.get('page.column.pageUrl')}"></s:label></td>
+				<td ><s:label for="pageUrl" value="%{#session.resource.get('page.column.pageUrl')}"/></td>
 							<td colspan="3">
-							<s:textfield name="page.pageUrl" id="pageUrl" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="page.pageUrl" id="pageUrl" cssStyle="width:500px;"/>
 							</td>
 							
 				</tr>
 						<tr  class="query_one">
 							
-							<td ><s:label for="descr"  value="%{#session.resource.get('page.column.remark')}"></s:label></td>
+							<td ><s:label for="descr"  value="%{#session.resource.get('page.column.remark')}"/></td>
 							<td colspan="3">
-							<s:textfield name="page.remark" id="descr" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="page.remark" id="descr" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -106,10 +106,10 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}" cssClass="input_submit"></s:submit>
+						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}" cssClass="input_submit"/>
 						<c:if test="${page.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}" cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}" cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						
 						<input onclick="window.location='<c:url value="/system/page_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >

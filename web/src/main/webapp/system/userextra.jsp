@@ -54,15 +54,15 @@
  
   <form class="dialog-form" >
     <fieldset>
-		<s:hidden id="extraId" name="extraId"></s:hidden>
-		<s:label for="propId"  value="%{#session.resource.get('userextra.column.propid')}" ></s:label>
+		<s:hidden id="extraId" name="extraId"/>
+		<s:label for="propId"  value="%{#session.resource.get('userextra.column.propid')}" />
 		<s:select list="extraPropList" listKey="datadictId" listValue="name"  name="extraPropId" id="extraPropId" style="width:200px"></s:select>
 		<p>
-		<s:label for="extraValue"  value="%{#session.resource.get('userextra.column.value')}" ></s:label>
-		<s:textfield name="extraValue" id="extraValue"></s:textfield>
+		<s:label for="extraValue"  value="%{#session.resource.get('userextra.column.value')}" />
+		<s:textfield name="extraValue" id="extraValue"/>
 		<p>
-		<s:label for="extraRemark"  value="%{#session.resource.get('userextra.column.remark')}" ></s:label>
-		<s:textfield name="extraRemark" id="extraRemark"></s:textfield>
+		<s:label for="extraRemark"  value="%{#session.resource.get('userextra.column.remark')}" />
+		<s:textfield name="extraRemark" id="extraRemark"/>
 		<p>
 		<s:set name="addUserExtra" value="%{#session.resource.get('common.button.save')}"/>
 		<s:set name="closeUserExtra" value="%{#session.resource.get('common.button.close')}"/>

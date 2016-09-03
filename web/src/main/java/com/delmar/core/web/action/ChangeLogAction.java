@@ -6,18 +6,6 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.core.dao.SqlSessionForLog;
 import com.delmar.core.model.Changelog;
 import com.delmar.core.model.SearchColumnList;
 import com.delmar.core.model.TableColumn;
@@ -30,12 +18,15 @@ import com.delmar.sys.service.UserService;
 import com.delmar.utils.DateTimeDecorator;
 import com.delmar.utils.ResourceMessage;
 import com.google.gson.Gson;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.*;
 
 /**
  * @author 刘大磊 2015年1月20日 上午11:11:10
  */
 public class ChangeLogAction extends CoreEditPrivAction{
-	private SqlSessionForLog sqlSessionForLog;
 	@Autowired
 	private ChangelogService changelogService;
 	private TableColumnService tableColumnService; 
@@ -80,10 +71,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 		this.changelog = changelog;
 	}
 
-	public void setSqlSessionForLog(SqlSessionForLog sqlSessionForLog) {
-		this.sqlSessionForLog = sqlSessionForLog;
-	}
-	
+
 	@Override
 	public String getModuleName() {
 		return "changeLog";
@@ -116,7 +104,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 	@SuppressWarnings("unchecked")
 	public String view()
 	{
-		if(!PrivilegeOperator.isView())
+		if(PrivilegeOperator.isView())
 		{
 			return NOPRIVILEGE;
 		}
@@ -147,12 +135,12 @@ public class ChangeLogAction extends CoreEditPrivAction{
 	public String viewAll()
 	{
 		UserResource resource= (UserResource) ServletActionContext.getRequest().getSession().getAttribute("resource");
-		if(!PrivilegeOperator.isView())
+		if(PrivilegeOperator.isView())
 		{
 			return NOPRIVILEGE;
 		}
 		changelog=this.changelogService.selectByPrimaryKey(changelog.getId());
-		Map map=new HashMap();
+		Map<String,Object> map=new HashMap();
 		map.put("accessString", "pk="+changelog.getPk()+" and table_id="+changelog.getTableId());
 		List<Changelog>changelogList=this.changelogService.selectByExample(map);
 		tableColumnList=(List)FacesUtils.getValueInHashtableOfSession("tableColumnList");

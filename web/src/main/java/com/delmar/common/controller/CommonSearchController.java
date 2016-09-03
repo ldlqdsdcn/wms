@@ -36,7 +36,7 @@ public class CommonSearchController {
         RelOperDef[] operDefs = RelOperDef.values();
         Gson gson = new Gson();
         ModelAndView modelAndView = new ModelAndView("/commons/common_search.jsp");
-        Map<String, Object> param = new HashMap<>();
+        Map<String, Object> param = new HashMap<String,Object>();
         param.put("pageUrl", action_value);
         Search search = searchService.getSearchByPageUrl(action_value);
         List<SearchColumn> searchColumns = searchService.getSearchColumnListBySearchId(search.getId());

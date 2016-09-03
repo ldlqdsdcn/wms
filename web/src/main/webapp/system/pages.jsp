@@ -30,7 +30,7 @@
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
                   <input type="button" value="<delmar:message key="common.button.create" />" class="input_submit" onclick="viewExport(0)">
                   
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -56,7 +56,7 @@
 		     </display:column>
 		     <display:column property="name" media="csv excel xml pdf rtf"
 							titleKey="page.column.name" />
-			<display:column property="pageUrl"  escapeXml="true" titleKey="page.column.pageUrl"  sortable="true"></display:column>				
+			<display:column property="pageUrl"  escapeXml="true" titleKey="page.column.pageUrl"  sortable="true"/>
 		    <display:column property="remark"  escapeXml="true"  titleKey="page.column.remark" sortable="true"/>
 		    
 

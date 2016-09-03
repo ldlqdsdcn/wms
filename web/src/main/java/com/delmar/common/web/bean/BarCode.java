@@ -1,17 +1,8 @@
 package com.delmar.common.web.bean;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.image.MemoryImageSource;
 import java.awt.image.PixelGrabber;
-import java.io.PrintStream;
 import java.io.Serializable;
 
 public class BarCode extends Canvas
@@ -1114,8 +1105,7 @@ public class BarCode extends Canvas
   }
 
   public Dimension getMinimumSize() {
-    Dimension dimension = new Dimension(10, 10);
-    return dimension;
+    return new Dimension(10, 10);
   }
 
   public void setShowText(boolean flag) {
@@ -2485,17 +2475,17 @@ public class BarCode extends Canvas
       char c = s.charAt(j);
       char c1 = s1.charAt(j);
       if (c1 == 'n')
-        qwer(g, this.jKl, (c == 'b') ? true : false, i);
+        qwer(g, this.jKl, (c == 'b'), i);
       if (c1 == 'w')
-        qwer(g, this.kLz, (c == 'b') ? true : false, i);
+        qwer(g, this.kLz, (c == 'b'), i);
       if (c1 == '1')
-        qwer(g, this.jKl, (c == 'b') ? true : false, i);
+        qwer(g, this.jKl, (c == 'b'), i);
       if (c1 == '2')
-        qwer(g, this.jKl * 2, (c == 'b') ? true : false, i);
+        qwer(g, this.jKl * 2, (c == 'b'), i);
       if (c1 == '3')
-        qwer(g, this.jKl * 3, (c == 'b') ? true : false, i);
+        qwer(g, this.jKl * 3, (c == 'b'), i);
       if (c1 == '4')
-        qwer(g, this.jKl * 4, (c == 'b') ? true : false, i);
+        qwer(g, this.jKl * 4, (c == 'b'), i);
     }
   }
 

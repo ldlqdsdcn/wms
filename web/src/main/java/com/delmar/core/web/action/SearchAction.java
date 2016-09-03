@@ -6,26 +6,23 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.*;
-
 import com.delmar.core.def.RelOperDef;
 import com.delmar.core.def.SearchDataTypeDef;
 import com.delmar.core.def.SearchShowTypeDef;
-import com.delmar.core.model.CommonSearchResult;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.core.web.action.CoreEditPrivAction;
+import com.delmar.core.model.Search;
+import com.delmar.core.model.SearchColumn;
+import com.delmar.core.service.SearchService;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.core.model.Search;
-import com.delmar.core.service.SearchService;
-import java.util.List;
-
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import com.delmar.core.model.SearchColumn;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 /**
  * @author 刘大磊 2016-08-29 16:03:22
  */

@@ -145,7 +145,7 @@ position: relative;
 		  		<font color="#FC0107">*</font><delmar:message key="sysSettingsItem.column.value"/>：
 		  	</td>
 		  	<td class="d-tdinput">
-		  		<s:textfield name="sysSettingsItem.value" id="sysSettingsItem.value" cssClass="d-inputtext d-widthb" style="width:30%"  ></s:textfield>
+		  		<s:textfield name="sysSettingsItem.value" id="sysSettingsItem.value" cssClass="d-inputtext d-widthb" style="width:30%"  />
 		  	</td>
 		  </tr>
 		  <tr> 
@@ -153,7 +153,7 @@ position: relative;
 		  		<font color="#FC0107">*</font><delmar:message key="sysSettingsItem.column.name"/>：
 		  	</td>
 		  	<td class="d-tdinput">
-		  		<s:textfield name="sysSettingsItem.name" id="sysSettingsItem.name" cssClass="d-inputtext d-widthb" style="width:30%"  ></s:textfield>
+		  		<s:textfield name="sysSettingsItem.name" id="sysSettingsItem.name" cssClass="d-inputtext d-widthb" style="width:30%"  />
 		  	</td>
 		  </tr>
 		  <tr> 
@@ -179,7 +179,7 @@ position: relative;
 		  		<delmar:message key="sysSettingsItem.column.indexOrder"/>：
 		  	</td>
 		  	<td class="d-tdinput">
-		  		<s:textfield name="sysSettingsItem.indexOrder" id="sysSettingsItem.indexOrder" cssClass="d-inputtext d-widthb" style="width:30%"></s:textfield>
+		  		<s:textfield name="sysSettingsItem.indexOrder" id="sysSettingsItem.indexOrder" cssClass="d-inputtext d-widthb" style="width:30%"/>
 		  	</td>
 		  </tr>
 		  <tr> 
@@ -187,7 +187,7 @@ position: relative;
 		  		<delmar:message key="sysSettingsItem.column.remark"/>：
 		  	</td>
 		  	<td class="d-tdinput">
-		  		<s:textfield name="sysSettingsItem.remark" id="sysSettingsItem.remark" cssClass="d-inputtext d-widthb" style="width:30%"></s:textfield>
+		  		<s:textfield name="sysSettingsItem.remark" id="sysSettingsItem.remark" cssClass="d-inputtext d-widthb" style="width:30%"/>
 		  	</td>
 		  </tr>
 		  <tr>

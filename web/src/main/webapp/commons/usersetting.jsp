@@ -73,27 +73,27 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="name" value="原始密码"></s:label>
+               	<s:label for="name" value="原始密码"/>
                	</td>
                	<td colspan="3">
                	<s:password name="oldpassword" id="oldpassword" cssStyle="width:500px;"></s:password>
                	</td>
 				</tr>
 				<tr  class="query_two">
-				<td ><s:label for="password" value="新密码"></s:label></td>
+				<td ><s:label for="password" value="新密码"/></td>
 							<td colspan="3">
 							<s:password name="password" id="password" cssStyle="width:500px;" ></s:password>
 							</td>
 				</tr>
 				<tr  class="query_one">
-							<td ><s:label for="confirmpassword" value="新密码确认"></s:label></td>
+							<td ><s:label for="confirmpassword" value="新密码确认"/></td>
 							<td colspan="3">
 							<s:password name="confirmpassword" id="confirmpassword" cssStyle="width:500px;"></s:password>
 							</td>
 				</tr>
 				<tr>
                 <td colspan="4" class="td_page_right">
-         			<s:submit method="save" value="保存" cssClass="input_submit" onclick=" return validate();"></s:submit>
+         			<s:submit method="save" value="保存" cssClass="input_submit" onclick=" return validate();"/>
 				</td>
                 </tr>
                 

@@ -62,8 +62,8 @@ System.out.println("-------------url="+url);%>
                     <tr>
                         <td>
                             <input type="button" value="查询" class="input_submit" id="search_but">
-                            <s:submit method="create" cssClass="input_submit" value="新建"></s:submit>
-                            <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"></s:submit>
+                            <s:submit method="create" cssClass="input_submit" value="新建"/>
+                            <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"/>
                         </td>
                     </tr>
                 </table>

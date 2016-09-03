@@ -149,7 +149,7 @@ $("input[name^=labelTrlList]").each(function(i, item){
 </head>
 <body>
 <s:form id="editForm" action="label_edit" namespace='/core' theme="simple">
-<s:hidden id="id" name="label.id"></s:hidden>
+<s:hidden id="id" name="label.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -163,12 +163,12 @@ $("input[name^=labelTrlList]").each(function(i, item){
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -192,25 +192,25 @@ $("input[name^=labelTrlList]").each(function(i, item){
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="value" value="键值" ></s:label></td>
+                        <td width="20%"><s:label for="value" value="键值" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="label.value" id="value"   ></s:textfield>
+                          <s:textfield name="label.value" id="value"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="label.value"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="msgtext" value="信息" ></s:label></td>
+                        <td width="20%"><s:label for="msgtext" value="信息" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="label.msgtext" id="msgtext"   ></s:textfield>
+                          <s:textfield name="label.msgtext" id="msgtext"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="label.msgtext"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="compDate" value="compDate" ></s:label></td>
+                        <td width="20%"><s:label for="compDate" value="compDate" /></td>
                         <td width="30%">
                         
                         <s:textfield name="label.compDate" id="compDate" >
@@ -221,7 +221,7 @@ $("input[name^=labelTrlList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="bgnTime" value="开始时间" ></s:label></td>
+                        <td width="20%"><s:label for="bgnTime" value="开始时间" /></td>
                         <td width="30%">
                         
                         <s:textfield name="label.bgnTime" id="bgnTime" >
@@ -283,7 +283,7 @@ $("input[name^=labelTrlList]").each(function(i, item){
                     <s:textfield
                             name="%{'labelTrlList['+#st.index+'].msgtext'}">
                     </s:textfield> <span style="color:red">*</span>
-                        <s:hidden name="%{'labelTrlList['+#st.index+'].labelId'}"></s:hidden>
+                        <s:hidden name="%{'labelTrlList['+#st.index+'].labelId'}"/>
                 </td>
 
 
@@ -297,10 +297,10 @@ $("input[name^=labelTrlList]").each(function(i, item){
 </tr>
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${label.id!=null}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

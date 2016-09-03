@@ -48,7 +48,7 @@ public class CarrierDecorator implements DisplaytagColumnDecorator {
 		
 			HttpServletRequest request=(HttpServletRequest)arg1.getRequest();
 			UserResource ur=(UserResource)request.getSession().getAttribute("resource");
-			Map<String,Object>param=new HashMap<String,Object>();
+			Map<String,Object>param=new HashMap<>();
 			Integer carrierId=(Integer)arg0;
 			param.put("carrierId", carrierId);
 			param.put("language", ur.getLocale().toString());

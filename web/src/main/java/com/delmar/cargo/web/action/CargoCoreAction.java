@@ -150,10 +150,10 @@ public abstract class CargoCoreAction extends CoreEditPrivAction {
 
 	protected String getCargoSalesCode()
 	{    
-		if (getCurrentUserThird("CargoProSales").equals(""))
+		if (getCurrentUserThird().equals(""))
 		  return "0";
 	     else
-		   return getCurrentUserThird("CargoProSales");
+		   return getCurrentUserThird();
 	}
 	
 	
@@ -180,7 +180,7 @@ public abstract class CargoCoreAction extends CoreEditPrivAction {
 	protected String getCargoProSalesBySysUserId(String ids)
 	{
 		//这里再选择出用户所关联的第三方账号
-		Map<String,Object> paramThird=new HashMap<String,Object>();
+		Map<String,Object> paramThird=new HashMap<>();
 		paramThird.put("accessString"," sys_user_id in ("+ids+")");		
 		List<UserThirdParty> thirdPartyList=userThirdPartyService.selectByExample(paramThird);
 		

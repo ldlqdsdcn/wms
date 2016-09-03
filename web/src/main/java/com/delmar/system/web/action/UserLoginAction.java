@@ -385,7 +385,7 @@ public class UserLoginAction extends CoreAction {
 		paramThird.put("sysuserid", user.getId());		
 		List<UserThirdParty> thirdPartyList=userThirdPartyService.selectByExample(paramThird);
 		//装换到HashMap
-		HashMap<String,Object> thirdPartyMap=new HashMap<String,Object>();
+		Map<String,Object> thirdPartyMap=new HashMap<String,Object>();
 		HashMap<String,String> thirdPartyUserMap=new HashMap<String,String>();
 		for (UserThirdParty oneObj:thirdPartyList)
 		{
@@ -399,7 +399,7 @@ public class UserLoginAction extends CoreAction {
 				valueList=(List<UserThirdParty>)thirdPartyMap.get(key);
 				valueList.add(oneObj);
 				
-				thirdPartyUserMap.put(key, ((String)thirdPartyUserMap.get(key))+","+oneObj.getPartyUser());
+				thirdPartyUserMap.put(key, thirdPartyUserMap.get(key) +","+oneObj.getPartyUser());
 				
 			}
 			else

@@ -39,7 +39,7 @@ import com.delmar.utils.ResourceMessage;
 public class CarrierAction extends CoreEditPrivAction {
 	private Carrier  carrier;
 	private List<CarrierTrl> carrierTrlList=null;
-	private List<FileRelation> fileRelationList=new ArrayList<FileRelation>();
+	private List<FileRelation> fileRelationList=new ArrayList<>();
 	@Autowired
 	private FileSettingService fileSettingService;
 	@Autowired
@@ -63,7 +63,7 @@ public class CarrierAction extends CoreEditPrivAction {
 		
 		Module module=PrivilegeOperator.getModule();
 		FacesUtils.setValueInHashtableOfSession("module", module);
-		Map<String,Object> param1=new HashMap<String,Object>();
+		Map<String,Object> param1=new HashMap<>();
 		param1.put("moduleId", module.getId());
 		FileSetting fs=fileSettingService.getByExample(param1);
 		FacesUtils.setValueInHashtableOfSession("fileSetting", fs);
@@ -71,15 +71,15 @@ public class CarrierAction extends CoreEditPrivAction {
 		
 		if(carrier.getId()!=null)
 		{
-			Map  param=new HashMap();
+			Map<String,Object>  param=new HashMap();
 			param.put("carrierId", carrier.getId());
 			carrierTrlList=	carrierTrlService.selectByExample(param);
 			
 			List<Language> list=languageService.selectByExample(null);
-			List<Language> noList=new ArrayList<Language>();
+			List<Language> noList=new ArrayList<>();
 			if(carrierTrlList==null||carrierTrlList.size()==0)
 			{
-				carrierTrlList=new ArrayList<CarrierTrl>();
+				carrierTrlList=new ArrayList<>();
 				noList=list;
 			}
 			else
@@ -109,7 +109,7 @@ public class CarrierAction extends CoreEditPrivAction {
 				trl.setCarrierId(carrier.getId());
 				carrierTrlList.add(trl);
 			}
-			 param=new HashMap<String,Object>();
+			 param=new HashMap<>();
 			 param.put("tableName", "base_carrier");
 			 param.put("tableId", carrier.getId());
 			fileRelationList=this.fileRelationService.selectByExample(param);
@@ -201,7 +201,7 @@ public class CarrierAction extends CoreEditPrivAction {
 	}
 
 	/**
-	 * @param usergroup the usergroup to set
+	 * @param carrier the usergroup to set
 	 */
 	public void setCarrier(Carrier carrier) {
 		this.carrier = carrier;
@@ -245,7 +245,7 @@ public class CarrierAction extends CoreEditPrivAction {
 	public String deleteFiles()
 	{
 		String[] ids=ServletActionContext.getRequest().getParameterValues("ids");
-		List<String> idList=new ArrayList<String>();
+		List<String> idList=new ArrayList<>();
 		
 		//
 		Integer[] intids=new Integer[ids.length];

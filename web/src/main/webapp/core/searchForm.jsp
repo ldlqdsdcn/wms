@@ -162,7 +162,7 @@ $("input[name^=searchColumnList]").each(function(i, item){
 </head>
 <body>
 <s:form id="editForm" action="search_edit" namespace='/core' theme="simple">
-<s:hidden id="id" name="search.id"></s:hidden>
+<s:hidden id="id" name="search.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -176,12 +176,12 @@ $("input[name^=searchColumnList]").each(function(i, item){
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -205,28 +205,28 @@ $("input[name^=searchColumnList]").each(function(i, item){
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="name" value="名称" ></s:label></td>
+                        <td width="20%"><s:label for="name" value="名称" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="search.name" id="name"   ></s:textfield>
+                          <s:textfield name="search.name" id="name"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="search.name"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="remark" value="备注" ></s:label></td>
+                        <td width="20%"><s:label for="remark" value="备注" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="search.remark" id="remark"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="search.remark" id="remark"  cssStyle="width:500px;" />
                             
                             <s:fielderror fieldName="search.remark"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="pageUrl" value="pageUrl" ></s:label></td>
+                        <td width="20%"><s:label for="pageUrl" value="pageUrl" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="search.pageUrl" id="pageUrl"   ></s:textfield>
+                          <s:textfield name="search.pageUrl" id="pageUrl"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="search.pageUrl"    cssStyle="color:red" />
                           </td>
@@ -302,7 +302,7 @@ $("input[name^=searchColumnList]").each(function(i, item){
                         <s:textfield
                                 name="%{'searchColumnList['+#st.index+'].columnLabel'}">
                         </s:textfield> <span style="color:red">*</span>
-                        <s:hidden name="%{'searchColumnList['+#st.index+'].searchId'}"></s:hidden>
+                        <s:hidden name="%{'searchColumnList['+#st.index+'].searchId'}"/>
                     </td>
                 <td>
                     <s:select name="%{'searchColumnList['+#st.index+'].dataType'}" list="dataTypeMap" listKey="key" listValue="value"></s:select>
@@ -352,10 +352,10 @@ $("input[name^=searchColumnList]").each(function(i, item){
 </tr>
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${search.id!=null}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

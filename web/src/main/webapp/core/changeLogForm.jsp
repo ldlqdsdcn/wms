@@ -17,8 +17,7 @@
 
 <body>
 <s:form id="editForm" action="changeLog_view" namespace='/core' theme="simple">
-<s:hidden id="id" name="changelog.id"></s:hidden>
-<s:hidden id="id" name="id"></s:hidden>
+<s:hidden id="id" name="changelog.id"/>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
     <td valign="top">
@@ -85,8 +84,8 @@
           
             <tr class="query_two">
             <td colspan="2" style="padding-left: 20px;text-align: left;">
-           <s:submit method="viewAll"  value="%{#session.resource.get('changelog.button.showall')}"   cssClass="input_submit"  ></s:submit>
-           <s:submit method="view"   value="%{#session.resource.get('changelog.button.showone')}"    cssClass="input_submit"></s:submit>
+           <s:submit method="viewAll"  value="%{#session.resource.get('changelog.button.showall')}"   cssClass="input_submit"  />
+           <s:submit method="view"   value="%{#session.resource.get('changelog.button.showone')}"    cssClass="input_submit"/>
             </td><td colspan="2"></td>
             </tr>
             <tr>

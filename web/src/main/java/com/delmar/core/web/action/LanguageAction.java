@@ -6,20 +6,17 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.core.model.Language;
 import com.delmar.core.model.LanguageTrl;
 import com.delmar.core.service.LanguageService;
 import com.delmar.core.service.LanguageTrlService;
-import com.delmar.core.web.bean.UserResource;
 import com.delmar.utils.ResourceMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**

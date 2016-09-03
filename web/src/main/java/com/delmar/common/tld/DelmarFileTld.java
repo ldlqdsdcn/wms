@@ -6,27 +6,24 @@
  *****************************************************************************/
 package com.delmar.common.tld;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyTagSupport;
-
 import com.delmar.common.model.FileRelation;
 import com.delmar.common.model.FileSetting;
-import com.delmar.common.service.DelmarFileService;
 import com.delmar.common.service.FileRelationService;
 import com.delmar.common.service.FileSettingService;
-import com.delmar.core.web.action.PrivilegeOperator;
 import com.delmar.core.web.action.PrivilegeOperatorComon;
 import com.delmar.core.web.bean.EaContext;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.Module;
 import com.delmar.utils.DmLog;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年8月18日 下午6:03:33
@@ -54,15 +51,13 @@ public class DelmarFileTld extends BodyTagSupport {
 	 */
 	private boolean issort;
 	
-	private DelmarFileService delmarFileService;
-	
+
 	private FileRelationService fileRelationService;
 	
 	private FileSettingService fileSettingService;
 	
 	public DelmarFileTld()
 	{
-		delmarFileService=EaContext.getBean("delmarFileService", DelmarFileService.class);
 		fileRelationService=EaContext.getBean("fileRelationService", FileRelationService.class);
 		fileSettingService=EaContext.getBean("fileSettingService", FileSettingService.class);
 	}

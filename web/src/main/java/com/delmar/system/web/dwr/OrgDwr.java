@@ -80,7 +80,7 @@ public class OrgDwr {
 		{
 			if(superOrgId!=null)
 			{
-				Org parentOrg=(Org)orgService.selectByPrimaryKey(superOrgId);
+				Org parentOrg= orgService.selectByPrimaryKey(superOrgId);
 				org.setParentOrg(parentOrg);
 				org.setParentOrgId(superOrgId);
 				org.setOrgLevel(parentOrg.getOrgLevel()+1);
@@ -105,12 +105,12 @@ public class OrgDwr {
 	public Org saveOrg(Org org)
 	{
 		
-		if(!DwrPrivilegeFilter.isCreate(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isCreate(this.getClass().getName()))
 		{
 			if(org.getId()==null)
 			return null;
 		}
-		if(!DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
 		{
 			if(org.getId()!=null)
 			return null;
@@ -122,7 +122,7 @@ public class OrgDwr {
 	}
 	public String removeOrg(Integer orgId)
 	{
-		if(!DwrPrivilegeFilter.isDelete(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isDelete(this.getClass().getName()))
 		{
 			return null;
 		}

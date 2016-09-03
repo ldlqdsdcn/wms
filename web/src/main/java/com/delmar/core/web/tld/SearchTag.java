@@ -4,7 +4,6 @@ import com.delmar.core.model.Search;
 import com.delmar.core.model.SearchColumn;
 import com.delmar.core.service.SearchService;
 import com.delmar.core.web.bean.EaContext;
-import com.delmar.sys.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;

@@ -32,8 +32,8 @@
                 <td >
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
                   
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit"   value="%{#session.resource.get('common.button.delete')}"  onclick="return confirmListDelete('ids')"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit"   value="%{#session.resource.get('common.button.delete')}"  onclick="return confirmListDelete('ids')"/>
                  </td>
               </tr>
             </table></td>
@@ -57,7 +57,7 @@
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value="${list.portcode}"/>
      		  </a>
 		     </display:column>
-		     <display:column property="portcode"  escapeXml="true"  titleKey="port.column.portcode" media="csv excel xml pdf rtf"	></display:column>	
+		     <display:column property="portcode"  escapeXml="true"  titleKey="port.column.portcode" media="csv excel xml pdf rtf"	/>
 		     <display:column property="id"  titleKey="port.column.name" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.PortDecorator" />
 			<display:column property="countryCode"  titleKey="port.column.countryCode" sortable="true"  />
 			<display:column property="id"  titleKey="port.column.planeocean" sortable="true"  decorator="com.delmar.base.web.displaytag.decorator.PortModeDecorator" />

@@ -73,7 +73,7 @@ public class FootmarkInterceptor implements Interceptor {
        for(Method method:methods){  
            if(method.getName().startsWith("getPurpose")){//遍历action对象的get方法  
 //               if(AbstractVO.class.equals(method.getReturnType().getSuperclass())){//如果方             }
-        	   actionPurpose=(String)method.invoke(actionInvocation.getAction(), new Object[]{});
+        	   actionPurpose=(String)method.invoke(actionInvocation.getAction());
 //        	   System.out.println(actionPurpose);
         	   
         	   break;

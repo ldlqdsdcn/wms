@@ -190,7 +190,7 @@ $("input[name^=meetingTopicList]").each(function(i, item){
 </head>
 <body>
 <s:form id="editForm" action="meeting_edit" namespace='/cargo' theme="simple">
-<s:hidden id="id" name="meeting.id"></s:hidden>
+<s:hidden id="id" name="meeting.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -204,12 +204,12 @@ $("input[name^=meetingTopicList]").each(function(i, item){
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -233,16 +233,16 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="title" value="标题" ></s:label></td>
+                        <td width="20%"><s:label for="title" value="标题" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.title" id="title"   ></s:textfield>
+                          <s:textfield name="meeting.title" id="title"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="meeting.title"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="bgnTime" value="开始时间" ></s:label></td>
+                        <td width="20%"><s:label for="bgnTime" value="开始时间" /></td>
                         <td width="30%">
                         
                         <s:textfield name="meeting.bgnTime" id="bgnTime" >
@@ -253,7 +253,7 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="endTime" value="结束时间" ></s:label></td>
+                        <td width="20%"><s:label for="endTime" value="结束时间" /></td>
                         <td width="30%">
                         
                         <s:textfield name="meeting.endTime" id="endTime" >
@@ -264,71 +264,71 @@ $("input[name^=meetingTopicList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="descr" value="描述" ></s:label></td>
+                        <td width="20%"><s:label for="descr" value="描述" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.descr" id="descr"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="meeting.descr" id="descr"  cssStyle="width:500px;" />
                             
                             <s:fielderror fieldName="meeting.descr"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="created" value="创建时间" ></s:label></td>
+                        <td width="20%"><s:label for="created" value="创建时间" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.created" id="created" readonly="true"  ></s:textfield>
+                          <s:textfield name="meeting.created" id="created" readonly="true"  />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="meeting.created"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="createdby" value="创建人" ></s:label></td>
+                        <td width="20%"><s:label for="createdby" value="创建人" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${meeting.createdby}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="updated" value="修改时间" ></s:label></td>
+                        <td width="20%"><s:label for="updated" value="修改时间" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.updated" id="updated" readonly="true"  ></s:textfield>
+                          <s:textfield name="meeting.updated" id="updated" readonly="true"  />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="meeting.updated"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="updatedby" value="修改人" ></s:label></td>
+                        <td width="20%"><s:label for="updatedby" value="修改人" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${meeting.updatedby}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="mainContent" value="mainContent" ></s:label></td>
+                        <td width="20%"><s:label for="mainContent" value="mainContent" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.mainContent" id="mainContent"   ></s:textfield>
+                          <s:textfield name="meeting.mainContent" id="mainContent"   />
                             
                             <s:fielderror fieldName="meeting.mainContent"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="userId" value="userId" ></s:label></td>
+                        <td width="20%"><s:label for="userId" value="userId" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${meeting.userId}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="orgId" value="组织" ></s:label></td>
+                        <td width="20%"><s:label for="orgId" value="组织" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${meeting.orgId}" module="org"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="clientId" value="实体" ></s:label></td>
+                        <td width="20%"><s:label for="clientId" value="实体" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${meeting.clientId}" module="client"/>
@@ -481,10 +481,10 @@ $("input[name^=meetingTopicList]").each(function(i, item){
 </tr>
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${meeting.id!=null}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

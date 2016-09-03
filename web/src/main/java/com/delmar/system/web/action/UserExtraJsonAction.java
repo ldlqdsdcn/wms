@@ -1,13 +1,5 @@
 package com.delmar.system.web.action;
 
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.core.web.action.CoreAction;
 import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.UserExtra;
@@ -16,6 +8,11 @@ import com.delmar.system.web.WebConst;
 import com.delmar.system.web.model.PrivilegesDataFilter;
 import com.delmar.utils.ResourceMessage;
 import com.google.gson.Gson;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /** 
  * @author Charles Luo  luos@delmarchina.com

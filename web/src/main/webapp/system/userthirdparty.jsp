@@ -3,7 +3,7 @@
 
 		<table id="userThirdPartyTable" class="table">
             	<thead>
-            	<th  style="width:30;">
+            	<th  style="width:30%">
             	<input type="checkbox"  onclick="selectAll('tpids',this);"/>
             	</th>
             	<th ><delmar:message key="user.column.thirdparty.system"/></th>
@@ -54,21 +54,21 @@
  
   <form class="dialog-form" >
     <fieldset>
-		<s:hidden id="thirdPartyId" name="thirdPartyId"></s:hidden>
-		<s:label for="thirdPartySystem"  value="%{#session.resource.get('userthirdparty.column.system')}" ></s:label>
+		<s:hidden id="thirdPartyId" name="thirdPartyId"/>
+		<s:label for="thirdPartySystem"  value="%{#session.resource.get('userthirdparty.column.system')}" />
 		<s:select list="thirdpartySysList" listKey="datadictId" listValue="name"  name="thirdPartySystem" id="thirdPartySystem" style="width:200px"></s:select>
 		<p>
-		<s:label for="thirdPartyType"  value="%{#session.resource.get('userthirdparty.column.partytype')}" ></s:label>
+		<s:label for="thirdPartyType"  value="%{#session.resource.get('userthirdparty.column.partytype')}" />
 		<s:select list="thirdpartyTypeList" listKey="datadictId" listValue="name"  name="thirdPartyType" id="thirdPartyType" style="width:200px"></s:select>
 		<p>
-		<s:label for="thirdPartyUser"  value="%{#session.resource.get('userthirdparty.column.partyuser')}" ></s:label>
-		<s:textfield name="thirdPartyUser" id="thirdPartyUser"></s:textfield>
+		<s:label for="thirdPartyUser"  value="%{#session.resource.get('userthirdparty.column.partyuser')}" />
+		<s:textfield name="thirdPartyUser" id="thirdPartyUser"/>
 		<p>
-		<s:label for="thirdPartyPassword"  value="%{#session.resource.get('userthirdparty.column.password')}" ></s:label>
-		<s:textfield name="thirdPartyPassword" id="thirdPartyPassword"></s:textfield>
+		<s:label for="thirdPartyPassword"  value="%{#session.resource.get('userthirdparty.column.password')}" />
+		<s:textfield name="thirdPartyPassword" id="thirdPartyPassword"/>
 		<p>
-		<s:label for="thirdPartyRemark"  value="%{#session.resource.get('userthirdparty.column.remark')}" ></s:label>
-		<s:textfield name="thirdPartyRemark" id="thirdPartyRemark"></s:textfield>
+		<s:label for="thirdPartyRemark"  value="%{#session.resource.get('userthirdparty.column.remark')}" />
+		<s:textfield name="thirdPartyRemark" id="thirdPartyRemark"/>
 		
 		<s:set name="addThirdParty" value="%{#session.resource.get('common.button.save')}"/>
 		<s:set name="closeThirdParty" value="%{#session.resource.get('common.button.close')}"/>

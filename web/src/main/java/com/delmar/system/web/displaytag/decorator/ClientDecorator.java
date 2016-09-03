@@ -2,9 +2,7 @@ package com.delmar.system.web.displaytag.decorator;
 
 import com.delmar.core.web.bean.EaContext;
 import com.delmar.sys.model.Client;
-import com.delmar.sys.model.User;
 import com.delmar.sys.service.ClientService;
-import com.delmar.sys.service.UserService;
 import org.displaytag.decorator.DisplaytagColumnDecorator;
 import org.displaytag.exception.DecoratorException;
 import org.displaytag.properties.MediaTypeEnum;

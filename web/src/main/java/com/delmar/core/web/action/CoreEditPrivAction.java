@@ -26,7 +26,7 @@ public abstract class CoreEditPrivAction extends CoreEditBasePrivAction {
 	@SkipValidation
 	public String list()
 	{
-		if(!(PrivilegeOperator.isView()))
+		if(!(!PrivilegeOperator.isView()))
 		{
 			return NOPRIVILEGE;
 		}

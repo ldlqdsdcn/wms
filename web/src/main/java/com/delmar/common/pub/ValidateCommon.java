@@ -59,7 +59,7 @@ public class ValidateCommon {
 	            if(columnNameList != null && !columnNameList.contains(columnName)) {  
 	                continue;  
 	            }  
-	            Object value = checkMethod.invoke(checkObj, new Object[0]);  
+	            Object value = checkMethod.invoke(checkObj);
 	            
             	String resource=formName+".column."+columnName;
             	String valueResource=getText(resource,request);

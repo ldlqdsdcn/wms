@@ -28,7 +28,6 @@ import com.delmar.utils.ResourceMessage;
 public class OperatorAction extends CoreEditPrivAction{
 	private  Operator  operator=new Operator();
 	private List<Integer> modIds=new ArrayList<Integer>();
-	private List<Module> moduleList=new ArrayList<Module>();
 	private OperatorService operatorService;
 	private ModuleService moduleService;
 	@Autowired
@@ -112,8 +111,8 @@ public class OperatorAction extends CoreEditPrivAction{
 	}
 
 	public List<Module> getModuleList() {
-		
-		moduleList=this.moduleService.selectByExample(null);
+
+		List<Module> moduleList = this.moduleService.selectByExample(null);
 		return moduleList;
 	}
 

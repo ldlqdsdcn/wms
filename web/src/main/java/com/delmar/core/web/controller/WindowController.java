@@ -13,7 +13,6 @@ public class WindowController {
     @RequestMapping("/core/createWindow")
     public ModelAndView crateWindow()
     {
-        ModelAndView modelAndView=new ModelAndView("/core/windowAddByWizard.jsp");
-        return modelAndView;
+        return new ModelAndView("/core/windowAddByWizard.jsp");
     }
 }

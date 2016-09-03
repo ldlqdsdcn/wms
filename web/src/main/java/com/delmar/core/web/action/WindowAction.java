@@ -6,20 +6,16 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.List;
-
-import com.delmar.core.web.util.FacesUtils;
-import org.apache.commons.collections.map.HashedMap;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.core.web.action.CoreEditPrivAction;
+import com.delmar.core.model.Window;
+import com.delmar.core.service.WindowService;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.core.model.Window;
-import com.delmar.core.service.WindowService;
+
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**

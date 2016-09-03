@@ -219,8 +219,8 @@ $(document).ready(function() {
 <body>
 
 <s:form id="editForm" action="user_edit" namespace='/system' theme="simple" ENCTYPE="multipart/form-data" accept-charset="UTF-8">
-<s:hidden id="id" name="user.id"></s:hidden>
-<s:hidden id="nextAction" name="nextAction"></s:hidden>
+<s:hidden id="id" name="user.id"/>
+<s:hidden id="nextAction" name="nextAction"/>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
     <td valign="top">
@@ -233,12 +233,12 @@ $(document).ready(function() {
          
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"/>
 			</c:if>		
 			
 			
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 			
 			</c:if>
 		</div></td>
@@ -261,7 +261,7 @@ $(document).ready(function() {
                <delmar:message key="user.column.loginname"/>
                	</td>
                	<td colspan="3">
-               	<s:textfield name="user.username" id="username"></s:textfield>
+               	<s:textfield name="user.username" id="username"/>
 
                	<input type="checkbox" name="user.isActive" id="isActive" value="0"
                	<s:if test="user.isActive==0">
@@ -279,7 +279,7 @@ $(document).ready(function() {
 				<td><delmar:message key="user.label.confirmpassword"/></td>
 				<td>
 				<s:password name="passwordConfirm" id="passwordConfirm" cssStyle="width:300px;"  showPassword="true"></s:password>
-				<s:hidden name="oldPassword" id="oldPassword"></s:hidden>
+				<s:hidden name="oldPassword" id="oldPassword"/>
 				
 				</td>
 							
@@ -289,7 +289,7 @@ $(document).ready(function() {
 				<delmar:message key="user.column.name"/>
 				</td>
 				<td>
-				<s:textfield name="user.name" id="name"  cssStyle="width:250px"></s:textfield>
+				<s:textfield name="user.name" id="name"  cssStyle="width:250px"/>
 				</td>
 				<td colspan=2 rowspan=9>
                   <img  alt="" src="../userPic/user<s:property value='user.id'/>.png" id="picUser" name="picUser" onload='AutoResizeImage(200,300,this)'></img>
@@ -304,7 +304,7 @@ $(document).ready(function() {
 				<delmar:message key="user.column.email"/>
 				</td>
 				<td>
-				<s:textfield name="user.email" id="email"  cssStyle="width:250px"  blurvalidate="yes" blurtype="email"  title="%{#session.resource.get('public.inputformat.email')}"></s:textfield>
+				<s:textfield name="user.email" id="email"  cssStyle="width:250px"  blurvalidate="yes" blurtype="email"  title="%{#session.resource.get('public.inputformat.email')}"/>
 				</td>
 				</tr>
 				<tr class="query_one">
@@ -312,7 +312,7 @@ $(document).ready(function() {
 				<delmar:message key="user.column.telephone"/>
 				</td>
 				<td>
-				<s:textfield name="user.telephone" id="telephone"  cssStyle="width:250px" blurvalidate="yes" blurtype="telephone"  title="%{#session.resource.get('public.inputformat.telephone')}" ></s:textfield>
+				<s:textfield name="user.telephone" id="telephone"  cssStyle="width:250px" blurvalidate="yes" blurtype="telephone"  title="%{#session.resource.get('public.inputformat.telephone')}" />
 				</td>
 				</tr>
 				<tr class="query_two">
@@ -321,8 +321,8 @@ $(document).ready(function() {
 				<delmar:message key="user.column.managerid"/>
 				</td>
 				<td>
-				<s:textfield name="user.managerName" id="managerName"  cssStyle="width:250px"></s:textfield>
-                <s:hidden id="managerId" name="user.managerId"></s:hidden>				
+				<s:textfield name="user.managerName" id="managerName"  cssStyle="width:250px"/>
+                <s:hidden id="managerId" name="user.managerId"/>
 				</td>
 				</tr>	
 				<tr class="query_one">
@@ -363,9 +363,9 @@ $(document).ready(function() {
 				</tr>
 						<tr  class="query_one">
 							
-							<td ><s:label for="descr" value="%{#session.resource.get('user.column.remark')}" ></s:label></td>
+							<td ><s:label for="descr" value="%{#session.resource.get('user.column.remark')}" /></td>
 							<td >
-							<s:textfield name="user.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="user.remark" id="remark" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -375,7 +375,7 @@ $(document).ready(function() {
             <td colspan="4">
             <table id="columnTable" class="table">
             	<thead>
-            	<th  style="width:30;">
+            	<th  style="width:30%">
             	<input type="checkbox"  onclick="selectAll('ids',this);getUserroleGroup();"/>
             	</th>
             	<th >
@@ -497,10 +497,10 @@ $(document).ready(function() {
                     
                 <tr>
                 <td colspan="4" class="td_page_right">
-               			<s:submit method="create" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" onclick="return validate();"></s:submit>
+               			<s:submit method="create" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" onclick="return validate();"/>
 						<c:if test="${user.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						
 						<input onclick="window.location='<c:url value="/system/user_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >

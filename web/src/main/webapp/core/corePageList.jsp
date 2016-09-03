@@ -28,8 +28,8 @@
                     <tr>
                         <td>
                             <input type="button" value="查询" class="input_submit">
-                            <s:submit method="create" cssClass="input_submit" value="新建"></s:submit>
-                            <s:submit method="deletes" cssClass="input_submit" value="删除"></s:submit>
+                            <s:submit method="create" cssClass="input_submit" value="新建"/>
+                            <s:submit method="deletes" cssClass="input_submit" value="删除"/>
                         </td>
                     </tr>
                 </table>
@@ -64,7 +64,7 @@
 </s:form>
 <script type="text/javascript">
     function viewExport(id) {
-       window.location='<c:url value="/core/corePage_edit.action"/>?id='+id;
+       window.location='<c:url value="/core/page_edit.action"/>?id='+id;
     }
     highlightTableRows("list");
 </script>

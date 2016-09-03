@@ -1,8 +1,6 @@
 package com.delmar.web.model;
 
-import java.math.BigDecimal;
-
-/** 
+/**
  * @author Charles Luo  luos@delmarchina.com
  * @version V2.0 2015年6月19日 下午6:19:40 
  * 类说明 

@@ -6,19 +6,15 @@
  *****************************************************************************/
 package com.delmar.common.web.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.delmar.common.web.bean.FileUpLoad;
+import com.delmar.core.web.bean.UserResource;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-
-import com.delmar.common.web.bean.FileUpLoad;
-import com.delmar.core.web.bean.UserResource;
-import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author 刘大磊 2015年4月17日 下午3:45:53

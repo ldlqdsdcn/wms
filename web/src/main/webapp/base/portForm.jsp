@@ -15,7 +15,7 @@
 <body>
 
 <s:form id="editForm" action="port_edit" namespace='/base' theme="simple">
-<s:hidden id="id" name="port.id"></s:hidden>
+<s:hidden id="id" name="port.id"/>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -28,10 +28,10 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"/>
 			</c:if>		
 			<c:if test="${!isLast}">
-				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"/>
 			</c:if>
 		</div></td>
         </tr>
@@ -50,31 +50,31 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                    <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="portcode" value="%{#session.resource.get('port.column.portcode')}"  ></s:label>
+               	<s:label for="portcode" value="%{#session.resource.get('port.column.portcode')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="port.portcode" id="portcode"></s:textfield>
+               	<s:textfield name="port.portcode" id="portcode"/>
                	</td>
 				</tr>
 				   <tr  class="query_two">
                	<td width="20%">
-               	<s:label for="portcname" value="%{#session.resource.get('port.column.portcname')}"  ></s:label>
+               	<s:label for="portcname" value="%{#session.resource.get('port.column.portcname')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="port.portcname" id="portcname"></s:textfield>
+               	<s:textfield name="port.portcname" id="portcname"/>
                	</td>
 				</tr>
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('port.column.countryCode')}"  ></s:label>
+               	<s:label for="name" value="%{#session.resource.get('port.column.countryCode')}"  />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="port.countryCode" id="countryCode"  cssStyle="width:300px;"></s:textfield>
+               	<s:textfield name="port.countryCode" id="countryCode"  cssStyle="width:300px;"/>
                	</td>
 				</tr>
 				<tr  class="query_two">
                	<td width="20%">
-               	<s:label value="%{#session.resource.get('port.column.planeocean')}"  ></s:label>
+               	<s:label value="%{#session.resource.get('port.column.planeocean')}"  />
                	</td>
                	<td colspan="3">
                					<s:checkboxlist list="modes" name="portModes" listKey="datadictId" listValue="name" ></s:checkboxlist>
@@ -83,18 +83,18 @@
 				
 						<tr  class="query_one">
 							
-							<td ><s:label for="remark"  value="%{#session.resource.get('common.label.remark')}"  ></s:label></td>
+							<td ><s:label for="remark"  value="%{#session.resource.get('common.label.remark')}"  /></td>
 							<td colspan="3">
-							<s:textfield name="port.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="port.remark" id="remark" cssStyle="width:500px;"/>
 							</td>
 							
                             
 						</tr>
 							<tr  class="query_two">
 							
-							<td ><s:label for="cityId"  value="%{#session.resource.get('port.common.city')}"  ></s:label></td>
+							<td ><s:label for="cityId"  value="%{#session.resource.get('port.common.city')}"  /></td>
 							<td colspan="3">
-							<s:textfield name="port.cityId" id="cityId" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="port.cityId" id="cityId" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -108,10 +108,10 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+						<s:submit method="edit" value="%{#session.resource.get('common.button.create')}"   cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${carrier.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						
 						<input onclick="window.location='<c:url value="/base/port_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
@@ -175,13 +175,13 @@
 								<tr  class="<s:property value="#st.index%2==0?'odd':'even'"/>">
 						<td>
 							<s:hidden name="%{'portTrlList['+#st.index+'].id'}" />
-							<s:textfield name="%{'portTrlList['+#st.index+'].language'}" readonly="true"></s:textfield>	
+							<s:textfield name="%{'portTrlList['+#st.index+'].language'}" readonly="true"/>
 						</td>
 						<td>
-							<s:textfield name="%{'portTrlList['+#st.index+'].name'}" cssStyle="width:300px"></s:textfield>	
+							<s:textfield name="%{'portTrlList['+#st.index+'].name'}" cssStyle="width:300px"/>
 						</td>
 						<td>
-						<s:textfield name="%{'portTrlList['+#st.index+'].remark'}"></s:textfield>	
+						<s:textfield name="%{'portTrlList['+#st.index+'].remark'}"/>
 						</td>
 						</s:iterator>
 					

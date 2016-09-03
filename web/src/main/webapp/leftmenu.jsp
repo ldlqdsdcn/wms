@@ -28,8 +28,7 @@ function page_go(_url,param)
 	    if(param!=null)
 	     document.getElementById('menuKey').value=param;
 	    document.getElementById('urlForm').submit();
-	    //parent.content.location ='<c:url value="/common/redirect.jsp"/>?url='+_url;
- 		
+
 }
 //document.oncontextmenu=function(e){return false;};
 	

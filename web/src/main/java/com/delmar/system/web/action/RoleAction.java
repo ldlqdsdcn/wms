@@ -6,18 +6,6 @@
  *****************************************************************************/
 package com.delmar.system.web.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.delmar.base.model.Datadict;
 import com.delmar.base.model.DatadictTrl;
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictService;
@@ -27,15 +15,19 @@ import com.delmar.core.web.action.CoreEditAction;
 import com.delmar.core.web.action.PrivilegeOperator;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.util.FacesUtils;
-import com.delmar.sys.model.Operator;
-import com.delmar.sys.model.Privilege;
-import com.delmar.sys.model.Role;
-import com.delmar.sys.model.RoleModuleContent;
-import com.delmar.sys.model.User;
-import com.delmar.sys.model.UserRole;
+import com.delmar.sys.model.*;
 import com.delmar.sys.service.RoleService;
 import com.delmar.sys.service.UserRoleService;
 import com.delmar.sys.service.UserService;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年1月15日 上午11:16:10
@@ -198,7 +190,7 @@ public class RoleAction extends CoreEditAction {
 	
 	public String save()
 	{
-		boolean isnew=role.getId()==null?true:false;
+		boolean isnew= role.getId() == null;
 		//id=roleService.saveRole(role, priList);
 		List<RoleModuleContent> rmContentListSession=(List<RoleModuleContent>)FacesUtils.getValueInHashtableOfSession("rmContentList");
 		for(int i=0;i<rmContentListSession.size();i++ )
@@ -231,7 +223,7 @@ public class RoleAction extends CoreEditAction {
 	
 	public String addRoleUser()
 	{
-		if(!(PrivilegeOperator.isView()))
+		if(!(!PrivilegeOperator.isView()))
 		{
 			return NOPRIVILEGE;
 		}		
@@ -316,8 +308,7 @@ public class RoleAction extends CoreEditAction {
 	
 	@Override
 	public List<CoreModel> search() {
-		List list=roleService.selectByExample(null);
-		return list;
+		return (List) roleService.selectByExample(null);
 		
 	}
 

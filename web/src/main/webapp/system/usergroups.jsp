@@ -63,7 +63,7 @@
                   <input type="button"  value="<delmar:message key="common.button.search" />" id="search_but"  class="input_submit"/>
                   <input type="button" value="<delmar:message key="common.button.create" />" class="input_submit" onclick="viewExport(0)"/>
                   
-                  <s:submit method="delete" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" ></s:submit>
+                  <s:submit method="delete" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" />
                  </td>
               </tr>
             </table></td>

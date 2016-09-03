@@ -103,7 +103,7 @@ document.oncontextmenu=function(e){ return false };
  
  function becomeToSelf()
  {
-     window.location='<c:url value="/system/userLogsub.action"/>?sid=A';	 
+     window.location='<c:url value="/userLogsub.action"/>?sid=A';
  }
  
  

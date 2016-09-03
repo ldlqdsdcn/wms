@@ -30,7 +30,7 @@
 </head>
 <body>
 <s:form id="editForm" action="field_edit" namespace='/core' theme="simple">
-<s:hidden id="id" name="field.id"></s:hidden>
+<s:hidden id="id" name="field.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -44,12 +44,12 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -73,125 +73,125 @@
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="name" value="名称" ></s:label></td>
+                        <td width="20%"><s:label for="name" value="名称" /></td>
                         <td width="30%">
-                          <s:textfield name="field.name" id="name"   ></s:textfield>
+                          <s:textfield name="field.name" id="name"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="labelId" value="labelId" ></s:label></td>
+                        <td width="20%"><s:label for="labelId" value="labelId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.labelId" id="labelId"   ></s:textfield>
+                          <s:textfield name="field.labelId" id="labelId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="isRequired" value="isRequired" ></s:label></td>
+                        <td width="20%"><s:label for="isRequired" value="isRequired" /></td>
                         <td width="30%">
-                          <s:textfield name="field.isRequired" id="isRequired"   ></s:textfield>
+                          <s:textfield name="field.isRequired" id="isRequired"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="typeId" value="typeId" ></s:label></td>
+                        <td width="20%"><s:label for="typeId" value="typeId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.typeId" id="typeId"   ></s:textfield>
+                          <s:textfield name="field.typeId" id="typeId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="tabId" value="tabId" ></s:label></td>
+                        <td width="20%"><s:label for="tabId" value="tabId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.tabId" id="tabId"   ></s:textfield>
+                          <s:textfield name="field.tabId" id="tabId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="columnId" value="columnId" ></s:label></td>
+                        <td width="20%"><s:label for="columnId" value="columnId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.columnId" id="columnId"   ></s:textfield>
+                          <s:textfield name="field.columnId" id="columnId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="showType" value="showType" ></s:label></td>
+                        <td width="20%"><s:label for="showType" value="showType" /></td>
                         <td width="30%">
-                          <s:textfield name="field.showType" id="showType"   ></s:textfield>
+                          <s:textfield name="field.showType" id="showType"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="linkTableId" value="linkTableId" ></s:label></td>
+                        <td width="20%"><s:label for="linkTableId" value="linkTableId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.linkTableId" id="linkTableId"   ></s:textfield>
+                          <s:textfield name="field.linkTableId" id="linkTableId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="linkValueColumnId" value="linkValueColumnId" ></s:label></td>
+                        <td width="20%"><s:label for="linkValueColumnId" value="linkValueColumnId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.linkValueColumnId" id="linkValueColumnId"   ></s:textfield>
+                          <s:textfield name="field.linkValueColumnId" id="linkValueColumnId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="linkLabelColumnId" value="linkLabelColumnId" ></s:label></td>
+                        <td width="20%"><s:label for="linkLabelColumnId" value="linkLabelColumnId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.linkLabelColumnId" id="linkLabelColumnId"   ></s:textfield>
+                          <s:textfield name="field.linkLabelColumnId" id="linkLabelColumnId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="help" value="帮助" ></s:label></td>
+                        <td width="20%"><s:label for="help" value="帮助" /></td>
                         <td width="30%">
-                          <s:textfield name="field.help" id="help"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="field.help" id="help"  cssStyle="width:500px;" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="defaultValue" value="defaultValue" ></s:label></td>
+                        <td width="20%"><s:label for="defaultValue" value="defaultValue" /></td>
                         <td width="30%">
-                          <s:textfield name="field.defaultValue" id="defaultValue"   ></s:textfield>
+                          <s:textfield name="field.defaultValue" id="defaultValue"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="seqNo" value="seqNo" ></s:label></td>
+                        <td width="20%"><s:label for="seqNo" value="seqNo" /></td>
                         <td width="30%">
-                          <s:textfield name="field.seqNo" id="seqNo"   ></s:textfield>
+                          <s:textfield name="field.seqNo" id="seqNo"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="sameline" value="sameline" ></s:label></td>
+                        <td width="20%"><s:label for="sameline" value="sameline" /></td>
                         <td width="30%">
-                          <s:textfield name="field.sameline" id="sameline"   ></s:textfield>
+                          <s:textfield name="field.sameline" id="sameline"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="lineTabId" value="lineTabId" ></s:label></td>
+                        <td width="20%"><s:label for="lineTabId" value="lineTabId" /></td>
                         <td width="30%">
-                          <s:textfield name="field.lineTabId" id="lineTabId"   ></s:textfield>
+                          <s:textfield name="field.lineTabId" id="lineTabId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="linkTableFilterSql" value="linkTableFilterSql" ></s:label></td>
+                        <td width="20%"><s:label for="linkTableFilterSql" value="linkTableFilterSql" /></td>
                         <td width="30%">
-                          <s:textfield name="field.linkTableFilterSql" id="linkTableFilterSql"   ></s:textfield>
+                          <s:textfield name="field.linkTableFilterSql" id="linkTableFilterSql"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="validateRole" value="validateRole" ></s:label></td>
+                        <td width="20%"><s:label for="validateRole" value="validateRole" /></td>
                         <td width="30%">
-                          <s:textfield name="field.validateRole" id="validateRole"   ></s:textfield>
+                          <s:textfield name="field.validateRole" id="validateRole"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="showInList" value="showInList" ></s:label></td>
+                        <td width="20%"><s:label for="showInList" value="showInList" /></td>
                         <td width="30%">
-                          <s:textfield name="field.showInList" id="showInList"   ></s:textfield>
+                          <s:textfield name="field.showInList" id="showInList"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="showInForm" value="showInForm" ></s:label></td>
+                        <td width="20%"><s:label for="showInForm" value="showInForm" /></td>
                         <td width="30%">
-                          <s:textfield name="field.showInForm" id="showInForm"   ></s:textfield>
+                          <s:textfield name="field.showInForm" id="showInForm"   />
                           </td>
                         </tr>
                 <tr>
                 <td colspan="4" class="td_page_right">
-                    <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+                    <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${field.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                 </td>

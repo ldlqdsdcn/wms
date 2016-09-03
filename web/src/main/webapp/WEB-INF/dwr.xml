@@ -52,37 +52,6 @@
 			<param name="beanName" value="portDwr"></param>
 			<include method="getPortList"/>
 		</create>		
-		<create javascript="customerDwr" creator="spring">
-			<param name="beanName" value="customerDwr"></param>
-			<include method="getCustomerList"/>
-            <include method="getCustomer"/>			
-		</create>
-		<create javascript="linkmanDwr" creator="spring">
-			<param name="beanName" value="linkmanDwr"></param>
-			<include method="getLinkmanList"/>
-			<include method="getLinkmanGson"/>
-		</create>
-
-		<create javascript="linkrecordDwr" creator="spring">
-			<param name="beanName" value="linkrecordDwr"></param>
-			<include method="getLinkrecordList"/>
-			<include method="getLinkrecordGson"/>
-		</create>
-		
-
-			
-
-		
-			
-		<create javascript="customerExtraPropDwr" creator="spring">
-			<param name="beanName" value="customerExtraPropDwr"></param>
-             <include method="getCustomerExtraPropDefineList"/>			
-			<include method="getCustomerExtraPropDefine"/>
-			<include method="deleteCustomerExtraPropDefine"/>
-			
-		</create>	
-				
-		
 	</allow>
 	<!-- <signatures>
 		<![CDATA[ 　　import java.util.List;

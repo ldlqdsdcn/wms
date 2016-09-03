@@ -43,7 +43,7 @@
 
 <body>
 <s:form id="editForm" action="table_edit" namespace='/core' theme="simple">
-    <s:hidden id="id" name="table.id"></s:hidden>
+    <s:hidden id="id" name="table.id"/>
 
     <table width="100%" border="0" cellspacing="0" cellpadding="5">
         <tr>
@@ -58,13 +58,13 @@
 
                                     <s:submit method="getPrevionsOne"
                                               value="%{#session.resource.get('common.button.previous')}"
-                                              cssClass="input_submit"></s:submit>
+                                              cssClass="input_submit"/>
                                 </c:if>
 
 
                                 <c:if test="${!isLast}">
                                     <s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"
-                                              cssClass="input_submit"></s:submit>
+                                              cssClass="input_submit"/>
 
                                 </c:if>
                             </div>
@@ -88,30 +88,30 @@
 
                                                         <tr class="query_one">
                                                             <td width="20%"><s:label for="name"
-                                                                                     value="%{#session.resource.get('table.column.name')}"></s:label></td>
+                                                                                     value="%{#session.resource.get('table.column.name')}"/></td>
                                                             <td width="30%">
                                                                 <s:textfield name="table.name" id="name"
-                                                                             cssStyle="width:260px;"></s:textfield>
+                                                                             cssStyle="width:260px;"/>
                                                             </td>
                                                             <td width="20%">
                                                                 <s:label for="className"
-                                                                         value="%{#session.resource.get('table.column.classname')}"></s:label>
+                                                                         value="%{#session.resource.get('table.column.classname')}"/>
                                                             </td>
                                                             <td width="30%">
                                                                 <s:textfield name="table.className" id="className"
-                                                                             cssStyle="width:260px;"></s:textfield>
+                                                                             cssStyle="width:260px;"/>
                                                             </td>
 
                                                         </tr>
                                                         <tr class="query_two">
                                                             <td width="20%"><s:label for="tableNameTr"
-                                                                                     value="%{#session.resource.get('table.column.desc')}"></s:label></td>
+                                                                                     value="%{#session.resource.get('table.column.desc')}"/></td>
                                                             <td width="30%">
                                                                 <s:textfield name="table.tableNameTr" id="tableNameTr"
-                                                                             cssStyle="width:260px;"></s:textfield>
+                                                                             cssStyle="width:260px;"/>
                                                             </td>
                                                             <td width="20%"><s:label for="tableNameTr"
-                                                                                     value="%{#session.resource.get('table.column.log')}"></s:label></td>
+                                                                                     value="%{#session.resource.get('table.column.log')}"/></td>
                                                             <td width="30%">
                                                                 <s:radio name="table.outLog"
                                                                          list="#{'Y':'Y','N':'N'}"></s:radio>
@@ -123,15 +123,15 @@
                                                                          value="%{#session.resource.get('table.column.buskey')}"/>
                                                             </td>
                                                             <td colspan="3">
-                                                                <s:textfield name="table.buPk" id="buPk"></s:textfield>
+                                                                <s:textfield name="table.buPk" id="buPk"/>
                                                             </td>
                                                         </tr>
                                                         <tr class="query_two">
                                                             <td width="20%"><s:label for="descr"
-                                                                                     value="%{#session.resource.get('table.column.reamrk')}"></s:label></td>
+                                                                                     value="%{#session.resource.get('table.column.reamrk')}"/></td>
                                                             <td colspan="3">
                                                                 <s:textfield name="table.descr" id="descr"
-                                                                             cssStyle="width:500px;"></s:textfield>
+                                                                             cssStyle="width:500px;"/>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -187,14 +187,14 @@
                                                                             </td>
                                                                             <td>
                                                                                 <s:textfield
-                                                                                        name="%{'columns['+#st.index+'].columnName'}"></s:textfield>
+                                                                                        name="%{'columns['+#st.index+'].columnName'}"/>
                                                                             </td>
                                                                             <td>
                                                                                 <s:textfield
-                                                                                        name="%{'columns['+#st.index+'].columnNameTr'}"></s:textfield>
+                                                                                        name="%{'columns['+#st.index+'].columnNameTr'}"/>
                                                                             </td>
                                                                             <td><s:textfield
-                                                                                    name="%{'columns['+#st.index+'].attributeName'}"></s:textfield></td>
+                                                                                    name="%{'columns['+#st.index+'].attributeName'}"/></td>
                                                                             <td>
                                                                                 <s:select
                                                                                         name="%{'columns['+#st.index+'].dataType'}"
@@ -223,16 +223,16 @@
 
                                                                 <s:submit method="edit"
                                                                           value="%{#session.resource.get('common.button.create')}"
-                                                                          cssClass="input_submit"></s:submit>
+                                                                          cssClass="input_submit"/>
                                                                 <s:submit method="save"
                                                                           value="%{#session.resource.get('common.button.save')}"
                                                                           cssClass="input_submit"
-                                                                          onclick="return validateForm()"></s:submit>
+                                                                          onclick="return validateForm()"/>
                                                                 <c:if test="${table.id!=null}">
                                                                     <s:submit method="delete"
                                                                               value="%{#session.resource.get('common.button.delete')}"
                                                                               cssClass="input_submit"
-                                                                              onclick="return confirmDelete()"></s:submit>
+                                                                              onclick="return confirmDelete()"/>
                                                                 </c:if>
 
                                                                 <input onclick="window.location='<c:url

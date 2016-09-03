@@ -6,18 +6,6 @@
  *****************************************************************************/
 package com.delmar.base.web.action;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.base.enumdef.DataDictPublicType;
 import com.delmar.base.model.Datadict;
 import com.delmar.base.model.DatadictTrl;
@@ -29,13 +17,16 @@ import com.delmar.core.model.Language;
 import com.delmar.core.service.LanguageService;
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.util.FacesUtils;
-import com.delmar.crm.model.CustomerExtra;
-import com.delmar.sys.model.Client;
-import com.delmar.sys.model.Org;
 import com.delmar.system.web.WebConst;
 import com.delmar.system.web.model.PrivilegesDataFilter;
 import com.delmar.utils.ResourceMessage;
 import com.delmar.utils.StringUtil;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 
 /**
@@ -208,8 +199,8 @@ public class DatadictAction extends CoreEditPrivAction {
 		{
 			if (datadictTypeList.size()>0)
 			{
-   			   currentDatadictType=((DatadictType)datadictTypeList.get(0));
-			   datadictTypeId=((DatadictType)datadictTypeList.get(0)).getId().toString();
+   			   currentDatadictType= datadictTypeList.get(0);
+			   datadictTypeId= datadictTypeList.get(0).getId().toString();
 			   FacesUtils.setValueInHashtableOfSession("datadictTypeId", datadictTypeId);					   
 			}
 			//return new ArrayList<Datadict>();
@@ -222,8 +213,8 @@ public class DatadictAction extends CoreEditPrivAction {
 		
 		
 		Map<String,Object> searchparam=new HashMap<String,Object>();
-		searchparam.put("datadictTypeId", new Integer(datadictTypeId));
-		if (currentDatadictType.getBePublic()==DataDictPublicType.PRIVATE.getType())
+		searchparam.put("datadictTypeId", new Integer(datadictTypeId != null ? datadictTypeId : null));
+		if ((currentDatadictType != null ? currentDatadictType.getBePublic() : null) ==DataDictPublicType.PRIVATE.getType())
 		    searchparam.put("clientId", up.getUserClientId());
 		
 		searchparam.put("orderByClause", " indexOrder asc ");
@@ -285,7 +276,7 @@ public class DatadictAction extends CoreEditPrivAction {
 	    DatadictType currentDatadictType=datadictTypeService.selectByPrimaryKey(currentDataDict.getDatadictTypeId());	    
 	    
 	    //得到这个对象前面的第一个对象
-	    Map<String,Object> param=new HashMap<String,Object>();		
+	    Map<String,Object> param=new HashMap<String,Object>();
 		param.put("datadictTypeId", currentDataDict.getDatadictTypeId());
 		if (mode.equals("up"))
 		{

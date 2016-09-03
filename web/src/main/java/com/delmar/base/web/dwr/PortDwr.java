@@ -1,23 +1,19 @@
 package com.delmar.base.web.dwr;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import com.delmar.base.model.CityTrl;
 import com.delmar.base.model.PortTrl;
 import com.delmar.base.service.PortService;
 import com.delmar.base.service.PortTrlService;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.dwr.DwrPrivilegeFilter;
-import com.delmar.utils.StringUtil;
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**

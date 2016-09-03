@@ -29,9 +29,9 @@
                 <td >
                 
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
-                  <s:submit method="create" cssClass="input_submit" key="common.button.create" ></s:submit>
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" key="common.button.create" />
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -58,7 +58,7 @@
      		  </a>
 		     </display:column>
 		     <display:column property="code"    media="csv excel xml pdf rtf"	titleKey="language.column.code"/>
-			<display:column property="name"  escapeXml="true" titleKey="language.column.name" sortable="true"></display:column>				
+			<display:column property="name"  escapeXml="true" titleKey="language.column.name" sortable="true"/>
 		    <display:column property="remark"  escapeXml="true"  titleKey="common.label.remark" sortable="true"/>
 		</display:table>
 </td>

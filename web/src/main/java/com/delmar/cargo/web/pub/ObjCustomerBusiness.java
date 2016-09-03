@@ -1,9 +1,8 @@
 package com.delmar.cargo.web.pub;
 
-import java.util.ArrayList;
-
 import com.delmar.cargo.model.CustomerBusiness;
-import com.delmar.utils.ProDateUtil;
+
+import java.util.ArrayList;
 
 /** 
  * @author Charles Luo  luos@delmarchina.com

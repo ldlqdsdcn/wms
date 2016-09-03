@@ -47,10 +47,7 @@ public class PrivilegesDataFilter {
 	private static UserorgAccessService userorgAccessService;
 	private static UsergroupAccessService usergroupAccessService;
 	private static ModuleRoleService moduleRoleService;
-	private static UserRoleService userRoleService;
 	private static ModulePageService modulePageService;
-	private static DatadictTypeService datadictTypeService;
-	private static DatadictService datadictService;
 	private static List<Datadict> accessList;
 	static
 	{
@@ -58,11 +55,11 @@ public class PrivilegesDataFilter {
 		userorgAccessService=EaContext.ApplicationContext.getBean("userorgAccessService",UserorgAccessService.class);
 		usergroupAccessService=EaContext.ApplicationContext.getBean("usergroupAccessService",UsergroupAccessService.class);
 		moduleRoleService=EaContext.ApplicationContext.getBean("moduleRoleService",ModuleRoleService.class);
-		userRoleService=EaContext.ApplicationContext.getBean("userRoleService",UserRoleService.class);
+		UserRoleService userRoleService = EaContext.ApplicationContext.getBean("userRoleService", UserRoleService.class);
 		modulePageService=EaContext.ApplicationContext.getBean("modulePageService",ModulePageService.class);
-		datadictTypeService=EaContext.ApplicationContext.getBean("datadictTypeService",DatadictTypeService.class);
-		datadictService=EaContext.ApplicationContext.getBean("datadictService",DatadictService.class);
-		accessList=datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);
+		DatadictTypeService datadictTypeService = EaContext.ApplicationContext.getBean("datadictTypeService", DatadictTypeService.class);
+		DatadictService datadictService = EaContext.ApplicationContext.getBean("datadictService", DatadictService.class);
+		accessList= datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);
 	}
 	/**
 	 * @param loginClientId 登录选择实体
@@ -119,14 +116,14 @@ public class PrivilegesDataFilter {
 		}
 		if(this.user==null)
 		{
-			user=this.userService.selectByPrimaryKey(userId);
+			user= userService.selectByPrimaryKey(userId);
 		}
 		
 		
 		
 		
 		StringBuilder orgsb=new StringBuilder("org_id in(0");
-		List<UserorgAccess> userorgList=this.userorgAccessService.selectUserorgAccessByUserId(userId);
+		List<UserorgAccess> userorgList=userorgAccessService.selectUserorgAccessByUserId(userId);
 		if(userorgList!=null)
 		{
 			for(UserorgAccess ua:userorgList)
@@ -378,7 +375,7 @@ public class PrivilegesDataFilter {
 					param.put("moduleId", modId);
 					param.put("roleId", r.getId());
 					
-					List<ModuleRole> mrList=this.moduleRoleService.selectByExample(param);
+					List<ModuleRole> mrList=moduleRoleService.selectByExample(param);
 					if(mrList!=null&&mrList.size()>0)
 					{
 						moduleRoleList.addAll(mrList);

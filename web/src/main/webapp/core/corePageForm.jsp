@@ -19,7 +19,7 @@
 <script type="text/javascript">
  function gotoList()
  {
-	 window.location='<c:url value="/core/corePage_list.action"/>';
+	 window.location='<c:url value="/core/page_list.action"/>';
  }
  $(document).ready(function(){
     $('#formDetail tr:odd').addClass("query_one");
@@ -29,8 +29,8 @@
 </script>
 </head>
 <body>
-<s:form id="editForm" action="corePage_edit" namespace='/core' theme="simple">
-<s:hidden id="id" name="corePage.id"></s:hidden>
+<s:form id="editForm" action="page_edit" namespace='/core' theme="simple">
+<s:hidden id="id" name="corePage.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -44,12 +44,12 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -73,71 +73,71 @@
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="name" value="名称" ></s:label></td>
+                        <td width="20%"><s:label for="name" value="名称" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.name" id="name"   ></s:textfield>
+                          <s:textfield name="corePage.name" id="name"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="descr" value="描述" ></s:label></td>
+                        <td width="20%"><s:label for="descr" value="描述" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.descr" id="descr"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="corePage.descr" id="descr"  cssStyle="width:500px;" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="help" value="帮助" ></s:label></td>
+                        <td width="20%"><s:label for="help" value="帮助" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.help" id="help"  cssStyle="width:500px;" ></s:textfield>
+                          <s:textfield name="corePage.help" id="help"  cssStyle="width:500px;" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="windowId" value="windowId" ></s:label></td>
+                        <td width="20%"><s:label for="windowId" value="windowId" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.windowId" id="windowId"   ></s:textfield>
+                          <s:textfield name="corePage.windowId" id="windowId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="tableId" value="tableId" ></s:label></td>
+                        <td width="20%"><s:label for="tableId" value="tableId" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.tableId" id="tableId"   ></s:textfield>
+                          <s:textfield name="corePage.tableId" id="tableId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="filterColumnId" value="filterColumnId" ></s:label></td>
+                        <td width="20%"><s:label for="filterColumnId" value="filterColumnId" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.filterColumnId" id="filterColumnId"   ></s:textfield>
+                          <s:textfield name="corePage.filterColumnId" id="filterColumnId"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="isactive" value="是否有效" ></s:label></td>
+                        <td width="20%"><s:label for="isactive" value="是否有效" /></td>
                         <td width="30%">
                           <s:radio id="isactive" name="corePage.isactive" list="#{'Y':'Y','N':'N'}" required="true"></s:radio>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="showInTab" value="showInTab" ></s:label></td>
+                        <td width="20%"><s:label for="showInTab" value="showInTab" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.showInTab" id="showInTab"   ></s:textfield>
+                          <s:textfield name="corePage.showInTab" id="showInTab"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="seqNo" value="seqNo" ></s:label></td>
+                        <td width="20%"><s:label for="seqNo" value="seqNo" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.seqNo" id="seqNo"   ></s:textfield>
+                          <s:textfield name="corePage.seqNo" id="seqNo"   />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="filterSql" value="filterSql" ></s:label></td>
+                        <td width="20%"><s:label for="filterSql" value="filterSql" /></td>
                         <td width="30%">
-                          <s:textfield name="corePage.filterSql" id="filterSql"   ></s:textfield>
+                          <s:textfield name="corePage.filterSql" id="filterSql"   />
                           </td>
                         </tr>
                 <tr>
                 <td colspan="4" class="td_page_right">
-                    <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+                    <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${corePage.id!=null}">
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                 </td>

@@ -55,8 +55,8 @@ function chooseIds()
 			   <c:out value="${list_rowNum}"/>
     	</display:column>
 		     <display:column  property="username"  titleKey="user.column.loginname" sortable="true" media="html"/>
-		     <display:column property="name"titleKey="user.column.name"/>
-			<display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" ></display:column>			
+		     <display:column property="name" titleKey="user.column.name"/>
+			<display:column property="org.name"  escapeXml="true"  titleKey="user.column.org" sortable="true" />
 		</display:table>
 
 </td>

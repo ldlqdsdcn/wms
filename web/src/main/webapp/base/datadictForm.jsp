@@ -35,7 +35,7 @@
 <body>
 
 <s:form id="editForm" action="datadict_edit" namespace='/base' theme="simple">
-<s:hidden id="id" name="datadict.id"></s:hidden>
+<s:hidden id="id" name="datadict.id"/>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -48,12 +48,12 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>		
 			
 			
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 			
 			</c:if>
 		</div></td>
@@ -74,10 +74,10 @@
                
                <tr class="query_one">
                		<td style="width:20;">
-               			<s:label for="value" value="%{#session.resource.get('datadict.column.value')}" ></s:label>
+               			<s:label for="value" value="%{#session.resource.get('datadict.column.value')}" />
                			</td>
                			<td colspan="3">
-               			<s:textfield name="datadict.value" id="value"></s:textfield>
+               			<s:textfield name="datadict.value" id="value"/>
 		               	<input type="checkbox" name="datadict.isActive" id="isActive" value="0"
 		               	<s:if test="datadict.isActive==0">
 		               	   checked
@@ -90,10 +90,10 @@
                
                <tr  class="query_two">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('datadict.column.name')}" ></s:label>
+               	<s:label for="name" value="%{#session.resource.get('datadict.column.name')}" />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="datadict.name" id="name"></s:textfield>
+               	<s:textfield name="datadict.name" id="name"/>
                	</td>
 				</tr>
 				<tr class="query_one">
@@ -106,18 +106,18 @@
 				
                <tr  class="query_two">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('datadict.column.indexorder')}" ></s:label>
+               	<s:label for="name" value="%{#session.resource.get('datadict.column.indexorder')}" />
                	</td>
                	<td colspan="3">
-               	<s:textfield name="datadict.indexOrder" id="indexOrder" blurvalidate="yes" blurtype="integer" title="%{#session.resource.get('public.input.numberonly')}"></s:textfield>
+               	<s:textfield name="datadict.indexOrder" id="indexOrder" blurvalidate="yes" blurtype="integer" title="%{#session.resource.get('public.input.numberonly')}"/>
                	</td>
 				</tr>				
 				
 						<tr  class="query_one">
 							
-							<td ><s:label for="descr"  value="%{#session.resource.get('datadict.column.remark')}" ></s:label></td>
+							<td ><s:label for="descr"  value="%{#session.resource.get('datadict.column.remark')}" /></td>
 							<td colspan="3">
-							<s:textfield name="datadict.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+							<s:textfield name="datadict.remark" id="remark" cssStyle="width:500px;"/>
 							</td>
 							
                             
@@ -132,11 +132,11 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+						<s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+						<s:submit method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						<c:if test="${datadict.id!=null}">
-						<s:submit method="copy" value="%{#session.resource.get('common.button.copy')}"  cssClass="input_submit"></s:submit>
-						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+						<s:submit method="copy" value="%{#session.resource.get('common.button.copy')}"  cssClass="input_submit"/>
+						<s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
 						</c:if>
 						<input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
 						
@@ -201,13 +201,13 @@
 								<tr  class="<s:property value="#st.index%2==0?'odd':'even'"/>">
 						<td>
 							<s:hidden name="%{'datadictTrlList['+#st.index+'].id'}" />
-							<s:textfield name="%{'datadictTrlList['+#st.index+'].language'}" readonly="true"></s:textfield>	
+							<s:textfield name="%{'datadictTrlList['+#st.index+'].language'}" readonly="true"/>
 						</td>
 						<td>
-							<s:textfield name="%{'datadictTrlList['+#st.index+'].name'}" cssStyle="width:300px"></s:textfield>	
+							<s:textfield name="%{'datadictTrlList['+#st.index+'].name'}" cssStyle="width:300px"/>
 						</td>
 						<td>
-						<s:textfield name="%{'datadictTrlList['+#st.index+'].remark'}"></s:textfield>	
+						<s:textfield name="%{'datadictTrlList['+#st.index+'].remark'}"/>
 						</td>
 						</s:iterator>
 					

@@ -6,15 +6,13 @@
  *****************************************************************************/
 package com.delmar.core.web.listener;
 
-import java.util.Date;
+import com.delmar.sys.model.User;
+import com.delmar.sys.model.UserContent;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-
-import com.delmar.core.web.bean.UserOnlineContent;
-import com.delmar.sys.model.User;
-import com.delmar.sys.model.UserContent;
+import java.util.Date;
 
 /**
  * @author 刘大磊 2015年1月12日 下午2:29:36

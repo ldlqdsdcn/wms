@@ -6,15 +6,12 @@
  *****************************************************************************/
 package com.delmar.core.web.tld;
 
-import java.io.IOException;
+import com.delmar.core.web.bean.UserResource;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-
-import org.apache.log4j.Logger;
-
-import com.delmar.core.web.bean.UserResource;
 
 /**
  * @author 刘大磊 2015年2月3日 下午2:27:01

@@ -6,8 +6,6 @@ import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.excep.ValidateException;
 import com.delmar.core.service.TableService;
-import com.delmar.core.web.vo.TableGenerateVo;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +27,7 @@ public class TableController {
     @RequestMapping(value = "/core/getTableInfo", method = RequestMethod.GET)
     @ResponseBody
     public ApiResult<TableMetaDataDto> getTableInfo(String tableName) {
-        ApiResult<TableMetaDataDto> tableMetaDataDto = tableService.getTableDescription(tableName);
-        return tableMetaDataDto;
+        return tableService.getTableDescription(tableName);
     }
 
     @RequestMapping(value = "/core/initTableInfo", method = RequestMethod.GET)

@@ -1,19 +1,5 @@
 package com.delmar.sysSettings.web.action;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.base.model.DatadictTrl;
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictService;
@@ -23,7 +9,6 @@ import com.delmar.core.service.LanguageService;
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.util.FacesUtils;
-import com.delmar.sys.model.User;
 import com.delmar.sys.service.UserService;
 import com.delmar.sysSettings.model.SysSettingsItem;
 import com.delmar.sysSettings.model.SysSettingsItemTrl;
@@ -37,6 +22,12 @@ import com.delmar.system.web.WebConst;
 import com.delmar.system.web.model.PrivilegesDataFilter;
 import com.delmar.utils.StringUtil;
 import com.delmar.web.model.ObjSelect;
+import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.sql.Timestamp;
+import java.util.*;
 
 public class SysSettingsItemAction extends CoreEditPrivAction{
 	
@@ -57,9 +48,7 @@ public class SysSettingsItemAction extends CoreEditPrivAction{
 	
 	private List<DatadictTrl> inputTypeList; // 输入类型
 	private String saveType;
-	private final int nums = 5;
-	
-	
+
 
 	private static final long serialVersionUID = -1245836418680729739L;
 	
@@ -137,6 +126,7 @@ public class SysSettingsItemAction extends CoreEditPrivAction{
 		List<SysSettingsItemValue> returnList = new ArrayList<SysSettingsItemValue>();
 		if (item == null || item.getId() == null || item.getId() == 0) {
 			//创建5条空白记录
+			int nums = 5;
 			returnList = createItemValues(nums);
 			
 		} else {

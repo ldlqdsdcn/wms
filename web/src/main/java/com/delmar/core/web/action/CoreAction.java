@@ -71,15 +71,15 @@ public class CoreAction extends ActionSupport{
 	 * @author        Charles Luo
 	 * @Date          2015年7月23日 下午2:59:40 
 	 */
-	public String getCurrentUserThird(String thirdKey)
+	public String getCurrentUserThird()
 	{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();		
 		HashMap<String,String> thirdPartyMap=(HashMap<String,String>)session.getAttribute(WebConst.SESSION_THIRDPARTYUSERMAP);
 		if (thirdPartyMap!=null)
 		{
-			if (thirdPartyMap.containsKey(thirdKey))
-				return thirdPartyMap.get(thirdKey);
+			if (thirdPartyMap.containsKey("CargoProSales"))
+				return thirdPartyMap.get("CargoProSales");
 			else
 				return "";
 		}

@@ -56,7 +56,7 @@ public class ModuleAction extends CoreEditAction {
 	{
 		String[] ids=ServletActionContext.getRequest().getParameterValues("ids");
 		List<Integer> idList=new ArrayList<Integer>();
-		boolean isnew=module.getId()==null?true:false;
+		boolean isnew= module.getId() == null;
 		if(ids!=null)
 		{
 			for(String id:ids)
@@ -76,7 +76,7 @@ public class ModuleAction extends CoreEditAction {
 	{
 		String[] ids=ServletActionContext.getRequest().getParameterValues("ids");
 		List<Integer> idList=new ArrayList<Integer>();
-		boolean isnew=module.getId()==null?true:false;
+		boolean isnew= module.getId() == null;
 		if(ids!=null)
 		{
 			for(String id:ids)
@@ -92,7 +92,7 @@ public class ModuleAction extends CoreEditAction {
 	{
 		String[] ids=ServletActionContext.getRequest().getParameterValues("ids");
 		List<Integer> idList=new ArrayList<Integer>();
-		boolean isnew=module.getId()==null?true:false;
+		boolean isnew= module.getId() == null;
 		if(ids!=null)
 		{
 			for(String id:ids)

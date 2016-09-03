@@ -6,21 +6,17 @@
  *****************************************************************************/
 package com.delmar.system.web.displaytag.decorator;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.jsp.PageContext;
-
-import org.displaytag.decorator.DisplaytagColumnDecorator;
-import org.displaytag.exception.DecoratorException;
-import org.displaytag.properties.MediaTypeEnum;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.delmar.core.web.bean.EaContext;
 import com.delmar.sys.model.Role;
 import com.delmar.sys.service.RoleService;
+import org.displaytag.decorator.DisplaytagColumnDecorator;
+import org.displaytag.exception.DecoratorException;
+import org.displaytag.properties.MediaTypeEnum;
+
+import javax.servlet.jsp.PageContext;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年1月19日 上午10:51:44

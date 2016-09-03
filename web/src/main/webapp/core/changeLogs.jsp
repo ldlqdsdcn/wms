@@ -80,13 +80,13 @@
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')">
      				 <c:out value="${list.table.name}"/></a>
 		     </display:column>
-		     <display:column property="table.tableNameTr"  escapeXml="true"  titleKey="changelog.column.busname"  sortable="true" ></display:column>
+		     <display:column property="table.tableNameTr"  escapeXml="true"  titleKey="changelog.column.busname"  sortable="true" />
 		     
-		     <display:column property="pk"  escapeXml="true"   titleKey="changelog.column.key"  sortable="true" ></display:column>
+		     <display:column property="pk"  escapeXml="true"   titleKey="changelog.column.key"  sortable="true" />
 		     <display:column property="buPk" escapeXml="true"  titleKey="changelog.column.buskey" />
 		     <display:column property="operateType" escapeXml="true"  titleKey="changelog.column.action" 
 		      decorator="com.delmar.core.web.displaytag.decorator.ChangeLogOperateTypeDecorator"/>
-			 <display:column property="context"  escapeXml="true"  titleKey="changelog.column.content" ></display:column>
+			 <display:column property="context"  escapeXml="true"  titleKey="changelog.column.content" />
 			 <display:column property="username" sortable="true"  titleKey="changelog.column.username"/>				
 			<display:column property="created"  escapeXml="true"  titleKey="changelog.column.operatedate" sortable="true"
 		     decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"/>
@@ -110,7 +110,7 @@
    
 </script>
   <div id="selectDiv">
-	<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0px; border:0px; padding: 0px;" id="selectIframe"></iframe>
+	<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0; border:0; padding: 0;" id="selectIframe"></iframe>
 </div>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class JavabeanAction extends CoreEditPrivAction {
 
 	@Override
 	public String delete() {
-		if(!PrivilegeOperator.isDelete())
+		if(PrivilegeOperator.isDelete())
 		{
 			return NOPRIVILEGE;
 		}

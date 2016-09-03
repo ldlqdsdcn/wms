@@ -17,7 +17,7 @@
 <body>
 
 <s:form id="editForm" action="operator_edit" namespace='/system' theme="simple">
-<s:hidden id="id" name="operator.id"></s:hidden>
+<s:hidden id="id" name="operator.id"/>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr> 
@@ -30,12 +30,12 @@
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 			
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"   cssClass="input_submit"/>
 			</c:if>		
 			
 			
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne"  value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne"  value="%{#session.resource.get('common.button.next')}"   cssClass="input_submit"/>
 			
 			</c:if>
 		</div></td>
@@ -55,12 +55,12 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
                <tr  class="query_one">
                	<td width="20%">
-               	<s:label for="name" value="%{#session.resource.get('operator.column.name')}"></s:label>
+               	<s:label for="name" value="%{#session.resource.get('operator.column.name')}"/>
                	</td>
                	<td width="30%">
                	<c:choose>
                	<c:when test="${operator.init=='N'}">
-               	<s:textfield name="operator.name" id="name" ></s:textfield>
+               	<s:textfield name="operator.name" id="name" />
                	</c:when>
                	<c:otherwise>
                	<s:property value="operator.name"/>
@@ -75,7 +75,7 @@
                	
                		<c:choose>
                	<c:when test="${operator.init=='N'}">
-               		<s:textfield name="operator.value" id="value"></s:textfield>
+               		<s:textfield name="operator.value" id="value"/>
                	</c:when>
                	<c:otherwise>
                	<s:property value="operator.value"/>
@@ -91,17 +91,17 @@
 							<td colspan="3">
 							<s:property value="operator.init"/>
 							
-							<s:hidden name="operator.init"></s:hidden>
+							<s:hidden name="operator.init"/>
 							</td>
 							
 				</tr>
 						<tr  class="query_one">
 							
-							<td ><s:label for="descr" value="%{#session.resource.get('operator.column.remark')}"></s:label></td>
+							<td ><s:label for="descr" value="%{#session.resource.get('operator.column.remark')}"/></td>
 							<td colspan="3">
 								<c:choose>
                	<c:when test="${operator.init=='N'}">
-               	<s:textfield name="operator.remark" id="remark" cssStyle="width:500px;"></s:textfield>
+               	<s:textfield name="operator.remark" id="remark" cssStyle="width:500px;"/>
                	</c:when>
                	<c:otherwise>
                	<s:property value="operator.remark"/>
@@ -132,9 +132,9 @@
                 <tr>
                 <td colspan="4" class="td_page_right">
                			
-						<s:submit method="create" value="%{#session.resource.get('common.button.create')}" cssClass="input_submit"></s:submit>
+						<s:submit method="create" value="%{#session.resource.get('common.button.create')}" cssClass="input_submit"/>
 						
-						<s:submit method="save"  value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"></s:submit>
+						<s:submit method="save"  value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit"/>
 						
 						<input onclick="window.location='<c:url value="/system/operator_list.action"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
 						

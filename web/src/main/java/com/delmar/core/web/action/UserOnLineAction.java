@@ -21,7 +21,6 @@ import com.delmar.sys.model.UserSession;
  * 在线用户
  */
 public class UserOnLineAction extends CoreAction{
-	private int onlinecount;
 
 	public String searchList()  {
 		
@@ -30,9 +29,9 @@ public class UserOnLineAction extends CoreAction{
 		
 		
 		List<UserSession> list=UserOnlineContent.getUserList();
-		
-		
-		onlinecount=list.size();
+
+
+		int onlinecount = list.size();
 		
 		
 		FacesUtils.setValueInHashtableOfSession("userOnlines", list);

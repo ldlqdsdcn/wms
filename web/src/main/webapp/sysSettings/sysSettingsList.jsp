@@ -200,7 +200,7 @@ function changeSingelSelect(id) {
 					       	<delmar:message key="sysSettingsItem.column.setValueString"/>:
 					   </td>
 					   <td class="d-tdinput"> 
-					       	<s:textfield name="setValueString" id="setValueString" cssClass="d-searchtext"></s:textfield>
+					       	<s:textfield name="setValueString" id="setValueString" cssClass="d-searchtext"/>
 					   </td>
 					</tr>
 					<tr>
@@ -208,7 +208,7 @@ function changeSingelSelect(id) {
 					   		<delmar:message key="sysSettingsItem.column.customerName"/>:
 					   </td>
 					   <td   class="d-tdinput"> 
-					       	<s:textfield name="userName" id="userName" cssClass="d-searchtext"></s:textfield>
+					       	<s:textfield name="userName" id="userName" cssClass="d-searchtext"/>
 					   </td>
 					  <td class="d-tdlabel"> 	
 					       	<c:if test="${MAP_KEY_OF_SESSION.orgVisible=='true'}">
@@ -230,7 +230,7 @@ function changeSingelSelect(id) {
 					
 					<tr>
 				       <td colspan=8  class="d-searchbutton">  
-				       		<s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" ></s:submit>
+				       		<s:submit method="list" cssClass="input_submit" id="btnQuery" value="%{#session.resource.get('common.button.search')}" />
 		                  	<s:reset cssClass="input_submit" id="btnReset" value="%{#session.resource.get('common.button.reset')}" ></s:reset>			       
 				       </td>    
 			       </tr>
@@ -251,15 +251,15 @@ function changeSingelSelect(id) {
     	</display:column>
     	
     	<display:column  property="sysSettingsItem.setType" escapeXml="true" titleKey="sysSettingsItem.column.inputType" 
-    		decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsInputDecorator"sortable="true"></display:column>
+    		decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsInputDecorator"sortable="true"/>
     	<display:column property="id" titleKey="sysSettingsItem.column.setValueString"  sortable="true" style="width:200px;"
     	decorator="com.delmar.sysSettings.web.displaytag.decorator.SetValueStringDecorator">
     		
     	</display:column>
     	<display:column  property="itemId" escapeXml="true" titleKey="sysSettingsItem.column.sysSettingsSelect"  sortable="true"
-    		decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsItemDecorator"></display:column>
-    	<display:column  property="userName" escapeXml="true" titleKey="sysSettingsItem.column.person"  sortable="true" ></display:column>
-    	<display:column  property="indexOrder" escapeXml="true" titleKey="sysSettingsItem.column.indexOrder" sortable="true"></display:column>
+    		decorator="com.delmar.sysSettings.web.displaytag.decorator.SettingsItemDecorator"/>
+    	<display:column  property="userName" escapeXml="true" titleKey="sysSettingsItem.column.person"  sortable="true" />
+    	<display:column  property="indexOrder" escapeXml="true" titleKey="sysSettingsItem.column.indexOrder" sortable="true"/>
     	<display:column  titleKey="sysSettingsItem.button.option"  sortable="true" >
     		<a href='javascript:void(0)' onclick="save('<c:out value="${list.id}"/>', <c:out value="${list.sysSettingsItem.setType}"/>)"><delmar:message key="sysSettingsItem.button.save"/></a>
     	</display:column>

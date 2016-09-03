@@ -67,16 +67,16 @@ public class PageMenuDwr {
 			pm.setIcoPath("");
 		if(parentMenuId!=null)
 		{
-			PageMenu parentMenu=(PageMenu)pageMenuService.selectByPrimaryKey(parentMenuId);
+			PageMenu parentMenu= pageMenuService.selectByPrimaryKey(parentMenuId);
 			pm.setParentMenu(parentMenu);
 			pm.setParentMenuId(parentMenuId);
 		}
 		}
 		else
 		{
-			pm=(PageMenu)pageMenuService.selectByPrimaryKey(menuId);
+			pm= pageMenuService.selectByPrimaryKey(menuId);
 			
-			PageMenu parentMenu=(PageMenu)pageMenuService.selectByPrimaryKey(pm.getParentMenuId());
+			PageMenu parentMenu= pageMenuService.selectByPrimaryKey(pm.getParentMenuId());
 			pm.setParentMenu(parentMenu);
 		}
 		return pm;
@@ -91,12 +91,12 @@ public class PageMenuDwr {
 	{
 		
 		
-		if(!DwrPrivilegeFilter.isCreate(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isCreate(this.getClass().getName()))
 		{
 			if(pageMenu.getId()==null)
 			return null;
 		}
-		if(!DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
 		{
 			if(pageMenu.getId()!=null)
 			return null;
@@ -113,12 +113,12 @@ public class PageMenuDwr {
 	@SuppressWarnings("unchecked")
 	public String removeMenu(Integer menuId)
 	{
-		if(!DwrPrivilegeFilter.isDelete(this.getClass().getName()))
+		if(DwrPrivilegeFilter.isDelete(this.getClass().getName()))
 		{
 			return null;
 		}
 		
-		PageMenu temp=(PageMenu)pageMenuService.selectByPrimaryKey(menuId);
+		PageMenu temp= pageMenuService.selectByPrimaryKey(menuId);
 		if("Y".equals(temp.getMenuType()))
 		{
 		

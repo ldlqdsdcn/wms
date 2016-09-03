@@ -29,8 +29,8 @@
                 
                   <input type="button"  value="<delmar:message key="common.button.search" />"  class="input_submit">
                   
-                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" ></s:submit>
-                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"></s:submit>
+                  <s:submit method="create" cssClass="input_submit" value="%{#session.resource.get('common.button.create')}" />
+                  <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}"/>
                  </td>
               </tr>
             </table></td>
@@ -48,7 +48,7 @@
       <display:column   	titleKey="common.label.sequence" sortable="true" media="html">
 		      <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value="${list.versionCode}"/></a>
 		     </display:column>
-		     <display:column property="versionCode"  escapeXml="true" titleKey="mobileclient.versionCode" sortable="true"></display:column>				
+		     <display:column property="versionCode"  escapeXml="true" titleKey="mobileclient.versionCode" sortable="true"/>
 		     <display:column property="versionName"   titleKey="mobileclient.versionName"/>
 	<display:column property="userName"   titleKey="mobileclient.userName"/>
 		    <display:column property="remark"  escapeXml="true"  titleKey="mobileclient.remark" sortable="true"/>

@@ -201,7 +201,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 </head>
 <body>
 <s:form id="editForm" action="production_edit" namespace='/cargo' theme="simple">
-<s:hidden id="id" name="production.id"></s:hidden>
+<s:hidden id="id" name="production.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -215,12 +215,12 @@ $("input[name^=productionLineList]").each(function(i, item){
          <div class="C_S_F_L">
 			<c:if test="${!isFirst}">
 
-				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"></s:submit>
+				<s:submit method="getPrevionsOne" value="%{#session.resource.get('common.button.previous')}"  cssClass="input_submit"/>
 			</c:if>
 
 
 			<c:if test="${!isLast}">
-			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"></s:submit>
+			<s:submit method="getNextOne" value="%{#session.resource.get('common.button.next')}"  cssClass="input_submit"/>
 
 			</c:if>
 		</div></td>
@@ -244,25 +244,25 @@ $("input[name^=productionLineList]").each(function(i, item){
                     <!--table 06 bgn-->
                 <table width="100%" border="0" cellpadding="0" cellspacing="1" id="formDetail">
                         <tr>
-                        <td width="20%"><s:label for="documentno" value="documentno" ></s:label></td>
+                        <td width="20%"><s:label for="documentno" value="documentno" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.documentno" id="documentno"   ></s:textfield>
+                          <s:textfield name="production.documentno" id="documentno"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.documentno"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="name" value="名称" ></s:label></td>
+                        <td width="20%"><s:label for="name" value="名称" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.name" id="name"   ></s:textfield>
+                          <s:textfield name="production.name" id="name"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.name"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="completeDate" value="completeDate" ></s:label></td>
+                        <td width="20%"><s:label for="completeDate" value="completeDate" /></td>
                         <td width="30%">
                         
                         <s:textfield name="production.completeDate" id="completeDate" >
@@ -273,69 +273,69 @@ $("input[name^=productionLineList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="created" value="创建时间" ></s:label></td>
+                        <td width="20%"><s:label for="created" value="创建时间" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.created" id="created" readonly="true"  ></s:textfield>
+                          <s:textfield name="production.created" id="created" readonly="true"  />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.created"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="createdby" value="创建人" ></s:label></td>
+                        <td width="20%"><s:label for="createdby" value="创建人" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${production.createdby}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="updated" value="修改时间" ></s:label></td>
+                        <td width="20%"><s:label for="updated" value="修改时间" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.updated" id="updated" readonly="true"  ></s:textfield>
+                          <s:textfield name="production.updated" id="updated" readonly="true"  />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.updated"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="updatedby" value="修改人" ></s:label></td>
+                        <td width="20%"><s:label for="updatedby" value="修改人" /></td>
                         <td width="30%">
                         
                            <delmar:user userId="${production.updatedby}" module="user"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="orgId" value="orgId" ></s:label></td>
+                        <td width="20%"><s:label for="orgId" value="orgId" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.orgId" id="orgId"   ></s:textfield>
+                          <s:textfield name="production.orgId" id="orgId"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.orgId"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="clientId" value="clientId" ></s:label></td>
+                        <td width="20%"><s:label for="clientId" value="clientId" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.clientId" id="clientId"   ></s:textfield>
+                          <s:textfield name="production.clientId" id="clientId"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.clientId"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="userId" value="userId" ></s:label></td>
+                        <td width="20%"><s:label for="userId" value="userId" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.userId" id="userId"   ></s:textfield>
+                          <s:textfield name="production.userId" id="userId"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.userId"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="status" value="status" ></s:label></td>
+                        <td width="20%"><s:label for="status" value="status" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.status" id="status"   ></s:textfield>
+                          <s:textfield name="production.status" id="status"   />
                             <span style="color:red">*</span>
                             <s:fielderror fieldName="production.status"    cssStyle="color:red" />
                           </td>
@@ -408,7 +408,7 @@ $("input[name^=productionLineList]").each(function(i, item){
                     <s:textfield
                             name="%{'productionLineList['+#st.index+'].batch'}">
                     </s:textfield> <span style="color:red">*</span>
-                        <s:hidden name="%{'productionLineList['+#st.index+'].productionId'}"></s:hidden>
+                        <s:hidden name="%{'productionLineList['+#st.index+'].productionId'}"/>
                 </td>
 
 
@@ -422,10 +422,10 @@ $("input[name^=productionLineList]").each(function(i, item){
 </tr>
                       <tr>
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
-                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"></s:submit>
-                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" ></s:submit>
+                              <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
+                              <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
                               <c:if test="${production.id!=null}">
-                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"></s:submit>
+                                  <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
                           </td>

@@ -13,7 +13,6 @@ public class PaginatedListHelper implements PaginatedList{
     private List list; // 每页列表
     private int objectsPerPage=20;// 每页记录数 page size
     private int pageNumber = 1; // 当前页码
-    private String searchId;
     private String sortCriterion;
     private SortOrderEnum sortDirection;
     public PaginatedListHelper(int pageNumber,int fullListSize,List list)
@@ -71,10 +70,6 @@ public class PaginatedListHelper implements PaginatedList{
 
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
     }
 
     public void setSortCriterion(String sortCriterion) {

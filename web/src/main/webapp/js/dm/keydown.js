@@ -1,11 +1,11 @@
 
 /**
- * 键盘上下移动
+ * ???????????
  * v1.0 2004.12.27
  */
  
  
-//快捷保存	
+//??????	
 function keyDown(e)
 {
 	if (event.srcElement.type == "textarea") 
@@ -78,13 +78,13 @@ function moveKeyDown()
 	}
 
 
-    if (event.keyCode==40)   //向下按钮
+    if (event.keyCode==40)   //???锟斤拷??
 	{
 		event.keyCode=9;  
 	}
 
 
-	if (event.keyCode==13)   //回车
+	if (event.keyCode==13)   //???
 	{ 
 		event.keyCode=9;  
 	} 
@@ -92,8 +92,8 @@ function moveKeyDown()
 
     if (event.keyCode==38)
 	{
-        //event.shiftKey=true;   //模拟shift按键被按下
-		event.keyCode= 9;   //向上按钮       
+        //event.shiftKey=true;   //???shift??????????
+		event.keyCode= 9;   //??????       
 	}
 
 	

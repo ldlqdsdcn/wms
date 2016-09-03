@@ -222,38 +222,6 @@
 		</action>
 
 	</package>
-	<package name="crm" namespace="/crm" extends="default">
-		<action name="customer_*" class="com.delmar.crm.web.action.CustomerAction" method="{1}">
-			<result name="list">/crm/customers.jsp</result>
-			<result name="edit">/crm/customerForm.jsp</result>
-			<result name="input">/crm/customerForm.jsp</result>
-		</action>
-		<action name="linkman_*" class="com.delmar.crm.web.action.LinkmanAction" method="{1}">
-			<result name="list">/crm/linkmans.jsp</result>
-			<result name="edit">/crm/linkmanForm.jsp</result>
-			<result name="input">/crm/linkmanForm.jsp</result>
-		</action>
-		<action name="linkrecord_*" class="com.delmar.crm.web.action.LinkrecordAction" method="{1}">
-			<result name="list">/crm/linkrecords.jsp</result>
-			<result name="edit">/crm/linkrecordForm.jsp</result>
-			<result name="input">/crm/linkrecordForm.jsp</result>
-		</action>
-		<action name="crmstastics_*" class="com.delmar.crm.web.action.CRMStasticsAction" method="{1}">
-			<result name="list">/crm/crmstastics.jsp</result>
-			<result name="listt">/crm/crmtracestastics.jsp</result>
-			<result name="trace">/crm/crmtracestastics.jsp</result>
-		</action>
-		<action name="busForecast_*" class="com.delmar.crm.web.action.BusForecastAction" method="{1}">
-			<result name="list">/crm/busForecasts.jsp</result>
-			<result name="edit">/crm/busForecastForm.jsp</result>
-			<result name="input">/crm/busForecastForm.jsp</result>
-		</action>
-
-
-	</package>
-
-
-
 	<package name="commons" namespace="/commons" extends="default">
 		<action name="usersetting" class="com.delmar.common.web.action.UserSettingAction" method="save">
 			<result name="input">/commons/usersetting.jsp</result>

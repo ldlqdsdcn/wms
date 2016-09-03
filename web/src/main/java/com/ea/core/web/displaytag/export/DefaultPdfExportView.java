@@ -11,21 +11,13 @@
  */
 package com.ea.core.web.displaytag.export;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
-import org.displaytag.export.DefaultItextExportView;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.FontFactory;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfPageEventHelper;
-import com.lowagie.text.pdf.PdfTemplate;
-import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.*;
+import org.displaytag.export.DefaultItextExportView;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 
 /**
@@ -95,7 +87,7 @@ public class DefaultPdfExportView extends DefaultItextExportView
             table.writeSelectedRows(0, -1, document.left(), document.getPageSize().height() - 50, cb);
             // compose the footer
             String text = "Page " + writer.getPageNumber();
-            float textSize = helv.getWidthPoint(text, 12);
+            float textSize = helv != null ? helv.getWidthPoint(text, 12) : 0;
             float textBase = document.bottom() - 20;
             cb.beginText();
             cb.setFontAndSize(helv, 12);
