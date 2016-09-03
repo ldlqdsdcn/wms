@@ -426,7 +426,8 @@ public class PrivilegesDataFilter {
 		case DelmarConst.ACCESS_LEVEL_USER	:
 			accessString=this.getUserAccessString();
 			break;
-			
+		default:
+			accessString=this.allAccessString;
 		}
 		
     	accessString=accessString+" and client_id="+this.loginClientId;

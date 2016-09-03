@@ -223,7 +223,7 @@ public class DatadictAction extends CoreEditPrivAction {
 		
 		Map<String,Object> searchparam=new HashMap<String,Object>();
 		searchparam.put("datadictTypeId", new Integer(datadictTypeId));
-		if (currentDatadictType.getBePublic().intValue()==DataDictPublicType.PRIVATE.getType())
+		if (currentDatadictType.getBePublic()==DataDictPublicType.PRIVATE.getType())
 		    searchparam.put("clientId", up.getUserClientId());
 		
 		searchparam.put("orderByClause", " indexOrder asc ");

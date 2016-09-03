@@ -1,3 +1,5 @@
+<#include "inc/class_header.ftl"/>
+
 package com.delmar.${module}.model;
 
 <#if hasDate>

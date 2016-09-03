@@ -31,12 +31,15 @@ public class GenerateCodeTest {
 //        GenModelDto line2=  new GenModelDto("b_meeting_topic","MeetingTopic","cargo","讨论内容");
 //        line2.setGenerateService(false);
 //        list.add(line2);
-        GenModelDto modelDto=new GenModelDto("sys_user_footmark","UserFootmark","system","Struts日志");
-        modelDto.setPagingByDb(true);
-       // List<GenModelDto> lineList=new ArrayList<>();
-//        lineList.add(line1);
-//        lineList.add(line2);
-//        modelDto.setIncludeModelList(lineList);
+        GenModelDto modelDto=new GenModelDto("core_label","Label","core","标签");
+        GenModelDto line1=  new GenModelDto("core_label_trl","LabelTrl","core","标签翻译");
+        line1.setGenerateService(false);
+        line1.setTrl(true);
+        List<GenModelDto> lineList=new ArrayList<>();
+        lineList.add(line1);
+       //、、 lineList.add(line2);s
+        modelDto.setIncludeModelList(lineList);
+        list.add(line1);
         list.add(modelDto);
 
         codeGenerationService.generateMapperAndModel(list);

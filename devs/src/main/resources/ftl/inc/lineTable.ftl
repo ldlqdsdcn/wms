@@ -16,6 +16,7 @@
     </td>
 
 </tr>
+<#if !line.trl>
 <tr>
     <td colspan="2" style="padding-left: 20px;text-align: left;">
         <input value="添加${line.label}"
@@ -26,6 +27,7 @@
     </td>
     <td colspan="2"></td>
 </tr>
+</#if>
 <tr>
     <td colspan="4">
         <table id="${line.model}Table" class="table">

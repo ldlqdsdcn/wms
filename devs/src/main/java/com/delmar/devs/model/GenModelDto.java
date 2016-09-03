@@ -25,6 +25,11 @@ public class GenModelDto {
      * 是否生成serviceCode
      */
     private boolean generateService;
+    /**
+     * 是否翻译文件
+     */
+    private boolean trl;
+
     private List<GenModelDto> includeModelList;
 
     /**

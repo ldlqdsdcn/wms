@@ -1,8 +1,8 @@
 /******************************************************************************
- * 版权所有 刘大磊 2013-07-01											  *
+ * 版权所有 刘大磊 2013-07-01											      *
  * 作者：刘大磊								                                  *
- * 电话：13336390671                                                        *
- * email:ldlqdsd@126.com						                          *
+ * 电话：13336390671                                                          *
+ * email:ldlqdsd@126.com						                              *
  *****************************************************************************/
 package com.delmar.devs;
 
@@ -54,7 +54,7 @@ public class GenerateActionMain {
         root.put("pagingByDb",genModelDto.isPagingByDb());
         List<String> requiredStrings=new ArrayList<String>();
         List<String> requiredFields=new ArrayList<>();
-
+        boolean hasTrl=false;
         boolean hasCreated=false;
         boolean hasUpdated=false;
         boolean hasUserId=false;
@@ -137,11 +137,17 @@ public class GenerateActionMain {
                         fl.setLabel(gm.getRemark());
                         fl.setModel(gm.getModelName());
                         fl.setModule(gm.getModule());
+                        if(gm.isTrl())
+                        {
+                            hasTrl=true;
+                        }
+                        fl.setTrl(gm.isTrl());
                         formLineList.add(fl);
                     }
-                    root.put("lineList",formLineList);
-                }
+                    root.put("lineList", formLineList);
 
+                }
+                root.put("hasTrl",hasTrl);
                 FreeMarkerHelper.getInstance().outFile("StrutsActionClass.ftl", root, "src/main/java/" + classpackage.replace(".", "/") + "/" + genModelDto.getModelName() + "Action.java",true);
 
 

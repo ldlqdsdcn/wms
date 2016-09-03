@@ -72,7 +72,7 @@ public class GenerateJspPageMain {
                 FormLine formLine = new FormLine();
                 formLine.setLabel(genModelDto.getRemark());
                 formLine.setModel(genModelDto.getModelName());
-
+                formLine.setTrl(genModelDto.isTrl());
                 ApiResult<TableMetaDataDto> apiResult = tableService.getTableDescription(genModelDto.getTableName());
                 TableMetaDataDto tableMetaDataDto = apiResult.getData();
 

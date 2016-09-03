@@ -79,7 +79,7 @@ public abstract class CoreEditAction  extends CoreAction{
 		{
 			String message=this.getText("error.deletes.empty");
 			ServletActionContext.getRequest().getSession().setAttribute("msg", message);
-			
+			return list();
 		}
 		Integer[] idints=new Integer[ids.length];
 		

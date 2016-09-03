@@ -126,19 +126,22 @@ public class ChangeLogAction extends CoreEditPrivAction{
 		UserResource resource= (UserResource) ServletActionContext.getRequest().getSession().getAttribute("resource");
 		@SuppressWarnings("rawtypes")
 		Map map=new HashMap();
-		map.put("accessString", "table_id="+changelog.getTableId()+" and out_log='Y'");
+		map.put("accessString", "table_id=" + changelog.getTableId() + " and out_log='Y'");
 		this.tableColumnList=tableColumnService.selectByExample(map);
 		if(tableColumnList!=null)
-		this.headerMap.put("username", resource.get("changelog.column.username"));
-		this.headerMap.put("operateType",  resource.get("changelog.column.action"));
-		this.headerMap.put("inDate", resource.get("changelog.column.operatedate"));
-		//this.headerMap.put("requestUrl", resource.get("changelog.column.operatedate"));
-		for(TableColumn tc: tableColumnList)
 		{
-			this.headerMap.put(tc.getColumnName(), tc.getColumnNameTr());
+			this.headerMap.put("username", resource.get("changelog.column.username"));
+			this.headerMap.put("operateType",  resource.get("changelog.column.action"));
+			this.headerMap.put("inDate", resource.get("changelog.column.operatedate"));
+			//this.headerMap.put("requestUrl", resource.get("changelog.column.operatedate"));
+			for(TableColumn tc: tableColumnList)
+			{
+				this.headerMap.put(tc.getColumnName(), tc.getColumnNameTr());
+			}
+			jsonToMap(changelog);
+			FacesUtils.setValueInHashtableOfSession("tableColumnList", tableColumnList);
 		}
-		jsonToMap(changelog);
-		FacesUtils.setValueInHashtableOfSession("tableColumnList", tableColumnList);
+
 		return "view";
 	}
 	public String viewAll()

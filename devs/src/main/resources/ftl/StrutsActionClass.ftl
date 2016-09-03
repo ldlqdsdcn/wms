@@ -1,9 +1,5 @@
-/******************************************************************************
- * 德玛国际物流有限公司  2013-07-01										      *
- *	作者：刘大磊								                              *
- * 电话：0532-66701118                                                        *
- * email:liua@delmarchina.com						                          *
- *****************************************************************************/
+<#include "inc/class_header.ftl"/>
+
 package ${packagename};
 
 import java.util.HashMap;
@@ -16,6 +12,10 @@ import com.delmar.core.web.action.CoreEditPagingAction;
 import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 <#else>
 import com.delmar.core.web.action.CoreEditPrivAction;
+</#if>
+<#if hasTrl>
+import com.delmar.core.model.Language;
+import com.delmar.core.service.LanguageService;
 </#if>
 <#if (requiredStrings?size>0)>
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
@@ -53,6 +53,10 @@ public class ${modelname}Action extends <#if pagingByDb>CoreEditPagingAction<#el
 <#list lineList as item>
 	private List<${item.model}> ${item.model?uncap_first}List=new ArrayList<${item.model}>();;
 </#list>
+</#if>
+<#if hasTrl>
+@Autowired
+private LanguageService languageService;
 </#if>
 	@Autowired
 	private ${modelname}Service ${modelObjname}Service;
@@ -102,14 +106,42 @@ public class ${modelname}Action extends <#if pagingByDb>CoreEditPagingAction<#el
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#editForm()
 	 */
 	@Override
-	public void editForm() {
-		 ${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
-		<#if lineList?exists>
+public void editForm() {
+${modelObjname}= ${modelObjname}Service.selectByPrimaryKey(id);
+	<#if lineList?exists>
 		<#list lineList as item>
-		${item.model?uncap_first}List=${modelObjname}Service.get${item.model}ListBy${modelname}Id(id);
-		</#list></#if>
 
-	}
+		${item.model?uncap_first}List=${modelObjname}Service.get${item.model}ListBy${modelname}Id(id);
+			<#if item.trl>
+            List<Language> list=languageService.selectByExample(null);
+            List<Language> noList=new ArrayList<Language>();
+                for(Language lang:list)
+                {
+					boolean has=false;
+					for(${item.model} trl:${item.model?uncap_first}List)
+					{
+						if(trl.getLanguage().equals(lang.getCode()))
+						{
+							has=true;
+							break;
+						}
+					}
+					if(!has)
+					{
+					noList.add(lang);
+					}
+                }
+                for(Language lang:noList)
+                {
+					${item.model} trl=new ${item.model}();
+					trl.setLanguage(lang.getCode());
+					trl.set${modelname}Id(id);
+					${item.model?uncap_first}List.add(trl);
+                }
+			</#if>
+		</#list>
+	</#if>
+}
 <#if pagingByDb>
 public PaginatedListHelper searchPaginatedList()
 {
@@ -139,16 +171,27 @@ return ${modelObjname}Service.selectByExample(param);
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
 	 */
 	@Override
-	public void createForm() {
-		${modelObjname}=new ${modelname}();
-<#if lineList?exists>
-		<#list lineList as item>
-		${item.model?uncap_first}List=new ArrayList<${item.model}>();
-		</#list>
-</#if>
-	}
+public void createForm() {
+${modelObjname}=new ${modelname}();
 <#if lineList?exists>
 	<#list lineList as item>
+	${item.model?uncap_first}List=new ArrayList<${item.model}>();
+		<#if item.trl>
+        List
+        <Language> languageList=languageService.selectByExample(null);
+            for(Language lang:languageList)
+            {
+		${item.model} trl=new ${item.model}();
+            trl.setLanguage(lang.getCode());
+		${item.model?uncap_first}List.add(trl);
+            }
+		</#if>
+	</#list>
+</#if>
+    }
+<#if lineList?exists>
+	<#list lineList as item>
+	<#if !item.trl>
     @SkipValidation
     public String add${item.model}()
     {
@@ -182,6 +225,7 @@ return ${modelObjname}Service.selectByExample(param);
         }
         return "edit";
 	}
+	</#if>
 	</#list>
 </#if>
 	/* (non-Javadoc)
