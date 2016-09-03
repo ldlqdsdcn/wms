@@ -15,13 +15,15 @@ import java.util.Map;
  * Created by admin on 2016/8/26.
  */
 public class FreeMarkerHelper {
-    private static String  genmodelpath="D:\\projects\\delmar_platform\\core\\";
-    private static String genActionPath="D:\\projects\\delmar_platform\\web\\";
+    private String   genActionPath;
     private static FreeMarkerHelper freeMarkerHelper;
     private Configuration config = new Configuration();
     private FreeMarkerHelper()
     {
-        File filepath = new File("D:\\projects\\delmar_platform\\devs\\src\\main\\resources\\ftl");
+        File file=new File("");
+        File filepath = new File(file.getAbsolutePath()+"/devs/src/main/resources/ftl");
+        genActionPath=file.getAbsolutePath()+"/web/";
+
         try {
             config.setDirectoryForTemplateLoading(filepath);
         } catch (IOException e) {
@@ -46,7 +48,7 @@ public class FreeMarkerHelper {
             e.printStackTrace();
         }
         try {
-            System.out.println("path:"+genmodelpath+outFile);
+            System.out.println("path:"+outFile);
             File file=null;
             if(isAction)
             {
@@ -54,7 +56,7 @@ public class FreeMarkerHelper {
             }
             else
             {
-                file=new File(genmodelpath+outFile);
+                file=new File(outFile);
             }
 
             if(!file.exists())

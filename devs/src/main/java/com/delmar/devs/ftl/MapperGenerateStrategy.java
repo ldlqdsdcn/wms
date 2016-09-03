@@ -67,7 +67,7 @@ public class MapperGenerateStrategy {
             }
         }
         param.put("foreignList",foreignList);
-        FreeMarkerHelper.getInstance().outFile("mapper.ftl",param,"src/main/resources/com/delmar/"+genModelDto.getModule()+"/mybatis/sql/"+genModelDto.getModelName()+"Mapper.xml");
+        FreeMarkerHelper.getInstance().outFile("mapper.ftl",param,this.genModelDto.getOutputPath().getAbsolutePath()+"/src/main/resources/com/delmar/"+genModelDto.getModule()+"/mybatis/sql/"+genModelDto.getModelName()+"Mapper.xml");
 
     }
 

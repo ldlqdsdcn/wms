@@ -2,6 +2,7 @@ package com.delmar.devs.model;
 
 import lombok.Data;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -13,6 +14,9 @@ public class GenModelDto {
     private String modelName;
     private String module;
     private String remark;
+    private String outputModule;
+
+    private File outputPath;
     /**
      * 是否数据库分页
      */
@@ -31,7 +35,10 @@ public class GenModelDto {
     private boolean trl;
 
     private List<GenModelDto> includeModelList;
+    public GenModelDto()
+    {
 
+    }
     /**
      *
      * @param tableName 表名

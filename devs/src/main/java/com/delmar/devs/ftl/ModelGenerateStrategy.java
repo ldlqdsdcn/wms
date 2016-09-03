@@ -66,7 +66,7 @@ public class ModelGenerateStrategy {
             columnInfoList.add(columnInfo);
         }
         param.put("propertyList",columnInfoList);
-        FreeMarkerHelper.getInstance().outFile("model.ftl",param,"src/main/java/com/delmar/"+genModelDto.getModule()+"/model/"+genModelDto.getModelName()+".java");
+        FreeMarkerHelper.getInstance().outFile("model.ftl",param,this.genModelDto.getOutputPath().getAbsolutePath()+"/src/main/java/com/delmar/"+genModelDto.getModule()+"/model/"+genModelDto.getModelName()+".java");
 
     }
 }

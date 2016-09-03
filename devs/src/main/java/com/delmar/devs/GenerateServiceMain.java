@@ -86,7 +86,7 @@ public class GenerateServiceMain {
 
 
 				root.put("modelname", model.getModelName());
-				FreeMarkerHelper.getInstance().outFile("serviceInterface.ftl",root,"src/main/java/"+interfacepackage.replace(".", "/")+"/"+model.getModelName()+"Service.java");
+				FreeMarkerHelper.getInstance().outFile("serviceInterface.ftl",root,this.model.getOutputPath().getAbsolutePath()+"/src/main/java/"+interfacepackage.replace(".", "/")+"/"+model.getModelName()+"Service.java");
 
 		}
 		catch(Exception e)
@@ -126,7 +126,7 @@ public class GenerateServiceMain {
 				System.out.println("modelname2="+modelname2);
 				root.put("serviceName", "@Service(\""+modelname2+"Service\")");
 
-				FreeMarkerHelper.getInstance().outFile("serviceClass.ftl",root,"src/main/java/"+classpackage.replace(".", "/")+"/"+model.getModelName()+"ServiceImpl.java");
+				FreeMarkerHelper.getInstance().outFile("serviceClass.ftl",root,this.model.getOutputPath().getAbsolutePath()+"/src/main/java/"+classpackage.replace(".", "/")+"/"+model.getModelName()+"ServiceImpl.java");
 
 		}
 		catch(Exception e)

@@ -35,7 +35,7 @@ public class CodeGenerationServiceImpl implements CodeGenerationService {
             //生成model类
             modelGenerateStrategy.generateModel();
             //生成dao
-            GenerateDaoMain generateDaoMain=new GenerateDaoMain(model.getModule(),new String[]{model.getModelName()});
+            GenerateDaoMain generateDaoMain=new GenerateDaoMain(model.getModule(),new String[]{model.getModelName()},model);
             generateDaoMain.generateInterface();
             generateDaoMain.generatedaoclass();
             //生成service

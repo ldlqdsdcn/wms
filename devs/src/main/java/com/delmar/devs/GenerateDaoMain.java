@@ -8,6 +8,7 @@
 package com.delmar.devs;
 
 import com.delmar.devs.ftl.FreeMarkerHelper;
+import com.delmar.devs.model.GenModelDto;
 import com.delmar.utils.DateTimeDecorator;
 
 import java.util.Date;
@@ -22,14 +23,18 @@ public class GenerateDaoMain {
 
     private String modulename;
 
+    private GenModelDto model;
+
 
     /**
      *
      */
-    public GenerateDaoMain(String modulename, String[] modelList) {
+    public GenerateDaoMain(String modulename, String[] modelList,GenModelDto model) {
         this.modulename = modulename;
 
         this.modelList = modelList;
+
+        this.model=model;
     }
 
     public void generateInterface() {
@@ -49,7 +54,7 @@ public class GenerateDaoMain {
             for (String model : modelList) {
 
                 root.put("modelname", model);
-                FreeMarkerHelper.getInstance().outFile("daoInterface.ftl", root, "src/main/java/" + interfacepackage.replace(".", "/") + "/" + model + "Dao.java");
+                FreeMarkerHelper.getInstance().outFile("daoInterface.ftl", root, this.model.getOutputPath().getAbsolutePath()+"/src/main/java/" + interfacepackage.replace(".", "/") + "/" + model + "Dao.java");
 
             }
         } catch (Exception e) {
@@ -78,7 +83,7 @@ public class GenerateDaoMain {
                 String bgnChar = model.substring(0, 1);
                 root.put("repositoryname", bgnChar.toLowerCase() + model.substring(1) + "Dao");
                 root.put("mappername", "com.delmar." + modulename + ".mybatis.sql." + model + "Mapper");
-                FreeMarkerHelper.getInstance().outFile("daoclass.ftl", root, "src/main/java/" + classpackage.replace(".", "/") + "/" + model + "DaoMybatis.java");
+                FreeMarkerHelper.getInstance().outFile("daoclass.ftl", root, this.model.getOutputPath().getAbsolutePath()+"/src/main/java/" + classpackage.replace(".", "/") + "/" + model + "DaoMybatis.java");
             }
         } catch (Exception e) {
             e.printStackTrace();
