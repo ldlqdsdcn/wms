@@ -191,7 +191,7 @@ public class AirQuotaServiceImpl implements QuotaService{
 
 		
 		try {
-			kgID=chargenameService.GetIdByCode(kgCode);
+			kgID=chargenameService.getIdByCode(kgCode);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

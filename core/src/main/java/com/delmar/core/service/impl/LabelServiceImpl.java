@@ -48,7 +48,6 @@ public class LabelServiceImpl extends CoreServiceImpl<Label> implements
 
 public Integer saveLabel(Label label,List<LabelTrl> labelTrlList) {
 	Integer id=save(label);
-	Date now=new Date();
 		for(LabelTrl labelTrl: labelTrlList)
 		{
 			labelTrl.setLabelId(id);

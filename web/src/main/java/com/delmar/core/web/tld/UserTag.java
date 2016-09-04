@@ -1,6 +1,6 @@
 package com.delmar.core.web.tld;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Client;
 import com.delmar.sys.model.Org;
 import com.delmar.sys.model.User;
@@ -18,9 +18,9 @@ import java.io.IOException;
 public class UserTag extends BodyTagSupport {
     private Integer userId;
     private String module;
-    UserService userService=EaContext.ApplicationContext.getBean(UserService.class);
-    ClientService clientService=EaContext.ApplicationContext.getBean(ClientService.class);
-    OrgService orgService=EaContext.ApplicationContext.getBean(OrgService.class);
+    UserService userService=SystemContextHelper.getBean(UserService.class);
+    ClientService clientService=SystemContextHelper.getBean(ClientService.class);
+    OrgService orgService=SystemContextHelper.getBean(OrgService.class);
     @Override
     public int doEndTag() throws JspException {
         if(userId==null)

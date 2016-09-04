@@ -20,7 +20,7 @@ import com.delmar.core.service.CoreService;
  */
 public interface CarrierService extends CoreService<Carrier> {
 	
-	Integer GetIdByCode(String code);
+	Integer getIdByCode(String code);
 
 	/**
 	 * @param ids 要删除的运输公司 id列表

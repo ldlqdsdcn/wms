@@ -19,7 +19,7 @@ import com.delmar.core.service.CoreService;
  * @author 刘大磊 2014-12-22 13:26:54
  */
 public interface PortService extends CoreService<Port> {
-	Integer GetIdByCode(String code);
+	Integer getIdByCode(String code);
 	List<Port> selectPortByMode(Map<String, Object> param) ;
 	Port getPortByportcodeAndMode(String portcode, String mode);
 	/**

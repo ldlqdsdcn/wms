@@ -161,7 +161,6 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
-Integer currentUserId=getCurrentUser();
 		searchService.saveSearch(search,searchColumnList);
 		this.id=search.getId();
 		return edit();

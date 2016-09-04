@@ -9,11 +9,11 @@ import org.displaytag.properties.MediaTypeEnum;
 
 import com.delmar.base.model.Datadict;
 import com.delmar.base.service.DatadictService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 
 public class SettingsLevelDecorator implements DisplaytagColumnDecorator {
 
-	private DatadictService datadictService=EaContext.getBean("datadictService", DatadictService.class);
+	private DatadictService datadictService=SystemContextHelper.getBean("datadictService", DatadictService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

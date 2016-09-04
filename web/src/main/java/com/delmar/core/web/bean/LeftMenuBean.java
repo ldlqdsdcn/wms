@@ -27,7 +27,7 @@ public class LeftMenuBean {
 
 		if(pageMenuService==null)
 		{
-			pageMenuService=(PageMenuService)EaContext.ApplicationContext.getBean("pageMenuService");
+			pageMenuService=(PageMenuService)SystemContextHelper.getBean(PageMenuService.class);
 		}
 		
 		return pageMenuService.getLeftMenus(user.getId(),local);

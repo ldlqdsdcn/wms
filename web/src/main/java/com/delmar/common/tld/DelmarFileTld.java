@@ -11,7 +11,7 @@ import com.delmar.common.model.FileSetting;
 import com.delmar.common.service.FileRelationService;
 import com.delmar.common.service.FileSettingService;
 import com.delmar.core.web.action.PrivilegeOperatorComon;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.core.web.util.FacesUtils;
 import com.delmar.sys.model.Module;
@@ -58,8 +58,8 @@ public class DelmarFileTld extends BodyTagSupport {
 	
 	public DelmarFileTld()
 	{
-		fileRelationService=EaContext.getBean("fileRelationService", FileRelationService.class);
-		fileSettingService=EaContext.getBean("fileSettingService", FileSettingService.class);
+		fileRelationService=SystemContextHelper.getBean("fileRelationService", FileRelationService.class);
+		fileSettingService=SystemContextHelper.getBean("fileSettingService", FileSettingService.class);
 	}
 	
 	
@@ -108,7 +108,6 @@ public class DelmarFileTld extends BodyTagSupport {
 				count ++;
 				if(count>3)
 				{
-					String moreUrl=request.getContextPath()+"/commons/commonFile_list.action?tableName="+tableName+"&tableId="+tableId;	
 					sb.append("<td class='d-file-more' >");
 					//sb.append("<input type=\"button\"  class=\"input_submit\" onclick=\"viewFileList('"+resource.get("public.uploadfile.title")+"')\" value=\""+resource.get("public.uploadfile.morefile")+"\">");					
 					sb.append("<a href=\"#\"  onclick=\"viewFileList('"+resource.get("public.uploadfile.title")+"')\">More....</a>");

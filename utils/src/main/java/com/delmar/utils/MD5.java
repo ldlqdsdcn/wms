@@ -7,6 +7,8 @@
 
 package com.delmar.utils;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * @author 刘大磊 2014年12月22日 上午9:03:20
  */
@@ -158,7 +160,11 @@ public class MD5
     public String getMD5ofStr(String s)
     {
         md5Init();
-        md5Update(s.getBytes(), s.length());
+        try {
+            md5Update(s.getBytes("utf-8"), s.length());
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("字符加密md5失败",e);
+        }
         md5Final();
         digestHexStr = "";
         for(int i = 0; i < 16; i++)

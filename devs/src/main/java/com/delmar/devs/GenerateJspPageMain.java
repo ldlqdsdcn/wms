@@ -103,7 +103,6 @@ public class GenerateJspPageMain {
     }
 
     private List<JspModelProp> getOutPutList(String mode, TableMetaDataDto tableData) {
-        String modeName = com.delmar.utils.StringUtil.upperFirstChar(mode);
 
         List<JspModelProp> jspFormPropList = new ArrayList<>();
         List<ColumnMetaDataDto> columnMetaDataDtoList = tableData.getColumnList();

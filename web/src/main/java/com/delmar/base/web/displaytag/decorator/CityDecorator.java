@@ -20,7 +20,7 @@ import com.delmar.base.model.City;
 import com.delmar.base.model.CityTrl;
 import com.delmar.base.service.CityService;
 import com.delmar.base.service.CityTrlService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 
 /**
@@ -28,8 +28,8 @@ import com.delmar.core.web.bean.UserResource;
  */
 public class CityDecorator implements DisplaytagColumnDecorator {
 
-	private CityService cityService=EaContext.getBean("cityService", CityService.class);
-	private CityTrlService cityTrlService=EaContext.getBean("cityTrlService", CityTrlService.class);
+	private CityService cityService=SystemContextHelper.getBean("cityService", CityService.class);
+	private CityTrlService cityTrlService=SystemContextHelper.getBean("cityTrlService", CityTrlService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

@@ -1,6 +1,6 @@
 package com.delmar.system.web.displaytag.decorator;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Client;
 import com.delmar.sys.service.ClientService;
 import org.displaytag.decorator.DisplaytagColumnDecorator;
@@ -13,7 +13,7 @@ import javax.servlet.jsp.PageContext;
  * Created by admin on 2016/8/30.
  */
 public class ClientDecorator implements DisplaytagColumnDecorator {
-    private ClientService clientService= EaContext.getBean("clientService", ClientService.class);
+    private ClientService clientService= SystemContextHelper.getBean("clientService", ClientService.class);
     /* (non-Javadoc)
      * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
      */
@@ -24,7 +24,6 @@ public class ClientDecorator implements DisplaytagColumnDecorator {
         if(arg0!=null)
         {
             Integer value=(Integer)arg0;
-            StringBuilder sb=new StringBuilder("");
             Client client=clientService.selectByPrimaryKey(value);
             if(client!=null)
             {

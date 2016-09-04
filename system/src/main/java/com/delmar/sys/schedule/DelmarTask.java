@@ -135,7 +135,7 @@ public class DelmarTask implements BeanFactoryAware {
 	}
 
 	public static void main(String[] args) {
-		Date now = new Date();
+
 		GregorianCalendar gc = new GregorianCalendar();
 		System.out.println("gc.get(Calendar.DAY_OF_WEEK)="
 				+ gc.get(Calendar.DAY_OF_WEEK));

@@ -101,8 +101,6 @@ List list = userFootmarkService.selectByExample(param);
 	 */
 	@Override
 	public String saveForm() {
-Integer currentUserId=getCurrentUser();
-User user=getUserInSession();
 		userFootmarkService.saveUserFootmark(userFootmark);
 		return "edit";
 	}

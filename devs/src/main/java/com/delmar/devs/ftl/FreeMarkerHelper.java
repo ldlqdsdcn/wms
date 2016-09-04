@@ -1,5 +1,6 @@
 package com.delmar.devs.ftl;
 
+import com.delmar.core.service.exception.ParamMissingException;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -41,6 +42,10 @@ public class FreeMarkerHelper {
     }
     public void outFile(String templateFile, Map root, String outFile,boolean isAction)
     {
+        if(root==null)
+        {
+            throw new ParamMissingException("root 参数不允许为空");
+        }
         Template template = null;
         try {
             template = config.getTemplate(templateFile, "UTF-8");

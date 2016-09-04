@@ -53,8 +53,7 @@ public class ClientExtraJsonAction extends CoreAction {
         response.getWriter().write("success");
         } catch (Exception ex)
         {
-        	
-        	
+        	throw new RuntimeException(ex);
         }
         
 
@@ -82,7 +81,7 @@ public class ClientExtraJsonAction extends CoreAction {
            response.getWriter().write(gson.toJson(clientExtra));
         } catch (Exception ex)
         {
-        	
+			throw new RuntimeException(ex);
         	
         }
 		
@@ -107,8 +106,7 @@ public class ClientExtraJsonAction extends CoreAction {
 			data = java.net.URLDecoder.decode(data, "UTF-8");
 
 		ClientExtra clientExtra= gson.fromJson(data, ClientExtra.class);
-		Date now=new Date();			
-    	   
+
 		Integer extraId=clientExtraService.save(clientExtra);
 		clientExtra.setId(extraId);
 		
@@ -121,7 +119,7 @@ public class ClientExtraJsonAction extends CoreAction {
          response.getWriter().write(gson.toJson(clientExtra));		
        } catch (Exception ex)
        {
-       	
+		   throw new RuntimeException(ex);
        	
        }
 		

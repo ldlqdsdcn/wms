@@ -45,9 +45,9 @@ public class CarrierServiceImpl extends CoreServiceImpl<Carrier> implements
 	}
 	
 	
-	public Integer GetIdByCode(String code)
+	public Integer getIdByCode(String code)
 	{
-		Map<String,Object> filterMap=new HashMap<String,Object>();
+		Map<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);
 		
 		List<Carrier> objList=selectByExample(filterMap);

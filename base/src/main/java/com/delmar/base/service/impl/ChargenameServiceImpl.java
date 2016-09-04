@@ -41,9 +41,9 @@ public class ChargenameServiceImpl extends CoreServiceImpl<Chargename> implement
 		return chargenameDao;
 	}
 	
-	public Integer GetIdByCode(String code)
+	public Integer getIdByCode(String code)
 	{
-		Map<String,Object> filterMap=new HashMap<String,Object>();
+		Map<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);
 		
 		List<Chargename> objList=selectByExample(filterMap);

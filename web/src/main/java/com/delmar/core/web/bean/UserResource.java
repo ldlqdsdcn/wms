@@ -14,7 +14,7 @@ import com.delmar.utils.ResourceMessage;
 /**
  * @author 刘大磊 2015年2月3日 上午11:06:45
  */
-public class UserResource {
+public class UserResource implements java.io.Serializable{
 	private 	 ResourceBundle bundle=null;
 	private Locale locale;
 	/**

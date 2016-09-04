@@ -145,9 +145,7 @@ label=new Label();
 	 */
 	@Override
 	public String saveForm() {
-Integer currentUserId=getCurrentUser();
-User user=getUserInSession();
-		labelService.saveLabel(label,labelTrlList);
+	labelService.saveLabel(label,labelTrlList);
 		return "edit";
 	}
 	/**

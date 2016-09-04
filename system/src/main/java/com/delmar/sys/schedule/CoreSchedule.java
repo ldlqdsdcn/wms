@@ -22,7 +22,7 @@ public class CoreSchedule  {
 	private ScheduledLogService scheduledLogService;		
 	
 	
-	public void RecordScheduleLog() {
+	public void recordScheduleLog() {
 		
 	
 		Scheduled scheduled=scheduledService.getScheduledByClassName(getClass().getName());

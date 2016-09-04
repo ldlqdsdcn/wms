@@ -7,13 +7,13 @@ import org.displaytag.decorator.DisplaytagColumnDecorator;
 import org.displaytag.exception.DecoratorException;
 import org.displaytag.properties.MediaTypeEnum;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sysSettings.model.SysSettingsItem;
 import com.delmar.sysSettings.service.SysSettingsItemService;
 
 public class SettingsItemDecorator implements DisplaytagColumnDecorator {
 
-	private SysSettingsItemService sysSettingsItemService=EaContext.getBean("SysSettingsItemService", SysSettingsItemService.class);
+	private SysSettingsItemService sysSettingsItemService=SystemContextHelper.getBean("SysSettingsItemService", SysSettingsItemService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

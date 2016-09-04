@@ -14,13 +14,13 @@ import org.displaytag.properties.MediaTypeEnum;
 
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictTypeService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 
 /**
  * @author 刘大磊 2015年3月5日 下午4:39:43
  */
 public class DatadictTypeDecorator implements DisplaytagColumnDecorator {
-	private DatadictTypeService datadictTypeService=EaContext.getBean("datadictTypeService", DatadictTypeService.class);
+	private DatadictTypeService datadictTypeService=SystemContextHelper.getBean("datadictTypeService", DatadictTypeService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

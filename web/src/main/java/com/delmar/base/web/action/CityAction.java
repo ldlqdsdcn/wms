@@ -48,7 +48,7 @@ public class CityAction extends CoreEditPrivAction {
 	
 	private void init()
 	{
-		UserResource ur=(UserResource)ServletActionContext.getRequest().getSession().getAttribute("resource");
+
 		
 			if(city.getId()!=null)
 				{

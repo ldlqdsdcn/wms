@@ -23,14 +23,8 @@ import com.delmar.sys.model.UserSession;
 public class UserOnLineAction extends CoreAction{
 
 	public String searchList()  {
-		
-		HttpServletRequest request=ServletActionContext.getRequest();
-		
-		
-		
+
 		List<UserSession> list=UserOnlineContent.getUserList();
-
-
 		int onlinecount = list.size();
 		
 		

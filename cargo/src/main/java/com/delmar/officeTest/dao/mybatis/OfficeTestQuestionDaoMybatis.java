@@ -31,7 +31,7 @@ public class OfficeTestQuestionDaoMybatis extends CoreDaoMyBatis<OfficeTestQuest
 
 	public List<OfficeTestQuestion> searchQuestion(Map<String, Object> param) {
 		
-		List<OfficeTestQuestion> list = new ArrayList<OfficeTestQuestion>();
+
 		String sql1 = "Select a.*,b.*,c.*  From Office_TestQuestion a "
 				+ " INNER JOIN Office_TestBank b ON a.testBank_Id=b.id "
 				+ " LEFT OUTER JOIN Office_TestExam_Detail c ON a.id=c.testQuestion_Id "
@@ -41,8 +41,8 @@ public class OfficeTestQuestionDaoMybatis extends CoreDaoMyBatis<OfficeTestQuest
 		if (param != null) {
 			param.put("customSelect", sql1);
 		}
-		
-		list = sqlSessionTemplate.selectList(this.getSqlName() + selectByParm_SQL, param);
+
+		List<OfficeTestQuestion>list = sqlSessionTemplate.selectList(this.getSqlName() + selectByParm_SQL, param);
 		
 		String sql2 = "Select a.*,b.*,c.* From Office_TestQuestion a "
 				+ " INNER JOIN Office_TestBank b ON a.testBank_Id=b.id "

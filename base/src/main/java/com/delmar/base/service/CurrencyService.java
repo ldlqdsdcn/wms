@@ -16,5 +16,5 @@ import com.delmar.core.service.CoreService;
  */
 public interface CurrencyService extends CoreService<Currency> {
 	
-	Integer GetIdByCode(String code) ;
+	Integer getIdByCode(String code) ;
 }

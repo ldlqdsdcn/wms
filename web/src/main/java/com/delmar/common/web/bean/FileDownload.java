@@ -12,13 +12,13 @@ import org.apache.commons.lang.StringUtils;
 
 import com.delmar.common.model.DelmarFile;
 import com.delmar.common.service.DelmarFileService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 
 /**
  * @author 刘大磊 2015年8月19日 上午9:02:47
  */
 public class FileDownload {
-	private static DelmarFileService delmarFileService=EaContext.getBean("delmarFileService", DelmarFileService.class);
+	private static DelmarFileService delmarFileService=SystemContextHelper.getBean("delmarFileService", DelmarFileService.class);
 	
 	public static DelmarFile getFilePath(HttpServletRequest request)
 	{

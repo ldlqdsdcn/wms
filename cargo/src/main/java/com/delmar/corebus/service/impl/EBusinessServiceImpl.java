@@ -316,7 +316,6 @@ public class EBusinessServiceImpl extends CoreServiceImpl<EBusiness> implements
 		Map ccMap=new HashMap();
 		ccMap.put("baseCityId", city.getId());
 		List<CityCompany> ccList=cityCompanyService.selectByExample(ccMap);
-		List<String> mailList=new ArrayList<String>();
 		for(CityCompany cc:ccList)
 		{
 			Map<String,Object> cparam=new HashMap<String,Object>();

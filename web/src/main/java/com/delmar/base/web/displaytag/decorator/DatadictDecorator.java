@@ -20,7 +20,7 @@ import com.delmar.base.model.Datadict;
 import com.delmar.base.model.DatadictTrl;
 import com.delmar.base.service.DatadictService;
 import com.delmar.base.service.DatadictTrlService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 
 /**
@@ -28,8 +28,8 @@ import com.delmar.core.web.bean.UserResource;
  */
 public class DatadictDecorator implements DisplaytagColumnDecorator {
 
-	private DatadictService datadictService=EaContext.getBean("datadictService", DatadictService.class);
-	private DatadictTrlService datadictTrlService=EaContext.getBean("datadictTrlService", DatadictTrlService.class);
+	private DatadictService datadictService=SystemContextHelper.getBean("datadictService", DatadictService.class);
+	private DatadictTrlService datadictTrlService=SystemContextHelper.getBean("datadictTrlService", DatadictTrlService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

@@ -36,7 +36,7 @@ public class CurrencyServiceImpl extends CoreServiceImpl<Currency> implements
 		return currencyDao;
 	}
 	
-	public Integer GetIdByCode(String code)
+	public Integer getIdByCode(String code)
 	{
 		Map<String,Object> filterMap=new HashMap<>();
 		filterMap.put("code",code);

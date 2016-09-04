@@ -13,7 +13,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Client;
 import com.delmar.sys.model.Org;
 import com.delmar.sys.model.UserorgAccess;
@@ -26,8 +26,8 @@ import com.delmar.system.web.model.PrivilegesDataFilter;
  * @author 刘大磊 2015年1月22日 下午5:02:40
  */
 public class UserLoginPageSelectList {
-	private static ClientService clientService;
-	private static OrgService orgService;
+	private  ClientService clientService;
+	private  OrgService orgService;
 	List<Client> clientList=new ArrayList<Client>();
 	List<Org> orgList;
 	/**
@@ -35,9 +35,9 @@ public class UserLoginPageSelectList {
 	 */
 	public UserLoginPageSelectList() {
 		if(clientService==null)
-			clientService=EaContext.ApplicationContext.getBean("clientService", ClientService.class);
+			clientService=SystemContextHelper.getBean("clientService", ClientService.class);
 		if(orgService==null)
-			orgService=EaContext.ApplicationContext.getBean("orgService",OrgService.class);
+			orgService=SystemContextHelper.getBean("orgService",OrgService.class);
 	}
 	public  String  getOrgsSelectList(HttpSession session)
 	{

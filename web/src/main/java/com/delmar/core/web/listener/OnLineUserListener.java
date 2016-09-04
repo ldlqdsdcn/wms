@@ -24,14 +24,12 @@ public void sessionCreated(HttpSessionEvent arg0) {
 	}
 
 	public void sessionDestroyed(HttpSessionEvent arg0) {
-		Date now=new Date();
 		HttpSession session=arg0.getSession();
 		
 		User user=(User)session.getAttribute("loginUser");
 		
 		if(user!=null)
 		{
-			UserContent userContent=(UserContent)session.getAttribute("userContent");
 			//System.out.println("删除用户");
 		/*	UserOnlineContent.removeUser(userContent.userSession);
 			UserSessionService userSessionService=(UserSessionService)Tools.findBean("userSessionService");

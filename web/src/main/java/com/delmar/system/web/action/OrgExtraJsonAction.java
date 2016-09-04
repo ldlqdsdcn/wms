@@ -53,7 +53,7 @@ public class OrgExtraJsonAction extends CoreAction {
         response.getWriter().write("success");
         } catch (Exception ex)
         {
-        	
+			throw new RuntimeException(ex);
         	
         }
         
@@ -82,7 +82,7 @@ public class OrgExtraJsonAction extends CoreAction {
            response.getWriter().write(gson.toJson(orgExtra));
         } catch (Exception ex)
         {
-        	
+			throw new RuntimeException(ex);
         	
         }
 		
@@ -107,8 +107,7 @@ public class OrgExtraJsonAction extends CoreAction {
 			data = java.net.URLDecoder.decode(data, "UTF-8");
 
 		OrgExtra orgExtra= gson.fromJson(data, OrgExtra.class);
-		Date now=new Date();			
-    	   
+
 		Integer extraId=orgExtraService.save(orgExtra);
 		orgExtra.setId(extraId);
 		
@@ -121,8 +120,8 @@ public class OrgExtraJsonAction extends CoreAction {
          response.getWriter().write(gson.toJson(orgExtra));		
        } catch (Exception ex)
        {
-       	
-       	
+
+		   throw new RuntimeException(ex);
        }
 		
 	}

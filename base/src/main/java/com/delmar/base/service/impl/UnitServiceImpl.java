@@ -36,7 +36,7 @@ public class UnitServiceImpl extends CoreServiceImpl<Unit> implements
 		return unitDao;
 	}
 
-	public Integer GetIdByCode(String code)
+	public Integer getIdByCode(String code)
 	{
 		Map<String,Object> filterMap=new HashMap<String,Object>();
 		filterMap.put("code",code);

@@ -39,7 +39,7 @@ public class AirQuotaServiceTest {
 	public void testAirQuota()
 	{
 		User user=userService.getUserByUsername("fsk");
-		QuotaBusParam quotaBusParam=new QuotaBusParam(user, "DKAAL", "DKAAR", "", new BigDecimal(1000),new BigDecimal(0.15), null,null, null, "Air", 0);
+		QuotaBusParam quotaBusParam=new QuotaBusParam(user, "DKAAL", "DKAAR", "", new BigDecimal(1000),new BigDecimal("0.15"), null,null, null, "Air", 0);
 		
 		try {
 			QuotaBusModelResult qbmr=airQuotaService.quote(quotaBusParam);

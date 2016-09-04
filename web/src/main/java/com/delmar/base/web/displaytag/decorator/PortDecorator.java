@@ -20,15 +20,15 @@ import com.delmar.base.model.Port;
 import com.delmar.base.model.PortTrl;
 import com.delmar.base.service.PortService;
 import com.delmar.base.service.PortTrlService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 
 /**
  * @author 刘大磊 2015年2月9日 下午5:12:28
  */
 public class PortDecorator implements DisplaytagColumnDecorator {
-	private PortService portService=EaContext.getBean("portService", PortService.class);
-	private PortTrlService portTrlService=EaContext.getBean("portTrlService", PortTrlService.class);
+	private PortService portService=SystemContextHelper.getBean("portService", PortService.class);
+	private PortTrlService portTrlService=SystemContextHelper.getBean("portTrlService", PortTrlService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

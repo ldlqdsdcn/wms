@@ -44,7 +44,7 @@ public class PortServiceImpl extends CoreServiceImpl<Port> implements
 		return portDao;
 	}
 	
-	public Integer GetIdByCode(String code)
+	public Integer getIdByCode(String code)
 	{
 		Map<String,Object> filterMap=new HashMap<String,Object>();
 		

@@ -237,8 +237,6 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             String columnName;
             String columnType;
             ResultSet colRet = databaseMetaData.getColumns(null, "%", tableName, "%");
-           ResultSetMetaData resultSetMetaData=  colRet.getMetaData();
-
             while (colRet.next()) {
                 ColumnMetaDataDto columnMetaDataDto=new ColumnMetaDataDto();
                 columnName = colRet.getString(COLUMN_NAME);

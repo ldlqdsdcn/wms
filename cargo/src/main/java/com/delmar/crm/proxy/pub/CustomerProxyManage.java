@@ -22,7 +22,7 @@ public class CustomerProxyManage {
 		
 	}
 	
-	public static CustomerProxyManage getInstance()
+	public static synchronized CustomerProxyManage getInstance()
 	{
 		if (instance == null)
 			instance = new CustomerProxyManage();

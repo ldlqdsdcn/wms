@@ -25,7 +25,7 @@ public class DelmarTaskAgent {
 	@Autowired
 	private ScheduledService scheduledService;
 	
-	public static DelmarTaskAgent instance=null;
+	private static DelmarTaskAgent instance=null;
 	
 	public List<Scheduled> scheduleList=new ArrayList<Scheduled>();
 	public List<String> scheduleCodeList=new ArrayList<String>();
@@ -36,7 +36,7 @@ public class DelmarTaskAgent {
 		
 	}
 	
-	public static DelmarTaskAgent getInstance()
+	public static  synchronized DelmarTaskAgent getInstance()
 	{
 		if (instance==null)
 			instance=new DelmarTaskAgent();

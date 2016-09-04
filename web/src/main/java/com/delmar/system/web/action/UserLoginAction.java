@@ -208,7 +208,7 @@ public class UserLoginAction extends CoreAction {
 		
 		} catch (Exception ex)
 		{
-			
+			throw new RuntimeException(ex);
 		}		
 		
 

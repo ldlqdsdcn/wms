@@ -12,7 +12,7 @@ import org.displaytag.decorator.DisplaytagColumnDecorator;
 import org.displaytag.exception.DecoratorException;
 import org.displaytag.properties.MediaTypeEnum;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Org;
 import com.delmar.sys.service.OrgService;
 
@@ -20,7 +20,7 @@ import com.delmar.sys.service.OrgService;
  * @author 刘大磊 2015年3月11日 下午4:56:06
  */
 public class OrgDecorator implements  DisplaytagColumnDecorator {
-	private OrgService orgService=EaContext.getBean("orgService", OrgService.class);
+	private OrgService orgService=SystemContextHelper.getBean("orgService", OrgService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

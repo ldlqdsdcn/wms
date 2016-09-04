@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Client;
 import com.delmar.sys.service.ClientService;
 
@@ -20,7 +20,7 @@ import com.delmar.sys.service.ClientService;
 public class SelectList {
 	public static String getClientList(HttpServletRequest request)
 	{
-		ClientService clientService=EaContext.ApplicationContext.getBean("clientService", ClientService.class);
+		ClientService clientService=SystemContextHelper.getBean("clientService", ClientService.class);
 		StringBuffer sb=new StringBuffer("<select id='clientId'>");
 		List<Client> clientList=clientService.selectByExample(null);
 		for(Client client:clientList)

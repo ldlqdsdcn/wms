@@ -103,8 +103,7 @@ public class UserExtraAction  extends CoreEditPrivAction {
 	@Override
 	public List search() {
 		
-		HttpServletRequest request=ServletActionContext.getRequest();
-		
+
 		UserResource ur=(UserResource)ServletActionContext.getRequest().getSession().getAttribute("resource");
 		PrivilegesDataFilter up=(PrivilegesDataFilter)FacesUtils.getSession().getAttribute(WebConst.SESSION_USERPRIVILEGES);
 		

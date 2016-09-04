@@ -12,7 +12,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.SystemConst;
 import com.delmar.sys.model.Module;
 import com.delmar.sys.model.ModulePage;
@@ -134,11 +134,11 @@ public class PrivilegeOperatorComon {
 		{
 			if(path.startsWith(url.getPageUrl()))
 			{
-				ModulePageService modulePageService=EaContext.getBean("modulePageService", ModulePageService.class);
+				ModulePageService modulePageService=SystemContextHelper.getBean("modulePageService", ModulePageService.class);
 				Map<String,Object> param=new HashMap<String,Object>();
 				param.put("pageId", url.getId());
 				ModulePage mp=modulePageService.getByExample(param);
-				ModuleService moduleService=EaContext.getBean("moduleService", ModuleService.class);
+				ModuleService moduleService=SystemContextHelper.getBean("moduleService", ModuleService.class);
 				return moduleService.selectByPrimaryKey(mp.getModuleId());
 			}
 		}

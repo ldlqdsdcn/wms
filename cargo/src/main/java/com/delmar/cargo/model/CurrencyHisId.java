@@ -61,27 +61,18 @@ public class CurrencyHisId implements java.io.Serializable {
 		this.areaId = areaId;
 	}
 
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof CurrencyHisId))
-			return false;
-		CurrencyHisId castOther = (CurrencyHisId) other;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof CurrencyHisId)) return false;
 
-		return ((this.getStartDate() == castOther.getStartDate()) || (this
-				.getStartDate() != null && castOther.getStartDate() != null && this
-				.getStartDate().equals(castOther.getStartDate())))
-				&& ((this.getEndDate() == castOther.getEndDate()) || (this
-						.getEndDate() != null && castOther.getEndDate() != null && this
-						.getEndDate().equals(castOther.getEndDate())))
-				&& ((this.getCode() == castOther.getCode()) || (this.getCode() != null
-						&& castOther.getCode() != null && this.getCode()
-						.equals(castOther.getCode())))
-				&& ((this.getAreaId() == castOther.getAreaId()) || (this
-						.getAreaId() != null && castOther.getAreaId() != null && this
-						.getAreaId().equals(castOther.getAreaId())));
+		CurrencyHisId that = (CurrencyHisId) o;
+
+		if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
+		if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
+		if (code != null ? !code.equals(that.code) : that.code != null) return false;
+		return areaId != null ? areaId.equals(that.areaId) : that.areaId == null;
+
 	}
 
 	public int hashCode() {

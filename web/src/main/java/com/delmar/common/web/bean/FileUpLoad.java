@@ -18,7 +18,7 @@ import com.delmar.common.model.FileRelation;
 import com.delmar.common.model.FileSetting;
 import com.delmar.common.service.DelmarFileService;
 import com.delmar.common.service.FileRelationService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.util.FacesUtils;
 import com.google.gson.Gson;
 /******************************************************************************
@@ -35,8 +35,8 @@ import com.google.gson.Gson;
  * @author 刘大磊 2015年4月16日 上午11:07:47
  */
 public class FileUpLoad {
-	private static DelmarFileService delmarFileService=EaContext.getBean("delmarFileService", DelmarFileService.class);
-	private static FileRelationService fileRelationService=EaContext.getBean("fileRelationService", FileRelationService.class);
+	private static DelmarFileService delmarFileService=SystemContextHelper.getBean("delmarFileService", DelmarFileService.class);
+	private static FileRelationService fileRelationService=SystemContextHelper.getBean("fileRelationService", FileRelationService.class);
 	public FileUpLoad() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,17 +87,10 @@ public static String doFileUpload(ServletContext application,HttpServletRequest 
                 	 return "-1";
                  }
                  String fileName = item.getName();
-                 String fileName2=fileName.substring(fileName.lastIndexOf("\\")+1);
+
                  if (fileName != null && !fileName.trim().equals("")) {
-
+                     String fileName2=fileName.substring(fileName.lastIndexOf("\\")+1);
                      if (item.isFormField()) {
-
-                         String name = item.getFieldName();
-                        
-                         String value = new String(item.getString()
-
-                                 .getBytes("UTF-8"), "UTF-8");
-
 
                      } else {
 
@@ -154,7 +147,6 @@ public static String doFileUpload(ServletContext application,HttpServletRequest 
                              df.setExtension(item.getName().substring(item.getName().indexOf(".")));
                              df.setFileSize(item.getSize());
                              df.setPath(saveFile.getPath());
-                             Gson gson=new Gson();
                              //System.out.println("---------------------------------------------------------------------->"+gson.toJson(df));
                              delmarFileService.save(df);
                             

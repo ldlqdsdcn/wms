@@ -3,7 +3,7 @@ package com.delmar.core.web.tld;
 import com.delmar.core.model.Search;
 import com.delmar.core.model.SearchColumn;
 import com.delmar.core.service.SearchService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by admin on 2016/8/29.
  */
 public class SearchTag extends BodyTagSupport {
-    private SearchService searchService= EaContext.ApplicationContext.getBean(SearchService.class);
+    private SearchService searchService= SystemContextHelper.getBean(SearchService.class);
     @Override
     public int doEndTag() throws JspException {
         HttpServletRequest request=(HttpServletRequest)pageContext.getRequest();

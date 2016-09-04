@@ -43,8 +43,7 @@ public class DwrFilter implements Filter {
 		/*/delmar_web/dwr/interface/userLoginDwr.js
 		/delmar_web/dwr/engine.js*/
 		///delmar_web/dwr/util.js
-		HttpServletRequest hsr=(HttpServletRequest)request;
-		
+
 /*		for(String url:logindwrurls)
 		{
 			if(hsr.getRequestURI().indexOf(url)!=-1)

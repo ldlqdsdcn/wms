@@ -52,7 +52,6 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 	 */
 	public int delete(String statement, CoreModel model) {
 		Integer id=null;
-		id=model.getId();
 		writeLog(model, SessionContent.OPERATE_DELETE);
 		return sqlSessionTemplate.delete(statement, model);
 	}

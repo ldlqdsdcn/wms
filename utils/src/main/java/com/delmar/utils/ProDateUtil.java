@@ -183,7 +183,7 @@ public class ProDateUtil {
 	 * @param dt2
 	 * @return
 	 */
-	public static int DifferWorkDate(String dt1, String dt2) {
+	public static int differWorkDate(String dt1, String dt2) {
 		int intReturn = 0;// 返回值，即dt2和dt1之间的工作日数
 		long diffDay = getDateDiffDay(dt1, dt2);
 
@@ -235,22 +235,7 @@ public class ProDateUtil {
 		
 		
 	}
-	
-	public static boolean isDate(String dateStr)
-	{
-	
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-		ParsePosition pos = new ParsePosition(0);
-		try
-		{
-	    	return true;
-		} catch (Exception e)
-		{
-			return false;
-		}
-	}
-	
-	
+
 	public static String getShortDateStr(Date sDate)
 	{
 		if (sDate==null)

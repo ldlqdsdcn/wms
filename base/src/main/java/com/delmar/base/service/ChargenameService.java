@@ -18,7 +18,7 @@ import com.delmar.core.service.CoreService;
  */
 public interface ChargenameService extends CoreService<Chargename> {
 	
-	Integer GetIdByCode(String code);
+	Integer getIdByCode(String code);
 	
 	/**
 	 * 根据运输货物的重量，体积，获取卡车类型

@@ -59,7 +59,7 @@ public class CustomerTraceServiceImpl extends CoreServiceImpl<CustomerTrace> imp
 	
 	public void saveCustomerTrace(Integer currentStatusId,Integer oldStatusId,CustomerTrace customerTrace)
 	{
-		if (currentStatusId==oldStatusId)
+		if (currentStatusId.equals(oldStatusId))
 			return;
 		
 		

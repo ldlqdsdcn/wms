@@ -50,8 +50,8 @@ public class UserExtraJsonAction  extends CoreAction {
         response.getWriter().write("success");
         } catch (Exception ex)
         {
-        	
-        	
+
+			throw new RuntimeException(ex);
         }
         
 
@@ -79,7 +79,7 @@ public class UserExtraJsonAction  extends CoreAction {
            response.getWriter().write(gson.toJson(userExtra));
         } catch (Exception ex)
         {
-        	
+			throw new RuntimeException(ex);
         	
         }
 		
@@ -117,8 +117,8 @@ public class UserExtraJsonAction  extends CoreAction {
          response.getWriter().write(gson.toJson(userExtra));		
        } catch (Exception ex)
        {
-       	
-       	
+
+		   throw new RuntimeException(ex);
        }
 		
 	}

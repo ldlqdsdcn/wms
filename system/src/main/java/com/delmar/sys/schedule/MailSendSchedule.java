@@ -66,7 +66,7 @@ public class MailSendSchedule  extends CoreSchedule implements Runnable {
 			mailinfoService.updateMailFinishStatus(mailInfo.getId());
 		}
 		
-	   RecordScheduleLog();
+	   recordScheduleLog();
 		
 	}
 	
@@ -143,7 +143,7 @@ public class MailSendSchedule  extends CoreSchedule implements Runnable {
 			BodyPart html = new MimeBodyPart();
 			// 为了能够发送图片  先把Img标签替换为<input type='image'
 			content = content.replaceAll("<input type=\"image\"", "<img");
-			String s = new String(content.toString().getBytes("GBK"), "GBK");
+
 			Document htmlDoc = Jsoup.parse(content);
 			Elements imgList = htmlDoc.getElementsByTag("img");
 			// 同样的图片只处理一次

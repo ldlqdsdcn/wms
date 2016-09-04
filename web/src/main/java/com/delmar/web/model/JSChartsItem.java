@@ -59,22 +59,22 @@ public class JSChartsItem {
 		this.data = data;
 	}
 	  
-	public void AddOneData(String unit,String value)
+	public void addOneData(String unit,String value)
 	{
 		data.add(new JSChartsData(unit,value));	
 	}
 	
-	public void AddOneData(String unit,BigDecimal value)
+	public void addOneData(String unit,BigDecimal value)
 	{
 		data.add(new JSChartsData(unit,value.toString()));	
 	}
 	
-	public void AddOneData(String unit,BigInteger value)
+	public void addOneData(String unit,BigInteger value)
 	{
 		data.add(new JSChartsData(unit,value.toString()));	
 	}
 	
-	public void AddOneData(String unit,Integer value)
+	public void addOneData(String unit,Integer value)
 	{
 		data.add(new JSChartsData(unit,value.toString()));	
 	}	

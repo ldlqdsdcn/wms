@@ -23,16 +23,16 @@ import com.delmar.base.model.PortMode;
 import com.delmar.base.service.DatadictService;
 import com.delmar.base.service.DatadictTrlService;
 import com.delmar.base.service.PortModeService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 
 /**
  * @author 刘大磊 2015年2月9日 下午5:16:46
  */
 public class PortModeDecorator implements DisplaytagColumnDecorator {
-	private PortModeService portModeService=EaContext.getBean("portModeService", PortModeService.class);
-	private DatadictService datadictService=EaContext.getBean("datadictService", DatadictService.class);
-	private DatadictTrlService datadictTrlService=EaContext.getBean("datadictTrlService", DatadictTrlService.class);
+	private PortModeService portModeService=SystemContextHelper.getBean("portModeService", PortModeService.class);
+	private DatadictService datadictService=SystemContextHelper.getBean("datadictService", DatadictService.class);
+	private DatadictTrlService datadictTrlService=SystemContextHelper.getBean("datadictTrlService", DatadictTrlService.class);
 	/** (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

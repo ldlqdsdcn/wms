@@ -45,7 +45,7 @@ public class UserFootmarkServiceImpl extends CoreServiceImpl<UserFootmark> imple
 
 public Integer saveUserFootmark(UserFootmark userFootmark) {
 	Integer id=save(userFootmark);
-	Date now=new Date();
+
 	return id;
 }
 

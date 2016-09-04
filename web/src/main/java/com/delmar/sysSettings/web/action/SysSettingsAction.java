@@ -102,7 +102,7 @@ public class SysSettingsAction extends CoreEditPrivAction{
 			//如果存在就检查下indexOrder是否相同，否则添加数据
 			if (map.containsKey(item.getId())) {
 				SysSettings setting = map.get(item.getId());
-				if (item.getIndexOrder() != setting.getIndexOrder()) {
+				if (!item.getIndexOrder().equals(setting.getIndexOrder())) {
 					setting.setIndexOrder(item.getIndexOrder());
 					sysSettingsService.saveOrUpdate(setting);
 				}

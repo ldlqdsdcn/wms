@@ -15,8 +15,6 @@ public class ValidationHelper {
     public static List<JspModelProp> getValidationList(List<ColumnMetaDataDto> columnMetaDataDtoList) {
         List<JspModelProp> jspModelProps = new ArrayList<>();
         for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
-            JspModelProp jspModelProp=new JspModelProp(columnMetaDataDto.getColumnName(),columnMetaDataDto.getRemarks());
-
             if (!IntelliKeyWord.isNotValidate(columnMetaDataDto.getColumnName())) {
                 if (!columnMetaDataDto.getNullable()) {
 

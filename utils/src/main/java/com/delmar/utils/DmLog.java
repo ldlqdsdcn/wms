@@ -221,7 +221,7 @@ public class DmLog {
 		}
 		private  void outPutLog(String level,String message)
 		{
-			System.out.printf("%20s %-7s %-30s %s\n", DateTimeDecorator.dateToLongString(new Date()),level,TAG,message);
+			System.out.printf("%20s %-7s %-30s %s", DateTimeDecorator.dateToLongString(new Date()),level,TAG,message);
 		}
 		/* (non-Javadoc)
 		 * @see com.delmar.utils.Log#debug(java.lang.String)

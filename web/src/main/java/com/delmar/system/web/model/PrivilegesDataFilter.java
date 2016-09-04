@@ -20,7 +20,7 @@ import com.delmar.base.service.DatadictService;
 import com.delmar.base.service.DatadictTypeService;
 import com.delmar.core.DelmarConst;
 import com.delmar.core.excep.MissingParameterException;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.SystemConst;
 import com.delmar.sys.model.ModulePage;
 import com.delmar.sys.model.ModuleRole;
@@ -51,20 +51,18 @@ public class PrivilegesDataFilter {
 	private static List<Datadict> accessList;
 	static
 	{
-		userService=EaContext.ApplicationContext.getBean("userService",UserService.class);
-		userorgAccessService=EaContext.ApplicationContext.getBean("userorgAccessService",UserorgAccessService.class);
-		usergroupAccessService=EaContext.ApplicationContext.getBean("usergroupAccessService",UsergroupAccessService.class);
-		moduleRoleService=EaContext.ApplicationContext.getBean("moduleRoleService",ModuleRoleService.class);
-		UserRoleService userRoleService = EaContext.ApplicationContext.getBean("userRoleService", UserRoleService.class);
-		modulePageService=EaContext.ApplicationContext.getBean("modulePageService",ModulePageService.class);
-		DatadictTypeService datadictTypeService = EaContext.ApplicationContext.getBean("datadictTypeService", DatadictTypeService.class);
-		DatadictService datadictService = EaContext.ApplicationContext.getBean("datadictService", DatadictService.class);
+		userService=SystemContextHelper.getBean("userService",UserService.class);
+		userorgAccessService=SystemContextHelper.getBean("userorgAccessService",UserorgAccessService.class);
+		usergroupAccessService=SystemContextHelper.getBean("usergroupAccessService",UsergroupAccessService.class);
+		moduleRoleService=SystemContextHelper.getBean("moduleRoleService",ModuleRoleService.class);
+		modulePageService=SystemContextHelper.getBean("modulePageService",ModulePageService.class);
+		DatadictService datadictService = SystemContextHelper.getBean("datadictService", DatadictService.class);
 		accessList= datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);
 	}
 	/**
 	 * @param loginClientId 登录选择实体
 	 * @param loginOrgId  登录选择组织
-	 * @param accessUsers 可访问用户组
+	 * @param userId 可访问用户
 	 */
 	public PrivilegesDataFilter(Integer loginClientId,Integer loginOrgId,Integer userId)
 	{

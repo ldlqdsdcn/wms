@@ -4,7 +4,7 @@ import com.delmar.base.model.Datadict;
 import com.delmar.base.model.DatadictType;
 import com.delmar.base.service.DatadictService;
 import com.delmar.core.DelmarConst;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.SystemConst;
 import com.delmar.sys.model.*;
 import com.delmar.sys.service.ModulePageService;
@@ -36,9 +36,9 @@ public class DwrPrivilegeDataFilter {
 	private static DwrPrivilegeDataFilter instance;
 	
 	static {
-		DatadictService datadictService = EaContext.ApplicationContext.getBean("datadictService", DatadictService.class);
-		moduleRoleService=EaContext.ApplicationContext.getBean("moduleRoleService",ModuleRoleService.class);
-		modulePageService=EaContext.ApplicationContext.getBean("modulePageService",ModulePageService.class);
+		DatadictService datadictService = SystemContextHelper.getBean("datadictService", DatadictService.class);
+		moduleRoleService=SystemContextHelper.getBean("moduleRoleService",ModuleRoleService.class);
+		modulePageService=SystemContextHelper.getBean("modulePageService",ModulePageService.class);
 		accessList= datadictService.getDatadictListByTypeValue(DatadictType.ACCESS_LEVEL);
 		
 	}

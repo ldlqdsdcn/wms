@@ -179,8 +179,7 @@ public class UserAction extends CoreEditPrivAction{
 			Map<String,Object> param=new HashMap<String,Object>();
 			param.put("orgId", user.getOrgId());
 			usergroupList=	this.usergroupService.selectByExample(param);
-			
-			List<UserorgAccess> saveList=new ArrayList<UserorgAccess>();
+
 			
 			//对User当中的图片进行处理
 			
@@ -266,9 +265,7 @@ public class UserAction extends CoreEditPrivAction{
 		passwordConfirm=user.getPassword();
 		oldPassword=user.getPassword();
 		
-		
-		PrivilegesDataFilter up=(PrivilegesDataFilter)FacesUtils.getSession().getAttribute(WebConst.SESSION_USERPRIVILEGES);
-		
+
 		userTypeList=datadictService.getDatadictTrlByValue(DatadictType.USER_USERTYPE,ur.getLocale().toString());		
 		
 		

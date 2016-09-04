@@ -1,7 +1,7 @@
 package com.delmar.sysSettings.web.displaytag.decorator;
 
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 import com.delmar.sysSettings.enums.InputTypeEnum;
 import com.delmar.sysSettings.model.SysSettings;
@@ -21,8 +21,8 @@ import java.util.*;
 
 public class SetValueStringDecorator implements DisplaytagColumnDecorator {
 
-	private SysSettingsService sysSettingsService = EaContext.getBean("SysSettingsService", SysSettingsService.class);
-	private SysSettingsItemValueService sysSettingsItemValueService = EaContext.getBean("SysSettingsItemValueService", SysSettingsItemValueService.class);
+	private SysSettingsService sysSettingsService = SystemContextHelper.getBean("SysSettingsService", SysSettingsService.class);
+	private SysSettingsItemValueService sysSettingsItemValueService = SystemContextHelper.getBean("SysSettingsItemValueService", SysSettingsItemValueService.class);
 	
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)

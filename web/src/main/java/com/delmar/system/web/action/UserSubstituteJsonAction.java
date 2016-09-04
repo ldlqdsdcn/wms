@@ -100,8 +100,8 @@ public class UserSubstituteJsonAction extends CoreAction {
         response.getWriter().write("success");
         } catch (Exception ex)
         {
-        	
-        	
+
+			throw new RuntimeException(ex);
         }
         
 

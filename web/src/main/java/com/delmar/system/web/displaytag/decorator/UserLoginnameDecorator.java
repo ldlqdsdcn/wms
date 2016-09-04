@@ -15,7 +15,7 @@ import org.displaytag.decorator.DisplaytagColumnDecorator;
 import org.displaytag.exception.DecoratorException;
 import org.displaytag.properties.MediaTypeEnum;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.User;
 import com.delmar.sys.service.UserService;
 
@@ -23,11 +23,8 @@ import com.delmar.sys.service.UserService;
  * @author 刘大磊 2015年1月19日 下午5:12:05
  */
 public class UserLoginnameDecorator  implements DisplaytagColumnDecorator{
-	private static UserService userService;
-	public UserLoginnameDecorator() {
-		if(userService==null)
-			userService=EaContext.ApplicationContext.getBean("userService", UserService.class);
-	}
+	private UserService userService=SystemContextHelper.getBean("userService", UserService.class);;
+
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

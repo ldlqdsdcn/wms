@@ -73,7 +73,6 @@ public class RoleServiceImpl extends CoreServiceImpl<Role> implements
 				ModuleRole mr=new ModuleRole();
 				mr.setModuleId(module.getId());
 				mr.setModule(module);
-				mr.setRoleId(roleId);
 				Privilege pri=new Privilege();
 				pri.setModuleRole(mr);
 

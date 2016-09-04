@@ -63,7 +63,7 @@ public class UserThirdPartyJsonAction extends CoreAction {
         response.getWriter().write("success");
         } catch (Exception ex)
         {
-        	
+			throw new RuntimeException(ex);
         	
         }
         
@@ -92,8 +92,8 @@ public class UserThirdPartyJsonAction extends CoreAction {
            response.getWriter().write(gson.toJson(userThirdParty));
         } catch (Exception ex)
         {
-        	
-        	
+
+			throw new RuntimeException(ex);
         }
 		
 		 

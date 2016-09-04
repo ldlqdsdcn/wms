@@ -6,7 +6,7 @@
  *****************************************************************************/
 package com.delmar.system.web.displaytag.decorator;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.Role;
 import com.delmar.sys.service.RoleService;
 import org.displaytag.decorator.DisplaytagColumnDecorator;
@@ -22,12 +22,7 @@ import java.util.Map;
  * @author 刘大磊 2015年1月19日 上午10:51:44
  */
 public class UserRoleDecorator implements DisplaytagColumnDecorator{
-	private static RoleService roleService;
-	public UserRoleDecorator() {
-		if(roleService==null)
-		 roleService=EaContext.ApplicationContext.getBean("roleService", RoleService.class);
-	}
-	
+	private static RoleService roleService=SystemContextHelper.getBean("roleService", RoleService.class);
 	public Object decorate(Object userId, PageContext arg1, MediaTypeEnum arg2)
 			throws DecoratorException {
 		String value="";

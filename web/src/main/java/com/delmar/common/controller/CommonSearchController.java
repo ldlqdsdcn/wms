@@ -40,7 +40,6 @@ public class CommonSearchController {
         param.put("pageUrl", action_value);
         Search search = searchService.getSearchByPageUrl(action_value);
         List<SearchColumn> searchColumns = searchService.getSearchColumnListBySearchId(search.getId());
-        List<CommonSearchResult> relOpearList = new ArrayList<>();
         List<SearchColumnVo> searchColumnVos = new ArrayList<>();
         for (SearchColumn searchColumn : searchColumns) {
             SearchColumnVo searchColumnVo = new SearchColumnVo();

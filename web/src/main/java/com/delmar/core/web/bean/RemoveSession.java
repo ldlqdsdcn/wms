@@ -16,7 +16,6 @@ import com.delmar.sys.model.User;
 public class RemoveSession {
 	public static void removeUserSession(HttpSession session)
 	{
-		User user=(User)session.getAttribute("loginUser");
 		/*Date now=new Date();
 		if(user!=null)
 		{

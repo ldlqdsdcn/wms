@@ -154,7 +154,7 @@ public class Companys extends CoreModel{
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
     public void setCreated(Date created) {

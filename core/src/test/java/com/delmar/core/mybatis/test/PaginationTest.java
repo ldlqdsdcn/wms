@@ -1,6 +1,7 @@
 package com.delmar.core.mybatis.test;
 
 import com.delmar.core.dao.WindowDao;
+import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,6 @@ public class PaginationTest {
     public void testPagination()
     {
        List list= windowDao.selectByPaging(null);
-
+        Assert.assertTrue(list.size()>0);
     }
 }

@@ -20,7 +20,7 @@ import com.delmar.base.model.Carrier;
 import com.delmar.base.model.CarrierTrl;
 import com.delmar.base.service.CarrierService;
 import com.delmar.base.service.CarrierTrlService;
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.core.web.bean.UserResource;
 
 /**
@@ -30,8 +30,8 @@ import com.delmar.core.web.bean.UserResource;
  */
 public class CarrierDecorator implements DisplaytagColumnDecorator {
 
-	private CarrierService carrierService=EaContext.getBean("carrierService", CarrierService.class);
-	private CarrierTrlService carrierTrlService=EaContext.getBean("carrierTrlService", CarrierTrlService.class);
+	private CarrierService carrierService=SystemContextHelper.getBean("carrierService", CarrierService.class);
+	private CarrierTrlService carrierTrlService=SystemContextHelper.getBean("carrierTrlService", CarrierTrlService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */

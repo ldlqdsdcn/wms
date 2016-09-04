@@ -28,6 +28,6 @@ public class UserSessionTest {
         param.put("pageSize",15);
         List list= userSessionDao.selectByExample(param);
         System.out.println(list.size());
-        List list2= userSessionDao.selectByExample(null);
+
     }
 }

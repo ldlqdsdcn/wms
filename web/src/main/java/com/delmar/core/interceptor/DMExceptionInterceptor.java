@@ -30,7 +30,6 @@ public class DMExceptionInterceptor implements Interceptor  {
 		
 		 String result = "";
 		 ActionContext ctx = actionInvocation.getInvocationContext();  		 
-		 HttpServletRequest request = (HttpServletRequest)ctx.get(ServletActionContext.HTTP_REQUEST);
 		 DmLog dmLog=DmLog.getLogger(actionInvocation.getClass());
 	      try {
 	            result = actionInvocation.invoke();

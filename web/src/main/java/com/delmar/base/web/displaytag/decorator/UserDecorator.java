@@ -12,7 +12,7 @@ import org.displaytag.decorator.DisplaytagColumnDecorator;
 import org.displaytag.exception.DecoratorException;
 import org.displaytag.properties.MediaTypeEnum;
 
-import com.delmar.core.web.bean.EaContext;
+import com.delmar.core.web.bean.SystemContextHelper;
 import com.delmar.sys.model.User;
 import com.delmar.sys.service.UserService;
 
@@ -20,7 +20,7 @@ import com.delmar.sys.service.UserService;
  * @author 刘大磊 2015年3月10日 下午4:10:40
  */
 public class UserDecorator  implements DisplaytagColumnDecorator {
-	private UserService userService=EaContext.getBean("userService", UserService.class);
+	private UserService userService=SystemContextHelper.getBean("userService", UserService.class);
 	/* (non-Javadoc)
 	 * @see org.displaytag.decorator.DisplaytagColumnDecorator#decorate(java.lang.Object, javax.servlet.jsp.PageContext, org.displaytag.properties.MediaTypeEnum)
 	 */
@@ -31,7 +31,6 @@ public class UserDecorator  implements DisplaytagColumnDecorator {
 		if(arg0!=null)
 		{
 			Integer value=(Integer)arg0;
-			StringBuilder sb=new StringBuilder("");
 			User user=userService.selectByPrimaryKey(value);
 			if(user!=null)
 			{

@@ -6,20 +6,18 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.ServletActionContext;
-
-import com.delmar.core.model.EaModelContent;
 import com.delmar.core.model.SearchColumnList;
 import com.delmar.core.model.Table;
 import com.delmar.core.model.TableColumn;
 import com.delmar.core.service.TableColumnService;
 import com.delmar.core.service.TableService;
 import com.delmar.core.web.util.FacesUtils;
+import org.apache.struts2.ServletActionContext;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年1月20日 上午10:22:59
@@ -109,8 +107,7 @@ public class TableAction extends CoreEditAction {
 				}
 			}
 			table.setTableColumnList(tableColumnList);
-			EaModelContent.logTableMap.put(table.getClassName(), table);
-		}	
+		}
 		FacesUtils.getSession().setAttribute("msg", "保存表信息成功！");
 		return "edit";
 	}
