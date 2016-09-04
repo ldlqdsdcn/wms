@@ -4,7 +4,7 @@
 
 适合于中小型企业<br /> 
 整个系统 web层crud基于 struts2，restful接口基于springmvc<br /> 
-真个系统基于spring4<br /> 
+系统基于spring4<br />
 持久层 mybatis3<br /> 
 数据库基于mysql5.5<br /> 
 缓存基于redis<br /> 
