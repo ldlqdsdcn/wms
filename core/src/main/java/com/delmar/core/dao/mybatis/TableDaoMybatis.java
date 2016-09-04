@@ -275,7 +275,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
         return list;
     }
     public  List   getAllTableName() {
-        List   tables   =   new   ArrayList();
+        List<String>   tables   =   new   ArrayList();
         try {
             Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
 
@@ -289,7 +289,7 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             ResultSet   tabs   =   dbMetaData.getTables(null,   null,   null,types/*只要表就好了*/);
             while(tabs.next()){
                 //只要表名这一列
-                tables.add(tabs.getObject("TABLE_NAME"));
+                tables.add(tabs.getString("TABLE_NAME"));
 
             }
             tabs.close();

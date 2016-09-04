@@ -17,9 +17,9 @@ public interface LabelService extends CoreService<Label> {
 	/**
 	 * @param ids
 	 */
-	public void deleteLabelList(Integer[] ids);
-    public List<LabelTrl> getLabelTrlListByLabelId(Integer labelId);
+	 void deleteLabelList(Integer[] ids);
+     List<LabelTrl> getLabelTrlListByLabelId(Integer labelId);
 
-public Integer saveLabel(Label label,List<LabelTrl> labelTrlList);
+	 Integer saveLabel(Label label,List<LabelTrl> labelTrlList);
 
 }

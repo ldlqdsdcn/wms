@@ -36,7 +36,7 @@ import java.util.Map;
 @Service("tableService")
 public class TableServiceImpl extends CoreServiceImpl<Table> implements
 		TableService {
-private DmLog log=DmLog.getLogger(TableServiceImpl.class);
+private final DmLog log=DmLog.getLogger(TableServiceImpl.class);
 	@Autowired
 	private TableDao tableDao;
 	

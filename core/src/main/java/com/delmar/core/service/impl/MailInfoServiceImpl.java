@@ -46,7 +46,7 @@ public class MailInfoServiceImpl extends CoreServiceImpl<MailInfo> implements
 	
 	public List<MailInfo> getPendingMail()
 	{
-		Map<String,Object> param= new HashMap<String,Object>();
+		Map<String,Object> param= new HashMap<>();
 		param.put("accessString", " beFinish=0 ");
 		
 		return this.selectByExample(param);

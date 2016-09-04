@@ -51,7 +51,7 @@ public class LanguageServiceImpl extends CoreServiceImpl<Language> implements
 	 */
 	@Override
 	public Integer deleteByPrimaryKey(Integer id) {
-		Map map=new HashMap();
+		Map<String,String> map=new HashMap();
 		map.put("accessString", " languageCode in(select code from core_language where id="+id+")");
 		languageTrlDao.deleteByExample(map);
 		return super.deleteByPrimaryKey(id);

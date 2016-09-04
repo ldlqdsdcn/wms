@@ -22,7 +22,7 @@ public enum SortDirection {
      * The DESC.
      */
     DESC("desc");
-    private String direction;
+    private final String direction;
 
     SortDirection(String direction) {
         this.direction = direction;

@@ -27,9 +27,9 @@ import com.delmar.utils.ResourceMessage;
  */
 public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	
-    protected DmLog logger =DmLog.getLogger("SQLLogger."+getClass().getName()); 
+    protected final DmLog logger =DmLog.getLogger("SQLLogger."+getClass().getName());
     
-	@Autowired(required=true)
+	@Autowired
 	protected SqlSessionTemplate sqlSessionTemplate;
 	//TODO 日志操作
 	@Autowired
@@ -185,7 +185,7 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	public T selectFieldsByPrimaryKey(String fieldColumns,Integer id)   
 	{
 	
-		Map<String, Object> newMap = new HashMap<String,Object>(2);
+		Map<String, Object> newMap = new HashMap<>(2);
 		newMap.put("columns", fieldColumns);
 		newMap.put("id", id);
 		return (T)sqlSessionTemplate.selectOne(this.getSqlName()+selectFieldsByPrimaryKey,newMap);
@@ -208,11 +208,6 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 		return sqlSessionTemplate.selectList(this.getSqlName()+selectByExample, example);
 		
 	}
-	public List<T> selectByPaging(Map example)  	{
 
-		return sqlSessionTemplate.selectList(this.getSqlName()+selectByExample, example);
-
-	}
-	
 
 }

@@ -29,7 +29,7 @@
     id, name, table_name_tr, class_name, out_log, bu_pk, descr,extern_json
   </sql>
   
-  <cache flushInterval="7200000" size="1000"></cache>
+  <cache flushInterval="7200000" size="1000"/>
   
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select

@@ -59,7 +59,7 @@ public interface TableDao extends CoreDao<Table> {
      * 获取系统中所有的表
      * @return
      */
-    List   getAllTableName();
+    List<String> getAllTableName();
 
     /**
      * 执行sql命令

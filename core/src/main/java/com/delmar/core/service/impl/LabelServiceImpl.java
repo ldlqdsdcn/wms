@@ -6,20 +6,18 @@
 */
 package com.delmar.core.service.impl;
 
+import com.delmar.core.dao.CoreDao;
+import com.delmar.core.dao.LabelDao;
+import com.delmar.core.dao.LabelTrlDao;
+import com.delmar.core.model.Label;
+import com.delmar.core.model.LabelTrl;
+import com.delmar.core.service.LabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.delmar.core.dao.LabelDao;
-import com.delmar.core.model.Label;
-import com.delmar.core.service.LabelService;
-import com.delmar.core.dao.CoreDao;
-import com.delmar.core.service.impl.CoreServiceImpl;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Date;
-import com.delmar.core.model.LabelTrl;
-import com.delmar.core.dao.LabelTrlDao;
 /**
  * @author 刘大磊 2016-09-03 23:33:53
  */
@@ -58,7 +56,7 @@ public Integer saveLabel(Label label,List<LabelTrl> labelTrlList) {
 
 
     public Integer deleteByPrimaryKey(Integer id) {
-    Map<String,Object> labelTrlParam=new HashMap<String,Object>();
+    Map<String,Object> labelTrlParam=new HashMap<>();
 labelTrlParam.put("labelId",id);
 labelTrlDao.deleteByExample(labelTrlParam);
     return super.deleteByPrimaryKey(id);
@@ -66,11 +64,11 @@ labelTrlDao.deleteByExample(labelTrlParam);
 
 	public List<LabelTrl> getLabelTrlListByLabelId(Integer labelId)
 	{
-		Map<String,Object> param=new HashMap<String,Object>();
+		Map<String,Object> param=new HashMap<>();
         param.put("labelId",labelId);
 		if(labelId==null)
 		{
-			return new java.util.ArrayList<LabelTrl>();
+			return new java.util.ArrayList<>();
 		}
 		return labelTrlDao.selectByExample(param);
 	}

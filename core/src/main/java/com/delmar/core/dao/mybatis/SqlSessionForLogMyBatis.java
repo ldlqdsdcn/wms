@@ -33,12 +33,12 @@ import java.util.Map;
  */
 @Repository("sqlSessionForLog") 
 public class SqlSessionForLogMyBatis implements SqlSessionForLog {
-	private Logger logger=Logger.getLogger(SqlSessionForLogMyBatis.class);
-	@Autowired(required=true)
+	private final Logger logger=Logger.getLogger(SqlSessionForLogMyBatis.class);
+	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	@Autowired(required=false)
 	private HttpServletRequest request; 
-	private Gson gson=new Gson();
+	private final Gson gson=new Gson();
 	/* (non-Javadoc)
 	 * @see com.delmar.core.dao.SqlSessionForLog#update(java.lang.String, java.lang.Object)
 	 */
@@ -67,7 +67,7 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 	   public void writeLog(CoreModel model,String operateType)
 	   {
 		 String name=  model.getClass().getName();
-		 Map<String,Object> param= new HashMap<String,Object>();
+		 Map<String,Object> param= new HashMap<>();
 		 param.put("className", name);
 		 param.put("outLog", "Y");
 		List<Table> tableList= sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableMapper.selectByExample", param);
@@ -81,10 +81,10 @@ public class SqlSessionForLogMyBatis implements SqlSessionForLog {
 		 {
 		 if(table!=null)
 		 {
-			 param= new HashMap<String,Object>();
+			 param= new HashMap<>();
 			 param.put("tableId", table.getId());
 			 List<TableColumn> tableColumnList=sqlSessionTemplate.selectList("com.delmar.core.mybatis.sql.TableColumnMapper.selectByExample", param);
-			 Map<String,Object> obj= new HashMap<String,Object>();
+			 Map<String,Object> obj= new HashMap<>();
 			 if(tableColumnList!=null)
 			 {
 				 for(TableColumn column:tableColumnList)

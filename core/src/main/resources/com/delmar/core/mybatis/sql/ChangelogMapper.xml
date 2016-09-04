@@ -10,7 +10,7 @@
     <result column="pk" jdbcType="INTEGER" property="pk" />
     <result column="bu_pk" jdbcType="VARCHAR" property="buPk" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <association property="table" column="table_id" select="com.delmar.core.mybatis.sql.TableMapper.selectByPrimaryKey" ></association>
+    <association property="table" column="table_id" select="com.delmar.core.mybatis.sql.TableMapper.selectByPrimaryKey" />
 	</resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.delmar.core.model.Changelog">
     <result column="context" jdbcType="LONGVARCHAR" property="context" />

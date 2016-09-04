@@ -38,7 +38,7 @@ SELECT CONVERT(char(8), getdate(), 2)
 
 SELECT CONVERT(char(10), getdate(), 111)
 輸出格式：08/02/27*/
-private List<SearchColumnValue> columnValueList;
+private final List<SearchColumnValue> columnValueList;
 	
 	public SearchColumnList()
 	{

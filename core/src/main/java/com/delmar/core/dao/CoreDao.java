@@ -88,12 +88,5 @@ import java.util.Map;
 	 */
 	 List<T> selectByExample(Map example)  ;
 
-	/**
-	 * 分页查询
-	 * @param example
-	 * @return
-	 */
-	public List<T> selectByPaging(Map example);
-
 
 }

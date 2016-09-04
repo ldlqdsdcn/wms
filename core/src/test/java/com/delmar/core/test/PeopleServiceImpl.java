@@ -41,8 +41,9 @@ public class PeopleServiceImpl implements LanguageService{
 	/* (non-Javadoc)
 	 * @see com.delmar.core.service.CoreService#update(java.lang.Object)
 	 */
+	//FIXME 测试事务
 	public void update(Language model) {
-		List list=new ArrayList();
+		List<Integer> list=new ArrayList();
 		
 		list.add(1);
 		list.add(2);

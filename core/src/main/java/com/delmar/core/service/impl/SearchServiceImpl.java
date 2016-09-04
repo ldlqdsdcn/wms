@@ -35,7 +35,7 @@ import com.delmar.core.dao.SearchColumnDao;
 @Service("searchService")
 public class SearchServiceImpl extends CoreServiceImpl<Search> implements
         SearchService {
-    SearchDataTypeDef[] searchDataTypeDefs = SearchDataTypeDef.values();
+    final SearchDataTypeDef[] searchDataTypeDefs = SearchDataTypeDef.values();
     @Autowired
     private SearchDao searchDao;
     @Autowired
@@ -84,7 +84,7 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
 
     @Override
     public Search getSearchByPageUrl(String pageUrl) {
-        Map<String, Object> param = new HashMap<String,Object>();
+        Map<String, Object> param = new HashMap<>();
         param.put("pageUrl", pageUrl);
         List<Search> list = searchDao.selectByExample(param);
         if (list == null || list.size() == 0)
@@ -145,14 +145,14 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
     }
 
     public Integer deleteByPrimaryKey(Integer id) {
-        Map<String, Object> searchColumnParam = new HashMap<String,Object>();
+        Map<String, Object> searchColumnParam = new HashMap<>();
         searchColumnParam.put("searchId", id);
         searchColumnDao.deleteByExample(searchColumnParam);
         return super.deleteByPrimaryKey(id);
     }
 
     public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId) {
-        Map<String, Object> param = new HashMap<String,Object>();
+        Map<String, Object> param = new HashMap<>();
         param.put("searchId", searchId);
         if(searchId==null)
         {
