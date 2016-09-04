@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -107,13 +108,8 @@ public class ClientAction extends CoreEditPrivAction {
 
 	@Override
 	public List search() {
-		Map param=new HashMap();
-		SearchColumnList searchColumnList=(SearchColumnList)FacesUtils.getValueInHashtableOfSession("searchColumnList");
-		if(searchColumnList!=null)
-		{
-			//example.set("accessString", searchColumnList.buildSql());
-			param.put("accessString", searchColumnList.buildSql());
-		}
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
 		return clientService.selectByExample(param);
 	}
 

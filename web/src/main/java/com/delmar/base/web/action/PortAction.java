@@ -172,7 +172,10 @@ public class PortAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return portService.selectByExample(null);
+		Map<String,Object> param=new HashMap<String,Object>();
+		param.put("searchString",getSearchWhere());
+
+		return portService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

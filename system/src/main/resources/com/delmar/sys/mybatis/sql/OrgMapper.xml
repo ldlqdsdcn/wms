@@ -14,7 +14,8 @@
         <where>
             <if test="parentOrgId!=null">and parent_org_id=#{parentOrgId,jdbcType=INTEGER}</if>
             <if test="clientId!=null">and client_id=#{clientId,jdbcType=INTEGER}</if>
-            <if test="accessString!=null">and ${accessString}</if>
+            <if test="searchString!=null"> and ${searchString}</if>
+            <if test="accessString!=null"> and ${accessString}</if>
             <if test="value!=null">and value=#{value,jdbcType=VARCHAR}</if>
         </where>
     </sql>

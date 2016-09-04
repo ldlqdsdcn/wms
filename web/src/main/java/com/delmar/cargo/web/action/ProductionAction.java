@@ -18,9 +18,8 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 /**
  * @author 刘大磊 2016-08-29 15:01:00
  */
@@ -90,7 +89,9 @@ public class ProductionAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return productionService.selectByExample(null);
+		Map<String,Object> param=new HashMap<String,Object>();
+		param.put("searchString",getSearchWhere());
+		return productionService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

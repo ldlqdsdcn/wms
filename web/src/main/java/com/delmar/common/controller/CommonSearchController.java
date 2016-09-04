@@ -39,6 +39,11 @@ public class CommonSearchController {
         Map<String, Object> param = new HashMap<String,Object>();
         param.put("pageUrl", action_value);
         Search search = searchService.getSearchByPageUrl(action_value);
+        if(search==null)
+        {
+            modelAndView.setViewName("/commons/common_search_empty.jsp");
+            return modelAndView;
+        }
         List<SearchColumn> searchColumns = searchService.getSearchColumnListBySearchId(search.getId());
         List<SearchColumnVo> searchColumnVos = new ArrayList<>();
         for (SearchColumn searchColumn : searchColumns) {

@@ -133,7 +133,10 @@ public class LanguageAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return languageService.selectByExample(null);
+
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return languageService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

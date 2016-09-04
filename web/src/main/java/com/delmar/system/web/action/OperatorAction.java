@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditPrivAction;
@@ -79,8 +80,9 @@ public class OperatorAction extends CoreEditPrivAction{
 
 	@Override
 	public List search() {
-		
-		return this.operatorService.selectByExample(null);
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return this.operatorService.selectByExample(param);
 	}
 
 	@Override

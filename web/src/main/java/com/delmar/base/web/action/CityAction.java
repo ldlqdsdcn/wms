@@ -147,7 +147,10 @@ public class CityAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return cityService.selectByExample(null);
+
+		Map<String,Object> param=new HashMap<String,Object>();
+		param.put("searchString",getSearchWhere());
+		return cityService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

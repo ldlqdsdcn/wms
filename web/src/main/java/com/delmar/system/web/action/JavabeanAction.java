@@ -16,6 +16,7 @@ import com.delmar.core.web.action.PrivilegeOperator;
 import com.delmar.sys.model.Javabean;
 import com.delmar.sys.service.JavabeanService;
 import com.delmar.utils.ResourceMessage;
+import org.apache.commons.collections.map.HashedMap;
 
 /**
  * @author 刘大磊 2015年1月16日 上午10:43:12
@@ -81,8 +82,9 @@ public class JavabeanAction extends CoreEditPrivAction {
 
 	@Override
 	public List search() {
-		
-		return javabeanService.selectByExample(null);
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return javabeanService.selectByExample(param);
 	}
 
 	public void setJavabeanService(JavabeanService javabeanService) 

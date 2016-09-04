@@ -6,9 +6,14 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
+import com.delmar.common.vo.SearchColumnVo;
+import com.delmar.core.dto.SearchColumnDto;
 import com.delmar.core.model.CoreModel;
+import com.delmar.core.service.SearchService;
 import com.delmar.core.web.util.FacesUtils;
+import com.delmar.system.web.WebConst;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +29,26 @@ public abstract class CoreEditAction  extends CoreAction{
 	 public abstract String getModuleName();
 	  /*上一条，下一条记录*/
 	protected boolean isFirst=false;
-
+	@Autowired
+	private SearchService searchService;
 	protected boolean isLast=false;
 	public abstract String delete();
 	public abstract void deleteList(Integer[] ids);
 	public abstract Integer getModelId();
 	public abstract void editForm();
 	public abstract List<CoreModel> search();
-	
+	public String getSearchWhere()
+	{
+		List<SearchColumnDto> searchColumnDtoList=FacesUtils.getSearchColumnList();
+		if(searchColumnDtoList==null)
+		{
+			return null;
+		}
+		else
+		{
+			return searchService.buildSqlBySearchColumnList(searchColumnDtoList);
+		}
+	}
 	/**
 	 * 新建表单
 	 * @return

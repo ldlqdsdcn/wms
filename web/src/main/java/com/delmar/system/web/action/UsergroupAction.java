@@ -193,7 +193,10 @@ public class UsergroupAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return usergroupService.selectByExample(null);
+
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return usergroupService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

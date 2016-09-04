@@ -450,13 +450,13 @@ public class UserAction extends CoreEditPrivAction{
 		Map<String,Object> param=new HashMap();
 		//统一配置查询界面
 		//Charels 隐藏掉
-		
+
 /*		SearchColumnList searchColumnList=(SearchColumnList)FacesUtils.getValueInHashtableOfSession("searchColumnList");
 		if(searchColumnList!=null)
 		{
 			param.put("accessString", searchColumnList.buildSql());
 		}*/
-		
+		param.put("searchString",getSearchWhere());
 		StringBuilder sb=new StringBuilder();
 		
 		HttpServletRequest request=ServletActionContext.getRequest();		

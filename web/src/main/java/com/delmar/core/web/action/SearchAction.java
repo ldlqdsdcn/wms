@@ -19,10 +19,8 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+
 /**
  * @author 刘大磊 2016-08-29 16:03:22
  */
@@ -109,7 +107,9 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return searchService.selectByExample(null);
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return searchService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

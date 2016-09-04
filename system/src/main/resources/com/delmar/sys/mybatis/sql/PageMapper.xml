@@ -9,7 +9,8 @@
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
-          <if test="accessString!=null"> ${accessString} </if>
+          <if test="searchString!=null"> and  ${searchString} </if>
+          <if test="accessString!=null"> and ${accessString} </if>
     </where>
   </sql>
   <sql id="Base_Column_List" >

@@ -26,7 +26,8 @@
     			<if test="datadictTypeId!=null"> and datadict_type_id=#{datadictTypeId,jdbcType=INTEGER} </if>
     			<if test="clientId"> and client_Id=#{clientId,jdbcType=INTEGER}   </if>
     			<if test="value!=null"> and value=#{value,jdbcType=VARCHAR} </if>
-    			<if test="bePublic!=null"> and bePublic=#{bePublic,jdbcType=INTEGER} </if>    			
+    			<if test="bePublic!=null"> and bePublic=#{bePublic,jdbcType=INTEGER} </if>
+                <if test="searchString!=null"> and ${searchString}</if>
                 <if test="accessString!=null"> and ${accessString} </if>
     </where>
   </sql>

@@ -120,14 +120,7 @@ public class TableAction extends CoreEditAction {
 	@Override
 	public List search() {
 		Map example=new HashMap();
-		SearchColumnList searchColumnList=(SearchColumnList)FacesUtils.getValueInHashtableOfSession("searchColumnList");
-		if(searchColumnList!=null)
-		{
-			//example.set("accessString", searchColumnList.buildSql());
-			//example.setAccessString();
-			example.put("accessString", searchColumnList.buildSql());
-		}
-		//Object param=FacesUtils.getValueInHashtableOfSession("table_param");
+		example.put("searchString",getSearchWhere());
 		
 		
 		return tableService.selectByExample(example);

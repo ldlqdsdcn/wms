@@ -19,6 +19,7 @@ import com.delmar.sys.model.*;
 import com.delmar.sys.service.RoleService;
 import com.delmar.sys.service.UserRoleService;
 import com.delmar.sys.service.UserService;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -307,9 +308,10 @@ public class RoleAction extends CoreEditAction {
 	
 	
 	@Override
-	public List<CoreModel> search() {
-		return (List) roleService.selectByExample(null);
-		
+	public List search() {
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return roleService.selectByExample(param);
 	}
 
 	@Override

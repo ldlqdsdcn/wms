@@ -7,7 +7,9 @@
 package com.delmar.system.web.action;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.delmar.core.web.action.CoreEditAction;
@@ -84,7 +86,8 @@ public class PageAction extends CoreEditAction {
 
 	@Override
 	public List search() {
-		
-		return this.pageService.selectByExample(null);
+		Map<String,Object> param=new HashedMap();
+		param.put("searchString",getSearchWhere());
+		return this.pageService.selectByExample(param);
 	}
 }

@@ -10,6 +10,7 @@
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
+              <if test="searchString!=null"> and  ${searchString} </if>
               <if test="accessString!=null"> and  ${accessString} </if>
     </where>
   </sql>

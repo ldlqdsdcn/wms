@@ -43,6 +43,7 @@
 
     <where >
 	    <if test="username!=null"> and username=#{username,jdbcType=VARCHAR} </if>
+        <if test="searchString!=null"> and ${searchString}</if>
 	    <if test="accessString!=null">  <![CDATA[ ${accessString} ]]>  </if>
     </where>
   </sql>

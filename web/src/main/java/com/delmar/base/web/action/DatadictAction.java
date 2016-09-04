@@ -178,6 +178,7 @@ public class DatadictAction extends CoreEditPrivAction {
 		up=(PrivilegesDataFilter)FacesUtils.getSession().getAttribute(WebConst.SESSION_USERPRIVILEGES);
 		
 		Map<String,Object> param=new HashMap<String,Object>();
+		param.put("searchString",getSearchWhere());
 		//param.put("bePublic", 0);
 		datadictTypeList= datadictTypeService.selectByExample(param);		
 		

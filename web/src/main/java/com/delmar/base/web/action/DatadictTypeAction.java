@@ -7,7 +7,9 @@
 package com.delmar.base.web.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -97,7 +99,9 @@ public class DatadictTypeAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return datadictTypeService.selectByExample(null);
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return datadictTypeService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

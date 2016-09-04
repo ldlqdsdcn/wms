@@ -20,6 +20,7 @@
           <if test="tableId != null">
      and   table_id=#{tableId,jdbcType=INTEGER}
       </if>
+      <if test="searchString!=null"> and ${searchString}</if>
   <if test="accessString!=null">and ${accessString} </if>
     </where>
   </sql>

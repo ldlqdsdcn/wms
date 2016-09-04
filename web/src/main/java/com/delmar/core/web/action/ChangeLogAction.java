@@ -104,7 +104,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 	@SuppressWarnings("unchecked")
 	public String view()
 	{
-		if(PrivilegeOperator.isView())
+		if(!PrivilegeOperator.isView())
 		{
 			return NOPRIVILEGE;
 		}
@@ -135,7 +135,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 	public String viewAll()
 	{
 		UserResource resource= (UserResource) ServletActionContext.getRequest().getSession().getAttribute("resource");
-		if(PrivilegeOperator.isView())
+		if(!PrivilegeOperator.isView())
 		{
 			return NOPRIVILEGE;
 		}
@@ -167,6 +167,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 		{
 			param.put("accessString", searchColumnList.buildSql());
 		}
+		param.put("searchString",getSearchWhere());
 		param.put("orderByClause", " created desc ");
 		
 		return changelogService.selectByExample(param);

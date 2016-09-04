@@ -166,7 +166,9 @@ public class CarrierAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return carrierService.selectByExample(null);
+		Map<String,Object> param=new HashMap<String,Object>();
+		param.put("searchString",getSearchWhere());
+		return carrierService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

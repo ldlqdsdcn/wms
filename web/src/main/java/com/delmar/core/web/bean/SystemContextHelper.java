@@ -24,6 +24,11 @@ public final class SystemContextHelper {
 	 * SpringContext
 	 **/
 	private  final ApplicationContext applicationContext;
+
+	public static String getContextPath() {
+		return SYSTEM_CONTEXT_HELPER.contextPath;
+	}
+
 	/**
 	 * 系统跟目录
 	 **/

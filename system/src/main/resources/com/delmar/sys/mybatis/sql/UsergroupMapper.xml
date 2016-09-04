@@ -11,6 +11,7 @@
   <sql id="Example_Where_Clause" >
     <where >
     			<if test="orgId!=null"> and org_id=#{orgId,jdbcType=INTEGER} </if>
+                <if test="searchString!=null"> and ${searchString}</if>
 			    <if test="accessString!=null"> and ${accessString} </if>     
     </where>
   </sql>

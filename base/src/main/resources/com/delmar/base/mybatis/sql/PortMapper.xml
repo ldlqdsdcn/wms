@@ -23,6 +23,7 @@
     <where>
     		<if test="cityId!=null"> and base_city_id = #{cityId,jdbcType=INTEGER} </if>
          	<if test="portcode!=null" >  and portcode=#{portcode,jdbcType=VARCHAR}</if>
+            <if test="searchString!=null"> and ${searchString}</if>
             <if test="accessString!=null"> and ${accessString} </if>
         
     </where>

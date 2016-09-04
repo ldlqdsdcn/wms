@@ -50,22 +50,13 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     }
     public String getSearchWhere()
     {
-        List<SearchColumnVo> list=(List) FacesUtils.getValueInHashtableOfSession(WebConst.SESSION_SEARCH_CONDITIONS);
-        if(list==null||list.size()==0)
+        List<SearchColumnDto> searchColumnDtoList=FacesUtils.getSearchColumnList();
+        if(searchColumnDtoList==null)
         {
             return null;
         }
         else
         {
-            List<SearchColumnDto> searchColumnDtoList=new ArrayList<>();
-            for(SearchColumnVo vo:list)
-            {
-                SearchColumnDto searchColumnDto=new SearchColumnDto();
-                searchColumnDto.setOpearType(vo.getOpearType());
-                searchColumnDto.setColumnId(vo.getColumnId());
-                searchColumnDto.setValue(vo.getValue());
-                searchColumnDtoList.add(searchColumnDto);
-            }
             return searchService.buildSqlBySearchColumnList(searchColumnDtoList);
         }
     }

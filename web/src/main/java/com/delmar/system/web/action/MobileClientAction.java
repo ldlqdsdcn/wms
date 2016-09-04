@@ -118,8 +118,9 @@ public class MobileClientAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-
-		return this.mobileClientService.selectByExample(null);
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return this.mobileClientService.selectByExample(param);
 	}
 
 	/*

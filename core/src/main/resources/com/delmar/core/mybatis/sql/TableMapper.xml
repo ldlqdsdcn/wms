@@ -22,6 +22,7 @@
             <if test="name!=null">
                 and name=#{name,jdbcType=VARCHAR}
             </if>
+            <if test="searchString!=null"> and ${searchString}</if>
             <if test="accessString!=null" > and  ${accessString} </if>
     </where>
   </sql>

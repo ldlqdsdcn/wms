@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="../css/delmar.css" type="text/css" media="all"/>
  <script type='text/javascript' src='../js/ea.effect.js'></script>
  <script type='text/javascript' src='../js/ea.validate.js'></script>
- <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"/></script>
+ <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
  
 <title>
 	<delmar:message key="datadict.title" />
 </title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 </head>
 
 <body >

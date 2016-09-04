@@ -6,7 +6,9 @@
  *****************************************************************************/
 package com.delmar.core.web.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -81,7 +83,9 @@ public class MessageAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public List search() {
-		return messageService.selectByExample(null);
+		Map<String,Object> param=new HashMap();
+		param.put("searchString",getSearchWhere());
+		return messageService.selectByExample(param);
 	}
 
 	/* (non-Javadoc)

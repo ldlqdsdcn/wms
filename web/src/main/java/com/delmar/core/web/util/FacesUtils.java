@@ -6,10 +6,15 @@
  *****************************************************************************/
 package com.delmar.core.web.util;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.delmar.common.vo.SearchColumnVo;
+import com.delmar.core.dto.SearchColumnDto;
+import com.delmar.system.web.WebConst;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
@@ -199,6 +204,32 @@ public class FacesUtils {
 			return null;
 		} else {
 			return objTemp.get(strKey);
+		}
+	}
+
+	/**
+	 * 获取查询条件
+	 * @return
+	 */
+	public static List<SearchColumnDto>  getSearchColumnList()
+	{
+		List<SearchColumnVo> list=(List) FacesUtils.getValueInHashtableOfSession(WebConst.SESSION_SEARCH_CONDITIONS);
+		if(list==null||list.size()==0)
+		{
+			return null;
+		}
+		else
+		{
+			List<SearchColumnDto> searchColumnDtoList=new ArrayList<>();
+			for(SearchColumnVo vo:list)
+			{
+				SearchColumnDto searchColumnDto=new SearchColumnDto();
+				searchColumnDto.setOpearType(vo.getOpearType());
+				searchColumnDto.setColumnId(vo.getColumnId());
+				searchColumnDto.setValue(vo.getValue());
+				searchColumnDtoList.add(searchColumnDto);
+			}
+			return searchColumnDtoList;
 		}
 	}
 
