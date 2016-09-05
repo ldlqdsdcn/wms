@@ -113,7 +113,7 @@ public class DateTimeDecorator {
 	}	
 	
 
-	private static String time_format="HH:mm:ss";
+
 	//返回格式为HH:mm:ss的时间字符串
 	private static final DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	

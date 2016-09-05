@@ -1,10 +1,8 @@
 package com.delmar.utils;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.collections.FastHashMap;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,20 +18,16 @@ public class CommonConverter {
      * @return 转换后类的实例
      */
     public static <T> T convertObject(Object obj, Class<T> classOfT) {
-        T toObject = null;
+        T toObject;
         try {
             toObject = classOfT.newInstance();
-        } catch (InstantiationException e) {
-            new RuntimeException("转换对象-实例化目标对象失败", e);
-        } catch (IllegalAccessException e) {
-            new RuntimeException("转换对象失败-实例化目标对象失败", e);
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException("转换对象-实例化目标对象失败", e);
         }
         try {
             BeanUtils.copyProperties(toObject, obj);
-        } catch (IllegalAccessException e) {
-            new RuntimeException("转换对象-复制属性失败", e);
-        } catch (InvocationTargetException e) {
-            new RuntimeException("转换对象-复制属性失败", e);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException("转换对象-复制属性失败", e);
         }
         return toObject;
     }
@@ -45,13 +39,11 @@ public class CommonConverter {
      */
     public static Map convertObjectToMap(Object obj)
     {
-        Map<String,Object> result=new HashMap();
+        Map<String,Object> result=new HashMap<>();
         try {
             BeanUtils.copyProperties(result,obj);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException | InvocationTargetException e) {
+           throw new RuntimeException("把对象转换为Map异常", e);
         }
         return result;
     }
