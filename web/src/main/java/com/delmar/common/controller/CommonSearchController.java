@@ -36,8 +36,6 @@ public class CommonSearchController {
         RelOperDef[] operDefs = RelOperDef.values();
         Gson gson = new Gson();
         ModelAndView modelAndView = new ModelAndView("/commons/common_search.jsp");
-        Map<String, Object> param = new HashMap<String,Object>();
-        param.put("pageUrl", action_value);
         Search search = searchService.getSearchByPageUrl(action_value);
         if(search==null)
         {
@@ -52,7 +50,7 @@ public class CommonSearchController {
             searchColumnVo.setColumnLabel(searchColumn.getColumnLabel());
             searchColumnVo.setDataType(searchColumn.getDataType());
             searchColumnVo.setInputType(searchColumn.getShowType());
-           List<String> relOpearArray=new ArrayList();
+           List<String> relOpearArray=new ArrayList<>();
             for (String oper : searchColumn.getRelOperList()) {
                 for (RelOperDef operDef : operDefs) {
                     if (oper.equals(String.valueOf(operDef.getKey()))) {
