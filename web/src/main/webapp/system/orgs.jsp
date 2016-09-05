@@ -10,20 +10,9 @@
  <script type='text/javascript' src='../dwr/engine.js'></script>
   <script type='text/javascript' src='../js/ea.effect.js'></script>
  <script type='text/javascript' src='../js/ea.validate.js'></script>
-
-
-
-
-
-
 <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/i18n/datepicker-<s:property value='#session.currentlanguageoriginal'/>.js"></script>
-
 <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
 <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" />
-
-
 <link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="../css/delmar.css" type="text/css" media="all"/>

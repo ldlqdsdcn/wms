@@ -9,9 +9,9 @@
    <script type='text/javascript' src='../js/ea.effect.js'></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
-<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.5.custom.min.js"/>"></script>
-<link rel="Stylesheet" href="../css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" />
+    <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="<c:url value="/js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/>"></script>
+    <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
 <link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
 
 

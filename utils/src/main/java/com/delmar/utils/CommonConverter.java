@@ -1,17 +1,9 @@
-/*
- * Copyright 2016 uncle5.com All right reserved. This software is the
- * confidential and proprietary information of uncle5.com ("Confidential
- * Information"). You shall not disclose such Confidential Information and shall
- * use it only in accordance with the terms of the license agreement you entered
- * into with uncle5.com .
- */
 package com.delmar.utils;
-
 
 import java.lang.reflect.Method;
 
 /**
- * @author jian.wu 2016年2月24日 下午5:40:22
+ * @author 刘大磊 2014年12月22日 上午10:59:16
  */
 public class CommonConverter {
 
@@ -20,8 +12,13 @@ public class CommonConverter {
      * @param from 拷贝对象
      * @param to  拷贝到的新对象
      */
-    public static void copyProperties(Object from, Object to) throws Exception {
-        copyPropertiesExclude(from, to, null);
+    public static void copyProperties(Object from, Object to) {
+
+        try {
+            copyPropertiesExclude(from, to, null);
+        } catch (Exception e) {
+           throw new RuntimeException("对象参数复制异常");
+        }
     }
 
     /**

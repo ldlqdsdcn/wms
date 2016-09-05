@@ -26,7 +26,7 @@
 			highlightTableRows("list");
 			$('#search_but').click(function()
 			{
-				openDialog('core_search');
+				openDialog('system_user');
 			});
 		});
 		function openDialog(url)

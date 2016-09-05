@@ -1,22 +1,21 @@
 /******************************************************************************
  * 版权所有 刘大磊 2013-07-01												  *
- *	作者：刘大磊								                                              *
- * 电话：13336390671                                                               * 
+ *	作者：刘大磊								                              *
+ * 电话：13336390671                                                          *
  * email:ldlqdsd@126.com						                              *
  *****************************************************************************/
 package com.delmar.system.web.dwr;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.delmar.core.web.dwr.DwrPrivilegeFilter;
+import com.delmar.sys.model.PageMenu;
+import com.delmar.sys.service.PageMenuService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.delmar.core.web.dwr.DwrPrivilegeFilter;
-import com.delmar.sys.model.PageMenu;
-import com.delmar.sys.service.PageMenuService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2015年1月14日 下午1:45:40
@@ -89,14 +88,12 @@ public class PageMenuDwr {
 	 */
 	public PageMenu savePagemenu(PageMenu pageMenu)
 	{
-		
-		
 		if(DwrPrivilegeFilter.isCreate(this.getClass().getName()))
 		{
 			if(pageMenu.getId()==null)
 			return null;
 		}
-		if(DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
+		if(!DwrPrivilegeFilter.isUpdate(this.getClass().getName()))
 		{
 			if(pageMenu.getId()!=null)
 			return null;
@@ -113,7 +110,7 @@ public class PageMenuDwr {
 	@SuppressWarnings("unchecked")
 	public String removeMenu(Integer menuId)
 	{
-		if(DwrPrivilegeFilter.isDelete(this.getClass().getName()))
+		if(!DwrPrivilegeFilter.isDelete(this.getClass().getName()))
 		{
 			return null;
 		}

@@ -28,6 +28,7 @@
 			$('#search_but').click(function()
 			{
 				openDialog('core_table');
+				return false;
 			});
 		});
 		function openDialog(url)

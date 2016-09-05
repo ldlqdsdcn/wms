@@ -10,13 +10,12 @@
 		<convert match="com.delmar.sys.model.Usergroup" converter="bean"/>
 		<convert match="com.delmar.base.model.CityTrl" converter="bean"/>
 		<convert match="com.delmar.base.model.PortTrl" converter="bean"/>
-		<convert match="com.delmar.crm.model.Customer" converter="bean"></convert>
-		<convert match="com.delmar.crm.model.CustomerExtra" converter="bean"></convert>
+		<convert match="com.delmar.crm.model.Customer" converter="bean"/>
+		<convert match="com.delmar.crm.model.CustomerExtra" converter="bean"/>
 		<convert match="com.delmar.crm.model.Linkman" converter="bean"></convert>
 		<convert match="com.delmar.station.model.ObjWFDetail" converter="bean"></convert>
 		<convert match="com.delmar.crm.model.Linkrecord" converter="bean"></convert>
-		<convert match="com.delmar.crm.service.CustomerExtraPropDefineService" converter="bean"></convert>
-		
+		<convert match="com.delmar.crm.service.CustomerExtraPropDefineService" converter="bean"/>
 		<create javascript="fileDwr" creator="new">
 			<param name="class" value="com.delmar.common.dwr.FileDwr"></param>
 		</create>
