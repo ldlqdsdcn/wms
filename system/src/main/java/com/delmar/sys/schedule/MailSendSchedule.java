@@ -242,7 +242,7 @@ public class MailSendSchedule  extends CoreSchedule implements Runnable {
 		return rs;
 	}
 
-	class Authentic extends Authenticator { // 验证密码
+	static class Authentic extends Authenticator { // 验证密码
 
 		public Authentic() {
 		}

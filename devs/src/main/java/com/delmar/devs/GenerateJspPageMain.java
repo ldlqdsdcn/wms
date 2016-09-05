@@ -29,14 +29,12 @@ public class GenerateJspPageMain {
      * 填写对应的模块名
      */
     private GenModelDto model;
-    private String module;
     private String namespace;
     private TableMetaDataDto tableMetaDataDto;
 
     public GenerateJspPageMain(GenModelDto model, String user, String module, TableMetaDataDto tableMetaDataDto, TableService tableService) {
         this.model = model;
         this.user = user;
-        this.module = module;
         this.namespace = "/" + module;
         this.tableMetaDataDto = tableMetaDataDto;
         this.tableService = tableService;

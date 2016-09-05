@@ -24,7 +24,6 @@ import javax.servlet.http.HttpSession;
  */
 public class DwrFilter implements Filter {
 	private FilterConfig config;
-	String[] logindwrurls=new String[]{"/dwr/interface/userLoginDwr.js","/dwr/engine.js","/dwr/util.js","/dwr/call/plaincall/userLoginDwr.getOrgSelectByClientId.dwr"};
 	/* (non-Javadoc)
 	 * @see javax.servlet.Filter#destroy()
 	 */
