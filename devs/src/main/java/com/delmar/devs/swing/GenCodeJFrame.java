@@ -11,15 +11,14 @@ import com.delmar.utils.DateTimeDecorator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.File;
-import java.net.URL;
-import java.util.*;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.io.File;
+import java.util.*;
+import java.util.List;
 
 /**
  *
@@ -31,17 +30,17 @@ public class GenCodeJFrame extends javax.swing.JFrame {
     private List<GenModelDto> genModelDtoList=new ArrayList<>();
     private Map<String,GenModelDto> childrenMap=new HashMap<>();
     private Map<String,File> outModuleMap=new HashMap<>();
-    String[] values=null;
+    private String[] values=null;
     /**
      * Creates new form GenCodeJFrame
      */
-    public GenCodeJFrame() {
+    private GenCodeJFrame() {
         initComponents();
         init();
     }
     private void updateChildModuleList(String text)
     {
-        List<String> childItems=new ArrayList<String>();
+        List<String> childItems=new ArrayList<>();
         for(GenModelDto model:genModelDtoList)
         {
             if(!model.getTableName().equals(text))
@@ -87,8 +86,8 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
         File directory = new File("");
         msgText.setText(directory.getAbsolutePath());
-        File currentForder=new File(directory.getAbsolutePath());
-        File[] files= currentForder.listFiles();
+        File currentFolder=new File(directory.getAbsolutePath());
+        File[] files= currentFolder.listFiles();
         if(files!=null)
             for(File f:files)
             {
@@ -114,6 +113,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                 break;
             }
         }
+        assert genModel != null;
         tableName.setText(genModel.getTableName());
         objectName.setText(genModel.getModelName());
         moduleName.setText(genModel.getModule());
@@ -498,7 +498,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         List<String> selectedList= childrenModel.getSelectedValuesList();
         if(selectedList!=null)
         {
-            List<GenModelDto> includeModelList=new ArrayList<GenModelDto>();
+            List<GenModelDto> includeModelList= new ArrayList<>();
             for(String childModel:selectedList)
             {
                 GenModelDto child=  this.childrenMap.get(childModel);
@@ -574,13 +574,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GenCodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GenCodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GenCodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(GenCodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

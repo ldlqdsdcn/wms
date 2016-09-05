@@ -29,7 +29,7 @@ public class DMExceptionInterceptor implements Interceptor  {
 	{
 		
 		 String result = "";
-		 ActionContext ctx = actionInvocation.getInvocationContext();  		 
+
 		 DmLog dmLog=DmLog.getLogger(actionInvocation.getClass());
 	      try {
 	            result = actionInvocation.invoke();

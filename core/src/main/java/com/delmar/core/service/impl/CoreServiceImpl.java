@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 public abstract  class CoreServiceImpl<T> implements CoreService<T> {
 
 	
-    protected DmLog logger =DmLog.getLogger("InfoLogger."+getClass().getName()); 
-    
+    protected DmLog logger =DmLog.getLogger("InfoLogger."+getClass().getName());
+
 	protected abstract CoreDao<T> getCoreDao();
 	protected String getString()
 	{
