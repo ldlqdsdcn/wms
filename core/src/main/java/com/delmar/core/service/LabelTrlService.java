@@ -7,15 +7,17 @@
 package com.delmar.core.service;
 
 import com.delmar.core.model.LabelTrl;
+import com.delmar.core.service.CoreService;
+import java.util.List;
 /**
- * @author 刘大磊 2016-09-03 23:33:53
+ * @author 刘大磊 2016-09-05 14:01:13
  */
 public interface LabelTrlService extends CoreService<LabelTrl> {
 	/**
 	 * @param ids
 	 */
-	void deleteLabelTrlList(Integer[] ids);
+	public void deleteLabelTrlList(Integer[] ids);
 
-	Integer saveLabelTrl(LabelTrl labelTrl);
+public Integer saveLabelTrl(LabelTrl labelTrl);
 
 }

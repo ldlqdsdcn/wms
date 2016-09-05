@@ -11,15 +11,15 @@ import com.delmar.core.service.CoreService;
 import com.delmar.core.model.LabelTrl;
 import java.util.List;
 /**
- * @author 刘大磊 2016-09-03 23:33:53
+ * @author 刘大磊 2016-09-05 14:01:13
  */
 public interface LabelService extends CoreService<Label> {
 	/**
 	 * @param ids
 	 */
-	 void deleteLabelList(Integer[] ids);
-     List<LabelTrl> getLabelTrlListByLabelId(Integer labelId);
+	public void deleteLabelList(Integer[] ids);
+    public List<LabelTrl> getLabelTrlListByLabelId(Integer labelId);
 
-	 Integer saveLabel(Label label,List<LabelTrl> labelTrlList);
+public Integer saveLabel(Label label,List<LabelTrl> labelTrlList);
 
 }

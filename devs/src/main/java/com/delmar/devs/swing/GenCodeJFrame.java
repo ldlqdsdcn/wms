@@ -26,7 +26,6 @@ import java.util.List;
  */
 public class GenCodeJFrame extends javax.swing.JFrame {
     private static ApplicationContext applicationContext;
-    private static final String EMPTY="无";
     private List<GenModelDto> genModelDtoList=new ArrayList<>();
     private Map<String,GenModelDto> childrenMap=new HashMap<>();
     private Map<String,File> outModuleMap=new HashMap<>();

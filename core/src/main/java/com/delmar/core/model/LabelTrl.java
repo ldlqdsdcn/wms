@@ -9,7 +9,7 @@ package com.delmar.core.model;
 import lombok.Data;
  /**
   * table name core_label_trl
-  * Date:2016-09-03 23:33:53
+  * Date:2016-09-05 14:01:13
   **/
 @Data
 public class LabelTrl extends CoreModel {
