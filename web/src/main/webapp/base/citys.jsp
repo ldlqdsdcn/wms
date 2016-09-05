@@ -113,8 +113,6 @@
     
    
 </script>
-<div id="selectDiv">
-	<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0; border:0; padding: 0;" id="selectIframe"></iframe>
-</div>
+<%@include file="/commons/list_footer.jsp"%>
 </body>
 </html>

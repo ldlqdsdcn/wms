@@ -14,8 +14,8 @@
 <link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" type="text/css" />
 <link rel="Stylesheet" href="../js/jquery/plugin/multiselect/jquery.multiselect.css" type="text/css" />
 <link href="../js/jquery/plugin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"/></script>
-<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/></script>
+<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/i18n/datepicker-<s:property value='#session.currentlanguageoriginal'/>.js"></script>
 <script type='text/javascript' src='../js/dm/delmar.js'></script>
 <script type='text/javascript' src='../js/ea.effect.js'></script>

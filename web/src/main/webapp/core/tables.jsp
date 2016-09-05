@@ -5,48 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-<link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
- <script type='text/javascript' src='../js/ea.effect.js'></script>
- <script type='text/javascript' src='../js/ea.validate.js'></script>
-	<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="<c:url value="/js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/>"></script>
-	<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#selectDiv").dialog({
-				autoOpen: false,
-				height: 500,
-				width: 700,
-				modal: true,
-				title:'位置：查询条件',
-				resizable:false});
-			highlightTableRows("list");
-			$('#search_but').click(function()
-			{
-				openDialog('core_table');
-				return false;
-			});
-		});
-		function openDialog(url)
-		{
-			document.getElementById('selectIframe').src='<c:url value='/commons/searchPage.do'/>?action_value='+url;
-			$('#selectDiv').dialog('open');
-		}
-		function closeDialog()
-		{
-			$("#selectDiv").dialog('close');
-		}
-		function search()
-		{
-			closeDialog();
-			document.forms[0].submit();
-		}
-
-	</script>
+	<%@include file="/commons/header.jsp"%>
+	<jsp:include page="/commons/list_js.jsp">
+		<jsp:param name="search_name" value="core_table"/>
+		<jsp:param name="edit_url" value="/core/table_edit.action"/>
+	</jsp:include>
 </head>
 
 <body >
@@ -109,27 +72,6 @@
 
 </s:form>
 
-<script type="text/javascript">
-    function viewExport(id) {
-    if(id==0)
-    {
-    	window.location='<c:url value="/core/table_edit.action"/>';
-    }
-    else if(id==1)
-	{
-		window.location='<c:url value="/core/initTableInfo.do"/>';
-	}
-    else
-    {
-       window.location='<c:url value="/core/table_edit.action"/>?id='+id;
-    }
-    }
-    highlightTableRows("list");
-    
-   
-</script>
-<div id="selectDiv">
-	<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0px; border:0px; padding: 0px;" id="selectIframe"></iframe>
-</div>
+<%@include file="/commons/list_footer.jsp"%>
 </body>
 </html>

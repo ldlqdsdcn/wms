@@ -20,7 +20,7 @@
   <link rel="Stylesheet" href="../js/jquery/plugin/jquery.datetimepicker.min.css" type="text/css" >
 </head>
 <body class="container" ng-app="myApp" ng-controller="tableCtrl">
-<form role="form" name="myform" class="form-inline">
+<form role="form" name="myform" class="form-inline" >
     <div class="form-group">
     <select  class="form-control" id="columnName" ng-model="currentColumn" ng-options="option.columnLabel for option in columnList">
     </select>
@@ -37,7 +37,7 @@
 
   </div>
   <div class="form-group">
-    <button  type="submit" class="btn btn-primary" ng-click="submit()"  ng-disabled="currentColumn.value==null">添加</button> <button  type="submit" class="btn btn-primary" ng-click="search()">查找</button>
+    <button  type="submit" class="btn btn-primary" ng-click="submit()"  ng-disabled="currentColumn.value==null">添加</button> <button  type="button" class="btn btn-primary" ng-click="search()">查找</button>
   </div>
   <div class="form-group" ng-show="searchColumnList!=null">
     <label for="column_list" class="control-label">字段列表</label>

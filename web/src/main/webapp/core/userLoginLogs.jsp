@@ -5,14 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link rel="Stylesheet" href="../css/displaytag.css" type="text/css" />
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
-  <script type='text/javascript' src='../js/ea.effect.js'></script>
-  <script type='text/javascript' src='../js/ea.validate.js'></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="<c:url value="/js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/>"></script>
-	<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
+	<%@include file="/commons/header.jsp"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#selectDiv").dialog({
@@ -40,7 +33,7 @@
 		function search()
 		{
 			closeDialog();
-			document.forms[0].submit();
+			window.location="<c:url value="/core/userLoginLog.action"/> ";
 		}
 
 	</script>
@@ -98,9 +91,7 @@
 </table>
 
 
-<div id="selectDiv">
-	<iframe frameborder="0" align="top" height="100%" width="100%" style="margin:0; border:0; padding: 0;" id="selectIframe"></iframe>
-</div>
+<%@include file="/commons/list_footer.jsp"%>
 
 
 </body>

@@ -50,7 +50,7 @@ public class UserSessionAction extends CoreAction {
 		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("searchString",getSearchWhere());
 
-		List<UserSession> list=userSessionService.selectByExample(null);
+		List<UserSession> list=userSessionService.selectByExample(param);
 		FacesUtils.setValueInHashtableOfSession("userSessionList", list);
 		return CoreEditAction.LIST;
 	}
