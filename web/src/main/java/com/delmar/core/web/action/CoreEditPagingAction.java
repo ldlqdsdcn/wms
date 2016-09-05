@@ -25,7 +25,7 @@ public abstract class CoreEditPagingAction extends CoreEditBasePrivAction{
     {
         if(!PrivilegeOperator.isView())
         {
-            return NOPRIVILEGE;
+            return NO_PRIVILEGE;
         }
 
         HttpServletRequest request=ServletActionContext.getRequest();

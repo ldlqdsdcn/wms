@@ -28,7 +28,7 @@ public abstract class CoreEditPrivAction extends CoreEditBasePrivAction {
 	{
 		if(!(PrivilegeOperator.isView()))
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}
         List<CoreModel> list=search();
         List<Integer> ids=new ArrayList<Integer>();

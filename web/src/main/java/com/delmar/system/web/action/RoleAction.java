@@ -224,9 +224,9 @@ public class RoleAction extends CoreEditAction {
 	
 	public String addRoleUser()
 	{
-		if(!(!PrivilegeOperator.isView()))
+		if(!PrivilegeOperator.isView())
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}		
 		HttpServletRequest request=ServletActionContext.getRequest();
         String roleId=request.getParameter("roleId");

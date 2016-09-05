@@ -45,7 +45,7 @@ public class UserSessionAction extends CoreAction {
 	{
 		if(!PrivilegeOperator.isView())
 		{
-			return CoreEditPrivAction.NOPRIVILEGE;
+			return CoreEditPrivAction.NO_PRIVILEGE;
 		}
 		Map<String,Object> param=new HashMap<String,Object>();
 		param.put("searchString",getSearchWhere());

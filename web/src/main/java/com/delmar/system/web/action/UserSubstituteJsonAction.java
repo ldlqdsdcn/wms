@@ -54,9 +54,9 @@ public class UserSubstituteJsonAction extends CoreAction {
 
 	public String listadd()
 	{
-		if(!(!PrivilegeOperator.isView()))
+		if(!PrivilegeOperator.isView())
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}		
 		HttpServletRequest request=ServletActionContext.getRequest();
         String id=request.getParameter("id");

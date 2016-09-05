@@ -121,9 +121,9 @@ public class UsergroupAction extends CoreEditPrivAction {
 	
 	public String addUserGroupUser()
 	{
-		if(!(!PrivilegeOperator.isView()))
+		if(!PrivilegeOperator.isView())
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}		
 		HttpServletRequest request=ServletActionContext.getRequest();
         String roleId=request.getParameter("usergroupId");

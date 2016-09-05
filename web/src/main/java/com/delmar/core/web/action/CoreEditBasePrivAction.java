@@ -69,7 +69,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     {
         if(!PrivilegeOperator.isCreate())
         {
-            return NOPRIVILEGE;
+            return NO_PRIVILEGE;
         }
         createForm();
         return EDIT;
@@ -83,7 +83,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     {
         if(!(PrivilegeOperator.isUpdate()||PrivilegeOperator.isView()))
         {
-            return NOPRIVILEGE;
+            return NO_PRIVILEGE;
         }
         editForm();
         return EDIT;
@@ -97,7 +97,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     {
         if(!((PrivilegeOperator.isCreate()&&getModelId()==null)||PrivilegeOperator.isUpdate()))
         {
-            return NOPRIVILEGE;
+            return NO_PRIVILEGE;
         }
         String msgKey="success.update";
         if(this.getModelId()==null)
@@ -125,7 +125,7 @@ public abstract class CoreEditBasePrivAction extends CoreAction{
     {
         if(!(PrivilegeOperator.isDelete()))
         {
-            return NOPRIVILEGE;
+            return NO_PRIVILEGE;
         }
         String[] ids=ServletActionContext.getRequest().getParameterValues("ids");
         if(ids==null)

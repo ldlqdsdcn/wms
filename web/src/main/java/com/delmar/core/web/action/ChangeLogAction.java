@@ -106,7 +106,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 	{
 		if(!PrivilegeOperator.isView())
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}
 		
 		changelog=changelogService.selectByPrimaryKey(id);
@@ -137,7 +137,7 @@ public class ChangeLogAction extends CoreEditPrivAction{
 		UserResource resource= (UserResource) ServletActionContext.getRequest().getSession().getAttribute("resource");
 		if(!PrivilegeOperator.isView())
 		{
-			return NOPRIVILEGE;
+			return NO_PRIVILEGE;
 		}
 		changelog=this.changelogService.selectByPrimaryKey(changelog.getId());
 		Map<String,Object> map=new HashMap();
