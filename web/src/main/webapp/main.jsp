@@ -32,8 +32,6 @@
 
 <link href="js/jquery/plugin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
 <SCRIPT  type="text/javascript" src="js/jquery/plugin/ligerUI/js/ligerui.min.js"></SCRIPT>
-
-
 <script type='text/javascript' src='js/dm/delmar.js'></script>
 
 

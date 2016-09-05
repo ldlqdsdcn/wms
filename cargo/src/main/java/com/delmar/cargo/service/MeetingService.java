@@ -20,10 +20,10 @@ public interface MeetingService extends CoreService<Meeting> {
 	/**
 	 * @param ids
 	 */
-	public void deleteMeetingList(Integer[] ids);
-    public List<MeetingParticipant> getMeetingParticipantListByMeetingId(Integer meetingId);
-    public List<MeetingTopic> getMeetingTopicListByMeetingId(Integer meetingId);
+	 void deleteMeetingList(Integer[] ids);
+     List<MeetingParticipant> getMeetingParticipantListByMeetingId(Integer meetingId);
+     List<MeetingTopic> getMeetingTopicListByMeetingId(Integer meetingId);
 
-public Integer saveMeeting(Meeting meeting,List<MeetingParticipant> meetingParticipantList,List<MeetingTopic> meetingTopicList);
+ Integer saveMeeting(Meeting meeting,List<MeetingParticipant> meetingParticipantList,List<MeetingTopic> meetingTopicList);
 
 }

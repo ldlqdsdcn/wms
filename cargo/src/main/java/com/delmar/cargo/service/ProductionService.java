@@ -19,9 +19,9 @@ public interface ProductionService extends CoreService<Production> {
 	/**
 	 * @param ids
 	 */
-	public void deleteProductionList(Integer[] ids);
-    public List<ProductionLine> getProductionLineListByProductionId(Integer productionId);
+	 void deleteProductionList(Integer[] ids);
+     List<ProductionLine> getProductionLineListByProductionId(Integer productionId);
 
-public Integer saveProduction(Production production,List<ProductionLine> productionLineList);
+    Integer saveProduction(Production production,List<ProductionLine> productionLineList);
 
 }
