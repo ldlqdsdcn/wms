@@ -35,7 +35,7 @@
             </td>
         </tr>
     </table>
-    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI="${pageContext.request.contextPath}/system/userFootmark_list.action"
+    <display:table name="sessionScope.MAP_KEY_OF_SESSION.userFootmarkList" cellspacing="0" cellpadding="0"  requestURI=""
 		    id="list" pagesize="20" class="table" export="true">
 		<display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>" media="html">
           		<input type="checkbox" name="ids" value="<c:out value='${list.id}'/>" style='border: none' />

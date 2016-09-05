@@ -12,8 +12,10 @@ import com.delmar.base.service.CityService;
 import com.delmar.base.service.CityTrlService;
 import com.delmar.core.model.Language;
 import com.delmar.core.service.LanguageService;
+import com.delmar.core.web.action.CoreEditPagingAction;
 import com.delmar.core.web.action.CoreEditPrivAction;
 import com.delmar.core.web.bean.UserResource;
+import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
 import com.delmar.utils.ResourceMessage;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ import java.util.Map;
 /**
  * @author 刘大磊 2015-02-09 20:06:08
  */
-public class CityAction extends CoreEditPrivAction {
+public class CityAction extends CoreEditPagingAction {
 	private City  city;
 	
 	@Autowired
@@ -142,16 +144,7 @@ public class CityAction extends CoreEditPrivAction {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.delmar.core.web.action.CoreEditPrivAction#search()
-	 */
-	@Override
-	public List search() {
 
-		Map<String,Object> param=new HashMap<String,Object>();
-		param.put("searchString",getSearchWhere());
-		return cityService.selectByExample(param);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
@@ -181,7 +174,7 @@ public class CityAction extends CoreEditPrivAction {
 	}
 
 	/**
-	 * @param usergroup the usergroup to set
+	 * @param city the usergroup to set
 	 */
 	public void setCity(City city) {
 		this.city = city;
@@ -202,5 +195,14 @@ public class CityAction extends CoreEditPrivAction {
 	}
 
 
-
+	@Override
+	public PaginatedListHelper searchPaginatedList() {
+		Map<String, Object> param = new HashMap();
+		param.put("searchString", getSearchWhere());
+		param.put("pageNo", page);
+		param.put("pageSize",20);
+		int fullListSize = cityService.countObjects(param);
+		List list = cityService.selectByExample(param);
+		return new PaginatedListHelper(page, fullListSize, list);
+	}
 }

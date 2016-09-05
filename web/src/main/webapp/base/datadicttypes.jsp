@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+	<%@include file="/commons/header.jsp"%>
 	<jsp:include page="/commons/list_js.jsp">
 		<jsp:param name="search_name" value="base_datadict_type"/>
 		<jsp:param name="edit_url" value="/base/datadicttype_edit.action"/>
