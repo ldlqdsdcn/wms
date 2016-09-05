@@ -7,12 +7,9 @@
 
 package com.delmar.sys.service.impl;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
+import com.delmar.sys.dao.ModuleMenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +30,8 @@ public class PageMenuServiceImpl extends CoreServiceImpl<PageMenu> implements
 		PageMenuService {
 	@Autowired
 	private PageMenuDao pageMenuDao;
+	@Autowired
+	private ModuleMenuDao moduleMenuDao;
 	/* (non-Javadoc)
 	 * @see CoreService.CoreServiceImpl#getCoreDao()
 	 */
@@ -81,7 +80,15 @@ public class PageMenuServiceImpl extends CoreServiceImpl<PageMenu> implements
 		return sb.toString();
 	}
 
-	private StringBuilder getPageMenu(PageMenu pm,String parentMenuId,Locale local)
+	@Override
+	public Integer deleteByPrimaryKey(Integer id) {
+		Map<String,Object> param=new HashMap<>();
+		param.put("menuId",id);
+		moduleMenuDao.deleteByExample(param);
+		return super.deleteByPrimaryKey(id);
+	}
+
+	private StringBuilder getPageMenu(PageMenu pm, String parentMenuId, Locale local)
 	{
 		//java.util.Locale.CANADA
 		 ResourceBundle bundle=null;

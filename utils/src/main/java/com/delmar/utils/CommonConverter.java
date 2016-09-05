@@ -1,6 +1,12 @@
 package com.delmar.utils;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.collections.FastHashMap;
+
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 刘大磊 2014年12月22日 上午10:59:16
@@ -8,43 +14,45 @@ import java.lang.reflect.Method;
 public class CommonConverter {
 
     /**
-     * 利用反射实现对象之间属性复制
-     * @param from 拷贝对象
-     * @param to  拷贝到的新对象
+     * 对象转换，把对象相同名字的属性复制给新对象
+     * @param obj 要转换的对象
+     * @param classOfT 转换后的类
+     * @return 转换后类的实例
      */
-    public static void copyProperties(Object from, Object to) {
-
+    public static <T> T convertObject(Object obj, Class<T> classOfT) {
+        T toObject = null;
         try {
-            copyPropertiesExclude(from, to, null);
-        } catch (Exception e) {
-           throw new RuntimeException("对象参数复制异常");
+            toObject = classOfT.newInstance();
+        } catch (InstantiationException e) {
+            new RuntimeException("转换对象-实例化目标对象失败", e);
+        } catch (IllegalAccessException e) {
+            new RuntimeException("转换对象失败-实例化目标对象失败", e);
         }
+        try {
+            BeanUtils.copyProperties(toObject, obj);
+        } catch (IllegalAccessException e) {
+            new RuntimeException("转换对象-复制属性失败", e);
+        } catch (InvocationTargetException e) {
+            new RuntimeException("转换对象-复制属性失败", e);
+        }
+        return toObject;
     }
 
     /**
-     * 复制对象属性
-     * @param from 从 from 对象
-     * @param to   拷贝到 to 对象
-     * @param excludeArray 排除属性列表
-     * @throws Exception 抛出反射异常
+     * 把对象转换为Map
+     * @param obj 要转换的对象
+     * @return 返回HashMap实例
      */
-    public static void copyPropertiesExclude(Object from, Object to, String[] excludeArray) throws Exception {
-       ProObjectUtil.copyPropertiesExclude(from,to,excludeArray);
-    }
-
-
-    /**
-     * 从方法数组中获取指定名称的方法
-     *
-     * @param methods
-     * @param name
-     * @return
-     */
-    public static Method findMethodByName(Method[] methods, String name) {
-        for (Method method : methods) {
-            if (method.getName().equals(name))
-                return method;
+    public static Map convertObjectToMap(Object obj)
+    {
+        Map<String,Object> result=new HashMap();
+        try {
+            BeanUtils.copyProperties(result,obj);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
-        return null;
+        return result;
     }
 }

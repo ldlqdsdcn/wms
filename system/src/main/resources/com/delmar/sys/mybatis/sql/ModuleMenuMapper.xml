@@ -9,6 +9,7 @@
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
+         <if test="menuId!=null"> and menu_id=#{menuId,jdbcType=INTEGER} </if>
     	 <if test="moduleId!=null"> and module_id=#{moduleId,jdbcType=INTEGER} </if>
         <if test="accessString!=null"> and ${accessString} </if>
     </where>

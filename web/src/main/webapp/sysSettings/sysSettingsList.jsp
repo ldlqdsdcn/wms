@@ -23,9 +23,6 @@
 <script type="text/javascript" src="../js/jquery/plugin/multiselect/src/jquery.multiselect.js"></script>
 <script type="text/javascript" src="../js/jquery/plugin/multiselect/i18n/jquery.multiselect.<s:property value='#session.currentlanguagelowercase'/>.js"></script>
 <script  type="text/javascript" src="../js/jquery/plugin/ligerUI/js/ligerui.min.js"></script>
-<script type='text/javascript' src='../dwr/interface/linkStationRecordDwr.js'></script>
-<script type='text/javascript' src='../dwr/interface/linkBankCategoryDwr.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
 <style type="text/css">
 
 .table tbody tr {

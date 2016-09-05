@@ -334,7 +334,7 @@ public class SysSettingsAction extends CoreEditPrivAction{
 			FacesUtils.setValueInHashtableOfSession("queryStatus", "true");			
 		} else {
 			FacesUtils.setValueInHashtableOfSession("queryStatus", "false");	
-			param.put("topnumber", " top 20 ");
+
 		}
 	    
 	    String accessString = up.getAccessStringByStruts2();

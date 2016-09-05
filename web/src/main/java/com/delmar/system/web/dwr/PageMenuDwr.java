@@ -9,6 +9,7 @@ package com.delmar.system.web.dwr;
 import com.delmar.core.web.dwr.DwrPrivilegeFilter;
 import com.delmar.sys.model.PageMenu;
 import com.delmar.sys.service.PageMenuService;
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +28,9 @@ public class PageMenuDwr {
 	private PageMenuService pageMenuService;
 	public PageMenu[] getPagemenus(Integer parentMenuId)
 	{
+
+		Gson gson=new Gson();
+		gson.fromJson("",PageMenu.class);
 		if(!DwrPrivilegeFilter.isView(this.getClass().getName()))
 		{
 			return null;

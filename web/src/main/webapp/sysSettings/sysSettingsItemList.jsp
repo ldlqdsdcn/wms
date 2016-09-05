@@ -16,16 +16,13 @@
 <link href="../js/jquery/plugin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"/></script>
 <script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/></script>
-<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/i18n/datepicker-<s:property value='#session.currentlanguageoriginal'/>.js"/></script>
+<script type="text/javascript" src="../js/jquery/jquery-ui-1.11.4.custom/i18n/datepicker-<s:property value='#session.currentlanguageoriginal'/>.js"></script>
 <script type='text/javascript' src='../js/dm/delmar.js'></script>
 <script type='text/javascript' src='../js/ea.effect.js'></script>
 <script type='text/javascript' src='../js/ea.validate.js'></script>
 <script type="text/javascript" src="../js/jquery/plugin/multiselect/src/jquery.multiselect.js"></script>
 <script type="text/javascript" src="../js/jquery/plugin/multiselect/i18n/jquery.multiselect.<s:property value='#session.currentlanguagelowercase'/>.js"></script>
 <script  type="text/javascript" src="../js/jquery/plugin/ligerUI/js/ligerui.min.js"></script>
-<script type='text/javascript' src='../dwr/interface/linkStationRecordDwr.js'></script>
-<script type='text/javascript' src='../dwr/interface/linkBankCategoryDwr.js'></script>
-<script type='text/javascript' src='../dwr/engine.js'></script>
 <style type="text/css">
 
 .table tbody tr {

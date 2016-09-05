@@ -35,12 +35,8 @@ public class MapperGenerateStrategy {
         List<ColumnInfo> columnInfoList=new ArrayList<>();
         for(ColumnMetaDataDto cmd:tableMetaDataDto.getColumnList())
         {
-            ColumnInfo columnInfo=new ColumnInfo();
-            try {
-                CommonConverter.copyProperties(cmd,columnInfo);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            ColumnInfo columnInfo=CommonConverter.convertObject(cmd,ColumnInfo.class);
+
             String linkType=IntelliKeyWord.getSQlType(columnInfo.getType());
             if(linkType!=null)
             {

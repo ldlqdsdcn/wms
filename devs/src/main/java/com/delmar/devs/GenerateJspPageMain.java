@@ -108,13 +108,10 @@ public class GenerateJspPageMain {
         List<ColumnMetaDataDto> columnMetaDataDtoList = tableData.getColumnList();
 
         for (ColumnMetaDataDto columnMetaDataDto : columnMetaDataDtoList) {
-            ColumnInfo columnInfo = new ColumnInfo();
+
             List<Integer> validationList = new ArrayList<>();
-            try {
-                CommonConverter.copyProperties(columnMetaDataDto, columnInfo);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            ColumnInfo columnInfo = CommonConverter.convertObject(columnMetaDataDto,ColumnInfo.class);
+
             columnInfo.setPropertyName(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
             if (IntelliKeyWord.hasSkipped(columnInfo.getPropertyName())) {
                 continue;

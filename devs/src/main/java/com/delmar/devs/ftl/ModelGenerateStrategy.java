@@ -38,12 +38,7 @@ public class ModelGenerateStrategy {
         ColumnDataType[] columnDataTypes=ColumnDataType.values();
         for(ColumnMetaDataDto cmd:tableMetaDataDto.getColumnList())
         {
-            ColumnInfo columnInfo=new ColumnInfo();
-            try {
-                CommonConverter.copyProperties(cmd,columnInfo);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            ColumnInfo columnInfo=CommonConverter.convertObject(cmd,ColumnInfo.class);
             for(ColumnDataType dataType:columnDataTypes)
             {
                 if(columnInfo.getDataType()==dataType.getKey())
