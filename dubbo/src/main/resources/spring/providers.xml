@@ -23,9 +23,9 @@
 
 	<!-- 和本地bean一样实现服务 -->
 	<!-- 声明需要暴露的服务接口 -->
-	<bean id="manageApiService" class="com.delmar.system.api.impl.UserApiImpl" />
+	<bean id="userApi" class="com.delmar.system.api.impl.UserApiImpl" />
 	<dubbo:service interface="com.delmar.system.api.UserApi"
-		ref="manageApiService" timeout="10000"
+		ref="userApi" timeout="10000"
 		version="1.0.0" />
 
 
