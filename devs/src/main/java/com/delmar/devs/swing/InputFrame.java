@@ -124,7 +124,7 @@ public class InputFrame extends javax.swing.JFrame {
 
         File directory = new File("");
         msgTextArea.append(rb.getString("dev.generation.tool.current.path"));
-        msgTextArea.append(directory.getAbsolutePath());
+        msgTextArea.append(directory.getAbsolutePath()+"\n");
         File currentFolder=new File(directory.getAbsolutePath());
         File[] files= currentFolder.listFiles();
         if(files!=null)
