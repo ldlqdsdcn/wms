@@ -1,0 +1,4 @@
+set java_home=D:\Program Files\Java\jdk1.7.0_21
+set classpath=%java_home%\lib;.
+set path=%java_home%\bin;.
+startup
