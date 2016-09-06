@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by admin on 2016/9/6.
  */
 @Data
-public class UserDto {
+public class UserDto implements java.io.Serializable{
     private String username;
     private String name;
     private Integer clientId;
