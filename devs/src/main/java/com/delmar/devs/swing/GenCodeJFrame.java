@@ -25,7 +25,13 @@ import java.util.List;
  * @author Administrator
  */
 public class GenCodeJFrame extends javax.swing.JFrame {
+    private static ResourceBundle resourceBundle;
     private static ApplicationContext applicationContext;
+    private String[] tableHeaders=new String [] {
+            resourceBundle.getString("dev.generation.tool.tablename"),  resourceBundle.getString("dev.generation.tool.classname"), resourceBundle.getString("dev.generation.tool.modulename"),
+            resourceBundle.getString("dev.generation.tool.name"), resourceBundle.getString("dev.generation.tool.gen_service"), resourceBundle.getString("dev.generation.tool.generate_action"),
+            resourceBundle.getString("dev.generation.tool.include_module"), resourceBundle.getString("dev.generation.tool.output_location"), resourceBundle.getString("dev.generation.tool.is_translation"), resourceBundle.getString("dev.generation.tool.is_physical_paging")
+    };
     private List<GenModelDto> genModelDtoList=new ArrayList<>();
     private Map<String,GenModelDto> childrenMap=new HashMap<>();
     private Map<String,File> outModuleMap=new HashMap<>();
@@ -59,7 +65,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
     private void init()
     {
-        this.setTitle("SWMS 代码生成工具");
+        this.setTitle(resourceBundle.getString("dev.generation.tool.title"));
         // Listen for changes in the text
         tableName.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -146,8 +152,8 @@ public class GenCodeJFrame extends javax.swing.JFrame {
             content[i][1]=genModelDto.getModelName();
             content[i][2]=genModelDto.getModule();
             content[i][3]=genModelDto.getRemark();
-            content[i][4]=genModelDto.isGenerateService()?"是":"否";
-            content[i][5]=genModelDto.isGenerateWeb()?"是":"否";
+            content[i][4]=genModelDto.isGenerateService()?resourceBundle.getString("dev.generation.tool.yes"):resourceBundle.getString("dev.generation.tool.no");
+            content[i][5]=genModelDto.isGenerateWeb()?resourceBundle.getString("dev.generation.tool.yes"):resourceBundle.getString("dev.generation.tool.no");
             String lineName="";
             if(genModelDto.getIncludeModelList()!=null)
                 for(GenModelDto line:genModelDto.getIncludeModelList())
@@ -157,15 +163,12 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
             content[i][6]=lineName;
             content[i][7]=genModelDto.getOutputModule();
-            content[i][8]=genModelDto.isTrl()?"是":"否";
-            content[i][9]=genModelDto.isPagingByDb()?"是":"否";
+            content[i][8]=genModelDto.isTrl()?resourceBundle.getString("dev.generation.tool.yes"):resourceBundle.getString("dev.generation.tool.no");
+            content[i][9]=genModelDto.isPagingByDb()?resourceBundle.getString("dev.generation.tool.yes"):resourceBundle.getString("dev.generation.tool.no");
             i++;
         }
         DefaultTableModel defaultTableModel=  new javax.swing.table.DefaultTableModel(
-                content,
-                new String [] {
-                        "表名", "对象名", "模块名", "名称", "生成Service", "生成Action", "子模块", "代码输出位置", "是否翻译","物理分页"
-                }
+                content,tableHeaders
         ) {
             boolean[] canEdit = new boolean [] {
                     false, false, false, false, false, false, false, false, false,false
@@ -209,49 +212,43 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         msgText = new javax.swing.JTextArea();
         deleteRow = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        transLabel = new javax.swing.JLabel();
         trlCheck = new javax.swing.JCheckBox();
         jScrollPane3 = new javax.swing.JScrollPane();
         childrenModel = new javax.swing.JList<>();
-        jLabel5 = new javax.swing.JLabel();
+        pagingLabel = new javax.swing.JLabel();
         paging = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         modelList = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        table_label.setText("表名");
+        table_label.setText(resourceBundle.getString("dev.generation.tool.tablename"));
 
-        objectLabel.setText("对象名");
+        objectLabel.setText(resourceBundle.getString("dev.generation.tool.classname"));
 
-        moduleLabel.setText("模块");
+        moduleLabel.setText(resourceBundle.getString("dev.generation.tool.modulename"));
 
-        remarkLabel.setText("名称");
+        remarkLabel.setText(resourceBundle.getString("dev.generation.tool.name"));
 
-        childrenModuleLabel.setText("子模块");
+        childrenModuleLabel.setText(resourceBundle.getString("dev.generation.tool.include_module"));
 
-        jLabel1.setText("生成Service");
+        jLabel1.setText(resourceBundle.getString("dev.generation.tool.gen_service"));
 
-        genServiceCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genServiceCheckActionPerformed(evt);
-            }
-        });
+        jLabel2.setText(resourceBundle.getString("dev.generation.tool.generate_action"));
 
-        jLabel2.setText("生成action");
+        jLabel3.setText(resourceBundle.getString("dev.generation.tool.output_location"));
 
-        jLabel3.setText("业务代码输出位置");
+        //outPutLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        outPutLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        addBtn.setText("添加");
+        addBtn.setText(resourceBundle.getString("dev.generation.tool.add"));
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
 
-        genCode.setText("生成代码");
+        genCode.setText(resourceBundle.getString("dev.generation.tool.generate_code"));
         genCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genCodeActionPerformed(evt);
@@ -263,14 +260,14 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         msgText.setRows(5);
         jScrollPane2.setViewportView(msgText);
 
-        deleteRow.setText("删除选择行");
+        deleteRow.setText(resourceBundle.getString("dev.generation.tool.remove_selected_row"));
         deleteRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteRowActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("是否翻译表");
+        transLabel.setText(resourceBundle.getString("dev.generation.tool.is_translation"));
 
         trlCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,16 +275,16 @@ public class GenCodeJFrame extends javax.swing.JFrame {
             }
         });
 
-        childrenModel.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+//        childrenModel.setModel(new javax.swing.AbstractListModel<String>() {
+//            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+//            public int getSize() { return strings.length; }
+//            public String getElementAt(int i) { return strings[i]; }
+//        });
         childrenModel.setFixedCellHeight(20);
         childrenModel.setFixedCellWidth(100);
         jScrollPane3.setViewportView(childrenModel);
 
-        jLabel5.setText("物理分页");
+        pagingLabel.setText(resourceBundle.getString("dev.generation.tool.is_physical_paging"));
 
         paging.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,13 +350,14 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                         .addGroup(modelPanelLayout.createSequentialGroup()
                                                                                 .addComponent(genActionCheck)
                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(jLabel5))
-                                                                        .addComponent(jLabel4)
+                                                                                .addComponent(pagingLabel))
+                                                                        .addComponent(transLabel)
                                                                         .addComponent(moduleLabel))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(trlCheck)
                                                                         .addComponent(paging)
+                                                                        .addComponent(trlCheck)
+
                                                                         .addComponent(moduleName, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(0, 67, Short.MAX_VALUE)))
                                 .addContainerGap())
@@ -391,7 +389,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modelPanelLayout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(jLabel5)
+                                                                        .addComponent(pagingLabel)
                                                                         .addComponent(paging)))))
                                         .addComponent(genActionCheck))
                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +404,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                         .addComponent(childrenModuleLabel)
                                                                         .addComponent(jLabel3)
                                                                         .addComponent(outPutLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel4)))
+                                                                        .addComponent(transLabel)))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modelPanelLayout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(trlCheck)))
@@ -423,10 +421,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         modelList.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
-                },
-                new String [] {
-                        "表名", "对象名", "模块名", "名称", "生成Service", "生成Action", "子模块", "代码输出位置", "是否翻译", "物理分页"
-                }
+                },tableHeaders
         ) {
             boolean[] canEdit = new boolean [] {
                     false, false, false, false, false, false, false, false, false, false
@@ -461,11 +456,6 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
-
-    private void genServiceCheckActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {
         GenModelDto genModelDto=null;
         boolean include=false;
@@ -556,10 +546,8 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    public static void main(ResourceBundle resourceBundle) {
+        GenCodeJFrame.resourceBundle=resourceBundle;
         applicationContext=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -617,8 +605,8 @@ public class GenCodeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel transLabel;
+    private javax.swing.JLabel pagingLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
