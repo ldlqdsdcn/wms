@@ -1,7 +1,7 @@
 package com.delmar.devs;
 
 import com.delmar.cons.IntelliKeyWord;
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
@@ -69,8 +69,8 @@ public class GenerateJspPageMain {
                 formLine.setLabel(genModelDto.getRemark());
                 formLine.setModel(genModelDto.getModelName());
                 formLine.setTrl(genModelDto.isTrl());
-                ApiResult<TableMetaDataDto> apiResult = tableService.getTableDescription(genModelDto.getTableName());
-                TableMetaDataDto tableMetaDataDto = apiResult.getData();
+                Result<TableMetaDataDto> result = tableService.getTableDescription(genModelDto.getTableName());
+                TableMetaDataDto tableMetaDataDto = result.getData();
 
                 List<JspModelProp> linePropList = getOutPutList(com.delmar.utils.StringUtil.lowerFirstChar(model.getModelName()), tableMetaDataDto);
                 formLine.setPropertyList(linePropList);

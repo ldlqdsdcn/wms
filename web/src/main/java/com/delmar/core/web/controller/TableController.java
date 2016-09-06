@@ -1,6 +1,6 @@
 package com.delmar.core.web.controller;
 
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.api.StatusCode;
 import com.delmar.core.def.ColumnDataType;
 import com.delmar.core.dto.TableMetaDataDto;
@@ -26,7 +26,7 @@ public class TableController {
 
     @RequestMapping(value = "/core/getTableInfo", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResult<TableMetaDataDto> getTableInfo(String tableName) {
+    public Result<TableMetaDataDto> getTableInfo(String tableName) {
         return tableService.getTableDescription(tableName);
     }
 
@@ -43,19 +43,18 @@ public class TableController {
         }
 
         modelAndView.addObject("columnDataTypes", jsonArray.toString());
-
         return modelAndView;
     }
 
     @RequestMapping(value = "/core/saveTableInfo", method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo) {
+    public Result<TableMetaDataDto> saveTableInfo(@RequestBody TableMetaDataDto tableInfo) {
         try {
             tableService.saveTableInfoByWizard(tableInfo);
         } catch (ValidateException validateException) {
-            ApiResult.fail(StatusCode.BUSINESS_EXCEPTION.getCode(), validateException.getMessage());
+            Result.fail(StatusCode.BUSINESS_EXCEPTION.getCode(), validateException.getMessage());
         }
         //System.out.println(tableInfo.toString());
-        return ApiResult.success(tableInfo);
+        return Result.success(tableInfo);
     }
 }

@@ -1,7 +1,7 @@
 package com.delmar.common.controller;
 
 import com.delmar.common.vo.SearchColumnVo;
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.def.RelOperDef;
 import com.delmar.core.def.SearchShowTypeDef;
 import com.delmar.core.model.CommonSearchResult;
@@ -81,10 +81,10 @@ public class CommonSearchController {
 
     @RequestMapping(value = "/commons/search", method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult<Void> saveSearchConditions(@RequestBody List<SearchColumnVo> searchColumnVoList, HttpSession session)
+    public Result<Void> saveSearchConditions(@RequestBody List<SearchColumnVo> searchColumnVoList, HttpSession session)
     {
         FacesUtils.setValueInHashtableOfSession(WebConst.SESSION_SEARCH_CONDITIONS,searchColumnVoList,session);
-        return ApiResult.success(null);
+        return Result.success(null);
     }
 
 }

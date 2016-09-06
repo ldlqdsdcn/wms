@@ -7,7 +7,7 @@
 
 package com.delmar.core.service.impl;
 
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.api.StatusCode;
 import com.delmar.core.dao.CoreDao;
 import com.delmar.core.dao.TableColumnDao;
@@ -76,7 +76,7 @@ private final DmLog log=DmLog.getLogger(TableServiceImpl.class);
 		return table;
 	}
 
-	public ApiResult<TableMetaDataDto> getTableDescription(String tableName) {
+	public Result<TableMetaDataDto> getTableDescription(String tableName) {
 		TableMetaDataDto tableMetaDataDto= null;
 		try {
 			log.debug(tableName);
@@ -117,9 +117,9 @@ private final DmLog log=DmLog.getLogger(TableServiceImpl.class);
 
 			log.debug("columns="+columns);
 		} catch (DataBaseException e) {
-			return ApiResult.fail(StatusCode.BUSINESS_EXCEPTION.getCode(),e.getMessage());
+			return Result.fail(StatusCode.BUSINESS_EXCEPTION.getCode(),e.getMessage());
 		}
-		return ApiResult.success(tableMetaDataDto);
+		return Result.success(tableMetaDataDto);
 	}
 
 	@Override

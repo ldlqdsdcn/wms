@@ -1,6 +1,6 @@
 package com.delmar.devs.service.impl;
 
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.service.TableService;
 import com.delmar.devs.*;
@@ -26,8 +26,8 @@ public class CodeGenerationServiceImpl implements CodeGenerationService {
         for(GenModelDto model:genModelDtoList)
         {
 
-            ApiResult<TableMetaDataDto> apiResult= tableService.getTableDescription(model.getTableName());
-            TableMetaDataDto tableMetaDataDto= apiResult.getData();
+            Result<TableMetaDataDto> result = tableService.getTableDescription(model.getTableName());
+            TableMetaDataDto tableMetaDataDto= result.getData();
             MapperGenerateStrategy mapperGenerateStrategy=new MapperGenerateStrategy(tableMetaDataDto,model);
             //生成mysql映射文件
             mapperGenerateStrategy.generateMapper();

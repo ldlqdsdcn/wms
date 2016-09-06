@@ -7,7 +7,7 @@
 
 package com.delmar.devs;
 
-import com.delmar.core.api.ApiResult;
+import com.delmar.core.api.Result;
 import com.delmar.core.dto.ColumnMetaDataDto;
 import com.delmar.core.dto.TableMetaDataDto;
 import com.delmar.core.service.TableService;
@@ -39,8 +39,8 @@ public class GenerateServiceMain {
 				ServiceModel sm=new ServiceModel();
 				sm.setModel(m.getModelName());
 				sm.setModule(m.getModule());
-				ApiResult<TableMetaDataDto> apiResult= tableService.getTableDescription(m.getTableName());
-				TableMetaDataDto lineData=apiResult.getData();
+				Result<TableMetaDataDto> result = tableService.getTableDescription(m.getTableName());
+				TableMetaDataDto lineData= result.getData();
 				List<ColumnMetaDataDto> columnList=lineData.getColumnList();
 				for(ColumnMetaDataDto columnMetaDataDto:columnList)
 				{

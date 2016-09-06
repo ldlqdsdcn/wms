@@ -1,5 +1,7 @@
-package com.delmar.core.api;
+package com.delmar.core.api.result;
 
+
+import com.delmar.core.api.def.ResultCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -19,7 +21,7 @@ public class ApiResult<T> implements Serializable {
     private int               code;
     private String            message;
     private String            requestId;
-
+    private int errorCode;
     private T                 data;
 
     private ApiResult() {
@@ -29,17 +31,18 @@ public class ApiResult<T> implements Serializable {
     public static <T> ApiResult<T> success(T data) {
         ApiResult<T> apiResult = new ApiResult<>();
         apiResult.success = true;
-        apiResult.code = StatusCode.SUCCESS.getCode();
-        apiResult.message = StatusCode.SUCCESS.getMessage();
+        apiResult.code = ResultCode.SUCCESS.getCode();
+        apiResult.message = ResultCode.SUCCESS.getMessage();
         apiResult.data = data;
         return apiResult;
     }
 
-    public static <T> ApiResult<T> fail(int code, String message) {
+    public static <T> ApiResult<T> fail(int errorCode, String message) {
         ApiResult<T> apiResult = new ApiResult<>();
         apiResult.success = false;
-        apiResult.code = code;
+        apiResult.code = ResultCode.FAILURE.getCode();
         apiResult.message = message;
+        apiResult.errorCode=errorCode;
         return apiResult;
     }
 }
