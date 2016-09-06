@@ -19,6 +19,8 @@
         <module>devs</module>
         <module>dubbo</module>
         <module>dubbo_core</module>
+        <module>report_server</module>
+        <module>endpoint</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

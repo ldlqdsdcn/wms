@@ -24,39 +24,8 @@
 
     <mvc:default-servlet-handler />
 
-
-
-    <!-- 控制器异常处理 -->
-    <!-- <bean id="exceptionHandlerExceptionResolver" -->
-    <!-- class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"> -->
-    <!-- </bean> -->
-    <!-- <bean -->
-    <!-- class="com.uncle5.tinyplatform.zmoa.web.exception.DefaultExceptionHandler"
-        /> -->
-
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="104857600"></property>
     </bean>
-
-
-
-
-
-
-
-
-    <!-- freemarker调用java静态方法（变量） -->
-
-
-
-    <!-- 开启 Shiro Spring AOP 权限注解的支持 -->
-    <!-- <aop:config proxy-target-class="true"></aop:config> -->
-    <!-- <bean -->
-    <!-- class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"> -->
-    <!-- <property name="securityManager" ref="securityManager" /> -->
-    <!-- </bean> -->
-
-    <!-- <mvc:view-controller path="/" view-name="/home" /> -->
-
 </beans>

@@ -9,7 +9,9 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 刘大磊 on 2016/9/2.
@@ -19,7 +21,7 @@ public abstract class CoreEditPagingAction extends CoreEditBasePrivAction{
     @Setter
     protected Integer page;
     protected boolean isDelete;
-    public abstract PaginatedListHelper searchPaginatedList();
+    public abstract PaginatedListHelper searchPaginatedList(Map<String,Object> param);
     @SkipValidation
     public String list()
     {
@@ -56,7 +58,12 @@ public abstract class CoreEditPagingAction extends CoreEditBasePrivAction{
             }
         }
         FacesUtils.setValueInHashtableOfSession("page",page);
-        PaginatedListHelper paginatedListHelper=searchPaginatedList();
+        Map<String,Object> param=new HashMap<>();
+        param.put("searchString", getSearchWhere());
+        param.put("pageNo", page);
+        param.put("pageSize",20);
+        PaginatedListHelper paginatedListHelper=searchPaginatedList( param);
+
         List<CoreModel> list=paginatedListHelper.getList();
         List<Integer> ids=new ArrayList<Integer>();
         for(CoreModel model:list)

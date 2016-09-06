@@ -196,11 +196,8 @@ public class CityAction extends CoreEditPagingAction {
 
 
 	@Override
-	public PaginatedListHelper searchPaginatedList() {
-		Map<String, Object> param = new HashMap();
-		param.put("searchString", getSearchWhere());
-		param.put("pageNo", page);
-		param.put("pageSize",20);
+	public PaginatedListHelper searchPaginatedList(Map<String, Object> param ) {
+
 		int fullListSize = cityService.countObjects(param);
 		List list = cityService.selectByExample(param);
 		return new PaginatedListHelper(page, fullListSize, list);

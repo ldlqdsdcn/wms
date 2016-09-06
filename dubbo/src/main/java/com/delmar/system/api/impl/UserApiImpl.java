@@ -4,6 +4,7 @@ import com.delmar.core.api.def.ErrorCodes;
 import com.delmar.core.api.result.ApiResult;
 import com.delmar.sys.model.User;
 import com.delmar.sys.service.UserService;
+import com.delmar.sys.util.JwtUtil;
 import com.delmar.system.api.UserApi;
 import com.delmar.system.api.dto.UserDto;
 import com.delmar.utils.CommonConverter;
@@ -19,14 +20,14 @@ public class UserApiImpl implements UserApi {
     @Autowired
     UserService userService;
     @Override
-    public ApiResult<UserDto> verifyUser(String username) {
-        log.warn(username);
-        User user=userService.getUserByUsername(username);
-        if(user!=null)
+    public ApiResult<UserDto> verifyToken(String token) {
+        if(!JwtUtil.validateToken(token))
         {
-            UserDto userDto= CommonConverter.convertObject(user,UserDto.class);
-            return ApiResult.success(userDto);
+           return ApiResult.fail(ErrorCodes.BUSINESS_EXCEPTION.getCode(),"token验证失败");
         }
-        return ApiResult.fail(ErrorCodes.BUSINESS_EXCEPTION.getCode(),"通过该用户名，得不到用户");
+        Long userId=(Long)JwtUtil.getJwtClaims(token).getClaimValue("userId");
+        User user=userService.getUserById(userId.intValue());
+        UserDto userDto=CommonConverter.convertObject(user,UserDto.class);
+        return ApiResult.success(userDto);
     }
 }

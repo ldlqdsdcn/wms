@@ -77,12 +77,8 @@ public class UserFootmarkAction extends CoreEditPagingAction {
 		 userFootmark= userFootmarkService.selectByPrimaryKey(id);
 
 	}
-	public PaginatedListHelper searchPaginatedList()
+	public PaginatedListHelper searchPaginatedList(Map<String,Object> param)
 	{
-	Map<String, Object> param = new HashMap();
-	param.put("searchString", getSearchWhere());
-	param.put("pageNo", page);
-	param.put("pageSize",20);
 	int fullListSize = userFootmarkService.countObjects(param);
 	List list = userFootmarkService.selectByExample(param);
 		return new PaginatedListHelper(page, fullListSize, list);

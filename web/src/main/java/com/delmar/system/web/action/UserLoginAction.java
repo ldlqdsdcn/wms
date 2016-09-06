@@ -18,6 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.delmar.sys.util.JwtUtil;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -237,6 +238,8 @@ public class UserLoginAction extends CoreAction {
 		
 	    /*Get user privileges*/
 		UserContent userContent=userService.getUserPrivileges(user.getId());
+		userContent.token= JwtUtil.getTokenString(user);
+		logger.warn("token="+userContent.token);
 		if (beSub==false)
 		   session.setAttribute(WebConst.SESSION_LOGINUSER, user);
 		
