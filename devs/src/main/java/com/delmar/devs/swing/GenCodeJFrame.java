@@ -5,7 +5,6 @@
  */
 package com.delmar.devs.swing;
 
-import com.delmar.devs.service.impl.GenCodeServiceImpl;
 import com.delmar.devs.model.GenModelDto;
 import com.delmar.devs.service.CodeGenerationService;
 import com.delmar.utils.DateTimeDecorator;
@@ -26,7 +25,6 @@ import java.util.List;
  * @author Administrator
  */
 public class GenCodeJFrame extends javax.swing.JFrame {
-    private GenCodeServiceImpl genCodeController;
     private static ResourceBundle resourceBundle;
     private static ApplicationContext applicationContext;
     private String[] tableHeaders=new String [] {

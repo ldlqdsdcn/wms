@@ -13,7 +13,7 @@ public class GenerationMain {
     private static Logger logger= Logger.getLogger(GenerationMain.class);
     public static void main(String[] args)
     {
-
+        logger.debug("begin generate code");
         ResourceBundle resourceBundle=  ResourceBundle.getBundle("msg",Locale.ENGLISH);
         InputFrame.main(resourceBundle);
     }
