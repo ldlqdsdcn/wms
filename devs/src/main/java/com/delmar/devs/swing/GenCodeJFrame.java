@@ -5,6 +5,7 @@
  */
 package com.delmar.devs.swing;
 
+import com.delmar.devs.service.impl.GenCodeServiceImpl;
 import com.delmar.devs.model.GenModelDto;
 import com.delmar.devs.service.CodeGenerationService;
 import com.delmar.utils.DateTimeDecorator;
@@ -25,6 +26,7 @@ import java.util.List;
  * @author Administrator
  */
 public class GenCodeJFrame extends javax.swing.JFrame {
+    private GenCodeServiceImpl genCodeController;
     private static ResourceBundle resourceBundle;
     private static ApplicationContext applicationContext;
     private String[] tableHeaders=new String [] {
@@ -201,11 +203,11 @@ public class GenCodeJFrame extends javax.swing.JFrame {
         remarkLabel = new javax.swing.JLabel();
         remarkName = new javax.swing.JTextField();
         childrenModuleLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        genServiceLabel = new javax.swing.JLabel();
         genServiceCheck = new javax.swing.JCheckBox();
-        jLabel2 = new javax.swing.JLabel();
+        genActionLabel = new javax.swing.JLabel();
         genActionCheck = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
+        outputLabel = new javax.swing.JLabel();
         outPutLocation = new javax.swing.JComboBox<>();
         addBtn = new javax.swing.JButton();
         genCode = new javax.swing.JButton();
@@ -233,11 +235,11 @@ public class GenCodeJFrame extends javax.swing.JFrame {
 
         childrenModuleLabel.setText(resourceBundle.getString("dev.generation.tool.include_module"));
 
-        jLabel1.setText(resourceBundle.getString("dev.generation.tool.gen_service"));
+        genServiceLabel.setText(resourceBundle.getString("dev.generation.tool.gen_service"));
 
-        jLabel2.setText(resourceBundle.getString("dev.generation.tool.generate_action"));
+        genActionLabel.setText(resourceBundle.getString("dev.generation.tool.generate_action"));
 
-        jLabel3.setText(resourceBundle.getString("dev.generation.tool.output_location"));
+        outputLabel.setText(resourceBundle.getString("dev.generation.tool.output_location"));
 
         //outPutLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -331,19 +333,19 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                                 .addGap(27, 27, 27))
                                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modelPanelLayout.createSequentialGroup()
                                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                        .addComponent(jLabel3)
+                                                                                        .addComponent(outputLabel)
                                                                                         .addGroup(modelPanelLayout.createSequentialGroup()
                                                                                                 .addComponent(remarkLabel)
                                                                                                 .addGap(18, 18, 18)
                                                                                                 .addComponent(remarkName)
                                                                                                 .addGap(18, 18, 18)
-                                                                                                .addComponent(jLabel1)))
+                                                                                                .addComponent(genServiceLabel)))
                                                                                 .addGap(18, 18, 18)))
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addGroup(modelPanelLayout.createSequentialGroup()
                                                                                 .addComponent(genServiceCheck)
                                                                                 .addGap(40, 40, 40)
-                                                                                .addComponent(jLabel2))
+                                                                                .addComponent(genActionLabel))
                                                                         .addComponent(objectName, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +360,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                         .addComponent(paging)
                                                                         .addComponent(trlCheck)
 
-                                                                        .addComponent(moduleName, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                        .addComponent(moduleName, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(0, 67, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
@@ -381,11 +383,11 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                         .addComponent(remarkLabel)
                                                                         .addComponent(remarkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel1)
+                                                                        .addComponent(genServiceLabel)
                                                                         .addComponent(genServiceCheck)))
                                                         .addGroup(modelPanelLayout.createSequentialGroup()
                                                                 .addGap(10, 10, 10)
-                                                                .addComponent(jLabel2))
+                                                                .addComponent(genActionLabel))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modelPanelLayout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -402,7 +404,7 @@ public class GenCodeJFrame extends javax.swing.JFrame {
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(modelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                         .addComponent(childrenModuleLabel)
-                                                                        .addComponent(jLabel3)
+                                                                        .addComponent(outputLabel)
                                                                         .addComponent(outPutLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(transLabel)))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modelPanelLayout.createSequentialGroup()
@@ -602,9 +604,9 @@ public class GenCodeJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox genActionCheck;
     private javax.swing.JButton genCode;
     private javax.swing.JCheckBox genServiceCheck;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel genServiceLabel;
+    private javax.swing.JLabel genActionLabel;
+    private javax.swing.JLabel outputLabel;
     private javax.swing.JLabel transLabel;
     private javax.swing.JLabel pagingLabel;
     private javax.swing.JScrollPane jScrollPane1;

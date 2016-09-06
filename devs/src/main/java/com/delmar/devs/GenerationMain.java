@@ -1,7 +1,6 @@
 package com.delmar.devs;
 
-import com.delmar.devs.swing.GenCodeJFrame;
-import com.delmar.utils.ResourceMessage;
+import com.delmar.devs.swing.InputFrame;
 import org.apache.log4j.Logger;
 
 import java.util.Locale;
@@ -15,7 +14,7 @@ public class GenerationMain {
     public static void main(String[] args)
     {
 
-        ResourceBundle resourceBundle=  ResourceBundle.getBundle("msg",Locale.getDefault());
-        GenCodeJFrame.main(resourceBundle);
+        ResourceBundle resourceBundle=  ResourceBundle.getBundle("msg",Locale.ENGLISH);
+        InputFrame.main(resourceBundle);
     }
 }
