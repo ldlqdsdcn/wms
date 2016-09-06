@@ -8,13 +8,14 @@ import java.util.ResourceBundle;
 
 /**
  * Created by admin on 2016/9/6.
+ * generate code main class
  */
-public class GenerationMain {
-    private static Logger logger= Logger.getLogger(GenerationMain.class);
+public final class GenerationMain {
+    private static final Logger logger= Logger.getLogger(GenerationMain.class);
     public static void main(String[] args)
     {
-        logger.debug("begin generate code");
-        ResourceBundle resourceBundle=  ResourceBundle.getBundle("msg",Locale.ENGLISH);
+        logger.debug("begin generate code:"+Locale.getDefault());
+        ResourceBundle resourceBundle=  ResourceBundle.getBundle("msg",Locale.getDefault());
         InputFrame.main(resourceBundle);
     }
 }

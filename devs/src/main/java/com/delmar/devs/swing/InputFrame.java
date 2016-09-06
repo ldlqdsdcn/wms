@@ -87,6 +87,17 @@ public class InputFrame extends javax.swing.JFrame {
     }
     private void init()
     {
+        if(rb.getLocale().toString().equals("zh_CN"))
+        {
+            zhCnCheckBoxMenuItem.setSelected(true);
+            enUsCheckBoxMenuItem.setSelected(false);
+        }
+        else
+        {
+            zhCnCheckBoxMenuItem.setSelected(false);
+            enUsCheckBoxMenuItem.setSelected(true);
+        }
+
         this.setTitle(rb.getString("dev.generation.tool.title"));
         // Listen for changes in the text
         this.tableText.getDocument().addDocumentListener(new DocumentListener() {
@@ -112,7 +123,8 @@ public class InputFrame extends javax.swing.JFrame {
         outputLocationComboBox.removeAllItems();
 
         File directory = new File("");
-        this.msgTextArea.setText(directory.getAbsolutePath());
+        msgTextArea.append(rb.getString("dev.generation.tool.current.path"));
+        msgTextArea.append(directory.getAbsolutePath());
         File currentFolder=new File(directory.getAbsolutePath());
         File[] files= currentFolder.listFiles();
         if(files!=null)
@@ -531,24 +543,22 @@ public class InputFrame extends javax.swing.JFrame {
         model.removeRow(selectedRow);
     }
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        msgTextArea.setText(DateTimeDecorator.dateToLongString(new Date())+":正在生成代码\n");
+        msgTextArea.append(DateTimeDecorator.dateToLongString(new Date())+":"+rb.getString("dev.generation.tool.generating")+"\n");
         if(genModelDtoList.size()>0)
         {
             for(GenModelDto genModelDto:genModelDtoList)
             {
                 genModelDto.setOutputPath(outModuleMap.get(genModelDto.getOutputModule()));
             }
-
             CodeGenerationService codeGenerationService= applicationContext.getBean(CodeGenerationService.class);
             try
             {
                 codeGenerationService.generateMapperAndModel(genModelDtoList);
-
-                msgTextArea.append(DateTimeDecorator.dateToLongString(new Date())+":生成代码成功\n");
+                msgTextArea.append(DateTimeDecorator.dateToLongString(new Date())+":"+rb.getString("dev.generation.tool.generating.success")+"\n");
             }
             catch (Exception e)
             {
-                msgTextArea.append(DateTimeDecorator.dateToLongString(new Date())+":生成代码失败\n"+e.getMessage());
+                msgTextArea.append(DateTimeDecorator.dateToLongString(new Date())+":"+rb.getString("dev.generation.tool.generating.failure")+"\n"+e.getMessage());
             }
 
         }
@@ -593,7 +603,7 @@ public class InputFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GenCodeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
