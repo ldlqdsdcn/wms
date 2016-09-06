@@ -21,6 +21,12 @@
              <artifactId>jsoup</artifactId>
              <version>1.8.1</version>
          </dependency>
+         <!--java web token-->
+         <dependency>
+             <groupId>org.bitbucket.b_c</groupId>
+             <artifactId>jose4j</artifactId>
+             <version>0.4.1</version>
+         </dependency>
      </dependencies>
     <build>
         <plugins>

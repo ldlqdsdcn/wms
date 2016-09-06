@@ -18,12 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReportController {
     @Autowired(required = false)
     UserApi userApi;
-    @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String getUserInfo(String name)
+    public String getUserInfo(String token)
     {
         Gson gson=new Gson();
-      ApiResult<UserDto> result= userApi.verifyUser("allen");
+      ApiResult<UserDto> result= userApi.verifyToken(token);
         if(result.isSuccess())
         {
            return gson.toJson(result.getData());
