@@ -8,10 +8,13 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.delmar.core.api.result.ApiResult;
+import com.delmar.reoprttool.def.DisplayType;
+import com.delmar.reoprttool.def.HttpParamConsts;
 import com.delmar.system.api.UserApi;
 import com.delmar.system.api.dto.UserDto;
 import com.powere2e.reporttool.jxlsprocessor.ReportProcessor;
@@ -50,7 +53,7 @@ public class JxlsReportProviderServlet extends ReportProviderServlet
 
 			// XLS display type
 			request.setAttribute(this.REPORT_TYPE, this.EXCEL_REPORT);
-
+			request.setAttribute(HttpParamConsts.DISPLAY_TYPE, DisplayType.EXCEL.getDesc());
 			ReportProcessor processor = new ReportProcessor();
 			request.getSession().setAttribute(PROCESSOR_KEY, processor);
 

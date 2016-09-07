@@ -42,7 +42,6 @@ public class showReport extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		response.setContentType("application/octet-stream");
-		session.setAttribute(ReportProviderServlet.REPORT_TYPE,ReportProviderServlet.PDF_REPORT);
 		System.out.println("report type=================="
 				+ session.getAttribute(ReportProviderServlet.REPORT_TYPE)
 						.toString() + "        " + "reportName================"

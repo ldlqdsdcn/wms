@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.delmar.reoprttool.def.DisplayType;
 import net.sf.jasperreports.engine.JasperPrint;
 
 import org.apache.log4j.Logger;
@@ -33,7 +34,6 @@ public class ReportProviderServlet extends HttpServlet {
 
 	protected final static String PDF_REPORT = "PDF";
 
-	protected final static String PDFZIP_REPORT = "PDFZIP";
 
 	protected final static String JASERPRINT_KEY = "JasperPrint";
 
@@ -113,8 +113,8 @@ public class ReportProviderServlet extends HttpServlet {
 				} 
 				else
 				{
-					displayType = PDFZIP_REPORT;
-					session.removeAttribute(PDFZIP_REPORT);
+					displayType = DisplayType.PDFZIP.getDesc();
+					session.removeAttribute(DisplayType.PDFZIP.getDesc());
 					session.setAttribute(REPORT_TYPE, displayType);
 				}
 			} else {
