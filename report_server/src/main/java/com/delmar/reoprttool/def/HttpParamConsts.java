@@ -5,4 +5,5 @@ package com.delmar.reoprttool.def;
  */
 public class HttpParamConsts {
     public final static String DISPLAY_TYPE="DisplayType";
+    public final static String REPORT_NAME="ReportName";
 }
