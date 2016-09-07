@@ -1,0 +1,48 @@
+﻿html {
+	overflow-x: hidden;
+}
+
+
+body { font-family: Tahoma, 宋体; margin: 0; list-style-type: none; }
+
+
+.login_info { color: #386d9f; font-size: 12px; font-family: Tahoma, 宋体; background-color: #dedede; width: 198px; margin-bottom: 5px; padding-top: 5px; padding-bottom: 6px; padding-left: 3px; border-left: 3px solid #f90; }
+.usersname { color: #386d9f; font-size: 12px; font-family: Tahoma, 宋体; margin-top: 4px; margin-bottom: 3px; }
+#mainMenu a { font-family: Tahoma, 宋体; clear: left; margin: 0; list-style-type: none; }
+#mainMenu ul li { font-family: Tahoma, 宋体; clear: left; margin: 0; list-style-type: none; display: block; }
+
+#menuList { font-family: Tahoma, 宋体; margin: 0; padding: 5px 0 10px; }
+li.menubar ul { font-family: Tahoma, 宋体; width: 175px; border-left: 1px solid #dfdfdf; }
+li.menubar a { color: #386d9f; font-size: 14px; font-family: Tahoma, 宋体; font-weight: bold; text-decoration:none; width: 198px; margin: 0; padding-top: 6px; padding-bottom: 4px; padding-left: 12px; border-bottom: 1px solid #818181; list-style-type: none; display: block; }
+li.menubar a:hover{ font-family: Tahoma, 宋体; background-color: #e9f1fa; text-decoration:none; background-image: url(../images/menu_ul_bg.gif); clear: left; list-style-type: none; }
+
+.menubar li a { color: #5998d5; font-size: 12px; font-family: Tahoma, 宋体; padding-left: 13px; text-decoration:none; width: 170px; height: 13px; margin: 0; padding-top: 1px; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; border-left: 0 solid #dfdfdf; }
+.menubar li a:hover { font-family: Tahoma, 宋体; background-color: #cecece; background-image: url(../images/menu_two_bg_2.gif); background-repeat: no-repeat; text-decoration:none; }
+
+
+.menu, .submenu { font-family: Tahoma, 宋体; display: none; margin-left: 15px; padding: 0; }
+
+
+
+.menu li, .submenu li { font-family: Tahoma, 宋体; list-style: none; }
+
+li.actuator a { color: #5998d5; font-size: 12px; font-family: Tahoma, 宋体; padding-left: 10px; text-decoration:none; width: 176px; height: 14px; margin: 0; padding-top: 3px; border-bottom: 1px solid #dfdfdf; border-top-color: #dfdfdf; border-top-width: 1px; }
+
+li.actuator a:hover { font-family: Tahoma, 宋体; text-decoration:none; }
+
+
+.submenu ul { font-family: Tahoma, 宋体; margin-left: 0; border-left-width: 0; }
+.submenu li a { color: #386d9f; font-size: 12px; font-family: Tahoma, 宋体; font-weight: normal; text-decoration:none; width: 160px; height: 13px; margin-left: 10px; padding-bottom: 1px; border-top-width: 0; }
+.submenu li a:hover { font-family: Tahoma, 宋体; background-color: #ffd699; background-image: url(../images/menu_two_bg.gif); background-repeat: no-repeat; text-decoration:none; }
+
+/*.menu li a:hover, submenu li a:hover {
+  /*border-bottom: 1px dashed #000;
+  text-decoration:none;
+}
+
+span.key {
+  text-decoration: underline;
+}
+*/
+.blank { font-family: Tahoma, 宋体; margin-top: 8px; padding-left: 10px; }
+.menutitle { font-family: Tahoma, 宋体; margin-bottom: 0; padding: 0; }

@@ -1,0 +1,160 @@
+    /* TABLE */
+        table {
+            font-size: 1em;
+            margin: 0 0 1.5em 0;
+            padding: 0;
+        }
+
+        table caption {
+            font-weight: bold;
+            margin: 0 0 0 0;
+            padding: 0 0 1.5em 0;
+        }
+
+        th {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        td {
+            font-size: 1em;
+        }
+
+        /*********************************
+           Project: CSS Table Galery
+           Title: Like Adwords
+           Author: Cleiton Francisco
+           URL: http://www.cleiton.net/
+           Country: Brazil
+           Update: 2005-12-18
+         *******************************/
+   .table {
+                border-collapse: collapse;
+                border: 2px solid #74B3DC;
+                color: #000;
+                background: #fff;
+                width: 100% !important;
+            }
+              .table caption {
+                    padding: 0 0.6em 0.8em;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    text-align: left;
+                    color: #000;
+                    background: transparent;
+                }
+                /* For Tapestry's contribTable */
+                .table th table, .table th table td {
+                    width: 100%;
+                    border: 0px;
+                }
+
+                .table td, .table th {
+                    border: 1px solid #e0e0e0;
+                    padding: 0.5em;
+                }
+               .table thead th {
+                    border: 1px solid #e0e0e0;
+                    text-align: left;
+                    font-size: 1em;
+                    font-weight: bold;
+                    background: #d7e9f5;
+                }
+                .table tfoot th, tfoot td {
+                    border: 1px solid #e0e0e0;
+                    text-align: left;
+                    font-size: 1em;
+                    background: #e8e8cf;
+                }
+                .table tfoot th {
+                    font-weight: bold;
+                }
+                .table tbody td a {
+                    background: transparent;
+                    text-decoration: underline;
+                }
+                .table tbody td a:hover {
+                    background: transparent;
+                    text-decoration: underline;
+                }
+                .table tbody th a {
+                    background: transparent;
+                    text-decoration: underline;
+                    font-weight: bold;
+                }
+                .table tbody th, .table tbody td {
+                    text-align: left;
+                }
+                .table tfoot td {
+                    border: 1px solid #996;
+                }
+               .table tbody tr:hover, .table tr.over, .contribTable tr:hover {
+                    background: #ffffd9 !important; /* important needed for Tapestry, as is .table tr:hover */
+                }
+			
+    /* END TABLE */
+
+/* END TYPOGRAPHY */
+
+
+#header, #nav, #sub, #sub h2, #footer, #local {
+    display: none;
+}
+
+#main, #content, .table {
+    width: 700px;
+}
+
+
+table { margin: 0 0 4px; padding: 0; }
+.table th.order1 a {
+    background-image: url(../images/arrow_down.png) !important;
+}
+.table th.order2 a {
+    background-image: url(../images/arrow_up.png) !important;
+}
+
+.table th.sorted {
+    background-color: #ffd;
+    color: #000000;
+}
+
+
+.table th.sorted a, .table th.sortable a { font-size: 12px; background-position: right 50%; background-repeat: no-repeat; }
+.table th.stev,.table th.stev span { font-size: 12px; color: #585C51; background-position: right 50%; background-repeat: no-repeat; }
+.table th,.table th.stev {font-size: 12px; color: #585C51; background-position: right 50%; background-repeat: no-repeat; }
+
+.table tr.even { background: #eee; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }
+
+.table tr.odd { background: #fff; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }
+
+.table td{ margin: 0; padding: 2px; }
+.tablehead{font-size: 12px; background-position: right 50%; background-repeat: no-repeat;
+	color: #585C51; background-color: #ffd; }
+
+/* highlight .table row onmouseover */
+.table tr.over {
+    /*border-bottom: 1px solid #C0C0C0;
+    border-top: 1px solid green;*/
+    border:1px solid #000000;
+    color: #000000;
+    cursor: pointer;
+}
+.first{
+	display: block;
+	background-image: url("../images/split/arrow-first.gif");
+	}
+	.prev{
+	display: block;
+	background-image: url("../images/split/arrow-previous.gif");
+	}
+	.next{
+	display: block;
+	background-image: url("../images/split/arrow-next.gif");
+	}
+	.last{
+	display: block;
+	background-image: url("../images/split/arrow-last.gif");
+	}
+.datatable_row1 { background: #fff; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }
+.datatable_row2 { background: #eee; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ����; }

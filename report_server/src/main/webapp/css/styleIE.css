@@ -1,0 +1,88 @@
+BODY {
+	FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: tahoma, arial
+}
+A.log:link {
+	FONT-SIZE: 8pt; COLOR: #7f7f7f; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.log:visited {
+	FONT-SIZE: 8pt; COLOR: #7f7f7f; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.log:hover {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+.textBox {
+	FONT-SIZE: 12pt; COLOR: black; HEIGHT: 15pt
+}
+SELECT {
+	FONT-SIZE: 12pt; COLOR: #000000; HEIGHT: 15pt
+}
+TD {
+	FONT-SIZE: 8pt; COLOR: #7a7979; FONT-FAMILY: arial,tahoma,arial
+}
+.txt_lb_large {
+	FONT-SIZE: 14pt; COLOR: #356a9c; FONT-FAMILY: Microsoft Sans Serif,tahoma,arial
+}
+.txt_lb_normal {
+	FONT-SIZE: 8pt; COLOR: #356a9c; FONT-FAMILY: Microsoft Sans Serif,tahoma,arial
+}
+INPUT {
+    FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Microsoft Sans Serif,tahoma,arial
+}
+A.record:link {
+	FONT-SIZE: 8pt; COLOR: #7a7979; FONT-FAMILY: Arial; arial,tahoma,arial
+}
+A.record:visited {
+	FONT-SIZE: 8pt; COLOR: #82a9cf; FONT-FAMILY: Arial; arial,tahoma,arial
+}
+A.record:hover {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Arial; arial,tahoma,arial
+}
+A.menu:link {
+	FONT-SIZE: 8pt; COLOR: #356a9c; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.menu:visited {
+	FONT-SIZE: 8pt; COLOR: #356a9c; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+A.menu:hover {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+.tr1{
+	background-color: #E3EDF9;
+}
+
+.button{
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; WIDTH: 70px; BORDER-BOTTOM: #000000 1px solid; HEIGHT: 20px;
+
+}
+
+.table th.sortable{ font-size: 12px; background-position: right 50%; background-repeat: no-repeat; display: block; }
+.table th.stev,.table th.stev span { font-size: 12px; color: #585C51; background-position: right 50%; background-repeat: no-repeat; display: block; }
+.table th,.table th.stev {font-size: 12px; color: #585C51; background-position: right 50%; background-repeat: no-repeat; display: block;}
+.table tr.even { background: #eee; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ËÎÌå; }
+
+.table tr.odd { background: #fff; border-top: 1px solid #c0c0c0; color: #000000; font-size: 12px; font-family: Tahoma, ËÎÌå; }
+
+
+
+input.text{    
+	font-size: 1.2em;
+    border-top: 1px solid #7c7c7c;
+    border-left: 1px solid #c3c3c3;
+    border-right: 1px solid #c3c3c3;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+input.large{
+    width: 300px;
+}
+ input.medium{
+    width: 170px;
+}
+.C_table_list_1 { color: #7a7979; font-size: 14px; font-weight: bolder; text-align: right; padding-top: 6px; padding-right: 5px; padding-bottom: 3px; }
+.C_table_list_3 { color: #7a7979; font-size: 12px; margin-left: 10px; background-color: #D7E9F5; font-weight: bolder; text-align: left; }
+.C_table_list_3_rowColumn {padding: 2px 4px 2px 4px !important; text-align: left; vertical-align: top;background-color: #fc0;}
+.C_table_list_2 { color: #7a7979; font-size: 12px; margin-left: 10px; }
+a:link{color:#1A75A4;text-decoration:none;}
+a:visited{color:#1A75A4;text-decoration:none;}
+.C_twotitle_blue { color: #fff; font-size: 14px; font-family: Tahoma, å®‹ä½“; font-weight: bolder; background-color: #6098c6; text-decoration:none; text-align: center; height: 17px; float: left; margin-left: 8px; padding: 5px 8px 3px; }
+.C_twotitle_oranger { color: #fff; font-size: 14px; font-family: Tahoma, å®‹ä½“; font-weight: bolder; background-color: #f90; text-decoration:none; text-align: center; height: 17px; float: left; margin-left: 8px; padding: 5px 8px 3px; }

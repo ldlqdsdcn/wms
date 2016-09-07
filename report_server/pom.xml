@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>delmar_platform</artifactId>
+        <artifactId>swms</artifactId>
         <groupId>com.delmar</groupId>
-        <version>1.0</version>
+        <version>${swms.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>report_server</artifactId>
@@ -14,9 +14,18 @@
         <dependency>
             <groupId>com.delmar</groupId>
             <artifactId>dubbo_core</artifactId>
-            <version>1.0</version>
+            <version>${swms.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.21</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
         <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -66,7 +75,53 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-      </dependencies>
+        <dependency>
+            <groupId>org.directwebremoting</groupId>
+            <artifactId>dwr</artifactId>
+            <version>2.0.10</version>
+        </dependency>
+        <!--报表工具 bgn-->
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.2.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-asian -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-asian</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/net.sf.jxls/jxls-core -->
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-core</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
+        <!--报表工具 end-->
+        <!-- https://mvnrepository.com/artifact/hsqldb/hsqldb -->
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>report_server</finalName>
     </build>

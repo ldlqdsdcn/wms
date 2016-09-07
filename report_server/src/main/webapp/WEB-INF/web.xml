@@ -2,46 +2,196 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-  <display-name>SWMS report Server</display-name>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>
-      classpath:application-report.xml
-    </param-value>
-  </context-param>
+ <description>$Id: web.xml,v 1.8 2008/07/31 04:24:45 solomon Exp $</description>
+ <display-name>Powere2e Report Tools</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:application-report.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+ <!-- hsqldb数据库配置 bgn -->
+ <context-param>
+  <param-name>dbpath</param-name>
+  <param-value>/WEB-INF/db</param-value>
+ </context-param>
+ <context-param>
+  <param-name>dbname</param-name>
+  <param-value>mydb</param-value>
+ </context-param>
+ <context-param>
+  <param-name>dbport</param-name>
+  <param-value>9002</param-value>
+ </context-param>
+ <!-- hsqldb数据库配置 end -->
+ 
+ <!-- 国际化配置 bgn -->
+ <!-- Define the basename for a resource bundle for I18N -->
+ <context-param>
+  <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+  <param-value>ApplicationResources</param-value>
+ </context-param>
+ <!-- Fallback locale if no bundles found for browser's preferred locale 
+ Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
+ <context-param>
+  <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+  <param-value>zh_CN</param-value>
+ </context-param>
+ <context-param>
+  <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+  <param-value>zh_CN</param-value>
+ </context-param>
+ <!-- 国际化配置 end -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+ 
+
+ 
+ 
+<!-- 启动hsqldb数据库 -->
+<!-- 
+
+ -->
+   <filter>
+		<filter-name>userloginFilter</filter-name>
+		<filter-class>com.powere2e.reporttool.servlet.UrlFilter</filter-class>
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>/login.jsp,/index.jsp,/processbar.jsp,/processbar2.jsp,/status.html,/frameLogin.jsp</param-value>
+		</init-param>
+	</filter>
+ 	<filter-mapping>
+		<filter-name>userloginFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>userloginFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
   <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <servlet>
-    <servlet-name>spring</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>spring</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
-
-  <filter>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-    <init-param>
-      <param-name>forceEncoding</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
-
-  <filter-mapping>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <listener-class>com.powere2e.reporttool.hsqldb.HsqlListener</listener-class>
+ </listener>
+ <!-- 定期任务-->
+ <listener>
+  <listener-class>com.powere2e.reporttool.scheduler.SysContextListener</listener-class>
+ </listener>
+ <servlet>
+  <servlet-name>ReportMonitor</servlet-name>
+  <servlet-class>com.powere2e.reporttool.ReportMonitor</servlet-class>
+  <load-on-startup>0</load-on-startup>
+ </servlet>
+ <servlet>
+  <servlet-name>JasperReportProviderServlet</servlet-name>
+  <servlet-class>com.powere2e.reporttool.JasperReportProviderServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>JxlsReportProviderServlet</servlet-name>
+  <servlet-class>com.powere2e.reporttool.JxlsReportProviderServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>showReport</servlet-name>
+  <servlet-class>com.powere2e.reporttool.showReport</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>ReportMonitor</servlet-name>
+  <url-pattern>/ReportMonitor</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>JasperReportProviderServlet</servlet-name>
+  <url-pattern>/JasperReportProviderServlet</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>JxlsReportProviderServlet</servlet-name>
+  <url-pattern>/JxlsReportProviderServlet</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>showReport</servlet-name>
+  <url-pattern>/showReport</url-pattern>
+ </servlet-mapping>
+ <session-config>
+  <session-timeout>15</session-timeout>
+ </session-config>
+ <mime-mapping>
+  <extension>doc</extension>
+  <mime-type>application/msword</mime-type>
+ </mime-mapping>
+ <mime-mapping>
+  <extension>xls</extension>
+  <mime-type>application/msexcel</mime-type>
+ </mime-mapping>
+ <mime-mapping>
+  <extension>pdf</extension>
+  <mime-type>application/pdf</mime-type>
+ </mime-mapping>
+ <welcome-file-list>
+  <welcome-file>login.jsp</welcome-file>
+ </welcome-file-list>
+ <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config>
+ 	<display-name>DWR(Direct Web Remoting)</display-name>
+	<description>
+		A demo of how to call java on the server directly from
+		JavaScript on the Client
+	</description>
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>
+			org.directwebremoting.servlet.DwrServlet
+		</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+        <init-param>
+            <param-name>crossDomainSessionSecurity</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>activeReverseAjaxEnabled</param-name>
+            <param-value>true</param-value>
+        </init-param>
+		<!--<init-param>
+			<param-name>activeReverseAjaxEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>
+				initApplicationScopeCreatorsAtStartup
+			</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxWaitAfterWrite</param-name>
+			<param-value>500</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	--></servlet>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>
