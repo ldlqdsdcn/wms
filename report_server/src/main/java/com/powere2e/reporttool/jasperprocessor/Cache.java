@@ -14,7 +14,7 @@ import com.powere2e.reporttool.model.ExcelModel;
  */
 public class Cache
 {
-    private static Cache m_instance = new Cache();
+    private static Cache M_INSTANCE = new Cache();
     private HashMap container = new HashMap();
     //private int MAX_COUNT    = 15;
     private int MAX_COUNT = 45;
@@ -34,7 +34,7 @@ public class Cache
      */
     public static Cache getInstance()
     {
-        return m_instance;
+        return M_INSTANCE;
     }
     
     /**

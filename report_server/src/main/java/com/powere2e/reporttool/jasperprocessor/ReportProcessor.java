@@ -266,36 +266,6 @@ public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
 	}
 	
 
-//	public void sendMail(File filename,String sign,String mailaddress) throws IOException
-//	{
-//		log.info("send report to mail has begin");
-////		 ****判断是否符合订阅报表的条件***//
-//		if (("0").equals(sign)&&mailaddress!=null&&mailaddress!="") {
-//			Mail mail = new Mail();
-//			try {
-//				// ** 设置邮件目的地址***/
-//				mail.setAddress(mailaddress, Mail.TO);
-//				 // ****设置邮件发送地址*****//
-//				mail.setFromAddress(getMailFromAddress());
-//				 // **** 设置 SMTP 服务器 ****/
-//				mail.setSMTPHost(getMailSMTPHost(), getMailUser(),
-//						getMailPassword());
-//				 // **** 设置邮件主题 ******/
-//				mail.setSubject(getMailSubject());
-//				// System.out.println("mailsubject=================="+getMailSubject());
-//				 // **** 设置邮件超文本正文*****/
-//				mail.setHtmlBody(getMailBody());
-//				 // ***** 设置邮件附件 ***/
-//				mail.setFileAttachment(filename.toString());
-//				// **** 邮件发送(一次发送多个地址, 优点速度快, 但是有非法邮件地址时将中断发送操作)***//
-//				mail.sendBatch();
-//			} catch (MessagingException e) {
-//				log.error("发送报表邮件有误", e);
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-
 	/**
 	 * Monitor the ReportProcessor thread.
 	 * 
