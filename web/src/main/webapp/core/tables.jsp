@@ -10,6 +10,13 @@
 		<jsp:param name="search_name" value="core_table"/>
 		<jsp:param name="edit_url" value="/core/table_edit.action"/>
 	</jsp:include>
+	<script type="text/javascript">
+		function gotoWizard()
+		{
+			window.location='<c:url value="/core/initTableInfo.do"/>';
+		}
+
+	</script>
 </head>
 
 <body >
@@ -29,7 +36,7 @@
                   
                   
                   <input type="button" value="<delmar:message key="common.button.create" />" class="input_submit" onclick="viewExport(0)">
-					<input type="button" value="创建表向导" class="input_submit" onclick="viewExport(1)">
+					<input type="button" value="创建表向导" class="input_submit" onclick="gotoWizard()">
                   <s:submit method="deletes" cssClass="input_submit" value="%{#session.resource.get('common.button.delete')}" onclick="return confirmListDelete('ids')"/>
                  </td>
               </tr>

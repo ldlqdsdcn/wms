@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/commons/taglib.jsp"%>
 <%@ page import="java.util.Properties" %>
+<%@ page import="com.delmar.sys.model.UserContent" %>
 <html>
 <head>
 
@@ -125,6 +126,12 @@ BODY {
 	
 	
 </table>
+<br>
+<pre>
+	<% UserContent userContent=(UserContent)session.getAttribute("userContent");
+		out.println(userContent.token);
+	%>
+</pre>
 
 </body>
 </html>

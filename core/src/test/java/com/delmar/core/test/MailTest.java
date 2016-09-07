@@ -27,9 +27,9 @@ public class MailTest {
 	{
 	
 		SimpleMailMessage smm=new SimpleMailMessage();
-		smm.setFrom("crm@delmarchina.com");
+		smm.setFrom("swms_admin@126.com");
 	//	smm.setTo("liua@delmarchina.com");
-		smm.setTo(new String[]{"liua@delmarchina.com","baia@delmarchina.com"});
+		smm.setTo(new String[]{"ldlqdsd@126.com"});
 		smm.setSubject("测试·邮件");
 		
 		smm.setText("<html><body><h1>test H1</h1><i>i 测试</i></body></html>");

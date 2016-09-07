@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.delmar</groupId>
-    <artifactId>delmar_platform</artifactId>
+    <artifactId>swms</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>${swms.version}</version>
     <modules>
         <module>utils</module>
         <module>core</module>
@@ -25,6 +25,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.2.5.RELEASE</spring.version>
+        <swms.version>1.0.alpha</swms.version>
     </properties>
     <repositories>
         <repository>
