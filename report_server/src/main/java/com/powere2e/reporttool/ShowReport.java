@@ -14,22 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.delmar.reoprttool.def.HttpParamConsts;
 import com.powere2e.reporttool.ReportProcessor;
 
 /**
  * @author peter
  * 
  */
-public class showReport extends HttpServlet {
+public class ShowReport extends HttpServlet {
 
 	long start = System.currentTimeMillis();
 
 	/**
 	 *   
 	 */
-	public showReport() {
+	public ShowReport() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -45,24 +45,24 @@ public class showReport extends HttpServlet {
 		System.out.println("report type=================="
 				+ session.getAttribute(ReportProviderServlet.REPORT_TYPE)
 						.toString() + "        " + "reportName================"
-				+ session.getAttribute("ReportName").toString());
+				+ session.getAttribute(HttpParamConsts.REPORT_NAME).toString());
 
 		if (session.getAttribute(ReportProviderServlet.REPORT_TYPE).toString()
 				.equalsIgnoreCase(ReportProviderServlet.PDF_REPORT)) {
 			// response.setContentType("application/pdf");
 			// response.setContentType("application/pdf;charset=GB2312");
 			response.setHeader("Content-disposition", "attachment; filename=\""
-					+ session.getAttribute("ReportName") + ".pdf\"");
+					+ session.getAttribute(HttpParamConsts.REPORT_NAME) + ".pdf\"");
 		} else if (session.getAttribute(ReportProviderServlet.REPORT_TYPE)
 				.toString()
 				.equalsIgnoreCase(ReportProviderServlet.EXCEL_REPORT)) {
 			// response.setContentType("application/vnd.ms-excel");
 			response.setHeader("Content-disposition", "attachment; filename=\""
-					+ session.getAttribute("ReportName") + ".xls\"");
+					+ session.getAttribute(HttpParamConsts.REPORT_NAME) + ".xls\"");
 		} else {
 			response.setContentType("application/x-download");
 			response.setHeader("Content-disposition", "attachment; filename=\""
-					+ session.getAttribute("ReportName") + ".pdf.zip\"");
+					+ session.getAttribute(HttpParamConsts.REPORT_NAME) + ".pdf.zip\"");
 		}
 		ServletOutputStream outStream = response.getOutputStream();
 

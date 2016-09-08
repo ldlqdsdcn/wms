@@ -25,9 +25,13 @@ public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
 	private Logger log = Logger.getLogger(ReportProcessor.class.getName());
 
 	long start = System.currentTimeMillis();
-
+	public ReportProcessor()
+	{
+		log.debug("------------------------>"+this.hashCode());
+	}
 	public void doIt() 
 	{
+		log.debug("------------------------>doIt");
 		DataSource ds = DataSourceProvider.getInstance().getDataSource();
 		// HashMap beans = new HashMap();
 		Connection conn = ds.getConnection();

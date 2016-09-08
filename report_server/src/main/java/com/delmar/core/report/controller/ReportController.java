@@ -29,5 +29,7 @@ public class ReportController {
            return gson.toJson(result.getData());
         }
         return result.getMessage();
+
+
     }
 }

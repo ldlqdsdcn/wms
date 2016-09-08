@@ -112,7 +112,7 @@
  </servlet>
  <servlet>
   <servlet-name>showReport</servlet-name>
-  <servlet-class>com.powere2e.reporttool.showReport</servlet-class>
+  <servlet-class>com.powere2e.reporttool.ShowReport</servlet-class>
  </servlet>
  <servlet-mapping>
   <servlet-name>ReportMonitor</servlet-name>

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.delmar.reoprttool.def.HttpParamConsts;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRProperties;
 
@@ -141,18 +142,18 @@ public class ReportMonitor extends HttpServlet {
 		// Recompile one or all *.xml file
 		if (p_cmd.equalsIgnoreCase("recompile")) {
 			log.info("Recompile the report "
-					+ request.getParameter("ReportName"));
-			if (request.getParameter("ReportName") != null
-					&& !request.getParameter("ReportName").equals("")) {
+					+ request.getParameter(HttpParamConsts.REPORT_NAME));
+			if (request.getParameter(HttpParamConsts.REPORT_NAME) != null
+					&& !request.getParameter(HttpParamConsts.REPORT_NAME).equals("")) {
 				ReportCompiler compiler = new ReportCompiler();
-				compiler.compileReport(request.getParameter("ReportName")
+				compiler.compileReport(request.getParameter(HttpParamConsts.REPORT_NAME)
 						+ ".jrxml");
-				compiler.compileReport(request.getParameter("ReportName")
+				compiler.compileReport(request.getParameter(HttpParamConsts.REPORT_NAME)
 						+ ".xml");
 
 				// Cache.getInstance().removeReport(request.getParameter("ReportName"));
 				if (Cache.getInstance().getReport(
-						request.getParameter("ReportName")) != null) {
+						request.getParameter(HttpParamConsts.REPORT_NAME)) != null) {
 					JasperReport jasperReport = compiler.getJasperReport();
 					Cache.getInstance().removeReport(jasperReport.getName());
 				}

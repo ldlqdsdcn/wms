@@ -52,16 +52,8 @@ public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
 		return this.process;
 	}
 
-	public void setJasperPrint(JasperPrint jasperPrint) {
-		this.jasperPrint = jasperPrint;
-	}
-
 	public JasperPrint getJasperPrint() {
 		return this.jasperPrint;
-	}
-
-	public void setJasperReport(JasperReport jasperReport) {
-		this.jasperReport = jasperReport;
 	}
 
 	/**

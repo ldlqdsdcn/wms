@@ -1,4 +1,4 @@
-package com.powere2e.reporttool.manager;
+package com.delmar.reporttool.manager;
 
 import com.delmar.core.api.result.ApiResult;
 import com.delmar.system.api.UserApi;

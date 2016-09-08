@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.powere2e.reporttool;
 
 import java.io.File;
@@ -21,22 +18,15 @@ import com.powere2e.reporttool.config.Email;
  */
 public abstract class ReportProcessor extends Thread 
 {
-
-	protected String reportname = null;
-	protected String reporttype = null;
-	protected HashMap params = null;
-	protected byte[] reportData = null;
+    private static final Logger log = Logger.getLogger(ReportProcessor.class.getName());
+	protected String reportname;
+	protected String reporttype;
+	protected HashMap params;
+	protected byte[] reportData;
 	
 	//***add by Axular****//
-	protected Email email;
+	private Email email;
 	
-/*	protected String mailSMTPHost = null;
-	protected String mailUser = null;
-	protected String mailPassword = null;
-	protected String mailFromAddress = null;
-	protected String mailSubject = null;*/
-//	protected String mailTOAddress = null;
-	protected String mailBody = null;
 	//***modify end*******//
 
 	public void setReportName (String reportname)
@@ -54,11 +44,6 @@ public abstract class ReportProcessor extends Thread
         this.params = params;
     }
     
-    public void setReportData (byte[] reportData)
-    {
-        this.reportData = reportData;
-    }
-    
     public byte[] getReportData ()
     {
         return this.reportData;
@@ -73,73 +58,12 @@ public abstract class ReportProcessor extends Thread
 		doIt ();
 	}
     
-	public void setJasperPrint (JasperPrint jasperPrint)
-	{		
-	
-	}
-    
 	public JasperPrint getJasperPrint ()
 	{		
 		return null;
 	}
-
-/*	public String getMailPassword() {
-		return mailPassword;
-	}
-
-	public void setMailPassword(String mailPassword) {
-		this.mailPassword = mailPassword;
-	}
-
-	public String getMailUser() {
-		return mailUser;
-	}
-
-	public void setMailUser(String mailUser) {
-		this.mailUser = mailUser;
-	}
-
-	public String getMailBody() {
-		return mailBody;
-	}
-
-	public void setMailBody(String mailBody) {
-		this.mailBody = mailBody;
-	}
-
-	public String getMailFromAddress() {
-		return mailFromAddress;
-	}
-
-	public void setMailFromAddress(String mailFromAddress) {
-		this.mailFromAddress = mailFromAddress;
-	}
-
-	public String getMailSubject() {
-		return mailSubject;
-	}
-
-	public void setMailSubject(String mailSubject) {
-		this.mailSubject = mailSubject;
-	}*/
-
-//	public String getMailTOAddress() {
-//		return mailTOAddress;
-//	}
-
-//	public void setMailTOAddress(String mailTOAddress) {
-//		this.mailTOAddress = mailTOAddress;
-//	}
-/*	public String getMailSMTPHost() {
-		return mailSMTPHost;
-	}
-
-	public void setMailSMTPHost(String mailSMTPHost) {
-		this.mailSMTPHost = mailSMTPHost;
-	}*/
-	
 	//       modify by axular              //
-	private Logger log = Logger.getLogger(ReportProcessor.class.getName());
+
 	
 	/**
 	 * 订阅报表
@@ -172,12 +96,6 @@ public abstract class ReportProcessor extends Thread
 			}
 		}
 	}
-	//                modify end                     //
-
-	public Email getEmail() {
-		return email;
-	}
-
 	public void setEmail(Email email) {
 		this.email = email;
 	}

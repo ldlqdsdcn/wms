@@ -2,19 +2,14 @@ package com.powere2e.reporttool;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.delmar.core.api.result.ApiResult;
-import com.delmar.system.api.UserApi;
-import com.delmar.system.api.dto.UserDto;
-import com.powere2e.reporttool.manager.AuthenticationManger;
+import com.delmar.reporttool.manager.AuthenticationManger;
 import org.apache.log4j.Logger;
 
-import com.powere2e.reporttool.ReportProviderServlet;
 import com.powere2e.reporttool.jasperprocessor.ReportProcessor;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;

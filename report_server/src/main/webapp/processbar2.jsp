@@ -5,12 +5,7 @@
 <!-- Prevents caching at the Proxy Server -->
 <meta http-equiv="Expires" content="0"/>
 
-<%@ page import="javax.servlet.*,
-	 javax.servlet.http.*,
-	 java.io.*,
-	 java.util.zip.*,
-	 java.lang.*,   
-	 com.powere2e.reporttool.ReportProcessor"
+<%@ page import="com.powere2e.reporttool.ReportProcessor"
 %>
 <%
 	response.setHeader("Pragma","No-cache");
@@ -24,7 +19,9 @@ if(processor.isAlive())
 {%>
 	<html>
 	<head>
-	<META http-equiv="refresh" content="2;url=processbar2.jsp">
+		<%if("N".equals(session.getAttribute("complated"))){%>
+	<META http-equiv="refresh" content="4;url=processbar2.jsp">
+		<%}%>
 	</head>
 	    <body>
 		<div style="margin-top:40">
@@ -39,16 +36,19 @@ if(processor.isAlive())
 	</html>
 <%}
 else
-{%>
+{
+	session.setAttribute("complated","Y");
+	session.getAttribute("lastrun");
+	System.out.println("--------------------------> run ");
+%>
 	<html>
 	<head>
 	<META http-equiv="refresh" content="2;url=showReport">
 	<script type="text/javascript">
 	function sonpage()
 	{
-		 //alert("111111111");
-		parent.document.all.status.src="#";
-		
+		window.parent.document.getElementById('status').src="completed.jsp";
+
 	}
 	</script>
 	</head>

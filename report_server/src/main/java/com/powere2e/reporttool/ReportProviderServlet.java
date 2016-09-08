@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.delmar.reoprttool.def.DisplayType;
+import com.delmar.reoprttool.def.HttpParamConsts;
 import net.sf.jasperreports.engine.JasperPrint;
 
 import org.apache.log4j.Logger;
@@ -28,12 +29,9 @@ import com.powere2e.reporttool.jasperprocessor.Cache;
 public class ReportProviderServlet extends HttpServlet {
 	protected final static String REPORT_TYPE = "DisplayType";
 
-	protected final static String REPORT_NAME = "ReportName";
-
 	protected final static String EXCEL_REPORT = "Excel";
 
 	protected final static String PDF_REPORT = "PDF";
-
 
 	protected final static String JASERPRINT_KEY = "JasperPrint";
 
@@ -89,11 +87,11 @@ public class ReportProviderServlet extends HttpServlet {
 		{
 			String key = en.nextElement().toString();
 			log.debug("Parameters-" + key + ":" + request.getParameter(key));
-			if (REPORT_NAME.equalsIgnoreCase(key)) 
+			if (HttpParamConsts.REPORT_NAME.equalsIgnoreCase(key))
 			{
 				reportfile = request.getParameter(key);
-				session.removeAttribute(REPORT_NAME);
-				session.setAttribute(REPORT_NAME, reportfile);
+				session.removeAttribute(HttpParamConsts.REPORT_NAME);
+				session.setAttribute(HttpParamConsts.REPORT_NAME, reportfile);
 			}
 			else if (REPORT_TYPE.equalsIgnoreCase(key))
 			{
@@ -122,8 +120,8 @@ public class ReportProviderServlet extends HttpServlet {
 				
 				if(COLOR_KEY.equals(key)){
 					if(request.getParameter(key)!=null && !"".equals(request.getParameter(key))){
-						if(this.VenditionCollectReport_key.equals(session.getAttribute(REPORT_NAME)) 
-								|| this.VenditionDetailReport_key.equals(session.getAttribute(REPORT_NAME)))
+						if(this.VenditionCollectReport_key.equals(session.getAttribute(HttpParamConsts.REPORT_NAME))
+								|| this.VenditionDetailReport_key.equals(session.getAttribute(HttpParamConsts.REPORT_NAME)))
 					     //	转码
 					      params.put(key, "and p.color like'%"+toChinese(request.getParameter(key))+"%'");
 						else
@@ -316,35 +314,13 @@ public class ReportProviderServlet extends HttpServlet {
 		if (("0").equals(sign)) {
 			
 			processor.setEmail(com.powere2e.reporttool.config.Config.getEmail());
-		// **** 设置 SMTP 服务器 ****/
-			//processor.setMailSMTPHost(com.powere2e.reporttool.config.Config.getEmail().getEmailserver());
-			// **** 设置 邮件用户名 ****/
-			//processor.setMailUser(com.powere2e.reporttool.config.Config.getEmail().getMailuser());
-			// **** 设置 邮件密码 ****/
-			//processor.setMailPassword(com.powere2e.reporttool.config.Config.getEmail().getMailpassword());
-			// ** 设置邮件目的地址***/
-			// processor.setMailTOAddress(properties.getProperty("mailTOAddress"));
-			// ****设置邮件发送地址*****//
-			//processor.setMailFromAddress(com.powere2e.reporttool.config.Config.getEmail().getMailfromaddress());
-			// ** 设置 邮件主题***//
-			//processor.setMailSubject(com.powere2e.reporttool.config.Config.getEmail().getMailsubject());
-			// **设置 邮件正文****//
-			//processor.setMailBody(com.powere2e.reporttool.config.Config.getEmail().getMailbody());
-					
+
 		}
 
 		// *********modify end***********************************************//
 
 		session.removeAttribute(PROCESSOR_KEY);
 		session.setAttribute(PROCESSOR_KEY, processor);
-
-		// Parameters changed?
-		if (!paramschanged) {
-			JasperPrint jprint = (JasperPrint) session
-					.getAttribute(JASERPRINT_KEY);
-
-			processor.setJasperPrint(jprint);
-		}
 
 		processor.start();
 
@@ -357,6 +333,7 @@ public class ReportProviderServlet extends HttpServlet {
 						+ (end - start));
 
 		log.info("ReportProviderServlet  doPost  runtime:" + (end - start));
+		session.setAttribute("inPrcessbar","N");
 		response.sendRedirect("processbar.jsp");
 	}
 	protected String toChinese(String input) {
