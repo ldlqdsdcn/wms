@@ -42,20 +42,17 @@ function page_go(_url)
  	<li class="menubar"><a href="javascript:page_go('Console.jsp');"><fmt:message key="console.title"/></a></li>
  	<li class="menubar"><a href="javascript:page_go('schedulerList.jsp');"><fmt:message key="scheduler.title"/></a></li>
  	<li class="menubar"><a href="javascript:page_go('email/emailList.jsp');"><fmt:message key="emailaddress.title"/></a></li>
-		<li class="menubar"><a href="javascript:page_go('email/emailList.jsp');"><fmt:message key="emailaddress.title"/></a></li>
+		<li class="menubar"><a href="javascript:page_go('email/excel_test.jsp');">test report</a></li>
  	</ul>
   
   </div>
 <table width="100%">
   <tbody>
-  
-  <tr>
+    <tr>
 	<td align="left" class="blank">
 	<a href="javascript:page_go('Console.jsp');" class="log"><img src="images/<fmt:message key="lan.code"/>/ico_index.gif" alt="" width="62" height="14" border="0"/></a>
 	<a href="javascript:window.parent.page_redir('login.jsp');" class="log"><img src="images/<fmt:message key="lan.code"/>/ico_logout.gif" alt="" width="62" height="14" border="0"/></a></td>
   </tr>
-  
-  
   <tr>
 	<td align="left" class="blank">
 	<font size="1" style="font-weight: bold;">Powered By</font>

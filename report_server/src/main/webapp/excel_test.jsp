@@ -12,8 +12,8 @@
 </head>
 <body>
 <form action="/JxlsReportProviderServlet" method="post">
-    <input name="ReportName" placeholder="reportName" width="300px"><br>
-    <input name="token" placeholder="token" width="500px"><br>
+    <input name="ReportName" placeholder="reportName" width="300px" value="users"><br>
+    <input name="token" placeholder="token" width="500px" ><br>
     <input name="DisplayType" placeholder="DisplayType" width="500px" value="Excel"><br>
     <input type="submit" value="提交">
 
