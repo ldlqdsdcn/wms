@@ -127,11 +127,7 @@ BODY {
 	
 </table>
 <br>
-<pre>
-	<% UserContent userContent=(UserContent)session.getAttribute("userContent");
-		out.println(userContent.token);
-	%>
-</pre>
+
 
 </body>
 </html>

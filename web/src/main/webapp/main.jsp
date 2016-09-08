@@ -112,10 +112,15 @@ document.oncontextmenu=function(e){ return false };
  }
  function switchHeaderButtonClass(id)
  {
- 	document.getElementById('msgtd').className='linkBox';
- 	document.getElementById('profiletd').className='linkBox';
- 	document.getElementById('copytd').className='linkBox';
- 	document.getElementById(id).className='linkBoxActive';
+ 	$("#headerTr td").attr("class","linkBox");
+	 $("#"+id).attr("class","linkBoxActive");
+//	document.getElementById('msgtd').className='linkBox';
+// 	document.getElementById('profiletd').className='linkBox';
+// 	document.getElementById('copytd').className='linkBox';
+//	document.getElementById('userInfoTd').className='linkBox';
+//	document.getElementById(id).className='linkBoxActive';
+
+
  }
 </script>
 
@@ -170,14 +175,17 @@ openDialog();
   	 <IMG src="images/delmarLogo.png"  height="73" style="float:left"><font class="black" style="font-size:25px;"><fmt:message key="main.head.title"></fmt:message></font></div>
      </td>
 	
-	 <td align="left"  valign="bottom" style="padding-bottom:5px" width="240" class="d-banner-middle">
-			<table width="200" cellspacing="0" cellpadding="0">
+	 <td align="left"  valign="bottom" style="padding-bottom:5px" width="300" class="d-banner-middle">
+			<table width="300" cellspacing="0" cellpadding="0">
 				<tbody>                             
-					<tr>						
-						<td class="linkBox" valign="middle" align="center" id="msgtd">
+					<tr id="headerTr">
+						<td class="linkBoxActive" valign="middle" align="center" id="msgtd">
 							<a id="msga" class="Headerlink" href="#" onclick="page_go('<c:url value='/default.jsp'/>','msgtd')"><fmt:message key="main.label.message"/></a>
 						</td>
-						<td class="linkBoxActive" valign="middle" align="center" id="profiletd">
+						<td class="linkBox" valign="middle" align="center" id="userInfoTd">
+							<a id="userInfoa" class="Headerlink" href="#" onclick="page_go('<c:url value='/commons/userInfo.jsp'/>','userInfoTd')">User Info</a>
+						</td>
+						<td class="linkBox" valign="middle" align="center" id="profiletd">
 							 <A id="profilea" class="Headerlink" href="#" onclick="page_go('<c:url value='/commons/usersetting.jsp'/>','profiletd')"><fmt:message key="main.label.usersetting"/></A>
 						</td>
 						<td class="linkBox" valign="middle" align="center" id="copytd">

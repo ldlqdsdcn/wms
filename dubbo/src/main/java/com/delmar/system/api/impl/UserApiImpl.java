@@ -11,6 +11,9 @@ import com.delmar.utils.CommonConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 刘大磊 on 2016/9/6.
  * dubbo数据交换类
@@ -29,5 +32,16 @@ public class UserApiImpl implements UserApi {
         User user=userService.getUserById(userId.intValue());
         UserDto userDto=CommonConverter.convertObject(user,UserDto.class);
         return ApiResult.success(userDto);
+    }
+
+    @Override
+    public ApiResult<List<UserDto>> getUserList() {
+        List<User> userList=userService.selectByExample(null);
+        List<UserDto> userDtoList=new ArrayList<>();
+        for(User u:userList)
+        {
+            userDtoList.add(CommonConverter.convertObject(u,UserDto.class));
+        }
+        return  ApiResult.success(userDtoList);
     }
 }

@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- <link rel="stylesheet" type="text/css" href="../css/menu.css"> -->
 <style type="text/css" media="all">
-	.node{width: 160;}
+	.node{width: 160px;}
 </style>
 <title>left menu</title>
 <link  rel="stylesheet" type="text/css" href="js/dtree/dtree.css"/>
