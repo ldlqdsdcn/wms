@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.delmar.reoprttool.def.DisplayType;
 import com.delmar.reoprttool.def.HttpParamConsts;
-import com.powere2e.reporttool.jxlsprocessor.ReportProcessor;
+import com.powere2e.reporttool.jxlsprocessor.JxlsReportProcessor;
 import com.delmar.reporttool.manager.AuthenticationManger;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -49,7 +49,7 @@ public class JxlsReportProviderServlet extends ReportProviderServlet
 			// XLS display type
 			request.setAttribute(this.REPORT_TYPE, this.EXCEL_REPORT);
 			request.setAttribute(HttpParamConsts.DISPLAY_TYPE, DisplayType.EXCEL.getDesc());
-			ReportProcessor processor = new ReportProcessor();
+			ReportProcessor processor = new JxlsReportProcessor();
 			request.getSession().setAttribute(PROCESSOR_KEY, processor);
 
 			long end = System.currentTimeMillis();

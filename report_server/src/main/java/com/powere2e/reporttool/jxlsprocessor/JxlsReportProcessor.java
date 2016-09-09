@@ -21,11 +21,11 @@ import com.powere2e.reporttool.datasource.DataSourceProvider;
  * @author peter
  * 
  */
-public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
-	private Logger log = Logger.getLogger(ReportProcessor.class.getName());
+public class JxlsReportProcessor extends com.powere2e.reporttool.ReportProcessor {
+	private static final Logger log = Logger.getLogger(JxlsReportProcessor.class);
 
 	long start = System.currentTimeMillis();
-	public ReportProcessor()
+	public JxlsReportProcessor()
 	{
 		log.debug("------------------------>"+this.hashCode());
 	}

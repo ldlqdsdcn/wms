@@ -33,7 +33,9 @@ import com.powere2e.reporttool.datasource.DataSourceProvider;
  * @version $Id: ReportProcessor.java,v 1.20 2007/12/11 08:53:35 axular Exp $
  */
 
-public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
+public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcessor {
+
+	private static final Logger log = Logger.getLogger(JasperReportProcessor.class);
 	private JasperPrint jasperPrint = null;
 
 	private JasperReport jasperReport = null;
@@ -42,11 +44,10 @@ public class ReportProcessor extends com.powere2e.reporttool.ReportProcessor {
 
 	private short countSpeed = 100; // 0.1 second
 
-	long start = System.currentTimeMillis();
+	private long start = System.currentTimeMillis();
 
 	private processCounter processcounter = new processCounter();
 
-	private Logger log = Logger.getLogger(ReportProcessor.class.getName());
 
 	public int getProcess() {
 		return this.process;

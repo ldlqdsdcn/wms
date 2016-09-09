@@ -10,18 +10,18 @@ public interface DataSource
 	 * 
 	 * @return false
 	 */
-	public abstract boolean isJDBCConnection();
+	 boolean isJDBCConnection();
 
 	/**
 	 * Get a connection.
 	 * @return null
 	 */
-	public abstract java.sql.Connection getConnection();
+	 java.sql.Connection getConnection();
 
 	/**
 	 * close the data source.
 	 *
 	 */
-	public abstract void closeDataSource(java.sql.Connection conn);
+	 void closeDataSource(java.sql.Connection conn);
 
 }

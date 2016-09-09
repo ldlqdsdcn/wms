@@ -24,7 +24,7 @@ if(processor.isAlive())
 		<%}%>
 	</head>
 	    <body>
-		<div style="margin-top:40">
+		<div style="margin-top:40px">
 	    <table width="50%" border="0"  align="center"> 
 	        <tr>
 		        <a href="processbar2.jsp" ><font color=#576CC0>Report - <%= session.getAttribute("ReportName").toString()%> Loading... 

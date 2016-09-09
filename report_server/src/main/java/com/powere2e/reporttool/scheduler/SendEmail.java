@@ -68,22 +68,10 @@ public class SendEmail extends TimerTask{
 		// TODO Auto-generated method stub
 		
 	}
-	public static void main(String[]  args)
-	{
-		SendEmail se=new SendEmail();
-		se.SendMail("mail.sh.powere2e.com", "solomon.liu@powere2e.com", new String[]{"tcldl@126.com","solomon.liu@powere2e.com"}, "romantic", "你好啊", "中国人民", 
-				new String[]{"D:\\b5ce9254c067db0c3a2935b9.jpg","D:\\report.xls"});
-		
-	/*	String s="D:\\b5ce9254c067db0c3a2935b9.jpg";
-		String s2="D:/b5ce9254c067db0c3a2935b9.jpg";
-		System.out.println(s.lastIndexOf("\\"));
-		System.out.println(s.substring(s.lastIndexOf("\\")+1));
-		System.out.println(s2.lastIndexOf("\\"));*/
-	}
 	public boolean SendMail(String server,String fromEmail,String[] toEmails,String fromEmailPassword,String title,String content,String[] files)
 	{
 
-		boolean check = false;
+		boolean check ;
 
 		System.setProperty("mail.smtp.auth", "true");
 

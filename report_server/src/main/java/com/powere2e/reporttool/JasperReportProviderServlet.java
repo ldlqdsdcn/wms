@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.delmar.reporttool.manager.AuthenticationManger;
 import org.apache.log4j.Logger;
 
-import com.powere2e.reporttool.jasperprocessor.ReportProcessor;
+import com.powere2e.reporttool.jasperprocessor.JasperReportProcessor;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -48,7 +48,7 @@ public class JasperReportProviderServlet extends ReportProviderServlet {
 
 			request.getSession().removeAttribute(PROCESSOR_KEY);
 
-			ReportProcessor processor = new ReportProcessor();
+			ReportProcessor processor = new JasperReportProcessor();
 			request.getSession().setAttribute(PROCESSOR_KEY, processor);
 
 			log.debug("ReportProcessor-"+ request.getSession().getAttribute(PROCESSOR_KEY));

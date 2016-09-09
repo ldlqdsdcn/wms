@@ -22,7 +22,7 @@ public class ReportCompiler
 {
 	
 	static long start = System.currentTimeMillis();
-    private Logger log = Logger.getLogger(ReportProcessor.class.getName());
+    private Logger log = Logger.getLogger(ReportCompiler.class.getName());
     
     private JasperReport jasperReport = null;
     private static String compileMessage = null;//Save the message of compile exception.

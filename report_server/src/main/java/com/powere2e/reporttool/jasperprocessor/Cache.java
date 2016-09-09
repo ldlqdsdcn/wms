@@ -1,11 +1,8 @@
 package com.powere2e.reporttool.jasperprocessor;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.jasperreports.engine.JasperReport;
 
-import com.powere2e.reporttool.model.ExcelModel;
+import java.util.HashMap;
 
 /**
  * 

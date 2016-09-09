@@ -21,33 +21,12 @@ public class DB
 	public static String database_Home;
     private Connection conn;
     private static DB db = null;
-    public static void main(String[] args)throws Exception
-    {/*
-    	
-    	*/
-    	Class.forName("org.hsqldb.jdbcDriver");
-   	 Connection conn= DriverManager.getConnection("jdbc:hsqldb:file:C:\\Tomcat 5.0\\webapps\\reporttool\\WEB-INF\\db\\mydb", "sa", "");
-   	 Statement st=conn.createStatement();
-	 ResultSet rs=st.executeQuery("select * from SCHEDULER");
-    	System.out.println(System.getProperty("path.separator"));
-    	 while(rs.next())
-    	 {
-    		 System.out.println(rs.getString(2));
-    	 }
-    	 rs.close();
-    	 st.close();
-    	 conn.close();
-    	 
-    }
-    
     private DB()
     {
         try
         {
             Class.forName("org.hsqldb.jdbcDriver");
             conn = DriverManager.getConnection("jdbc:hsqldb:file:"+database_Home+"/mydb", "sa", "");  
-           // conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9002/mydb", "sa", "");  
-            //conn.setAutoCommit(true);
         }
         catch (Exception e)
         {
@@ -59,8 +38,7 @@ public class DB
     {
        ///if(db == null)
            return new DB();
-       
-       //return db;
+      //return db;
     }
     public PreparedStatement getPreparedStatement(String sql)
     {
