@@ -6,6 +6,7 @@ import com.delmar.system.api.UserApi;
 import com.delmar.system.api.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,10 +20,14 @@ import java.util.List;
 public class TestController {
     @Autowired(required = false)
     private UserApi userApi;
-    @RequestMapping(value = "/test/getUserInfo",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/test/getUserInfo",method = RequestMethod.GET)
     @ResponseBody
     public ApiResult<UserDto> getUserInfo(String username)
     {
+        if(StringUtils.isEmpty(username))
+        {
+            ApiResult.fail(ErrorCodes.BUSINESS_EXCEPTION.getCode(),"用户名不允许为空");
+        }
         ApiResult<List<UserDto>> userDtoList=userApi.getUserList();
         for(UserDto u:userDtoList.getData())
         {
