@@ -6,8 +6,8 @@
           http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 
 	<http>
-		<intercept-url pattern="/services/*" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/api/*" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/services/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/api/**" access="hasRole('ROLE_USER')"/>
 		<!-- Adds Support for basic authentication -->
 		<http-basic/>
 	</http>
