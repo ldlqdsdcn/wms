@@ -1,2 +1,5 @@
 设置jdk初始内存值
 -Xms256m -Xmx1024m -XX:MaxPermSize=512m
+
+
+CATALINA_OPTS=-server -Xms1024m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:NewSize=192m -XX:MaxNewSize=384m

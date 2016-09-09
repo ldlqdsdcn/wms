@@ -3,7 +3,7 @@
     <parent>
         <artifactId>swms</artifactId>
         <groupId>com.delmar</groupId>
-        <version>${swms.version}</version>
+        <version>1.0.alpha</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>report_server</artifactId>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.delmar</groupId>
             <artifactId>dubbo_core</artifactId>
-            <version>${swms.version}</version>
+            <version>1.0.alpha</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

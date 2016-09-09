@@ -7,7 +7,7 @@
     <groupId>com.delmar</groupId>
     <artifactId>swms</artifactId>
     <packaging>pom</packaging>
-    <version>${swms.version}</version>
+    <version>1.0.alpha</version>
     <modules>
         <module>utils</module>
         <module>core</module>
