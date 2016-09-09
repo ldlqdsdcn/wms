@@ -67,7 +67,7 @@
 		<property name="dataSource" ref="dataSourceCore" />
 	</bean>
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service*.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..service.impl.*ServiceImpl.*(..))"/>
 	</aop:config>
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
