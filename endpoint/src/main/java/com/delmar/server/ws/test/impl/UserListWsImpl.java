@@ -1,11 +1,9 @@
-package com.com.delmar.server.ws.test.impl;
+package com.delmar.server.ws.test.impl;
 
-import com.com.delmar.server.ws.test.UserListWs;
+import com.delmar.server.ws.test.UserListWs;
 import com.delmar.core.api.result.ApiResult;
 import com.delmar.system.api.UserApi;
 import com.delmar.system.api.dto.UserDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -13,8 +11,8 @@ import java.util.List;
 /**
  * Created by admin on 2016/9/8.
  */
-@WebService(endpointInterface = "com.com.delmar.server.ws.test.UserListWs")
-public class UserListWsImpl implements UserListWs{
+@WebService(endpointInterface = "com.delmar.server.ws.test.UserListWs")
+public class UserListWsImpl implements UserListWs {
 
     private UserApi userApi;
     @Override

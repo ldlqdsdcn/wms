@@ -1,4 +1,4 @@
-package com.com.delmar.server.ws.test;
+package com.delmar.server.ws.test;
 
 import com.delmar.system.api.dto.UserDto;
 

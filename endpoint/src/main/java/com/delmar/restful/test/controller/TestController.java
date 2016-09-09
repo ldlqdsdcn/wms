@@ -1,9 +1,11 @@
-package com.com.delmar.restful.test.controller;
+package com.delmar.restful.test.controller;
 
 import com.delmar.core.api.def.ErrorCodes;
 import com.delmar.core.api.result.ApiResult;
 import com.delmar.system.api.UserApi;
 import com.delmar.system.api.dto.UserDto;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -20,9 +22,10 @@ import java.util.List;
 public class TestController {
     @Autowired(required = false)
     private UserApi userApi;
+    @ApiOperation(value = "根据用户名获取用户对象", httpMethod = "GET", response = ApiResult.class, notes = "根据用户名获取用户对象")
     @RequestMapping(value = "/api/test/getUserInfo",method = RequestMethod.GET)
     @ResponseBody
-    public ApiResult<UserDto> getUserInfo(String username)
+    public ApiResult<UserDto> getUserInfo(@ApiParam(required = true, name = "username", value = "用户登录名")String username)
     {
         if(StringUtils.isEmpty(username))
         {

@@ -12,7 +12,7 @@
 	<import resource="classpath:spring-security.xml"/>
 
 
-	
+	<bean id="swaggerConfig" class="com.delmar.restful.config.SwaggerConfig"/>
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="ApplicationMessages"></property>
 	</bean>

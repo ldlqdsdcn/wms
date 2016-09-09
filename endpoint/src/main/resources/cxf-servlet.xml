@@ -30,10 +30,10 @@
 <http-conf:client ConnectionTimeout="5000" ReceiveTimeout="300000"  />
 </http-conf:conduit>
 	<!--测试接口-->
-	<jaxws:server id="userListWs" serviceClass="com.com.delmar.server.ws.test.UserListWs"  address="/UserListWs">
+	<jaxws:server id="userListWs" serviceClass="com.delmar.server.ws.test.UserListWs" address="/UserListWs">
 	  <jaxws:serviceBean >
 
-		  <bean class="com.com.delmar.server.ws.test.impl.UserListWsImpl">
+		  <bean class="com.delmar.server.ws.test.impl.UserListWsImpl">
 		  	<property name="userApi" ref="userApi"/>
 		  </bean>
 	  </jaxws:serviceBean>
