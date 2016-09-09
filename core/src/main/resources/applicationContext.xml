@@ -67,22 +67,21 @@
 		<property name="dataSource" ref="dataSourceCore" />
 	</bean>
 	<aop:config>
-		<aop:pointcut id="serviceMethod" expression="execution(* com.delmar..*Service*.*(..))"/>
-		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service*.*(..))"/>
 	</aop:config>
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="save*"  propagation="REQUIRED"/>
-			<tx:method name="remove*"    propagation="REQUIRED"/>
-			<tx:method name="executeUpdate*"  propagation="REQUIRED"/>
-			<tx:method name="delete*"   propagation="REQUIRED"/>
+			<tx:method name="save*"  propagation="REQUIRED" read-only="true" />
+			<tx:method name="remove*"    propagation="REQUIRED" read-only="true"/>
+			<tx:method name="executeUpdate*"  propagation="REQUIRED" read-only="true"/>
+			<tx:method name="delete*"   propagation="REQUIRED" read-only="true"/>
 			<!-- <tx:method name="*" read-only="true"/>  -->
 		</tx:attributes>
 	</tx:advice>
-	
 
-	
+
+	<!--<tx:annotation-driven/>-->
 	
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
