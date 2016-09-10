@@ -1,18 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-05 14:01:13
+  Date: 2016-09-10 10:28:27
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<%@include file="/commons/header.jsp"%>
-<jsp:include page="/commons/list_js.jsp">
-    <jsp:param name="search_name" value="core_label"/>
-    <jsp:param name="edit_url" value="/core/label_edit.action"/>
-</jsp:include>
+    <%@include file="/commons/header.jsp"%>
+    <jsp:include page="/commons/list_js.jsp">
+        <jsp:param name="search_name" value="core_label"/>
+        <jsp:param name="edit_url" value="/core/label_edit.action"/>
+    </jsp:include>
 </head>
 <body >
 <s:form action="label_list" namespace="/core"  theme="simple" >

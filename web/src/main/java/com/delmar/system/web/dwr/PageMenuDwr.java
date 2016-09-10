@@ -92,7 +92,7 @@ public class PageMenuDwr {
 	 */
 	public PageMenu savePagemenu(PageMenu pageMenu)
 	{
-		if(DwrPrivilegeFilter.isCreate(this.getClass().getName()))
+		if(!DwrPrivilegeFilter.isCreate(this.getClass().getName()))
 		{
 			if(pageMenu.getId()==null)
 			return null;

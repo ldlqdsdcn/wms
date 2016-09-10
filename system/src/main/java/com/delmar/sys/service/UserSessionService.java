@@ -17,7 +17,7 @@ import com.delmar.core.service.CoreService;
 public interface UserSessionService extends CoreService<UserSession> {
 
 	/**
-	 * @param id
+	 * @param userId
 	 * @return
 	 */
 	UserSession getPreLoginSession(Integer userId);
