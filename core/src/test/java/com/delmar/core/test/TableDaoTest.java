@@ -26,56 +26,8 @@ public class TableDaoTest {
     private String fk_table="base_eventtype";
     private String fk_table_pk="id";
     @Test
-    public void testAddForeignKeys()
+    public void testGetTableColumns()
     {
-
-      List<String> allTables=  tableDao.getAllTableName();
-        for(String table:allTables)
-        {
-            modifyOneTableForeign(table);
-        }
-    }
-
-    private void modifyOneTableForeign(String tableName)
-    {
-        List<ForeignKey>  foreignKeyList= tableDao.getImportedKeys(tableName);
-        for(ForeignKey foreignKey:foreignKeyList)
-        {
-            if(foreignKey.getFkColumnName().equals(key))
-            {
-                return;
-            }
-        }
-        List<ColumnMetaDataDto>  columnMetaDataDtoList= tableDao.getTableColumns(tableName);
-        boolean hasKey=false;
-        for(ColumnMetaDataDto cmdd:columnMetaDataDtoList)
-        {
-            if(cmdd.getColumnName().equalsIgnoreCase(key))
-            {
-                hasKey=true;
-                break;
-            }
-        }
-        if(hasKey)
-        {
-            execSql(tableName);
-        }
-    }
-    private void execSql(String tableName)
-    {
-        System.out.println("------------>"+tableName);
-        if(tableName.equals(fk_table))
-        {
-            return;
-        }
-        String sql1="ALTER TABLE "+tableName+"    ADD INDEX `"+tableName+"_"+key+"_idx` (`"+key+"` ASC)";
-        String sql2="ALTER TABLE "+tableName+" " +
-                "ADD CONSTRAINT `fk_"+tableName+"_"+key+"`" +
-                "  FOREIGN KEY (`"+key+"`)" +
-                "  REFERENCES "+fk_table+" (`"+fk_table_pk+"`)" +
-                "  ON DELETE NO ACTION" +
-                "  ON UPDATE NO ACTION";
-        tableDao.execute(sql1);
-        tableDao.execute(sql2);
+        tableDao.getTableColumns("core_table");
     }
 }

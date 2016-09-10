@@ -21,7 +21,7 @@ import java.util.Date;
 import com.delmar.core.model.LabelTrl;
 import com.delmar.core.dao.LabelTrlDao;
 /**
- * @author 刘大磊 2016-09-10 10:28:27
+ * @author 刘大磊 2016-09-10 13:45:14
  */
 @Service("labelService")
 public class LabelServiceImpl extends CoreServiceImpl<Label> implements
@@ -57,8 +57,13 @@ public Integer saveLabel(Label label,List<LabelTrl> labelTrlList) {
 	return id;
 }
 
+	@Override
+	public Label getLabelByValue(String s) {
+		return labelDao.getLabelByValue(s);
+	}
 
-    public Integer deleteByPrimaryKey(Integer id) {
+
+	public Integer deleteByPrimaryKey(Integer id) {
     Map<String,Object> labelTrlParam=new HashMap<String,Object>();
 labelTrlParam.put("labelId",id);
 labelTrlDao.deleteByExample(labelTrlParam);

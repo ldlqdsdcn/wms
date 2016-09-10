@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-10 10:28:27
+  Date: 2016-09-10 13:45:14
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -50,19 +50,6 @@ editForm.submit();
      $('#formDetail tr:even').addClass("query_two");
      $("#formDetail").find("tr:last").removeClass("query_one").removeClass("query_two");
         $.datetimepicker.setLocale('en');
-        $('#compDate').datetimepicker({
-        dayOfWeekStart : 1,
-        lang:'en',
-        timepicker:false,
-        format:"Y-m-d",
-        step:10
-        });
-
-        $('#bgnTime').datetimepicker({
-        dayOfWeekStart : 1,
-        lang:'en',
-        format:"Y-m-d H:i:s"
-        });
      $("#saveBtn").click(function(){
             if (isEmpty($("#value").val())) {
             alert("键值不允许为空");
@@ -78,34 +65,11 @@ editForm.submit();
             }
 
 
-            if (!validateDate($("#compDate").val())) {
-            alert("compDate必须为日期");
-            $("#compDate").focus();
+            if (!isInt($("#windowId").val())) {
+            alert("windowId必须为整数");
+            $("#windowId").focus();
             return false;
             }
-
-
-            if (!validateDate($("#compDate").val())) {
-            alert("compDate必须为日期");
-            $("#compDate").focus();
-            return false;
-            }
-
-
-            if (!validateDateTime($("#bgnTime").val())) {
-            alert("开始时间必须为日期时间");
-            $("#bgnTime").focus();
-            return false;
-            }
-
-
-
-            if (!validateDateTime($("#bgnTime").val())) {
-            alert("开始时间必须为日期时间");
-            $("#bgnTime").focus();
-            return false;
-            }
-
 
 
 
@@ -210,25 +174,12 @@ $("input[name^=labelTrlList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="compDate" value="compDate" /></td>
+                        <td width="20%"><s:label for="windowId" value="windowId" /></td>
                         <td width="30%">
                         
-                        <s:textfield name="label.compDate" id="compDate" >
-                         <s:param name="value"><s:date name="label.compDate"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
-                        </s:textfield>
-                        
-                            <s:fielderror fieldName="label.compDate"   cssStyle="color:red" />
-                          </td>
-                        </tr>
-                        <tr>
-                        <td width="20%"><s:label for="bgnTime" value="开始时间" /></td>
-                        <td width="30%">
-                        
-                        <s:textfield name="label.bgnTime" id="bgnTime" >
-                         <s:param name="value"><s:date name="label.bgnTime"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
-                        </s:textfield>
-                        
-                            <s:fielderror fieldName="label.bgnTime"   cssStyle="color:red" />
+                          <s:textfield name="label.windowId" id="windowId"   />
+                            
+                            <s:fielderror fieldName="label.windowId"    cssStyle="color:red" />
                           </td>
                         </tr>
 
@@ -253,9 +204,6 @@ $("input[name^=labelTrlList]").each(function(i, item){
     <td colspan="4">
         <table id="LabelTrlTable" class="table">
             <thead>
-            <th>
-                <input type="checkbox" onclick="selectAll('LabelTrl_ids',this);"/>
-            </th>
             <th>序号</th>
             <th >language</th>
             <th >信息</th>
@@ -264,9 +212,6 @@ $("input[name^=labelTrlList]").each(function(i, item){
             <s:iterator value="labelTrlList" status="st">
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
-                    <td>
-                        <input type="checkbox"  name="LabelTrl_ids"  value="<s:property value="#st.index"/>"/>
-                    </td>
                     <td>
                         <s:property value="#st.index+1"/>
                         <s:hidden

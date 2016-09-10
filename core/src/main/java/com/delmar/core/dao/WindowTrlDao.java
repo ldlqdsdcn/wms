@@ -6,12 +6,12 @@
 */
 package com.delmar.core.dao;
 
-import com.delmar.core.model.Window;
+import com.delmar.core.model.WindowTrl;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-09-10 14:38:00
+ * @author 刘大磊 2016-09-10 14:38:01
  */
-public interface WindowDao extends CoreDao<Window> {
+public interface WindowTrlDao extends CoreDao<WindowTrl> {
 
 }

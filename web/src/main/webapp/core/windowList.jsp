@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-28 17:16:34
+  Date: 2016-09-10 14:38:01
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -47,13 +47,44 @@
                  <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.name}"/></a>
         </display:column>
         <display:column property="name" media="csv excel xml pdf rtf"	title="名称" />
-        <display:column property="descr"  escapeXml="true" title="描述" sortable="true" />
-        <display:column property="help"  escapeXml="true" title="帮助" sortable="true" />
-        <display:column property="created"  escapeXml="true" title="创建时间" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
-        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
-        <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
-        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
-        <display:column property="isactive"  escapeXml="true" title="是否有效" sortable="true" />
+
+
+        <display:column property="descr"  escapeXml="true" title="描述" sortable="true"
+                                                                                                    />
+
+
+        <display:column property="help"  escapeXml="true" title="帮助" sortable="true"
+                                                                                                    />
+
+
+        <display:column property="created"  escapeXml="true" title="创建时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="isactive"  escapeXml="true" title="是否有效" sortable="true"
+                                                                                                    />
+
+
+        <display:column property="typeId"  escapeXml="true" title="typeId" sortable="true"
+                                                                                                    />
+
+
     </display:table>
 </td>
 </tr>

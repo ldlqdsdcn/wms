@@ -6,24 +6,19 @@
 */
 package com.delmar.core.model;
 
-import java.util.Date;
 import lombok.Data;
  /**
-  * table name core_window
-  * Date:2016-09-10 14:38:00
+  * table name core_window_trl
+  * Date:2016-09-10 14:38:01
   **/
 @Data
-public class Window extends CoreModel {
+public class WindowTrl extends CoreModel {
 
 private Integer id;
 private String name;
 private String descr;
 private String help;
-private Date created;
-private Integer createdby;
-private Date updated;
-private Integer updatedby;
-private String isactive;
-private Integer typeId;
+private Integer windowId;
+private String language;
 
 }

@@ -8,15 +8,15 @@ package com.delmar.core.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.core.dao.LabelDao;
-import com.delmar.core.model.Label;
+import com.delmar.core.dao.WindowTrlDao;
+import com.delmar.core.model.WindowTrl;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-09-10 13:45:14
+ * @author 刘大磊 2016-09-10 14:38:01
  */
-@Repository("labelDao") 
-public class LabelDaoMybatis extends CoreDaoMyBatis<Label> implements LabelDao {
+@Repository("windowTrlDao") 
+public class WindowTrlDaoMybatis extends CoreDaoMyBatis<WindowTrl> implements WindowTrlDao {
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
@@ -24,12 +24,9 @@ public class LabelDaoMybatis extends CoreDaoMyBatis<Label> implements LabelDao {
 	@Override
 	protected String getSqlName() {
 		
-		return "com.delmar.core.mybatis.sql.LabelMapper";
+		return "com.delmar.core.mybatis.sql.WindowTrlMapper";
 	}
 
 
-	@Override
-	public Label getLabelByValue(String s) {
-		return sqlSessionTemplate.selectOne(getSqlName()+".getLabelByValue",s);
-	}
+
 }

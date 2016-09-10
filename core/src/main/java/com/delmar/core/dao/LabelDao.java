@@ -10,8 +10,9 @@ import com.delmar.core.model.Label;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-09-10 10:28:27
+ * @author 刘大磊 2016-09-10 13:45:14
  */
 public interface LabelDao extends CoreDao<Label> {
 
+    Label getLabelByValue(String s);
 }

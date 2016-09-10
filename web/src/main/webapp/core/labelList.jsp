@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-10 10:28:27
+  Date: 2016-09-10 13:45:14
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -53,14 +53,8 @@
                                                                                                     />
 
 
-        <display:column property="compDate"  escapeXml="true" title="compDate" sortable="true"
-                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+        <display:column property="windowId"  escapeXml="true" title="windowId" sortable="true"
                                                                                                     />
-
-
-        <display:column property="bgnTime"  escapeXml="true" title="开始时间" sortable="true"
-                 decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"
-                                                                                    />
 
 
     </display:table>

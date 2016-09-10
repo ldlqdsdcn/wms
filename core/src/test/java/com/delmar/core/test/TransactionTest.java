@@ -39,8 +39,6 @@ public class TransactionTest {
         logger.debug("countBeforeSaved="+countBeforeSaved);
         Date now=new Date();
         Label label=new Label();
-        label.setBgnTime(now);
-        label.setCompDate(now);
         label.setMsgtext("刘大磊测试");
         label.setValue("ldl.test");
         List<LabelTrl> trlList=new ArrayList<>();

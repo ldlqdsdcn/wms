@@ -25,7 +25,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import com.delmar.core.model.LabelTrl;
 /**
- * @author 刘大磊 2016-09-10 10:28:27
+ * @author 刘大磊 2016-09-10 13:45:14
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "label.value", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
@@ -147,10 +147,6 @@ label=new Label();
 	public String saveForm() {
 Integer currentUserId=getCurrentUser();
 User user=getUserInSession();
-        LabelTrl label3=new LabelTrl();
-        label3.setMsgtext("sdfsdfd");
-        label3.setLanguage("zh_TW");
-        labelTrlList.add(label3);
 		labelService.saveLabel(label,labelTrlList);
 		return "edit";
 	}

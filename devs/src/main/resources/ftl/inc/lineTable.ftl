@@ -32,9 +32,11 @@
     <td colspan="4">
         <table id="${line.model}Table" class="table">
             <thead>
+    <#if !line.trl>
             <th>
                 <input type="checkbox" onclick="selectAll('${line.model}_ids',this);"/>
             </th>
+    </#if>
             <th>序号</th>
             <#list line.propertyList as prop>
                 <#if prop.prop!='id'&&prop.prop!=((mode? uncap_first)+'Id')>
@@ -48,9 +50,11 @@
             <s:iterator value="${line.model?uncap_first}List" status="st">
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
+    <#if !line.trl>
                     <td>
                         <input type="checkbox"  name="${line.model}_ids"  value="<s:property value="#st.index"/>"/>
                     </td>
+    </#if>
                     <td>
                         <s:property value="#st.index+1"/>
                         <s:hidden
