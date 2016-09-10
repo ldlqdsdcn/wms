@@ -94,14 +94,6 @@ public abstract class CoreDaoMyBatis<T>    implements CoreDao<T>  {
 	}
 	
 	
-	public String getText(String keyName,String defaultValue) {
-		
-		ResourceBundle bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,Locale.getDefault());
-		String keyValue=bundle.getString(keyName);
-		return keyValue;
-		
-	}
-	
 	public T getByExample(Map example)  {
 
 
