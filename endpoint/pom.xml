@@ -16,6 +16,11 @@
             <artifactId>dubbo_core</artifactId>
             <version>1.0.alpha</version>
         </dependency>
+        <dependency>
+            <groupId>com.delmar</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0.alpha</version>
+        </dependency>
         <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>

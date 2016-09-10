@@ -3,6 +3,7 @@ import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableSwagger
 public class SwaggerConfig {
-
+    private static final Logger logger=Logger.getLogger(SwaggerConfig.class);
     private SpringSwaggerConfig springSwaggerConfig;
 
     /**
@@ -21,6 +22,7 @@ public class SwaggerConfig {
     @Autowired
     public void setSpringSwaggerConfig(SpringSwaggerConfig springSwaggerConfig)
     {
+        logger.info("auto wried");
         this.springSwaggerConfig = springSwaggerConfig;
     }
 
@@ -40,12 +42,12 @@ public class SwaggerConfig {
     private ApiInfo apiInfo()
     {
         ApiInfo apiInfo = new ApiInfo(
-                "My Apps API Title",
-                "My Apps API Description",
-                "My Apps API terms of service",
-                "My Apps API Contact Email",
-                "My Apps API Licence Type",
-                "My Apps API License URL");
+                "Swms api 文档",
+                "Swms Restful 接口在线文档",
+                "刘大磊",
+                "ldlqdsd@126.com",
+                "",
+                "");
         return apiInfo;
     }
 }
