@@ -44,24 +44,24 @@
         from core_label
         where id = #{id,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">
         delete from core_label
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <delete id="deleteByExample" parameterType="java.util.Map" >
+    <delete id="deleteByExample" parameterType="java.util.Map" flushCache="true">
         delete from core_label
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </delete>
-    <insert id="insert" parameterType="com.delmar.core.model.Label" >
+    <insert id="insert" parameterType="com.delmar.core.model.Label" flushCache="true">
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
         insert into core_label (     value,   msgtext,   window_id )
         values (  #{value,jdbcType=VARCHAR}, #{msgtext,jdbcType=VARCHAR}, #{windowId,jdbcType=INTEGER} )
     </insert>
-    <insert id="insertSelective" parameterType="com.delmar.core.model.Label" >
+    <insert id="insertSelective" parameterType="com.delmar.core.model.Label" flushCache="true">
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -95,7 +95,7 @@
             <include refid="Example_Where_Clause" />
         </if>
     </select>
-    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Label" >
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.Label" flushCache="true">
         update core_label
         <set >
     <if test="value != null" >
@@ -111,7 +111,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Label" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Label" flushCache="true">
         update core_label
         set 
             value = #{value,jdbcType=VARCHAR},
@@ -128,5 +128,5 @@
         select l.value as 'key',l.msgtext as default_value ,l_trl.msgtext as 'value'  from core_label l inner join core_label_trl l_trl
     on l.id=l_trl.label_id where  l_trl.language=#{value,jdbcType=VARCHAR}
     </select>
-
+    <cache eviction="FIFO" flushInterval="60000" size="50000" readOnly="true" />
 </mapper>
