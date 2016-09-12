@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-26 17:30:05
+  Date: 2016-09-12 10:38:52
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -28,7 +28,7 @@
                         <td>
                             <input type="button" value="查询" class="input_submit" id="search_but">
                             <s:submit method="create" cssClass="input_submit" value="新建"/>
-                            <s:submit method="deletes" cssClass="input_submit" value="删除"/>
+                            <s:submit method="deletes" cssClass="input_submit" value="删除" onclick="return confirmListDelete()"/>
                         </td>
                     </tr>
                 </table>
@@ -43,11 +43,16 @@
         <display:column title="序号" media="html csv excel xml pdf rtf">
               	<c:out value=" ${list_rowNum}"/>
         </display:column>
-        <display:column   title="value" sortable="true" media="html">
+        <display:column   title="键值" sortable="true" media="html">
                  <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.value}"/></a>
         </display:column>
-        <display:column property="value" media="csv excel xml pdf rtf"	title="value" />
-        <display:column property="msgtext"  escapeXml="true" title="msgtext" sortable="true" />
+        <display:column property="value" media="csv excel xml pdf rtf"	title="键值" />
+
+
+        <display:column property="msgtext"  escapeXml="true" title="信息" sortable="true"
+                                                                                                    />
+
+
     </display:table>
 </td>
 </tr>

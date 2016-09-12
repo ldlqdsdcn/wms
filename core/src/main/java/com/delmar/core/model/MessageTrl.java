@@ -8,14 +8,15 @@ package com.delmar.core.model;
 
 import lombok.Data;
  /**
-  * table name core_message
-  * Date:2016-09-12 10:38:52
+  * table name core_message_trl
+  * Date:2016-09-12 10:38:53
   **/
 @Data
-public class Message extends CoreModel {
+public class MessageTrl extends CoreModel {
 
 private Integer id;
-private String value;
+private Integer messageId;
+private String language;
 private String msgtext;
 
 }

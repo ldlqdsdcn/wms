@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.delmar.core.mybatis.sql.WindowTrlMapper" >
-    <resultMap id="BaseResultMap" type="com.delmar.core.model.WindowTrl" >
+<mapper namespace="com.delmar.core.mybatis.sql.MessageTrlMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.core.model.MessageTrl" >
             <id column="id" property="id" jdbcType="INTEGER" />
-            <result column="name" property="name" jdbcType="VARCHAR" />
-            <result column="descr" property="descr" jdbcType="VARCHAR" />
-            <result column="help" property="help" jdbcType="VARCHAR" />
-            <result column="window_id" property="windowId" jdbcType="INTEGER" />
+            <result column="message_id" property="messageId" jdbcType="INTEGER" />
             <result column="language" property="language" jdbcType="VARCHAR" />
+            <result column="msgtext" property="msgtext" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-                <if test="windowId!=null"> and window_id=#{windowId,jdbcType=INTEGER} </if>
+                <if test="messageId!=null"> and message_id=#{messageId,jdbcType=INTEGER} </if>
                 <if test="language!=null"> and language=#{language,jdbcType=VARCHAR} </if>
                 <if test="searchString!=null"> and ${searchString} </if>
                 <if test="accessString!=null"> and ${accessString} </if>
@@ -19,7 +17,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   name,   descr,   help,   window_id,   language 
+      id,   message_id,   language,   msgtext 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -27,7 +25,7 @@
             distinct
         </if>
         <include refid="Base_Column_List" />
-        from core_window_trl
+        from core_message_trl
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
@@ -38,108 +36,85 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
         <include refid="Base_Column_List" />
-        from core_window_trl
+        from core_message_trl
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from core_window_trl
+        delete from core_message_trl
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <delete id="deleteByExample" parameterType="java.util.Map" >
-        delete from core_window_trl
+        delete from core_message_trl
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </delete>
-    <insert id="insert" parameterType="com.delmar.core.model.WindowTrl" >
+    <insert id="insert" parameterType="com.delmar.core.model.MessageTrl" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_window_trl (     name,   descr,   help,   window_id,   language )
-        values (  #{name,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{help,jdbcType=VARCHAR}, #{windowId,jdbcType=INTEGER}, #{language,jdbcType=VARCHAR} )
+        insert into core_message_trl (     message_id,   language,   msgtext )
+        values (  #{messageId,jdbcType=INTEGER}, #{language,jdbcType=VARCHAR}, #{msgtext,jdbcType=VARCHAR} )
     </insert>
-    <insert id="insertSelective" parameterType="com.delmar.core.model.WindowTrl" >
+    <insert id="insertSelective" parameterType="com.delmar.core.model.MessageTrl" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_window_trl
+        insert into core_message_trl
         <trim prefix="(" suffix=")" suffixOverrides="," >
-                <if test="name != null" >
-                    name,
-                </if>
-                <if test="descr != null" >
-                    descr,
-                </if>
-                <if test="help != null" >
-                    help,
-                </if>
-                <if test="windowId != null" >
-                    window_id,
+                <if test="messageId != null" >
+                    message_id,
                 </if>
                 <if test="language != null" >
                     language,
                 </if>
+                <if test="msgtext != null" >
+                    msgtext,
+                </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-    <if test="name != null" >
-    #{name,jdbcType=VARCHAR}},
-    </if>
-    <if test="descr != null" >
-    #{descr,jdbcType=VARCHAR}},
-    </if>
-    <if test="help != null" >
-    #{help,jdbcType=VARCHAR}},
-    </if>
-    <if test="windowId != null" >
-    #{windowId,jdbcType=VARCHAR}},
+    <if test="messageId != null" >
+    #{messageId,jdbcType=VARCHAR}},
     </if>
     <if test="language != null" >
     #{language,jdbcType=VARCHAR}},
     </if>
+    <if test="msgtext != null" >
+    #{msgtext,jdbcType=VARCHAR}},
+    </if>
         </trim>
     </insert>
     <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
-        select count(*) from core_window_trl
+        select count(*) from core_message_trl
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </select>
-    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.WindowTrl" >
-        update core_window_trl
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.core.model.MessageTrl" >
+        update core_message_trl
         <set >
-    <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-    </if>
-    <if test="descr != null" >
-        descr = #{descr,jdbcType=VARCHAR},
-    </if>
-    <if test="help != null" >
-        help = #{help,jdbcType=VARCHAR},
-    </if>
-    <if test="windowId != null" >
-        window_id = #{windowId,jdbcType=INTEGER},
+    <if test="messageId != null" >
+        message_id = #{messageId,jdbcType=INTEGER},
     </if>
     <if test="language != null" >
         language = #{language,jdbcType=VARCHAR},
+    </if>
+    <if test="msgtext != null" >
+        msgtext = #{msgtext,jdbcType=VARCHAR},
     </if>
 
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.WindowTrl" >
-        update core_window_trl
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.MessageTrl" >
+        update core_message_trl
         set 
             
-            name = #{name,jdbcType=VARCHAR},
+            message_id = #{messageId,jdbcType=INTEGER},
 
-            descr = #{descr,jdbcType=VARCHAR},
+            language = #{language,jdbcType=VARCHAR},
 
-            help = #{help,jdbcType=VARCHAR},
-
-            window_id = #{windowId,jdbcType=INTEGER},
-
-            language = #{language,jdbcType=VARCHAR}
-
+            msgtext = #{msgtext,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

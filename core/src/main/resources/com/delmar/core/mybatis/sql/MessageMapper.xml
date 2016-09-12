@@ -8,7 +8,9 @@
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-            <if test="searchString!=null"> and ${searchString}</if>
+                <if test="searchString!=null"> and ${searchString} </if>
+                <if test="accessString!=null"> and ${accessString} </if>
+
         </where>
     </sql>
     <sql id="Base_Column_List" >
@@ -92,14 +94,13 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Message" >
         update core_message
         set 
             
             value = #{value,jdbcType=VARCHAR},
 
             msgtext = #{msgtext,jdbcType=VARCHAR}
-
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

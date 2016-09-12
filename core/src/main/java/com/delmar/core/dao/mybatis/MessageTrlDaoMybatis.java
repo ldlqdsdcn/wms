@@ -8,15 +8,15 @@ package com.delmar.core.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.core.dao.MessageDao;
-import com.delmar.core.model.Message;
+import com.delmar.core.dao.MessageTrlDao;
+import com.delmar.core.model.MessageTrl;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-09-12 10:38:52
+ * @author 刘大磊 2016-09-12 10:38:53
  */
-@Repository("messageDao") 
-public class MessageDaoMybatis extends CoreDaoMyBatis<Message> implements MessageDao {
+@Repository("messageTrlDao") 
+public class MessageTrlDaoMybatis extends CoreDaoMyBatis<MessageTrl> implements MessageTrlDao {
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
@@ -24,7 +24,7 @@ public class MessageDaoMybatis extends CoreDaoMyBatis<Message> implements Messag
 	@Override
 	protected String getSqlName() {
 		
-		return "com.delmar.core.mybatis.sql.MessageMapper";
+		return "com.delmar.core.mybatis.sql.MessageTrlMapper";
 	}
 
 

@@ -6,12 +6,12 @@
 */
 package com.delmar.core.dao;
 
-import com.delmar.core.model.Message;
+import com.delmar.core.model.MessageTrl;
 import com.delmar.core.dao.CoreDao;
 
 /**
- * @author 刘大磊 2016-09-12 10:38:52
+ * @author 刘大磊 2016-09-12 10:38:53
  */
-public interface MessageDao extends CoreDao<Message> {
+public interface MessageTrlDao extends CoreDao<MessageTrl> {
 
 }
