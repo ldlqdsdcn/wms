@@ -10,6 +10,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ import java.util.List;
 public class TestController {
     @Autowired(required = false)
     private UserApi userApi;
-    @ApiOperation(value = "根据用户名获取用户对象", httpMethod = "GET", response = UserVo.class, notes = "根据用户名获取用户对象")
+    @ApiOperation(value = "根据用户名获取用户对象", httpMethod = "GET", response = ApiResult.class, notes = "根据用户名获取用户对象",produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/api/test/getUserInfo",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
     @ResponseBody
 

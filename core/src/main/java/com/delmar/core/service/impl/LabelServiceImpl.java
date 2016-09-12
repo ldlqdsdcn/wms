@@ -6,6 +6,7 @@
 */
 package com.delmar.core.service.impl;
 
+import com.delmar.core.bo.LabelBo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,11 @@ public Integer saveLabel(Label label,List<LabelTrl> labelTrlList) {
 	@Override
 	public Label getLabelByValue(String s) {
 		return labelDao.getLabelByValue(s);
+	}
+
+	@Override
+	public List<LabelBo> selectLocaleLabel(String locale) {
+		return labelDao.selectLocaleLabel(locale);
 	}
 
 

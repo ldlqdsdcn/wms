@@ -98,12 +98,11 @@
         </set>
         where id = ${r'#{id,jdbcType=INTEGER}'}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.${module}.model.${model}" >
         update ${tableName}
         set <#list columnList as column>
             <#if column.columnName!='id'>${column.columnName} = ${r'#{'}${column.propertyName},jdbcType=${column.type}}<#if column_has_next>,</#if>
             </#if></#list>
-
         where id = ${r'#{id,jdbcType=INTEGER}'}
     </update>
 </mapper>

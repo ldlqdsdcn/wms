@@ -4,6 +4,7 @@
 * 电话：13336390671
 * email:ldlqdsd@126.com
 */package com.delmar.core.service;
+import com.delmar.core.bo.LabelBo;
 import com.delmar.core.model.Label;
 import com.delmar.core.service.CoreService;
 import com.delmar.core.model.LabelTrl;
@@ -15,6 +16,6 @@ public interface LabelService extends CoreService<Label> {
 	void deleteLabelList(Integer[] ids);
 	List<LabelTrl> getLabelTrlListByLabelId(Integer labelId);
 	Integer saveLabel(Label label,List<LabelTrl> labelTrlList);
-
     Label getLabelByValue(String s);
+	List<LabelBo> selectLocaleLabel(String locale);
 }

@@ -6,11 +6,14 @@
 */
 package com.delmar.core.dao.mybatis;
 
+import com.delmar.core.bo.LabelBo;
 import org.springframework.stereotype.Repository;
 
 import com.delmar.core.dao.LabelDao;
 import com.delmar.core.model.Label;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
+
+import java.util.List;
 
 /**
  * @author 刘大磊 2016-09-10 13:45:14
@@ -31,5 +34,10 @@ public class LabelDaoMybatis extends CoreDaoMyBatis<Label> implements LabelDao {
 	@Override
 	public Label getLabelByValue(String s) {
 		return sqlSessionTemplate.selectOne(getSqlName()+".getLabelByValue",s);
+	}
+
+	@Override
+	public List<LabelBo> selectLocaleLabel(String locale) {
+		return sqlSessionTemplate.selectList(getSqlName()+".selectLocaleLabel",locale);
 	}
 }

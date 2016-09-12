@@ -6,8 +6,11 @@
 */
 package com.delmar.core.dao;
 
+import com.delmar.core.bo.LabelBo;
 import com.delmar.core.model.Label;
 import com.delmar.core.dao.CoreDao;
+
+import java.util.List;
 
 /**
  * @author 刘大磊 2016-09-10 13:45:14
@@ -15,4 +18,6 @@ import com.delmar.core.dao.CoreDao;
 public interface LabelDao extends CoreDao<Label> {
 
     Label getLabelByValue(String s);
+
+    List<LabelBo> selectLocaleLabel(String locale);
 }

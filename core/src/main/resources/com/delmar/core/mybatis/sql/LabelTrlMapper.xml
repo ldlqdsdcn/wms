@@ -106,7 +106,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.LabelTrl" >
         update core_label_trl
         set 
             

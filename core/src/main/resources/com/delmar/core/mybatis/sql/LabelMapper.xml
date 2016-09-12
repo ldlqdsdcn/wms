@@ -111,16 +111,22 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Label" >
         update core_label
         set 
-            
             value = #{value,jdbcType=VARCHAR},
-
             msgtext = #{msgtext,jdbcType=VARCHAR},
-
             window_id = #{windowId,jdbcType=INTEGER}
-
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <resultMap id="localeLabelResultMap" type="com.delmar.core.bo.LabelBo">
+        <result column="key" property="key" jdbcType="VARCHAR" />
+        <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+        <result column="value" property="value" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectLocaleLabel" parameterType="java.lang.String" resultMap="localeLabelResultMap" useCache="true">
+        select l.value as 'key',l.msgtext as default_value ,l_trl.msgtext as 'value'  from core_label l inner join core_label_trl l_trl
+    on l.id=l_trl.label_id where  l_trl.language=#{value,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

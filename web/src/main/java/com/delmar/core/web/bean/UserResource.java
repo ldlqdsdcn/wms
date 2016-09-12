@@ -9,13 +9,15 @@ package com.delmar.core.web.bean;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.delmar.core.i18n.DbResourceBundle;
 import com.delmar.utils.ResourceMessage;
 
 /**
  * @author 刘大磊 2015年2月3日 上午11:06:45
  */
 public class UserResource implements java.io.Serializable{
-	private 	 ResourceBundle bundle=null;
+	//private 	 ResourceBundle bundle=null;
+	private DbResourceBundle bundle=null;
 	private Locale locale;
 	/**
 	 * 
@@ -23,7 +25,8 @@ public class UserResource implements java.io.Serializable{
 	public UserResource(Locale locale) {
 		
 		this.locale=locale;
-		bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,locale);
+		bundle=DbResourceBundle.getResourceBundle(locale);
+		//bundle=ResourceBundle.getBundle(ResourceMessage.BUNDLE_NAME,locale);
 
 	}
 	
@@ -34,7 +37,7 @@ public class UserResource implements java.io.Serializable{
 		
 		try
 		{
-		  return bundle.getString(key);
+		  return bundle.getLabel(key);
 		} catch (Exception e)
 		{
 		  return "";  	
