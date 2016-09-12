@@ -9,7 +9,7 @@ import com.delmar.core.service.CoreService;
 import com.delmar.core.model.WindowTrl;
 import java.util.List;
 /**
- * @author 刘大磊 2016-09-10 14:38:00
+ * @author 刘大磊 2016-09-12 15:10:29
  */
 public interface WindowService extends CoreService<Window> {
 	void deleteWindowList(Integer[] ids);

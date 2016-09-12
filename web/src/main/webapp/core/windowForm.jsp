@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-10 14:38:01
+  Date: 2016-09-12 15:10:29
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -87,7 +87,7 @@ $("input[name^=windowTrlList]").each(function(i, item){
 
         if(endWith(item.name,'name')){
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"窗体翻译 名称不允许为空";
+                lineMsg+="<br>"+"窗体 名称不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -102,7 +102,7 @@ $("input[name^=windowTrlList]").each(function(i, item){
 
         if(endWith(item.name,'language')){
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"窗体翻译 language不允许为空";
+                lineMsg+="<br>"+"窗体 language不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -251,7 +251,7 @@ $("input[name^=windowTrlList]").each(function(i, item){
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                         <td  style="height: 26px;width: 90px;" align="center" background="../images/table_page_1.gif">
-                            窗体翻译
+                            窗体
                         </td>
                 <td background="../images/table_page_bg.gif" width="*"  style="height: 26px;"><div class="C_S_F_L">
                     &nbsp;
@@ -276,7 +276,7 @@ $("input[name^=windowTrlList]").each(function(i, item){
             <s:iterator value="windowTrlList" status="st">
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
-                      <td>
+                    <td>
                         <s:property value="#st.index+1"/>
                         <s:hidden
                                 name="%{'windowTrlList['+#st.index+'].id'}"/>

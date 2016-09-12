@@ -21,7 +21,7 @@ import java.util.Date;
 import com.delmar.core.model.WindowTrl;
 import com.delmar.core.dao.WindowTrlDao;
 /**
- * @author 刘大磊 2016-09-10 14:38:01
+ * @author 刘大磊 2016-09-12 15:10:29
  */
 @Service("windowService")
 public class WindowServiceImpl extends CoreServiceImpl<Window> implements

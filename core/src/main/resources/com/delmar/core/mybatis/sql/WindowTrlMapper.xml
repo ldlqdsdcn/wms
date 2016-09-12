@@ -139,7 +139,6 @@
             window_id = #{windowId,jdbcType=INTEGER},
 
             language = #{language,jdbcType=VARCHAR}
-
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

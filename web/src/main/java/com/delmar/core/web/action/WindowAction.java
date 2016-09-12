@@ -27,7 +27,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import com.delmar.core.model.WindowTrl;
 /**
- * @author 刘大磊 2016-09-10 14:38:01
+ * @author 刘大磊 2016-09-12 15:10:29
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "window.name", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,

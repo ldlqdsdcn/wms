@@ -187,7 +187,6 @@
             isactive = #{isactive,jdbcType=CHAR},
 
             type_id = #{typeId,jdbcType=INTEGER}
-
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

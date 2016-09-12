@@ -9,7 +9,7 @@ package com.delmar.core.model;
 import lombok.Data;
  /**
   * table name core_window_trl
-  * Date:2016-09-10 14:38:01
+  * Date:2016-09-12 15:10:29
   **/
 @Data
 public class WindowTrl extends CoreModel {

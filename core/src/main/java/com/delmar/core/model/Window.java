@@ -10,7 +10,7 @@ import java.util.Date;
 import lombok.Data;
  /**
   * table name core_window
-  * Date:2016-09-10 14:38:00
+  * Date:2016-09-12 15:10:29
   **/
 @Data
 public class Window extends CoreModel {

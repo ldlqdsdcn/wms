@@ -2,8 +2,10 @@
  Lightweight framework for CRM  SCM WMS,Scalable solution.
  轻量级CRM SCM WMS 框架，可扩展的解决方案
 
-适合于中小型企业<br> 
+适合于大中型企业<br> 
 整个系统 web层crud基于 struts2，restful接口基于springmvc<br> 
+webservice框架使用 cxf<br>
+swagger实现 endpoint doc文档<br>
 系统基于spring4<br>
 持久层 mybatis3<br> 
 数据库基于mysql5.7<br> 

@@ -13,7 +13,7 @@ import com.delmar.core.model.WindowTrl;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-09-10 14:38:01
+ * @author 刘大磊 2016-09-12 15:10:29
  */
 @Repository("windowTrlDao") 
 public class WindowTrlDaoMybatis extends CoreDaoMyBatis<WindowTrl> implements WindowTrlDao {
