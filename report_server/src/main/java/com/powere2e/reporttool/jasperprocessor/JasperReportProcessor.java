@@ -46,9 +46,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 
 	private long start = System.currentTimeMillis();
 
-	private processCounter processcounter = new processCounter();
-
-
 	public int getProcess() {
 		return this.process;
 	}
@@ -63,7 +60,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 	 */
 	public void doIt() {
 		log.debug(this.jasperPrint);
-		processcounter.start();
 
 		if (this.jasperPrint != null) {
 			exportReport();
@@ -73,7 +69,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 		jasperReport = Cache.getInstance().getReport(this.reportname);
 
 		log.debug("Load JasperReport from cache-" + jasperReport);
-		processcounter.adjust((short) 10);
 
 		if (jasperReport == null) {
 			ReportCompiler compiler = new ReportCompiler();
@@ -82,11 +77,9 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 			jasperReport = compiler.getJasperReport();
 
 			Cache.getInstance().loadReport(jasperReport);
-//			processcounter.adjust((short) 30);
 		}
 		if (jasperReport == null) {
 			log.error("cannot compile report");
-			processcounter.adjust((short) 100);
 			return;
 		}
 
@@ -138,14 +131,12 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 			}
 
 			ds.closeDataSource(conn);
-//			processcounter.adjust((short) 50);
 		} catch (Exception e) {
 			/********  add by axualr **********/
 			ds.closeDataSource(conn);
 			/*********add end ************/
 			e.printStackTrace();
 			log.error("", e);
-			processcounter.adjust((short) 100);
 			return;
 		}
 
@@ -154,7 +145,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 		System.out.println("jasper ReportProcessor doIt runtime:" + (end - start));
 		log.info("jasper ReportProcessor doIt runtime:" + (end - start));
 
-		processcounter.adjust((short) 100);
 
 	}
 
@@ -164,7 +154,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 	 */
 	private void exportReport() {
 		log.info("starting to export report");
-//		processcounter.adjust((short) 55);
 		try {
 			// File filename = File.createTempFile("report", ".rpt");
 			File filename;
@@ -256,58 +245,6 @@ public class JasperReportProcessor extends com.powere2e.reporttool.ReportProcess
 
 	public void destroy() {
 		super.destroy();
-	}
-	
-
-	/**
-	 * Monitor the ReportProcessor thread.
-	 * 
-	 * @author Admin
-	 * 
-	 */
-	private class processCounter extends Thread {
-		private short adj = 5;
-
-		public void run() {
-			try {
-				while (process < 100) {
-					if (process <= adj)
-						process++;
-
-					sleep(countSpeed);
-				}
-			} catch (Exception e) {
-				log.error("", e);
-			}
-
-			long end = System.currentTimeMillis();
-			System.out
-					.println("jasper ReportProcessor processCounter  run runtime================"
-							+ (end - start));
-		}
-
-		public void adjust(short adj) {
-			this.adj = adj;
-			if (process >= adj - 1) // too fast
-			{
-				countSpeed += 50;
-			} else if (process <= adj - 10) // too slow
-			{
-				countSpeed -= 50;
-				if (countSpeed < 50)
-					countSpeed = 50;
-			}
-
-			if (adj == 100)
-				while (process < 100)
-					process++;
-
-			long end = System.currentTimeMillis();
-			System.out
-					.println("jasper ReportProcessor  adjust runtime================"
-							+ (end - start));
-		}
-
 	}
 
 	/**
