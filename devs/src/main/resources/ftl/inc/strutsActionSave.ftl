@@ -1,26 +1,25 @@
 <#if hasCreated||hasUpdated>
-Date date=new Date();
+    Date date=new Date();
 </#if>
-Integer currentUserId=getCurrentUser();
-User user=getUserInSession();
+    User user=getUserInSession();
 <#if hasCreated>
-if(${modelObjname}.isnew())
-{
-${modelObjname}.setCreated(date);
-${modelObjname}.setCreatedby(currentUserId);
-
-    <#if hasClientId>
-    ${modelObjname}.setClientId(user.getClientId());
-    </#if>
-    <#if hasOrgId>
-    ${modelObjname}.setOrgId(user.getOrgId());
-    </#if>
-    <#if hasUserId>
-    ${modelObjname}.setUserId(user.getId());
-    </#if>
-}
+    if(${modelObjname}.isnew())
+    {
+        ${modelObjname}.setCreated(date);
+        ${modelObjname}.setCreatedby(user.getId());
+    }
 </#if>
 <#if hasUpdated>
-${modelObjname}.setUpdated(date);
-${modelObjname}.setUpdatedby(currentUserId);
+    ${modelObjname}.setUpdated(date);
+    ${modelObjname}.setUpdatedby(user.getId());
 </#if>
+<#if hasClientId>
+    ${modelObjname}.setClientId(user.getClientId());
+</#if>
+<#if hasOrgId>
+    ${modelObjname}.setOrgId(user.getOrgId());
+</#if>
+<#if hasUserId>
+    ${modelObjname}.setUserId(user.getId());
+</#if>
+

@@ -56,20 +56,18 @@ public class GenerateActionMain {
         for(ColumnMetaDataDto columnMetaDataDto:tableMetaDataDto.getColumnList())
         {
             if(!IntelliKeyWord.isNotValidate(columnMetaDataDto.getColumnName()))
-            { if(!columnMetaDataDto.getNullable())
             {
-
-
-                if(columnMetaDataDto.getDataType()== ColumnDataType.STRING.getKey())
+                if(!columnMetaDataDto.getNullable())
                 {
-
-                    requiredStrings.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+                    if(columnMetaDataDto.getDataType()== ColumnDataType.STRING.getKey())
+                    {
+                         requiredStrings.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+                    }
+                    else
+                    {
+                        requiredFields.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
+                    }
                 }
-                else
-                {
-                    requiredFields.add(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
-                }
-            }
             }
 
 
