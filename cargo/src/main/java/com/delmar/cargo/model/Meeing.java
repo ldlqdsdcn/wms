@@ -11,14 +11,21 @@ import com.delmar.core.model.CoreModel;
 import lombok.Data;
  /**
   * table name b_meeting
-  * Date:2016-09-13 13:40:33
+  * Date:2016-09-12 14:56:10
   **/
 @Data
-public class Meeting extends CoreModel {
+public class Meeing extends CoreModel {
 
+private Integer id;
 private String title;
 private Date bgnTime;
 private Date endTime;
+private String descr;
+private Date created;
+private Integer createdby;
+private Date updated;
+private Integer updatedby;
+private String mainContent;
 private Integer userId;
 private Integer orgId;
 private Integer clientId;

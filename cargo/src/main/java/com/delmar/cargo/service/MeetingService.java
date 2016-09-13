@@ -1,29 +1,20 @@
-
-/******************************************************************************
- * 版权所有 刘大磊 2013-07-01											  *
- *	作者：刘大磊								                              *
- * 电话：13336390671                                                        *
- * email:ldlqdsd@126.com						                          *
- *****************************************************************************/
-
-package com.delmar.cargo.service;
-
+/**
+* 版权所有 刘大磊 2013-07-01
+* 作者：刘大磊
+* 电话：13336390671
+* email:ldlqdsd@126.com
+*/package com.delmar.cargo.service;
 import com.delmar.cargo.model.Meeting;
 import com.delmar.core.service.CoreService;
+import com.delmar.cargo.model.MeetingTopics;
 import com.delmar.cargo.model.MeetingParticipant;
-import com.delmar.cargo.model.MeetingTopic;
 import java.util.List;
 /**
- * @author 刘大磊 2016-08-31 15:25:16
+ * @author 刘大磊 2016-09-13 13:40:33
  */
 public interface MeetingService extends CoreService<Meeting> {
-	/**
-	 * @param ids
-	 */
-	 void deleteMeetingList(Integer[] ids);
-     List<MeetingParticipant> getMeetingParticipantListByMeetingId(Integer meetingId);
-     List<MeetingTopic> getMeetingTopicListByMeetingId(Integer meetingId);
-
- Integer saveMeeting(Meeting meeting,List<MeetingParticipant> meetingParticipantList,List<MeetingTopic> meetingTopicList);
-
+	void deleteMeetingList(Integer[] ids);
+	List<MeetingTopics> getMeetingTopicsListByMeetingId(Integer meetingId);
+	List<MeetingParticipant> getMeetingParticipantListByMeetingId(Integer meetingId);
+	Integer saveMeeting(Meeting meeting,List<MeetingTopics> meetingTopicsList,List<MeetingParticipant> meetingParticipantList);
 }

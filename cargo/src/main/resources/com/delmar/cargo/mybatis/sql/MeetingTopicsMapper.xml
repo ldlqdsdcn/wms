@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.delmar.cargo.mybatis.sql.MeetingParticipantMapper" >
-    <resultMap id="BaseResultMap" type="com.delmar.cargo.model.MeetingParticipant" >
+<mapper namespace="com.delmar.cargo.mybatis.sql.MeetingTopicsMapper" >
+    <resultMap id="BaseResultMap" type="com.delmar.cargo.model.MeetingTopics" >
             <id column="id" property="id" jdbcType="INTEGER" />
-            <result column="username" property="username" jdbcType="VARCHAR" />
+            <result column="title" property="title" jdbcType="VARCHAR" />
+            <result column="priority" property="priority" jdbcType="VARCHAR" />
             <result column="meeting_id" property="meetingId" jdbcType="INTEGER" />
     </resultMap>
     <sql id="Example_Where_Clause" >
@@ -15,7 +16,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   username,   meeting_id 
+      id,   title,   priority,   meeting_id 
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -23,7 +24,7 @@
             distinct
         </if>
         <include refid="Base_Column_List" />
-        from b_meeting_participant
+        from b_meeting_topics
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
@@ -34,42 +35,48 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
         <include refid="Base_Column_List" />
-        from b_meeting_participant
+        from b_meeting_topics
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from b_meeting_participant
+        delete from b_meeting_topics
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <delete id="deleteByExample" parameterType="java.util.Map" >
-        delete from b_meeting_participant
+        delete from b_meeting_topics
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </delete>
-    <insert id="insert" parameterType="com.delmar.cargo.model.MeetingParticipant" >
+    <insert id="insert" parameterType="com.delmar.cargo.model.MeetingTopics" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into b_meeting_participant (     username,   meeting_id )
-        values (  #{username,jdbcType=VARCHAR}, #{meetingId,jdbcType=INTEGER} )
+        insert into b_meeting_topics (     title,   priority,   meeting_id )
+        values (  #{title,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, #{meetingId,jdbcType=INTEGER} )
     </insert>
-    <insert id="insertSelective" parameterType="com.delmar.cargo.model.MeetingParticipant" >
+    <insert id="insertSelective" parameterType="com.delmar.cargo.model.MeetingTopics" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into b_meeting_participant
+        insert into b_meeting_topics
         <trim prefix="(" suffix=")" suffixOverrides="," >
-                <if test="username != null" >
-                    username,
+                <if test="title != null" >
+                    title,
+                </if>
+                <if test="priority != null" >
+                    priority,
                 </if>
                 <if test="meetingId != null" >
                     meeting_id,
                 </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-    <if test="username != null" >
-    #{username,jdbcType=VARCHAR}},
+    <if test="title != null" >
+    #{title,jdbcType=VARCHAR}},
+    </if>
+    <if test="priority != null" >
+    #{priority,jdbcType=VARCHAR}},
     </if>
     <if test="meetingId != null" >
     #{meetingId,jdbcType=VARCHAR}},
@@ -77,16 +84,19 @@
         </trim>
     </insert>
     <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
-        select count(*) from b_meeting_participant
+        select count(*) from b_meeting_topics
         <if test="_parameter != null" >
             <include refid="Example_Where_Clause" />
         </if>
     </select>
-    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.cargo.model.MeetingParticipant" >
-        update b_meeting_participant
+    <update id="updateByPrimaryKeySelective" parameterType="com.delmar.cargo.model.MeetingTopics" >
+        update b_meeting_topics
         <set >
-    <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+    <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+    </if>
+    <if test="priority != null" >
+        priority = #{priority,jdbcType=VARCHAR},
     </if>
     <if test="meetingId != null" >
         meeting_id = #{meetingId,jdbcType=INTEGER},
@@ -95,11 +105,13 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.cargo.model.MeetingParticipant" >
-        update b_meeting_participant
+    <update id="updateByPrimaryKey" parameterType="com.delmar.cargo.model.MeetingTopics" >
+        update b_meeting_topics
         set 
             
-            username = #{username,jdbcType=VARCHAR},
+            title = #{title,jdbcType=VARCHAR},
+
+            priority = #{priority,jdbcType=VARCHAR},
 
             meeting_id = #{meetingId,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}

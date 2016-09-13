@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-13 13:40:33
+  Date: 2016-09-12 14:56:11
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -10,12 +10,12 @@
 <head>
     <%@include file="/commons/header.jsp"%>
     <jsp:include page="/commons/list_js.jsp">
-        <jsp:param name="search_name" value="cargo_meeting"/>
-        <jsp:param name="edit_url" value="/cargo/meeting_edit.action"/>
+        <jsp:param name="search_name" value="cargo_meeing"/>
+        <jsp:param name="edit_url" value="/cargo/meeing_edit.action"/>
     </jsp:include>
 </head>
 <body >
-<s:form action="meeting_list" namespace="/cargo"  theme="simple" >
+<s:form action="meeing_list" namespace="/cargo"  theme="simple" >
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
 <tr>
 <td>
@@ -35,7 +35,7 @@
             </td>
         </tr>
     </table>
-    <display:table name="sessionScope.MAP_KEY_OF_SESSION.meetingList" cellspacing="0" cellpadding="0"  requestURI=""
+    <display:table name="sessionScope.MAP_KEY_OF_SESSION.meeingList" cellspacing="0" cellpadding="0"  requestURI=""
 		    id="list" pagesize="20" class="table" export="true">
 		<display:column style="width:30px;text-align:center" title="<input type='checkbox' name='selectall' onClick='selectAll(\"ids\",this);' style='margin:0px;'/>" media="html">
           		<input type="checkbox" name="ids" value="<c:out value='${list.id}'/>" style='border: none' />
@@ -57,6 +57,34 @@
         <display:column property="endTime"  escapeXml="true" title="结束时间" sortable="true"
                  decorator="com.delmar.core.web.displaytag.decorator.DateTimeDecorator"
                                                                                     />
+
+
+        <display:column property="descr"  escapeXml="true" title="描述" sortable="true"
+                                                                                                    />
+
+
+        <display:column property="created"  escapeXml="true" title="创建时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="mainContent"  escapeXml="true" title="mainContent" sortable="true"
+                                                                                                    />
 
 
         <display:column property="userId"  escapeXml="true" title="userId" sortable="true"

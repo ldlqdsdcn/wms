@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-09-13 13:40:33
+  Date: 2016-09-12 14:56:11
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -28,36 +28,36 @@
 <script type="text/javascript">
  function gotoList()
  {
-	 window.location='<c:url value="/cargo/meeting_list.action"/>';
+	 window.location='<c:url value="/cargo/meeing_list.action"/>';
  }
-function addMeetingTopics() {
+function addMeeingParticipant() {
 var editForm = document.getElementById('editForm');
-editForm.action = '<c:url value="/cargo/meeting_addMeetingTopics.action"/>';
+editForm.action = '<c:url value="/cargo/meeing_addMeeingParticipant.action"/>';
 editForm.submit();
 }
-function deleteMeetingTopicss() {
-if(isEmptyCheckBox('MeetingTopics_ids'))
+function deleteMeeingParticipants() {
+if(isEmptyCheckBox('MeeingParticipant_ids'))
 {
 alert('请先选择再删除');
 return;
 }
 var editForm = document.getElementById('editForm');
-editForm.action = '<c:url value="/cargo/meeting_deleteMeetingTopicss.action"/>';
+editForm.action = '<c:url value="/cargo/meeing_deleteMeeingParticipants.action"/>';
 editForm.submit();
 }
-function addMeetingParticipant() {
+function addMeeingTopic() {
 var editForm = document.getElementById('editForm');
-editForm.action = '<c:url value="/cargo/meeting_addMeetingParticipant.action"/>';
+editForm.action = '<c:url value="/cargo/meeing_addMeeingTopic.action"/>';
 editForm.submit();
 }
-function deleteMeetingParticipants() {
-if(isEmptyCheckBox('MeetingParticipant_ids'))
+function deleteMeeingTopics() {
+if(isEmptyCheckBox('MeeingTopic_ids'))
 {
 alert('请先选择再删除');
 return;
 }
 var editForm = document.getElementById('editForm');
-editForm.action = '<c:url value="/cargo/meeting_deleteMeetingParticipants.action"/>';
+editForm.action = '<c:url value="/cargo/meeing_deleteMeeingTopics.action"/>';
 editForm.submit();
 }
  $(document).ready(function(){
@@ -135,11 +135,19 @@ editForm.submit();
 
          var validateLine=true;
          var lineMsg="";
-$("input[name^=meetingTopicsList]").each(function(i, item){
+$("input[name^=meeingParticipantList]").each(function(i, item){
 
-        if(endWith(item.name,'title')){
+        if(endWith(item.name,'meetingId')){
+                if (!isInt($(item).val())) {
+                lineMsg+="<br>"+"会议参与人 meetingId必须为整数";
+
+                $(item).focus();
+                validateLine=false;
+                }
+
+
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"会议主题 标题不允许为空";
+                lineMsg+="<br>"+"会议参与人 meetingId不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -147,29 +155,54 @@ $("input[name^=meetingTopicsList]").each(function(i, item){
 
         }
 
-        if(endWith(item.name,'priority')){
-                if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"会议主题 priority不允许为空";
-                $(item).focus();
-                validateLine=false;
-                }
 
 
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
-$("input[name^=meetingParticipantList]").each(function(i, item){
+$("input[name^=meeingTopicList]").each(function(i, item){
 
-        if(endWith(item.name,'username')){
-                if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"会议参与者 username不允许为空";
+
+
+        if(endWith(item.name,'meetingId')){
+                if (!isInt($(item).val())) {
+                lineMsg+="<br>"+"会议主题 meetingId必须为整数";
+
                 $(item).focus();
                 validateLine=false;
                 }
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
@@ -185,8 +218,8 @@ $("input[name^=meetingParticipantList]").each(function(i, item){
 </script>
 </head>
 <body>
-<s:form id="editForm" action="meeting_edit" namespace='/cargo' theme="simple">
-<s:hidden id="id" name="meeting.id"/>
+<s:form id="editForm" action="meeing_edit" namespace='/cargo' theme="simple">
+<s:hidden id="id" name="meeing.id"/>
 <!--table 01 bgn-->
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
@@ -232,55 +265,181 @@ $("input[name^=meetingParticipantList]").each(function(i, item){
                         <td width="20%"><s:label for="title" value="标题" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="meeting.title" id="title"   />
+                          <s:textfield name="meeing.title" id="title"   />
                             <span style="color:red">*</span>
-                            <s:fielderror fieldName="meeting.title"    cssStyle="color:red" />
+                            <s:fielderror fieldName="meeing.title"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="bgnTime" value="开始时间" /></td>
                         <td width="30%">
                         
-                        <s:textfield name="meeting.bgnTime" id="bgnTime" >
-                         <s:param name="value"><s:date name="meeting.bgnTime"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
+                        <s:textfield name="meeing.bgnTime" id="bgnTime" >
+                         <s:param name="value"><s:date name="meeing.bgnTime"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
                         <span style="color:red">*</span>
-                            <s:fielderror fieldName="meeting.bgnTime"   cssStyle="color:red" />
+                            <s:fielderror fieldName="meeing.bgnTime"   cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="endTime" value="结束时间" /></td>
                         <td width="30%">
                         
-                        <s:textfield name="meeting.endTime" id="endTime" >
-                         <s:param name="value"><s:date name="meeting.endTime"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
+                        <s:textfield name="meeing.endTime" id="endTime" >
+                         <s:param name="value"><s:date name="meeing.endTime"  format="yyyy-MM-dd HH:mm:ss"/></s:param>
                         </s:textfield>
                         <span style="color:red">*</span>
-                            <s:fielderror fieldName="meeting.endTime"   cssStyle="color:red" />
+                            <s:fielderror fieldName="meeing.endTime"   cssStyle="color:red" />
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="descr" value="描述" /></td>
+                        <td width="30%">
+                        
+                          <s:textfield name="meeing.descr" id="descr"  cssStyle="width:500px;" />
+                            
+                            <s:fielderror fieldName="meeing.descr"    cssStyle="color:red" />
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="created" value="创建时间" /></td>
+                        <td width="30%">
+                        
+                          <s:textfield name="meeing.created" id="created" readonly="true"  />
+                            <span style="color:red">*</span>
+                            <s:fielderror fieldName="meeing.created"    cssStyle="color:red" />
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="createdby" value="创建人" /></td>
+                        <td width="30%">
+                        
+                           <delmar:user userId="${meeing.createdby}" module="user"/>
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="updated" value="修改时间" /></td>
+                        <td width="30%">
+                        
+                          <s:textfield name="meeing.updated" id="updated" readonly="true"  />
+                            <span style="color:red">*</span>
+                            <s:fielderror fieldName="meeing.updated"    cssStyle="color:red" />
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="updatedby" value="修改人" /></td>
+                        <td width="30%">
+                        
+                           <delmar:user userId="${meeing.updatedby}" module="user"/>
+                          </td>
+                        </tr>
+                        <tr>
+                        <td width="20%"><s:label for="mainContent" value="mainContent" /></td>
+                        <td width="30%">
+                        
+                          <s:textfield name="meeing.mainContent" id="mainContent"   />
+                            
+                            <s:fielderror fieldName="meeing.mainContent"    cssStyle="color:red" />
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="userId" value="userId" /></td>
                         <td width="30%">
                         
-                           <delmar:user userId="${meeting.userId}" module="user"/>
+                           <delmar:user userId="${meeing.userId}" module="user"/>
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="orgId" value="组织" /></td>
                         <td width="30%">
                         
-                           <delmar:user userId="${meeting.orgId}" module="org"/>
+                           <delmar:user userId="${meeing.orgId}" module="org"/>
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="clientId" value="实体" /></td>
                         <td width="30%">
                         
-                           <delmar:user userId="${meeting.clientId}" module="client"/>
+                           <delmar:user userId="${meeing.clientId}" module="client"/>
                           </td>
                         </tr>
 
+<tr>
+    <td colspan="4" style="padding-left: 0;">
+        <!-- table 页 bgn -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                        <td  style="height: 26px;width: 90px;" align="center" background="../images/table_page_1.gif">
+                            会议参与人
+                        </td>
+                <td background="../images/table_page_bg.gif" width="*"  style="height: 26px;"><div class="C_S_F_L">
+                    &nbsp;
+                </div></td>
+            </tr>
+        </table>
+        <!-- table 页 end -->
+    </td>
+
+</tr>
+<tr>
+    <td colspan="2" style="padding-left: 20px;text-align: left;">
+        <input value="添加会议参与人"
+        type="button" class="input_submit"
+        onclick="javascript:addMeeingParticipant()"/> &nbsp;&nbsp;
+        <input class="input_submit" type="button"  value="删除选中会议参与人"
+        onclick="javascript:deleteMeeingParticipants()"/>
+    </td>
+    <td colspan="2"></td>
+</tr>
+<tr>
+    <td colspan="4">
+        <table id="MeeingParticipantTable" class="table">
+            <thead>
+            <th>
+                <input type="checkbox" onclick="selectAll('MeeingParticipant_ids',this);"/>
+            </th>
+            <th>序号</th>
+            <th >meetingId</th>
+            <th >名称</th>
+            <th >角色</th>
+            </thead>
+            <tbody>
+            <s:iterator value="meeingParticipantList" status="st">
+
+                <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
+                    <td>
+                        <input type="checkbox"  name="MeeingParticipant_ids"  value="<s:property value="#st.index"/>"/>
+                    </td>
+                    <td>
+                        <s:property value="#st.index+1"/>
+                        <s:hidden
+                                name="%{'meeingParticipantList['+#st.index+'].id'}"/>
+                    </td>
+                <td>
+                    <s:textfield
+                            name="%{'meeingParticipantList['+#st.index+'].meetingId'}">
+                    </s:textfield> <span style="color:red">*</span>
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meeingParticipantList['+#st.index+'].name'}">
+                    </s:textfield> 
+                </td>
+                <td>
+                    <s:textfield
+                            name="%{'meeingParticipantList['+#st.index+'].role'}">
+                    </s:textfield> 
+                </td>
+
+
+                </tr>
+
+            </s:iterator>
+
+            </tbody>
+        </table>
+    </td>
+</tr>
 <tr>
     <td colspan="4" style="padding-left: 0;">
         <!-- table 页 bgn -->
@@ -302,108 +461,50 @@ $("input[name^=meetingParticipantList]").each(function(i, item){
     <td colspan="2" style="padding-left: 20px;text-align: left;">
         <input value="添加会议主题"
         type="button" class="input_submit"
-        onclick="javascript:addMeetingTopics()"/> &nbsp;&nbsp;
+        onclick="javascript:addMeeingTopic()"/> &nbsp;&nbsp;
         <input class="input_submit" type="button"  value="删除选中会议主题"
-        onclick="javascript:deleteMeetingTopicss()"/>
+        onclick="javascript:deleteMeeingTopics()"/>
     </td>
     <td colspan="2"></td>
 </tr>
 <tr>
     <td colspan="4">
-        <table id="MeetingTopicsTable" class="table">
+        <table id="MeeingTopicTable" class="table">
             <thead>
             <th>
-                <input type="checkbox" onclick="selectAll('MeetingTopics_ids',this);"/>
+                <input type="checkbox" onclick="selectAll('MeeingTopic_ids',this);"/>
             </th>
             <th>序号</th>
             <th >标题</th>
-            <th >priority</th>
+            <th >meetingId</th>
+            <th >等级</th>
             </thead>
             <tbody>
-            <s:iterator value="meetingTopicsList" status="st">
+            <s:iterator value="meeingTopicList" status="st">
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
                     <td>
-                        <input type="checkbox"  name="MeetingTopics_ids"  value="<s:property value="#st.index"/>"/>
+                        <input type="checkbox"  name="MeeingTopic_ids"  value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>
                         <s:property value="#st.index+1"/>
                         <s:hidden
-                                name="%{'meetingTopicsList['+#st.index+'].id'}"/>
+                                name="%{'meeingTopicList['+#st.index+'].id'}"/>
                     </td>
                 <td>
                     <s:textfield
-                            name="%{'meetingTopicsList['+#st.index+'].title'}">
-                    </s:textfield> <span style="color:red">*</span>
+                            name="%{'meeingTopicList['+#st.index+'].title'}">
+                    </s:textfield> 
                 </td>
                 <td>
                     <s:textfield
-                            name="%{'meetingTopicsList['+#st.index+'].priority'}">
-                    </s:textfield> <span style="color:red">*</span>
+                            name="%{'meeingTopicList['+#st.index+'].meetingId'}">
+                    </s:textfield> 
                 </td>
-
-
-                </tr>
-
-            </s:iterator>
-
-            </tbody>
-        </table>
-    </td>
-</tr>
-<tr>
-    <td colspan="4" style="padding-left: 0;">
-        <!-- table 页 bgn -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-                        <td  style="height: 26px;width: 90px;" align="center" background="../images/table_page_1.gif">
-                            会议参与者
-                        </td>
-                <td background="../images/table_page_bg.gif" width="*"  style="height: 26px;"><div class="C_S_F_L">
-                    &nbsp;
-                </div></td>
-            </tr>
-        </table>
-        <!-- table 页 end -->
-    </td>
-
-</tr>
-<tr>
-    <td colspan="2" style="padding-left: 20px;text-align: left;">
-        <input value="添加会议参与者"
-        type="button" class="input_submit"
-        onclick="javascript:addMeetingParticipant()"/> &nbsp;&nbsp;
-        <input class="input_submit" type="button"  value="删除选中会议参与者"
-        onclick="javascript:deleteMeetingParticipants()"/>
-    </td>
-    <td colspan="2"></td>
-</tr>
-<tr>
-    <td colspan="4">
-        <table id="MeetingParticipantTable" class="table">
-            <thead>
-            <th>
-                <input type="checkbox" onclick="selectAll('MeetingParticipant_ids',this);"/>
-            </th>
-            <th>序号</th>
-            <th >username</th>
-            </thead>
-            <tbody>
-            <s:iterator value="meetingParticipantList" status="st">
-
-                <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
-                    <td>
-                        <input type="checkbox"  name="MeetingParticipant_ids"  value="<s:property value="#st.index"/>"/>
-                    </td>
-                    <td>
-                        <s:property value="#st.index+1"/>
-                        <s:hidden
-                                name="%{'meetingParticipantList['+#st.index+'].id'}"/>
-                    </td>
                 <td>
                     <s:textfield
-                            name="%{'meetingParticipantList['+#st.index+'].username'}">
-                    </s:textfield> <span style="color:red">*</span>
+                            name="%{'meeingTopicList['+#st.index+'].level'}">
+                    </s:textfield> 
                 </td>
 
 
@@ -419,7 +520,7 @@ $("input[name^=meetingParticipantList]").each(function(i, item){
                           <td colspan="4" class="td_page_right" style="text-align:right;height: 24px;">
                               <s:submit method="create" value="%{#session.resource.get('common.button.create')}"  cssClass="input_submit"/>
                               <s:submit id="saveBtn" method="save" value="%{#session.resource.get('common.button.save')}"  cssClass="input_submit" />
-                              <c:if test="${meeting.id!=null}">
+                              <c:if test="${meeing.id!=null}">
                                   <s:submit method="delete"  value="%{#session.resource.get('common.button.delete')}"  cssClass="input_submit" onclick="return confirmDelete()"/>
                               </c:if>
                               <input onclick="gotoList()"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >

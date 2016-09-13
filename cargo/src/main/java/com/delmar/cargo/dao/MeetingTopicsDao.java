@@ -6,12 +6,12 @@
 */
 package com.delmar.cargo.dao;
 
-import com.delmar.cargo.model.Meeting;
+import com.delmar.cargo.model.MeetingTopics;
 import com.delmar.core.dao.CoreDao;
 
 /**
  * @author 刘大磊 2016-09-13 13:40:33
  */
-public interface MeetingDao extends CoreDao<Meeting> {
+public interface MeetingTopicsDao extends CoreDao<MeetingTopics> {
 
 }

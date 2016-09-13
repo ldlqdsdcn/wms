@@ -8,15 +8,15 @@ package com.delmar.cargo.dao.mybatis;
 
 import org.springframework.stereotype.Repository;
 
-import com.delmar.cargo.dao.MeetingDao;
-import com.delmar.cargo.model.Meeting;
+import com.delmar.cargo.dao.MeeingTopicDao;
+import com.delmar.cargo.model.MeeingTopic;
 import com.delmar.core.dao.mybatis.CoreDaoMyBatis;
 
 /**
- * @author 刘大磊 2016-09-13 13:40:33
+ * @author 刘大磊 2016-09-12 14:56:11
  */
-@Repository("meetingDao") 
-public class MeetingDaoMybatis extends CoreDaoMyBatis<Meeting> implements MeetingDao {
+@Repository("meeingTopicDao") 
+public class MeeingTopicDaoMybatis extends CoreDaoMyBatis<MeeingTopic> implements MeeingTopicDao {
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.dao.mybatis.CoreDaoMyBatis#getSqlName()
@@ -24,7 +24,7 @@ public class MeetingDaoMybatis extends CoreDaoMyBatis<Meeting> implements Meetin
 	@Override
 	protected String getSqlName() {
 		
-		return "com.delmar.cargo.mybatis.sql.MeetingMapper";
+		return "com.delmar.cargo.mybatis.sql.MeeingTopicMapper";
 	}
 
 

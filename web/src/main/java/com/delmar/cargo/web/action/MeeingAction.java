@@ -17,24 +17,25 @@ import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.delmar.cargo.model.Meeting;
-import com.delmar.cargo.service.MeetingService;
+import com.delmar.cargo.model.Meeing;
+import com.delmar.cargo.service.MeeingService;
+import java.util.Date;
 import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import com.delmar.cargo.model.MeetingTopics;
-import com.delmar.cargo.model.MeetingParticipant;
+import com.delmar.cargo.model.MeeingParticipant;
+import com.delmar.cargo.model.MeeingTopic;
 /**
- * @author 刘大磊 2016-09-13 13:40:33
+ * @author 刘大磊 2016-09-12 14:56:11
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
-trim=true, fieldName = "meeting.title", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeting.bgnTime",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeting.endTime",message = "不允许为空")})
-public class MeetingAction extends CoreEditPrivAction {
-	private Meeting  meeting;
-	private List<MeetingTopics> meetingTopicsList=new ArrayList<MeetingTopics>();;
-	private List<MeetingParticipant> meetingParticipantList=new ArrayList<MeetingParticipant>();;
+trim=true, fieldName = "meeing.title", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeing.bgnTime",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "meeing.endTime",message = "不允许为空")})
+public class MeeingAction extends CoreEditPrivAction {
+	private Meeing  meeing;
+	private List<MeeingParticipant> meeingParticipantList=new ArrayList<MeeingParticipant>();;
+	private List<MeeingTopic> meeingTopicList=new ArrayList<MeeingTopic>();;
 	@Autowired
-	private MeetingService meetingService;
+	private MeeingService meeingService;
 	
 	private void init()
 	{
@@ -46,7 +47,7 @@ public class MeetingAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String getModuleName() {
-		return "meeting";
+		return "meeing";
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +55,7 @@ public class MeetingAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String delete() {
-		meetingService.deleteByPrimaryKey(meeting.getId());
+		meeingService.deleteByPrimaryKey(meeing.getId());
 		return list();
 	}
 
@@ -64,7 +65,7 @@ public class MeetingAction extends CoreEditPrivAction {
 	@Override
 	public void deleteList(Integer[] ids) {
 		
-		meetingService.deleteMeetingList(ids);
+		meeingService.deleteMeeingList(ids);
 
 	}
 
@@ -74,7 +75,7 @@ public class MeetingAction extends CoreEditPrivAction {
 	@Override
 	public Integer getModelId() {
 
-		return meeting.getId();
+		return meeing.getId();
 	}
 
 	/* (non-Javadoc)
@@ -82,11 +83,11 @@ public class MeetingAction extends CoreEditPrivAction {
 	 */
 	@Override
 public void editForm() {
-meeting= meetingService.selectByPrimaryKey(id);
+meeing= meeingService.selectByPrimaryKey(id);
 
-		meetingTopicsList=meetingService.getMeetingTopicsListByMeetingId(id);
+		meeingParticipantList=meeingService.getMeeingParticipantListByMeeingId(id);
 
-		meetingParticipantList=meetingService.getMeetingParticipantListByMeetingId(id);
+		meeingTopicList=meeingService.getMeeingTopicListByMeeingId(id);
 }
 /* (non-Javadoc)
 * @see com.delmar.core.web.action.CoreEditPrivAction#search()
@@ -95,7 +96,7 @@ meeting= meetingService.selectByPrimaryKey(id);
 public List search() {
 Map<String,Object> param=new HashMap();
 param.put("searchString",getSearchWhere());
-return meetingService.selectByExample(param);
+return meeingService.selectByExample(param);
 }
 
 
@@ -104,21 +105,21 @@ return meetingService.selectByExample(param);
 	 */
 	@Override
 public void createForm() {
-meeting=new Meeting();
-	meetingTopicsList=new ArrayList<MeetingTopics>();
-	meetingParticipantList=new ArrayList<MeetingParticipant>();
+meeing=new Meeing();
+	meeingParticipantList=new ArrayList<MeeingParticipant>();
+	meeingTopicList=new ArrayList<MeeingTopic>();
     }
     @SkipValidation
-    public String addMeetingTopics()
+    public String addMeeingParticipant()
     {
-    MeetingTopics  meetingTopics=new MeetingTopics();
-	meetingTopicsList.add(meetingTopics);
+    MeeingParticipant  meeingParticipant=new MeeingParticipant();
+	meeingParticipantList.add(meeingParticipant);
     return "edit";
     }
     @SkipValidation
-    public String deleteMeetingTopicss()
+    public String deleteMeeingParticipants()
     {
-    String[] ids=ServletActionContext.getRequest().getParameterValues("MeetingTopics_ids");
+    String[] ids=ServletActionContext.getRequest().getParameterValues("MeeingParticipant_ids");
     List<String> idList=new ArrayList<String>();
 
         //
@@ -128,7 +129,7 @@ meeting=new Meeting();
         {
         idList.add(ids[i]);
         Integer index=Integer.parseInt(ids[i]);
-	   MeetingTopics column=meetingTopicsList.get(index);
+	   MeeingParticipant column=meeingParticipantList.get(index);
         if(column.getId()!=null&&column.getId()!=0)
         {
         intids[i]=column.getId();
@@ -137,21 +138,21 @@ meeting=new Meeting();
         java.util.Collections.sort(idList);
         for(int i=idList.size()-1;i>=0;i--)
         {
-        	meetingTopicsList.remove(Integer.parseInt(idList.get(i)));
+        	meeingParticipantList.remove(Integer.parseInt(idList.get(i)));
         }
         return "edit";
 	}
     @SkipValidation
-    public String addMeetingParticipant()
+    public String addMeeingTopic()
     {
-    MeetingParticipant  meetingParticipant=new MeetingParticipant();
-	meetingParticipantList.add(meetingParticipant);
+    MeeingTopic  meeingTopic=new MeeingTopic();
+	meeingTopicList.add(meeingTopic);
     return "edit";
     }
     @SkipValidation
-    public String deleteMeetingParticipants()
+    public String deleteMeeingTopics()
     {
-    String[] ids=ServletActionContext.getRequest().getParameterValues("MeetingParticipant_ids");
+    String[] ids=ServletActionContext.getRequest().getParameterValues("MeeingTopic_ids");
     List<String> idList=new ArrayList<String>();
 
         //
@@ -161,7 +162,7 @@ meeting=new Meeting();
         {
         idList.add(ids[i]);
         Integer index=Integer.parseInt(ids[i]);
-	   MeetingParticipant column=meetingParticipantList.get(index);
+	   MeeingTopic column=meeingTopicList.get(index);
         if(column.getId()!=null&&column.getId()!=0)
         {
         intids[i]=column.getId();
@@ -170,7 +171,7 @@ meeting=new Meeting();
         java.util.Collections.sort(idList);
         for(int i=idList.size()-1;i>=0;i--)
         {
-        	meetingParticipantList.remove(Integer.parseInt(idList.get(i)));
+        	meeingTopicList.remove(Integer.parseInt(idList.get(i)));
         }
         return "edit";
 	}
@@ -179,40 +180,50 @@ meeting=new Meeting();
 	 */
 	@Override
 	public String saveForm() {
-    User user=getUserInSession();
-    meeting.setClientId(user.getClientId());
-    meeting.setOrgId(user.getOrgId());
-    meeting.setUserId(user.getId());
-	meetingService.saveMeeting(meeting,meetingTopicsList,meetingParticipantList);
-	return "edit";
+Date date=new Date();
+Integer currentUserId=getCurrentUser();
+User user=getUserInSession();
+if(meeing.isnew())
+{
+meeing.setCreated(date);
+meeing.setCreatedby(currentUserId);
+
+    meeing.setClientId(user.getClientId());
+    meeing.setOrgId(user.getOrgId());
+    meeing.setUserId(user.getId());
+}
+meeing.setUpdated(date);
+meeing.setUpdatedby(currentUserId);
+		meeingService.saveMeeing(meeing,meeingParticipantList,meeingTopicList);
+		return "edit";
 	}
 	/**
 	 * @return the usergroup
 	 */
-	public Meeting getMeeting() {
-		return meeting;
+	public Meeing getMeeing() {
+		return meeing;
 	}
 
 	/**
-	 * @param meeting the meeting to set
+	 * @param meeing the meeing to set
 	 */
-	public void setMeeting(Meeting meeting) {
-		this.meeting = meeting;
+	public void setMeeing(Meeing meeing) {
+		this.meeing = meeing;
 	}
-public List<MeetingTopics> getMeetingTopicsList()
+public List<MeeingParticipant> getMeeingParticipantList()
 {
-	return meetingTopicsList;
+	return meeingParticipantList;
 }
-public void setMeetingTopicsList(List<MeetingTopics> meetingTopicsList)
+public void setMeeingParticipantList(List<MeeingParticipant> meeingParticipantList)
 {
-	this.meetingTopicsList=meetingTopicsList;
+	this.meeingParticipantList=meeingParticipantList;
 }
-public List<MeetingParticipant> getMeetingParticipantList()
+public List<MeeingTopic> getMeeingTopicList()
 {
-	return meetingParticipantList;
+	return meeingTopicList;
 }
-public void setMeetingParticipantList(List<MeetingParticipant> meetingParticipantList)
+public void setMeeingTopicList(List<MeeingTopic> meeingTopicList)
 {
-	this.meetingParticipantList=meetingParticipantList;
+	this.meeingTopicList=meeingTopicList;
 }
 }

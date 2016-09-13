@@ -9,13 +9,14 @@ package com.delmar.cargo.model;
 import com.delmar.core.model.CoreModel;
 import lombok.Data;
  /**
-  * table name b_meeting_participant
+  * table name b_meeting_topics
   * Date:2016-09-13 13:40:33
   **/
 @Data
-public class MeetingParticipant extends CoreModel {
+public class MeetingTopics extends CoreModel {
 
-private String username;
+private String title;
+private String priority;
 private Integer meetingId;
 
 }
