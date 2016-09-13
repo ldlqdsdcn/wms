@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-29 15:01:00
+  Date: 2016-09-13 11:28:19
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -9,7 +9,7 @@
 <head>
 
 <title>
-	生产
+	产品
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
     <link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
@@ -93,48 +93,6 @@ editForm.submit();
             }
 
 
-            if (!isInt($("#orgId").val())) {
-            alert("orgId必须为整数");
-            $("#orgId").focus();
-            return false;
-            }
-
-
-            if (isEmpty($("#orgId").val())) {
-            alert("orgId不允许为空");
-            $("#orgId").focus();
-            return false;
-            }
-
-
-            if (!isInt($("#clientId").val())) {
-            alert("clientId必须为整数");
-            $("#clientId").focus();
-            return false;
-            }
-
-
-            if (isEmpty($("#clientId").val())) {
-            alert("clientId不允许为空");
-            $("#clientId").focus();
-            return false;
-            }
-
-
-            if (!isInt($("#userId").val())) {
-            alert("userId必须为整数");
-            $("#userId").focus();
-            return false;
-            }
-
-
-            if (isEmpty($("#userId").val())) {
-            alert("userId不允许为空");
-            $("#userId").focus();
-            return false;
-            }
-
-
             if (isEmpty($("#status").val())) {
             alert("status不允许为空");
             $("#status").focus();
@@ -150,7 +108,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 
         if(endWith(item.name,'productName')){
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"生产明细 productName不允许为空";
+                lineMsg+="<br>"+"产品明细 productName不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -160,7 +118,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 
         if(endWith(item.name,'amount')){
                 if (!isInt($(item).val())) {
-                lineMsg+="<br>"+"生产明细 amount必须为整数";
+                lineMsg+="<br>"+"产品明细 amount必须为整数";
 
                 $(item).focus();
                 validateLine=false;
@@ -168,7 +126,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 
 
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"生产明细 amount不允许为空";
+                lineMsg+="<br>"+"产品明细 amount不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -179,7 +137,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 
         if(endWith(item.name,'batch')){
                 if (isEmpty($(item).val())) {
-                lineMsg+="<br>"+"生产明细 batch不允许为空";
+                lineMsg+="<br>"+"产品明细 batch不允许为空";
                 $(item).focus();
                 validateLine=false;
                 }
@@ -209,7 +167,7 @@ $("input[name^=productionLineList]").each(function(i, item){
         <!--table 02 bgn-->
     	<table border="0" cellpadding="0" cellspacing="0" class="cTableBorder">
         <tr>
-          <td align="left" class="navig">	生产</td>
+          <td align="left" class="navig">	产品</td>
          <td background="../images/table_page_bg.gif" width="*"  height="26" align="right">
 
          <div class="C_S_F_L">
@@ -305,30 +263,24 @@ $("input[name^=productionLineList]").each(function(i, item){
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="orgId" value="orgId" /></td>
+                        <td width="20%"><s:label for="orgId" value="组织" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.orgId" id="orgId"   />
-                            <span style="color:red">*</span>
-                            <s:fielderror fieldName="production.orgId"    cssStyle="color:red" />
+                           <delmar:user userId="${production.orgId}" module="org"/>
                           </td>
                         </tr>
                         <tr>
-                        <td width="20%"><s:label for="clientId" value="clientId" /></td>
+                        <td width="20%"><s:label for="clientId" value="实体" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.clientId" id="clientId"   />
-                            <span style="color:red">*</span>
-                            <s:fielderror fieldName="production.clientId"    cssStyle="color:red" />
+                           <delmar:user userId="${production.clientId}" module="client"/>
                           </td>
                         </tr>
                         <tr>
                         <td width="20%"><s:label for="userId" value="userId" /></td>
                         <td width="30%">
                         
-                          <s:textfield name="production.userId" id="userId"   />
-                            <span style="color:red">*</span>
-                            <s:fielderror fieldName="production.userId"    cssStyle="color:red" />
+                           <delmar:user userId="${production.userId}" module="user"/>
                           </td>
                         </tr>
                         <tr>
@@ -342,12 +294,12 @@ $("input[name^=productionLineList]").each(function(i, item){
                         </tr>
 
 <tr>
-    <td colspan="4" style="padding-left: 0px;">
+    <td colspan="4" style="padding-left: 0;">
         <!-- table 页 bgn -->
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                         <td  style="height: 26px;width: 90px;" align="center" background="../images/table_page_1.gif">
-                            生产明细
+                            产品明细
                         </td>
                 <td background="../images/table_page_bg.gif" width="*"  style="height: 26px;"><div class="C_S_F_L">
                     &nbsp;
@@ -360,10 +312,10 @@ $("input[name^=productionLineList]").each(function(i, item){
 </tr>
 <tr>
     <td colspan="2" style="padding-left: 20px;text-align: left;">
-        <input value="添加生产明细"
+        <input value="添加产品明细"
         type="button" class="input_submit"
         onclick="javascript:addProductionLine()"/> &nbsp;&nbsp;
-        <input class="input_submit" type="button"  value="删除选中生产明细"
+        <input class="input_submit" type="button"  value="删除选中产品明细"
         onclick="javascript:deleteProductionLines()"/>
     </td>
     <td colspan="2"></td>
@@ -373,8 +325,7 @@ $("input[name^=productionLineList]").each(function(i, item){
         <table id="ProductionLineTable" class="table">
             <thead>
             <th>
-                <input type="checkbox"
-                       onclick="selectAll('ProductionLine_ids',this);"/>
+                <input type="checkbox" onclick="selectAll('ProductionLine_ids',this);"/>
             </th>
             <th>序号</th>
             <th >productName</th>
@@ -386,8 +337,7 @@ $("input[name^=productionLineList]").each(function(i, item){
 
                 <tr class="<s:property value="#st.index%2==0?'odd':'even'"/>">
                     <td>
-                        <input type="checkbox"  name="ProductionLine_ids"
-                               value="<s:property value="#st.index"/>"/>
+                        <input type="checkbox"  name="ProductionLine_ids"  value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>
                         <s:property value="#st.index+1"/>

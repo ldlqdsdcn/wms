@@ -12,6 +12,8 @@ import java.util.List;
  * @author 刘大磊 2015年1月16日 下午2:43:49
  */
 public class SqlUtil {
+	public static final String ACCESS_STRING="accessString";
+	public static final String SEARCH_STRING="searchString";
 	/**
 	 * 目前只支持数值和字符串
 	 * 注意，改方法目前不支持原生类

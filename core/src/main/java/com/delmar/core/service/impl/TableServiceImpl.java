@@ -22,6 +22,7 @@ import com.delmar.core.model.Table;
 import com.delmar.core.model.TableColumn;
 import com.delmar.core.service.TableService;
 import com.delmar.utils.DmLog;
+import com.delmar.utils.StringUtil;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,30 @@ private final DmLog log=DmLog.getLogger(TableServiceImpl.class);
 	 * @see com.delmar.core.service.TableService#saveTable(com.delmar.core.model.Table, java.util.List)
 	 */
 	public Table saveTable(Table table, List<TableColumn> columns) {
+
+		boolean isNew=table.isnew();
+		if(!isNew)
+		{
+			Map<String,Object> param=new HashMap<>();
+			param.put("tableId",table.getId());
+			List<TableColumn> oldTableColumnList=tableColumnDao.selectByExample(param);
+			for(TableColumn tableColumn:columns)
+			{
+				for(int i=oldTableColumnList.size()-1;i>=0;i--)
+				{
+					if(oldTableColumnList.get(i).getId().equals(tableColumn.getId()))
+					{
+						oldTableColumnList.remove(i);
+					}
+				}
+			}
+			for(TableColumn tableColumn:oldTableColumnList)
+			{
+				tableColumnDao.deleteByPrimaryKey(tableColumn.getId());
+			}
+		}
+
+
 		Integer id=tableDao.save(table);
 		for(TableColumn column:columns)
 		{
@@ -158,6 +183,7 @@ private final DmLog log=DmLog.getLogger(TableServiceImpl.class);
 			tableColumn.setDigits(columnMetaDataDto.getDecimalDigits());
 			tableColumn.setDataType(columnMetaDataDto.getDataType());
 			tableColumn.setOutLog("Y");
+			tableColumn.setAttributeName(StringUtil.fieldToProperty(columnMetaDataDto.getColumnName()));
 			tableColumn.setNullable(columnMetaDataDto.getNullable()?"Y":"N");
 			List<UniqueIndexDto> uniqueKeyList=tableMetaDataDto.getUniqueKeyList();
 			tableColumn.setIsUnique("N");

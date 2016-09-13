@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 刘大磊
-  Date: 2016-08-29 15:01:00
+  Date: 2016-09-13 11:28:19
 --%>
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ include file="/commons/taglib.jsp"%>
@@ -10,7 +10,7 @@
 <head>
     <%@include file="/commons/header.jsp"%>
     <jsp:include page="/commons/list_js.jsp">
-        <jsp:param name="search_name" value="base_datadict_type"/>
+        <jsp:param name="search_name" value="cargo_production"/>
         <jsp:param name="edit_url" value="/cargo/production_edit.action"/>
     </jsp:include>
 </head>
@@ -21,7 +21,7 @@
 <td>
     <table border="0" cellpadding="0" cellspacing="0" class="cTableBorder">
         <tr>
-            <td align="left" class="navig">位置：生产</td>
+            <td align="left" class="navig">位置：产品</td>
             <td class="navig" align="right">
                 <table id="normalQuery" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -47,16 +47,56 @@
                  <a href="javascript:viewExport('<c:out value="${list.id}"/>')"><c:out value=" ${list.documentno}"/></a>
         </display:column>
         <display:column property="documentno" media="csv excel xml pdf rtf"	title="documentno" />
-        <display:column property="name"  escapeXml="true" title="名称" sortable="true" />
-        <display:column property="completeDate"  escapeXml="true" title="completeDate" sortable="true" decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"/>
-        <display:column property="created"  escapeXml="true" title="创建时间" sortable="true" />
-        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
-        <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true" />
-        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true" decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"/>
-        <display:column property="orgId"  escapeXml="true" title="orgId" sortable="true" />
-        <display:column property="clientId"  escapeXml="true" title="clientId" sortable="true" />
-        <display:column property="userId"  escapeXml="true" title="userId" sortable="true" />
-        <display:column property="status"  escapeXml="true" title="status" sortable="true" />
+
+
+        <display:column property="name"  escapeXml="true" title="名称" sortable="true"
+                                                                                                    />
+
+
+        <display:column property="completeDate"  escapeXml="true" title="completeDate" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="created"  escapeXml="true" title="创建时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="createdby"  escapeXml="true" title="创建人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="updated"  escapeXml="true" title="修改时间" sortable="true"
+                        decorator="com.delmar.core.web.displaytag.decorator.DateDecorator"
+                                                                                                    />
+
+
+        <display:column property="updatedby"  escapeXml="true" title="修改人" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="orgId"  escapeXml="true" title="组织" sortable="true"
+                                                                decorator="com.delmar.base.web.displaytag.decorator.OrgDecorator"
+                                    />
+
+
+        <display:column property="clientId"  escapeXml="true" title="实体" sortable="true"
+                                                                                        decorator="com.delmar.system.web.displaytag.decorator.ClientDecorator"
+            />
+
+
+        <display:column property="userId"  escapeXml="true" title="userId" sortable="true"
+                                        decorator="com.delmar.base.web.displaytag.decorator.UserDecorator"
+                                                            />
+
+
+        <display:column property="status"  escapeXml="true" title="status" sortable="true"
+                                                                                                    />
+
+
     </display:table>
 </td>
 </tr>

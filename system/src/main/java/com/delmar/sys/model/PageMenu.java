@@ -20,7 +20,8 @@ public class PageMenu extends CoreModel{
     private String messagekey;
     
     private PageMenu parentMenu;
-    
+
+    private Integer windowId;
     /**
 	 * @return the parentMenu
 	 */
@@ -97,5 +98,13 @@ public class PageMenu extends CoreModel{
 
     public void setMessagekey(String messagekey) {
         this.messagekey = messagekey == null ? null : messagekey.trim();
+    }
+
+    public Integer getWindowId() {
+        return windowId;
+    }
+
+    public void setWindowId(Integer windowId) {
+        this.windowId = windowId;
     }
 }

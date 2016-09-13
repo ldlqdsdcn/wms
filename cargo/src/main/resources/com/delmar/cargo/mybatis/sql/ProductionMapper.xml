@@ -17,8 +17,14 @@
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
-            <if test="searchString!=null"> and ${searchString}</if>
-            <if test="accessString!=null"> and ${accessString} </if>
+                <if test="createdby!=null"> and createdby=#{createdby,jdbcType=INTEGER} </if>
+                <if test="updatedby!=null"> and updatedby=#{updatedby,jdbcType=INTEGER} </if>
+                <if test="orgId!=null"> and org_id=#{orgId,jdbcType=INTEGER} </if>
+                <if test="clientId!=null"> and client_id=#{clientId,jdbcType=INTEGER} </if>
+                <if test="userId!=null"> and user_id=#{userId,jdbcType=INTEGER} </if>
+                <if test="searchString!=null"> and ${searchString} </if>
+                <if test="accessString!=null"> and ${accessString} </if>
+
         </where>
     </sql>
     <sql id="Base_Column_List" >
@@ -183,7 +189,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
+    <update id="updateByPrimaryKey" parameterType="com.delmar.cargo.model.Production" >
         update b_production
         set 
             
@@ -208,7 +214,6 @@
             user_id = #{userId,jdbcType=INTEGER},
 
             status = #{status,jdbcType=CHAR}
-
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

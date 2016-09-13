@@ -29,7 +29,7 @@
     descr,is_unique,column_size,digits,nullable
   </sql>
   
-    <cache flushInterval="7200000" size="1000"/>
+    <cache flushInterval="7200000" size="1000" />
   <select id="selectByExample" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
     <if test="distinct">

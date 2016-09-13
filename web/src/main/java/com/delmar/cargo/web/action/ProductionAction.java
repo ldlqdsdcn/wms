@@ -1,32 +1,36 @@
-/******************************************************************************
- * 版权所有 刘大磊 2013-07-01										      *
- *	作者：刘大磊								                              *
- * 电话：13336390671                                                        *
- * email:ldlqdsd@126.com						                          *
- *****************************************************************************/
+/**
+* 版权所有 刘大磊 2013-07-01
+* 作者：刘大磊
+* 电话：13336390671
+* email:ldlqdsd@126.com
+*/
 package com.delmar.cargo.web.action;
 
-import com.delmar.cargo.model.Production;
-import com.delmar.cargo.model.ProductionLine;
-import com.delmar.cargo.service.ProductionService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.delmar.sys.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.delmar.core.web.action.CoreEditPrivAction;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.delmar.cargo.model.Production;
+import com.delmar.cargo.service.ProductionService;
+import java.util.Date;
+import java.util.ArrayList;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.*;
-
+import com.delmar.cargo.model.ProductionLine;
 /**
- * @author 刘大磊 2016-08-29 15:01:00
+ * @author 刘大磊 2016-09-13 11:28:19
  */
 @Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "production.documentno", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
 trim=true, fieldName = "production.name", message = "不允许为空") ,@RequiredStringValidator(type = ValidatorType.FIELD,
-trim=true, fieldName = "production.status", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.completeDate",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.orgId",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.clientId",message = "不允许为空"),@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.userId",message = "不允许为空")})
+trim=true, fieldName = "production.status", message = "不允许为空") },requiredFields = {@RequiredFieldValidator(type =ValidatorType.FIELD,fieldName = "production.completeDate",message = "不允许为空")})
 public class ProductionAction extends CoreEditPrivAction {
 	private Production  production;
 	private List<ProductionLine> productionLineList=new ArrayList<ProductionLine>();;
@@ -78,30 +82,30 @@ public class ProductionAction extends CoreEditPrivAction {
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#editForm()
 	 */
 	@Override
-	public void editForm() {
-		 production= productionService.selectByPrimaryKey(id);
+public void editForm() {
+production= productionService.selectByPrimaryKey(id);
+
 		productionLineList=productionService.getProductionLineListByProductionId(id);
+}
+/* (non-Javadoc)
+* @see com.delmar.core.web.action.CoreEditPrivAction#search()
+*/
+@Override
+public List search() {
+Map<String,Object> param=new HashMap();
+param.put("searchString",getSearchWhere());
+return productionService.selectByExample(param);
+}
 
-	}
-
-	/* (non-Javadoc)
-	 * @see com.delmar.core.web.action.CoreEditPrivAction#search()
-	 */
-	@Override
-	public List search() {
-		Map<String,Object> param=new HashMap<String,Object>();
-		param.put("searchString",getSearchWhere());
-		return productionService.selectByExample(param);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.delmar.core.web.action.CoreEditPrivAction#createForm()
 	 */
 	@Override
-	public void createForm() {
-		production=new Production();
-		productionLineList=new ArrayList<ProductionLine>();
-	}
+public void createForm() {
+production=new Production();
+	productionLineList=new ArrayList<ProductionLine>();
+    }
     @SkipValidation
     public String addProductionLine()
     {
@@ -142,10 +146,15 @@ public class ProductionAction extends CoreEditPrivAction {
 	public String saveForm() {
 Date date=new Date();
 Integer currentUserId=getCurrentUser();
+User user=getUserInSession();
 if(production.isnew())
 {
 production.setCreated(date);
 production.setCreatedby(currentUserId);
+
+    production.setClientId(user.getClientId());
+    production.setOrgId(user.getOrgId());
+    production.setUserId(user.getId());
 }
 production.setUpdated(date);
 production.setUpdatedby(currentUserId);

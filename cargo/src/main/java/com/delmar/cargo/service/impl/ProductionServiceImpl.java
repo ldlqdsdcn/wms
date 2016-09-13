@@ -1,10 +1,9 @@
-/******************************************************************************
- * 版权所有 刘大磊 2013-07-01												      *
- *	作者：刘大磊								                                      *
- * 电话：13336390671                                                          * 
- * email:ldlqdsd@126.com						                          *
- *****************************************************************************/
-
+/**
+* 版权所有 刘大磊 2013-07-01
+* 作者：刘大磊
+* 电话：13336390671
+* email:ldlqdsd@126.com
+*/
 package com.delmar.cargo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,11 @@ import com.delmar.core.service.impl.CoreServiceImpl;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Date;
 import com.delmar.cargo.model.ProductionLine;
 import com.delmar.cargo.dao.ProductionLineDao;
 /**
- * @author 刘大磊 2016-08-29 15:01:00
+ * @author 刘大磊 2016-09-13 11:28:19
  */
 @Service("productionService")
 public class ProductionServiceImpl extends CoreServiceImpl<Production> implements
@@ -47,7 +47,31 @@ public class ProductionServiceImpl extends CoreServiceImpl<Production> implement
 
 
 public Integer saveProduction(Production production,List<ProductionLine> productionLineList) {
+	boolean isNew=false;
+	if(production.getId()==null||production.getId()==0)
+	{
+	isNew=true;
+	}
+	if(!isNew)
+	{	
+			List<ProductionLine> oldProductionLineList=getProductionLineListByProductionId(production.getId());
+    		for(ProductionLine productionLine: productionLineList)
+			{
+				for(int i=oldProductionLineList.size()-1;i>=0;i--)
+				{
+					if(oldProductionLineList.get(i).getId().equals(productionLine.getId()))
+					{
+						oldProductionLineList.remove(i);
+					}
+				}
+			}
+			for(ProductionLine productionLine:oldProductionLineList)
+			{
+				productionLineDao.deleteByPrimaryKey(productionLine.getId());
+			}
+    }
 	Integer id=save(production);
+	Date now=new Date();
 		for(ProductionLine productionLine: productionLineList)
 		{
 			productionLine.setProductionId(id);
@@ -68,6 +92,10 @@ productionLineDao.deleteByExample(productionLineParam);
 	{
 		Map<String,Object> param=new HashMap<String,Object>();
         param.put("productionId",productionId);
+		if(productionId==null)
+		{
+			return new java.util.ArrayList<ProductionLine>();
+		}
 		return productionLineDao.selectByExample(param);
 	}
 }
