@@ -51,6 +51,30 @@ public class ${modelname}ServiceImpl extends CoreServiceImpl<${modelname}> imple
 
 
 public Integer save${modelname}(${modelname} ${modelname?uncap_first}<#list lineList as item>,List<${item.model}> ${item.model?uncap_first}List</#list>) {
+	boolean isNew=false;
+	if(${modelname?uncap_first}.getId()==null||${modelname?uncap_first}.getId()==0)
+	{
+	isNew=true;
+	}
+	if(!isNew)
+	{	<#list lineList as item>
+			List<${item.model}> old${item.model}List=get${item.model}ListBy${modelname}Id(${modelname?uncap_first}.getId());
+    		for(${item.model} ${item.model?uncap_first}: ${item.model?uncap_first}List)
+			{
+				for(int i=old${item.model}List.size()-1;i>=0;i--)
+				{
+					if(old${item.model}List.get(i).getId().equals(${item.model?uncap_first}.getId()))
+					{
+						old${item.model}List.remove(i);
+					}
+				}
+			}
+			for(${item.model} ${item.model?uncap_first}:old${item.model}List)
+			{
+				${item.model?uncap_first}Dao.deleteByPrimaryKey(${item.model?uncap_first}.getId());
+			}
+		</#list>
+    }
 	Integer id=save(${modelname?uncap_first});
 	Date now=new Date();
 	<#list lineList as item>
@@ -62,8 +86,8 @@ public Integer save${modelname}(${modelname} ${modelname?uncap_first}<#list line
 				${item.model?uncap_first}.setCreated(now);
 				${item.model?uncap_first}.setCreatedby(${modelname?uncap_first}.getUpdatedby());
 			}
-		${item.model?uncap_first}.setUpdated(now);
-		${item.model?uncap_first}.setUpdatedby(${modelname?uncap_first}.getUpdatedby());
+				${item.model?uncap_first}.setUpdated(now);
+				${item.model?uncap_first}.setUpdatedby(${modelname?uncap_first}.getUpdatedby());
 		</#if>
 		<#if item.hasUserId>
 		${item.model?uncap_first}.setUserId(${modelname?uncap_first}.getUserId());
