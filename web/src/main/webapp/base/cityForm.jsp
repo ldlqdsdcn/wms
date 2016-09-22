@@ -19,7 +19,9 @@
 
  $(document).ready(function() {
 
-	 
+	 var arr1 = [{"name":"ldl","age":"33"},{"name":"bill","age":"56"}];
+	 var arr2 = $.map(arr1, function (item) { return {"label":item.name,"value":item.age}  });
+	 alert(JSON.stringify(arr2));
 	 DWREngine.setAsync(false); 
 
 	 $('#relateCityName').autocomplete(
@@ -47,8 +49,7 @@
 								}
 							});
 		//parentCityName parentId
-				$('#parentCityName').autocomplete(
-							{
+				$('#parentCityName').autocomplete({
 								source : function(request, response) {
 									var availableTags = [];
 									var value = $("#parentCityName").val();
@@ -71,19 +72,39 @@
 
 								}
 							});
+	 		$("#city_test").autocomplete({
+				source : function(request, response) {
+					var availableTags = [];
+					var value = $("#parentCityName").val();
+					$.ajax("<c:url value="/base/getCityList.do"/>",{
+						dataType: "json",data:{cityName: request.term},
+						success: function( data ) {
+							if(data.success)
+							{
+								response( $.map( data.data, function( item ) {
+									return {
+										label:item.name,
+										value:item.id
+										}
+								}));
+							}
+						}
+					});
+				},
+				select : function(event, ui) {
+					$("#city_test").val(ui.item.value);
+				}
+			});
+			$(":text").each(
+			  function(){
+				  $(this).keypress( function(e) {
+						  var key = window.event ? e.keyCode : e.which;
+						  if(key.toString() == "13"){
+									  return false;
 
-
-				
-	                  $("input[@type='text']").each(
-	                          function(){
-	                              $(this).keypress( function(e) {
-	                                      var key = window.event ? e.keyCode : e.which;
-	                                      if(key.toString() == "13"){
-	                                                  return false;
-	              
-	                                     }
-	                              });
-	                          });
+						 }
+				  });
+			  });
 	             
  
  
@@ -180,7 +201,15 @@
 							
                             
 						</tr>
-			
+					<tr  class="query_one">
+
+						<td >city test</td>
+						<td colspan="3">
+							<s:textfield name="city_test" id="city_test" cssStyle="width:500px;"/>
+						</td>
+
+
+					</tr>
 						
 						
 						
