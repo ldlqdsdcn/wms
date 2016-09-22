@@ -118,5 +118,11 @@ public CityTrl getCityTrl(String language, Integer cityId) {
    
    return cityTrl;
 }
-	
+
+	public List<City> getCityListByName(String nameLike)
+	{
+		Map<String,Object> param=new HashMap<>();
+		param.put("nameLike",nameLike.trim());
+		return cityDao.selectByExample(param);
+	}
 }

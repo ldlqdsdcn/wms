@@ -34,4 +34,5 @@ public interface CityService extends CoreService<City> {
 	
 	CityTrl getCityTrl(String language, Integer cityId);
 
+	List<City> getCityListByName(String nameLike);
 }
