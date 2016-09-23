@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/JasperReportProviderServlet" method="post">
+<form action="<%=request.getContextPath()%>/JasperReportProviderServlet" method="post">
     <input name="ReportName" placeholder="reportName" width="300px"><br>
     <input name="token" placeholder="token" width="500px"><br>
     <input name="DisplayType" placeholder="token" width="500px" value="PDF"><br>

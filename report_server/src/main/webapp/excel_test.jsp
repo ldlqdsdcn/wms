@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/JxlsReportProviderServlet" method="post">
+<form action="<%=request.getContextPath()%>/JxlsReportProviderServlet" method="post">
     <input name="ReportName" placeholder="reportName" width="300px" value="users"><br>
     <input name="token" placeholder="token" width="500px" ><br>
     <input name="DisplayType" placeholder="DisplayType" width="500px" value="Excel"><br>

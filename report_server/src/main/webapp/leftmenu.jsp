@@ -42,7 +42,7 @@ function page_go(_url)
  	<li class="menubar"><a href="javascript:page_go('Console.jsp');"><fmt:message key="console.title"/></a></li>
  	<li class="menubar"><a href="javascript:page_go('schedulerList.jsp');"><fmt:message key="scheduler.title"/></a></li>
  	<li class="menubar"><a href="javascript:page_go('email/emailList.jsp');"><fmt:message key="emailaddress.title"/></a></li>
-		<li class="menubar"><a href="javascript:page_go('excel_test.jsp');">test report</a></li>
+	<li class="menubar"><a href="javascript:page_go('<%=request.getContextPath()%>/excel_test.jsp');">test report</a></li>
  	</ul>
   
   </div>
