@@ -41,10 +41,63 @@
                }
            });
        });
+
+       $("#addStringList").click(function () {
+           var stringArr = ["张六","李四","张三"];
+           $.ajax({
+               // headers必须添加，否则会报415错误
+               /*headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },*/
+               contentType :'application/json',
+               type: "post",
+               data: JSON.stringify(stringArr),
+               url: "/core/addStrings.do",
+               async: true,
+               dataType: "json",
+               beforeSend: function () {
+
+               },
+               success: function (result) {
+                   alert(JSON.stringify(result));
+               },
+               error: function () {
+
+               }
+           });
+       });
+       $("#addIntegerList").click(function () {
+           var idsArr = [11,22,33];
+           $.ajax({
+               // headers必须添加，否则会报415错误
+               /*headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },*/
+               contentType :'application/json',
+               type: "post",
+               data: JSON.stringify(idsArr),
+               url: "/core/addIds.do",
+               async: true,
+               dataType: "json",
+               beforeSend: function () {
+
+               },
+               success: function (result) {
+                   alert(JSON.stringify(result));
+               },
+               error: function () {
+
+               }
+           });
+       });
    });
 </script>
 </head>
 <body>
     <button id="addList">addList</button>
+    <button id="addStringList">addStringList</button>
+    <button id="addIntegerList">addIntegerList</button>
 </body>
 </html>

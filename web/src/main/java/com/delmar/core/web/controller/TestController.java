@@ -25,4 +25,18 @@ public class TestController {
         logger.info(userVoList);
         return ApiResult.success(userVoList);
     }
+    @RequestMapping(value = "/core/addStrings",method = RequestMethod.POST)
+    @ResponseBody
+    public ApiResult<List<String>> saveStringList(@RequestBody List<String> names)
+    {
+        logger.info(names);
+        return ApiResult.success(names);
+    }
+    @RequestMapping(value = "/core/addIds",method = RequestMethod.POST)
+    @ResponseBody
+    public ApiResult<List<Integer>> saveIntegerList(@RequestBody List<Integer> ids)
+    {
+        logger.info(ids);
+        return ApiResult.success(ids);
+    }
 }
