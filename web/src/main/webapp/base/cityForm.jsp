@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="<c:url value="/js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"/>"></script>
 	<link rel="Stylesheet" href="../js/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css" type="text/css" />
+	<script type="text/javascript" src="../js/JsBarcode.all.min.js"></script>
  <script type="text/javascript">
  
 
@@ -225,10 +226,12 @@
 						</c:if>
 						
 						<input onclick="window.location='<s:url  namespace="/base" action="city_list"/>'"  type="button" value="<delmar:message key="common.button.back"/>"  class="input_submit" >
-						
-								
-				
-				
+
+
+					<canvas id="canvas"></canvas>
+					<script type="text/javascript">
+						$("#canvas").JsBarcode("12345678");
+					</script>
                 </td>
                 </tr>
                 

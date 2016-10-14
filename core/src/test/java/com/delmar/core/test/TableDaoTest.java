@@ -30,4 +30,9 @@ public class TableDaoTest {
     {
         tableDao.getTableColumns("core_table");
     }
+    @Test
+    public void testGetAppTables()
+    {
+        tableDao.getAllTableName();
+    }
 }

@@ -16,6 +16,7 @@ import com.delmar.core.model.Table;
 import com.google.gson.JsonObject;
 import org.springframework.stereotype.Repository;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,37 +101,6 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             throw new DataBaseException("关闭数据连接失败", e);
         }
         return primaryKey;
-    }
-    public String getTableRemark(String tableName)
-    {
-        Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
-        try {
-            DatabaseMetaData databaseMetaData = conn.getMetaData();
-            String[] types={ "TABLE" };
-            ResultSet rs= databaseMetaData.getTables(null,null,tableName,types );
-
-                    ResultSetMetaData rsmd=rs.getMetaData();
-
-            int count= rsmd.getColumnCount();
-            while (rs.next())
-            {
-                for(int i=1;i<=count;i++)
-                {
-                    System.out.print(" "+rsmd.getColumnName(i)+" "+rsmd.getColumnTypeName(i)+" "+rs.getString(i));
-                }
-                System.out.println(rs.getString("REMARKS"));
-                System.out.println();
-            }
-
-        } catch (SQLException e) {
-            throw new DataBaseException("获取 表信息失败", e);
-        }
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            throw new DataBaseException("关闭数据连接失败", e);
-        }
-        return "";
     }
     public List<UniqueIndexDto> getUniqueIndex(String tableName) {
         List<UniqueIndexDto> list=new ArrayList<>();
@@ -287,10 +257,15 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             String[]   types   =   {"TABLE"};
 
             ResultSet   tabs   =   dbMetaData.getTables(null,   null,   null,types/*只要表就好了*/);
+            //int count=tabs.getMetaData().getColumnCount();
             while(tabs.next()){
                 //只要表名这一列
                 tables.add(tabs.getString("TABLE_NAME"));
-
+//                for(int i=1;i<count;i++)
+//                {
+//                    System.out.print(tabs.getObject(i)+"-");
+//                }
+//                System.out.println();
             }
             tabs.close();
             conn.close();
@@ -315,6 +290,44 @@ public class TableDaoMybatis extends CoreDaoMyBatis<Table> implements TableDao {
             logger.error("执行sql语句异常"+sql,e);
             throw new DataBaseException("sql执行异常："+sql, e);
         }
+    }
+    public  String getCommentByTableName(String table)  {
+        try {
+            Map<String, String> map = new HashMap<String, String>();
+            String comment = null;
+            Connection conn = this.sqlSessionTemplate.getSqlSessionFactory().openSession().getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SHOW CREATE TABLE " + table);
+            if (rs != null && rs.next()) {
+                String create = rs.getString(2);
+                comment = parse(create);
+                map.put(table, comment);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            return comment;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static String parse(String all) {
+        String comment = null;
+        int index = all.indexOf("COMMENT='");
+        if (index < 0) {
+            return "";
+        }
+        comment = all.substring(index + 9);
+        comment = comment.substring(0, comment.length() - 1);
+        try {
+            comment = new String(comment.getBytes("utf-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return comment;
     }
 
 }

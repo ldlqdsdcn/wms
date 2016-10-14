@@ -9,7 +9,7 @@
 <%@ include file="/commons/taglib.jsp"%>
 <html>
 <head>
-    <title>公共查询</title>
+    <title>公共查询-组合查询</title>
   <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" type="text/css" media="all"/>
   <link rel="stylesheet" href="../css/bootstrap/bootstrap-theme.min.css" type="text/css" media="all"/>
   <script type='text/javascript' src='../js/jquery/jquery-1.11.1.min.js'></script>
@@ -30,10 +30,10 @@
     </select>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" ng-model="currentColumn.value"  ng-show="currentColumn.inputType==1">
-    <select  class="form-control"  ng-model="currentColumn.value" ng-options="option.key as option.label for option in currentColumn.commonSearchResultList" ng-show="currentColumn.inputType==2"></select>
-    <input type="text"  ng-show="currentColumn.inputType==3" class="form-control" id="value-date"  ng-model="currentColumn.value">
-    <input type="text" class="form-control" id="value-date-time" ng-show="currentColumn.inputType==4"  ng-model="currentColumn.value">
+    <input type="text" class="form-control" ng-model="currentColumn.value"  ng-show="currentColumn.showType==1">
+    <select  class="form-control"  ng-model="currentColumn.value" ng-options="option.key as option.label for option in currentColumn.commonSearchResultList" ng-show="currentColumn.showType==2"></select>
+    <input type="text"  ng-show="currentColumn.showType==3" class="form-control" id="value-date"  ng-model="currentColumn.value">
+    <input type="text" class="form-control" id="value-date-time" ng-show="currentColumn.showType==4"  ng-model="currentColumn.value">
 
   </div>
   <div class="form-group">
@@ -53,7 +53,7 @@
         <td>{{x.columnLabel}}</td>
         <td>{{x.opearType}}</td>
         <td>
-          <div ng-switch="x.inputType">
+          <div ng-switch="x.showType">
             <div ng-switch-when="2">
               <select   ng-model="x.value" ng-options="option.key as option.label for option in x.commonSearchResultList" disabled="disabled"></select>
             </div>
@@ -62,7 +62,9 @@
             </div>
           </div>
         </td>
-        <td><button  type="button" class="btn btn-default" ng-click="delete(x)"  >删除</button></td>
+        <td>
+          <button  type="button" class="btn btn-default" ng-click="delete(x)">删除</button>
+        </td>
       </tr>
 
       </tbody>

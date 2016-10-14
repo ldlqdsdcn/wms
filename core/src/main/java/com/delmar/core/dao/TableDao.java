@@ -48,14 +48,6 @@ public interface TableDao extends CoreDao<Table> {
     List<ColumnMetaDataDto> getTableColumns(String tableName);
 
     /**
-     * 获取表备注信息
-     *
-     * @param tableName
-     * @return
-     */
-    String getTableRemark(String tableName);
-
-    /**
      * 获取系统中所有的表
      * @return
      */
@@ -66,4 +58,11 @@ public interface TableDao extends CoreDao<Table> {
      * @param sql
      */
     void execute(String sql);
+
+    /**
+     * 获取表注释信息
+     * @param table
+     * @return
+     */
+    String getCommentByTableName(String table);
 }

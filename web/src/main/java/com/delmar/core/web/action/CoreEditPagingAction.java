@@ -1,7 +1,7 @@
 package com.delmar.core.web.action;
 
 import com.delmar.core.model.CoreModel;
-import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
+import com.delmar.core.web.displaytag.paging.PaginatedListHelper;
 import com.delmar.core.web.util.FacesUtils;
 import lombok.Setter;
 import org.apache.struts2.ServletActionContext;

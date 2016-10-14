@@ -20,8 +20,10 @@ private String fkLabelColumn;
 private String coditions;
 private String remark;
 private String columnLabel;
+private String newline;
+private Integer seqNo;
 private String[] relOperList;
-
+private boolean newLineBool;
   public String[] getRelOperList()
   {
       System.out.println("---------------getRelOperList:"+relOper);

@@ -98,31 +98,31 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
     <if test="name != null" >
-    #{name,jdbcType=VARCHAR}},
+    #{name,jdbcType=VARCHAR},
     </if>
     <if test="descr != null" >
-    #{descr,jdbcType=VARCHAR}},
+    #{descr,jdbcType=VARCHAR},
     </if>
     <if test="help != null" >
-    #{help,jdbcType=VARCHAR}},
+    #{help,jdbcType=VARCHAR},
     </if>
     <if test="created != null" >
-    #{created,jdbcType=VARCHAR}},
+    #{created,jdbcType=VARCHAR},
     </if>
     <if test="createdby != null" >
-    #{createdby,jdbcType=VARCHAR}},
+    #{createdby,jdbcType=VARCHAR},
     </if>
     <if test="updated != null" >
-    #{updated,jdbcType=VARCHAR}},
+    #{updated,jdbcType=VARCHAR},
     </if>
     <if test="updatedby != null" >
-    #{updatedby,jdbcType=VARCHAR}},
+    #{updatedby,jdbcType=VARCHAR},
     </if>
     <if test="isactive != null" >
-    #{isactive,jdbcType=VARCHAR}},
+    #{isactive,jdbcType=VARCHAR},
     </if>
     <if test="typeId != null" >
-    #{typeId,jdbcType=VARCHAR}},
+    #{typeId,jdbcType=VARCHAR},
     </if>
         </trim>
     </insert>

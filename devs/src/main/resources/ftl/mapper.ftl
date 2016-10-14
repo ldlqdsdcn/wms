@@ -75,7 +75,7 @@
         <trim prefix="values (" suffix=")" suffixOverrides="," >
 <#list columnList as column><#if column.columnName!='id'>
     <if test="${column.propertyName} != null" >
-    ${r'#{'}${column.propertyName},jdbcType=VARCHAR}${'},'}
+    ${r'#{'}${column.propertyName},jdbcType=VARCHAR${'},'}
     </if>
 </#if></#list>
         </trim>
@@ -101,8 +101,7 @@
     <update id="updateByPrimaryKey" parameterType="com.delmar.${module}.model.${model}" >
         update ${tableName}
         set <#list columnList as column>
-            <#if column.columnName!='id'>${column.columnName} = ${r'#{'}${column.propertyName},jdbcType=${column.type}}<#if column_has_next>,</#if>
-            </#if></#list>
+            <#if column.columnName!='id'>${column.columnName} = ${r'#{'}${column.propertyName},jdbcType=${column.type}}<#if column_has_next>,</#if></#if></#list>
         where id = ${r'#{id,jdbcType=INTEGER}'}
     </update>
 </mapper>

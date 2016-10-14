@@ -23,7 +23,7 @@ public class AuthenticationManger {
             log.error("dubbo privider 对象访问失败");
             return false;
         }
-       ApiResult<UserDto> apiResult= userApi.verifyToken(token);
+        ApiResult<UserDto> apiResult= userApi.verifyToken(token);
         return apiResult.isSuccess();
     }
 

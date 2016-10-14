@@ -82,6 +82,21 @@ $("input[name^=searchColumnList]").each(function(i, item){
 
         }
 
+    if(endWith(item.name,'seqNo')){
+        if (isEmpty($(item).val())) {
+            lineMsg+="<br>"+"查询字段 序号不允许为空";
+            $(item).focus();
+            validateLine=false;
+        }
+        if (!isInt($(item).val())) {
+            lineMsg+="<br>"+"查询字段 序号必须为整数";
+
+            $(item).focus();
+            validateLine=false;
+        }
+
+    }
+
         if(endWith(item.name,'dataType')){
                 if (!isInt($(item).val())) {
                 lineMsg+="<br>"+"查询字段 dataType必须为整数";
@@ -127,17 +142,6 @@ $("input[name^=searchColumnList]").each(function(i, item){
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
         if(endWith(item.name,'columnLabel')){
                 if (isEmpty($(item).val())) {
                 lineMsg+="<br>"+"查询字段 columnLabel不允许为空";
@@ -231,6 +235,15 @@ $("input[name^=searchColumnList]").each(function(i, item){
                             <s:fielderror fieldName="search.pageUrl"    cssStyle="color:red" />
                           </td>
                         </tr>
+                    <tr>
+                        <td>
+                            <s:label for="searchShowType" value="查询界面显示类型" />
+                        </td>
+                        <td>
+                            <s:select id="searchShowType" name="search.searchShowType" list="#{1:'普通查询',2:'组合查询'}"/>
+
+                        </td>
+                    </tr>
 
 <tr>
     <td colspan="4" style="padding-left: 0px;">
@@ -268,6 +281,7 @@ $("input[name^=searchColumnList]").each(function(i, item){
                        onclick="selectAll('SearchColumn_ids',this);"/>
             </th>
             <th>序号</th>
+            <th>换行</th>
             <th >columnName</th>
             <th >columnLabel</th>
             <th >dataType</th>
@@ -289,9 +303,13 @@ $("input[name^=searchColumnList]").each(function(i, item){
                                value="<s:property value="#st.index"/>"/>
                     </td>
                     <td>
-                        <s:property value="#st.index+1"/>
+                        <s:textfield
+                                name="%{'searchColumnList['+#st.index+'].seqNo'}" cssStyle="width: 30px;"></s:textfield>
                         <s:hidden
                                 name="%{'searchColumnList['+#st.index+'].id'}"/>
+                    </td>
+                    <td>
+                        <s:checkbox name="%{'searchColumnList['+#st.index+'].newLineBool'}" />
                     </td>
                 <td>
                     <s:textfield

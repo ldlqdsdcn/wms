@@ -269,7 +269,7 @@ public class SysSettingsAction extends CoreEditPrivAction{
 		
 		UserResource ur = (UserResource)ServletActionContext.getRequest().getSession().getAttribute("resource");
 		String laguage = ur.getLocale();
-		if (InputTypeEnum.NumInput.getValue().equals(setType) || InputTypeEnum.TestInput.getValue().equals(setType) ) {
+		if (InputTypeEnum.NumInput.getValue().equals(setType) || InputTypeEnum.TextInput.getValue().equals(setType) ) {
 			
 			String setValueString = sysSettingsItemValueService.getItemValueName(sysSettingsValues.getSysSettingsItemValue(),laguage);
 			sysSettings.setSetValueString(setValueString);

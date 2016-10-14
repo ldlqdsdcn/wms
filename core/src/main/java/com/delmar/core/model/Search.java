@@ -12,5 +12,9 @@ private Integer id;
 private String name;
 private String remark;
 private String pageUrl;
+  /**
+   * 查询界面显示类型 普通查询界面还是组合查询界面
+   */
+  private Integer searchShowType;
 
 }

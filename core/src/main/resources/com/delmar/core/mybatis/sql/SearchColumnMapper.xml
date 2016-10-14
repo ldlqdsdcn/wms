@@ -14,6 +14,8 @@
             <result column="coditions" property="coditions" jdbcType="VARCHAR" />
             <result column="remark" property="remark" jdbcType="VARCHAR" />
             <result column="column_label" property="columnLabel" jdbcType="VARCHAR" />
+            <result column="newline" property="newline" jdbcType="VARCHAR"/>
+            <result column="seq_no" property="seqNo" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Example_Where_Clause" >
         <where >
@@ -21,7 +23,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List" >
-      id,   search_id,   column_name,   data_type,   show_type,   rel_oper,   fk_table,   fk_key_column,   fk_label_column,   coditions,   remark,   column_label 
+      id,   search_id,   column_name,   data_type,   show_type,   rel_oper,   fk_table,   fk_key_column,   fk_label_column,   coditions,   remark,   column_label,  newline,seq_no
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
         select
@@ -57,8 +59,9 @@
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into core_search_column (     search_id,   column_name,   data_type,   show_type,   rel_oper,   fk_table,   fk_key_column,   fk_label_column,   coditions,   remark,   column_label )
-        values (  #{searchId,jdbcType=INTEGER}, #{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, #{showType,jdbcType=INTEGER}, #{relOper,jdbcType=VARCHAR}, #{fkTable,jdbcType=VARCHAR}, #{fkKeyColumn,jdbcType=VARCHAR}, #{fkLabelColumn,jdbcType=VARCHAR}, #{coditions,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{columnLabel,jdbcType=VARCHAR} )
+        insert into core_search_column (     search_id,   column_name,   data_type,   show_type,   rel_oper,   fk_table,   fk_key_column,   fk_label_column,   coditions,   remark,   column_label ,newline,seq_no)
+        values (  #{searchId,jdbcType=INTEGER}, #{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, #{showType,jdbcType=INTEGER}, #{relOper,jdbcType=VARCHAR}, #{fkTable,jdbcType=VARCHAR}, #{fkKeyColumn,jdbcType=VARCHAR}, #{fkLabelColumn,jdbcType=VARCHAR}, #{coditions,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+        #{columnLabel,jdbcType=VARCHAR},#{newline,jdbcType=VARCHAR},#{seqNo,jdbcType=INTEGER} )
     </insert>
     <insert id="insertSelective" parameterType="com.delmar.core.model.SearchColumn" >
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -99,41 +102,54 @@
                 <if test="columnLabel != null" >
                     column_label,
                 </if>
+            <if test="newline != null" >
+                newline,
+            </if>
+            <if test="seqNo != null" >
+                seq_no,
+            </if>
+
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
     <if test="searchId != null" >
-    #{searchId,jdbcType=VARCHAR}},
+    #{searchId,jdbcType=INTEGER},
     </if>
     <if test="columnName != null" >
-    #{columnName,jdbcType=VARCHAR}},
+    #{columnName,jdbcType=VARCHAR},
     </if>
     <if test="dataType != null" >
-    #{dataType,jdbcType=VARCHAR}},
+    #{dataType,jdbcType=VARCHAR},
     </if>
     <if test="showType != null" >
-    #{showType,jdbcType=VARCHAR}},
+    #{showType,jdbcType=VARCHAR},
     </if>
     <if test="relOper != null" >
-    #{relOper,jdbcType=VARCHAR}},
+    #{relOper,jdbcType=VARCHAR},
     </if>
     <if test="fkTable != null" >
-    #{fkTable,jdbcType=VARCHAR}},
+    #{fkTable,jdbcType=VARCHAR},
     </if>
     <if test="fkKeyColumn != null" >
-    #{fkKeyColumn,jdbcType=VARCHAR}},
+    #{fkKeyColumn,jdbcType=VARCHAR},
     </if>
     <if test="fkLabelColumn != null" >
-    #{fkLabelColumn,jdbcType=VARCHAR}},
+    #{fkLabelColumn,jdbcType=VARCHAR},
     </if>
     <if test="coditions != null" >
-    #{coditions,jdbcType=VARCHAR}},
+    #{coditions,jdbcType=VARCHAR},
     </if>
     <if test="remark != null" >
-    #{remark,jdbcType=VARCHAR}},
+    #{remark,jdbcType=VARCHAR},
     </if>
     <if test="columnLabel != null" >
-    #{columnLabel,jdbcType=VARCHAR}},
+    #{columnLabel,jdbcType=VARCHAR},
     </if>
+            <if test="newline != null" >
+                #{newline,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null" >
+                #{seqNo,jdbcType=INTEGER}
+            </if>
         </trim>
     </insert>
     <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
@@ -178,35 +194,31 @@
     <if test="columnLabel != null" >
         column_label = #{columnLabel,jdbcType=VARCHAR},
     </if>
-
+            <if test="newline != null" >
+                newline= #{newline,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null" >
+                seq_no=#{seqNo,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.delmar.core.model.Window" >
         update core_search_column
         set 
-            
             search_id = #{searchId,jdbcType=INTEGER},
-
             column_name = #{columnName,jdbcType=VARCHAR},
-
             data_type = #{dataType,jdbcType=INTEGER},
-
             show_type = #{showType,jdbcType=INTEGER},
-
             rel_oper = #{relOper,jdbcType=VARCHAR},
-
             fk_table = #{fkTable,jdbcType=VARCHAR},
-
             fk_key_column = #{fkKeyColumn,jdbcType=VARCHAR},
-
             fk_label_column = #{fkLabelColumn,jdbcType=VARCHAR},
-
             coditions = #{coditions,jdbcType=VARCHAR},
-
             remark = #{remark,jdbcType=VARCHAR},
-
-            column_label = #{columnLabel,jdbcType=VARCHAR}
+            column_label = #{columnLabel,jdbcType=VARCHAR},
+             newline= #{newline,jdbcType=VARCHAR},
+             seq_no=#{seqNo,jdbcType=INTEGER}
 
         where id = #{id,jdbcType=INTEGER}
     </update>

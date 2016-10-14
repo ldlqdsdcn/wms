@@ -3,7 +3,7 @@ package com.delmar.sysSettings.enums;
 public enum InputTypeEnum {
 
 	NumInput("数字输入",0),
-	TestInput("文本输入",1),
+	TextInput("文本输入",1),
 	SingelSelect("单项选择",2),
 	Multiselect("多项选择",3);
 	

@@ -7,8 +7,7 @@
 package com.delmar.system.web.action;
 
 import com.delmar.core.web.action.CoreEditPagingAction;
-import com.delmar.core.web.controller.displaytag.paging.PaginatedListHelper;
-import com.delmar.sys.model.User;
+import com.delmar.core.web.displaytag.paging.PaginatedListHelper;
 import com.delmar.system.model.UserFootmark;
 import com.delmar.system.service.UserFootmarkService;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
@@ -16,7 +15,6 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**

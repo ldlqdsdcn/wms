@@ -14,9 +14,11 @@ public class SearchColumnVo implements java.io.Serializable{
     private String columnName;
     private String columnLabel;
     private int dataType;
-    private int inputType;
     private String opearType;
     private String value;
+    private String newline;
+    private Integer showType;
+    private Integer seqNo;
     private List<String> relOpearList;
     private List<CommonSearchResult> commonSearchResultList;
 

@@ -21,4 +21,4 @@
 	<!--引入dubbo-->
 	<import resource="classpath:dubbo/consumers.xml"/>
 
-	</beans>
+</beans>

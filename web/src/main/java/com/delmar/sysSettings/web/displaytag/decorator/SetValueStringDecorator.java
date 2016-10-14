@@ -43,7 +43,7 @@ public class SetValueStringDecorator implements DisplaytagColumnDecorator {
 			
 			//如果输入类型为文本输入或者数字输入，做过个性化的话会将个性化值存储在setValueString中 否则setValueString为空
 			StringBuffer returnMsg = new StringBuffer();
-			if (InputTypeEnum.NumInput.getValue().equals(setType) || InputTypeEnum.TestInput.getValue().equals(setType) ) {
+			if (InputTypeEnum.NumInput.getValue().equals(setType) || InputTypeEnum.TextInput.getValue().equals(setType) ) {
 				
 				if (StringUtils.isNotEmpty(sysSettings.getSetValueString())) {
 					returnMsg.append("<input name=\"setValueString_").append(carrierId + "\"").append(" id=\"setValueString_").append(carrierId  + "\"");

@@ -154,6 +154,7 @@ public class SearchServiceImpl extends CoreServiceImpl<Search> implements
     public List<SearchColumn> getSearchColumnListBySearchId(Integer searchId) {
         Map<String, Object> param = new HashMap<>();
         param.put("searchId", searchId);
+        param.put("orderByClause","seq_no");
         if(searchId==null)
         {
             return new ArrayList<>();

@@ -9,7 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" type="text/css" media="all"/>
 <script type="text/javascript">
    $(document).ready(function () {
        $("#addList").click(function(){
@@ -95,9 +96,13 @@
    });
 </script>
 </head>
-<body>
+<body class="container">
     <button id="addList">addList</button>
     <button id="addStringList">addStringList</button>
     <button id="addIntegerList">addIntegerList</button>
+    <table class="table table-bordered">
+
+
+    </table>
 </body>
 </html>

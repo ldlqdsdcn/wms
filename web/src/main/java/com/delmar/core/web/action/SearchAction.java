@@ -99,6 +99,13 @@ public class SearchAction extends CoreEditPrivAction {
 		init();
 		 search= searchService.selectByPrimaryKey(id);
 		searchColumnList=searchService.getSearchColumnListBySearchId(id);
+		for(SearchColumn searchColumn:searchColumnList)
+		{
+			if("Y".equals(searchColumn.getNewline()))
+			{
+				searchColumn.setNewLineBool(true);
+			}
+		}
 
 	}
 
@@ -161,6 +168,17 @@ public class SearchAction extends CoreEditPrivAction {
 	 */
 	@Override
 	public String saveForm() {
+		for(SearchColumn searchColumn:searchColumnList)
+		{
+			if(searchColumn.isNewLineBool())
+			{
+				searchColumn.setNewline("Y");
+			}
+			else
+			{
+				searchColumn.setNewline("N");
+			}
+		}
 		searchService.saveSearch(search,searchColumnList);
 		this.id=search.getId();
 		return edit();
